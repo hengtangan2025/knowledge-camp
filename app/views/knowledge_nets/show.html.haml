@@ -3,4 +3,7 @@
     %a.new{:href=>"/knowledge_nets/#{@net.id}/knowledge_points/new"} 新建
   .point-list
     - @net.points.each do |point|
-      .point= point.name
+      .point
+        = link_to point.name, "/knowledge_nets/#{@net.id}/knowledge_points/#{point.id}"
+        = link_to "编辑", "/knowledge_nets/#{@net.id}/knowledge_points/#{point.id}/edit"
+        = link_to "删除", "/knowledge_nets/#{@net.id}/knowledge_points/#{point.id}", :method => :delete, :data => {:confirm => "确定删除吗?"}

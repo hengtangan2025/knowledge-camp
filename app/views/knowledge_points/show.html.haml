@@ -1,0 +1,14 @@
+.page-point-show
+  .name=@point.name
+  .desc=@point.desc
+
+  .parents
+    %div 前置
+    - @point.parents.each do |parent|
+      = parent.name
+
+  .children
+    %div 后置
+    - @point.children.each do |child|
+      = child.name
+

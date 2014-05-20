@@ -1,0 +1,9 @@
+.page-point-edit
+  - points = @net.points - [@point]
+  = simple_form_for @point, :url => "/knowledge_nets/#{@net.id}/knowledge_points/#{@point.id}" do |f|
+    .field= f.input :name, :placeholder => "名称"
+    .field= f.input :desc, :placeholder => "描述", :as => :text
+    .field= f.association :parents, :collection => points, prompt: "Choose a Company", :as => :check_boxes
+
+    .field= f.submit "创建"
+    = link_to "取消", "/knowledge_nets/#{@net.id}"
