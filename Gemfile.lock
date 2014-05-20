@@ -15,6 +15,13 @@ GIT
     knowledge-net-plan-store (0.0.1)
       mongoid
 
+GIT
+  remote: git://github.com/mindpin/knowledge-net-store.git
+  revision: ca30eba07a9cc5c80e36608cb46d7b904d76f4da
+  tag: 0.0.3
+  specs:
+    knowledge-net-store (0.0.1)
+
 GEM
   remote: http://ruby.taobao.org/
   specs:
@@ -182,6 +189,7 @@ DEPENDENCIES
   jquery-rails
   kaminari (~> 0.15.1)
   knowledge-net-plan-store!
+  knowledge-net-store!
   mina!
   mongoid (~> 4.0.0.beta1)
   pry

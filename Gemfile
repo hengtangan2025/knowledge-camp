@@ -27,6 +27,10 @@ gem "knowledge-net-plan-store",
     :git => "git://github.com/mindpin/knowledge-net-plan-store.git",
     :tag => "v0.0.1.patch-1"
 
+gem 'knowledge-net-store',
+    :git => 'git://github.com/mindpin/knowledge-net-store.git',
+    :tag => '0.0.3'
+
 gem "rest-client"
 
 group :test do
