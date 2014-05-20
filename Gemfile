@@ -14,6 +14,7 @@ gem "jquery-rails"
 gem "turbolinks"
 gem "jbuilder", "~> 2.0"
 gem "sdoc", "~> 0.4.0", :group => :doc
+gem "simple_form", "~> 3.0.2"
 
 gem "spring", :group => :development
 
@@ -25,7 +26,7 @@ gem "mina",
 
 gem "knowledge-net-plan-store",
     :git => "git://github.com/mindpin/knowledge-net-plan-store.git",
-    :tag => "v0.0.1.patch-1"
+    :tag => "v0.0.2"
 
 gem 'knowledge-net-store',
     :git => 'git://github.com/mindpin/knowledge-net-store.git',
