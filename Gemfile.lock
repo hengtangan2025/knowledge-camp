@@ -7,6 +7,14 @@ GIT
       open4
       rake
 
+GIT
+  remote: git://github.com/mindpin/knowledge-net-plan-store.git
+  revision: 1c62916d3acb4e5d32d0c3715c4d7817556b5de4
+  tag: v0.0.1.patch-1
+  specs:
+    knowledge-net-plan-store (0.0.1)
+      mongoid
+
 GEM
   remote: http://ruby.taobao.org/
   specs:
@@ -173,6 +181,7 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails
   kaminari (~> 0.15.1)
+  knowledge-net-plan-store!
   mina!
   mongoid (~> 4.0.0.beta1)
   pry

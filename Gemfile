@@ -23,6 +23,10 @@ gem "mina",
     :git => "git://github.com/fushang318/mina.git",
     :tag => "v0.2.0fix"
 
+gem "knowledge-net-plan-store",
+    :git => "git://github.com/mindpin/knowledge-net-plan-store.git",
+    :tag => "v0.0.1.patch-1"
+
 gem "rest-client"
 
 group :test do
