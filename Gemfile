@@ -25,7 +25,7 @@ gem "mina",
 
 gem "knowledge-net-plan-store",
     :git => "git://github.com/mindpin/knowledge-net-plan-store.git",
-    :tag => "v0.0.1.patch-1"
+    :tag => "v0.0.2"
 
 gem 'knowledge-net-store',
     :git => 'git://github.com/mindpin/knowledge-net-store.git',

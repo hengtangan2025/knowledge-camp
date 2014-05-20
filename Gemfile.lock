@@ -9,10 +9,10 @@ GIT
 
 GIT
   remote: git://github.com/mindpin/knowledge-net-plan-store.git
-  revision: 1c62916d3acb4e5d32d0c3715c4d7817556b5de4
-  tag: v0.0.1.patch-1
+  revision: 19eeeccb14fc474e812044908f0df16380ac3792
+  tag: v0.0.2
   specs:
-    knowledge-net-plan-store (0.0.1)
+    knowledge-net-plan-store (0.0.2)
       mongoid
 
 GIT
