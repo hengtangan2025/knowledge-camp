@@ -5,5 +5,5 @@
     .field= f.input :desc, :placeholder => "描述", :as => :text
     .field= f.association :parents, :collection => points, prompt: "Choose a Company", :as => :check_boxes
 
-    .field= f.submit "创建"
+    .field= f.submit "修改"
     = link_to "取消", "/knowledge_nets/#{@net.id}"
