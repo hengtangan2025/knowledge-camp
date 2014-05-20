@@ -1,0 +1,11 @@
+.page-net-list
+  .action
+    %a.new{:href=>"/knowledge_nets/new"} 新建
+  .list
+    - @nets.each do |net|
+      .net
+        = link_to net.name, "/knowledge_nets/#{net.id}"
+        = link_to "编辑", "/knowledge_nets/#{net.id}/edit"
+        = link_to "删除", "/knowledge_nets/#{net.id}", :method => :delete, :data => {:confirm => "确定删除吗?"}
+        .info
+          = "创建于 #{net.created_at}"

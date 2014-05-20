@@ -1,0 +1,6 @@
+.page-net-show
+  .action
+    %a.new{:href=>"/knowledge_nets/#{@net.id}/knowledge_points/new"} 新建
+  .point-list
+    - @net.points.each do |point|
+      .point= point.name

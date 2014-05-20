@@ -1,0 +1,6 @@
+.page-net-new
+  = form_for @net, :url => "/knowledge_nets/#{@net.id}" do |f|
+    .field= f.text_field :name, :placeholder => "名称"
+    .field= f.text_area  :desc, :placeholder => "描述"
+    .field= f.submit "修改"
+    = link_to "取消", "/knowledge_nets"

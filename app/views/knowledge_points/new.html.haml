@@ -1,0 +1,7 @@
+.page-point-new
+  = form_for @point, :url => "/knowledge_nets/#{@net.id}/knowledge_points" do |f|
+    .field= f.text_field :name, :placeholder => "名称"
+    .field= f.text_area  :desc, :placeholder => "描述"
+    .field= f.collection_check_boxes :parent_ids, @net.points, :id, :name 
+    .field= f.submit "创建"
+    = link_to "取消", "/knowledge_nets/#{@net.id}"
