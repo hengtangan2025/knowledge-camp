@@ -1,5 +1,5 @@
 class TopicsController < PlanStoreController
-  set_model Topic
+  set_model Topic, :allow_attrs => [:name, :desc]
 
   def create
     @plan = Plan.find params[:plan_id]
