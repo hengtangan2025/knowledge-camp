@@ -1,6 +1,11 @@
+.navbar
+  =link_to "首页", "/"
+  >
+  =link_to "知识网列表", "/knowledge_nets"
 .page-net-new
   = simple_form_for @net, :url => "/knowledge_nets" do |f|
     .field= f.input :name, :placeholder => "名称"
     .field= f.input :desc, :placeholder => "描述", :as => :text
-    .field= f.submit "创建"
-    = link_to "取消", "/knowledge_nets"
+    .field
+      = f.submit "创建"
+      = link_to "取消", "/knowledge_nets"

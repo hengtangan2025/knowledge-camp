@@ -1,3 +1,10 @@
+.navbar
+  =link_to "首页", "/"
+  >
+  =link_to "知识网列表", "/knowledge_nets"
+  >
+  =link_to @net.name, "/knowledge_nets/#{@net.id}"
+
 .page-point-show
   .name=@point.name
   .desc=@point.desc
@@ -5,10 +12,10 @@
   .parents
     %div 前置
     - @point.parents.each do |parent|
-      = parent.name
+      .point= parent.name
 
   .children
     %div 后置
     - @point.children.each do |child|
-      = child.name
+      .point= child.name
 

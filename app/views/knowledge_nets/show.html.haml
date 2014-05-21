@@ -1,3 +1,10 @@
+.navbar
+  =link_to "首页", "/"
+  >
+  =link_to "知识网列表", "/knowledge_nets"
+  >
+  = "#{@net.name}"
+  
 .page-net-show
   .action
     %a.new{:href=>"/knowledge_nets/#{@net.id}/knowledge_points/new"} 新建

@@ -8,4 +8,6 @@ Rails.application.routes.draw do
   resources :knowledge_nets do
     resources :knowledge_points
   end
+
+  root 'index#index'
 end

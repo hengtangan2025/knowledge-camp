@@ -1,9 +1,17 @@
+.navbar
+  =link_to "首页", "/"
+  >
+  =link_to "知识网列表", "/knowledge_nets"
+  >
+  =link_to @net.name, "/knowledge_nets/#{@net.id}"
+
 .page-point-edit
   - points = @net.points - [@point]
   = simple_form_for @point, :url => "/knowledge_nets/#{@net.id}/knowledge_points/#{@point.id}" do |f|
     .field= f.input :name, :placeholder => "名称"
     .field= f.input :desc, :placeholder => "描述", :as => :text
-    .field= f.association :parents, :collection => points, prompt: "Choose a Company", :as => :check_boxes
+    .field= f.association :parents, :collection => points, :as => :check_boxes
 
-    .field= f.submit "修改"
-    = link_to "取消", "/knowledge_nets/#{@net.id}"
+    .field
+      = f.submit "修改"
+      = link_to "取消", "/knowledge_nets/#{@net.id}"
