@@ -8,7 +8,7 @@ module GenericControllerHelpers
     before_action :new_model_instance,
                   :only => [:new]
 
-    delegate :model, :to => :class
+    delegate :model, :allow_attrs, :to => :class
   end
 
   protected
@@ -30,7 +30,7 @@ module GenericControllerHelpers
   end
 
   def model_params
-    params.require(model.model_name.element).permit(:name, :desc)
+    params.require(model.model_name.element).permit(*allow_attrs)
   end
 
   module ClassMethods
@@ -55,12 +55,17 @@ module GenericControllerHelpers
       end
     end
 
-    def set_model(klass)
+    def set_model(klass, allow_attrs: [])
       @_model = klass
+      @_allow_attrs = allow_attrs
     end
 
     def model
       @_model
+    end
+
+    def allow_attrs
+      @_allow_attrs
     end
   end
 end
