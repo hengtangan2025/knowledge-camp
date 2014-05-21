@@ -17,8 +17,8 @@ GIT
 
 GIT
   remote: git://github.com/mindpin/knowledge-net-store.git
-  revision: ca30eba07a9cc5c80e36608cb46d7b904d76f4da
-  tag: 0.0.3
+  revision: 86a2b197057b93b4d20fc6e32a6b19cb16a653b5
+  tag: 0.0.4
   specs:
     knowledge-net-store (0.0.1)
 
