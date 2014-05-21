@@ -5,10 +5,6 @@ class PlansController < PlanStoreController
     @plans = Plan.all
   end
 
-  def new
-    @plan = Plan.new
-  end
-
   def create
     plan = Plan.create model_params
     redirect_to "/plans/#{plan.id}"

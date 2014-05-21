@@ -2,11 +2,18 @@ class PlanStoreController < ApplicationController
   include KnowledgeNetPlanStore
 
   before_action :find_model_instance,
-                :only => [
-                  :update, :show, :destroy
-                ]
+                :only => [:update, :show, :destroy]
+
+  before_action :new_model_instance,
+                :only => [:new]
 
   delegate :model, :to => :class
+
+  def new
+  end
+
+  def show
+  end
 
   def self.show_with(&block)
     define_method :show do
@@ -41,6 +48,10 @@ class PlanStoreController < ApplicationController
 
   def find_model_instance
     instance_variable_set model_ivar, model.find(params[:id])
+  end
+
+  def new_model_instance
+    instance_variable_set model_ivar, model.new
   end
 
   def model_instance

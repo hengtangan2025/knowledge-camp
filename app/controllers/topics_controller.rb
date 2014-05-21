@@ -1,10 +1,6 @@
 class TopicsController < PlanStoreController
   set_model Topic
 
-  def new
-    @topic = Topic.new
-  end
-
   def create
     @plan = Plan.find params[:plan_id]
     topic = @plan.topics.create model_params
