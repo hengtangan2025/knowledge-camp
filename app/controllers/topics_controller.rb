@@ -1,5 +1,5 @@
-class TopicsController < ApplicationController
-  include KnowledgeNetPlanStore
+class TopicsController < PlanStoreController
+  set_model Topic
 
   def new
     @topic = Topic.new
@@ -7,31 +7,11 @@ class TopicsController < ApplicationController
 
   def create
     @plan = Plan.find params[:plan_id]
-    topic = @plan.topics.create topic_params
+    topic = @plan.topics.create model_params
     redirect_to "/topics/#{topic.id}"
   end
 
-  def update
-    topic = Topic.find(params[:id])
-    topic.update_attributes topic_params
-    topic.save
-    redirect_to "/topics/#{topic.id}"
-  end
-
-  def show
-    @topic = Topic.find(params[:id])
-    @tutorials = @topic.tutorials
-  end
-
-  def destroy
-    topic = Topic.find(params[:id])
-    topic.destroy
-    redirect_to "/plans/#{topic.plan.id}"
-  end
-
-  private
-
-  def topic_params
-    params.require(:topic).permit(:name, :desc)
-  end
+  update_with  {redirect_to "/topics/#{@topic.id}"}
+  show_with    {@tutorials = @topic.tutorials}
+  destroy_with {redirect_to "/plans/#{@topic.plan.id}"}
 end

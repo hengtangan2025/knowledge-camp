@@ -1,5 +1,5 @@
-class PlansController < ApplicationController
-  include KnowledgeNetPlanStore
+class PlansController < PlanStoreController
+  set_model Plan
 
   def index
     @plans = Plan.all
@@ -10,31 +10,11 @@ class PlansController < ApplicationController
   end
 
   def create
-    plan = Plan.create plan_params
+    plan = Plan.create model_params
     redirect_to "/plans/#{plan.id}"
   end
 
-  def update
-    plan = Plan.find(params[:id])
-    plan.update_attributes plan_params
-    plan.save
-    redirect_to "/plans/#{plan.id}"
-  end
-
-  def show
-    @plan = Plan.find(params[:id])
-    @topics = @plan.topics
-  end
-
-  def destroy
-    plan = Plan.find(params[:id])
-    plan.destroy
-    redirect_to "/plans"
-  end
-
-  private
-
-  def plan_params
-    params.require(:plan).permit(:name, :desc)
-  end
+  update_with  {redirect_to "/plans/#{@plan.id}"}
+  show_with    {@topics = @plan.topics}
+  destroy_with {redirect_to "/plans"}
 end
