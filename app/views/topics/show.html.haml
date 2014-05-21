@@ -1,15 +1,20 @@
-%h1 主题: #{@topic.name}
-= plan_store_form_for @topic, "/topics/#{@topic.id}"
+.navbar
+  = link_to "首页", "/"
+  >
+  = link_to "教学计划列表", "/plans"
+  >
+  = link_to "教学计划: #{@topic.plan.name}", "/plans/#{params[:plan_id]}"
+  >
+  主题: #{@topic.name}
 
-= link_to "返回", "/plans/#{@topic.plan_id}"
-= link_to "添加新教程", "/topics/#{@topic.id}/tutorials/new"
-= delete_link "[删除]", "/topics/#{@topic.id}"
+.page-model-form
+  .action
+    = link_to "返回", "/plans/#{@topic.plan_id}"
+    = link_to "添加新教程", "/topics/#{@topic.id}/tutorials/new"
+    = delete_link "[删除]", "/topics/#{@topic.id}"
 
-- if @tutorials.any?
-  %h2 现有教程
-  %ul
-    - @tutorials.each do |tutorial|
-      %li
-        = link_to tutorial.name, "/tutorials/#{tutorial.id}"
-        = delete_link "[删除]", "/tutorials/#{tutorial.id}"
-      
+  = plan_store_form_for @topic, "/topics/#{@topic.id}"
+
+.page-model-list
+  - locals = {:items => @tutorials}
+  = render :partial => "/plan_store_partials/item_list", :locals => locals

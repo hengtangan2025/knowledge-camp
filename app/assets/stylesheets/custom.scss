@@ -18,7 +18,7 @@
   }
 }
 
-.page-net-list{
+.page-net-list, .page-model-list{
   .action{
     a.new{
       float: right;
@@ -38,7 +38,7 @@
 
   .list{
     margin: 20px 40px 0 40px;
-    .net{
+    .net, .list-item{
       margin: 20px 0 20px 0;
 
       .info{
@@ -67,7 +67,7 @@
   }
 }
 
-.page-net-edit, .page-net-new{
+.page-net-edit, .page-net-new, .page-model-form{
   padding-top:75px;
   .field{
     margin-top: 6px;
