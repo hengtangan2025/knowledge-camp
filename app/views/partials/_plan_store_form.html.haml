@@ -3,4 +3,13 @@
 = simple_form_for model, :url => url, :as => name do |f|
   = f.input :name, :placeholder => "name"
   = f.input :desc, :placeholder => "desc"
+
+  - case model.class
+  - when KnowledgeNetPlanStore::Plan
+    - nets = KnowledgeNetStore::Net.all.map {|n| [n.name, n.id]} 
+    = f.select :net_id, nets
+  - when KnowledgeNetPlanStore::Tutorial
+    - points = KnowledgeNetStore::Point.all
+    = f.collection_check_boxes :point_ids, points, :id, :name
+
   = f.submit "提交"

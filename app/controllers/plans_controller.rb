@@ -1,5 +1,5 @@
 class PlansController < PlanStoreController
-  set_model Plan, :allow_attrs => [:name, :desc]
+  set_model Plan, :allow_attrs => [:name, :desc, :net_id]
 
   def index
     @plans = Plan.all

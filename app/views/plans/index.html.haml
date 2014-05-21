@@ -1,7 +1,8 @@
+%h1 教学计划列表
 = link_to "添加教学计划", "/plans/new"
 
 - if @plans.any?
-  %h1 现有教学计划
+  %h2 现有教学计划
   %ul
     - @plans.each do |plan|
       %li

@@ -1,2 +1,4 @@
 %h1 添加新主题
 = plan_store_form_for @topic, "/plans/#{params[:plan_id]}/topics"
+
+= link_to "返回", "/plans/#{params[:plan_id]}"

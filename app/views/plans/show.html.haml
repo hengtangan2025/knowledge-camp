@@ -1,5 +1,5 @@
 %h1 教学计划: #{@plan.name}
-= plan_store_form_for @plan, "/plans/#{@plan.id}"
+= plan_store_form_for @plan, "/plans/#{@plan.id}"   
 
 = link_to "返回", "/plans"
 = link_to "添加新主题", "/plans/#{@plan.id}/topics/new"

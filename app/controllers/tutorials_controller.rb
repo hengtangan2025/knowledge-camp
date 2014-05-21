@@ -1,5 +1,5 @@
 class TutorialsController < PlanStoreController
-  set_model Tutorial, :allow_attrs => [:name, :desc]
+  set_model Tutorial, :allow_attrs => [:name, :desc, {:point_ids => []}]
 
   def create
     @topic = Topic.find params[:topic_id]
