@@ -1,0 +1,5 @@
+%h1 教程: #{@tutorial.name}
+= plan_store_form_for @tutorial, "/tutorials/#{@tutorial.id}"
+
+= link_to "返回", "/topics/#{@tutorial.topic_id}"
+= delete_link "[删除]", "/tutorials/#{@tutorial.id}"

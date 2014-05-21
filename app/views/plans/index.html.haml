@@ -1,0 +1,10 @@
+= link_to "添加教学计划", "/plans/new"
+
+- if @plans.any?
+  %h1 现有教学计划
+  %ul
+    - @plans.each do |plan|
+      %li
+        = link_to plan.name, "/plans/#{plan.id}"
+        = delete_link "[删除]", "/plans/#{plan.id}"
+      

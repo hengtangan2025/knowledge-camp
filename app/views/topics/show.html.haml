@@ -1,0 +1,15 @@
+%h1 主题: #{@topic.name}
+= plan_store_form_for @topic, "/topics/#{@topic.id}"
+
+= link_to "返回", "/plans/#{@topic.plan_id}"
+= link_to "添加新教程", "/topics/#{@topic.id}/tutorials/new"
+= delete_link "[删除]", "/topics/#{@topic.id}"
+
+- if @tutorials.any?
+  %h2 现有教程
+  %ul
+    - @tutorials.each do |tutorial|
+      %li
+        = link_to tutorial.name, "/tutorials/#{tutorial.id}"
+        = delete_link "[删除]", "/tutorials/#{tutorial.id}"
+      

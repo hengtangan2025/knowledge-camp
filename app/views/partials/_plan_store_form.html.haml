@@ -1,0 +1,6 @@
+- name = model.model_name.element
+
+= simple_form_for model, :url => url, :as => name do |f|
+  = f.input :name, :placeholder => "name"
+  = f.input :desc, :placeholder => "desc"
+  = f.submit "提交"
