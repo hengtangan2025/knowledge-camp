@@ -3,7 +3,8 @@
     .net
       .name
         %i.fa.fa-tree
-        %span= net.name
+        %a{:href => "/knowledge_nets/#{net.id}/"}= net.name
+
       - if net.desc.present?
         .desc= net.desc
       .points-count

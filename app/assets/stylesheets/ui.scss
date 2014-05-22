@@ -2,6 +2,8 @@ $fa-font-path: "lily/fonts";
 
 @import "lily/css/lily";
 
+@import "graph";
+
 $lightgray: lighten($black-10, 5%);
 $border-dash: dashed 1px $black-30;
 

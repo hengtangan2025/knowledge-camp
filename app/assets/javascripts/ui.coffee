@@ -6,5 +6,7 @@ seajs.config
 seajs.use 'knowledge/view', (KnowledgeView)->
   jQuery ->
     if jQuery('body.graph').length
-      jQuery.getJSON 'data/js/js.json', (data)->
+      net_id = jQuery('body').data('net')
+
+      jQuery.getJSON "/knowledge_nets/#{net_id}.json", (data)->
         new KnowledgeView jQuery('.graph-paper'), data

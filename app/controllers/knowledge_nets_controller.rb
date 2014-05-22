@@ -34,6 +34,11 @@ class KnowledgeNetsController < ApplicationController
 
   def show
     @net = KnowledgeNetStore::Net.find(params[:id])
+
+    respond_to do |format|
+      format.json { render :json => @net.to_json }
+      format.html { render }
+    end
   end
 
   def graph

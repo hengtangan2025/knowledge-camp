@@ -8,8 +8,10 @@
     = stylesheet_link_tag 'application', :media => 'screen'
     = csrf_meta_tags
 
-  %body.graph{'data-no-turbolink' => true}
-    .graph-paper
+  %body.graph{'data-no-turbolink' => true, :data => {:net => @net.id}}
+    .page-content
+      .sidebar
+      .graph-paper
     
     = javascript_include_tag '/assets/seajs/sea-2.2.1.js'
     = javascript_include_tag 'application'

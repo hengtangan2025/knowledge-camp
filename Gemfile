@@ -31,7 +31,7 @@ gem "knowledge-net-plan-store",
 
 gem 'knowledge-net-store',
     :git => 'git://github.com/mindpin/knowledge-net-store.git',
-    :tag => '0.0.4'
+    :tag => '0.0.5'
 
 gem "rest-client"
 
