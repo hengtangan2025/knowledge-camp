@@ -6,7 +6,7 @@ set :domain, '106.186.119.248'
 set :deploy_to, '/web/knowledge-camp'
 set :current_path, 'current'
 set :repository, 'git://github.com/mindpin/knowledge-camp.git'
-set :branch, 'master'
+set :branch, 'develop'
 set :user, 'root'
 
 set :shared_paths, [
