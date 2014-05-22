@@ -56,6 +56,8 @@ task :deploy => :environment do
     to :launch do
       queue %[
         source /etc/profile
+        mkdir ./public/assets/lily
+        cp -r vendor/assets/stylesheets/lily/fonts ./public/assets/lily
         ./deploy/sh/unicorn.sh stop
         ./deploy/sh/unicorn.sh start
       ]
