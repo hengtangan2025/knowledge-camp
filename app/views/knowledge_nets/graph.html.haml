@@ -1,0 +1,15 @@
+!!!
+%html{:lang => :zh}
+  %head
+    %meta{:'http-equiv' => 'Content-Type', :content => 'text/html; charset=utf-8'}
+    %meta{:name => 'viewport', :content => 'width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no'}
+
+    %title Knowledge Camp
+    = stylesheet_link_tag 'application', :media => 'screen'
+    = csrf_meta_tags
+
+  %body.graph{'data-no-turbolink' => true}
+    .graph-paper
+    
+    = javascript_include_tag '/assets/seajs/sea-2.2.1.js'
+    = javascript_include_tag 'application'
