@@ -1,0 +1,172 @@
+$fa-font-path: "lily/fonts";
+
+@import "lily/css/lily";
+
+$lightgray: lighten($black-10, 5%);
+$border-dash: dashed 1px $black-30;
+
+.page-header {
+  background-color: $lightgray;
+  border-bottom: $border-dash;
+  font-size: 16px;
+
+  .page-nav {
+    height: 50px;
+    line-height: 50px;
+
+    a {
+      color: $black-90;
+      display: block;
+      float: left;
+      padding: 0 15px;
+      &:hover {
+        text-decoration:none;
+        background-color: rgba(white, 0.6);
+      }
+      i {margin-right: 5px;}
+    }
+  }
+}
+
+.page-content {
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+// -----------
+h2.cell {
+  margin-top: 0;
+  margin-bottom: 30px;
+  font-size: 16px;
+  color: $text-quiet;
+}
+
+// -------------
+
+.page-home {
+  .ops {
+    @include clearfix;
+    margin-bottom: 30px;
+
+    a.new {
+      display:block;
+      float: left;
+      background-color: $area-fresh;
+      color:white;
+      height:40px;line-height:40px;
+      font-size: 16px;
+      padding:0 20px;
+      border-radius:40px;
+      text-align: center;
+      border-bottom:solid 1px rgba(black, 0.1);
+      &:hover {
+        text-decoration:none;
+        background-color: darken($area-fresh, 5%);
+      }
+      i {margin-right:5px;line-height:40px;}
+    }
+  }
+}
+
+// ------------------
+
+.cell-knowledge-nets {
+  .net {
+    position: relative;
+    margin-bottom: 30px;
+    padding-bottom: 30px;
+    border-bottom: $border-dash;
+    &:last-child {
+      border-bottom: 0 none;
+    }
+
+    .name {
+      margin-bottom:10px;
+      font-size: 16px;
+      i {
+        margin-right:10px;
+        color:$area-forest;
+      }
+    }
+
+    .desc {
+      color: $text-quiet;
+      font-size: 14px;
+      margin-left:30px;
+      margin-bottom:10px;
+    }
+
+    .points-count {
+      margin-left: 30px;
+      color: $text-quiet;
+      margin-bottom: 10px;
+    }
+
+    .ops {
+      margin-top:30px;
+      margin-left: 30px;
+      @include clearfix;
+
+      $asize: 40px;
+      a {
+        display: block;
+        float: left;
+        color: $black-80;
+        background-color: $black-10;
+        @include square($asize);
+        line-height:$asize;
+        text-align: center;
+        border-radius:$asize;
+        margin-right:10px;
+
+        span {display:none;}
+        i {
+          font-size:$asize / 2;
+          line-height:$asize;
+        }
+
+        &:hover {
+          background-color: $black-20;
+        }
+      }
+
+      a.delete {
+        color: $area-danger;
+        background-color: lighten($area-danger, 35%);
+        &:hover {
+          background-color: lighten($area-danger, 30%);
+        }
+      }
+    }
+  }
+}
+
+.page-net-form {
+  form .form-group {
+    input[type=submit], a.cancel{
+      display: block;
+      float: left;
+      height:32px;line-height:32px;
+      border:0 none;
+      padding:0;
+      background-color: $area-fresh;
+      color:white;
+      margin-right:10px;
+      border-radius:32px;
+      padding:0 20px;
+      font-size:16px;
+      &:hover {
+        text-decoration:none;
+        background-color: darken($area-fresh, 5%);
+      }
+    }
+
+    a.cancel {
+      background-color: $black-10;
+      color: $black-80;
+      &:hover {
+        background-color: $black-20;
+      }
+    }
+  }
+}

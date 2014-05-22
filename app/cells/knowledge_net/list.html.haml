@@ -1,0 +1,25 @@
+.cell-knowledge-nets
+  - @nets.each do |net|
+    .net
+      .name
+        %i.fa.fa-tree
+        %span= net.name
+      - if net.desc.present?
+        .desc= net.desc
+      .points-count
+        %span 知识节点数目：
+        %span= net.points.count
+
+      .ops
+        %a.graph{:href => "/knowledge_nets/#{net.id}/graph", :title => '可视化展现'}
+          %i.fa.fa-sitemap
+          %span 展示
+
+        %a.edit{:href => "/knowledge_nets/#{net.id}/edit", :title => '编辑'}
+          %i.fa.fa-pencil
+          %span 编辑
+
+        %a.delete{:href => "/knowledge_nets/#{net.id}", :title => '删除', :data => {:method => :delete, :confirm => "确定删除吗?"}}
+          %i.fa.fa-trash-o
+          %span 删除
+

@@ -1,0 +1,266 @@
+.navbar{
+  margin-top: 20px;
+  line-height: 30px;
+  font-size: 30px;
+}
+
+.page-index{
+  width:300px;
+  margin:auto;
+  padding-top: 300px;
+
+  .action{
+    a{
+      display: block;
+      margin-bottom: 20px;
+      font-size: 30px;
+    }
+  }
+}
+
+.page-net-list, .page-model-list{
+  .action{
+    a.new{
+      float: right;
+      display: block;
+      width:160px;
+      height: 36px;
+      line-height: 36px;
+      background-color: buttonface;
+      text-align: center;
+    }
+    &:after {
+      content:"";
+      display:block;
+      clear: both;
+    }
+  }
+
+  .list{
+    margin: 20px 40px 0 40px;
+    .net, .list-item{
+      margin: 20px 0 20px 0;
+
+      .info{
+        float: left;
+        .name{
+          line-height: 30px;
+          font-size: 20px;
+        }
+        .created_at{
+          line-height: 16px;
+          font-size: 12px; 
+        }
+      }
+      .action{
+        float: left;
+        margin-left: 40px;
+        line-height: 46px;
+      }
+      &:after {
+        content:"";
+        display:block;
+        clear: both;
+      }
+
+    }
+  }
+}
+
+.page-net-show{
+  padding-top:75px;
+  .action{
+    a.new{
+      float: right;
+      display: block;
+      width:160px;
+      height: 36px;
+      line-height: 36px;
+      background-color: buttonface;
+      text-align: center;
+    }
+    &:after {
+      content:"";
+      display:block;
+      clear: both;
+    }
+  }
+
+  .point-list{
+    margin: 20px 40px 0 40px;
+    .point{
+      margin: 20px 0 20px 0;
+    }
+  }
+}
+
+.page-point-new, .page-point-edit{
+  padding-top:75px;
+  .field{
+    margin-top: 6px;
+    label.string, label.text{
+      display: none;
+    }
+    div.input{
+      label.check_boxes{
+        display: block;
+      }
+      label.checkbox{
+        float: left;
+        margin-right: 20px;
+      }
+      &:after {
+        content:"";
+        display:block;
+        clear: both;
+      }
+    }
+    input[type=text]{
+      padding: 6px;
+      width: 900px;
+      font-size: 16px;
+      border: solid 1px;
+      font-family: courier, consolas;
+    }
+    textarea{
+      padding: 6px;
+      width: 900px;
+      height: 400px;
+      font-size: 16px;
+      border: solid 1px;
+      font-family: courier, consolas;
+    }
+    input[type=submit]{
+      width:280px;
+      height: 36px;
+      line-height: 36px;
+    }
+  }
+}
+
+.page-point-show{
+  margin-top:20px;
+  .name{
+    line-height: 36px;
+    font-size: 36px;
+  }
+  .desc{
+    line-height: 26px;
+    font-size: 20px;
+  }
+
+  .parents, .children{
+    margin: 40px 40px 40px 0;
+  }
+}
+
+////////////////////////////////////
+.page-note-show{
+  margin-top:20px;
+  .action{
+    a{
+      float: right;
+      display: block;
+      width:160px;
+      height: 36px;
+      line-height: 36px;
+      background-color: buttonface;
+      text-align: center;
+      margin-right: 5px;
+    }
+    &:after {
+      content:"";
+      display:block;
+      clear: both;
+    }
+  }
+  .note{
+    margin:20px 40px 0 40px;
+    .title{
+      width:900px;
+      height: 36px;
+      line-height: 36px;
+      font-weight: bold;
+      font-size: 30px;
+    }
+    .content{
+      margin-top: 20px;
+      width:900px;
+      line-height: 36px;
+      font-family: courier, consolas;
+    }
+  }
+}
+
+.page-note-history-list{
+  margin-top:20px;
+  .action{
+    a{
+      float: right;
+      display: block;
+      width:160px;
+      height: 36px;
+      line-height: 36px;
+      background-color: buttonface;
+      text-align: center;
+      margin-right: 5px;
+    }
+    &:after {
+      content:"";
+      display:block;
+      clear: both;
+    }
+  }
+
+  .history{
+    margin-top: 20px;
+    .title{
+      font-size: 30px;
+      line-height: 36px;
+    }
+    .list{
+      margin: 20px 40px 0 40px;
+      .version{
+        margin: 20px 0 20px 0;
+      }
+    }
+  }
+
+}
+
+.page-note-version{
+  margin-top:20px;
+  .action{
+    a{
+      float: right;
+      display: block;
+      width:160px;
+      height: 36px;
+      line-height: 36px;
+      background-color: buttonface;
+      text-align: center;
+      margin-right: 5px;
+    }
+    &:after {
+      content:"";
+      display:block;
+      clear: both;
+    }
+  }
+  .note{
+    margin:20px 40px 0 40px;
+    .title{
+      width:900px;
+      height: 36px;
+      line-height: 36px;
+      font-weight: bold;
+      font-size: 30px;
+    }
+    .content{
+      margin-top: 20px;
+      width:900px;
+      line-height: 36px;
+      font-family: courier, consolas;
+    }
+  }
+}

@@ -9,11 +9,13 @@ gem "haml"
 gem "pry"
 gem "mongoid", "~> 4.0.0.beta1"
 gem "bson_ext"
+gem 'cells', '~> 3.10.1' # 用于复用一些前端组件
 
 gem "jquery-rails"
 gem "turbolinks"
 gem "jbuilder", "~> 2.0"
 gem "sdoc", "~> 0.4.0", :group => :doc
+gem "simple_form", "~> 3.0.2"
 
 gem "spring", :group => :development
 
@@ -25,11 +27,11 @@ gem "mina",
 
 gem "knowledge-net-plan-store",
     :git => "git://github.com/mindpin/knowledge-net-plan-store.git",
-    :tag => "v0.0.1.patch-1"
+    :tag => "v0.0.2"
 
 gem 'knowledge-net-store',
     :git => 'git://github.com/mindpin/knowledge-net-store.git',
-    :tag => '0.0.3'
+    :tag => '0.0.4'
 
 gem "rest-client"
 
