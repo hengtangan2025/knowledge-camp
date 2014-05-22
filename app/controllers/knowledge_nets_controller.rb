@@ -36,6 +36,11 @@ class KnowledgeNetsController < ApplicationController
     @net = KnowledgeNetStore::Net.find(params[:id])
   end
 
+  def graph
+    @net = KnowledgeNetStore::Net.find(params[:id])
+    render :layout => false
+  end
+
   private
   def _net_params
     params.require(:knowledge_net_store_net).permit(:name, :desc)

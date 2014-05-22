@@ -6,6 +6,10 @@ Rails.application.routes.draw do
   end
 
   resources :knowledge_nets do
+    member do
+      get :graph
+    end
+
     resources :knowledge_points
   end
 
