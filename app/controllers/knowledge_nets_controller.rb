@@ -1,6 +1,7 @@
 class KnowledgeNetsController < ApplicationController
   def index
-    @nets = KnowledgeNetStore::Net.all
+    # @nets = KnowledgeNetStore::Net.all
+    redirect_to '/'
   end
 
   def new

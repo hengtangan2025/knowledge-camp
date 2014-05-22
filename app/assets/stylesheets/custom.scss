@@ -67,36 +67,6 @@
   }
 }
 
-.page-net-edit, .page-net-new, .page-model-form{
-  padding-top:75px;
-  .field{
-    margin-top: 6px;
-    label{
-      display: none;
-    }
-    input[type=text]{
-      padding: 6px;
-      width: 900px;
-      font-size: 16px;
-      border: solid 1px;
-      font-family: courier, consolas;
-    }
-    textarea{
-      padding: 6px;
-      width: 900px;
-      height: 400px;
-      font-size: 16px;
-      border: solid 1px;
-      font-family: courier, consolas;
-    }
-    input[type=submit]{
-      width:280px;
-      height: 36px;
-      line-height: 36px;
-    }
-  }
-}
-
 .page-net-show{
   padding-top:75px;
   .action{

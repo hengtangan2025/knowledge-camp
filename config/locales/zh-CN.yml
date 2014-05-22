@@ -1,0 +1,6 @@
+zh-CN:
+  helpers:
+    submit:
+      knowledge_net_store_net:
+        create: 确定创建
+        update: 确定修改

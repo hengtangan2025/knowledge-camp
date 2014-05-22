@@ -9,6 +9,7 @@ gem "haml"
 gem "pry"
 gem "mongoid", "~> 4.0.0.beta1"
 gem "bson_ext"
+gem 'cells', '~> 3.10.1' # 用于复用一些前端组件
 
 gem "jquery-rails"
 gem "turbolinks"
