@@ -1,14 +1,11 @@
 class KnowledgeNetsController < ApplicationController
-  include GenericControllerHelpers
-  set_model KnowledgeNetStore::Net
+  set_model KnowledgeNetStore::Net,
+    :require_name => :knowledge_net_store_net,
+    :allow_attrs  => [:name, :desc]
 
   def index
     # @nets = KnowledgeNetStore::Net.all
     redirect_to '/'
-  end
-
-  def new
-    @net = KnowledgeNetStore::Net.new
   end
 
   def create
@@ -17,10 +14,6 @@ class KnowledgeNetsController < ApplicationController
       return redirect_to :action => :index
     end
     redirect_to :action => :new
-  end
-
-  def edit
-    @net = KnowledgeNetStore::Net.find(params[:id])
   end
 
   update_with do
@@ -43,8 +36,4 @@ class KnowledgeNetsController < ApplicationController
     render :layout => false
   end
 
-  private
-  def model_params
-    params.require(:knowledge_net_store_net).permit(:name, :desc)
-  end
 end
