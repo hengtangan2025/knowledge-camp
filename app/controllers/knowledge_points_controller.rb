@@ -1,4 +1,7 @@
 class KnowledgePointsController < ApplicationController
+  include GenericControllerHelpers
+  set_model KnowledgeNetStore::Point
+
   before_filter :pre_load
   def pre_load
     @net = KnowledgeNetStore::Net.find(params[:knowledge_net_id])
@@ -9,7 +12,7 @@ class KnowledgePointsController < ApplicationController
   end
 
   def create
-    @point = @net.points.build(_point_params)
+    @point = @net.points.build(model_params)
     if @point.save
       return redirect_to "/knowledge_nets/#{@net.id}"
     end
@@ -24,20 +27,16 @@ class KnowledgePointsController < ApplicationController
     @point = KnowledgeNetStore::Point.find(params[:id])
   end
 
-  def update
-    @point = KnowledgeNetStore::Point.find(params[:id])
-    @point.update_attributes(_point_params)
-    return redirect_to "/knowledge_nets/#{@net.id}"
+  update_with do
+    redirect_to "/knowledge_nets/#{@net.id}"
   end
 
-  def destroy
-    @point = KnowledgeNetStore::Point.find(params[:id])
-    @point.destroy
+  destroy_with do
     redirect_to "/knowledge_nets/#{@net.id}"
   end
 
   private
-  def _point_params
+  def model_params
     params.require(:knowledge_net_store_point).permit(:name, :desc, :parent_ids => [])
   end
 end

@@ -1,4 +1,7 @@
 class KnowledgeNetsController < ApplicationController
+  include GenericControllerHelpers
+  set_model KnowledgeNetStore::Net
+
   def index
     # @nets = KnowledgeNetStore::Net.all
     redirect_to '/'
@@ -9,7 +12,7 @@ class KnowledgeNetsController < ApplicationController
   end
 
   def create
-    @net = KnowledgeNetStore::Net.new(_net_params)
+    @net = KnowledgeNetStore::Net.new(model_params)
     if @net.save
       return redirect_to :action => :index
     end
@@ -20,21 +23,15 @@ class KnowledgeNetsController < ApplicationController
     @net = KnowledgeNetStore::Net.find(params[:id])
   end
 
-  def update
-    @net = KnowledgeNetStore::Net.find(params[:id])
-    @net.update_attributes(_net_params)
+  update_with do
     redirect_to :action => :index
   end
 
-  def destroy
-    @net = KnowledgeNetStore::Net.find(params[:id])
-    @net.destroy
+  destroy_with do
     redirect_to :action => :index
   end
 
-  def show
-    @net = KnowledgeNetStore::Net.find(params[:id])
-
+  show_with do
     respond_to do |format|
       format.json { render :json => @net.to_json }
       format.html { render }
@@ -47,7 +44,7 @@ class KnowledgeNetsController < ApplicationController
   end
 
   private
-  def _net_params
+  def model_params
     params.require(:knowledge_net_store_net).permit(:name, :desc)
   end
 end
