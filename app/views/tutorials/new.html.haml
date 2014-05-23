@@ -1,0 +1,17 @@
+.navbar
+  = link_to "首页", "/"
+  >
+  = link_to "教学计划列表", "/plans"
+  >
+  = link_to "教学计划: #{params[:plan_id]}", "/plans/#{params[:plan_id]}"
+  >
+  = link_to "主题: #{params[:topic_id]}", "/topics/#{params[:topic_id]}"
+  >
+  添加新教程
+
+.page-model-form
+  .action
+    = link_to "返回", "/topics/#{params[:topic_id]}"
+
+  = plan_store_form_for @tutorial, "/topics/#{params[:topic_id]}/tutorials"
+

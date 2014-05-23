@@ -9,16 +9,16 @@ GIT
 
 GIT
   remote: git://github.com/mindpin/knowledge-net-plan-store.git
-  revision: 1c62916d3acb4e5d32d0c3715c4d7817556b5de4
-  tag: v0.0.1.patch-1
+  revision: 19eeeccb14fc474e812044908f0df16380ac3792
+  tag: v0.0.2
   specs:
-    knowledge-net-plan-store (0.0.1)
+    knowledge-net-plan-store (0.0.2)
       mongoid
 
 GIT
   remote: git://github.com/mindpin/knowledge-net-store.git
-  revision: ca30eba07a9cc5c80e36608cb46d7b904d76f4da
-  tag: 0.0.3
+  revision: a580bee83716d852b6478b9069eb2c6041849688
+  tag: 0.0.5
   specs:
     knowledge-net-store (0.0.1)
 
@@ -55,6 +55,10 @@ GEM
     bson (2.2.3)
     bson_ext (1.5.1)
     builder (3.2.2)
+    cells (3.10.1)
+      actionpack (>= 3.0)
+      railties (>= 3.0)
+      uber (~> 0.0.4)
     coderay (1.1.0)
     coffee-rails (4.0.1)
       coffee-script (>= 2.2.0)
@@ -148,6 +152,9 @@ GEM
     sdoc (0.4.0)
       json (~> 1.8)
       rdoc (~> 4.0, < 5.0)
+    simple_form (3.0.2)
+      actionpack (~> 4.0)
+      activemodel (~> 4.0)
     slop (3.5.0)
     spring (1.1.3)
     sprockets (2.11.0)
@@ -169,6 +176,7 @@ GEM
       coffee-rails
     tzinfo (1.1.0)
       thread_safe (~> 0.1)
+    uber (0.0.6)
     uglifier (2.5.0)
       execjs (>= 0.3.0)
       json (>= 1.8.0)
@@ -182,6 +190,7 @@ PLATFORMS
 
 DEPENDENCIES
   bson_ext
+  cells (~> 3.10.1)
   coffee-rails (~> 4.0.0)
   database_cleaner (~> 1.2.0)
   haml
@@ -198,6 +207,7 @@ DEPENDENCIES
   rspec
   sass-rails (~> 4.0.3)
   sdoc (~> 0.4.0)
+  simple_form (~> 3.0.2)
   spring
   turbolinks
   uglifier (>= 1.3.0)

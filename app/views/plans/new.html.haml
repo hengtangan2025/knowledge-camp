@@ -1,0 +1,11 @@
+.navbar
+  = link_to "首页", "/"
+  >
+  添加教学计划
+
+.page-model-form
+  .action
+    = link_to "返回", "/plans"
+
+  = plan_store_form_for @plan, "/plans"
+

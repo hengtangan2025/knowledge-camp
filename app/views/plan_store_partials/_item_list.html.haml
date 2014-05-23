@@ -1,0 +1,10 @@
+- if items.any?
+  .list
+    - items.each do |item|
+      - pl = item.model_name.element.pluralize
+      .list-item
+        .info
+          .name= link_to item.name, "/#{pl}/#{item.id}"
+          .created_at 创建于#{item.created_at}
+        .action
+          = delete_link "删除", "/#{pl}/#{item.id}"

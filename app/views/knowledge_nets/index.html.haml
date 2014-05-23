@@ -1,0 +1,14 @@
+.navbar
+  =link_to "首页", "/"
+.page-net-list
+  .action
+    %a.new{:href=>"/knowledge_nets/new"} 新建
+  .list
+    - @nets.each do |net|
+      .net
+        .info
+          .name= link_to net.name, "/knowledge_nets/#{net.id}"
+          .created_at= "创建于 #{net.created_at}"
+        .action
+          = link_to "编辑", "/knowledge_nets/#{net.id}/edit"
+          = link_to "删除", "/knowledge_nets/#{net.id}", :method => :delete, :data => {:confirm => "确定删除吗?"}
