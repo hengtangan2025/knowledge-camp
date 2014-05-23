@@ -8,6 +8,15 @@ GIT
       rake
 
 GIT
+  remote: git://github.com/mindpin/generic_controller.git
+  revision: 949166ec3526a670780a6c038d64ae627ae238a2
+  tag: v0.0.2
+  specs:
+    generic_controller (0.0.1)
+      actionpack (~> 4.1.0)
+      activemodel (~> 4.1.0)
+
+GIT
   remote: git://github.com/mindpin/knowledge-net-plan-store.git
   revision: 19eeeccb14fc474e812044908f0df16380ac3792
   tag: v0.0.2
@@ -193,6 +202,7 @@ DEPENDENCIES
   cells (~> 3.10.1)
   coffee-rails (~> 4.0.0)
   database_cleaner (~> 1.2.0)
+  generic_controller!
   haml
   jbuilder (~> 2.0)
   jquery-rails

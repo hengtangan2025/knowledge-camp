@@ -1,3 +1,4 @@
+# coding: utf-8
 source "http://ruby.taobao.org"
 
 gem "rails", "4.1.0"
@@ -32,6 +33,11 @@ gem "knowledge-net-plan-store",
 gem 'knowledge-net-store',
     :git => 'git://github.com/mindpin/knowledge-net-store.git',
     :tag => '0.0.5'
+
+gem "generic_controller",
+    :git => "git://github.com/mindpin/generic_controller.git",
+    :tag => "v0.0.2"
+
 
 gem "rest-client"
 
