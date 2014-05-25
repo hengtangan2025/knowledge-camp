@@ -1,6 +1,6 @@
-$fa-font-path: "lily/fonts";
+// $font-family-cn: "宋体";
 
-@import "lily/css/lily";
+@import "lily/css/lily.scss";
 
 @import "graph";
 
@@ -21,7 +21,7 @@ $border-dash: dashed 1px $black-30;
       display: block;
       float: left;
       padding: 0 15px;
-      &:hover {
+      &:hover, &.active{
         text-decoration:none;
         background-color: rgba(white, 0.6);
       }
@@ -49,24 +49,6 @@ h2.cell {
   .ops {
     @include clearfix;
     margin-bottom: 30px;
-
-    a.new {
-      display:block;
-      float: left;
-      background-color: $area-fresh;
-      color:white;
-      height:40px;line-height:40px;
-      font-size: 16px;
-      padding:0 20px;
-      border-radius:40px;
-      text-align: center;
-      border-bottom:solid 2px rgba(black, 0.1);
-      &:hover {
-        text-decoration:none;
-        background-color: darken($area-fresh, 5%);
-      }
-      i {margin-right:5px;line-height:40px;}
-    }
   }
 }
 
@@ -144,32 +126,5 @@ h2.cell {
 }
 
 .page-net-form {
-  form .form-group {
-    input[type=submit], a.cancel{
-      display: block;
-      float: left;
-      height:32px;line-height:32px;
-      border:0 none;
-      padding:0;
-      background-color: $area-fresh;
-      color:white;
-      margin-right:10px;
-      border-radius:32px;
-      padding:0 20px;
-      font-size:16px;
-      &:hover {
-        text-decoration:none;
-        background-color: darken($area-fresh, 5%);
-      }
-      border-bottom: solid 2px rgba(black, 0.1);
-    }
-
-    a.cancel {
-      background-color: $black-10;
-      color: $black-80;
-      &:hover {
-        background-color: $black-20;
-      }
-    }
-  }
+  
 }
