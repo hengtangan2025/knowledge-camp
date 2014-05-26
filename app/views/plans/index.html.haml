@@ -1,11 +1,11 @@
-.navbar
-  = link_to "首页", "/"
-  >
-  教学计划列表
+.page-home
+  .col-pad-4.col-pad-pull-8
+    %h2.cell 选择一项操作 … 
+    .ops
+      %a.new.btn.btn-rounded.btn-bdb-fresh.btn-large{:href => '/plans/new'}
+        %i.fa.fa-plus
+        %span 新建教学计划
 
-.page-model-list
-  .action
-    = link_to "添加教学计划", "/plans/new", :class => %W|new|
-
-  - locals = {:items => @plans}
-  = render :partial => "/plan_store_partials/item_list", :locals => locals
+  .col-pad-8.col-pad-push-4
+    %h2.cell 目前以创建以下教学计划 …
+    = render_cell :plan, :list

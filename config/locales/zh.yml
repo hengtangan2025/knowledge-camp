@@ -1,6 +1,18 @@
 zh:
+  simple_form:
+    labels:
+      plan:
+        net_id: 所属知识网络
+    placeholders:
+      plan:
+        name: 输入名称
+        desc: 输入描述信息
+
   helpers:
     submit:
       knowledge_net_store_net:
+        create: 确定创建
+        update: 确定修改
+      plan:
         create: 确定创建
         update: 确定修改

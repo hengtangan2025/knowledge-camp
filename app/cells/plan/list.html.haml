@@ -1,0 +1,25 @@
+.cell-plans
+  - @plans.each do |plan|
+    .plan
+      .name
+        %i.fa.fa-list-ul
+        %a{:href => "/plans/#{plan.id}/"}= plan.name
+
+      - if plan.net.present?
+        .net
+          %i.fa.fa-tree
+          %span 所属知识网络：
+          %a{:href => "/knowledge_nets/#{plan.net.id}"}= plan.net.name
+
+      - if plan.desc.present?
+        .desc= plan.desc
+
+      .ops
+        %a.edit.btn.btn-rounded.btn-bdb-info.btn-small{:href => "/plans/#{plan.id}/edit", :title => '编辑'}
+          %i.fa.fa-pencil
+          %span 编辑
+
+        %a.delete.btn.btn-rounded.btn-bdb-danger.btn-small{:href => "/plans/#{plan.id}/", :title => '删除', :data => {:method => :delete, :confirm => "确定删除吗?"}}
+          %i.fa.fa-trash-o
+          %span 删除
+

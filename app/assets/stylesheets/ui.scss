@@ -54,77 +54,56 @@ h2.cell {
 
 // ------------------
 
-.cell-knowledge-nets {
-  .net {
-    position: relative;
-    margin-bottom: 30px;
-    padding-bottom: 30px;
-    border-bottom: $border-dash;
-    &:last-child {
-      border-bottom: 0 none;
-    }
-
-    .name {
-      margin-bottom:10px;
-      font-size: 16px;
-      i {
-        margin-right:10px;
-        color:$area-forest;
+@mixin common-lists($list-name, $model-name) {
+  .cell-#{$list-name} {
+    .#{$model-name} {
+      position: relative;
+      margin-bottom: 30px;
+      padding-bottom: 30px;
+      border-bottom: $border-dash;
+      &:last-child {
+        border-bottom: 0 none;
       }
-    }
 
-    .desc {
-      color: $text-quiet;
-      font-size: 14px;
-      margin-left:30px;
-      margin-bottom:10px;
-    }
-
-    .points-count {
-      margin-left: 30px;
-      color: $text-quiet;
-      margin-bottom: 10px;
-    }
-
-    .ops {
-      margin-top:30px;
-      margin-left: 30px;
-      @include clearfix;
-
-      $asize: 40px;
-      a {
-        display: block;
-        float: left;
-        color: $black-60;
-        background-color: $black-10;
-        @include square($asize);
-        line-height:$asize;
-        text-align: center;
-        border-radius:$asize;
-        margin-right:10px;
-
-        span {display:none;}
+      .name {
+        margin-bottom:10px;
+        font-size: 16px;
         i {
-          font-size:$asize / 2;
-          line-height:$asize;
-        }
-
-        &:hover {
-          background-color: $black-20;
+          margin-right:10px;
         }
       }
 
-      a.delete {
-        color: $area-danger;
-        background-color: lighten($area-danger, 35%);
-        &:hover {
-          background-color: lighten($area-danger, 30%);
-        }
+      .desc {
+        color: $text-quiet;
+        font-size: 14px;
+        margin-left:30px;
+        margin-bottom:10px;
+      }
+
+      .ops {
+        margin-top:30px;
+        margin-left: 30px;
+        @include clearfix;
       }
     }
   }
 }
 
-.page-net-form {
-  
+@include common-lists(plans, plan);
+@include common-lists(knowledge-nets, net);
+
+.cell-plans .plan {
+  .net {
+    margin-left: 30px;
+    i {color: $text-quiet; margin-right: 10px;}
+    margin-bottom: 10px;
+  } 
+}
+
+.cell-knowledge-nets .net {
+  .points-count {
+    margin-left: 30px;
+    color: $text-quiet;
+    margin-bottom: 10px;
+  }
 }
