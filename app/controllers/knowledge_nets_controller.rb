@@ -3,17 +3,18 @@ class KnowledgeNetsController < ApplicationController
     :require_name => :knowledge_net_store_net,
     :allow_attrs  => [:name, :desc]
 
-  def index
-    # @nets = KnowledgeNetStore::Net.all
-    redirect_to '/'
+  def new
+    render :form
+  end
+
+  def edit
+    render :form
   end
 
   def create
     @net = KnowledgeNetStore::Net.new(model_params)
-    if @net.save
-      return redirect_to :action => :index
-    end
-    redirect_to :action => :new
+    return redirect_to :action => :index if @net.save
+    render :form
   end
 
   update_with do

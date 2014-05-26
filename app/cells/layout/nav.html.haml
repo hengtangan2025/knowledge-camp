@@ -1,21 +1,18 @@
 :ruby
-  path = request.path_info
-  k1 = path == "/"                ? 'active' : ''
-  k2 = path == "/knowledge_nets"  ? 'active' : ''
-  k3 = path == "/plans"           ? 'active' : ''
+  nav_config = [
+    ['/knowledge_nets', '知识网络', 'fa-tree'],
+    ['/plans',          '教学计划', 'fa-list-ul'],
+  ]
 
 .container
   .row
     .col-pad-12
       .page-nav
-        %a.home{:href => '/', :class => k1}
-          %i.fa.fa-home
-          %span 首页
+        - path = request.path_info
+        - nav_config.each do |c|
+          - url, name, icon = c
+          - active_klass = ( path == url ? 'active' : '' )
 
-        %a.nets{:href => '/knowledge_nets', :class => k2}
-          %i.fa.fa-tree
-          %span 知识网络
-
-        %a.plans{:href => '/plans', :class => k3}
-          %i.fa.fa-list-ul
-          %span 教学计划
+          %a{:href => url, :class => active_klass}
+            %i.fa{:class => icon}
+            %span= name
