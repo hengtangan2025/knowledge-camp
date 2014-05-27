@@ -5,7 +5,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :knowledge_nets do
+  resources :nets, :shallow => true do
     member do
       get :graph
     end

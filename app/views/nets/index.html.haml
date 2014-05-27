@@ -1,0 +1,10 @@
+.page-home
+  .col-pad-4.col-pad-pull-8
+    %h2.cell 选择一项操作 … 
+    .ops
+      = dendelion_new_button KnowledgeNetStore::Net
+
+  .col-pad-8.col-pad-push-4
+    %h2.cell 目前已创建以下知识网络 …
+    / = render_cell :knowledge_net, :list
+    = render_cell :dandelion, :list, :klass => KnowledgeNetStore::Net

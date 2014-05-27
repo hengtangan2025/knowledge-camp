@@ -1,4 +1,13 @@
 zh:
+  time:
+    formats:
+      default: "%H:%M"
+
+  mongoid:
+    models:
+      net: 知识网络
+      plan: 教学计划
+
   simple_form:
     labels:
       plan:
@@ -10,7 +19,7 @@ zh:
 
   helpers:
     submit:
-      knowledge_net_store_net:
+      net:
         create: 确定创建
         update: 确定修改
       plan:

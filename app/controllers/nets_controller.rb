@@ -1,6 +1,5 @@
-class KnowledgeNetsController < ApplicationController
+class NetsController < ApplicationController
   set_model KnowledgeNetStore::Net,
-    :require_name => :knowledge_net_store_net,
     :allow_attrs  => [:name, :desc]
 
   def new

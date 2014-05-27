@@ -7,6 +7,10 @@
 $lightgray: lighten($black-10, 5%);
 $border-dash: dashed 1px $black-30;
 
+html {
+  overflow-y:scroll;
+}
+
 .page-header {
   background-color: $lightgray;
   border-bottom: $border-dash;
@@ -43,16 +47,34 @@ h2.cell {
   color: $text-quiet;
 }
 
-// -------------
+// ------------------
 
-.page-home {
+.cell-dandelion-list .model{
+  position: relative;
+  margin-bottom: 30px;
+  padding-bottom: 30px;
+  border-bottom: $border-dash;
+  &:last-child {
+    border-bottom: 0 none;
+  }
+
+  .fields {
+    .field {
+      margin-bottom: 10px;
+
+      &.-time {
+        color: $text-quiet;
+      }
+
+      &._id {display:none;}
+    }
+  }
+
   .ops {
+    margin-top: 30px;
     @include clearfix;
-    margin-bottom: 30px;
   }
 }
-
-// ------------------
 
 @mixin common-lists($list-name, $model-name) {
   .cell-#{$list-name} {
