@@ -11,5 +11,5 @@ if seajs?
       if jQuery('body.graph').length
         net_id = jQuery('body').data('net')
 
-        jQuery.getJSON "/knowledge_nets/#{net_id}.json", (data)->
+        jQuery.getJSON "/nets/#{net_id}.json", (data)->
           new KnowledgeView jQuery('.graph-paper'), data

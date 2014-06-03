@@ -49,7 +49,7 @@ h2.cell {
 
 // ------------------
 
-.cell-dandelion-list .model{
+.cell-dandelion-list .model {
   position: relative;
   margin-bottom: 30px;
   padding-bottom: 30px;
@@ -76,56 +76,71 @@ h2.cell {
   }
 }
 
-@mixin common-lists($list-name, $model-name) {
-  .cell-#{$list-name} {
-    .#{$model-name} {
-      position: relative;
-      margin-bottom: 30px;
-      padding-bottom: 30px;
-      border-bottom: $border-dash;
-      &:last-child {
-        border-bottom: 0 none;
-      }
+.cell-dandelion-list.nets .model.net {
+  $left : 30px;
 
-      .name {
-        margin-bottom:10px;
-        font-size: 16px;
-        i {
-          margin-right:10px;
-        }
-      }
+  .fields .field {
+    margin-left: $left;
 
-      .desc {
-        color: $text-quiet;
-        font-size: 14px;
-        margin-left:30px;
-        margin-bottom:10px;
-      }
+    &.name {
+      margin-left: 0;
+      @include clearfix;
+      font-size: 16px;
 
-      .ops {
-        margin-top:30px;
-        margin-left: 30px;
-        @include clearfix;
+      span {
+        float: left;
+      }
+      i {
+        float: left;
+        width:$left;color:$area-forest;
+        line-height:22px;
       }
     }
+
+    &.desc {
+      color:$text-quiet;
+    }
+  }
+
+  .ops {
+    margin-left: $left;
   }
 }
 
-@include common-lists(plans, plan);
-@include common-lists(knowledge-nets, net);
+.cell-dandelion-list.plans .model.plan {
+  $left : 30px;
 
-.cell-plans .plan {
-  .net {
-    margin-left: 30px;
-    i {color: $text-quiet; margin-right: 10px;}
-    margin-bottom: 10px;
-  } 
-}
+  .fields .field {
+    margin-left: $left;
 
-.cell-knowledge-nets .net {
-  .points-count {
-    margin-left: 30px;
-    color: $text-quiet;
-    margin-bottom: 10px;
+    &.name {
+      margin-left: 0;
+      @include clearfix;
+      font-size: 16px;
+
+      span {
+        float: left;
+      }
+      i {
+        float: left;
+        width:$left;
+        line-height:22px;
+      }
+    }
+
+    &.belongs_to_net {
+      i {
+        color:$area-forest;
+        margin-right: 5px;
+      }
+    }
+
+    &.desc {
+      color:$text-quiet;
+    }
+  }
+
+  .ops {
+    margin-left: $left;
   }
 }

@@ -1,38 +1,20 @@
 .cell-dandelion-list{:class => @plural}
   - @models.each do |model|
     .model{:class => @singular}
-      .fields
-        - @keys.each do |key|
-          - value = model[key]
-          - if value.class == Time
-            .field.-time{:class => key}= value.to_s(:db)
-          - else
-            .field{:class => key}= value
-      .ops
-        %a.edit.btn.btn-rounded.btn-bdb-info.btn-small{:href => @edit_url, :title => '编辑'}
-          %i.fa.fa-pencil
-          %span 编辑
+      - if @config.blank?
+        .fields
+          - @klass.fields.keys.each do |key|
+            = dendelion_list_field model, key, true
 
-  / - @nets.each do |net|
-  /   .net
-  /     .name
-  /       %i.fa.fa-tree
-  /       %a{:href => "/knowledge_nets/#{net.id}/"}= net.name
+        .ops
+          = dendelion_list_button model, :edit
+          = dendelion_list_button model, :delete
 
-  /     - if net.desc.present?
-  /       .desc= net.desc
-  /     .points-count
-  /       %span 知识节点数目：
-  /       %span= net.points.count
+      - else
+        .fields
+          - @config.each do |key, cfg|
+            = dendelion_list_field model, key, cfg
 
-  /     .ops
-  /       %a.graph.btn.btn-rounded.btn-bdb-info.btn-small{:href => "/knowledge_nets/#{net.id}/graph", :title => '可视化展现'}
-  /         %i.fa.fa-sitemap
-  /         %span 展示
-
-
-
-  /       %a.delete.btn.btn-rounded.btn-bdb-danger.btn-small{:href => "/knowledge_nets/#{net.id}", :title => '删除', :data => {:method => :delete, :confirm => "确定删除吗?"}}
-  /         %i.fa.fa-trash-o
-  /         %span 删除
-
+        .ops
+          - (@config[DandelionCell::OPS_KEY] || {}).each do |key, cfg|
+            = dendelion_list_button model, key, cfg
