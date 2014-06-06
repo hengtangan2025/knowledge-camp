@@ -11,6 +11,9 @@
   %body{'data-no-turbolink' => true}
     .page-header
       = render_cell :layout, :nav
+      - if user_signed_in?
+        = current_user.name
+        = link_to "退出", "/account/sign_out", :method => :delete
     .page-content.container
       .row
         .col-pad-10.col-pad-offset-1

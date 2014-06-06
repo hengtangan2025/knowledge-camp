@@ -1,3 +1,3 @@
-class PlanStoreController < ApplicationController
+class PlanStoreController < BaseGenericController
   include KnowledgeNetPlanStore
 end

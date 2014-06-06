@@ -1,4 +1,4 @@
-class KnowledgePointsController < ApplicationController
+class KnowledgePointsController < BaseGenericController
   set_model KnowledgeNetStore::Point,
     :require_name => :knowledge_net_store_point,
     :allow_attrs  => [:name, :desc, {:parent_ids => []}]
