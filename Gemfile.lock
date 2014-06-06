@@ -33,8 +33,8 @@ GIT
 
 GIT
   remote: git://github.com/mindpin/user-auth.git
-  revision: 35b753c3b007c48e8a08479c9aac374a2072498b
-  tag: 0.0.3
+  revision: 2793c412d4b173c24f4c414014133fc24d8bf220
+  tag: 0.0.5
   specs:
     user-auth (0.0.1)
       devise (~> 3.2.4)
