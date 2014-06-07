@@ -2,9 +2,8 @@
   .col-pad-4.col-pad-pull-8
     %h2.cell 选择一项操作 … 
     .ops
-      = dendelion_new_button KnowledgeNetPlanStore::Plan
+      = dandelion_new_button KnowledgeNetPlanStore::Plan
 
   .col-pad-8.col-pad-push-4
     %h2.cell 目前已创建以下教学计划 …
-    / = render_cell :plan, :list
-    = render_cell :dandelion, :list, :klass => KnowledgeNetPlanStore::Plan
+    = dandelion_list KnowledgeNetPlanStore::Plan

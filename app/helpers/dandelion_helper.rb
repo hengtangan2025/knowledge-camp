@@ -1,9 +1,30 @@
 module DandelionHelper
-  def dendelion_new_button(klass)
-    render_cell :dandelion, :new_button, :model => klass.new
+
+  def dandelion_new_button(*parents, klass)
+    render_cell :dandelion, :new_button,
+      :parents => parents, 
+      :klass => klass
   end
 
-  def dendelion_list_field(model, key, cfg)
+  def dandelion_form(*parents, model)
+    render_cell :dandelion, :form, 
+      :parents => parents,
+      :model => model
+  end
+
+  def dandelion_list(klass, options = {})
+    models = options[:models]
+    namespace = options[:namespace]
+
+    render_cell :dandelion, :list, 
+      :klass => klass,
+      :models => models,
+      :namespace => namespace
+  end
+
+  # ---------------------
+
+  def dandelion_list_field(model, key, cfg)
     return if key == DandelionCell::OPS_KEY
 
     value = case cfg
@@ -29,9 +50,9 @@ module DandelionHelper
       end
   end
 
-  def dendelion_list_button(model, key, cfg = [])
-    return _dendelion_list_edit_button(model) if key == :edit
-    return _dandelion_list_delete_button(model) if key == :delete
+  def dandelion_list_button(namespace, model, key, cfg = [])
+    return _dandelion_list_edit_button(namespace, model) if key == :edit
+    return _dandelion_list_delete_button(namespace, model) if key == :delete
 
     color  = "btn-bdb-#{cfg[0]}"
     icon   = "fa-#{cfg[1]}"
@@ -40,7 +61,7 @@ module DandelionHelper
 
     capture_haml {
       haml_tag "a.#{key}.btn.btn-rounded.btn-small.#{color}", 
-        :href => url_for([key, model]),
+        :href => url_for([key, namespace, model]),
         :title => title do
           haml_tag "i.fa.#{icon}"
           haml_tag "span", text
@@ -48,10 +69,10 @@ module DandelionHelper
     }
   end
 
-  def _dendelion_list_edit_button(model)
+  def _dandelion_list_edit_button(namespace, model)
     capture_haml {
       haml_tag 'a.edit.btn.btn-rounded.btn-bdb-info.btn-small',
-        :href => url_for([:edit, model]),
+        :href => url_for([:edit, namespace, model]),
         :title => '编辑' do
           haml_tag "i.fa.fa-pencil"
           haml_tag "span", '编辑'
@@ -59,10 +80,10 @@ module DandelionHelper
     }
   end
 
-  def _dandelion_list_delete_button(model)
+  def _dandelion_list_delete_button(namespace, model)
     capture_haml {
       haml_tag 'a.delete.btn.btn-rounded.btn-bdb-danger.btn-small',
-        :href => url_for([model]),
+        :href => url_for([namespace, model]),
         :data => {:method => :delete, :confirm => "确定要删除吗？"},
         :title => '删除' do
           haml_tag "i.fa.fa-trash-o"

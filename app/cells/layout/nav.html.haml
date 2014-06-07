@@ -1,18 +1,21 @@
 :ruby
   nav_config = [
-    ['/nets',  '知识网络', 'fa-tree'],
-    ['/plans', '教学计划', 'fa-list-ul'],
+    ['/manage/nets',  '管理知识网络', 'fa-sitemap'],
+    ['/manage/users', '管理用户', 'fa-user'],
   ]
 
 .container
   .row
-    .col-pad-12
-      .page-nav
-        - path = request.path_info
-        - nav_config.each do |c|
-          - url, name, icon = c
-          - active_klass = ( path == url ? 'active' : '' )
+    .page-nav.home.col-pad-2
+      %a.home{:href => '/'}
+        %i.fa.fa-home
+        %span 首页
+    .page-nav.col-pad-10
+      - path = request.path_info
+      - nav_config.each do |c|
+        - url, name, icon = c
+        - active_klass = ( path == url ? 'active' : '' )
 
-          %a{:href => url, :class => active_klass}
-            %i.fa{:class => icon}
-            %span= name
+        %a{:href => url, :class => active_klass}
+          %i.fa{:class => icon}
+          %span= name

@@ -1,4 +1,4 @@
-class NetsController < ApplicationController
+class Manage::NetsController < ApplicationController
   set_model KnowledgeNetStore::Net,
     :allow_attrs  => [:name, :desc]
 

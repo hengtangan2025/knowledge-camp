@@ -1,6 +1,6 @@
 %h2.cell= @h2
 
-= simple_form_for @model, :defaults => {:label => false, :input_html => {:class => 'form-control'}} do |f|
+= simple_form_for @form_for, :defaults => {:label => false, :input_html => {:class => 'form-control'}} do |f|
   .form-group
     = f.input :name, :placeholder => "名称"
   .form-group

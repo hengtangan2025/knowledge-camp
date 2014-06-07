@@ -1,5 +1,8 @@
 // $font-family-cn: "宋体";
 
+$link-color:#2c5d8d;
+$link-hover-color:#2c5d8d;
+
 @import "lily/css/lily.scss";
 
 @import "graph";
@@ -11,41 +14,89 @@ html {
   overflow-y:scroll;
 }
 
-.page-header {
-  background-color: $lightgray;
-  border-bottom: $border-dash;
-  font-size: 16px;
+body {
+  .page-header {
+    background-color: $lightgray;
+    border-bottom: solid 2px $black-10;
+    font-size: 16px;
 
-  .page-nav {
-    height: 50px;
-    line-height: 50px;
+    .page-nav {
+      height: 50px;
+      line-height: 50px;
 
-    a {
-      color: $black-90;
-      display: block;
-      float: left;
-      padding: 0 15px;
-      &:hover, &.active{
-        text-decoration:none;
-        background-color: rgba(white, 0.6);
+      a {
+        color: $black-90;
+        display: block;
+        float: left;
+        padding: 0 15px;
+        opacity: 0.8;
+
+        i {
+          margin-right: 5px;
+        }
+
+        &:hover, &.active{
+          text-decoration:none;
+          background-color: rgba(white, 0.6);
+          opacity: 1;
+        }
       }
-      i {margin-right: 5px;}
+    }
+
+    .page-nav.home {
+      a {
+        width:100%;
+        padding:0;
+        &:hover {
+          background-color: inherit;
+        }
+      }
+    }
+  }
+
+  .page-content {
+    margin-top: 50px;
+    margin-bottom: 50px;
+  }
+
+  h2.cell {
+    margin-top: 0;
+    margin-bottom: 30px;
+    font-size: 16px;
+    color: $text-quiet;
+  }
+}
+
+// -----------------
+
+.page-manage-nets-index {
+  a.create-net {
+    display: block;
+    text-align: center;
+    max-width:100px;
+
+    i {
+      display: block;
+      font-size:24px;
+      border:dashed 2px rgba($area-fresh, 0.5);
+      color: $area-fresh;
+      background: rgba($area-fresh, 0.05);
+      height:48px;line-height: 48px;
+      margin-bottom:10px;
+      border-radius:$border-radius-default;
+    }
+    span {
+      display: block;
+      text-decoration: underline;
+    }
+
+    &:hover {
+      text-decoration:none;
     }
   }
 }
 
-.page-content {
-  margin-top: 50px;
-  margin-bottom: 50px;
-}
 
-// -----------
-h2.cell {
-  margin-top: 0;
-  margin-bottom: 30px;
-  font-size: 16px;
-  color: $text-quiet;
-}
 
 // ------------------
 
@@ -86,6 +137,7 @@ h2.cell {
       margin-left: 0;
       @include clearfix;
       font-size: 16px;
+      font-weight: bold;
 
       span {
         float: left;

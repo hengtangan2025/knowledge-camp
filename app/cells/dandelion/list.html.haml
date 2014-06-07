@@ -4,17 +4,17 @@
       - if @config.blank?
         .fields
           - @klass.fields.keys.each do |key|
-            = dendelion_list_field model, key, true
+            = dandelion_list_field model, key, true
 
         .ops
-          = dendelion_list_button model, :edit
-          = dendelion_list_button model, :delete
+          = dandelion_list_button @namespace, model, :edit
+          = dandelion_list_button @namespace, model, :delete
 
       - else
         .fields
           - @config.each do |key, cfg|
-            = dendelion_list_field model, key, cfg
+            = dandelion_list_field model, key, cfg
 
         .ops
           - (@config[DandelionCell::OPS_KEY] || {}).each do |key, cfg|
-            = dendelion_list_button model, key, cfg
+            = dandelion_list_button @namespace, model, key, cfg

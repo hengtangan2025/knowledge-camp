@@ -5,28 +5,30 @@ class DandelionCell < Cell::Rails
   OPS_KEY = :_OPS
 
   LIST_CONFIG = {
-    :net => {
-      :name => -> (model) {
-          capture_haml {
-            haml_tag 'i.fa.fa-tree'
-            haml_tag 'a', model.name, :href => url_for([model])
-          }
-        },
-      :desc => -> (model) {
-          return EMPTY_FLAG if model.desc.blank?
-          simple_format model.desc
-        },
-      :point_count => -> (model) {
-          capture_haml {
-            haml_tag 'span', '知识节点数目：'
-            haml_tag 'span', model.points.count
-          }
-        },
-      :updated_at => true,
-      OPS_KEY => {
-        :graph => [:info, :sitemap, '展示', '可视化展现'],
-        :edit => true,
-        :delete => true
+    :manage => {
+      :net => {
+        :name => -> (model) {
+            capture_haml {
+              haml_tag 'i.fa.fa-tree'
+              haml_tag 'a', model.name, :href => url_for([:manage, model])
+            }
+          },
+        :desc => -> (model) {
+            return EMPTY_FLAG if model.desc.blank?
+            simple_format model.desc
+          },
+        :point_count => -> (model) {
+            capture_haml {
+              haml_tag 'span', '知识节点数目：'
+              haml_tag 'span', model.points.count
+            }
+          },
+        :updated_at => true,
+        OPS_KEY => {
+          :graph => [:info, :sitemap, '展示', '可视化展现'],
+          :edit => true,
+          :delete => true
+        }
       }
     },
 
@@ -58,15 +60,22 @@ class DandelionCell < Cell::Rails
 
 
   def new_button(option)
-    @model = option[:model]
-    @url   = File.join "/", @model.model_name.route_key, 'new'
-    @text  = "新建#{@model.model_name.human}" 
+    @parents = option[:parents]
+    @klass   = option[:klass]
+
+    # @url   = File.join "/", @model.model_name.route_key, 'new'
+    @url   = url_for [:new] + @parents + [@klass.model_name.name]
+    @text  = "新建#{@klass.model_name.human}" 
     render
   end
 
   def form(option)
-    @model      = option[:model]
-    @cancel_url = File.join "/", @model.model_name.route_key
+    @parents = option[:parents]
+    @model   = option[:model]
+
+    @form_for = @parents + [@model]
+    # @cancel_url = url_for @parents + [@model.class]
+    @cancel_url = 'javascript:history.go(-1)'
 
     if @model.new_record?
       @h2  = "新建#{@model.model_name.human} …"
@@ -78,15 +87,18 @@ class DandelionCell < Cell::Rails
   end
 
   def list(option)
-    @klass    = option[:klass]
-    @models   = @klass.all.order_by("updated_at DESC")
-    @plural   = @klass.model_name.plural
-    @singular = @klass.model_name.singular
+    @klass      = option[:klass]
+    @models     = option[:models] || @klass.all.order_by("updated_at DESC")
+    @namespace  = option[:namespace]
 
-    # @keys     = @klass.fields.keys
-    # TODO 需要有自行配置显示哪些字段和如何显示的方法
-
-    @config = LIST_CONFIG[@singular.to_sym]
+    @plural   = @klass.model_name.plural # 列表 css class
+    @singular = @klass.model_name.singular # 列表项 css class
+    @config =
+      if @namespace && LIST_CONFIG[@namespace]
+        LIST_CONFIG[:manage][@singular.to_sym]
+      else
+        LIST_CONFIG[@singular.to_sym]
+      end
 
     render
   end
