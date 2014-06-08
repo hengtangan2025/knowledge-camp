@@ -2,22 +2,35 @@
 
 $link-color:#2c5d8d;
 $link-hover-color:#2c5d8d;
+$border-radius-default:3px;
 
 @import "lily/css/lily.scss";
 
-@import "graph";
-
 $lightgray: lighten($black-10, 5%);
 $border-dash: dashed 1px $black-30;
+
+@mixin piece-shadow {
+  box-shadow: 0 1px 2px rgba(black, 0.07);
+}
+
+@mixin piece {
+  background-color: #FFF;
+  border-radius: $border-radius-default;
+  @include piece-shadow;
+}
+
+@import "graph";
+@import "net";
 
 html {
   overflow-y:scroll;
 }
 
 body {
+  background: url(layout/body-bg.gif);
+
   .page-header {
-    background-color: $lightgray;
-    border-bottom: solid 2px $black-10;
+    background-color: #323232;
     font-size: 16px;
 
     .page-nav {
@@ -25,11 +38,12 @@ body {
       line-height: 50px;
 
       a {
-        color: $black-90;
+        color: #fff;
         display: block;
         float: left;
-        padding: 0 15px;
-        opacity: 0.8;
+        padding: 0 30px 0 0;
+        opacity: 0.6;
+        font-size: 14px;
 
         i {
           margin-right: 5px;
@@ -37,7 +51,6 @@ body {
 
         &:hover, &.active{
           text-decoration:none;
-          background-color: rgba(white, 0.6);
           opacity: 1;
         }
       }
@@ -63,39 +76,10 @@ body {
     margin-top: 0;
     margin-bottom: 30px;
     font-size: 16px;
-    color: $text-quiet;
+    color: $black-50;
+    text-shadow: 0 1px #fff;
   }
 }
-
-// -----------------
-
-.page-manage-nets-index {
-  a.create-net {
-    display: block;
-    text-align: center;
-    max-width:100px;
-
-    i {
-      display: block;
-      font-size:24px;
-      border:dashed 2px rgba($area-fresh, 0.5);
-      color: $area-fresh;
-      background: rgba($area-fresh, 0.05);
-      height:48px;line-height: 48px;
-      margin-bottom:10px;
-      border-radius:$border-radius-default;
-    }
-    span {
-      display: block;
-      text-decoration: underline;
-    }
-
-    &:hover {
-      text-decoration:none;
-    }
-  }
-}
-
 
 
 // ------------------
@@ -127,37 +111,7 @@ body {
   }
 }
 
-.cell-dandelion-list.nets .model.net {
-  $left : 30px;
-
-  .fields .field {
-    margin-left: $left;
-
-    &.name {
-      margin-left: 0;
-      @include clearfix;
-      font-size: 16px;
-      font-weight: bold;
-
-      span {
-        float: left;
-      }
-      i {
-        float: left;
-        width:$left;color:$area-forest;
-        line-height:22px;
-      }
-    }
-
-    &.desc {
-      color:$text-quiet;
-    }
-  }
-
-  .ops {
-    margin-left: $left;
-  }
-}
+// ----------------
 
 .cell-dandelion-list.plans .model.plan {
   $left : 30px;

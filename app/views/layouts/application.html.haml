@@ -4,15 +4,17 @@
     %meta{:'http-equiv' => 'Content-Type', :content => 'text/html; charset=utf-8'}
     %meta{:name => 'viewport', :content => 'width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no'}
 
-    %title Knowledge Camp
+    - title = yield :page_title
+    - title = "Knowledge Camp" if title.blank?
+
+    %title= title
     = stylesheet_link_tag 'application', :media => 'screen'
     = csrf_meta_tags
+    = javascript_include_tag 'application'
 
-  %body{'data-no-turbolink' => true}
+  %body
     .page-header
       = render_cell :layout, :nav
     .page-content.container
       .row{:class => "page-#{params[:controller].sub('/', '-')}-#{params[:action]}"}
         = yield
-
-    = javascript_include_tag 'application'

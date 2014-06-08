@@ -1,20 +1,21 @@
-.cell-dandelion-list{:class => @plural}
+.cell-dandelion-list{:class => [@namespace, @plural]}
   - @models.each do |model|
     .model{:class => @singular}
-      - if @config.blank?
-        .fields
-          - @klass.fields.keys.each do |key|
-            = dandelion_list_field model, key, true
+      .box
+        - if @config.blank?
+          .fields
+            - @klass.fields.keys.each do |key|
+              = dandelion_list_field model, key, true
 
-        .ops
-          = dandelion_list_button @namespace, model, :edit
-          = dandelion_list_button @namespace, model, :delete
+          .ops
+            = dandelion_list_button @namespace, model, :edit
+            = dandelion_list_button @namespace, model, :delete
 
-      - else
-        .fields
-          - @config.each do |key, cfg|
-            = dandelion_list_field model, key, cfg
+        - else
+          .fields
+            - @config.each do |key, cfg|
+              = dandelion_list_field model, key, cfg
 
-        .ops
-          - (@config[DandelionCell::OPS_KEY] || {}).each do |key, cfg|
-            = dandelion_list_button @namespace, model, key, cfg
+          .ops
+            - (@config[DandelionCell::OPS_KEY] || {}).each do |key, cfg|
+              = dandelion_list_button @namespace, model, key, cfg

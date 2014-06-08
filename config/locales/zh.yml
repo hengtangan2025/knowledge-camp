@@ -7,6 +7,12 @@ zh:
     models:
       net: 知识网络
       plan: 教学计划
+    errors:
+      models:
+        net:
+          attributes:
+            name:
+              taken: 已经存在同名的知识网络了
 
   simple_form:
     labels:

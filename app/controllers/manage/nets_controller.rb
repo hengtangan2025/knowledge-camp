@@ -2,18 +2,14 @@ class Manage::NetsController < ApplicationController
   set_model KnowledgeNetStore::Net,
     :allow_attrs  => [:name, :desc]
 
-  def new
-    render :form
-  end
-
   def edit
     render :form
   end
 
   def create
     @net = KnowledgeNetStore::Net.new(model_params)
-    return redirect_to :action => :index if @net.save
-    render :form
+    return redirect_to [:manage, @net] if @net.save
+    render :new
   end
 
   update_with do

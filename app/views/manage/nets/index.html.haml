@@ -1,3 +1,5 @@
+- page_title '管理知识网络'
+
 .col-pad-2
   %a.create-net{:href => url_for([:new, :manage, :net])}
     %i.fa.fa-plus
@@ -5,4 +7,4 @@
 
 .col-pad-8
   %h2.cell 现有以下知识网络 …
-  = dandelion_list KnowledgeNetStore::Net, :namespace => :manage
+  = render_cell :net, :grid

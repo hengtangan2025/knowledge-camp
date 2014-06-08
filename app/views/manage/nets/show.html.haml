@@ -2,8 +2,8 @@
   .col-pad-4.col-pad-pull-8
     %h2.cell 选择一项操作 … 
     .ops
-      = dandelion_new_button @net, KnowledgeNetStore::Point
+      = dandelion_new_button :manage, @net, KnowledgeNetStore::Point
 
   .col-pad-8.col-pad-push-4
     %h2.cell 目前已创建以下知识点 …
-    = dandelion_list KnowledgeNetStore::Point, :models => @net.points.order_by("updated_at DESC")
+    = #dandelion_list KnowledgeNetStore::Point, :models => @net.points.order_by("updated_at DESC")

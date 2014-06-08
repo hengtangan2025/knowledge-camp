@@ -9,26 +9,14 @@ class DandelionCell < Cell::Rails
       :net => {
         :name => -> (model) {
             capture_haml {
-              haml_tag 'i.fa.fa-tree'
               haml_tag 'a', model.name, :href => url_for([:manage, model])
             }
           },
         :desc => -> (model) {
             return EMPTY_FLAG if model.desc.blank?
-            simple_format model.desc
+            model.desc
           },
-        :point_count => -> (model) {
-            capture_haml {
-              haml_tag 'span', '知识节点数目：'
-              haml_tag 'span', model.points.count
-            }
-          },
-        :updated_at => true,
-        OPS_KEY => {
-          :graph => [:info, :sitemap, '展示', '可视化展现'],
-          :edit => true,
-          :delete => true
-        }
+        :updated_at => true
       }
     },
 
@@ -74,8 +62,7 @@ class DandelionCell < Cell::Rails
     @model   = option[:model]
 
     @form_for = @parents + [@model]
-    # @cancel_url = url_for @parents + [@model.class]
-    @cancel_url = 'javascript:history.go(-1)'
+    @cancel_url = option[:cancel_url] || 'javascript:history.go(-1)'
 
     if @model.new_record?
       @h2  = "新建#{@model.model_name.human} …"
