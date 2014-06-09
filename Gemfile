@@ -45,3 +45,7 @@ group :test do
   gem "rspec"
   gem "database_cleaner", "~> 1.2.0"
 end
+
+gem "user-auth",
+    :git => "git://github.com/mindpin/user-auth.git",
+    :tag => "0.0.5"

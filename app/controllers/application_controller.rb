@@ -1,6 +1,9 @@
 require "cell/rails/helper_api" # cell helpers for simlpe_form, etc..
 
 class ApplicationController < ActionController::Base
-  include GenericController
   protect_from_forgery with: :exception
+
+  def after_sign_in_path_for(resource)
+    stored_location_for(resource) || root_path
+  end
 end

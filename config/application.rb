@@ -20,6 +20,6 @@ module KnowledgeCamp
     config.time_zone = 'Beijing'
     config.i18n.default_locale = 'zh'
     config.encoding = 'utf-8'
-
+    config.autoload_paths += %W(#{config.root}/lib)
   end
 end
