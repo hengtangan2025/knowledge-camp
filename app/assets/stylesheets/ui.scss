@@ -19,6 +19,7 @@ $border-dash: dashed 1px $black-30;
   @include piece-shadow;
 }
 
+@import "auth";
 @import "graph";
 @import "net";
 

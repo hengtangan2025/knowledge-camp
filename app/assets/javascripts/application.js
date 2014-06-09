@@ -3,3 +3,4 @@
 //= require turbolinks
 //= require graph-ui
 //= require net
+//= require auth

@@ -1,6 +1,32 @@
-.sign-in-form
-  = simple_form_for User.new, :as => :user, :url => '/account/sign_in' do |f|
-    = f.input :email, :placeholder => '用户名', :required => true
-    = f.input :password, :required => true, :placeholder => '密码', :required => true
-    = f.button :submit, '登录'
-    = f.input :remember_me, :as => :boolean
+.sign-in
+  .col-pad-8.col-pad-offset-2
+    .sign-header Knowledge Camp
+
+  .col-pad-4.col-pad-offset-2
+    .sign-in-form
+      %h2.cell 用户登录 …
+
+      = simple_form_for :user, url: '/account/sign_in', html: { novalidate: true } do |f|
+        .form-group
+          = f.input :email, input_html: { class: 'form-control' }
+        .form-group
+          = f.input :password, input_html: { class: 'form-control' }
+        .form-group
+          = f.input :remember_me, as: :boolean
+        .form-group
+          = f.submit '登　录', class: 'btn btn-rounded btn-bdb-fresh btn-large'
+          %a.btn.btn-rounded.btn-bdb-primary.btn-large{href: 'javascript:;'}
+            %i.fa.fa-arrow-right
+            %span 进入浏览
+
+      .auth-msg{style: 'display:none;'}
+
+  .col-pad-4
+    .intro
+      .version knowledge camp PREALPHA
+      %hr
+      .dev 
+        %span 开发中版本，问题回报请往：
+        %a{href: 'http://s.4ye.me/ELYZmv'} http://s.4ye.me/ELYZmv
+      %hr
+      .user 系统屏蔽用户注册，请通过管理员账号添加用户
