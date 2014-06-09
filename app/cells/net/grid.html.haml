@@ -1,7 +1,9 @@
 .cell-manage-nets.grid.row
   - @nets.each do |net|
     .net
-      .box
-        .name= link_to net.name, [:manage, net]
+      .box{:data => {:link => url_for([:manage, net])}}
+        .name= net.name
         .desc= net.desc
         .updated-at 更新于 #{net.updated_at.to_s(:db)}
+        .stat
+          .points 知识点 #{net.points.count}

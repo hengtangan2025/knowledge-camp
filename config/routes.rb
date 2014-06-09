@@ -9,6 +9,9 @@ Rails.application.routes.draw do
 
       resources :points, :shallow => true
     end
+
+    resources :users, :shallow => true do
+    end
   end
 
   

@@ -28,15 +28,27 @@ jQuery(document).on 'page:restore', ->
       'margin-top': ''
       'opacity': ''
 
-# -------------------
+# new
+do ->
+  jQuery(document).delegate '.page-manage-nets-index a.create-net', 'click', (evt)->
+    evt.preventDefault();
+    href = jQuery(this).attr('href')
+    animate_visit href
 
-jQuery(document).delegate '.page-manage-nets-index a.create-net', 'click', (evt)->
-  evt.preventDefault();
-  href = jQuery(this).attr('href')
-  animate_visit href
+
+  jQuery(document).delegate '.page-net-form a.cancel', 'click', (evt)->
+    evt.preventDefault();
+    href = jQuery(this).attr('href')
+    animate_visit href
 
 
-jQuery(document).delegate '.page-net-form a.cancel', 'click', (evt)->
-  evt.preventDefault();
-  href = jQuery(this).attr('href')
-  animate_visit href
+# index grid
+do ->
+  jQuery(document).delegate '.cell-manage-nets.grid .net .box', 'click', (evt)->
+    link = jQuery(this).data('link')
+    animate_visit link
+
+  jQuery(document).delegate '.page-manage-nets-show .nav .back a', 'click', (evt)->
+    evt.preventDefault();
+    href = jQuery(this).attr('href')
+    animate_visit href

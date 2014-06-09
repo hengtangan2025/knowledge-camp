@@ -1,3 +1,5 @@
+$point-color : darken(#FFB43B, 10%);
+
 .page-manage-nets-index {
   a.create-net {
     display: block;
@@ -33,7 +35,13 @@
 
   .box {
     @include piece;
-    padding:15px;height:200px;
+    padding:15px;height:210px;
+    cursor: pointer;
+    position: relative;
+
+    &:hover {
+      background-color: $area-dawn;
+    }
 
     .name {
       font-weight: bold;
@@ -49,7 +57,31 @@
       color: $text-quiet;
       font-size: 12px;
     }
+
+    .stat {
+      position: absolute;
+      bottom: 15px;
+      font-size: 12px;
+      color: $text-quiet;
+      .points {
+        padding-left:21px;
+        &:before {
+          content: "";
+          position: absolute;
+          height:16px;width:16px;
+          border:solid 4px $point-color;
+          @include border-box;
+          border-radius:20px;
+          left:0;
+        }
+      }
+    }
   }
+}
+
+@mixin -net-title-font {
+  font-size: 24px;
+  font-weight: bold;
 }
 
 .page-net-form {
@@ -66,9 +98,8 @@
   }
 
   .input.net_name input {
-    font-size: 18px;
-    height: 44px;
-    font-weight: bold;
+    @include -net-title-font;
+    height: 58px; line-height: 38px;
   }
 
   .form-group.submit {
@@ -79,5 +110,66 @@
   .form-group .error {
     color: $area-danger;
     font-size: 12px;
+  }
+}
+
+.page-manage-nets-show {
+  .nav {
+    @include piece;
+    padding: 20px;
+
+    .back {
+      font-size: 16px;
+    }
+
+    .items {
+      position: relative;
+      margin-top: 20px;
+      padding-top: 40px;
+      border-top:dashed 1px $black-20;
+
+      .count {
+        margin-bottom: 10px;
+        font-size: 16px;
+        font-weight: bold;
+      }
+      .new {
+        a.btn {display:block;}
+      }
+    }
+
+    .items.points {
+      &:before {
+        content: "";
+        position: absolute;
+        width:20px;height:20px;
+        @include border-box;
+        border:solid 4px $point-color;
+        border-radius:40px;
+        top:11px;
+      }
+    }
+
+    .items.documents, .items.files, .items.plans {
+      i.icon {
+        position: absolute;
+        top:11px;
+        font-size:20px;
+        color:$area-night;
+      }
+    }
+  }
+
+  .net {
+    @include piece;
+    padding: 20px 30px;
+
+    .name {
+      @include -net-title-font;
+      height: 36px; line-height: 36px;
+    }
+    .desc {
+      color: $text-quiet;
+    }
   }
 }
