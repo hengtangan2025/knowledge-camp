@@ -1,5 +1,9 @@
 class SessionsController < Devise::SessionsController
   layout 'auth'
+  skip_before_action :verify_authenticity_token, :only => :create, :if => :format_is_json
+  def format_is_json
+    "json" == params[:format]
+  end
 
   def create
     return super if params[:format] != "json"
