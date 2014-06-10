@@ -19,3 +19,10 @@
         %a{:href => url, :class => active_klass}
           %i.fa{:class => icon}
           %span= name
+
+      - if @user
+        .auth-info
+          = @user.name
+          %a{href: "/account/sign_out", data: { method: :delete }}
+            %i.fa.fa-sign-out
+            %span 用户登出

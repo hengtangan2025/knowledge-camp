@@ -10,12 +10,15 @@ jQuery(document).delegate '.sign-in-form input[type=submit]', 'click', (evt)->
     url: url
     data: data
     success: (res)->
-      console.log res
+      show_auth_info 'success', '登录成功', ->
+        Turbolinks.visit '/'
     error: (res)->
-      show_auth_error '用户名/密码不正确'
+      show_auth_info 'error', '用户名/密码不正确'
 
-show_auth_error = (msg)->
+show_auth_info = (klass, msg, func)->
   jQuery('.sign-in-form .auth-msg')
+    .removeClass('error').removeClass('success')
+    .addClass(klass)
     .html msg
     .css
       'opacity': 0
@@ -24,3 +27,6 @@ show_auth_error = (msg)->
     .animate
       'opacity': 1
       'margin-left': 30
+    , ->
+      console.log func
+      func() if func
