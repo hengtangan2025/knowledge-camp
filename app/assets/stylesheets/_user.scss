@@ -1,0 +1,32 @@
+.page-manage-users-index {
+  a.create-user {
+    display: block;
+    text-align: center;
+    max-width:100px;
+
+    i {
+      display: block;
+      font-size:24px;
+      color: $area-fresh;
+      background: mix($area-fresh, white, 5%);
+      height:48px;line-height: 48px;
+      margin-bottom:10px;
+      border-radius:100px;
+      width:48px;
+      margin-left: (100px - 48px) / 2;
+      @include piece-shadow;
+      &:before {
+        position: relative;
+        top:2px;
+      }
+    }
+    span {
+      display: block;
+      text-decoration: underline;
+    }
+
+    &:hover {
+      text-decoration:none;
+    }
+  }
+}

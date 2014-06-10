@@ -1,7 +1,7 @@
-.col-pad-2
+.page-side.col-pad-2
   .nav
     .back
-      %a.ui-toggle{:href => url_for([:manage, :nets])}
+      %a{:href => url_for([:manage, :nets]), :data => {:toggle => true}}
         %i.fa.fa-arrow-left
         %span 退出
 
@@ -20,7 +20,7 @@
         %a{:href => 'javascript:;'}
           文档 0
       .new
-        %a.btn.btn-rounded.btn-bdb.btn-small.ui-toggle{:href => url_for([:new, :manage, @net, :document])}
+        %a.btn.btn-rounded.btn-bdb.btn-small{:href => url_for([:new, :manage, @net, :document]), :data => {:toggle => ['open', 'close']}}
           %i.fa.fa-pencil
           %span 新建文档
 
@@ -44,7 +44,7 @@
           %i.fa.fa-plus
           %span 创建教学计划
 
-.col-pad-10
+.page-main.col-pad-10
   .net
     .name= @net.name
     .desc= @net.desc

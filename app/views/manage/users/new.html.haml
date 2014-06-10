@@ -1,0 +1,14 @@
+- page_title '增加用户'
+
+.col-pad-8.col-pad-offset-2
+  .page-net-form
+    %h2.cell 增加用户 …
+
+    = simple_form_for [:manage, @user], :defaults => {:label => false, :input_html => {:class => 'form-control'}} do |f|
+      .form-group
+        = f.input :login, :placeholder => "输入用户名"
+      .form-group
+        = f.input :name, :placeholder => "输入姓名"
+      .form-group.submit
+        = f.submit :class => 'btn btn-rounded btn-bdb-fresh'
+        %a.cancel.btn.btn-rounded.btn-bdb{:href => url_for([:manage, :users]), :data => {:toggle => true}} 取消

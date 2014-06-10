@@ -1,7 +1,7 @@
 - page_title '管理用户'
 
 .col-pad-2
-  %a.create-user{:href => url_for([:new, :manage, :net])}
+  %a.create-user{:href => url_for([:new, :manage, :user]), :data => {:toggle => true}}
     %i.fa.fa-plus
     %span 增加用户
 
