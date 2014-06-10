@@ -12,4 +12,13 @@ class User
   def id
     attributes["_id"].to_s
   end
+
+  def info
+    {
+      :id    => self.id,
+      :name  => self.name,
+      :login => self.login,
+      :email => self.email
+    }
+  end
 end
