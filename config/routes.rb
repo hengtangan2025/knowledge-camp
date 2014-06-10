@@ -15,6 +15,7 @@ Rails.application.routes.draw do
       end
 
       resources :points, :shallow => true
+      resources :documents, :shallow => true
     end
 
     resources :users, :shallow => true do

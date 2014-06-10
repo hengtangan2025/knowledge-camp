@@ -11,4 +11,4 @@
         = f.input :desc, :placeholder => "添加一些描述（选填）"
       .form-group.submit
         = f.submit :class => 'btn btn-rounded btn-bdb-fresh'
-        %a.cancel.btn.btn-rounded.btn-bdb{:href => url_for([:manage, :nets])} 取消
+        %a.cancel.btn.btn-rounded.btn-bdb.ui-toggle{:href => url_for([:manage, :nets])} 取消

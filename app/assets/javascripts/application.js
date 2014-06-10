@@ -4,3 +4,4 @@
 //= require graph-ui
 //= require net
 //= require auth
+//= require ui-toggle

@@ -1,7 +1,7 @@
 .col-pad-2
   .nav
     .back
-      %a{:href => url_for([:manage, :nets])}
+      %a.ui-toggle{:href => url_for([:manage, :nets])}
         %i.fa.fa-arrow-left
         %span 退出
 
@@ -20,7 +20,7 @@
         %a{:href => 'javascript:;'}
           文档 0
       .new
-        %a.btn.btn-rounded.btn-bdb.btn-small{:href => url_for([:new, :manage, @net, :point])}
+        %a.btn.btn-rounded.btn-bdb.btn-small.ui-toggle{:href => url_for([:new, :manage, @net, :document])}
           %i.fa.fa-pencil
           %span 新建文档
 

@@ -2,50 +2,59 @@
 source "http://ruby.taobao.org"
 
 gem "rails", "4.1.0"
-gem "sass-rails", "~> 4.0.3"
 gem "uglifier", ">= 1.3.0"
 gem "coffee-rails", "~> 4.0.0"
-gem "kaminari", "~> 0.15.1"
-gem "haml"
-gem "pry"
-gem "mongoid", "~> 4.0.0.beta1"
-gem "bson_ext"
-gem 'cells', '~> 3.10.1' # 用于复用一些前端组件
 
 gem "jquery-rails"
 gem "turbolinks"
 gem "jbuilder", "~> 2.0"
 gem "sdoc", "~> 0.4.0", :group => :doc
-gem "simple_form", "~> 3.0.2"
-
 gem "spring", :group => :development
-
-gem "unicorn"
-
-gem "mina",
-    :git => "git://github.com/fushang318/mina.git",
-    :tag => "v0.2.0fix"
-
-gem "knowledge-net-plan-store",
-    :git => "git://github.com/mindpin/knowledge-net-plan-store.git",
-    :tag => "v0.0.2"
-
-gem 'knowledge-net-store',
-    :git => 'git://github.com/mindpin/knowledge-net-store.git',
-    :tag => '0.0.5'
-
-gem "generic_controller",
-    :git => "git://github.com/mindpin/generic_controller.git",
-    :tag => "v0.0.2"
-
-
-gem "rest-client"
 
 group :test do
   gem "rspec"
   gem "database_cleaner", "~> 1.2.0"
 end
 
+# -------------
+
+gem "sass-rails", "~> 4.0.3"
+gem "kaminari", "~> 0.15.1"
+gem "haml"
+gem "pry" # 加强的 irb
+gem "mongoid", "~> 4.0.0.beta2"
+gem "bson_ext"
+gem 'cells', '~> 3.10.1' # 用于复用一些前端组件
+gem "simple_form", "~> 3.0.2"
+gem "unicorn"
+gem "rest-client" # 简化 http 请求
+
+# -------------
+
+gem "mina",
+    :github => "fushang318/mina",
+    :tag => "v0.2.0fix"
+
+gem "knowledge-net-plan-store",
+    :github => "mindpin/knowledge-net-plan-store",
+    :tag => "v0.0.2"
+
+gem 'knowledge-net-store',
+    :github => 'mindpin/knowledge-net-store',
+    :tag => '0.0.5'
+
+gem "generic_controller",
+    :github => "mindpin/generic_controller",
+    :tag => "v0.0.2"
+
 gem "user-auth",
-    :git => "git://github.com/mindpin/user-auth.git",
-    :tag => "0.0.5"
+    :github => "mindpin/user-auth",
+    :tag => "0.0.7"
+
+# 文字文档持久化，以下两个 gem 是相关的
+gem "mongoid-versioning", 
+    :github => "simi/mongoid-versioning"
+
+gem "documents-store",    
+    :github => "mindpin/documents-store",
+    :tag => "v0.0.2"

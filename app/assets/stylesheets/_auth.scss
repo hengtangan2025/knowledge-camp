@@ -33,7 +33,7 @@ body.auth {
         .btn:last-child {float: right;}
       }
 
-      input[type=email], input[type=password] {
+      input[type=email], input[type=password], input[type=text] {
         box-shadow:none;
         border-radius:$border-radius-default;
         border:0 none;

@@ -8,14 +8,14 @@
 
       = simple_form_for :user, url: '/account/sign_in', html: { novalidate: true } do |f|
         .form-group
-          = f.input :email, input_html: { class: 'form-control' }
+          = f.input :login, input_html: { class: 'form-control' }
         .form-group
           = f.input :password, input_html: { class: 'form-control' }
         .form-group
           = f.input :remember_me, as: :boolean
         .form-group
           = f.submit '登　录', class: 'btn btn-rounded btn-bdb-success btn-large'
-          %a.btn.btn-rounded.btn-bdb-info.btn-large{href: 'javascript:;'}
+          %a.btn.btn-rounded.btn-bdb-info.btn-large.disabled{href: 'javascript:;'}
             %i.fa.fa-arrow-right
             %span 进入浏览
 
@@ -30,3 +30,4 @@
         %a{href: 'http://s.4ye.me/ELYZmv'} http://s.4ye.me/ELYZmv
       %hr
       .user 系统屏蔽用户注册，请通过管理员账号添加用户
+      .user 开发者请手动创建用户

@@ -22,6 +22,7 @@ $border-dash: dashed 1px $black-30;
 @import "auth";
 @import "graph";
 @import "net";
+@import "document";
 
 html {
   overflow-y:scroll;
@@ -83,6 +84,28 @@ body {
     font-size: 16px;
     color: $black-50;
     text-shadow: 0 1px #fff;
+  }
+}
+
+// ------------------
+
+.page-bread-pieces {
+  margin-left:10px;
+  margin-right: 10px;
+  .bread {
+    border-radius:$border-radius-default $border-radius-default 0 0 ;
+    border:solid 1px #E6E5E5;
+    padding:10px 30px 20px 30px;
+    margin-bottom: -10px;
+    background-color: #F9F9F9;
+    font-size: 16px;
+    line-height: 24px;
+    text-decoration: underline;
+
+    &.net .link{
+      font-size: 24px;line-height: 36px;
+      font-weight: bold;
+    }
   }
 }
 

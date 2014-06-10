@@ -1,0 +1,34 @@
+.page-manage-documents-new {
+  .document {
+    @include piece;
+    padding:30px;
+
+    .editor {
+      position: relative;
+      min-height: 400px;
+      background-color: #ffffcc;
+      padding:15px 15px 15px 40px;
+      // border-radius:$border-radius-default;
+      border:solid 1px #E5E5E5;
+      &:before {
+        content: "";
+        position: absolute;
+        width:1px;height:100%;
+        background-color:#FCE3B0;
+        left:30px;top:0;
+      }
+    }
+
+    .side {
+      background-color: lighten($area-info, 35%);
+      padding:15px;
+      border-radius:$border-radius-default;
+      .info {
+        margin-bottom: 20px;
+      }
+      .ops {
+        a.btn {display: block;margin-top:15px;}
+      }
+    }
+  }
+}

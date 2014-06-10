@@ -19,6 +19,7 @@ zh:
       plan:
         net_id: 所属知识网络
       user:
+        login: 用户名
         email: 邮箱
         password: 密码
         remember_me: 记住我的登录状态

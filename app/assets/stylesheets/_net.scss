@@ -158,6 +158,8 @@ $point-color : darken(#FFB43B, 10%);
         color:$area-night;
       }
     }
+
+    .items.documents i.icon {color:$area-info;}
   }
 
   .net {
