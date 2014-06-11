@@ -10,7 +10,7 @@ class AvatarUploader < CarrierWave::Uploader::Base
     version__name = self.version_name.blank? ? "avatar_200" : self.version_name
     # For Rails 3.1+ asset pipeline compatibility:
     #ActionController::Base.helpers.asset_path("assets/images/fallback/" + [version_name, "default.png"].compact.join('_'))
-    "/assets/default_avatars/#{version__name}.png"
+    ActionController::Base.helpers.asset_path "default_avatars/#{version__name}.png"
   end
 
   # 图片裁剪
