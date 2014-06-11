@@ -1,14 +1,30 @@
 - page_title '增加用户'
 
 .col-pad-8.col-pad-offset-2
-  .page-net-form
-    %h2.cell 增加用户 …
+  .page-users-form
+    %h2.cell 快速增加用户 …
 
-    = simple_form_for [:manage, @user], :defaults => {:label => false, :input_html => {:class => 'form-control'}} do |f|
-      .form-group
-        = f.input :login, :placeholder => "输入用户名"
-      .form-group
-        = f.input :name, :placeholder => "输入姓名"
-      .form-group.submit
-        = f.submit :class => 'btn btn-rounded btn-bdb-fresh'
-        %a.cancel.btn.btn-rounded.btn-bdb{:href => url_for([:manage, :users]), :data => {:toggle => true}} 取消
+    .desc 
+      %span 输入用户名和昵称以增加用户。可以一次增加多个用户。
+      %br 
+      %span 其中，用户名用来登录系统，昵称用于用户在系统中的显示。
+      %br
+      %span 如果不输入昵称，将以用户名作为昵称。所有用户的默认密码都是 
+      %span.pw 1234 
+      %span .
+
+    .users
+      - 3.times do
+        .user
+          .icon.u
+            %i.fa.fa-user
+          .ipt.login
+            %input{:type => :text, :placeholder => '用户名'}
+          .ipt.name
+            %input{:type => :text, :placeholder => '昵称'}
+          .icon.check
+            %i.fa.fa-check
+
+    .submit
+      %a.save.btn.btn-rounded.btn-bdb-fresh{:href => url_for([:manage, :users])} 保存这些用户
+      %a.cancel.btn.btn-rounded.btn-bdb{:href => url_for([:manage, :users]), :data => {:toggle => true}} 取消

@@ -5,3 +5,4 @@
 //= require net
 //= require auth
 //= require ui-toggle
+//= require user

@@ -22,7 +22,7 @@
 
       - if @user
         .auth-info
-          = @user.name
+          %span.name= @user.name
           %a{href: "/account/sign_out", data: { method: :delete }}
             %i.fa.fa-sign-out
             %span 用户登出

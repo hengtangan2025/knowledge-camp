@@ -34,6 +34,7 @@ $point-color : darken(#FFB43B, 10%);
   margin-bottom: $grid-gap;
 
   .box {
+    @include link-box;
     @include piece;
     padding:15px;height:210px;
     cursor: pointer;

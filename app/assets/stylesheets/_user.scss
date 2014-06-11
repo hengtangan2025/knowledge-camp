@@ -30,3 +30,142 @@
     }
   }
 }
+
+.page-manage-users-show {
+  .user {
+    @include piece;
+    @include clearfix;
+    padding:30px;
+    $w:84px;
+
+    .avatar {
+      float: left;
+      margin-right: 30px;
+      width:$w;
+      height:$w;
+      border-radius:200px;
+      overflow: hidden;
+      img {width:$w;height:$w;}
+    }
+
+    .info {
+      float: left;
+      .name {
+        font-size: 24px;
+        font-weight: bold;
+        line-height: 24px;
+        margin-bottom: 10px;
+      }
+      .login {
+        font-size: 16px;
+        margin-bottom: 10px;
+      }
+      .last-sign-in {
+        color: $text-quiet;
+        font-size: 12px;
+      }
+    }
+  }
+}
+
+.cell-users.grid {
+  .user {
+    @include col(1/4);
+    border:0 none;
+    padding-bottom: 0;
+    margin-bottom: $grid-gap;
+
+    .box {
+      @include link-box;
+      width: 120px;
+    }
+
+    .avatar {
+      box-shadow: 0 1px 2px rgba(black, 0.07);
+      width:120px;height:120px;
+      background-color:white;
+      border-radius:200px;
+      margin-bottom: 10px;
+      overflow: hidden;
+      img {
+        width:100%;height:100%;
+      }
+    }
+    .login, .name {
+      width: 120px;
+      text-align: center;
+      font-size: 16px;
+      line-height: 24px;
+    }
+  }
+}
+
+.page-users-form {
+  padding:50px;
+  @include piece;
+
+  .desc {
+    font-weight: bold;
+    margin-bottom: 30px;
+    // font-size: 16px;
+    line-height: 24px;
+    span.pw {
+      color:$area-hot;
+    }
+  }
+
+  .users {
+    .user {
+      $g: 20px;
+
+      @include clearfix;
+      margin:0 $g / -2;
+      margin-bottom:10px;
+
+      .icon {
+        @include col(1/12, $gap:$g);
+        i {
+          font-size: 24px;
+          height:35px;line-height: 35px;
+          position:relative;
+          top:3px;
+          float: right;
+          color: $black-30;
+        }
+        &.check i {
+          float: left;
+          color: $area-forest;
+          display: none;
+        }
+      }
+      .ipt {
+        @include col(5/12, $gap:$g);
+
+        input[type=text] {
+          display: block;
+          width:100%;
+          font-size: 16px;
+          line-height: 24px;
+          border:0 none;
+          border-bottom:dotted 1px $black-40;
+          box-shadow: none;
+          padding:5px 0;
+          &:focus {
+            outline: 0;
+          }
+        }
+      }
+
+      &.focus {
+        .icon.u i {color:$area-forest;}
+      }
+      &.ok {
+        .icon.check i {display:inherit;}
+      }
+    }
+  }
+
+  .submit {
+    margin-top: 40px;
+  }
+}

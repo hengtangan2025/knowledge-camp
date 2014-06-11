@@ -1,1 +1,11 @@
-= @documents.count
+.page-side.col-pad-1
+
+.page-main.col-pad-10
+  .page-bread-pieces
+    .bread{:style => 'margin-left:10px;margin-right:10px;'}
+      .link.net
+        %a{:href => url_for([:manage, @net]), :data => {:toggle => ['open', 'close']}}
+          = @net.name
+      .bread.current
+        .documents
+          .title 查看所有文档

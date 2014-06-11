@@ -1,4 +1,12 @@
 zh:
+  views:
+    pagination:
+      first: "&laquo; 第一页"
+      last: "最后页 &raquo;"
+      previous: 上页
+      next: 下页
+      truncate: ...
+
   time:
     formats:
       default: "%H:%M"

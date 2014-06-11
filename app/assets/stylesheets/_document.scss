@@ -1,6 +1,5 @@
 .page-manage-documents-new {
   .document {
-    @include piece;
     padding:30px;
 
     .editor {
@@ -30,5 +29,12 @@
         a.btn {display: block;margin-top:15px;}
       }
     }
+  }
+}
+
+.page-manage-documents-index {
+  .documents {
+    padding:20px 30px;
+    .title {font-size: 16px;}
   }
 }

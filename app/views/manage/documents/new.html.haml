@@ -2,28 +2,28 @@
 
 .page-main.col-pad-10
   .page-bread-pieces
-    .bread.net{:style => 'margin-left:10px;margin-right:10px;'}
-      .link
+    .bread{:style => 'margin-left:10px;margin-right:10px;'}
+      .link.net
         %a{:href => url_for([:manage, @net]), :data => {:toggle => ['open', 'close']}}
           = @net.name
-    .bread.nets
-      .link
-        %a{:href => url_for([:manage, @net, :documents]), :data => {:toggle => ['open', 'close']}}
-          查看所有文档
-
-  .document
-    .row
-      .col-pad-9
-        .editor a rich text editor
-      .col-pad-3
-        .side
-          .info 
-            %strong
-              %span 你可以在这里撰写文档，
-              %span 点击“保存”按钮
-              %span 来保存你的工作。
-          .ops
-            %a.btn.btn-rounded.btn-bdb-fresh{:href => 'javascript:;'}
-              %span 保　存
-            %a.btn.btn-rounded.btn-bdb{:href => url_for([:manage, @net]), :data => {:toggle => ['open', 'close']}}
-              %span 取　消
+      .bread
+        .link.nets
+          %a{:href => url_for([:manage, @net, :documents]), :data => {:toggle => ['open', 'close']}}
+            查看所有文档
+        .bread.current
+          .document
+            .row
+              .col-pad-9
+                .editor a rich text editor
+              .col-pad-3
+                .side
+                  .info 
+                    %strong
+                      %span 你可以在这里撰写文档，
+                      %span 点击“保存”按钮
+                      %span 来保存你的工作。
+                  .ops
+                    %a.btn.btn-rounded.btn-bdb-fresh{:href => 'javascript:;'}
+                      %span 保　存
+                    %a.btn.btn-rounded.btn-bdb{:href => url_for([:manage, @net]), :data => {:toggle => ['open', 'close']}}
+                      %span 取　消

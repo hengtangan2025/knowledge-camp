@@ -1,0 +1,10 @@
+.cell-users.grid.row
+  - @users.each do |user|
+    .user
+      %a.box{:href => url_for([:manage, user]), :data => {:toggle => true}}
+        .avatar= avatar user
+        .login= user.login
+        .name= user.name
+
+  .col-pad-12
+    = paginate @users
