@@ -5,10 +5,10 @@ module ApplicationHelper
     end
   end
 
-  def avatar(user)
+  def avatar(user, version = :normal)
     capture_haml {
-      haml_tag 'div.-avatar-img' do
-        haml_tag 'img', :src => '/assets/default_avatars/avatar_200.png'
+      haml_tag 'div.-avatar-img', :class => version do
+        haml_tag 'img', :src => user.avatar.versions[version].url
       end
     }
   end

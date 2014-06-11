@@ -25,6 +25,15 @@ $border-dash: dashed 1px $black-30;
   text-decoration: none;
 }
 
+@mixin avatar($width) {
+  border-radius: $width * 4;
+  box-shadow: 0 1px 2px rgba(black, 0.07);
+  @include square($width);
+  overflow: hidden;
+  img {@include square($width);}
+  .-avatar-img {@include square($width);}
+}
+
 @import "kaminari";
 @import "auth";
 @import "graph";
@@ -37,7 +46,7 @@ html {
 }
 
 body {
-  background: url(layout/body-bg.gif);
+  background: asset_url("layout/body-bg.gif");
 
   .page-header {
     background-color: #323232;
@@ -97,6 +106,12 @@ body {
     font-size: 16px;
     color: $black-50;
     text-shadow: 0 1px #fff;
+  }
+
+  .-avatar-img {
+    &.large {@include avatar(180px);}
+    &.normal {@include avatar(64px);}
+    &.small {@include avatar(30px);}
   }
 }
 

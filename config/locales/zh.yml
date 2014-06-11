@@ -31,6 +31,7 @@ zh:
         email: 邮箱
         password: 密码
         remember_me: 记住我的登录状态
+        avatar: 头像
     placeholders:
       plan:
         name: 输入名称

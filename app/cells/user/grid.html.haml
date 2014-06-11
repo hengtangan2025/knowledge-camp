@@ -2,7 +2,7 @@
   - @users.each do |user|
     .user
       %a.box{:href => url_for([:manage, user]), :data => {:toggle => true}}
-        .avatar= avatar user
+        .avatar= avatar user, :large
         .login= user.login
         .name= user.name
 
