@@ -58,3 +58,8 @@ gem "mongoid-versioning",
 gem "documents-store",    
     :github => "mindpin/documents-store",
     :tag => "v0.0.2"
+
+# 文件上传，用于用户头像逻辑
+gem 'carrierwave-mongoid', :require => 'carrierwave/mongoid'
+# carrierwave 用到的图片切割
+gem "mini_magick", :require => false

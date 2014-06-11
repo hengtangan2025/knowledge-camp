@@ -1,5 +1,7 @@
 class User
   include UserAuth::LocalStoreMode
+  # carrierwave
+  mount_uploader :avatar, AvatarUploader
 
   auth_field :login, 
     :login_validate => {
@@ -11,5 +13,14 @@ class User
 
   def id
     attributes["_id"].to_s
+  end
+
+  def info
+    {
+      :id    => self.id,
+      :name  => self.name,
+      :login => self.login,
+      :email => self.email
+    }
   end
 end

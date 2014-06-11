@@ -13,6 +13,7 @@ set :shared_paths, [
   'config/mongoid.yml',
   'config/env.yml',
   'config/secrets.yml',
+  'config/initializers/r.rb',
   'tmp',
   'log'
 ]
@@ -35,6 +36,10 @@ task :setup => :environment do
   queue! %[touch "#{deploy_to}/shared/config/mongoid.yml"]
   queue! %[touch "#{deploy_to}/shared/config/env.yml"]
   queue! %[touch "#{deploy_to}/shared/config/secrets.yml"]
+
+  queue! %[mkdir -p "#{deploy_to}/shared/config/initializers"]
+  queue! %[chmod g+rx,u+rwx "#{deploy_to}/shared/config/initializers"]
+  queue! %[touch "#{deploy_to}/shared/config/initializers/r.rb"]
   
 
   queue! %[mkdir -p "#{deploy_to}/shared/log"]

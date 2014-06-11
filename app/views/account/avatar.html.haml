@@ -1,0 +1,7 @@
+= image_tag current_user.avatar_url
+= image_tag current_user.avatar.versions[:large].url
+= image_tag current_user.avatar.versions[:normal].url
+= image_tag current_user.avatar.versions[:small].url
+= simple_form_for current_user, :url => '/account/avatar', :method => :put do |f|
+  = f.input :avatar
+  = f.submit "上传"
