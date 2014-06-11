@@ -6,6 +6,9 @@ Rails.application.routes.draw do
     get    "/account/sign_in"  => "sessions#new"
     post   "/account/sign_in"  => "sessions#create"
     delete "/account/sign_out" => "sessions#destroy"
+
+    get '/account/avatar' => 'account#avatar'
+    put '/account/avatar' => 'account#avatar_update'
   end
 
   namespace :manage do

@@ -1,5 +1,7 @@
 class User
   include UserAuth::LocalStoreMode
+  # carrierwave
+  mount_uploader :avatar, AvatarUploader
 
   auth_field :login, 
     :login_validate => {
