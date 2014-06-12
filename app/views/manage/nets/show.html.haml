@@ -18,7 +18,8 @@
       %i.icon.fa.fa-file-text
       .count
         %a{:href => url_for([:manage, @net, :documents]), :data => {:toggle => ['open', 'close']}}
-          0 个文档 
+          - count = DocumentsStore::Document.count
+          #{count} 个文档 
       .new
         %a.btn.btn-rounded.btn-bdb.btn-small{:href => url_for([:new, :manage, @net, :document]), :data => {:toggle => ['open', 'close']}}
           %i.fa.fa-pencil

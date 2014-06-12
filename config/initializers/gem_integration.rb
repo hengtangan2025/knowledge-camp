@@ -71,3 +71,9 @@ def get_virtual_filename(filename)
 end
 
 # ---------------------------------------
+DocumentsStore::Document.belongs_to :net,
+                                    :class_name  => "KnowledgeNetStore::Net",
+                                    :foreign_key => :net_id
+
+KnowledgeNetStore::Net.has_many :documents,
+                                :class_name => "DocumentsStore::Document"

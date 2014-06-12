@@ -9,3 +9,7 @@
       .bread.current
         .documents
           .title 查看所有文档
+          %ul
+            - @documents.each do |document|
+              %li
+                %a{:href => "/manage/documents/#{document.id}"}= document.title

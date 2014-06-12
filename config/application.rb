@@ -1,3 +1,4 @@
+# coding: utf-8
 require File.expand_path('../boot', __FILE__)
 
 # Pick the frameworks you want:
@@ -12,6 +13,7 @@ require "sprockets/railtie"
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
+require "ueditor.rails"
 
 module KnowledgeCamp
   class Application < Rails::Application
