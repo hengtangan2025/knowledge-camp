@@ -63,3 +63,12 @@ gem "documents-store",
 gem 'carrierwave-mongoid', :require => 'carrierwave/mongoid'
 # carrierwave 用到的图片切割
 gem "mini_magick", :require => false
+
+# 虚拟文件夹
+gem 'virtual_file_system',    
+    :github => "mindpin/virtual-file",
+    :tag => "v0.0.5"
+# 支持分段上传的文件持久化
+gem 'file-part-upload', 
+  :git => 'git://github.com/mindpin/file-part-upload.git',
+  :tag => '1.0.3'
