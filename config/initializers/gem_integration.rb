@@ -70,6 +70,12 @@ def get_virtual_filename(filename)
   return "#{arr*"."}-#{randstr(32)}.#{extname}"
 end
 
+require_relative 'r'
+FilePartUpload.config do
+  path File.join(R::UPLOAD_FILE_BASE_PATH, "files/:id/file/:name")
+  url "/#{R::STATIC_FILE_URL_PREFIX}/files/:id/file/:name"
+end
+
 # ---------------------------------------
 DocumentsStore::Document.belongs_to :net,
                                     :class_name  => "KnowledgeNetStore::Net",
