@@ -12,18 +12,24 @@
             查看所有文档
         .bread.current
           .document
-            .row
-              .col-pad-9
-                .editor a rich text editor
-              .col-pad-3
-                .side
-                  .info 
-                    %strong
-                      %span 你可以在这里撰写文档，
-                      %span 点击“保存”按钮
-                      %span 来保存你的工作。
-                  .ops
-                    %a.btn.btn-rounded.btn-bdb-fresh{:href => 'javascript:;'}
-                      %span 保　存
-                    %a.btn.btn-rounded.btn-bdb{:href => url_for([:manage, @net]), :data => {:toggle => ['open', 'close']}}
-                      %span 取　消
+            - url = "/manage/nets/#{@net.id}/documents"
+
+            = simple_form_for @document, :as => :document, :url => url do |f|
+              .row
+                .col-pad-9
+                  .editor
+                    = f.input :title
+                    = f.input :content, :as => :ueditor
+                .col-pad-3
+                  .side
+                    .info 
+                      %strong
+                        %span 你可以在这里撰写文档，
+                        %span 点击“保存”按钮
+                        %span 来保存你的工作。
+                    .ops
+                      - klass = "btn btn-rounded btn-bdb-fresh"
+                      = f.submit "保存", :class => klass
+
+                      %a.btn.btn-rounded.btn-bdb{:href => url_for([:manage, @net]), :data => {:toggle => ['open', 'close']}}
+                        %span 取　消

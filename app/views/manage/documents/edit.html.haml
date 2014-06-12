@@ -1,0 +1,35 @@
+.page-side.col-pad-1
+
+.page-main.col-pad-10
+  .page-bread-pieces
+    .bread{:style => 'margin-left:10px;margin-right:10px;'}
+      .link.net
+        %a{:href => url_for([:manage, @document.net]), :data => {:toggle => ['open', 'close']}}
+          = @document.net.name
+      .bread
+        .link.nets
+          %a{:href => url_for([:manage, @document.net, :documents]), :data => {:toggle => ['open', 'close']}}
+            查看所有文档
+        .bread.current
+          .document
+            - url = "/manage/documents/#{@document.id}"
+
+            = simple_form_for @document, :as => :document, :url => url, :method => :put do |f|
+              .row
+                .col-pad-9
+                  .editor
+                    = f.input :title
+                    = f.input :content, :as => :ueditor
+                .col-pad-3
+                  .side
+                    .info 
+                      %strong
+                        %span 你可以在这里撰写文档，
+                        %span 点击“保存”按钮
+                        %span 来保存你的工作。
+                    .ops
+                      - klass = "btn btn-rounded btn-bdb-fresh"
+                      = f.submit "保存", :class => klass
+
+                      %a.btn.btn-rounded.btn-bdb{:href => "/manage/documents/#{@document.id}", :data => {:toggle => ['open', 'close']}}
+                        %span 取　消

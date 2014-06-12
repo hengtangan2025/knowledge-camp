@@ -15,7 +15,12 @@ Rails.application.routes.draw do
       end
 
       resources :points, :shallow => true
-      resources :documents, :shallow => true
+      resources :documents, :shallow => true do
+        member do
+          get :versions
+          get "versions/:version", :to => :version
+        end
+      end
     end
 
     resources :users, :shallow => true do

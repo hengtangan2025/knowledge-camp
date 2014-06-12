@@ -2,6 +2,7 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require graph-ui
+//= require ueditor
 //= require net
 //= require auth
 //= require ui-toggle

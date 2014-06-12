@@ -57,7 +57,9 @@ gem "mongoid-versioning",
 
 gem "documents-store",    
     :github => "mindpin/documents-store",
-    :tag => "v0.0.2"
+    :tag => "v0.0.3.p1"
+
+gem "ueditor.rails", "~> 0.0.1"
 
 # 文件上传，用于用户头像逻辑
 gem 'carrierwave-mongoid', :require => 'carrierwave/mongoid'
