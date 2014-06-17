@@ -1,23 +1,50 @@
 class UploadController < ApplicationController
-  def upload
-    chunk_number = params[:resumableChunkNumber]
-    file_name = params[:resumableFilename]
-    file_size = params[:resumableTotalSize]
+  # GET /upload
+  def check
     identifier = params[:resumableIdentifier]
 
-    if chunk_number.to_i == 1
-      # 新文件
+    # 尝试根据唯一标识找到文件
+    file_entity = FilePartUpload::FileEntity.where({
+      :identifier => identifier
+    }).first
+
+    if file_entity.blank?
+      render :status => 404, :text => 'file_entity is not exist.'
+      return
+    end
+
+    chunk_number        = params[:resumableChunkNumber].to_i
+    chunk_size          = params[:resumableChunkSize].to_i
+    current_chunk_size  = params[:resumableCurrentChunkSize].to_i
+
+    saved_size = file_entity.saved_size
+    current_uploading_size = (chunk_number - 1) * chunk_size + current_chunk_size
+
+
+    if current_uploading_size > saved_size
+      render :status => 404, :text => 'chunk is not uploaded'
+    else
+      render :nothing => true, :status => 200
+    end
+  end
+
+  # POST /upload
+  def upload
+    file_name = params[:resumableFilename]
+    file_size = params[:resumableTotalSize].to_i
+    identifier = params[:resumableIdentifier]
+
+    # 尝试根据唯一标识找到文件
+    file_entity = FilePartUpload::FileEntity.where(
+        :identifier => identifier).first
+
+    # 如果不存在，就创建一个
+    if file_entity.blank?
       file_entity = FilePartUpload::FileEntity.new(
         :attach_file_name => file_name, 
-        :attach_file_size => file_size
+        :attach_file_size => file_size,
+        :identifier => identifier
       )
-
-      file_entity.save
-      session[identifier] = file_entity.id.to_s
-    else
-      # 增量上传
-      file_entity_id = session[identifier]
-      file_entity = FilePartUpload::FileEntity.find(file_entity_id)
     end
 
     file_entity.save_blob params[:file]

@@ -8,7 +8,8 @@ Rails.application.routes.draw do
     delete "/account/sign_out" => "sessions#destroy"
   end
 
-  post "/upload" => "upload#upload"
+  get  '/upload' => 'upload#check'
+  post '/upload' => 'upload#upload'
 
   namespace :manage do
     resources :nets, :shallow => true do

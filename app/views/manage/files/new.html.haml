@@ -16,7 +16,7 @@
         .col-desk-7
           .page-file-uploader
             .progress-item{:style => 'display:none;'}
-              %i.fa.fa-file
+              .icon
               .name DH MHD.rar
               .stat
                 .bar-container
@@ -24,6 +24,10 @@
                 .desc 
                   %span.percent 24%
                   %span , 剩余时间
-                  %span.time 00:05:59
+                  %span.remaining-time 00:05:59
+              .completed
+                %i.fa.fa-check
+                %span 上传完成
+
 
             .upload-list

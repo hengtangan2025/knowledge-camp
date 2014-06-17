@@ -16,8 +16,8 @@ class MindpinResumeableUploader
       target: @target
       headers:
         'X-CSRF-Token': @csrf_token
-      chunkSize: 524288 # 1*1024*512
-      testChunks: false
+      chunkSize: 196608 # 1024 * 192 192K
+      testChunks: true
       simultaneousUploads: 1 # 最多同时上传一个，保证顺序
       generateUniqueIdentifier: (file)->
         "#{file.size}|#{file.name}"
@@ -26,21 +26,57 @@ class MindpinResumeableUploader
 
   events: ->
     @r.on 'fileAdded', (file)=>
-      $item = @$item.clone()
-      $item.find('.name').html file.fileName
-      $item.find('.bar').css 'width', '0'
-      $item.find('.percent').html '0%'
-      $item.find('.time').html '未知'
-      $item.show().appendTo @$list
-
-      file.$item = $item
+      @_clone_item(file)
       @r.upload()
+      file.start_at = new Date().getTime()
+      file.last_progress = 0
 
     @r.on 'fileProgress', (file)=>
       percent = "#{(file.progress() * 100).toFixed()}%"
       $item = file.$item
       $item.find('.bar').css 'width', percent
       $item.find('.percent').html percent
+
+      delta = new Date().getTime() - file.start_at
+      progress = file.progress()
+
+      if progress > file.last_progress 
+        file.last_progress = progress
+
+        remaining = Math.ceil(delta * (1 - progress) / progress / 1000)
+
+        hour   = Math.floor(remaining / 3600)
+        minute = Math.floor(remaining % 3600 / 60)
+        second = remaining % 60
+
+        hour = if hour >= 10 then hour else "0#{hour}"
+        minute = if minute >= 10 then minute else "0#{minute}"
+        second = if second >= 10 then second else "0#{second}"
+
+        $item.find('.remaining-time').html "#{hour}:#{minute}:#{second}"
+
+    @r.on 'fileSuccess', (file)=>
+      setTimeout ->
+        file.$item.addClass('completed')
+      , 300
+
+  _clone_item: (file)->
+    $item = @$item.clone()
+    $item.find('.name').html file.fileName
+    $item.find('.bar').css 'width', '0'
+    $item.find('.percent').html '0%'
+    $item.find('.remaining-time').html '未知'
+    $item.show().appendTo @$list
+
+    a = file.fileName.split(".")
+    if a.length is 1 or ( a[0] is "" and a.length is 2)
+      klass = ""
+    else
+      klass = a.pop().toLowerCase()
+
+    $item.addClass(klass)
+
+    file.$item = $item
 
 ready = ->
   if jQuery('.page-manage-files-new').length > 0
