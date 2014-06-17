@@ -8,8 +8,28 @@
 .page-manage-files-new {
   .file {
     padding:20px;
-    a.select-file {
+    .file-box {
+      min-height: 98px;
       margin-bottom: 20px;
+      padding:15px;
+      border:dashed 1px $black-30;
+      span {line-height: 22px;}
+
+      a.select-file {
+        margin-left: 6px;
+        padding:0 8px;
+      }
+
+      &.over {
+        background-color: $area-dawn;
+      }
+    }
+    .desc {
+      margin-left: 5px;
+      margin-bottom: 20px;
+      .strong {
+        font-weight: bold;
+        margin-bottom: 10px;}
     }
   }
 }
@@ -23,7 +43,11 @@
     border-radius: $border-radius-default;
     position:relative;
     height:60px;
-    margin-bottom:5px;
+    margin-top: 10px;
+
+    &:first-child {
+      margin-top: 15px;
+    }
 
     .icon {
       &:before { content:"\f016"; }

@@ -4,7 +4,7 @@
 
 // 第三方库
 
-//= require resumeable/resumeable
+//= require flowjs/flow
 
 // 自己写的
 
