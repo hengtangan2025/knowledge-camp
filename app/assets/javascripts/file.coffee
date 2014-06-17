@@ -1,10 +1,16 @@
-class MindpinResumeableUploader
+# 一开始用的是 Resumeable.js
+# 然后改成了 Flow.js
+# 话说这两个库的关系很纠结。
+# 具体见 https://github.com/flowjs/flow.js/issues/1
+
+class MindpinFlowUploader
   constructor: (config)->
     @target         = config['target']
     @csrf_token     = config['csrf_token']
     @$browse_button = config['browse']
+    @$drop          = config['drop']
+    @$uploader      = config['uploader']
 
-    @$uploader = config['uploader']
     @$item = @$uploader.find('.progress-item')
     @$list = @$uploader.find('.upload-list')
 
@@ -12,7 +18,7 @@ class MindpinResumeableUploader
     @events()
 
   init: ->
-    @r = new Resumable
+    @r = new Flow
       target: @target
       headers:
         'X-CSRF-Token': @csrf_token
@@ -23,37 +29,33 @@ class MindpinResumeableUploader
         "#{file.size}|#{file.name}"
 
     @r.assignBrowse @$browse_button[0]
+    @r.assignDrop @$drop[0]
+
+    dc = 0
+    @$drop.on 'dragenter', (evt)=>
+      dc++
+      @$drop.addClass 'over'
+
+    @$drop.on 'dragleave drop', (evt)=>
+      dc--
+      if dc is 0
+        @$drop.removeClass 'over'
 
   events: ->
-    @r.on 'fileAdded', (file)=>
+    @r.on 'fileAdded', (file, event)=>
+      console.log file, event
       @_clone_item(file)
-      @r.upload()
       file.start_at = new Date().getTime()
       file.last_progress = 0
 
+    @r.on 'filesSubmitted', (array, event)=>
+      @r.upload()
+
     @r.on 'fileProgress', (file)=>
-      percent = "#{(file.progress() * 100).toFixed()}%"
       $item = file.$item
-      $item.find('.bar').css 'width', percent
-      $item.find('.percent').html percent
 
-      delta = new Date().getTime() - file.start_at
-      progress = file.progress()
-
-      if progress > file.last_progress 
-        file.last_progress = progress
-
-        remaining = Math.ceil(delta * (1 - progress) / progress / 1000)
-
-        hour   = Math.floor(remaining / 3600)
-        minute = Math.floor(remaining % 3600 / 60)
-        second = remaining % 60
-
-        hour = if hour >= 10 then hour else "0#{hour}"
-        minute = if minute >= 10 then minute else "0#{minute}"
-        second = if second >= 10 then second else "0#{second}"
-
-        $item.find('.remaining-time').html "#{hour}:#{minute}:#{second}"
+      @__set_progress(file)
+      @__set_remaining_time(file)
 
     @r.on 'fileSuccess', (file)=>
       setTimeout ->
@@ -62,35 +64,67 @@ class MindpinResumeableUploader
 
   _clone_item: (file)->
     $item = @$item.clone()
-    $item.find('.name').html file.fileName
-    $item.find('.bar').css 'width', '0'
-    $item.find('.percent').html '0%'
-    $item.find('.remaining-time').html '未知'
+    file.$item = $item
+
+    @__set_name(file)
+    @__set_progress(file)
+    @__set_remaining_time(file)
+    @__set_extension_klass(file)
+    
     $item.show().appendTo @$list
 
-    a = file.fileName.split(".")
-    if a.length is 1 or ( a[0] is "" and a.length is 2)
-      klass = ""
-    else
-      klass = a.pop().toLowerCase()
 
-    $item.addClass(klass)
+  __set_name: (file)->
+    if file.$item
+      file.$item.find('.name').html file.name
 
-    file.$item = $item
+  __set_progress: (file)->
+    if file.$item
+      percent = "#{(file.progress() * 100).toFixed()}%"
+      file.$item.find('.bar').css 'width', percent
+      file.$item.find('.percent').html percent
+
+  __set_remaining_time: (file)->
+    if file.$item
+      remaining = file.timeRemaining()
+      remaining =
+        if remaining == Number.POSITIVE_INFINITY
+        then '未知'
+        else @__human_time(remaining)
+
+      file.$item.find('.remaining-time').html remaining
+
+  __human_time: (remaining)->
+    remaining += 1
+
+    hour   = Math.floor(remaining / 3600)
+    minute = Math.floor(remaining % 3600 / 60)
+    second = remaining % 60
+
+    hour = if hour >= 10 then hour else "0#{hour}"
+    minute = if minute >= 10 then minute else "0#{minute}"
+    second = if second >= 10 then second else "0#{second}"
+
+    "#{hour}:#{minute}:#{second}"
+
+  __set_extension_klass: (file)->
+    if file.$item
+      file.$item.addClass file.getExtension()
 
 ready = ->
   if jQuery('.page-manage-files-new').length > 0
     token_value = jQuery('meta[name=csrf-token]').attr('content')
     $button = jQuery('.page-manage-files-new a.select-file')
+    $drop = jQuery('.page-manage-files-new .file-box')
     target = $button.data('url')
     $uploader = jQuery('.page-file-uploader')
 
-    new MindpinResumeableUploader({
+    new MindpinFlowUploader({
       target: target
       csrf_token: token_value
       browse: $button
+      drop: $drop
       uploader: $uploader
     })
 
-jQuery(document).ready ready
-jQuery(document).on 'page:load', ready
+jQuery(document).on 'ready page:load', ready

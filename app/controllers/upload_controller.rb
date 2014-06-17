@@ -1,7 +1,7 @@
 class UploadController < ApplicationController
   # GET /upload
   def check
-    identifier = params[:resumableIdentifier]
+    identifier = params[:flowIdentifier]
 
     # 尝试根据唯一标识找到文件
     file_entity = FilePartUpload::FileEntity.where({
@@ -13,9 +13,9 @@ class UploadController < ApplicationController
       return
     end
 
-    chunk_number        = params[:resumableChunkNumber].to_i
-    chunk_size          = params[:resumableChunkSize].to_i
-    current_chunk_size  = params[:resumableCurrentChunkSize].to_i
+    chunk_number        = params[:flowChunkNumber].to_i
+    chunk_size          = params[:flowChunkSize].to_i
+    current_chunk_size  = params[:flowCurrentChunkSize].to_i
 
     saved_size = file_entity.saved_size
     current_uploading_size = (chunk_number - 1) * chunk_size + current_chunk_size
@@ -30,9 +30,9 @@ class UploadController < ApplicationController
 
   # POST /upload
   def upload
-    file_name = params[:resumableFilename]
-    file_size = params[:resumableTotalSize].to_i
-    identifier = params[:resumableIdentifier]
+    file_name  = params[:flowFilename]
+    file_size  = params[:flowTotalSize].to_i
+    identifier = params[:flowIdentifier]
 
     # 尝试根据唯一标识找到文件
     file_entity = FilePartUpload::FileEntity.where(
