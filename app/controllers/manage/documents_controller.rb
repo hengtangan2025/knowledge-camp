@@ -6,8 +6,6 @@ class Manage::DocumentsController < BaseGenericController
   set_model Document,
             :allow_attrs  => [:title, :content, :creator_id, :last_editor_id]
 
-  
-
   def index
     @documents = @net.documents
   end

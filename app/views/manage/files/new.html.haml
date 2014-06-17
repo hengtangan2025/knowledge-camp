@@ -1,0 +1,29 @@
+:ruby
+  bread_data = [
+    [ :net, @net.name, url_for([:manage, @net]) ],
+    [ :files, '查看所有文件', url_for([:manage, @net, :files]) ]
+  ]
+
+.page-side.col-pad-1
+.page-main.col-pad-10
+  = bread bread_data do
+    .file
+      %a.select-file.btn.btn-rounded.btn-bdb-info.btn-large{:href => 'javascript:;', :data => {:url => '/upload'}}
+        %i.fa.fa-upload
+        %span 选择要上传的文件
+
+      .row
+        .col-desk-7
+          .page-file-uploader
+            .progress-item{:style => 'display:none;'}
+              %i.fa.fa-file
+              .name DH MHD.rar
+              .stat
+                .bar-container
+                  .bar
+                .desc 
+                  %span.percent 24%
+                  %span , 剩余时间
+                  %span.time 00:05:59
+
+            .upload-list

@@ -74,5 +74,5 @@ gem 'virtual_file_system',
     :tag => "v0.0.5"
 # 支持分段上传的文件持久化
 gem 'file-part-upload', 
-  :git => 'git://github.com/mindpin/file-part-upload.git',
-  :tag => '1.0.3'
+    :github => 'mindpin/file-part-upload',
+    :tag => '1.0.3'

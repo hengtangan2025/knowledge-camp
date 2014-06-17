@@ -8,6 +8,8 @@ Rails.application.routes.draw do
     delete "/account/sign_out" => "sessions#destroy"
   end
 
+  post "/upload" => "upload#upload"
+
   namespace :manage do
     resources :nets, :shallow => true do
       member do
@@ -20,7 +22,9 @@ Rails.application.routes.draw do
           get :versions
           get "versions/:version", :to => :version
         end
+        # TODO 修改 versions 路由 by ben7th
       end
+      resources :files, :shallow => true
     end
 
     resources :users, :shallow => true do

@@ -1,0 +1,15 @@
+.page-side.col-pad-1
+
+.page-main.col-pad-10
+  .page-bread-pieces
+    .bread{:style => 'margin-left:10px;margin-right:10px;'}
+      .link.net
+        %a{:href => url_for([:manage, @net]), :data => {:toggle => ['open', 'close']}}
+          = @net.name
+      .bread.current
+        .files
+          .title 查看所有文件
+          %ul
+            - @virtual_files.each do |document|
+              %li
+                %a{:href => "/manage/documents/#{document.id}"}= document.title

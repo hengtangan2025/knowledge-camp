@@ -1,0 +1,29 @@
+.page-bread-pieces {
+  .bread {
+    border:solid 1px #E6E5E5;
+    background-color: #F9F9F9;
+    border-radius:$border-radius-default;
+
+    .bread{
+      margin-left:-1px + 15px;
+      margin-right:-1px - 15px;
+      margin-bottom: -30px;
+
+      &.current{
+        background-color: #fff;
+        min-height:400px;
+      }
+    }
+
+    .link {
+      padding:10px 30px 10px;
+      font-size: 16px;
+      text-decoration: underline;
+    }
+
+    .link.net {
+      font-size: 24px;line-height: 36px;
+      font-weight: bold;
+    }
+  }
+}

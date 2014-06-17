@@ -1,3 +1,7 @@
+:ruby
+  documents_count = DocumentsStore::Document.count
+  files_count = 0
+
 .page-side.col-pad-2
   .nav
     .back
@@ -18,8 +22,7 @@
       %i.icon.fa.fa-file-text
       .count
         %a{:href => url_for([:manage, @net, :documents]), :data => {:toggle => ['open', 'close']}}
-          - count = DocumentsStore::Document.count
-          #{count} 个文档 
+          #{documents_count} 个文档 
       .new
         %a.btn.btn-rounded.btn-bdb.btn-small{:href => url_for([:new, :manage, @net, :document]), :data => {:toggle => ['open', 'close']}}
           %i.fa.fa-pencil
@@ -28,10 +31,10 @@
     .items.files
       %i.icon.fa.fa-paperclip
       .count
-        %a{:href => 'javascript:;'}
-          文件 0
+        %a{:href => url_for([:manage, @net, :files]), :data => {:toggle => ['open', 'close']}}
+          #{files_count} 个文件
       .new
-        %a.btn.btn-rounded.btn-bdb.btn-small{:href => url_for([:new, :manage, @net, :point])}
+        %a.btn.btn-rounded.btn-bdb.btn-small{:href => url_for([:new, :manage, @net, :file]), :data => {:toggle => ['open', 'close']}}
           %i.fa.fa-upload
           %span 上传文件
 
