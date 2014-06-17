@@ -76,6 +76,12 @@ FilePartUpload.config do
   url "/#{R::STATIC_FILE_URL_PREFIX}/files/:id/file/:name"
 end
 
+module FilePartUpload
+  class FileEntity
+    field :identifier, :type => String
+    index({:identifier => 1})
+  end
+end
 # ---------------------------------------
 DocumentsStore::Document.belongs_to :net,
                                     :class_name  => "KnowledgeNetStore::Net",
