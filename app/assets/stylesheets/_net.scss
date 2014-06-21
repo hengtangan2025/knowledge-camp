@@ -166,6 +166,7 @@ $point-color : darken(#FFB43B, 10%);
   .net {
     @include piece;
     padding: 20px 30px;
+    margin-bottom: 20px;
 
     .name {
       @include -net-title-font;
@@ -173,6 +174,38 @@ $point-color : darken(#FFB43B, 10%);
     }
     .desc {
       color: $text-quiet;
+    }
+  }
+
+  .net-files {
+    @include piece;
+    padding:20px 30px;
+    margin-bottom: 20px;
+    .grid {
+      margin-bottom: 20px;
+    }
+  }
+
+  .net-documents {
+    @include piece;
+    padding:20px 30px;
+    margin-bottom: 20px;
+  }
+
+  section .header {
+    margin-bottom: 20px;
+    @include clearfix;
+    a.title {
+      font-size: 18px;
+      color: #900;
+      height:26px;line-height: 26px;
+      float: left;
+      margin-right: 20px;
+    }
+    a.btn {
+      float: left;
+      padding-left: 10px;
+      padding-right: 10px;
     }
   }
 }

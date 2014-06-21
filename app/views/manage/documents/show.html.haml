@@ -1,23 +1,44 @@
-.page-side.col-pad-1
+- page_title @document.title
 
+:ruby
+  @net = @document.net
+
+  bread_data = [
+    [ :net, @net.name, url_for([:manage, @net]) ]
+  ]
+
+.page-side.col-pad-1
 .page-main.col-pad-10
-  .page-bread-pieces
-    .bread{:style => 'margin-left:10px;margin-right:10px;'}
-      .link.net
-        %a{:href => url_for([:manage, @document.net]), :data => {:toggle => ['open', 'close']}}
-          = @document.net.name
-      .bread.current
-        .documents
-          .title= @document.title
-          .edited #{@editor.name}于#{@document.updated_at}做了最后一次修改
-          .version 当前版本: #{@document.version}
-          - id = @document.id
-          %a.versions{:href => "/manage/documents/#{id}/versions"}
-            历史版本
-          .content= @document.content
-          %a.edit{:href => "/manage/documents/#{id}/edit"}
-            编辑
-          %a.delete{:href => "/manage/documents/#{id}", :data => {:method => :delete, :confirm => "确定删除?"}}
-            删除
-          %a.back{:href => "/manage/nets/#{@document.net.id}/documents"}
-            返回
+  = bread bread_data do
+    .document
+      .row
+        .col-pad-9
+          .editor
+            .page
+              .title= @document.title
+              .content= @document.content
+
+        .col-pad-3
+          .side
+            .info 
+              %strong
+                %span 如果你想修改文档的话：
+
+            %a.edit.btn.btn-rounded.btn-bdb-info{:href => url_for([:edit, :manage, @document])} 编辑修改
+
+            .last-edited
+              %span= @editor.name
+              %span 在
+              %span= @document.updated_at.to_s(:db)
+              %span 进行了最后一次编辑
+            .versions 
+              .current 当前版本: #{@document.version}
+
+            .ops
+              - id = @document.id
+              %a.versions{:href => "/manage/documents/#{id}/versions"}
+                历史版本
+              %a.delete{:href => "/manage/documents/#{id}", :data => {:method => :delete, :confirm => "确定删除?"}}
+                删除
+              %a.back{:href => "/manage/nets/#{@document.net.id}/documents"}
+                返回

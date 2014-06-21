@@ -1,11 +1,13 @@
 module KnowledgeNetPlanStore
-  Plan.send :belongs_to,
-            :net,
-            :class_name => "KnowledgeNetStore::Net"
+  class Plan
+    belongs_to :net,
+               :class_name => "KnowledgeNetStore::Net"
+  end
 
-  Tutorial.send :has_and_belongs_to_many,
-                :points,
-                :class_name => "KnowledgeNetStore::Point"
+  class Tutorial
+    has_and_belongs_to_many :points,
+                            :class_name => "KnowledgeNetStore::Point"
+  end
 end
 
 # -----------------------------------------
@@ -87,5 +89,12 @@ DocumentsStore::Document.belongs_to :net,
                                     :class_name  => "KnowledgeNetStore::Net",
                                     :foreign_key => :net_id
 
-KnowledgeNetStore::Net.has_many :documents,
-                                :class_name => "DocumentsStore::Document"
+module KnowledgeNetStore
+  class Net
+    has_many :documents,
+             :class_name => "DocumentsStore::Document"
+
+    has_many :plans,
+             :class_name => "KnowledgeNetPlanStore::Plan"
+  end
+end

@@ -1,0 +1,17 @@
+.cell-manage-documents.grid
+  - @documents.each do |document|
+    .document
+      :ruby
+        title = document.title
+        content = document.content
+        creator = User.find document.creator_id
+
+      %a.box{:href => url_for([:manage, document]), :data => {:toggle => ['open', 'close']}}
+        .page
+          .title= title
+          .content= content
+      .info
+        .creator-info
+          %span.creator= creator.name
+          %span 编辑于
+          %span.updated_at= document.updated_at.to_s(:db)

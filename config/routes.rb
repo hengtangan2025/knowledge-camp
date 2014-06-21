@@ -26,6 +26,7 @@ Rails.application.routes.draw do
         # TODO 修改 versions 路由 by ben7th
       end
       resources :files, :shallow => true
+      resources :plans, :shallow => true
     end
 
     resources :users, :shallow => true do

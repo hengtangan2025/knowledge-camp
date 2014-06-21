@@ -1,10 +1,12 @@
 module ApplicationHelper
+  # 网页标题
   def page_title(title)
     content_for :page_title do
       title 
     end
   end
 
+  # 头像
   def avatar(user, version = :normal)
     capture_haml {
       haml_tag 'div.-avatar-img', :class => version do
@@ -13,6 +15,7 @@ module ApplicationHelper
     }
   end
 
+  # 层叠式面包屑
   def bread(data, toggle = ['open', 'close'], &block)
     capture_haml {
       haml_tag 'div.page-bread-pieces' do
@@ -39,4 +42,10 @@ module ApplicationHelper
     end
   end
 
+  # 友好的文件大小表示
+  def human_file_size(bytes)
+    return "#{bytes}B" if bytes < 1024
+    return "#{(bytes / 1024.0).round}KB" if bytes < 1048576
+    return "#{(bytes / 1048576.0).round}MB"
+  end
 end

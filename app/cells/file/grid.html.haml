@@ -1,0 +1,18 @@
+.cell-manage-files.grid{:data => {:cols => 3}}
+  - @files.each do |file|
+    .file
+      :ruby
+        info = file.info
+        creator = User.find file.creator_id
+
+      .box.gcell
+        .thumbnail
+        .info
+          .visible-name= file.visible_name
+          .creator-info
+            %span.creator= creator.name
+            %span 添加于
+            %span.updated_at= file.updated_at.to_s(:db)
+            %span ·
+            %span.size= human_file_size info[:size]
+        

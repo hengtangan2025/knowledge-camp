@@ -19,3 +19,19 @@ module KnowledgeNetPlanStore
     end
   end
 end
+
+module VirtualFileSystem
+  class File
+    def self.model_name
+      ActiveModel::Name.new(VirtualFileSystem::File, nil, 'file')
+    end
+  end
+end
+
+module DocumentsStore
+  class Document
+    def self.model_name
+      ActiveModel::Name.new(DocumentsStore::Document, nil, 'document')
+    end
+  end
+end

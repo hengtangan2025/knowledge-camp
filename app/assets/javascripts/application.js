@@ -3,15 +3,15 @@
 //= require turbolinks
 
 // 第三方库
-
 //= require flowjs/flow
 
-// 自己写的
-
-//= require graph-ui
+// gem
 //= require ueditor
-//= require ui-toggle
-//= require net
+
+// 自己写的
 //= require auth
-//= require user
 //= require file
+//= require graph-ui
+//= require net
+//= require ui-toggle
+//= require user
