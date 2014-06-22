@@ -17,8 +17,10 @@ module ApplicationHelper
 
   # 层叠式面包屑
   def bread(data, toggle = ['open', 'close'], &block)
+    mb = data.length * 29
+
     capture_haml {
-      haml_tag 'div.page-bread-pieces' do
+      haml_tag 'div.page-bread-pieces', :style => "margin-bottom:#{mb}px" do
         _bread(data, 0, toggle, &block)
       end
     }

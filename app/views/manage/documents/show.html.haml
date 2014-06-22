@@ -2,9 +2,9 @@
 
 :ruby
   @net = @document.net
-
   bread_data = [
-    [ :net, @net.name, url_for([:manage, @net]) ]
+    [ :net, @net.name, url_for([:manage, @net]) ],
+    [ :documents, '查看所有文档', url_for([:manage, @net, :documents]) ]
   ]
 
 .page-side.col-pad-1

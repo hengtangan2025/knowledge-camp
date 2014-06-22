@@ -48,7 +48,8 @@ html {
 }
 
 body {
-  background: asset_url("layout/body-bg.gif");
+  background-color: #f2f2f2;
+  background-image: asset_url("layout/body-bg.gif");
 
   .page-header {
     background-color: #323232;
@@ -98,7 +99,7 @@ body {
   }
 
   .page-content {
-    margin-top: 50px;
+    margin-top: 30px;
     margin-bottom: 50px;
   }
 

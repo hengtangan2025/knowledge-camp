@@ -7,7 +7,8 @@ $paper-color: #ffffdc;
 }
 
 .page-manage-documents-new,
-.page-manage-documents-show {
+.page-manage-documents-show,
+.page-manage-documents-edit {
   .document {
     padding:30px;
 
@@ -17,6 +18,7 @@ $paper-color: #ffffdc;
       .page {
         margin:0 30px;
         border-left:solid 1px #FCE3B0;
+        min-height: 780px;
 
         .title {
           font-size: 16px;
@@ -30,13 +32,28 @@ $paper-color: #ffffdc;
           background-size:600px 22px;
         }
         .content {
-          min-height: 791px;
+          margin-bottom: -3px;
+          min-height: 660px - 1px + 45px;
           @include bg-line;
           background-size:600px 22px;
           background-repeat: repeat-y;
 
           line-height: 22px;
           padding-left: 15px;
+        }
+
+        .title-editor {
+          font-size: 16px;
+          font-weight: bold;
+          padding-top: 30px;
+          padding-bottom: 22px;
+          padding-left: 15px;
+        }
+        .content-editor {
+          min-height: 660px - 1px;
+          .edui-editor-toolbarbox {
+            margin-right: -30px;
+          }
         }
       }
     }

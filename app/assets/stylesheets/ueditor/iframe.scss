@@ -1,0 +1,33 @@
+// ueditor iframe body 样式
+
+body {
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAoAAAAAcCAMAAADGKP4AAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAAZQTFRF4+Pj////nrelKAAAAAJ0Uk5T/wDltzBKAAAAT0lEQVR42uzSQREAAAzCMObf9GTAI5HQaw6KIgEGxIBgQAwIBsSAYEAMCAbEgGBADAgGxIBgQAwIBsSAYEAMCAbEgGBADAgGZHdAaHoBBgCIeUOBaheL4QAAAABJRU5ErkJggg==);
+  background-size:700px 22px;
+  background-repeat: repeat-y;
+
+  font-family: 
+    "Segoe UI", "Helvetica Neue", 
+    "Helvetica", "Arial", 
+    "sans-serif", "微软雅黑";
+  font-size: 14px;
+  line-height: 22px;
+  margin:0 0 0 15px;
+
+  p { margin: 0; }
+
+  ul, ol {
+    width:auto;
+    padding-left: 30px;
+    p {
+      margin-bottom: 0;
+    }
+  }
+
+  a {
+    color: #2c5d8d;
+  }
+
+  img, embed, object {
+    max-width: 100%;
+  }
+}

@@ -1,10 +1,4 @@
-:ruby
-  documents_count = @net.documents.count
-  files_count = @net.virtual_files.count
-
-  showing_files = @net.virtual_files.unscoped.order(:updated_at => :desc).limit(6)
-
-  showing_documents = @net.documents.order(:updated_at => :desc).limit(6)
+- page_title @net.name
 
 .page-side.col-pad-2
   .nav
@@ -13,15 +7,13 @@
         %i.fa.fa-arrow-left
         %span 退出
 
-    = render_cell :net, :nav_items, @net, :point
-    = render_cell :net, :nav_items, @net, :document
-    = render_cell :net, :nav_items, @net, :file
-    = render_cell :net, :nav_items, @net, :plan
+    - [:point, :document, :file, :plan].each do |model_name|
+      = render_cell :net, :nav_items, @net, model_name
 
 .page-main.col-pad-10
   %section.net
     .name= @net.name
     .desc= @net.desc
 
-  = render_cell :net, :model_section, @net, :file 
-  = render_cell :net, :model_section, @net, :document
+  - [:document, :file].each do |model_name|
+    = render_cell :net, :model_section, @net, model_name

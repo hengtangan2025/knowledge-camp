@@ -20,8 +20,6 @@ jQuery(document).delegate '.page-users-form .submit a.save', 'click', (evt)->
         success: (res)->
           new UIToggle(url).visit()
 
-
-
 jQuery(document).delegate '.page-users-form .users .user input', 'focus', (evt)->
   jQuery('.page-users-form .users .user').removeClass 'focus'
 

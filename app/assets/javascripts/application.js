@@ -15,3 +15,4 @@
 //= require net
 //= require ui-toggle
 //= require user
+//= require document
