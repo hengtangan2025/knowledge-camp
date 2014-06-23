@@ -17,11 +17,12 @@ GIT
 
 GIT
   remote: git://github.com/mindpin/file-part-upload.git
-  revision: 79081d83e6de2408e4ea214546662adb4c6fec95
-  tag: 1.0.3
+  revision: c0c5cfb06fd254ec692b6c5a184b78cb860b86b9
+  tag: 1.0.5
   specs:
     file-part-upload (0.0.1)
       mime-types
+      mini_magick
 
 GIT
   remote: git://github.com/mindpin/generic_controller.git
@@ -48,6 +49,14 @@ GIT
     knowledge-net-store (0.0.1)
 
 GIT
+  remote: git://github.com/mindpin/ueditor.rails.git
+  revision: aa8b508af844d42114a89789459c704d977c03d7
+  tag: v0.0.4
+  specs:
+    ueditor.rails (0.0.4)
+      rails (~> 4.1)
+
+GIT
   remote: git://github.com/mindpin/user-auth.git
   revision: afc6928b1945d7889f1dcef6623624df7d2752f7
   tag: 0.0.7
@@ -70,12 +79,6 @@ GIT
   specs:
     mongoid-versioning (0.0.1)
       mongoid (> 3)
-
-PATH
-  remote: /web/songliang/kaid/ueditor.rails
-  specs:
-    ueditor.rails (0.0.3)
-      rails (~> 4.1)
 
 GEM
   remote: http://ruby.taobao.org/

@@ -59,12 +59,10 @@ gem "documents-store",
     :github => "mindpin/documents-store",
     :tag => "v0.0.3.p1"
 
-# gem "ueditor.rails", 
-#     :github => "mindpin/ueditor.rails", 
-#     :tag => "v0.0.3"
-
 gem 'ueditor.rails',
-    :path => '/web/songliang/kaid/ueditor.rails'
+    # :path => '/web/songliang/kaid/ueditor.rails'
+    :github => 'mindpin/ueditor.rails', 
+    :tag => 'v0.0.4'
 
 # 文件上传，用于用户头像逻辑
 gem 'carrierwave-mongoid', :require => 'carrierwave/mongoid'
@@ -78,4 +76,4 @@ gem 'virtual_file_system',
 # 支持分段上传的文件持久化
 gem 'file-part-upload', 
     :github => 'mindpin/file-part-upload',
-    :tag => '1.0.3'
+    :tag => '1.0.5'

@@ -12,13 +12,17 @@ class Manage::DocumentsController < BaseGenericController
 
   def create
     criteria = @net.documents.where(:creator_id => current_user.id)
-    document = criteria.create(model_params)
+    document = criteria.new(model_params)
+    document.title = "无标题文档 #{Time.now.to_s(:db)}"
 
-    if document.valid?
-      redirect_to "/manage/documents/#{document.id}"
-    else
-      redirect_to "/manage/nets/#{@net.id}/documents/new"
+    if document.save
+      url = url_for([:manage, document])
+      return redirect_to url if !request.xhr?
+      return render :json => {:url => url}
     end
+    
+    return redirect_to "/manage/nets/#{@net.id}/documents/new" if !request.xhr?
+    return render :json => {:error => '创建失败'}, :status => 400
   end
 
   show_with do

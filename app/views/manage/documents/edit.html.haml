@@ -13,10 +13,11 @@
     .document
       .row
         .col-pad-9
-          .editor
-            .page
-              .title= @document.title
-              .content= @document.content
+          .page.editor
+            .title-editor
+              %input{:value => @document.title, :placeholder => '文档标题'}
+            .content-editor
+              %textarea= @document.content
 
         .col-pad-3
           .side
@@ -28,5 +29,5 @@
             .ops
               %a.btn.btn-rounded.btn-bdb-fresh{:href => 'javascript:;'}
                 %span 保　存
-              %a.btn.btn-rounded.btn-bdb{:href => url_for([:manage, @net]), :data => {:toggle => ['open', 'close']}}
+              %a.btn.btn-rounded.btn-bdb{:href => url_for([:manage, @document])}
                 %span 取　消

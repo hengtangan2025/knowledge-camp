@@ -42,7 +42,7 @@ class NetCell < Cell::Rails
     @name_human = model_class.model_name.human
     @title = @name_human
     @count = @net.send(HAS_MANY[name]).send(:count)
-    @models = @net.send(HAS_MANY[name]).limit(limit)
+    @models = @net.send(HAS_MANY[name]).limit(limit).order(:updated_at => :desc)
 
     @more_url = url_for([:manage, @net, @names])
     @new_url = url_for([:new, :manage, @net, @name])

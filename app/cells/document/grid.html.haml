@@ -5,8 +5,8 @@
         title = document.title
         content = document.content
         creator = User.find document.creator_id
-
-      %a.box{:href => url_for([:manage, document]), :data => {:toggle => ['open', 'close']}}
+      .box
+        %a.link{:href => url_for([:manage, document]), :data => {:toggle => ['open', 'close']}}
         .page
           .title= title
           .content= content

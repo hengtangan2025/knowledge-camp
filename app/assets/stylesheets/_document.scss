@@ -1,3 +1,5 @@
+@import "ueditor/mixin";
+
 $paper-color: #ffffdc;
 // $paper-color: #fff;
 
@@ -12,49 +14,77 @@ $paper-color: #ffffdc;
   .document {
     padding:30px;
 
-    .editor {
-      border:solid 1px #E5E5E5;
+    .page {
+      min-height: 786px;
+      padding-left: 31px;
+      padding-right: 30px;
+      position: relative;
       background-color: $paper-color;
-      .page {
-        margin:0 30px;
-        border-left:solid 1px #FCE3B0;
-        min-height: 780px;
+      border:solid 1px #e5e5e5;
 
-        .title {
-          font-size: 16px;
-          font-weight: bold;
-          padding-top: 30px;
-          padding-bottom: 22px;
-          padding-left: 15px;
-          @include bg-line;
-          background-position:left bottom;
-          background-repeat:no-repeat;
-          background-size:600px 22px;
-        }
-        .content {
-          margin-bottom: -3px;
-          min-height: 660px - 1px + 45px;
-          @include bg-line;
-          background-size:600px 22px;
-          background-repeat: repeat-y;
+      &:before {
+        content: "";
+        position: absolute;
+        top:0;bottom:0;
+        left:30px;width:1px;
+        background-color: #FCE3B0;
+      }
 
-          line-height: 22px;
-          padding-left: 15px;
-        }
+      .title {
+        font-size: 20px;
+        font-weight: bold;
+        padding-top: 30px;
+        padding-bottom: 20px;
+        padding-left: 15px;
+        line-height: 30px;
+      }
+      .content {
+        margin-bottom: -3px;
+        min-height: 660px - 1px + 45px;
+        @include bg-line;
+        background-size:600px 22px;
+        background-repeat: repeat-y;
 
-        .title-editor {
-          font-size: 16px;
-          font-weight: bold;
-          padding-top: 30px;
-          padding-bottom: 22px;
-          padding-left: 15px;
-        }
-        .content-editor {
-          min-height: 660px - 1px;
-          .edui-editor-toolbarbox {
-            margin-right: -30px;
+        line-height: 22px;
+        padding-left: 15px;
+
+        @include document-style;
+      }
+
+      .title-editor {
+        font-size: 20px;
+        font-weight: bold;
+        padding-top: 30px;
+        padding-bottom: 20px;
+        padding-left: 15px;
+        line-height: 30px;
+
+        input {
+          height:30px;line-height:30px;
+          border:0 none;
+          padding:0;
+          background: transparent;
+          display: block;
+          width:100%;
+
+          &:focus {
+            outline: 0;
+            background-color:rgba(black, 0.03);
           }
+
+          &::-webkit-input-placeholder {
+            color: #D8CD74
+          }
+           
+          &::-moz-placeholder {
+            color: #D8CD74;
+          }
+
         }
+      }
+      .content-editor {
+        min-height: 660px - 1px;
+        margin-right: -30px;
       }
     }
 
@@ -100,11 +130,27 @@ $paper-color: #ffffdc;
       background-color:$paper-color;
       border:solid 1px $black-10;
       box-shadow:0 1px 1px rgba(black, 0.1);
+      position: relative;
+
+      > a.link {
+        position: absolute;
+        top:0;bottom:0;
+        left:0;right:0;
+
+        &:after {
+          content: "";
+          position: absolute;
+          left:0;right:0;bottom:0;
+          height:20px;
+          border-bottom:solid 10px $paper-color;
+          @include bg-linear-gradient(rgba(#FFFFDC, 0), $paper-color);
+        }
+      }
 
       > .page{
         margin:0 20px;
         border-left:solid 1px #FCE3B0;
-        height:360px;
+        height:360px - 1px;
         overflow: hidden;
 
         .title {
@@ -113,10 +159,6 @@ $paper-color: #ffffdc;
           padding-top: 20px;
           padding-bottom: 16px;
           padding-left: 10px;
-          @include bg-line;
-          background-position:left bottom;
-          background-repeat:no-repeat;
-          background-size:320px 16px;
         }
 
         .content {
@@ -124,16 +166,14 @@ $paper-color: #ffffdc;
           padding-left: 10px;
           font-size: 12px;
           line-height: 16px;
+
           @include bg-line;
           background-size:320px 16px;
           background-repeat: repeat-y;
 
-          p {margin-bottom: 16px;}
-          img {
-            width:14px !important;
-            height:14px !important;
-            vertical-align: top !important;
-          }
+          pointer-events: none;
+
+          @include document-style-small;
         }
       }
     }
@@ -146,4 +186,17 @@ $paper-color: #ffffdc;
       }
     }
   }
+}
+
+// -----------------
+
+.edui-mindpin .edui-editor-iframeholder {
+  overflow: visible !important;
+}
+
+.edui-mindpin .edui-editor-iframeholder
+.CodeMirror.CodeMirror-wrap {
+  top: -15px !important;
+  bottom: 0 !important;
+  height: auto !important;
 }
