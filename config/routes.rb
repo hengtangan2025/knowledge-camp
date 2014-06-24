@@ -43,4 +43,8 @@ Rails.application.routes.draw do
     end
   end
 
+  namespace :api do
+    resources :nets, :shallow => true
+  end
+
 end
