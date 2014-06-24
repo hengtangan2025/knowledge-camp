@@ -12,6 +12,8 @@ init_ue = (content, $content_editor)->
   UE.instants = {}
   
   ue = new UE.ui.Editor
+    # 临时方案 配合 ueditor.rails v0.0.4fix
+    UEDITOR_HOME_URL: '/ueditor/'
     zIndex: 100
     toolbars: [[
       'bold', 'underline', 'strikethrough', 

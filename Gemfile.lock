@@ -50,8 +50,8 @@ GIT
 
 GIT
   remote: git://github.com/mindpin/ueditor.rails.git
-  revision: aa8b508af844d42114a89789459c704d977c03d7
-  tag: v0.0.4
+  revision: d1076d025eda018d506509d022da39555a88748d
+  ref: d1076d02
   specs:
     ueditor.rails (0.0.4)
       rails (~> 4.1)
