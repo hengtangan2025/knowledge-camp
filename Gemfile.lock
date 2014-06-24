@@ -26,10 +26,10 @@ GIT
 
 GIT
   remote: git://github.com/mindpin/generic_controller.git
-  revision: 949166ec3526a670780a6c038d64ae627ae238a2
-  tag: v0.0.2
+  revision: ae6a18598b807f54b9325379249ed05b3742839b
+  tag: v0.0.3
   specs:
-    generic_controller (0.0.1)
+    generic_controller (0.0.3)
       actionpack (~> 4.1.0)
       activemodel (~> 4.1.0)
 
@@ -149,6 +149,7 @@ GEM
     haml (4.0.5)
       tilt
     hike (1.2.3)
+    htmldiff (0.0.1)
     i18n (0.6.9)
     jbuilder (2.1.0)
       activesupport (>= 3.0.0, < 5)
@@ -285,6 +286,7 @@ DEPENDENCIES
   file-part-upload!
   generic_controller!
   haml
+  htmldiff
   jbuilder (~> 2.0)
   jquery-rails
   kaminari (~> 0.15.1)

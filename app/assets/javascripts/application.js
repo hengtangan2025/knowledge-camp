@@ -13,6 +13,8 @@
 //= require file
 //= require graph-ui
 //= require net
-//= require ui-toggle
 //= require user
 //= require document
+
+//= require tricks/ui-toggle
+//= require tricks/fixtop

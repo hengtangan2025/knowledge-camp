@@ -10,20 +10,24 @@
     .document
       .row
         .col-pad-9
-          .page.editor{:data => {:url => url_for([:manage, @net, :documents])}}
+          .page.editor{:data => {:url => url_for([:manage, @net, :documents]), :method => :post}}
             .title-editor
               %input{:value => @document.title, :placeholder => '文档标题'}
             .content-editor
+              %textarea= @document.content
 
         .col-pad-3
-          .side
+          .side{:data => {:'fixtop-offset' => 30}}
+            .info
+              %strong 你正在创建一篇新的文档
             .info 
-              %strong
-                %span 你可以在这里撰写文档，
-                %span 点击“保存”按钮
-                %span 来保存你的工作。
+              %span 你可以在这里快速撰写简单的文档，
+              %span 点击 “保存” 按钮来保存你的工作。
             .ops
               %a.save.btn.btn-rounded.btn-bdb-fresh{:href => 'javascript:;'}
-                %span 保　存
-              %a.cancel.btn.btn-rounded.btn-bdb{:href => url_for([:manage, @net]), :data => {:toggle => ['open', 'close']}}
-                %span 取　消
+                %i.fa.fa-check
+                %span 确定创建
+
+              %span 或者
+              %a.cancel{:href => url_for([:manage, @net]), :data => {:toggle => ['open', 'close']}}
+                %span 按这里取消并返回

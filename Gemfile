@@ -28,6 +28,7 @@ gem 'cells', '~> 3.10.1' # 用于复用一些前端组件
 gem "simple_form", "~> 3.0.2"
 gem "unicorn"
 gem "rest-client" # 简化 http 请求
+gem "htmldiff"
 
 # -------------
 
@@ -45,7 +46,7 @@ gem 'knowledge-net-store',
 
 gem "generic_controller",
     :github => "mindpin/generic_controller",
-    :tag => "v0.0.2"
+    :tag => "v0.0.3"
 
 gem "user-auth",
     :github => "mindpin/user-auth",

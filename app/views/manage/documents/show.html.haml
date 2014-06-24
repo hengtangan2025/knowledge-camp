@@ -1,11 +1,11 @@
-- page_title @document.title
-
 :ruby
   @net = @document.net
   bread_data = [
     [ :net, @net.name, url_for([:manage, @net]) ],
     [ :documents, '查看所有文档', url_for([:manage, @net, :documents]) ]
   ]
+
+- page_title "#{@net.name}: #{@document.title}"
 
 .page-side.col-pad-1
 .page-main.col-pad-10
@@ -20,24 +20,16 @@
         .col-pad-3
           .side
             .info 
-              %strong
-                %span 如果你想修改文档的话：
-
-            %a.edit.btn.btn-rounded.btn-bdb-info{:href => url_for([:edit, :manage, @document])} 编辑修改
-
-            .last-edited
-              %span= @editor.name
-              %span 在
-              %span= @document.updated_at.to_s(:db)
-              %span 进行了最后一次编辑
-            .versions 
-              .current 当前版本: #{@document.version}
-
+              %span 你随时可以对这里的文档进行编辑修改，所有修改的版本都将被记录。
             .ops
-              - id = @document.id
-              %a.versions{:href => "/manage/documents/#{id}/versions"}
-                历史版本
-              %a.delete{:href => "/manage/documents/#{id}", :data => {:method => :delete, :confirm => "确定删除?"}}
-                删除
-              %a.back{:href => "/manage/nets/#{@document.net.id}/documents"}
-                返回
+              %a.edit.btn.btn-rounded.btn-bdb-info{:href => url_for([:edit, :manage, @document])} 
+                %i.fa.fa-pencil
+                %span 编辑修改
+
+          .side.versions
+            = render_cell :document, :version_info, @document
+
+          .model-ops
+            %a.delete{:href => url_for([:manage, @document]), :data => {:method => :delete, :confirm => "确定要删除这个文档吗？"}}
+              %i.fa.fa-trash-o
+              %span 删除文档…

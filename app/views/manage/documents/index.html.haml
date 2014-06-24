@@ -7,5 +7,10 @@
 .page-main.col-pad-10
   = bread bread_data do
     .documents
-      .title 查看所有文档
+      .header
+        .title 查看所有文档
+        %a.btn.btn-rounded.btn-bdb.btn-small{:href => url_for([:new, :manage, @net, :document]), :data => {:toggle => ['open', 'close']}}
+          %i.fa.fa-pencil
+          %span= I18n.t('views.new.document')
+
       = render_cell :document, :grid, @documents

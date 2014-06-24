@@ -1,14 +1,36 @@
+@mixin html-diff-mark {
+  ins {
+    text-decoration: none;
+    background-color: #dfd;
+    border:dotted 1px green;
+  }
+  del {
+    text-decoration: line-through;
+    background-color: #fdd;
+    border:dotted 1px brown;
+  }
+}
+
 @mixin document-style {
   p { margin: 0; }
 
   ul, ol {
     width:auto;
     padding-left: 30px;
+    margin:0;
   }
 
-  a { color: #2c5d8d; }
+  // a { color: #2c5d8d; }
+  a { color:#2A70E8; }
 
-  img, embed, object { max-width: 100%; }
+  img, embed, object { 
+    max-width: 100%; 
+    margin-right: 5px;
+  }
+
+  &.diff {
+    @include html-diff-mark;
+  }
 }
 
 @mixin document_style_small {
@@ -20,11 +42,15 @@
   ul, ol {
     width:auto;
     padding-left: 22px;
+    margin:0;
   }
 
+  a { color:#2a70e8; }
+
   img {
-    width:14px !important;
-    height:14px !important;
+    max-width:16px !important;
+    max-height:16px !important;
     vertical-align: top !important;
+    margin-right: 3px;
   }
 }

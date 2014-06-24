@@ -1,3 +1,9 @@
+class MindpinHTMLDiff
+  class << self
+    include HTMLDiff
+  end
+end
+
 module KnowledgeNetPlanStore
   class Plan
     belongs_to :net,
@@ -84,10 +90,43 @@ module FilePartUpload
     index({:identifier => 1})
   end
 end
+
 # ---------------------------------------
-DocumentsStore::Document.belongs_to :net,
-                                    :class_name  => "KnowledgeNetStore::Net",
-                                    :foreign_key => :net_id
+
+module DocumentsStore
+  class Document
+    belongs_to :creator,
+               :class_name => "User",
+               :foreign_key => :creator_id
+
+    belongs_to :last_editor,
+               :class_name => "User",
+               :foreign_key => :last_editor_id
+
+    belongs_to :net,
+               :class_name  => "KnowledgeNetStore::Net",
+               :foreign_key => :net_id
+
+    default_scope -> {
+      order_by :updated_at => :desc
+    }
+
+    before_validation :_set_default_title
+    def _set_default_title
+      self.title = "无题 #{Time.now.to_s(:db)}" if self.title.blank?
+    end
+
+    # 恢复到指定版本
+    # version_obj 是对象，不是编号
+    # editor 需要传入 current_user
+    def restore_version(version_obj, editor)
+      self.title = version_obj.title
+      self.content = version_obj.content
+      self.last_editor = editor
+      self.save
+    end
+  end
+end
 
 module KnowledgeNetStore
   class Net

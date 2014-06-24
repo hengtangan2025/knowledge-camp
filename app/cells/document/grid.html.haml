@@ -4,7 +4,6 @@
       :ruby
         title = document.title
         content = document.content
-        creator = User.find document.creator_id
       .box
         %a.link{:href => url_for([:manage, document]), :data => {:toggle => ['open', 'close']}}
         .page
@@ -12,6 +11,9 @@
           .content= content
       .info
         .creator-info
-          %span.creator= creator.name
+          %span.creator= document.creator.name
           %span 编辑于
-          %span.updated_at= document.updated_at.to_s(:db)
+          %span.updated_at= document.updated_at
+        .version-info
+          %span= document.versions.count + 1
+          %span 个历史版本

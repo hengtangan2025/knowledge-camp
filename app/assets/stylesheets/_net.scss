@@ -62,18 +62,42 @@ $point-color : darken(#FFB43B, 10%);
     .stat {
       position: absolute;
       bottom: 15px;
+      left:15px;right:15px;
       font-size: 12px;
       color: $text-quiet;
-      .points {
-        padding-left:21px;
+
+      .it {
+        float: left;
+        width:50%;
+        @include border-box;
+
+        .count {height:16px;line-height:16px;}
+        .text {height:16px;line-height:16px;}
+      }
+
+      .it.points {
+        $w:32px;
+        padding-left:$w + 10px;
         &:before {
           content: "";
           position: absolute;
-          height:16px;width:16px;
-          border:solid 4px $point-color;
+          height:$w;width:$w;
+          border:solid 6px $point-color;
           @include border-box;
           border-radius:20px;
           left:0;
+          opacity: 0.5;
+        }
+      }
+
+      .it.documents {
+        i {
+          color:$area-info;
+          font-size: 32px;
+          margin-right:10px;
+          line-height:32px;
+          float:left;
+          opacity: 0.5;
         }
       }
     }
@@ -193,19 +217,6 @@ $point-color : darken(#FFB43B, 10%);
   }
 
   section .header {
-    margin-bottom: 20px;
-    @include clearfix;
-    a.title {
-      font-size: 18px;
-      color: #900;
-      height:26px;line-height: 26px;
-      float: left;
-      margin-right: 20px;
-    }
-    a.btn {
-      float: left;
-      padding-left: 10px;
-      padding-right: 10px;
-    }
+    @include section_header_with_button;
   }
 }

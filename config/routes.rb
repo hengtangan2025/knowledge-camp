@@ -19,11 +19,14 @@ Rails.application.routes.draw do
 
       resources :points, :shallow => true
       resources :documents, :shallow => true do
-        member do
-          get :versions
-          get "versions/:version", :to => :version
+        resources :versions, 
+                  :shallow => true, 
+                  :controller => :document_versions do
+          collection do
+            get ":version", :action => :version
+            post ":version/restore", :action => :restore
+          end
         end
-        # TODO 修改 versions 路由 by ben7th
       end
       resources :files, :shallow => true
       resources :plans, :shallow => true

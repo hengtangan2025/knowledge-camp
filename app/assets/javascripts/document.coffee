@@ -12,6 +12,7 @@ init_ue = (content, $content_editor)->
   UE.instants = {}
   
   ue = new UE.ui.Editor
+    zIndex: 100
     toolbars: [[
       'bold', 'underline', 'strikethrough', 
       'insertorderedlist', 'insertunorderedlist',
@@ -23,11 +24,18 @@ init_ue = (content, $content_editor)->
     ue.setContent content
     $content_editor.fadeIn(200)
 
+    # 格式栏顶部浮动
+    $toolbar = jQuery('.edui-mindpin.edui-editor-toolbarboxouter')
+    add_fixtop($toolbar, 10, 102)
+    check_fixtop()
+    $parent = $toolbar.parent()
+    $parent.height $parent.height()
+
   ue.render $content_editor[0]
 
   return ue
 
-init_save_button = ($title_ipt, ue, url)->
+init_save_button = ($title_ipt, ue, url, method)->
   $btn = jQuery('.document .ops .save')
 
   $btn.on 'click', ->
@@ -36,7 +44,7 @@ init_save_button = ($title_ipt, ue, url)->
 
     jQuery.ajax
       url: url
-      type: 'POST'
+      type: method
       data:
         document:
           title: title
@@ -57,4 +65,5 @@ jQuery(document).on 'ready page:load', ->
     ue = init_ue content, $content_editor
 
     url = $editor.data('url')
-    init_save_button($title_ipt, ue, url)
+    method = $editor.data('method')
+    init_save_button($title_ipt, ue, url, method)

@@ -34,6 +34,28 @@ $border-dash: dashed 1px $black-30;
   .-avatar-img {@include square($width);}
 }
 
+// 页面布局块的顶部标题和按钮
+@mixin section_header_with_button {
+  margin-bottom: 20px;
+  @include clearfix;
+  .title {
+    font-size: 18px;
+    height:26px;line-height: 26px;
+    float: left;
+    margin-right: 20px;
+  }
+
+  a.title {
+    color: #900;
+  }
+
+  a.btn {
+    float: left;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+}
+
 @import "kaminari";
 @import "auth";
 @import "graph";

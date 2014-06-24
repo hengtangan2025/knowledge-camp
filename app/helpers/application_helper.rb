@@ -50,4 +50,25 @@ module ApplicationHelper
     return "#{(bytes / 1024.0).round}KB" if bytes < 1048576
     return "#{(bytes / 1048576.0).round}MB"
   end
+
+  # 比较不同文档之间的差异，返回添加了差异标记的 html 文本
+  # 参考：http://www.rohland.co.za/index.php/2009/10/31/csharp-html-diff-algorithm/
+  # 使用了：https://github.com/myobie/htmldiff
+  # 这里的 version_obj 是对象，不是编号
+  def show_document_version_change(document, version_obj)
+    if version_obj.version == 1
+      return {
+        :title => MindpinHTMLDiff.diff('', version_obj.title).html_safe,
+        :content => MindpinHTMLDiff.diff('', version_obj.content).html_safe
+      }
+    end
+
+    prev_version_obj = 
+      document.versions.unscoped.where(:version.lt => version_obj.version).last
+
+    return {
+      :title => MindpinHTMLDiff.diff(prev_version_obj.title, version_obj.title).html_safe,
+      :content => MindpinHTMLDiff.diff(prev_version_obj.content, version_obj.content).html_safe
+    }
+  end
 end
