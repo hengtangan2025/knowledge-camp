@@ -28,5 +28,4 @@ show_auth_info = (klass, msg, func)->
       'opacity': 1
       'margin-left': 30
     , ->
-      console.log func
       func() if func
