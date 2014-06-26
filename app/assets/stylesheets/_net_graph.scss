@@ -1,30 +1,55 @@
-body.graph{
-  $sidebar-width:100px;
+$viewer-bgc: #232B2D;
 
+body.net-graph{
   .page-content {
-    .sidebar {
-      position:fixed;
-      top:0;left:0;bottom:0;
-      width:$sidebar-width;
-      background-color:#1B2224;
-    }
-
-    .graph-paper {
-      position:fixed;
-      top:0;right:0;bottom:0;left:$sidebar-width;
-      background-color:#232B2D;
-      overflow:hidden;
-    }
+    position: fixed;
+    top:0;left:0;
+    right:0;bottom:0;
+    background: asset-data-url("layout/net-graph-bg.png");
+    margin:0;
+    padding:20px;
   }
 
-  @include -below(pad) {
+  $sidebar-width:160px;
 
-    .page-content {
-      .sidebar{ width:0; }
-      .graph-paper { left:0;}
-    }
+  .page-content .graph-paper {
+    position:fixed;
+    top:20px;right:20px;bottom:20px;left:20px + $sidebar-width;
+    background-color:$viewer-bgc;
+    overflow:hidden;
+    box-shadow:0 0 20px rgba(0,0,0,0.8);
   }
 
+  .page-content .sidebar {
+    position: fixed;
+    top:20px;left:20px;bottom:20px;
+    width:$sidebar-width - 20px;
+    color:white;
+
+    .net-info {
+      margin-bottom: 20px;
+      .name {
+        font-size: 18px;
+        font-weight: bold;
+        margin-bottom: 10px;
+      }
+      .desc {
+        color: $black-30;
+        margin-bottom: 10px;
+      }
+      .points-count {
+        color: $black-30;
+      }
+    }
+
+    .back {
+      padding-top: 20px;
+      border-top:dashed 1px $black-60;
+
+      font-size: 16px;
+      a {color:$black-30;}
+    }
+  }
 }
 
 
@@ -229,7 +254,7 @@ body.graph{
     }
 
     circle {
-      fill: #232B2D;
+      fill: $viewer-bgc;
       stroke: #65B2EF;
       stroke-width: 5px;
       cursor: pointer;

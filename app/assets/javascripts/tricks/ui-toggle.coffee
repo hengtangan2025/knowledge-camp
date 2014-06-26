@@ -25,10 +25,12 @@
     out_mode:
       fade: 平滑渐隐
       down: 平滑渐隐 + 下移
+      open: 平滑渐隐 + 两侧打开
 
     in_mode:
       fade: 平滑渐现
       up:   平滑渐现 + 上移
+      close: 平滑渐现 + 两侧合拢
 ###
 class Animator
   constructor: (@out_mode, @in_mode)->

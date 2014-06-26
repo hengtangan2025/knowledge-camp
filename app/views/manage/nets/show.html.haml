@@ -16,8 +16,9 @@
     .desc= @net.desc
 
   %section
-    %a.btn.btn-rounded.btn-bdb-dream{:href => url_for([:graph, :manage, @net])}
-      %span 预览知识网络
+    %a.btn.btn-rounded.btn-bdb-dream{:href => url_for([:graph, :manage, @net]), :data => {:toggle => ['fade', 'fade']}}
+      %i.fa.fa-circle-o
+      %span 图形化展现
 
   - [:point, :document, :file].each do |model_name|
     = render_cell :net, :model_section, @net, model_name

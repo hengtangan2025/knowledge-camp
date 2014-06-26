@@ -60,12 +60,13 @@ $border-dash: dashed 1px $black-30;
 
 @import "kaminari";
 @import "auth";
-@import "graph";
 @import "net";
 @import "document";
 @import "user";
 @import "bread";
 @import "files";
+
+@import "net_graph";
 
 html {
   overflow-y:scroll;
