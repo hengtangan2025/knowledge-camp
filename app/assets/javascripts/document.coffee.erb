@@ -28,8 +28,8 @@ init_ue = (content, $content_editor)->
 
     # 格式栏顶部浮动
     $toolbar = jQuery('.edui-mindpin.edui-editor-toolbarboxouter')
-    add_fixtop($toolbar, 10, 102)
-    check_fixtop()
+    Fixtop.add($toolbar, 10, 102)
+    Fixtop.run()
     $parent = $toolbar.parent()
     $parent.height $parent.height()
 
