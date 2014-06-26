@@ -169,7 +169,7 @@ _init_submit_button = (uploader)->
       data:
         files: data
       success: (res)->
-        new UIToggle(url).visit()
+        Turbolinks.AniToggle.visit(url, ['open', 'close'])
 
 
 jQuery(document).on 'ready page:load', ready

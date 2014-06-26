@@ -12,6 +12,7 @@ init_ue = (content, $content_editor)->
   UE.instants = {}
   
   ue = new UE.ui.Editor
+    initialFrameWidth: '100%'
     iframeCssUrl: "<%= asset_path('ueditor/iframe.css') %>"
     zIndex: 100
     toolbars: [[

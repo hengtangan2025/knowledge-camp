@@ -15,5 +15,9 @@
     .name= @net.name
     .desc= @net.desc
 
-  - [:document, :file].each do |model_name|
+  %section
+    %a.btn.btn-rounded.btn-bdb-dream{:href => url_for([:graph, :manage, @net])}
+      %span 预览知识网络
+
+  - [:point, :document, :file].each do |model_name|
     = render_cell :net, :model_section, @net, model_name

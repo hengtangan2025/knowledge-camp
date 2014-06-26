@@ -3,10 +3,6 @@
 @import "doc_mixin";
 
 body {
-  background-image: asset-data-url("layout/doc-bg-line.png");
-  background-size:700px 22px;
-  background-repeat: repeat-y;
-
   font-family: 
     "Segoe UI", "Helvetica Neue", 
     "Helvetica", "Arial", 
@@ -15,12 +11,16 @@ body {
   line-height: 22px;
   margin:0 30px 0 15px;
 
-  &:after {
+  &:before {
+    background-image: asset-data-url("layout/doc-bg-line.png");
+    background-size:100% 22px;
+    background-repeat: repeat-y;
+
     content: "";
     position: absolute;
     top:0;bottom:0;
-    right:0;width:30px;
-    background: asset-data-url("layout/doc-bg-stackexange.jpg");
+    left:0; right:30px;
+    pointer-events: none;
   }
 
   @include document-style;

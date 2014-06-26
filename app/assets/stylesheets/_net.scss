@@ -206,11 +206,17 @@ $point-color : darken(#FFB43B, 10%);
     .items.documents i.icon {color:$area-info;}
   }
 
-  .net {
+  section {
     @include piece;
-    padding: 20px 30px;
-    margin-bottom: 20px;
+    padding:20px;
+    margin-bottom:10px;
 
+    .header {
+      @include section_header_with_button;
+    }
+  }
+
+  section.net {
     .name {
       @include -net-title-font;
       height: 36px; line-height: 36px;
@@ -218,24 +224,5 @@ $point-color : darken(#FFB43B, 10%);
     .desc {
       color: $text-quiet;
     }
-  }
-
-  .net-files {
-    @include piece;
-    padding:20px 30px;
-    margin-bottom: 20px;
-    .grid {
-      margin-bottom: 20px;
-    }
-  }
-
-  .net-documents {
-    @include piece;
-    padding:20px 30px;
-    margin-bottom: 20px;
-  }
-
-  section .header {
-    @include section_header_with_button;
   }
 }

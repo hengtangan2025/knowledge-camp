@@ -1,15 +1,18 @@
 @import "ueditor/doc_mixin";
 
-// $paper-bg: #ffffdc;
+$paper-bg: #ffffdc;
+$paper-bg-color: $paper-bg;
 // $paper-bg: #fff;
-$paper-bg: asset-data-url("layout/doc-bg-stackexange.jpg");
+// $paper-bg: $area-dawn;
+// $paper-bg: asset-data-url("layout/doc-bg-stackexange.jpg");
+
+
 $left-line-color: #FCE3B0;
 $title-color: $black-70;
 $paper-shadow: 1px 1px 1px rgba(black, 0.1);
 
 @mixin bg-line {
-  // background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAoAAAAAcCAIAAAB%2BlJllAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAIFJREFUeNrs1TERACAMADHgOuBfF0LYK6C46DEkEn75WXUGANBrSQAABgwABgwAGDAAGDAAYMAAYMAAgAEDgAEDAAYMAAYMAAYMABgwABgwAGDAAGDAAIABA4ABAwAGDAAGDAAGDAAYMAAYMABgwABgwACAAQPAp%2BLmVgEAmj0BBgAi8gTnyYfT8wAAAABJRU5ErkJggg%3D%3D);
-  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAoAAAAAcCAMAAADGKP4AAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAAZQTFRF4+Pj////nrelKAAAAAJ0Uk5T/wDltzBKAAAAT0lEQVR42uzSQREAAAzCMObf9GTAI5HQaw6KIgEGxIBgQAwIBsSAYEAMCAbEgGBADAgGxIBgQAwIBsSAYEAMCAbEgGBADAgGZHdAaHoBBgCIeUOBaheL4QAAAABJRU5ErkJggg==);
+  background-image: asset-data-url("layout/doc-bg-line.png");
 }
 
 .page-manage-documents-new,
@@ -17,7 +20,7 @@ $paper-shadow: 1px 1px 1px rgba(black, 0.1);
 .page-manage-documents-edit,
 .page-manage-document-versions-version {
   .document {
-    padding:30px;
+    padding:20px;
 
     .page {
       min-height: 786px;
@@ -50,7 +53,7 @@ $paper-shadow: 1px 1px 1px rgba(black, 0.1);
       .content {
         min-height: 22px * 32 - 1px;
         @include bg-line;
-        background-size:600px 22px;
+        background-size:100% 22px;
         background-repeat: repeat-y;
 
         line-height: 22px;
@@ -205,8 +208,8 @@ $paper-shadow: 1px 1px 1px rgba(black, 0.1);
           position: absolute;
           left:0;right:0;bottom:0;
           height:20px;
-          border-bottom:solid 10px #FDFDF5;
-          @include bg-linear-gradient(rgba(#FFFFDC, 0), #FDFDF5);
+          border-bottom:solid 10px $paper-bg-color;
+          @include bg-linear-gradient(rgba($paper-bg-color, 0), $paper-bg-color);
         }
       }
 
@@ -232,7 +235,7 @@ $paper-shadow: 1px 1px 1px rgba(black, 0.1);
           line-height: 16px;
 
           @include bg-line;
-          background-size:320px 16px;
+          background-size:100% 16px;
           background-repeat: repeat-y;
 
           pointer-events: none;

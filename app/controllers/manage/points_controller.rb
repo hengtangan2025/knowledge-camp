@@ -1,6 +1,10 @@
-class PointsController < BaseGenericController
+class Manage::PointsController < BaseGenericController
   set_model KnowledgeNetStore::Point,
     :allow_attrs  => [:name, :desc, {:parent_ids => []}]
+
+  def index
+    @net = KnowledgeNetStore::Net.find(params[:net_id])
+  end
 
   def new
     @net = KnowledgeNetStore::Net.find(params[:net_id])
@@ -15,7 +19,7 @@ class PointsController < BaseGenericController
     @net = KnowledgeNetStore::Net.find(params[:net_id])
     @point = @net.points.build(model_params)
     if @point.save
-      return redirect_to @net
+      return redirect_to [:manage, @net, :points]
     end
     render :form
   end
