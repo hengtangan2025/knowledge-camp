@@ -63,8 +63,7 @@ gem "documents-store",
 gem 'ueditor.rails',
     # :path => '/web/songliang/kaid/ueditor.rails'
     :github => 'mindpin/ueditor.rails', 
-    # :tag => 'v0.0.4'
-    :ref => 'fc9ab22'
+    :tag => 'v0.0.5'
 
 # 文件上传，用于用户头像逻辑
 gem 'carrierwave-mongoid', :require => 'carrierwave/mongoid'

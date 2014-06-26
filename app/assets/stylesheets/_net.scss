@@ -150,36 +150,55 @@ $point-color : darken(#FFB43B, 10%);
     .items {
       position: relative;
       margin-top: 20px;
-      padding-top: 40px;
       border-top:dashed 1px $black-20;
 
-      .count {
+      a.index {
+        // @include dev;
+        display: block;
         margin-bottom: 10px;
-        font-size: 16px;
-        font-weight: bold;
+        // padding-left: 40px;
+        margin-top: 10px;
+
+
+        .count {
+          padding-left: 40px;
+          font-size: 16px;
+          font-weight: bold;
+          font-family: $font-family-serif;
+        }
+        .text {
+          padding-left: 40px;
+          font-weight: bold;
+        }
       }
+
       .new {
         a.btn {display:block;}
       }
     }
 
+    @mixin itemicon{
+      top:18px;
+      position: absolute;
+      opacity: 0.5;
+      pointer-events: none;
+    };
+
     .items.points {
       &:before {
-        content: "";
-        position: absolute;
-        width:20px;height:20px;
+        @include itemicon;
         @include border-box;
-        border:solid 4px $point-color;
+        content: "";
+        width:30px;height:30px;
+        border:solid 6px $point-color;
         border-radius:40px;
-        top:11px;
       }
     }
 
     .items.documents, .items.files, .items.plans {
       i.icon {
-        position: absolute;
-        top:11px;
-        font-size:20px;
+        @include itemicon;
+        font-size:30px;
         color:$area-night;
       }
     }

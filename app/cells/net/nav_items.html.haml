@@ -1,9 +1,11 @@
 .items{:class => @names}
   - if @model_icon_klass.present?
     %i.icon.fa{:class => @model_icon_klass}
-  .count
-    %a{:href => @more_url, :data => @data_toggle}
-      #{@count} 个#{@name_human} 
+
+  %a.index{:href => @more_url, :data => @data_toggle}
+    .count= @count
+    .text= @name_human
+
   .new
     %a.btn.btn-rounded.btn-bdb.btn-small{:href => @new_url, :data => @data_toggle}
       %i.fa{:class => @new_icon_klass}

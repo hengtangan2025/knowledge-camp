@@ -11,6 +11,8 @@ _fixtop_data = []
 # 当窗口滚动到距元素顶部距离超过 offset 时
 # 触发浮动效果
 add_fixtop = ($elm, offset, zidx)->
+  clear_fix_top {elm: $elm}
+  
   zindex = zidx || 1 
   ot = $elm.offset().top
   data = 
@@ -28,32 +30,39 @@ init_fixtop_data = ->
     offset = $elm.data('fixtop-offset')
     add_fixtop $elm, offset
 
-jQuery(document).on 'ready page:load', ->
+jQuery(document).on 'ready page:load page:restore', ->
   _fixtop_data = []
   init_fixtop_data()
+  check_fixtop()
 
 check_fixtop = ->
   scrolltop = jQuery(document).scrollTop()
   for data in _fixtop_data
-    $elm = data.elm
-
     if scrolltop > data.triggertop
-      $elm
-        .addClass('-fixtop')
-        .css
-          'position': 'fixed'
-          'top': data.offset
-          'left': $elm.offset().left
-          'width': $elm.width()
-          'z-index': data.zindex
+      add_fix_css(data)
     else
-      $elm
-        .removeClass('-fixtop')
-        .css
-          'position': ''
-          'top': ''
-          'left': ''
-          'width': ''
+      clear_fix_top(data)
+
+add_fix_css = (data)->
+  $elm = data.elm
+  $elm
+    .addClass('-fixtop')
+    .css
+      'position': 'fixed'
+      'top': data.offset
+      'left': $elm.offset().left
+      'width': $elm.width()
+      'z-index': data.zindex
+
+clear_fix_top = (data)->
+  $elm = data.elm
+  $elm
+    .removeClass('-fixtop')
+    .css
+      'position': ''
+      'top': ''
+      'left': ''
+      'width': ''
 
 jQuery(document).on 'scroll', check_fixtop
 

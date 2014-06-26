@@ -1,7 +1,11 @@
-@import "ueditor/mixin";
+@import "ueditor/doc_mixin";
 
-$paper-color: #ffffdc;
-// $paper-color: #fff;
+// $paper-bg: #ffffdc;
+// $paper-bg: #fff;
+$paper-bg: asset-data-url("layout/doc-bg-stackexange.jpg");
+$left-line-color: #FCE3B0;
+$title-color: $black-70;
+$paper-shadow: 1px 1px 1px rgba(black, 0.1);
 
 @mixin bg-line {
   // background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAoAAAAAcCAIAAAB%2BlJllAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAIFJREFUeNrs1TERACAMADHgOuBfF0LYK6C46DEkEn75WXUGANBrSQAABgwABgwAGDAAGDAAYMAAYMAAgAEDgAEDAAYMAAYMAAYMABgwABgwAGDAAGDAAIABA4ABAwAGDAAGDAAGDAAYMAAYMABgwABgwACAAQPAp%2BLmVgEAmj0BBgAi8gTnyYfT8wAAAABJRU5ErkJggg%3D%3D);
@@ -20,15 +24,16 @@ $paper-color: #ffffdc;
       padding-left: 31px;
       padding-right: 30px;
       position: relative;
-      background-color: $paper-color;
+      background: $paper-bg;
       border:solid 1px #e5e5e5;
+      box-shadow: $paper-shadow;
 
       &:before {
         content: "";
         position: absolute;
         top:0;bottom:0;
         left:30px;width:1px;
-        background-color: #FCE3B0;
+        background-color: $left-line-color;
       }
 
       .title {
@@ -38,6 +43,7 @@ $paper-color: #ffffdc;
         padding-bottom: 30px;
         padding-left: 15px;
         line-height: 30px;
+        color: $title-color;
 
         &.diff {@include html-diff-mark;}
       }
@@ -66,15 +72,12 @@ $paper-color: #ffffdc;
 
           &:focus {
             outline: 0;
-            background-color:rgba(black, 0.03);
+            background-color:rgba(black, 0.02);
           }
 
-          &::-webkit-input-placeholder {
-            color: #D8CD74
-          }
-           
+          &::-webkit-input-placeholder,
           &::-moz-placeholder {
-            color: #D8CD74;
+            color: $black-30;
           }
         }
       }
@@ -187,9 +190,9 @@ $paper-color: #ffffdc;
       &:hover {text-decoration: none;}
 
       margin-bottom: 5px;
-      background-color:$paper-color;
+      background:$paper-bg;
       border:solid 1px $black-10;
-      box-shadow:0 1px 1px rgba(black, 0.1);
+      box-shadow:$paper-shadow;
       position: relative;
 
       > a.link {
@@ -202,14 +205,14 @@ $paper-color: #ffffdc;
           position: absolute;
           left:0;right:0;bottom:0;
           height:20px;
-          border-bottom:solid 10px $paper-color;
-          @include bg-linear-gradient(rgba(#FFFFDC, 0), $paper-color);
+          border-bottom:solid 10px #FDFDF5;
+          @include bg-linear-gradient(rgba(#FFFFDC, 0), #FDFDF5);
         }
       }
 
       > .page{
         margin:0 20px;
-        border-left:solid 1px #FCE3B0;
+        border-left:solid 1px $left-line-color;
         height:360px - 1px;
         overflow: hidden;
 
@@ -219,6 +222,7 @@ $paper-color: #ffffdc;
           padding-top: 20px;
           padding-bottom: 16px;
           padding-left: 10px;
+          color: $title-color;
         }
 
         .content {

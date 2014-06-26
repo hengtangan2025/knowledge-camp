@@ -1,9 +1,9 @@
 // ueditor iframe body 样式
 
-@import "mixin";
+@import "doc_mixin";
 
 body {
-  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAoAAAAAcCAMAAADGKP4AAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAAZQTFRF4+Pj////nrelKAAAAAJ0Uk5T/wDltzBKAAAAT0lEQVR42uzSQREAAAzCMObf9GTAI5HQaw6KIgEGxIBgQAwIBsSAYEAMCAbEgGBADAgGxIBgQAwIBsSAYEAMCAbEgGBADAgGZHdAaHoBBgCIeUOBaheL4QAAAABJRU5ErkJggg==);
+  background-image: asset-data-url("layout/doc-bg-line.png");
   background-size:700px 22px;
   background-repeat: repeat-y;
 
@@ -20,7 +20,7 @@ body {
     position: absolute;
     top:0;bottom:0;
     right:0;width:30px;
-    background-color: #FFFFDC;
+    background: asset-data-url("layout/doc-bg-stackexange.jpg");
   }
 
   @include document-style;

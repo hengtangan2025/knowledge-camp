@@ -1,7 +1,7 @@
 - page_title @net.name
 
 .page-side.col-pad-2
-  .nav
+  .nav{:data => {:'fixtop-offset' => 30}}
     .back
       %a{:href => url_for([:manage, :nets]), :data => {:toggle => true}}
         %i.fa.fa-arrow-left
