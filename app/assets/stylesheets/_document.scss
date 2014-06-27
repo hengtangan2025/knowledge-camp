@@ -276,3 +276,97 @@ $paper-shadow: 1px 1px 1px rgba(black, 0.1);
 .CodeMirror-lines {
   background-color: #FFF;
 }
+
+// ueditor link dialog
+
+.edui-mindpin .edui-dialog {
+  box-shadow:2px 2px 5px rgba(black, 0.5);
+
+  .edui-dialog-body {
+    padding:0;
+
+    .edui-dialog-shadow {
+      display: none;
+    }
+    .edui-dialog-titlebar {
+      background: #fafafa;
+      border-bottom: 0 none;
+      // color:white;
+    }
+    .edui-dialog-content {
+      width: 422px !important;
+      background: white;
+    }
+
+    .edui-dialog-foot *{
+      @include unselectable;
+    }
+
+    .edui-dialog-buttons .edui-okbutton {
+      @include unselectable;
+      .edui-button-body {
+        background: none;
+        &:hover {
+          background: lighten($area-fresh, 6%) !important;
+          border-bottom: solid 2px darken(lighten($area-fresh, 6%), 10%) !important;
+        }
+        &:active {
+          background: desaturate($area-fresh, 20%) !important;
+        }
+
+        @include -button-base;
+        @include -button-bdb($area-fresh, white);
+        border-radius: $border-radius-default;
+        height:26px;
+        cursor:pointer;
+
+        .edui-label {
+          pointer-events: none;
+        }
+      }
+
+      .edui-state-hover .edui-button-body {
+        background: lighten($area-fresh, 6%) !important;
+        border-bottom: solid 2px darken(lighten($area-fresh, 6%), 10%) !important;
+
+        &:active {
+          background: desaturate($area-fresh, 20%) !important;
+        }
+      }
+    }
+
+    .edui-dialog-buttons .edui-cancelbutton {
+      @include unselectable;
+      .edui-button-body {
+        background: none;
+        &:hover {
+          background: lighten($black-10, 6%) !important;
+          border-bottom: solid 2px darken(lighten($black-10, 6%), 10%) !important;
+        }
+        &:active {
+          background: desaturate($black-10, 20%) !important;
+        }
+
+        @include -button-base;
+        @include -button-bdb($black-10, $black-60);
+        border-radius: $border-radius-default;
+        height:26px;
+        cursor:pointer;
+
+        .edui-label {
+          pointer-events: none;
+        }
+      }
+
+      .edui-state-hover .edui-button-body {
+        background: lighten($black-10, 6%) !important;
+        border-bottom: solid 2px darken(lighten($black-10, 6%), 10%) !important;
+
+        &:active {
+          background: desaturate($black-10, 20%) !important;
+        }
+      }
+    }
+
+  }
+}
