@@ -27,6 +27,10 @@ class NetCell < Cell::Rails
     :plan => :list
   }
 
+  ERROR_STRING = {
+    :point => '这一块暂时没想好怎么在界面上体现知识点结构关系。做成列表的话又太LOW了，先空着'
+  }
+
   def grid(option = {})
     @nets = KnowledgeNetStore::Net.all
     render
@@ -49,6 +53,8 @@ class NetCell < Cell::Rails
     @data_toggle = {:toggle => ['open', 'close']}
     @new_icon_klass = "fa-#{NEW_ICON[name]}"
     @new_string = I18n.t("views.new.#{name}")
+
+    @error_string = ERROR_STRING[@name]
 
     render
   end
