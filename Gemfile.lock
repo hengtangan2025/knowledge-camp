@@ -49,6 +49,14 @@ GIT
     knowledge-net-store (0.0.1)
 
 GIT
+  remote: git://github.com/mindpin/ueditor.rails.git
+  revision: b832fdefdca636c6c07bb6fa36d2d49b3596c772
+  ref: b832fde
+  specs:
+    ueditor.rails (0.0.5)
+      rails (~> 4.1)
+
+GIT
   remote: git://github.com/mindpin/user-auth.git
   revision: afc6928b1945d7889f1dcef6623624df7d2752f7
   tag: 0.0.7
@@ -71,12 +79,6 @@ GIT
   specs:
     mongoid-versioning (0.0.1)
       mongoid (> 3)
-
-PATH
-  remote: /web/songliang/kaid/ueditor.rails
-  specs:
-    ueditor.rails (0.0.4)
-      rails (~> 4.1)
 
 GEM
   remote: http://ruby.taobao.org/
