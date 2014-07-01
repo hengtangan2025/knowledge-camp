@@ -2,7 +2,7 @@
   - @points.each do |point|
     .point
       :ruby
-        bg = string_grid_color(point.name)
+        bg = string_grid_color(point.id)
         bg1 = ApplicationHelper::ColorTransfer.darken(bg.to_s)
 
       %a.box{:style => "background:#{bg}", :href => url_for([:manage, point]), :data => {:toggle => ['open', 'close']}}

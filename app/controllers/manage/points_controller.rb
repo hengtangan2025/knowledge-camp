@@ -10,10 +10,6 @@ class Manage::PointsController < BaseGenericController
     @net = KnowledgeNetStore::Net.find(params[:net_id])
   end
 
-  def edit
-    render :form
-  end
-
   def create
     @net = KnowledgeNetStore::Net.find(params[:net_id])
     @point = @net.points.build(model_params)
@@ -24,7 +20,7 @@ class Manage::PointsController < BaseGenericController
   end
 
   update_with do
-    redirect_to @point.net
+    redirect_to [:manage, @point]
   end
 
   destroy_with do

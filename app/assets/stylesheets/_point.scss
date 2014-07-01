@@ -47,7 +47,9 @@
   }
 }
 
-.page-manage-points-new {
+.page-manage-points-new ,
+.page-manage-points-edit
+{
   .point-form {
     padding:20px;
     .form-group:last-child {
@@ -56,8 +58,22 @@
   }
 }
 
+
+
 .page-manage-points-show {
   .point {
+    position: relative;
+
+    .ops {
+      position: absolute;
+      top:20px;
+      right:0;
+      .edit {
+        border-bottom: $border-dash;
+        width:120px;
+      }
+    }
+
     .info {
       padding:20px;
       border-bottom: solid 1px #E7E7E7;
