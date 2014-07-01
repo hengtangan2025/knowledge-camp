@@ -4,6 +4,12 @@
       %a.box{:href => url_for([:manage, net]), :data => {:toggle => true}}
         .name= net.name
         .desc= net.desc
-        .updated-at 更新于 #{net.updated_at.to_s(:db)}
+        .updated-at 更新于 #{net.updated_at}
         .stat
-          .points 知识点 #{net.points.count}
+          .it.points 
+            .count #{net.points.count} 
+            .text 知识点 
+          .it.documents
+            %i.fa.fa-file-text
+            .count  #{net.documents.count}
+            .text 文档 

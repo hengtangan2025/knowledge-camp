@@ -24,7 +24,9 @@ class UploadController < ApplicationController
     if current_uploading_size > saved_size
       render :status => 404, :text => 'chunk is not uploaded'
     else
-      render :nothing => true, :status => 200
+      render :json => {
+        :file_entity_id => file_entity.id.to_s
+      }
     end
   end
 

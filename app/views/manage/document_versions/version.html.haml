@@ -1,0 +1,59 @@
+:ruby
+  @net = @document.net
+  bread_data = [
+    [ :net, @net.name, url_for([:manage, @net]) ],
+    [ :documents, '查看所有文档', url_for([:manage, @net, :documents]) ]
+  ]
+
+- page_title "#{@net.name}: #{@document.title}"
+
+.page-side.col-pad-1
+.page-main.col-pad-10
+  = bread bread_data do
+    .document
+      .row
+        .col-pad-9
+          .page
+            - diff = show_document_version_change @document, @version
+            .title.diff= diff[:title]
+            .content.diff= diff[:content]
+
+        .col-pad-3
+          .side
+            .info 
+              %strong
+                %span= @last_editor.name
+                %br
+                %span 在
+                %span= @version.updated_at
+                %br
+                %span 进行了这次编辑
+
+            .diffdesc
+              %span 左侧显示了当前选中历史版本的修改差异，
+              %br
+              %span> 增加的文字
+              %ins> 以绿色标出
+              %span> 。
+              %br
+              %span> 删除的文字
+              %del> 以红色标出
+              %span> 。
+
+            .ops
+              %a.edit.btn.btn-rounded.btn-bdb{:href => url_for([:manage, @document])} 
+                %i.fa.fa-arrow-left
+                %span 返回文档
+
+              - if @document.version == @version.version
+                %span{:style => 'color:#999;'} 这是最新的版本
+              - else
+                - url = url_for([:manage, @document, :versions])
+                - url = "#{url}/#{@version.version}/restore"
+
+                %a.restore{:href => url, :data => {:method => :post, :confirm => "确定要恢复到旧的版本吗？"}}
+                  %i.fa.fa-undo
+                  %span 恢复到这个版本
+
+          .side.versions
+            = render_cell :document, :versions_list, @document, @version

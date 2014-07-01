@@ -1,7 +1,7 @@
 .page-manage-files-index {
   .files {
     padding:20px 30px;
-    .title {font-size: 16px;}
+    .title {font-size: 16px;margin-bottom: 20px;}
   }
 }
 
@@ -122,6 +122,42 @@
       background-color:rgba($area-fresh, 0.07);
       .stat {display:none;}
       .completed {display:block;}
+    }
+  }
+}
+
+.cell-manage-files.grid {
+  @include clearfix;
+  margin-bottom: 10px;
+  .file {
+    border:solid 1px $black-10;
+    padding:10px;
+    width:percentage(1/3);
+    float: left;
+    @include border-box;
+    margin-right: -1px;
+    margin-bottom: -1px;
+
+    .box {
+      min-height: 168px;
+      overflow: hidden;
+
+      .thumbnail {
+        height:168px;
+        background: $black-10;
+        margin-bottom: 10px;
+      }
+      .info {
+        text-align: center;
+        .visible-name {
+          font-weight: bold;
+          margin-bottom: 3px;
+        }
+        .creator-info {
+          font-size: 12px;
+          color:$text-quiet;
+        }
+      }
     }
   }
 }

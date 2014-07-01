@@ -62,18 +62,42 @@ $point-color : darken(#FFB43B, 10%);
     .stat {
       position: absolute;
       bottom: 15px;
+      left:15px;right:15px;
       font-size: 12px;
       color: $text-quiet;
-      .points {
-        padding-left:21px;
+
+      .it {
+        float: left;
+        width:50%;
+        @include border-box;
+
+        .count {height:16px;line-height:16px;}
+        .text {height:16px;line-height:16px;}
+      }
+
+      .it.points {
+        $w:32px;
+        padding-left:$w + 10px;
         &:before {
           content: "";
           position: absolute;
-          height:16px;width:16px;
-          border:solid 4px $point-color;
+          height:$w;width:$w;
+          border:solid 6px $point-color;
           @include border-box;
           border-radius:20px;
           left:0;
+          opacity: 0.5;
+        }
+      }
+
+      .it.documents {
+        i {
+          color:$area-info;
+          font-size: 32px;
+          margin-right:10px;
+          line-height:32px;
+          float:left;
+          opacity: 0.5;
         }
       }
     }
@@ -126,36 +150,55 @@ $point-color : darken(#FFB43B, 10%);
     .items {
       position: relative;
       margin-top: 20px;
-      padding-top: 40px;
       border-top:dashed 1px $black-20;
 
-      .count {
+      a.index {
+        // @include dev;
+        display: block;
         margin-bottom: 10px;
-        font-size: 16px;
-        font-weight: bold;
+        // padding-left: 40px;
+        margin-top: 10px;
+
+
+        .count {
+          padding-left: 40px;
+          font-size: 16px;
+          font-weight: bold;
+          font-family: $font-family-serif;
+        }
+        .text {
+          padding-left: 40px;
+          font-weight: bold;
+        }
       }
+
       .new {
         a.btn {display:block;}
       }
     }
 
+    @mixin itemicon{
+      top:18px;
+      position: absolute;
+      opacity: 0.5;
+      pointer-events: none;
+    };
+
     .items.points {
       &:before {
-        content: "";
-        position: absolute;
-        width:20px;height:20px;
+        @include itemicon;
         @include border-box;
-        border:solid 4px $point-color;
+        content: "";
+        width:30px;height:30px;
+        border:solid 6px $point-color;
         border-radius:40px;
-        top:11px;
       }
     }
 
     .items.documents, .items.files, .items.plans {
       i.icon {
-        position: absolute;
-        top:11px;
-        font-size:20px;
+        @include itemicon;
+        font-size:30px;
         color:$area-night;
       }
     }
@@ -163,10 +206,17 @@ $point-color : darken(#FFB43B, 10%);
     .items.documents i.icon {color:$area-info;}
   }
 
-  .net {
+  section {
     @include piece;
-    padding: 20px 30px;
+    padding:20px;
+    margin-bottom:10px;
 
+    .header {
+      @include section_header_with_button;
+    }
+  }
+
+  section.net {
     .name {
       @include -net-title-font;
       height: 36px; line-height: 36px;

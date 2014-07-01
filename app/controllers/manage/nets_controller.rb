@@ -1,4 +1,6 @@
 class Manage::NetsController < BaseGenericController
+  before_filter :authenticate_user!
+  
   set_model KnowledgeNetStore::Net,
     :allow_attrs  => [:name, :desc]
 

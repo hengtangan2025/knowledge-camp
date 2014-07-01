@@ -1,0 +1,17 @@
+:ruby
+  bread_data = [
+    [ :net, @net.name, url_for([:manage, @net]) ]
+  ]
+
+.page-side.col-pad-1
+.page-main.col-pad-10
+  = bread bread_data do
+    .points
+      .header
+        .title 知识点浏览
+        %a.btn.btn-rounded.btn-bdb.btn-small{:href => url_for([:new, :manage, @net, :point]), :data => {:toggle => ['open', 'close']}}
+          %i.fa.fa-plus
+          %span= I18n.t('views.new.point')
+
+      - @net.points.each do |p|
+        = p

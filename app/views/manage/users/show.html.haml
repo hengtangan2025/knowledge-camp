@@ -7,7 +7,7 @@
         .login= @user.login
         .last-sign-in 
           - if @user.last_sign_in_at.present?
-            %span 最后登录时间：#{@user.last_sign_in_at.to_s(:db)}
+            %span 最后登录时间：#{@user.last_sign_in_at}
           - else
             %span 从未登录过
     .ops

@@ -41,7 +41,7 @@ module DandelionHelper
     case value
       when Time
         capture_haml {
-          haml_tag "div.field.-time.#{key}", value.to_s(:db), :data => {:time => value.to_i * 1000}
+          haml_tag "div.field.-time.#{key}", value, :data => {:time => value.to_i * 1000}
         }
       else
         capture_haml {

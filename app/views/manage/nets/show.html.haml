@@ -1,54 +1,24 @@
-:ruby
-  documents_count = DocumentsStore::Document.count
-  files_count = 0
+- page_title @net.name
 
 .page-side.col-pad-2
-  .nav
+  .nav{:data => {:'fixtop-offset' => 30}}
     .back
       %a{:href => url_for([:manage, :nets]), :data => {:toggle => true}}
         %i.fa.fa-arrow-left
         %span 退出
 
-    .items.points
-      .count
-        %a{:href => url_for([:manage, @net, :points])}
-          知识点 #{@net.points.count}
-      .new
-        %a.btn.btn-rounded.btn-bdb.btn-small{:href => url_for([:new, :manage, @net, :point])}
-          %i.fa.fa-plus
-          %span 新建知识点
-
-    .items.documents
-      %i.icon.fa.fa-file-text
-      .count
-        %a{:href => url_for([:manage, @net, :documents]), :data => {:toggle => ['open', 'close']}}
-          #{documents_count} 个文档 
-      .new
-        %a.btn.btn-rounded.btn-bdb.btn-small{:href => url_for([:new, :manage, @net, :document]), :data => {:toggle => ['open', 'close']}}
-          %i.fa.fa-pencil
-          %span 新建文档
-
-    .items.files
-      %i.icon.fa.fa-paperclip
-      .count
-        %a{:href => url_for([:manage, @net, :files]), :data => {:toggle => ['open', 'close']}}
-          #{files_count} 个文件
-      .new
-        %a.btn.btn-rounded.btn-bdb.btn-small{:href => url_for([:new, :manage, @net, :file]), :data => {:toggle => ['open', 'close']}}
-          %i.fa.fa-upload
-          %span 上传文件
-
-    .items.plans
-      %i.icon.fa.fa-list
-      .count
-        %a{:href => 'javascript:;'}
-          教学计划 #{0}
-      .new
-        %a.btn.btn-rounded.btn-bdb.btn-small{:href => url_for([:new, :manage, @net, :point])}
-          %i.fa.fa-plus
-          %span 创建教学计划
+    - [:point, :document, :file, :plan].each do |model_name|
+      = render_cell :net, :nav_items, @net, model_name
 
 .page-main.col-pad-10
-  .net
+  %section.net
     .name= @net.name
     .desc= @net.desc
+
+  %section
+    %a.btn.btn-rounded.btn-bdb-dream{:href => url_for([:graph, :manage, @net]), :data => {:toggle => ['fade', 'fade']}}
+      %i.fa.fa-circle-o
+      %span 图形化展现
+
+  - [:point, :document, :file].each do |model_name|
+    = render_cell :net, :model_section, @net, model_name

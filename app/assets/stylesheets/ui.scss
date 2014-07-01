@@ -4,6 +4,8 @@ $link-color:#2c5d8d;
 $link-hover-color:#2c5d8d;
 $border-radius-default:3px;
 
+$grid-gap:20px;
+
 @import "lily/css/lily.scss";
 
 $lightgray: lighten($black-10, 5%);
@@ -34,21 +36,45 @@ $border-dash: dashed 1px $black-30;
   .-avatar-img {@include square($width);}
 }
 
+// 页面布局块的顶部标题和按钮
+@mixin section_header_with_button {
+  margin-bottom: 20px;
+  @include clearfix;
+  .title {
+    font-size: 18px;
+    height:26px;line-height: 26px;
+    float: left;
+    margin-right: 20px;
+  }
+
+  a.title {
+    color: #900;
+  }
+
+  a.btn {
+    float: left;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+}
+
 @import "kaminari";
 @import "auth";
-@import "graph";
 @import "net";
 @import "document";
 @import "user";
 @import "bread";
 @import "files";
 
+@import "net_graph";
+
 html {
   overflow-y:scroll;
 }
 
 body {
-  background: asset_url("layout/body-bg.gif");
+  background-color: #f2f2f2;
+  background-image: asset-data-url("layout/body-bg.gif");
 
   .page-header {
     background-color: #323232;
@@ -98,7 +124,7 @@ body {
   }
 
   .page-content {
-    margin-top: 50px;
+    margin-top: 30px;
     margin-bottom: 50px;
   }
 

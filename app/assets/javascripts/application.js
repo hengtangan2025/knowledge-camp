@@ -3,15 +3,22 @@
 //= require turbolinks
 
 // 第三方库
-
 //= require flowjs/flow
+//= require seajs/sea-2.2.1
+
+// gem
+//= require ueditor
 
 // 自己写的
-
-//= require graph-ui
-//= require ueditor
-//= require ui-toggle
-//= require net
 //= require auth
-//= require user
 //= require file
+//= require net
+//= require user
+//= require document
+
+// 专用 ui 大组件
+//= require net-graph-ui
+
+// 通用 ui 小组件
+//= require tricks/ui-toggle
+//= require tricks/fixtop

@@ -17,18 +17,19 @@ GIT
 
 GIT
   remote: git://github.com/mindpin/file-part-upload.git
-  revision: 79081d83e6de2408e4ea214546662adb4c6fec95
-  tag: 1.0.3
+  revision: c0c5cfb06fd254ec692b6c5a184b78cb860b86b9
+  tag: 1.0.5
   specs:
     file-part-upload (0.0.1)
       mime-types
+      mini_magick
 
 GIT
   remote: git://github.com/mindpin/generic_controller.git
-  revision: 949166ec3526a670780a6c038d64ae627ae238a2
-  tag: v0.0.2
+  revision: ae6a18598b807f54b9325379249ed05b3742839b
+  tag: v0.0.3
   specs:
-    generic_controller (0.0.1)
+    generic_controller (0.0.3)
       actionpack (~> 4.1.0)
       activemodel (~> 4.1.0)
 
@@ -49,10 +50,10 @@ GIT
 
 GIT
   remote: git://github.com/mindpin/ueditor.rails.git
-  revision: b03f4411be303eafa0b434cc935158752e4e3e89
-  tag: v0.0.1
+  revision: b832fdefdca636c6c07bb6fa36d2d49b3596c772
+  ref: b832fde
   specs:
-    ueditor.rails (0.0.1)
+    ueditor.rails (0.0.5)
       rails (~> 4.1)
 
 GIT
@@ -148,6 +149,7 @@ GEM
     haml (4.0.5)
       tilt
     hike (1.2.3)
+    htmldiff (0.0.1)
     i18n (0.6.9)
     jbuilder (2.1.0)
       activesupport (>= 3.0.0, < 5)
@@ -284,6 +286,7 @@ DEPENDENCIES
   file-part-upload!
   generic_controller!
   haml
+  htmldiff
   jbuilder (~> 2.0)
   jquery-rails
   kaminari (~> 0.15.1)
