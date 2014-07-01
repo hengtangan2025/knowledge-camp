@@ -13,5 +13,4 @@
           %i.fa.fa-plus
           %span= I18n.t('views.new.point')
 
-      - @net.points.each do |p|
-        = p
+      = render_cell :point, :grid, @net.points

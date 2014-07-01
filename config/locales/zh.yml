@@ -53,5 +53,7 @@ zh:
       plan:
         create: 确定创建
         update: 确定修改
+      point:
+        create: 确定创建
       user:
         login: 登录

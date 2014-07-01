@@ -6,10 +6,12 @@ $border-radius-default:3px;
 
 $grid-gap:20px;
 
+
 @import "lily/css/lily.scss";
 
 $lightgray: lighten($black-10, 5%);
 $border-dash: dashed 1px $black-30;
+$area-split: #e0e0e0;
 
 @mixin piece-shadow {
   box-shadow: 0 1px 2px rgba(black, 0.07);
@@ -65,6 +67,7 @@ $border-dash: dashed 1px $black-30;
 @import "user";
 @import "bread";
 @import "files";
+@import "point";
 
 @import "net_graph";
 

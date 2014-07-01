@@ -150,7 +150,7 @@ $point-color : darken(#FFB43B, 10%);
     .items {
       position: relative;
       margin-top: 20px;
-      border-top:dashed 1px $black-20;
+      border-top:$border-dash;
 
       a.index {
         // @include dev;
@@ -206,23 +206,38 @@ $point-color : darken(#FFB43B, 10%);
     .items.documents i.icon {color:$area-info;}
   }
 
-  section {
+  .sections {
     @include piece;
     padding:20px;
-    margin-bottom:10px;
+    margin-bottom: 20px;
 
-    .header {
-      @include section_header_with_button;
-    }
-  }
+    section {
+      padding:20px 0;
+      border-bottom:$border-dash;
 
-  section.net {
-    .name {
-      @include -net-title-font;
-      height: 36px; line-height: 36px;
+      .header {
+        @include section_header_with_button;
+      }
+
+      &:first-child {
+        padding-top: 0;
+      }
+
+      &:last-child {
+        padding-bottom: 0;
+        border-bottom: 0 none;
+      }
     }
-    .desc {
-      color: $text-quiet;
+
+    section.net {
+      padding-top: 0;
+      .name {
+        @include -net-title-font;
+        height: 36px; line-height: 36px;
+      }
+      .desc {
+        color: $text-quiet;
+      }
     }
   }
 }

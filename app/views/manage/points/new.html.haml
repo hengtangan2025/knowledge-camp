@@ -1,16 +1,10 @@
-.navbar
-  =link_to "首页", "/"
-  >
-  =link_to "知识网列表", "/knowledge_nets"
-  >
-  =link_to @net.name, "/knowledge_nets/#{@net.id}"
+:ruby
+  bread_data = [
+    [ :net, @net.name, url_for([:manage, @net]) ],
+    [ :forms, '查看所有知识点', url_for([:manage, @net, :points]) ]
+  ]
 
-.page-point-new
-  = simple_form_for @point, :url => "/knowledge_nets/#{@net.id}/knowledge_points" do |f|
-    .field= f.input :name, :placeholder => "名称"
-    .field= f.input :desc, :placeholder => "描述", :as => :text
-    .field= f.association :parents, :collection => @net.points, :as => :check_boxes
-
-    .field
-      = f.submit "创建"
-      = link_to "取消", "/knowledge_nets/#{@net.id}"
+.page-main.col-pad-10.col-pad-offset-1
+  = bread bread_data do
+    .point-form
+      = dandelion_form :manage, @net, @point

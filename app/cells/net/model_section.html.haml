@@ -5,11 +5,7 @@
       %i.fa{:class => @new_icon_klass}
       %span= @new_string
 
-  - begin
-    = render_cell @name, :grid, @models
-  - rescue
-    .-on-dev
-      = "ERROR: 未定义 Cell #{@name}, :grid #{@error_string}"
+  = render_cell @name, :grid, @models
 
   .show-more
     %a{:href => @more_url, :data => @data_toggle}

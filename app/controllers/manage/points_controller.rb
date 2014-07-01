@@ -8,7 +8,6 @@ class Manage::PointsController < BaseGenericController
 
   def new
     @net = KnowledgeNetStore::Net.find(params[:net_id])
-    render :form
   end
 
   def edit

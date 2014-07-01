@@ -11,14 +11,17 @@
       = render_cell :net, :nav_items, @net, model_name
 
 .page-main.col-pad-10
-  %section.net
-    .name= @net.name
-    .desc= @net.desc
+  .sections
+    %section.net
+      .name= @net.name
+      .desc= @net.desc
 
-  %section
-    %a.btn.btn-rounded.btn-bdb-dream{:href => url_for([:graph, :manage, @net]), :data => {:toggle => ['fade', 'fade']}}
-      %i.fa.fa-circle-o
-      %span 图形化展现
+    %section
+      %a.btn.btn-rounded.btn-bdb-dream{:href => url_for([:graph, :manage, @net]), :data => {:toggle => ['fade', 'fade']}}
+        %i.fa.fa-circle-o
+        %span 图形化展示
 
-  - [:point, :document, :file].each do |model_name|
-    = render_cell :net, :model_section, @net, model_name
+    = render_cell :net, :model_section, @net, :point, 20
+
+    - [:document, :file].each do |model_name|
+      = render_cell :net, :model_section, @net, model_name
