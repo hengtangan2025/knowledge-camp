@@ -13,4 +13,4 @@
           %i.fa.fa-plus
           %span= I18n.t('views.new.point')
 
-      = render_cell :point, :grid, @net.points
+      = render_cell :point, :grid, @net.points.order(:updated_at => :desc)
