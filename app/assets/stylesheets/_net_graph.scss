@@ -64,8 +64,7 @@ body.net-graph{
     @include unselectable;
     color:white;
     position: absolute;
-    top:0;left:0;;
-    width:200px;
+    top:0;left:0;right:0;
     // background-color:#383F41;
     z-index: 1;
     padding:10px;
@@ -106,10 +105,9 @@ body.net-graph{
 
     .start-points-count, .common-points-count{
       float:left;
-      clear:both;
       height:40px;line-height: 40px;
       width:200px;
-      margin-top: 10px;
+      margin-left: 10px;
       background-color: rgba(#38382D, 0.8); //rgba(#FFB43B, 0.1);
       border-radius:100px;
       box-shadow:$shadow;
@@ -148,6 +146,7 @@ body.net-graph{
     }
 
     .count-pie {
+      display:none;
       background-color:rgba(#293840, 0.8);
       width:200px;height:200px;
       float:left;
@@ -237,7 +236,7 @@ body.net-graph{
       @include unselectable;
 
       &.hide {
-        display: none;
+        // display: none;
         pointer-events: none;
 
         @include -below(pad) {
