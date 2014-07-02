@@ -156,7 +156,7 @@ _init_uploader = ->
   })
 
 _init_submit_button = (uploader)->
-  jQuery(document).delegate '.page-manage-files-new .ops a.submit', 'click', (evt)->
+  jQuery('.page-manage-files-new .ops a.submit').on 'click', (evt)->
     $button = jQuery(this)
     return if $button.hasClass('disabled')
 

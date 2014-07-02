@@ -5,4 +5,9 @@ class PointCell < Cell::Rails
     @points = points
     render
   end
+
+  def list(points)
+    @points = points
+    render
+  end
 end

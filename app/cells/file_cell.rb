@@ -5,4 +5,9 @@ class FileCell < Cell::Rails
     @files = files
     render
   end
+
+  def thumbnail(file)
+    @file = file
+    render
+  end
 end

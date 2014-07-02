@@ -7,6 +7,11 @@
 
   = render_cell @name, :grid, @models
 
-  .show-more
-    %a{:href => @more_url, :data => @data_toggle}
-      查看所有 #{@count} 个#{@name_human}
+  - if @models.blank?
+    .nodata
+      目前还没有#{@name_human}
+
+  - else
+    .show-more
+      %a{:href => @more_url, :data => @data_toggle}
+        查看所有 #{@count} 个#{@name_human}

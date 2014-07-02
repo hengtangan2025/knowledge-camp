@@ -47,6 +47,58 @@
   }
 }
 
+.cell-manage-points.list {
+  .point {
+    @include clearfix;
+
+    $h: 20px;
+
+    .icon {
+      float: left;
+      width:$h;height:$h;
+      border:solid 4px;
+      @include border-box;
+      border-radius:20px;
+    }
+    .name {
+      float: left;
+      line-height:$h;
+      margin-left:10px;
+      margin-bottom:10px;
+
+      background-color: $black-80;
+      color:white;
+      border-radius: $border-radius-default;
+      padding:0 8px;
+
+      position: relative;
+
+      &:before {
+        $w: 5px;
+
+        content: "";
+        border:solid $w transparent;
+        border-right:solid $w $black-80;
+        position: absolute;
+        left: $w * -2;
+        top: $h / 2 - $w;
+      }
+
+      &:hover {
+        text-decoration: none;
+        background-color: $black-60;
+        &:before {border-right-color: $black-60;}
+      }
+    }
+  }
+
+  .point.blank {
+    .icon {border-color: $black-20;}
+    .name {background-color: $black-20;}
+    .name:before {border-right-color: $black-20;}
+  }
+}
+
 .page-manage-points-new ,
 .page-manage-points-edit
 {

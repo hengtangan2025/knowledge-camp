@@ -9,4 +9,7 @@
   = bread bread_data do
     .files
       .title 查看所有文件
-      = render_cell :file, :grid, @virtual_files.limit(20)
+      - paged_files = @virtual_files.page(params[:page]).per(24)
+
+      = render_cell :file, :grid, paged_files
+      = paginate paged_files

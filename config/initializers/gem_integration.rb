@@ -137,3 +137,6 @@ module KnowledgeNetStore
              :class_name => "KnowledgeNetPlanStore::Plan"
   end
 end
+
+KnowledgeNetStore::Net.send :include, Kaminari::MongoidExtension::Document
+VirtualFileSystem::File.send :include, Kaminari::MongoidExtension::Document

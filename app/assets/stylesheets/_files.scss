@@ -1,3 +1,10 @@
+@mixin file-icon {
+  background: asset-url("icons/fileico_v5_kc_compressed.png") no-repeat;
+  width:75px;height:75px;
+  background-position: 0 -144px;
+}
+
+
 .page-manage-files-index {
   .files {
     padding:20px 30px;
@@ -143,9 +150,22 @@
       overflow: hidden;
 
       .thumbnail {
-        height:168px;
-        background: $black-10;
+        height:100px;
         margin-bottom: 10px;
+        overflow: hidden;
+        position: relative;
+        .file-icon {
+          @include file-icon;
+          position: absolute;
+          left:50%;top:50%;
+          $ih:75px;
+          margin-left: $ih / -2;
+          margin-top: $ih / -2;
+        }
+
+        &.img {
+          height:200px;
+        }
       }
       .info {
         text-align: center;

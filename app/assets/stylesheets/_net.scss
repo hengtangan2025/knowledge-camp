@@ -227,6 +227,10 @@ $point-color : darken(#FFB43B, 10%);
         padding-bottom: 0;
         border-bottom: 0 none;
       }
+
+      .nodata {
+        color:$text-quiet;
+      }
     }
 
     section.net {

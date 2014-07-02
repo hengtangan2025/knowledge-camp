@@ -20,9 +20,9 @@
         .desc=@point.desc
       .parents
         %h3.title 前置知识点
-        = render_cell :point, :grid, @point.parents
+        = render_cell :point, :list, @point.parents
 
       .children
         %h3.title 后续知识点
-        = render_cell :point, :grid, @point.children
+        = render_cell :point, :list, @point.children
 

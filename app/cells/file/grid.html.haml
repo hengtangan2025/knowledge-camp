@@ -8,7 +8,8 @@
         creator = User.find file.creator_id
 
       .box.gcell
-        .thumbnail
+        = render_cell :file, :thumbnail, file
+
         .info
           .visible-name= file.visible_name
           .creator-info

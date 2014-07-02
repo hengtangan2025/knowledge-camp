@@ -22,3 +22,4 @@
 // 通用 ui 小组件
 //= require tricks/ui-toggle
 //= require tricks/fixtop
+//= require simple-images
