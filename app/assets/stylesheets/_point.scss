@@ -114,7 +114,6 @@
 
 .page-manage-points-show {
   .point {
-    position: relative;
 
     .ops {
       position: absolute;
@@ -124,18 +123,24 @@
         border-bottom: $border-dash;
         width:120px;
       }
+      .assign {
+        border-bottom: $border-dash;
+        width:120px;
+      }
     }
 
     .info {
       padding:20px;
       border-bottom: solid 1px #E7E7E7;
       padding-bottom: 40px;
+      position: relative;
 
       .name {margin-top: 0;margin-bottom: 20px;}
       .desc {}
     }
 
     .parents, .children{
+      position: relative;
       padding:20px;
       min-height: 100px;
       .title {margin-top:0;margin-bottom: 20px;}

@@ -17,7 +17,15 @@ Rails.application.routes.draw do
         get :graph
       end
 
-      resources :points, :shallow => true
+      resources :points, :shallow => true do
+        member do
+          # TODO 改成体验更好的形式
+          get :assign_parent 
+          get :assign_child
+          patch :do_assign
+        end
+      end
+
       resources :documents, :shallow => true do
         resources :versions, 
                   :shallow => true, 

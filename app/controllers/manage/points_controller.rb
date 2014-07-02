@@ -27,4 +27,30 @@ class Manage::PointsController < BaseGenericController
     redirect_to @point.net
   end
 
+  # TODO 改成体验更好的形式
+  def assign_parent
+    @point = KnowledgeNetStore::Point.find params[:id]
+    @net = @point.net
+  end
+
+  def assign_child
+    @point = KnowledgeNetStore::Point.find params[:id]
+    @net = @point.net
+  end
+
+  def do_assign
+    @point = KnowledgeNetStore::Point.find params[:id]
+
+    if params[:parent_ids]
+      @point.update_attribute :parent_ids, params[:parent_ids]
+      redirect_to [:manage, @point]
+      return
+    end
+
+    if params[:child_ids]
+      @point.update_attribute :child_ids, params[:child_ids]
+      redirect_to [:manage, @point]
+      return
+    end
+  end
 end
