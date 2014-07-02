@@ -4,6 +4,37 @@
   background-position: 0 -144px;
 }
 
+.page-manage-files-show {
+  .file {
+    padding:20px;
+    h3 {
+      margin-top: 0;
+      margin-bottom: 30px;
+    }
+
+    .info{
+      margin-bottom: 30px;
+      border-bottom: solid 1px #e7e7e7;
+      padding-bottom: 30px;
+      font-size: 16px;
+    }
+
+    .thumbnail {
+      border:solid 1px $black-10;
+      height:400px;
+      overflow: hidden;
+      position: relative;
+      .file-icon {
+        @include file-icon;
+        position: absolute;
+        left:50%;top:50%;
+        $ih:75px;
+        margin-left: $ih / -2;
+        margin-top: $ih / -2;
+      }
+    }
+  }
+}
 
 .page-manage-files-index {
   .files {
@@ -12,7 +43,8 @@
   }
 }
 
-.page-manage-files-new {
+.page-manage-files-new,
+.page-manage-point-files-new{
   .file {
     padding:20px;
     .file-box {
@@ -145,9 +177,16 @@
     margin-right: -1px;
     margin-bottom: -1px;
 
-    .box {
+    .box { // it is a.box
       min-height: 168px;
       overflow: hidden;
+      display: block;
+
+      color: #333;
+      &:hover {
+        text-decoration: none;
+        background-color: $area-dawn;
+      }
 
       .thumbnail {
         height:100px;

@@ -17,6 +17,8 @@ Rails.application.routes.draw do
         get :graph
       end
 
+      resources :files, :shallow => true
+      
       resources :points, :shallow => true do
         member do
           # TODO 改成体验更好的形式
@@ -24,6 +26,8 @@ Rails.application.routes.draw do
           get :assign_child
           patch :do_assign
         end
+
+        resources :files, :shallow => true, :controller => :point_files
       end
 
       resources :documents, :shallow => true do
@@ -36,7 +40,6 @@ Rails.application.routes.draw do
           end
         end
       end
-      resources :files, :shallow => true
       resources :plans, :shallow => true
     end
 

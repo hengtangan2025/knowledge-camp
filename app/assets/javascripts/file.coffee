@@ -132,14 +132,20 @@ class MindpinFlowUploader
 
 ready = ->
   if jQuery('.page-manage-files-new').length > 0
-    uploader = _init_uploader()
-    _init_submit_button(uploader)
+    $container = jQuery('.page-manage-files-new')
+    uploader = _init_uploader $container
+    _init_submit_button(uploader, $container)
+
+  if jQuery('.page-manage-point-files-new').length > 0
+    $container = jQuery('.page-manage-point-files-new')
+    uploader = _init_uploader $container
+    _init_submit_button(uploader, $container)
 
 
-_init_uploader = ->
+_init_uploader = ($container)->
   token_value = jQuery('meta[name=csrf-token]').attr('content')
-  $button = jQuery('.page-manage-files-new a.select-file')
-  $drop = jQuery('.page-manage-files-new .file-box')
+  $button = $container.find('a.select-file')
+  $drop = $container.find('.file-box')
   target = $button.data('url')
   $uploader = jQuery('.page-file-uploader')
 
@@ -150,13 +156,13 @@ _init_uploader = ->
     drop: $drop
     uploader: $uploader
     file_added_func: ->
-      jQuery('.page-manage-files-new .ops a.submit').addClass('disabled')
+      $container.find('.ops a.submit').addClass('disabled')
     complete_func: ->
-      jQuery('.page-manage-files-new .ops a.submit').removeClass('disabled')
+      $container.find('.ops a.submit').removeClass('disabled')
   })
 
-_init_submit_button = (uploader)->
-  jQuery('.page-manage-files-new .ops a.submit').on 'click', (evt)->
+_init_submit_button = (uploader, $container)->
+  $container.find('.ops a.submit').on 'click', (evt)->
     $button = jQuery(this)
     return if $button.hasClass('disabled')
 

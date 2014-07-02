@@ -7,7 +7,7 @@
         info = file.info
         creator = User.find file.creator_id
 
-      .box.gcell
+      %a.box.gcell{:href => url_for([:manage, file])}
         = render_cell :file, :thumbnail, file
 
         .info

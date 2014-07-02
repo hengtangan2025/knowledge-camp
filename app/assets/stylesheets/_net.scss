@@ -175,6 +175,11 @@ $point-color : darken(#FFB43B, 10%);
       .new {
         a.btn {display:block;}
       }
+
+      &.plans {
+        pointer-events: none;
+        opacity: 0.5;
+      }
     }
 
     @mixin itemicon{

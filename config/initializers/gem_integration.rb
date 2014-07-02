@@ -40,18 +40,20 @@ VirtualFileSystem.config do
   bucket :knowledge_net, :store => :file_entity
 end
 
-VirtualFileSystem::File.send :belongs_to,
-                             :net,
-                             :class_name => "KnowledgeNetStore::Net"
+module VirtualFileSystem
+  class File
+    belongs_to :net,
+               :class_name => 'KnowledgeNetStore::Net'
 
-VirtualFileSystem::File.send :field,
-                             :visible_name,
-                             :type => String
- 
+    field :visible_name, :type => String
 
-KnowledgeNetStore::Net.send :has_many,
-                            :virtual_files,
-                            :class_name => "VirtualFileSystem::File"
+    has_and_belongs_to_many :points,
+                            :class_name => 'KnowledgeNetStore::Point',
+                            :inverse_of => :virtual_files
+
+    default_scope -> { order_by(:updated_at => :desc) }
+  end
+end
 
 User.send :has_many,
           :virtual_files,
@@ -131,10 +133,19 @@ end
 module KnowledgeNetStore
   class Net
     has_many :documents,
-             :class_name => "DocumentsStore::Document"
+             :class_name => 'DocumentsStore::Document'
 
     has_many :plans,
-             :class_name => "KnowledgeNetPlanStore::Plan"
+             :class_name => 'KnowledgeNetPlanStore::Plan'
+
+    has_many :virtual_files,
+             :class_name => 'VirtualFileSystem::File'
+  end
+
+  class Point
+    has_and_belongs_to_many :virtual_files,
+                            :class_name => 'VirtualFileSystem::File',
+                            :inverse_of => :points
   end
 end
 
