@@ -84,6 +84,7 @@ gem 'file-part-upload',
     :tag => '1.0.5'
 
 gem 'simple-images',
-    # :github => "mindpin/simple-images",
+    :github => "mindpin/simple-images",
+    :ref => '1621939'
     # :tag => '0.0.4'
-    :path => '/web/songliang/simple-images'
+    # :path => '/web/songliang/simple-images'
