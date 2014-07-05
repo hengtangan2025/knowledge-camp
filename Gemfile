@@ -45,7 +45,7 @@ gem "knowledge-net-plan-store",
 
 gem 'knowledge-net-store',
     :github => 'mindpin/knowledge-net-store',
-    :tag => '0.0.5'
+    :tag => '0.0.7'
 
 gem "generic_controller",
     :github => "mindpin/generic_controller",

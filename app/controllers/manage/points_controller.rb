@@ -42,15 +42,15 @@ class Manage::PointsController < BaseGenericController
     @point = KnowledgeNetStore::Point.find params[:id]
 
     if params[:parent_ids]
-      @point.update_attribute :parent_ids, params[:parent_ids]
-      redirect_to [:manage, @point]
-      return
+      new_parents = KnowledgeNetStore::Point.where(:id.in => params[:parent_ids])
+      @point.parents = new_parents
     end
 
     if params[:child_ids]
-      @point.update_attribute :child_ids, params[:child_ids]
-      redirect_to [:manage, @point]
-      return
+      new_children = KnowledgeNetStore::Point.where(:id.in => params[:child_ids])
+      @point.children = new_children
     end
+
+    redirect_to [:manage, @point]
   end
 end

@@ -173,6 +173,7 @@ $point-color : darken(#FFB43B, 10%);
       }
 
       .new {
+        margin-top: 20px;
         a.btn {display:block;}
       }
 
@@ -212,39 +213,27 @@ $point-color : darken(#FFB43B, 10%);
   }
 
   .sections {
-    @include piece;
-    padding:20px;
-    margin-bottom: 20px;
 
     section {
-      padding:20px 0;
-      border-bottom:$border-dash;
 
-      .header {
-        @include section_header_with_button;
+      .graph-show {
+        margin-top: 30px;
       }
 
-      &:first-child {
-        padding-top: 0;
-      }
-
-      &:last-child {
-        padding-bottom: 0;
-        border-bottom: 0 none;
+      a.title {
+        color: #900;
       }
 
       .nodata {
         color: $text-quiet;
       }
+
+      .show-more {
+        margin-top: 20px;
+      }
     }
 
     section.net {
-      padding-top: 0;
-      .name {
-        @include -net-title-font;
-        height: 36px; line-height: 36px;
-        margin-bottom: 20px;
-      }
       .desc {
         color: $text-quiet;
       }

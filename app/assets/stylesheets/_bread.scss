@@ -13,16 +13,19 @@
         background-color: #fff;
         min-height:400px;
       }
+
+      .bread-link {
+        padding:10px 20px 10px;
+        font-size: 16px;
+        text-decoration: underline;
+        font-weight: normal;
+      }
     }
 
-    .link {
+    .bread-link {
       padding:10px 20px 10px;
-      font-size: 16px;
       text-decoration: underline;
-    }
-
-    .link.net {
-      font-size: 24px;line-height: 36px;
+      font-size: 24px;
       font-weight: bold;
     }
   }

@@ -6,21 +6,18 @@ $border-radius-default:3px;
 
 $grid-gap:20px;
 
-
 @import "lily/css/lily.scss";
 
 $lightgray: lighten($black-10, 5%);
 $border-dash: dashed 1px $black-30;
-$area-split: #e0e0e0;
+$split-border: solid 1px #e7e7e7;
 
-@mixin piece-shadow {
-  box-shadow: 0 1px 2px rgba(black, 0.07);
-}
-
-@mixin piece {
-  background-color: #FFF;
-  border-radius: $border-radius-default;
-  @include piece-shadow;
+@mixin piece-area {
+  border-bottom: $split-border;
+  padding: 20px;
+  position: relative;
+  h2 {margin-top: 0;margin-bottom: 30px;}
+  h3 {margin-top: 0;margin-bottom: 30px;}
 }
 
 @mixin link-box {
@@ -36,28 +33,6 @@ $area-split: #e0e0e0;
   overflow: hidden;
   img {@include square($width);}
   .-avatar-img {@include square($width);}
-}
-
-// 页面布局块的顶部标题和按钮
-@mixin section_header_with_button {
-  margin-bottom: 20px;
-  @include clearfix;
-  .title {
-    font-size: 18px;
-    height:26px;line-height: 26px;
-    float: left;
-    margin-right: 20px;
-  }
-
-  a.title {
-    color: #900;
-  }
-
-  a.btn {
-    float: left;
-    padding-left: 10px;
-    padding-right: 10px;
-  }
 }
 
 @import "kaminari";

@@ -11,15 +11,21 @@
       = render_cell :net, :nav_items, @net, model_name
 
 .page-main.col-pad-10
-  .sections
-    %section.net
-      .name= @net.name
+  .sections.piece.piece-shelf.piece-paper
+    %section.net.piece.piece-box
+      %h2.name= @net.name
       .desc= @net.desc
 
-    %section
-      %a.btn.btn-rounded.btn-bdb-dream{:href => url_for([:graph, :manage, @net]), :data => {:toggle => ['fade', 'fade']}}
-        %i.fa.fa-circle-o
-        %span 图形化展示
+      .piece.piece-ops
+        .op
+          %a.edit{:href => url_for([:edit, :manage, @net]), :data => {:toggle => true}}
+            %i.fa.fa-pencil
+            %span 编辑修改
+
+      .graph-show
+        %a.btn.btn-rounded.btn-bdb-dream{:href => url_for([:graph, :manage, @net]), :data => {:toggle => ['fade', 'fade']}}
+          %i.fa.fa-circle-o
+          %span 图形化展示
 
     = render_cell :net, :model_section, @net, :point, 24
 

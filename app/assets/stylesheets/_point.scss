@@ -113,50 +113,30 @@
 
 
 .page-manage-points-show {
-  .point {
-
-    .ops {
-      position: absolute;
-      top:20px;
-      right:0;
-      .edit {
-        border-bottom: $border-dash;
-        width:120px;
-      }
-      .assign {
-        border-bottom: $border-dash;
-        width:120px;
-      }
-    }
-
-    > .info {
-      padding:20px;
-      border-bottom: solid 1px #E7E7E7;
-      padding-bottom: 40px;
-      position: relative;
-
-      .name {margin-top: 0;margin-bottom: 20px;}
-      .desc {}
-    }
-
-    .parents, .children, .files{
-      position: relative;
-      padding:20px;
-      min-height: 100px;
-      .title {margin-top:0;margin-bottom: 20px;}
-    }
-
-    .parents, .children {
-      border-bottom: solid 1px #E7E7E7;
-    }
-  }
 }
 
-.page-manage-points-index {
-  .points {
-    padding:20px;
-    .header {
-      @include section_header_with_button;
+
+.page-manage-points-assign_parent,
+.page-manage-points-assign_child {
+  .assign-list {
+    .current {
+      font-size: 16px;
+    }
+
+    .select-from {
+      .points {
+        margin-bottom: 30px;
+        @include clearfix;
+      
+        .point {
+          @include col(1/3);
+          border: solid 1px #E7E7E7;
+          padding:10px;
+
+          input {float: left;margin-right: 10px;}
+          .name {float: left;}
+        }
+      }
     }
   }
 }

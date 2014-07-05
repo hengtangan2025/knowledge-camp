@@ -10,7 +10,7 @@ zh:
       file: 上传文件
       document: 创建文档
       point: 创建知识点
-      plan: 创建教学计划
+      plan: 创建教案
 
   time:
     formats:
@@ -19,7 +19,7 @@ zh:
   mongoid:
     models:
       net: 知识网络
-      plan: 教学计划
+      plan: 教案
       file: 文件
       document: 文档
       point: 知识点

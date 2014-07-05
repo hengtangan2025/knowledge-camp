@@ -4,10 +4,6 @@ class Manage::NetsController < BaseGenericController
   set_model KnowledgeNetStore::Net,
     :allow_attrs  => [:name, :desc]
 
-  def edit
-    render :form
-  end
-
   def create
     @net = KnowledgeNetStore::Net.new(model_params)
     return redirect_to [:manage, @net] if @net.save
@@ -15,7 +11,7 @@ class Manage::NetsController < BaseGenericController
   end
 
   update_with do
-    redirect_to :action => :index
+    redirect_to :action => :show
   end
 
   destroy_with do

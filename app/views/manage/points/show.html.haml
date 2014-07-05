@@ -8,10 +8,10 @@
 
 .page-main.col-pad-10.col-pad-offset-1
   = bread bread_data do
-    .point
-      .info
-        .ops
-          .edit
+    .point.piece.piece-shelf
+      .info.piece.piece-box
+        .piece.piece-ops
+          .edit.op
             %a{:href => url_for([:edit, :manage, @point]), :data => {:toggle => ['open', 'close']}}
               %i.fa.fa-pencil
               %span 编辑修改
@@ -19,9 +19,9 @@
         %h2.name=@point.name
         .desc=@point.desc
 
-      .parents
-        .ops
-          .assign
+      .parents.piece.piece-box
+        .piece.piece-ops
+          .assign.op
             %a{:href => url_for([:assign_parent, :manage, @point]), :data => {:toggle => ['open', 'close']}}
               %i.fa.fa-circle-o
               %span 指定前置
@@ -29,9 +29,9 @@
         %h3.title 前置知识点
         = render_cell :point, :list, @point.parents
 
-      .children
-        .ops
-          .assign
+      .children.piece.piece-box
+        .piece.piece-ops
+          .assign.op
             %a{:href => url_for([:assign_child, :manage, @point]), :data => {:toggle => ['open', 'close']}}
               %i.fa.fa-circle-o
               %span 指定后续
@@ -39,13 +39,12 @@
         %h3.title 后续知识点
         = render_cell :point, :list, @point.children
 
-      .files
-        .ops
-          .assign
+      .files.piece.piece-box
+        .piece.piece-ops
+          .assign.op
             %a{:href => url_for([:new, :manage, @point, :file]), :data => {:toggle => ['open', 'close']}}
               %i.fa.fa-upload
               %span 上传文件
 
         %h3.title 文件
         = render_cell :file, :grid, @point.virtual_files
-

@@ -29,8 +29,8 @@ module ApplicationHelper
   def _bread(data, index, toggle, &block)
     name, text, url = data[index]
 
-    haml_tag 'div.bread' do
-      haml_tag "div.link.#{name}" do
+    haml_tag "div.bread.#{name}" do
+      haml_tag "div.bread-link" do
         haml_tag 'a', text, :href => url, :data => {:toggle => toggle}
       end
 
