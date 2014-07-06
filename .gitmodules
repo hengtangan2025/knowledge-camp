@@ -7,3 +7,6 @@
 [submodule "sample-data/knowledge-points"]
 	path = sample-data/knowledge-points
 	url = git://github.com/mindpin/sample-data-knowledge-points.git
+[submodule "vendor/4ye"]
+	path = vendor/4ye
+	url = git://github.com/ben7th/4ye.git
