@@ -1,4 +1,8 @@
 module ApplicationHelper
+  def action_css_class
+    "page-#{params[:controller].sub('/', '-').gsub('_', '-')}-#{params[:action]}"
+  end
+
   # 网页标题
   def page_title(title)
     content_for :page_title do

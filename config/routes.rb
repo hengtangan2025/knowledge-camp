@@ -58,4 +58,7 @@ Rails.application.routes.draw do
     resources :nets, :shallow => true
   end
 
+
+  # 4ye.me
+  mount Siye::Engine => '/4ye'
 end
