@@ -83,8 +83,18 @@ gem 'file-part-upload',
     :github => 'mindpin/file-part-upload',
     :tag => '1.0.5'
 
+# 图片加载的一个小工具
 gem 'simple-images',
     :github => "mindpin/simple-images",
     :ref => '1621939'
     # :tag => '0.0.4'
     # :path => '/web/songliang/simple-images'
+
+# 获取视频文件
+gem 'video-fetcher',
+    :github => 'mindpin/video-fetcher',
+    :ref => '33ba889e9f01bf8b83241feccdd953f26fdb1567'
+    # :path => '/web/songliang/video-fetcher'
+
+gem 'siye',
+    :path => 'vendor/4ye'

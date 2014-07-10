@@ -73,6 +73,13 @@ GIT
       rest-client
 
 GIT
+  remote: git://github.com/mindpin/video-fetcher.git
+  revision: 33ba889e9f01bf8b83241feccdd953f26fdb1567
+  ref: 33ba889e9f01bf8b83241feccdd953f26fdb1567
+  specs:
+    video-fetcher (0.0.2)
+
+GIT
   remote: git://github.com/mindpin/virtual-file.git
   revision: 81fffa6789aba4f70683a8b4cf8f781470519fe5
   tag: v0.0.6
@@ -86,6 +93,12 @@ GIT
   specs:
     mongoid-versioning (0.0.1)
       mongoid (> 3)
+
+PATH
+  remote: vendor/4ye
+  specs:
+    siye (0.0.1)
+      rails (~> 4.1.2)
 
 GEM
   remote: http://ruby.taobao.org/
@@ -315,10 +328,12 @@ DEPENDENCIES
   sdoc (~> 0.4.0)
   simple-images!
   simple_form (~> 3.0.2)
+  siye!
   spring
   turbolinks
   ueditor.rails!
   uglifier (>= 1.3.0)
   unicorn
   user-auth!
+  video-fetcher!
   virtual_file_system!
