@@ -18,6 +18,7 @@ pickle-email-*.html
 .project
 config/initializers/secret_token.rb
 config/mongoid.y*l
+config/initializers/r.rb
 
 public/static_files/*
 public/uploads/*

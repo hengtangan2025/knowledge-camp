@@ -80,10 +80,10 @@ def get_virtual_filename(filename)
   return "#{arr*"."}-#{randstr(32)}.#{extname}"
 end
 
-require_relative 'r'
+require_relative 'rutil'
 FilePartUpload.config do
-  path File.join(R::UPLOAD_FILE_BASE_PATH, "files/:id/file/:name")
-  url "/#{R::STATIC_FILE_URL_PREFIX}/files/:id/file/:name"
+  path RUtil.get_static_file_path("files/:id/file/:name")
+  url RUtil.get_static_file_url("files/:id/file/:name")
 end
 
 module FilePartUpload
