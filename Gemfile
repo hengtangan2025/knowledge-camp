@@ -99,5 +99,8 @@ gem 'video-fetcher',
 gem 'siye',
     :path => 'vendor/4ye'
 
-gem 'knowledge-camp-api', :github => 'mindpin/knowledge-camp-api', :require => 'knowledge-camp/api'
+gem 'knowledge-camp-api',
+    :path    => 'vendor/knowledge-camp-api',
+    :require => 'knowledge-camp/api'
+
 

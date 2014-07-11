@@ -34,13 +34,6 @@ GIT
       activemodel (~> 4.1.0)
 
 GIT
-  remote: git://github.com/mindpin/knowledge-camp-api.git
-  revision: decd720dea57dcf09bd6d1d5917a4d11519c35dc
-  specs:
-    knowledge-camp-api (0.0.1)
-      rails (~> 4.1.2)
-
-GIT
   remote: git://github.com/mindpin/knowledge-net-plan-store.git
   revision: 19eeeccb14fc474e812044908f0df16380ac3792
   tag: v0.0.2
@@ -105,6 +98,12 @@ PATH
   remote: vendor/4ye
   specs:
     siye (0.0.1)
+      rails (~> 4.1.2)
+
+PATH
+  remote: vendor/knowledge-camp-api
+  specs:
+    knowledge-camp-api (0.0.1)
       rails (~> 4.1.2)
 
 GEM
