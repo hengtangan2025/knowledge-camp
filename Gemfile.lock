@@ -34,6 +34,13 @@ GIT
       activemodel (~> 4.1.0)
 
 GIT
+  remote: git://github.com/mindpin/knowledge-camp-api.git
+  revision: decd720dea57dcf09bd6d1d5917a4d11519c35dc
+  specs:
+    knowledge-camp-api (0.0.1)
+      rails (~> 4.1.2)
+
+GIT
   remote: git://github.com/mindpin/knowledge-net-plan-store.git
   revision: 19eeeccb14fc474e812044908f0df16380ac3792
   tag: v0.0.2
@@ -313,6 +320,7 @@ DEPENDENCIES
   jbuilder (~> 2.0.2)
   jquery-rails
   kaminari (~> 0.15.1)
+  knowledge-camp-api!
   knowledge-net-plan-store!
   knowledge-net-store!
   mina!
