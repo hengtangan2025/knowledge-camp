@@ -100,6 +100,12 @@ PATH
     siye (0.0.1)
       rails (~> 4.1.2)
 
+PATH
+  remote: vendor/knowledge-camp-api
+  specs:
+    knowledge-camp-api (0.0.1)
+      rails (~> 4.1.2)
+
 GEM
   remote: http://ruby.taobao.org/
   specs:
@@ -317,6 +323,7 @@ DEPENDENCIES
   jbuilder (~> 2.0.2)
   jquery-rails
   kaminari (~> 0.15.1)
+  knowledge-camp-api!
   knowledge-net-plan-store!
   knowledge-net-store!
   mina!

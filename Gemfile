@@ -100,3 +100,9 @@ gem 'video-fetcher',
 
 gem 'siye',
     :path => 'vendor/4ye'
+
+gem 'knowledge-camp-api',
+    :path    => 'vendor/knowledge-camp-api',
+    :require => 'knowledge-camp/api'
+
+
