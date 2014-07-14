@@ -34,6 +34,8 @@ gem "htmldiff"
 
 # 中文转拼音
 gem 'ruby-pinyin'
+# 代码高亮
+gem 'haml-coderay'
 
 gem "mina",
     :github => "fushang318/mina",

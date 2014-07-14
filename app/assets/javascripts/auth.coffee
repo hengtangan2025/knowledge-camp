@@ -1,7 +1,7 @@
-jQuery(document).delegate '.sign-in-form input[type=submit]', 'click', (evt)->
+jQuery(document).delegate '.sign-in-form form', 'submit', (evt)->
   evt.preventDefault()
   
-  $form = jQuery(this).closest('form')
+  $form = jQuery(this)
   data = $form.serialize()
   url = $form.attr('action')
 

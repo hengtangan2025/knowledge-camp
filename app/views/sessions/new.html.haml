@@ -1,33 +1,39 @@
 .sign-in
   .col-pad-8.col-pad-offset-2
-    .sign-header Knowledge Camp
+    .row
+      .col-pad-12
+        .sign-header Knowledge Camp
 
-  .col-pad-4.col-pad-offset-2
-    .sign-in-form
-      %h2.cell 用户登录 …
+      .col-pad-6
+        .sign-in-form
+          %h2.cell 用户登录 …
+          - label_l = t('simple_form.labels.user.login')
+          - label_p = t('simple_form.labels.user.password')
 
-      = simple_form_for :user, url: '/account/sign_in', html: { novalidate: true } do |f|
-        .form-group
-          = f.input :login, input_html: { class: 'form-control' }
-        .form-group
-          = f.input :password, input_html: { class: 'form-control' }
-        .form-group
-          = f.input :remember_me, as: :boolean
-        .form-group
-          = f.submit '登　录', class: 'btn btn-rounded btn-bdb-success btn-large'
-          %a.btn.btn-rounded.btn-bdb-info.btn-large.disabled{href: 'javascript:;'}
-            %i.fa.fa-arrow-right
-            %span 进入浏览
+          = simple_form_for :user, url: '/account/sign_in', html: { novalidate: true } do |f|
+            .form-group
+              = f.input :login, input_html: { class: 'form-control' }, placeholder: label_l, label: false
+            .form-group
+              = f.input :password, input_html: { class: 'form-control' }, placeholder: label_p, label: false
+            .form-group.btns
+              %button.submit.btn.btn-rounded.btn-bdb-success.btn-block.btn-large 登录
+            .form-group.opts
+              = f.input :remember_me, as: :boolean, input_html: { checked: true }
+            .auth-msg{style: 'display:none;'} 提示信息
+            .form-group.btns
+              %a.btn.btn-rounded.btn-bdb-info.btn-block.btn-large{href: '/explore'}
+                %i.fa.fa-arrow-right
+                %span 进入浏览
 
-      .auth-msg{style: 'display:none;'}
 
-  .col-pad-4
-    .intro
-      .version knowledge camp PREALPHA
-      %hr
-      .dev 
-        %span 开发中版本，问题回报请往：
-        %a{href: 'http://s.4ye.me/ELYZmv'} http://s.4ye.me/ELYZmv
-      %hr
-      .user 系统屏蔽用户注册，请通过管理员账号添加用户
-      .user 开发者请手动创建用户
+      .col-pad-6
+        .intro
+          .version VERSION: PREALPHA-2
+          %hr
+          .dev 
+            %span 开发中版本，问题回报请往：
+            %a{href: 'http://s.4ye.me/ELYZmv'} http://s.4ye.me/ELYZmv
+          %hr
+          .user 用户注册已关闭。
+          .user 请通过管理员账号添加用户，
+          .user 或程序后台手动创建用户。

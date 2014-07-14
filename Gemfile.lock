@@ -168,6 +168,9 @@ GEM
     execjs (2.2.1)
     haml (4.0.5)
       tilt
+    haml-coderay (0.2.0)
+      coderay
+      haml
     hike (1.2.3)
     htmldiff (0.0.1)
     i18n (0.6.9)
@@ -309,6 +312,7 @@ DEPENDENCIES
   file-part-upload!
   generic_controller!
   haml
+  haml-coderay
   htmldiff
   jbuilder (~> 2.0.2)
   jquery-rails
