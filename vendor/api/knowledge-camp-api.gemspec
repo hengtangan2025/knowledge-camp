@@ -6,7 +6,7 @@ require "knowledge-camp/api/version"
 # Describe your gem and declare its dependencies:
 Gem::Specification.new do |s|
   s.name        = "knowledge-camp-api"
-  s.version     = KnowledgeCamp::Api::VERSION
+  s.version     = KnowledgeCampApi::VERSION
   s.authors     = ["Kaid"]
   s.email       = ["info@kaid.me"]
   s.homepage    = "http://github/mindpin/knowledge-camp-api"

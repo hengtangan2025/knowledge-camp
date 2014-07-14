@@ -55,7 +55,7 @@ Rails.application.routes.draw do
   end
 
   # api
-  mount KnowledgeCamp::Api::Engine => "/api"
+  mount KnowledgeCampApi::Engine => "/api"
 
   # 4ye.me
   mount Siye::Engine => '/4ye'

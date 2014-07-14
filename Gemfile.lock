@@ -101,7 +101,7 @@ PATH
       rails (~> 4.1.2)
 
 PATH
-  remote: vendor/knowledge-camp-api
+  remote: vendor/api
   specs:
     knowledge-camp-api (0.0.1)
       rails (~> 4.1.2)
