@@ -102,5 +102,8 @@ gem 'siye',
     :path => 'vendor/4ye'
 
 gem 'knowledge-camp-api',
-    :path    => 'vendor/api'#,
-    # :require => 'knowledge-camp/api'
+    :path => 'vendor/api'
+
+gem 'kc-explore',
+    :path => 'vendor/explore',
+    :require => 'explore'

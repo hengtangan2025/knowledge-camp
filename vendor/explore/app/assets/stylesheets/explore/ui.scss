@@ -1,0 +1,58 @@
+$link-color:#2c5d8d;
+$link-hover-color:#2c5d8d;
+$border-radius-default:3px;
+$grid-gap:20px;
+
+@import "lily/css/lily.scss";
+
+// ------------------------
+
+body {
+  background-color: #f2f2f2;
+  background-image: asset-data-url("layout/body-bg.gif");
+
+  .page-header {
+    $h: 50px;
+    background: $black-70;
+    height: $h;
+    line-height: $h;
+    color: white;
+    margin-bottom: 30px;
+    .site {
+      font-weight: bold;
+      font-size: 16px;
+      text-shadow: 1px 1px 2px black;
+    }
+  }
+  .page-content {
+    margin-bottom: 50px;
+  }
+}
+
+.page-explore-index-index {
+  .not-signed-in {
+    background-color: $black-50;
+    padding:0 $grid-gap / 2;
+    margin-top: -30px;
+    color:white;
+    height: 50px;line-height: 50px;
+  }
+
+  .nets {
+    margin-top: $grid-gap;
+    .net {
+      @include col(1/2);
+      .box {
+        background-color: #FFF;
+        padding-bottom: 100%;
+        margin-bottom: $grid-gap;
+        box-shadow: 3px 3px $black-20;
+
+        .name {
+          position: absolute;
+          padding: 10px;
+        }
+      }
+    }
+  }
+}

@@ -1,4 +1,18 @@
 Rails.application.routes.draw do
+  
+  # 4ye.me
+  constraints :subdomain => 'blog' do
+    mount Siye::Engine => '/'
+  end
+
+  # api
+  mount KnowledgeCampApi::Engine => '/api'
+
+  # 学生界面
+  mount Explore::Engine => '/explore'
+
+  # -----------------------
+
   root 'index#index'
 
   devise_for :users, :skip => :all
@@ -53,10 +67,4 @@ Rails.application.routes.draw do
       resources :tutorials
     end
   end
-
-  # api
-  mount KnowledgeCampApi::Engine => "/api"
-
-  # 4ye.me
-  mount Siye::Engine => '/4ye'
 end

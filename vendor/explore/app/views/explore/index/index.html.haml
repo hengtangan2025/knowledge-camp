@@ -1,0 +1,9 @@
+- if !user_signed_in?
+  .not-signed-in 你正以未登录状态进行浏览
+
+  .col-phone-12
+    .nets
+      - KnowledgeNetStore::Net.all.each do |net|
+        .net
+          .box
+            .name= net.name
