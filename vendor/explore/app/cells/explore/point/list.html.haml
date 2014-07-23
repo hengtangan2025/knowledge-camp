@@ -1,0 +1,16 @@
+.cell-explore-points.list
+  - if @points.blank?
+    .point.blank
+      .icon
+      .name 没有了
+
+  - else
+    - @points.each do |point|
+      %a.point{:href => @view.url_for([point])}
+        :ruby
+          bg = string_grid_color(point.id)
+          bg1 = ApplicationHelper::ColorTransfer.darken(bg.to_s)
+
+        .icon{:style => "border-color:#{bg}"}
+        .name
+          %span= point.name

@@ -1,3 +1,10 @@
 Explore::Engine.routes.draw do
-  get '/' => 'index#index'
+  root :to => 'index#index'
+
+  resources :nets, :shallow => true do
+    resources :tutorials, :shallow => true do
+      get "steps/:num" => 'steps#show'
+    end
+    resources :points, :shallow => true
+  end
 end

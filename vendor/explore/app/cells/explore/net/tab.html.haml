@@ -1,0 +1,7 @@
+:ruby
+  tutorials_klass = @active == :tutorials ? 'active' : ''
+  points_klass = @active == :points ? 'active' : ''
+
+.tab
+  %a.tutorials{:class => tutorials_klass, :href => @view.url_for([@net, :tutorials])} 教程
+  %a.points{:class => points_klass, :href => @view.url_for([@net, :points])} 知识点

@@ -10,5 +10,5 @@
   .thumbnail.img{:data => {:'content-type' => content_type}}
     = fit_image fe.attach.url(:fit500), :width => '100%', :height => '100%'
 - else
-  .thumbnail{:data => {:'content-type' => content_type}}
+  .thumbnail{:data => {:'content-type' => content_type, :url => fe.attach.url}}
     .file-icon

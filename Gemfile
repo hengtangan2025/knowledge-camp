@@ -43,7 +43,7 @@ gem "mina",
 
 gem "knowledge-net-plan-store",
     :github => "mindpin/knowledge-net-plan-store",
-    :tag => "v0.0.2"
+    :ref => '8e05ad73c4eb2a895c8768bbeebc5271e11980aa'
 
 gem 'knowledge-net-store',
     :github => 'mindpin/knowledge-net-store',

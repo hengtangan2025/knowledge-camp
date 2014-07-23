@@ -1,0 +1,13 @@
+:ruby
+  tutorials_mock()
+  @tutorial = @tutorials.first
+
+.tutorial
+  .brief
+    .img= fit_image @tutorial.img, :width => '100%', :height => '100%'
+  .info
+    .desc= @tutorial.desc
+    .enter
+      %a.btn.btn-rounded.btn-flat-info.btn-large{:href => "/explore/tutorials/#{@tutorial.id}/steps/1"}
+        %i.fa.fa-arrow-right
+        %span 开始学习

@@ -12,10 +12,12 @@
     = csrf_meta_tags
     = javascript_include_tag 'application'
 
-  %body
+  %body.tutorial
     .page-header
       .container
-        KCMobile PREALPHA
+        %a.back{:href => url_for([@tutorial.net])}
+          %i.fa.fa-arrow-left
+        .title= @tutorial.title
     .page-content.container
       .row{:class => action_css_class}
         - if !user_signed_in?

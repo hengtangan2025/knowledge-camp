@@ -1,9 +1,8 @@
-- if !user_signed_in?
-  .not-signed-in 你正以未登录状态进行浏览
-
-  .col-phone-12
-    .nets
-      - KnowledgeNetStore::Net.all.each do |net|
-        .net
-          .box
-            .name= net.name
+.nets
+  - KnowledgeNetStore::Net.all.each do |net|
+    - color = string_grid_color net.id
+    .net
+      %a.box{:style => "background:#{color}", :href => url_for([net])}
+        .name= net.name
+        .points
+          .count= net.points.count

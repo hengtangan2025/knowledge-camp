@@ -1,0 +1,103 @@
+.page-explore-nets-show ,
+.page-explore-points-index
+{
+  .net {
+    .header {
+      padding:20px;
+      color:white;
+
+      a.back {
+        float: left;
+        display: block;
+        color:rgba(white, 0.6);
+        background-color:rgba(white, 0.1);
+        border-radius:100px;
+        text-align: center;
+        margin-left: -10px;
+        i {
+          font-size: 20px;
+          display: block;
+          width:50px;height:50px;line-height:50px;
+        }
+
+        &:hover {
+          background-color: rgba(white, 0.2);
+          text-decoration: none;
+        }
+      }
+
+      .name {
+        font-weight: bold;
+        font-size: 18px;
+        text-shadow:0 0 1px rgba(black, 0.2);
+        margin-left: 60px;
+      }
+      .desc {
+        opacity: 0.7;
+        margin-top: 10px;
+        margin-left: 60px;
+      }
+    }
+
+    .tab {
+      margin-top: 10px;
+      border-bottom: solid 3px $black-30;
+
+      @include clearfix;
+      a {
+        @include col(1/4);
+        background-color: $black-20;
+        color:white;
+        margin-left: 10px;
+        height:36px;line-height:36px;
+        border-radius:3px 3px 0 0;
+        text-shadow: 0 0 1px rgba(black, 0.3);
+        text-align: center;
+        &.active {
+          background-color: $black-30;
+        }
+        &:hover {
+          text-decoration: none;
+          background-color: $area-warning;
+        }
+      }
+    }
+
+    .tutorials {
+      .tutorial {
+        border-bottom:solid 1px #e6e6e6;
+        margin-left: -10px;
+        margin-right: -10px;
+        @include clearfix;
+
+        a.box {
+          padding:10px;
+          display: block;
+          @include clearfix;
+          color: $black-80;
+
+          &:hover {
+            text-decoration: none;
+            background-color: $area-dawn;
+          }
+        }
+
+        .img {
+          width:80px;height:80px;
+          border:solid 1px #E6E6E6;
+          float: left;
+          box-shadow:2px 2px 0px $black-10;
+        }
+
+        .title, .desc {margin-left: 100px;}
+        .title {
+          font-size: 18px;
+          margin-bottom: 5px;
+        }
+        .desc {
+          color:$black-40;
+        }
+      }
+    }
+  }
+}
