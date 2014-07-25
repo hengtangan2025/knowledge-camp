@@ -7,6 +7,7 @@ Rails.application.routes.draw do
 
   # api
   mount KnowledgeCampApi::Engine => '/api'
+  mount KcAndroidPublishUploader::Engine => '/android_publish_uploader'
 
   # 学生界面
   mount Explore::Engine => '/explore'

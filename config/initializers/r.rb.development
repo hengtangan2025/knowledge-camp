@@ -7,5 +7,11 @@ if !defined? R
     # 静态文件硬盘路径的前缀
     # 见 RUtil.get_static_file_path(path)
     UPLOAD_FILE_BASE_PATH = Rails.root.join("public/static_files")
+
+    # aliyun oss 需要的配置
+    ALIYUN_OSS_ACCESS_KEY_ID
+    ALIYUN_OSS_ACCESS_KEY_SECRET
+    ALIYUN_OSS_HOST
+    ALIYUN_OSS_BUCKET_NAME
   end
 end

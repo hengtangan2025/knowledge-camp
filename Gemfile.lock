@@ -8,6 +8,14 @@ GIT
       rake
 
 GIT
+  remote: git://github.com/mindpin/aliyun.git
+  revision: 2618793cd26132d2f1d0e793b8e9f31ffc8b691e
+  tag: 0.0.4
+  specs:
+    aliyun (0.0.1)
+      mime-types (~> 1.16)
+
+GIT
   remote: git://github.com/mindpin/documents-store.git
   revision: 65c6847bfec20da0a3940cb6669f71ceb50e657e
   tag: v0.0.4
@@ -98,6 +106,12 @@ PATH
   remote: vendor/4ye
   specs:
     siye (0.0.1)
+      rails (~> 4.1.2)
+
+PATH
+  remote: vendor/android-publish-uploader
+  specs:
+    kc-android-publish-uploader (0.0.1)
       rails (~> 4.1.2)
 
 PATH
@@ -315,6 +329,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  aliyun!
   bson_ext
   carrierwave-mongoid
   cells (~> 3.10.1)
@@ -329,6 +344,7 @@ DEPENDENCIES
   jbuilder (~> 2.0.2)
   jquery-rails
   kaminari (~> 0.15.1)
+  kc-android-publish-uploader!
   kc-explore!
   knowledge-camp-api!
   knowledge-net-plan-store!
