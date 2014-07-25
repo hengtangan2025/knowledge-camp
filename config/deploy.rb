@@ -14,6 +14,7 @@ set :shared_paths, [
   'config/env.yml',
   'config/secrets.yml',
   'config/initializers/r.rb',
+  'vendor/android-publish-uploader/config/android.yaml',
   'tmp',
   'log'
 ]
