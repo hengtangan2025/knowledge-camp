@@ -50,12 +50,133 @@
         }
       }
       .enter {
-        margin-top: 40px;
         a {
-          position: absolute;
-          bottom:10px;;left:101px + 10px;right:10px;
-          height:50px;line-height: 50px;
+          $w:60px;
+          background-color: $area-info;
+          position:absolute;
+          height:$w;line-height:$w;width:$w;
+          bottom:20px;right:20px;
+          border-radius:100px;
+          text-align: center;
+          color:white;
+          font-size: $w*0.4;
+          span {
+            color:$black-30;
+            position: absolute;
+            left:-80px;
+            top:0;
+            font-size:16px;
+          }
         }
+      }
+    }
+  }
+}
+
+.page-explore-steps-show {
+  .step {
+    position:absolute;
+    top:50px;bottom:0;left:0;right:0;
+
+    .detail {
+      .num {
+        font-size: 18px;
+        // font-weight: bold;
+        margin-top: 10px;
+        span.current {color:$area-fresh;font-weight: bold;}
+        span{color:$black-40;}
+        margin-bottom: 10px;
+        line-height: 30px;
+      }
+      .icons {
+        position: absolute;
+        top:10px;right:10px;
+        line-height: 30px;
+        .icon {
+          float: left;
+          font-size: 16px;
+        }
+      }
+      .title {
+        font-size: 24px;
+        // font-weight: bold;
+        margin-bottom: 20px;
+      }
+      .desc {
+        font-size: 16px;
+        margin-bottom: 80px;
+      }
+
+      .video {
+        margin-bottom: 20px;
+        width:100%;
+        padding-bottom:60%;
+        position: relative;
+        background-color:black;
+
+        .box {
+          position: absolute;
+          top:0;left:0;right:0;bottom:0;
+        }
+      }
+
+      .imgs {
+        margin-left: -5px;
+        margin-right: -5px;
+        .img {
+          @include col(1/2, $gap:10px);
+
+          .box {
+            width:100%;
+            padding-bottom: 66.6666%;
+            position: relative;
+            .box1 {
+              position: absolute;
+              top:0;left:0;bottom:0;right:0;
+              background-color: #f4f4f4;
+            }
+            &:after {
+              $p:-2px;
+              content:"";
+              position: absolute;
+              top:$p;left:$p;bottom:$p;right:$p;
+              border:solid 1px #E6E6E6;
+              // box-shadow:2px 2px 0px $black-10;
+            }
+          }
+        }
+      }
+    }
+
+    .control {
+      position: fixed;
+      bottom:0;right:0;
+      .prev, .next {
+        float:left;
+        margin-right: 20px;
+        margin-bottom: 20px;
+
+        a {
+          $w:60px;
+          display:block;
+          height:$w;width:$w;
+          border-radius:100px;
+          background-color: $black-10;
+          text-align: center;
+          color:$black-40;
+          i {
+            height:$w;line-height:$w;
+            font-size: $w * 0.4;
+          }
+        }
+      }
+      .prev i {position: relative;left:-2px;top:1px;}
+      .next i {position: relative;left:2px;top:1px;}
+      .prev {
+        a.cover {background-color: $area-info;color:white;}
+      }
+      .next {
+        a.finish {background-color: $area-warning;color:white;}
       }
     }
   }

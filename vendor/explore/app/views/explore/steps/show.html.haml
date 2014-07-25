@@ -2,7 +2,69 @@
   tutorials_mock()
   @tutorial = @tutorials.first
 
-  num = params[:num]
+  num = params[:num].to_i
+  steps = @tutorial.steps
+  step = steps[num - 1]
+
+  imgs = step[:imgs]
+  video = step[:video]
+
+  has_imgs = imgs.present?
+  has_video = video.present?
 
 .step
-  = num
+  .detail.col-phone-12
+    .num
+      %span.current= num
+      %span /
+      %span.total= steps.count
+
+    .icons
+      - if has_imgs
+        .icon.with-imgs
+          %i.fa.fa-image
+      - if has_video
+        .icon.with-video
+          %i.fa.fa-video-camera
+
+    - if has_video
+      .row
+        .video
+          .box
+            %video{:src => video, :controls => true, :width => '100%', :height => '100%'}
+
+    .title= step[:title]
+    .desc= step[:desc]
+
+    - if has_imgs
+      .imgs
+        - imgs.each do |img|
+          .img
+            .box
+              .box1= fit_image img, :width => '100%', :height => '100%'
+
+  .control
+    .prev
+      :ruby
+        href, klass = case num
+          when 1
+            ["/explore/tutorials/#{@tutorial.id}", 'cover']
+          else
+            ["/explore/tutorials/#{@tutorial.id}/steps/#{num - 1}", '']
+          end
+
+      %a{:href => href, :class => klass}
+        %i.fa.fa-chevron-left
+
+
+    .next
+      :ruby
+        href, klass = case num
+          when steps.length
+            ["/explore/tutorials/#{@tutorial.id}", 'finish']
+          else
+            ["/explore/tutorials/#{@tutorial.id}/steps/#{num + 1}", '']
+          end
+
+      %a{:href => href, :class => klass}
+        %i.fa.fa-chevron-right
