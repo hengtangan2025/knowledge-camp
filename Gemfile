@@ -107,3 +107,11 @@ gem 'knowledge-camp-api',
 gem 'kc-explore',
     :path => 'vendor/explore',
     :require => 'explore'
+
+gem 'kc-android-publish-uploader',
+    :path => 'vendor/android-publish-uploader',
+    :require => 'kc_android_publish_uploader'
+
+gem 'aliyun',
+    :github => 'mindpin/aliyun',
+    :tag => '0.0.4'

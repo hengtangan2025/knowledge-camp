@@ -10,3 +10,6 @@
 [submodule "vendor/4ye"]
 	path = vendor/4ye
 	url = git://github.com/ben7th/4ye.git
+[submodule "vendor/android-publish-uploader"]
+	path = vendor/android-publish-uploader
+	url = git://github.com/mindpin/kc-android-publish-uploader.git
