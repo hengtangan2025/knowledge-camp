@@ -1,5 +1,9 @@
 module Explore
   module ApplicationHelper
+    def get_tutorial_by_id(id)
+      @tutorials.select{|x| x.id == id}[0]
+    end
+
     def tutorials_mock()
       @tutorials = [
         OpenStruct.new({
@@ -175,6 +179,109 @@ module Explore
           :title => '刀工基本技法入门',
           :desc => '刀工就是根据烹调与食用的需要，将各种原料加工成一定形状，使之成为组配菜肴所需要的基本形体的操作技术。'
         }),
+      ]
+    end
+
+    def tutorials_mock2()
+      @tutorials = [
+        OpenStruct.new({
+          :net => KnowledgeNetStore::Net.first,
+          :id => 'sample-1',
+          :img => 'http://oss.aliyuncs.com/pie-documents/20140725/shao.jpg',
+          :title => '基本站姿',
+          :desc => '基本站姿的说明',
+          :steps => [
+            {:title => 'sample', :desc => '待补充'}
+          ],
+          :parents => [],
+          :children => ['sample-2'],
+          :learned => true
+        }),
+        OpenStruct.new({
+          :net => KnowledgeNetStore::Net.first,
+          :id => 'sample-2',
+          :img => 'http://oss.aliyuncs.com/pie-documents/20140725/shao.jpg',
+          :title => '握勺方法',
+          :desc => '握勺方法的说明',
+          :steps => [
+            {:title => 'sample', :desc => '待补充'}
+          ],
+          :parents => ['sample-1'],
+          :children => ['sample-3', 'sample-7'],
+          :learned => true
+        }),
+        OpenStruct.new({
+          :net => KnowledgeNetStore::Net.first,
+          :id => 'sample-3',
+          :img => 'http://oss.aliyuncs.com/pie-documents/20140725/shao.jpg',
+          :title => '小翻勺（前翻）',
+          :desc => '小翻勺（前翻）的说明',
+          :steps => [
+            {:title => 'sample', :desc => '待补充'}
+          ],
+          :parents => ['sample-2'],
+          :children => ['sample-4']
+        }),
+        OpenStruct.new({
+          :net => KnowledgeNetStore::Net.first,
+          :id => 'sample-4',
+          :img => 'http://oss.aliyuncs.com/pie-documents/20140725/shao.jpg',
+          :title => '小翻勺（后翻）',
+          :desc => '小翻勺（后翻）的说明',
+          :steps => [
+            {:title => 'sample', :desc => '待补充'}
+          ],
+          :parents => ['sample-3'],
+          :children => ['sample-5']
+        }),
+        OpenStruct.new({
+          :net => KnowledgeNetStore::Net.first,
+          :id => 'sample-5',
+          :img => 'http://oss.aliyuncs.com/pie-documents/20140725/shao.jpg',
+          :title => '大翻勺（前翻）',
+          :desc => '大翻勺（前翻）的说明',
+          :steps => [
+            {:title => 'sample', :desc => '待补充'}
+          ],
+          :parents => ['sample-4'],
+          :children => ['sample-6']
+        }),
+        OpenStruct.new({
+          :net => KnowledgeNetStore::Net.first,
+          :id => 'sample-6',
+          :img => 'http://oss.aliyuncs.com/pie-documents/20140725/shao.jpg',
+          :title => '大翻勺（后翻）',
+          :desc => '大翻勺（后翻）的说明',
+          :steps => [
+            {:title => 'sample', :desc => '待补充'}
+          ],
+          :parents => ['sample-5'],
+          :children => ['sample-8']
+        }),
+        OpenStruct.new({
+          :net => KnowledgeNetStore::Net.first,
+          :id => 'sample-7',
+          :img => 'http://oss.aliyuncs.com/pie-documents/20140725/shao.jpg',
+          :title => '出菜装盘',
+          :desc => '出菜装盘的说明',
+          :steps => [
+            {:title => 'sample', :desc => '待补充'}
+          ],
+          :parents => ['sample-2'],
+          :children => ['sample-8']
+        }),
+        OpenStruct.new({
+          :net => KnowledgeNetStore::Net.first,
+          :id => 'sample-8',
+          :img => 'http://oss.aliyuncs.com/pie-documents/20140725/shao.jpg',
+          :title => '灶台整理',
+          :desc => '灶台整理的说明',
+          :steps => [
+            {:title => 'sample', :desc => '待补充'}
+          ],
+          :parents => ['sample-6', 'sample-7'],
+          :children => []
+        })
       ]
     end
   end

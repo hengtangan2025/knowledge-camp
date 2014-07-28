@@ -1,6 +1,7 @@
 :ruby
-  tutorials_mock()
-  @tutorial = @tutorials.first
+  tutorials_mock2()
+  tid = params[:tutorial_id]
+  @tutorial = @tutorials.select{|t| t.id == tid}[0]
 
   num = params[:num].to_i
   steps = @tutorial.steps
@@ -61,7 +62,7 @@
       :ruby
         href, klass = case num
           when steps.length
-            ["/explore/tutorials/#{@tutorial.id}", 'finish']
+            ["/explore/tutorials/#{@tutorial.id}/steps/finish", 'finish']
           else
             ["/explore/tutorials/#{@tutorial.id}/steps/#{num + 1}", '']
           end

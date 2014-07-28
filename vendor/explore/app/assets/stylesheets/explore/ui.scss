@@ -5,6 +5,8 @@ $grid-gap:20px;
 
 @import "lily/css/lily.scss";
 
+@import "mixins";
+
 @import "net";
 @import "point";
 @import "tutorial";

@@ -64,40 +64,7 @@
     }
 
     .tutorials {
-      .tutorial {
-        border-bottom:solid 1px #e6e6e6;
-        margin-left: -10px;
-        margin-right: -10px;
-        @include clearfix;
-
-        a.box {
-          padding:10px;
-          display: block;
-          @include clearfix;
-          color: $black-80;
-
-          &:hover {
-            text-decoration: none;
-            background-color: $area-dawn;
-          }
-        }
-
-        .img {
-          width:80px;height:80px;
-          border:solid 1px #E6E6E6;
-          float: left;
-          box-shadow:2px 2px 0px $black-10;
-        }
-
-        .title, .desc {margin-left: 100px;}
-        .title {
-          font-size: 18px;
-          margin-bottom: 5px;
-        }
-        .desc {
-          color:$black-40;
-        }
-      }
+      @include tutorials;
     }
   }
 }

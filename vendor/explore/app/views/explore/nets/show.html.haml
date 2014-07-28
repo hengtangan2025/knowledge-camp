@@ -1,5 +1,5 @@
 :ruby
-  tutorials_mock()
+  tutorials_mock2()
 
 .net
   = render_cell 'explore/net', :header, @net
@@ -13,4 +13,7 @@
             .img= fit_image tutorial.img, :width => '100%', :height => '100%'
             .title= tutorial.title
             .desc= tutorial.desc
+            - if tutorial.learned
+              .learned
+                %i.fa.fa-check
 
