@@ -32,6 +32,7 @@
     }
     .desc {
       color:$black-40;
+      margin-right: 40px;
     }
 
     .learned {
@@ -40,9 +41,28 @@
       position: absolute;
       top:0;right:0;bottom:0;width:40px;
       background-color:lighten($area-fresh, 35%);
-      text-align: center;
       i {
-        line-height: 100px;
+        line-height: 30px;
+        position: absolute;
+        top:50%;
+        margin-top: -15px;
+        left:0;right:0;
+        text-align: center;
+      }
+    }
+    .continue {
+      font-size: 24px;
+      color: $area-info;
+      position: absolute;
+      top:0;right:0;bottom:0;width:40px;
+      background-color:lighten($area-info, 30%);
+      i {
+        line-height: 30px;
+        position: absolute;
+        top:50%;
+        margin-top: -15px;
+        left:0;right:0;
+        text-align: center;
       }
     }
   }
