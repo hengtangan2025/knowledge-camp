@@ -273,7 +273,7 @@ module Explore
              :title => '观看示范动作', 
              :desc => '请观看视频，了解前翻勺的示范动作：',
              :imgs => [],
-             :video => 'http://oss.aliyuncs.com/pie-documents/20140729/3-小翻勺-前翻.mp44'
+             :video => 'http://oss.aliyuncs.com/pie-documents/20140729/3-小翻勺-前翻.mp4'
             }
           ],
           :parents => ['sample-2'],
