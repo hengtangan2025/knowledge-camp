@@ -192,6 +192,86 @@
       }
     }
 
+    .note {
+      position: fixed;
+      bottom:20px;left:20px;right:20px;
+      z-index:6;
+
+      .link {
+        a {
+          $w:60px;
+          display:block;
+          height:$w;width:$w;
+          border-radius:100px;
+          background-color: $area-primary;
+          text-align: center;
+          color:white;
+          i {
+            height:$w;line-height:$w;
+            font-size: $w * 0.4;
+          }
+        }
+      }
+    }
+
+    .note-overlay {
+      position: fixed;
+      top:0;left:0;right:0;bottom:0;
+      background-color:rgba(black,0.6);
+      z-index:5;
+
+      .level-select {
+        $c:lighten($area-info, 0%);
+
+        position: absolute;
+        left:5px;right:5px;
+        bottom:320px;
+        .l {
+          background-color: $c;
+          margin-bottom: 5px;
+          // border-radius:$border-radius-default;
+          color:white;
+          height:50px;line-height:50px;
+          padding-left: 10px;
+          i {
+            font-size: 30px;
+            line-height: 50px;
+            text-shadow: 0 0 2px rgba(black, 0.3);
+            float: left;
+          }
+          span {
+            float: left;
+            margin-left: 20px;
+            line-height: 50px;
+            font-size: 16px;
+          }
+        }
+      }
+
+      .note-input {
+        // $c:lighten($area-info, 10%);;
+        $c:$area-dawn;
+        position: absolute;
+        left:5px;right:5px;
+        bottom: 120px;
+        height:200px;
+        background-color:$c;
+        // border-radius:$border-radius-default;
+        &:before {
+          content:"";
+          position: absolute;
+          border:solid 20px transparent;
+          border-top:solid 20px $c;
+          top:200px;left:25px;
+        }
+
+        .di {
+          background-color:lighten($area-warning, 15%);
+          padding:10px;
+        }
+      }
+    }
+
     .control {
       position: fixed;
       bottom:0;right:0;
