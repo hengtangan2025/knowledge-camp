@@ -225,7 +225,7 @@
 
         position: absolute;
         left:5px;right:5px;
-        bottom:320px;
+        top:55px;
         .l {
           background-color: $c;
           margin-bottom: 5px;
@@ -253,7 +253,7 @@
         $c:$area-dawn;
         position: absolute;
         left:5px;right:5px;
-        bottom: 120px;
+        top:220px;
         height:200px;
         background-color:$c;
         // border-radius:$border-radius-default;
@@ -262,7 +262,7 @@
           position: absolute;
           border:solid 20px transparent;
           border-top:solid 20px $c;
-          top:200px;left:25px;
+          top:100%;left:25px;
         }
 
         .di {
