@@ -194,7 +194,7 @@ module Explore
             {
              :title => '站立姿势', 
              :desc => '灶台前操作的正确姿势应该是，两脚分开，自然站立。',
-             :imgs => [],
+             :imgs => ['http://mindpin.oss-cn-hangzhou.aliyuncs.com/image_service/images/wN60Ly8I/adaptive_height_300_wN60Ly8I.png','http://mindpin.oss-cn-hangzhou.aliyuncs.com/image_service/images/p3Pualvi/adaptive_height_300_p3Pualvi.png'],
              :video => ''
             },
             {
@@ -230,19 +230,19 @@ module Explore
             {
              :title => '如何握炒勺', 
              :desc => '用左手握炒勺，握炒勺要牢而不死，翻勺时握紧，不翻勺时放松。',
-             :imgs => [],
+             :imgs => ['http://mindpin.oss-cn-hangzhou.aliyuncs.com/image_service/images/Qe2zwWiQ/adaptive_height_300_Qe2zwWiQ.png','http://mindpin.oss-cn-hangzhou.aliyuncs.com/image_service/images/lRyHMzGQ/adaptive_height_300_lRyHMzGQ.png'],
              :video => ''
             },
             {
              :title => '如何握手勺', 
              :desc => '右手握手勺，用食指抵住勺柄。握勺姿势如果正确，那么手背朝上时，手勺口应该是竖起来的。',
-             :imgs => [],
+             :imgs => ['http://mindpin.oss-cn-hangzhou.aliyuncs.com/image_service/images/xRqkFhlL/adaptive_height_300_xRqkFhlL.png','http://mindpin.oss-cn-hangzhou.aliyuncs.com/image_service/images/FCXIMvZx/adaptive_height_300_FCXIMvZx.png'],
              :video => ''
             },
             {
              :title => '如何握边锅', 
              :desc => '边锅的握法是，左手拇指勾住锅耳左侧，其余四指端住边锅底部。在灶上操作时，应该垫上毛巾。边锅握得正确，竖起来不能脱手。',
-             :imgs => [],
+             :imgs => ['http://mindpin.oss-cn-hangzhou.aliyuncs.com/image_service/images/kU7ckqJh/adaptive_height_300_kU7ckqJh.png','http://mindpin.oss-cn-hangzhou.aliyuncs.com/image_service/images/vw414oPv/adaptive_height_300_vw414oPv.png'],
              :video => ''
             },
             {
@@ -266,7 +266,7 @@ module Explore
             {
              :title => '前翻勺的动作要领', 
              :desc => '前翻的目的是使原料在锅中由前向后翻动。其动作要领是，靠手腕的力量前推后拉。后拉时翘起锅的前沿，翻动原料。',
-             :imgs => [],
+             :imgs => ['http://mindpin.oss-cn-hangzhou.aliyuncs.com/image_service/images/Uh8UwG2i/adaptive_height_300_Uh8UwG2i.png','http://mindpin.oss-cn-hangzhou.aliyuncs.com/image_service/images/QuQoXC19/adaptive_height_300_QuQoXC19.png'],
              :video => ''
             },
             {
@@ -289,7 +289,7 @@ module Explore
             {
              :title => '后翻勺的动作要领', 
              :desc => '后翻勺的目的使原料在炒勺里由后向前翻动。这种翻勺动作难度较大，但是在加工调味汁较多的菜肴时，不容易烫手。',
-             :imgs => [],
+             :imgs => ['http://mindpin.oss-cn-hangzhou.aliyuncs.com/image_service/images/iKosAokx/adaptive_height_300_iKosAokx.png','http://mindpin.oss-cn-hangzhou.aliyuncs.com/image_service/images/JFM8P19W/adaptive_height_300_JFM8P19W.png'],
              :video => ''
             },
             {
@@ -312,7 +312,7 @@ module Explore
             {
              :title => '大翻勺的特点', 
              :desc => '烹饪某些菜肴时，需要用炒勺把菜扬起来，整个翻过来，再接住。这种翻勺动作，叫大翻勺。',
-             :imgs => [],
+             :imgs => ['http://mindpin.oss-cn-hangzhou.aliyuncs.com/image_service/images/KJF1eLqH/adaptive_height_300_KJF1eLqH.png','http://mindpin.oss-cn-hangzhou.aliyuncs.com/image_service/images/BTYZE97x/adaptive_height_300_BTYZE97x.png'],
              :video => ''
             },
             {
@@ -347,7 +347,7 @@ module Explore
             {
              :title => '顶翻的动作要领', 
              :desc => '顶翻时，左手的动作和小翻一样。同时，右手用手勺顺着菜肴翻动的方向推顶，所以叫顶翻。有了手勺的配合，菜肴翻动充分，左手也比较省力。',
-             :imgs => [],
+             :imgs => ['http://mindpin.oss-cn-hangzhou.aliyuncs.com/image_service/images/a4yJuOZZ/adaptive_height_300_a4yJuOZZ.png','http://mindpin.oss-cn-hangzhou.aliyuncs.com/image_service/images/OwiEAHeN/adaptive_height_300_OwiEAHeN.png'],
              :video => ''
             },
             {
@@ -399,7 +399,7 @@ module Explore
             {
              :title => '灶台整理的要求', 
              :desc => '一名好的厨师，手底下要利落。各种原料用具摆放合理，讲究卫生，随时保持炉台和灶具的清洁。',
-             :imgs => [],
+             :imgs => ['http://mindpin.oss-cn-hangzhou.aliyuncs.com/image_service/images/gyTuLzNF/adaptive_height_300_gyTuLzNF.png','http://mindpin.oss-cn-hangzhou.aliyuncs.com/image_service/images/z1fxOpp7/adaptive_height_300_z1fxOpp7.png'],
              :video => ''
             },
             {
