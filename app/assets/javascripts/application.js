@@ -23,3 +23,6 @@
 //= require tricks/ui-toggle
 //= require tricks/fixtop
 //= require simple-images
+
+// explore
+//= require explore-ui
