@@ -23,6 +23,13 @@
               %i.fa.fa-chevron-right
 
   .control
+    .prev
+      :ruby
+        href ="/explore/tutorials/#{@tutorial.id}/steps/#{@tutorial.steps.count}"
+
+      %a{:href => href}
+        %i.fa.fa-chevron-left
+
     .finished
       %a.finish{:href => "/explore/tutorials/#{@tutorial.id}"}
-        %i.fa.fa-arrow-left
+        %i.fa.fa-refresh
