@@ -259,7 +259,7 @@ module Explore
         OpenStruct.new({
           :net => KnowledgeNetStore::Net.first,
           :id => 'sample-3',
-          :img => 'http://mindpin.oss-cn-hangzhou.aliyuncs.com/image_service/images/RZzOVkfq/adaptive_height_300_RZzOVkfq.png',
+          :img => 'http://mindpin.oss-cn-hangzhou.aliyuncs.com/image_service/images/oEXj1sYs/adaptive_height_300_oEXj1sYs.png',
           :title => '小翻勺（前翻）',
           :desc => '接下来学习小翻勺动作，这一节主要讲前翻动作',
           :steps => [
@@ -282,7 +282,7 @@ module Explore
         OpenStruct.new({
           :net => KnowledgeNetStore::Net.first,
           :id => 'sample-4',
-          :img => 'http://mindpin.oss-cn-hangzhou.aliyuncs.com/image_service/images/RZzOVkfq/adaptive_height_300_RZzOVkfq.png',
+          :img => 'http://mindpin.oss-cn-hangzhou.aliyuncs.com/image_service/images/oEXj1sYs/adaptive_height_300_oEXj1sYs.png',
           :title => '小翻勺（后翻）',
           :desc => '接下来学习小翻勺动作，这一节主要讲后翻动作',
           :steps => [
@@ -387,7 +387,8 @@ module Explore
             }
           ],
           :parents => ['sample-2'],
-          :children => ['sample-8']
+          :children => ['sample-8'],
+          :learned => true
         }),
         OpenStruct.new({
           :net => KnowledgeNetStore::Net.first,

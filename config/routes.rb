@@ -68,4 +68,14 @@ Rails.application.routes.draw do
       resources :tutorials
     end
   end
+
+  # -----------------
+
+  namespace :sample do
+    resources :nets, :shallow => true do
+      resources :tutorials
+      resources :students
+    end
+  end
+
 end

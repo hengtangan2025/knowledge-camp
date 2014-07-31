@@ -1,0 +1,125 @@
+:ruby
+  students_mock()
+  tutorials_mock2()
+  tutorial = @tutorials.select{|x| x.id == params[:id]}[0]
+
+.col-pad-2
+  %a.back{:href => '/sample/nets', :data => {:toggle => true}}
+    %i.fa.fa-arrow-left
+    %span 返回上级
+
+  .side
+    = render_cell :tutorial, :sample_list, [tutorial]
+
+.col-pad-10
+  .main
+    .intro
+      %h4.title 说明(SAMPLE)
+      .desc 此界面仅作为演示说明，数据为预置的演示数据，不完全代表最终实际系统运行效果
+      .tuli
+        %span.learned
+        %span 已学完
+        %span.learning
+        %span 未学完
+      .nandu
+        %span 难度系数由学生在学习过程中标注，其中：
+        %b 易-0，
+        %b 中-1，
+        %b 难-2。
+        %br
+        %span 平均难度反映了学生普遍的主观上的学习感想。
+        %br
+        %span 难度波动说明了学生在教程中各步骤时感觉到的难度变化，数字越小说明教程难度变化越均匀。
+
+    %table.table.table-bordered.table-striped
+      %thead
+        %tr
+          %th 教程步骤
+          - @students.each do |s|
+            %th{:colspan => 2}
+              %a{:href => "/sample/students/#{s.id}", :data => {:toggle => true}}
+                %span.avatar= avatar User.new, :small
+                %span.name= s.name
+          %th 平均难度
+
+      %tbody
+        - num = 1
+        - score_hash = {}
+        - tutorial.steps.each do |step|
+          - score_hash[step] = 0
+          %tr
+            %td
+              %span.num= num
+              %span.title= step[:title]
+            - @students.each do |s|
+              - if s.learned || num < 2
+                %td.step-learned
+                  %i.fa.fa-check
+              - else
+                %td.step-learning
+                  %span …
+              - score = rand(3)
+              - score_hash[step] += score
+              %td= %w{易 中 难}[rand(3)]
+            %td.hard-score= (score_hash[step] / 4.0).round(2)
+
+          - num += 1
+        %tr
+          %td 
+            %b 学习进度
+          - @students.each do |s|
+            - if s.learned
+              %td.learned{:colspan => 2, :rowspan => 2}
+                .info
+                  %i.fa.fa-check
+                  %span 已学完
+                .bar
+                  .p{:style => 'width:100%'}
+
+            - else
+              %td.learning{:colspan => 2, :rowspan => 2}
+                - scount = tutorial.steps.count
+                - percent = (scount - 1) * 100.0 / scount
+                - percent = percent.round(2)
+                .info
+                  %span 未学完(#{percent}%)
+                .bar
+                  .p{:style => "width:#{percent}%"}
+          %td
+            %i.fa.fa-bar-chart-o
+            %b 难度波动
+        %tr
+          %td 2 人学完
+          %td.s-d
+            :ruby
+              arr = score_hash.values.map{|x| x/4.0}
+              ave = arr.sum * 1.0 / arr.length
+              s = arr.map{|x| (x - ave) * (x - ave) }.sum * 1.0 / arr.length
+              s = Math.sqrt(s).round(2)
+            %span= s
+
+    %h3{:style => 'margin-bottom:20px;'} 后续教程 ……
+    .next-tutorials
+
+      :ruby
+        arr = tutorial.children.map { |x|
+          @tutorials.select{|y| y.id == x}[0]
+        }
+
+      - arr.each do |tutorial|
+        .tutorial
+          %a.box{:href => "/sample/tutorials/#{tutorial.id}", :data => {:toggle => true}}
+            :ruby
+              steps_count = tutorial.steps.count
+              imgs_count = tutorial.steps.map{|s| s[:imgs].length}.sum
+              videos_count = tutorial.steps.map{|s| s[:video].blank? ? 0:1}.sum
+
+            .img= fit_image tutorial.img, :width => '100%', :height => '100%'
+            .info
+              .title= tutorial.title
+              .desc= tutorial.desc
+            .select-percent
+              .desc 选择继续阅读此教程的学生
+              .p 50.0%
+            .next-icon
+              %i.fa.fa-chevron-right

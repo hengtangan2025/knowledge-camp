@@ -1,0 +1,33 @@
+.tutorials
+  - @tutorials.each do |tutorial|
+    .tutorial
+      %a.box{:href => "/sample/tutorials/#{tutorial.id}", :data => {:toggle => true}}
+        :ruby
+          steps_count = tutorial.steps.count
+          imgs_count = tutorial.steps.map{|s| s[:imgs].length}.sum
+          videos_count = tutorial.steps.map{|s| s[:video].blank? ? 0:1}.sum
+
+        .img= fit_image tutorial.img, :width => '100%', :height => '100%'
+        .title= tutorial.title
+        .desc= tutorial.desc
+        .info
+          .counts
+            .steps
+              %i.fa.fa-list-ol
+              %span 步骤
+              %span= steps_count
+            .imgs
+              %i.fa.fa-image
+              %span 图片
+              %span= imgs_count
+            .videos
+              %i.fa.fa-video-camera
+              %span 视频
+              %span= videos_count
+          .learn-stat
+            .learning
+              %i.fa.fa-user
+              %span 4 人学过
+            .learned
+              %i.fa.fa-check
+              %span 2 人学完
