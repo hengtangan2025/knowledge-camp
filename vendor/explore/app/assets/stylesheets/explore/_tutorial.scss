@@ -49,7 +49,7 @@
       .desc {
         font-size: 16px;
         position: relative;
-        margin-top: 30px;
+        // margin-top: 30px;
 
         &:first-letter {
           font-size: 30px;
@@ -96,6 +96,24 @@
             left:-80px;
             top:0;
             font-size:16px;
+          }
+        }
+      }
+      .points {
+        margin-top: 40px;
+        margin-left: -40px;
+        margin-right: -40px;
+        .t {
+          // margin-bottom: 20px;
+          background-color: lighten($area-info, 35%);
+          padding:5px 10px;
+        }
+        .plist {
+          border-top:solid 1px #e6e6e6;
+          // background-color:#f7f7f7;
+          .point {
+            padding-top: 15px;
+            padding-bottom: 15px;
           }
         }
       }

@@ -17,6 +17,14 @@
     .img= fit_image @tutorial.img, :width => '100%', :height => '100%'
   .info
     .desc= @tutorial.desc
+    .points
+      .t 相关知识点：
+      :ruby
+        points = @tutorial.related
+        points = points.map {|x| KnowledgeNetStore::Point.where(:name => x)[0]}
+      .plist
+        = render_cell 'explore/point', :list, points, self
+
     .enter
       %a{:href => "/explore/tutorials/#{@tutorial.id}/steps/1"}
         %i.fa.fa-arrow-right

@@ -41,13 +41,18 @@ gem "mina",
     :github => "fushang318/mina",
     :tag => "v0.2.0fix"
 
+# tag 管理
+gem "acts-as-dag", 
+    :github => "mindpin/acts-as-dag", 
+    :tag => "v0.0.1"
+
 gem "knowledge-net-plan-store",
     :github => "mindpin/knowledge-net-plan-store",
     :ref => '8e05ad73c4eb2a895c8768bbeebc5271e11980aa'
 
 gem 'knowledge-net-store',
     :github => 'mindpin/knowledge-net-store',
-    :tag => '0.0.7'
+    :tag => '0.0.9'
 
 gem "generic_controller",
     :github => "mindpin/generic_controller",

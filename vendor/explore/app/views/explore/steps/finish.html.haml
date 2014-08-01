@@ -12,15 +12,11 @@
       %i.fa.fa-check
     .desc 你已经完成了对“#{@tutorial.title}”的学习，接下来你可以学习：
     .children
-      - @tutorial.children.each do |cid|
-        - child = @tutorials.select {|t| t.id == cid}[0]
-        .tutorial
-          %a.box{:href => "/explore/tutorials/#{child.id}"}
-            .img= fit_image child.img, :width => '100%', :height => '100%'
-            .title= child.title
-            .desc= child.desc
-            .continue
-              %i.fa.fa-chevron-right
+      :ruby
+        children = @tutorial.children.map {|cid|
+          @tutorials.select {|t| t.id == cid}[0]
+        }
+      = render_cell 'explore/tutorial', :list_finish, children, self
 
   .control
     .prev

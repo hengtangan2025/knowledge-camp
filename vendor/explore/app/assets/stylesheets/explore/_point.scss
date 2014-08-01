@@ -1,11 +1,14 @@
 .cell-explore-points.list {
   .point {
-    @include clearfix;
+    overflow: hidden;
     border-bottom:solid 1px #e6e6e6;
     padding:10px;
     display:block;
 
     $h: 30px;
+    &:hover {
+      background-color: $area-dawn;
+    }
 
     .icon {
       float: left;
@@ -49,5 +52,85 @@
     .icon {border-color: $black-20;}
     .name {background-color: $black-20;}
     .name:before {border-right-color: $black-20;}
+  }
+}
+
+.page-explore-points-show {
+  .wall {
+    background-color: lighten($area-info, 35%);
+    padding:10px 20px;
+    border-bottom:solid 1px #e6e6e6;
+  }
+  .net {
+    display: block;
+    margin-bottom: 20px;
+    padding:10px 20px;
+    border-bottom:solid 1px #e6e6e6;
+    position: relative;
+    color:#333;
+
+    &:hover {
+      background-color:$area-dawn;
+      text-decoration: none;
+    }
+
+    @include clearfix;
+    .back {
+      background-color:$black-10;
+      color:$black-40;
+      height:30px;width:30px;
+      float: left;
+      text-align: center;
+      line-height: 30px;
+      border-radius:100px;
+    }
+    .name {
+      line-height: 30px;
+      margin-left: 10px;
+      float: left;
+    }
+    .go {
+      font-size: 24px;
+      color: $area-info;
+      position: absolute;
+      top:0;right:0;bottom:0;width:40px;
+      background-color:lighten($area-info, 30%);
+      i {
+        line-height: 30px;
+        position: absolute;
+        top:50%;
+        margin-top: -15px;
+        left:0;right:0;
+        text-align: center;
+      }
+    }
+  }
+  .point {
+    margin-bottom: 20px;
+    .head {
+      padding:20px;
+      border-bottom:solid 1px #e6e6e6;
+      @include clearfix;
+      $w:70px;
+      .icon {
+        @include border-box;
+        width:$w;height:$w;
+        border:solid $w / 7;
+        border-radius:100px;
+        float: left;
+      }
+      .name {
+        font-size: 16px;
+        margin-left: $w + 20px;
+        margin-bottom: 10px;
+      }
+      .desc {
+        margin-left: $w + 20px;
+        color:$text-quiet;
+      }
+    }
+  }
+  .tutorials {
+    @include tutorials;
   }
 }

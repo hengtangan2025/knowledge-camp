@@ -1,0 +1,9 @@
+.cell-tutorials-list
+  - @tutorials.each do |tutorial|
+    .tutorial
+      %a.box{:href => "/explore/tutorials/#{tutorial.id}"}
+        .img= fit_image tutorial.img, :width => '100%', :height => '100%'
+        .title= tutorial.title
+        .desc= tutorial.desc
+        .continue
+          %i.fa.fa-chevron-right

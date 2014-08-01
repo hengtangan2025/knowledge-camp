@@ -8,6 +8,14 @@ GIT
       rake
 
 GIT
+  remote: git://github.com/mindpin/acts-as-dag.git
+  revision: af0887073f0cf9ab843f11ee247cb76b48eec215
+  tag: v0.0.1
+  specs:
+    acts-as-dag (0.0.1)
+      mongoid
+
+GIT
   remote: git://github.com/mindpin/aliyun.git
   revision: 2618793cd26132d2f1d0e793b8e9f31ffc8b691e
   tag: 0.0.4
@@ -51,8 +59,8 @@ GIT
 
 GIT
   remote: git://github.com/mindpin/knowledge-net-store.git
-  revision: 09aac602ee63f8fa6cc44606b7001b982fffca35
-  tag: 0.0.7
+  revision: 183dff73645166fe212437abb7b8ec59c14045ea
+  tag: 0.0.9
   specs:
     knowledge-net-store (0.0.1)
 
@@ -329,6 +337,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  acts-as-dag!
   aliyun!
   bson_ext
   carrierwave-mongoid

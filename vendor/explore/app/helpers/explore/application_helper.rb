@@ -218,7 +218,8 @@ module Explore
           ],
           :parents => [],
           :children => ['sample-2'],
-          :learned => true
+          :learned => true,
+          :related => %w{形成安全意识 锻炼身体}
         }),
         OpenStruct.new({
           :net => KnowledgeNetStore::Net.first,
@@ -254,7 +255,8 @@ module Explore
           ],
           :parents => ['sample-1'],
           :children => ['sample-3', 'sample-7'],
-          :learned => true
+          :learned => true,
+          :related => %w{熟悉炒勺 熟悉手勺 熟悉边锅 了解勺类厨具的不同说法}
         }),
         OpenStruct.new({
           :net => KnowledgeNetStore::Net.first,
@@ -277,7 +279,8 @@ module Explore
             }
           ],
           :parents => ['sample-2'],
-          :children => ['sample-4']
+          :children => ['sample-4'],
+          :related => %w{了解勺类厨具的不同说法 了解小翻勺}
         }),
         OpenStruct.new({
           :net => KnowledgeNetStore::Net.first,
@@ -300,7 +303,8 @@ module Explore
             }
           ],
           :parents => ['sample-3'],
-          :children => ['sample-5']
+          :children => ['sample-5'],
+          :related => %w{了解勺类厨具的不同说法 了解小翻勺}
         }),
         OpenStruct.new({
           :net => KnowledgeNetStore::Net.first,
@@ -329,7 +333,8 @@ module Explore
             }
           ],
           :parents => ['sample-4'],
-          :children => ['sample-6']
+          :children => ['sample-6'],
+          :related => %w{了解勺类厨具的不同说法 了解大翻勺}
         }),
         OpenStruct.new({
           :net => KnowledgeNetStore::Net.first,
@@ -358,7 +363,8 @@ module Explore
             }
           ],
           :parents => ['sample-5'],
-          :children => ['sample-8']
+          :children => ['sample-8'],
+          :related => %w{了解勺类厨具的不同说法 了解小翻勺 了解大翻勺}
         }),
         OpenStruct.new({
           :net => KnowledgeNetStore::Net.first,
@@ -388,7 +394,8 @@ module Explore
           ],
           :parents => ['sample-2'],
           :children => ['sample-8'],
-          :learned => true
+          :learned => true,
+          :related => %w{了解勺类厨具的不同说法 了解装盘}
         }),
         OpenStruct.new({
           :net => KnowledgeNetStore::Net.first,
@@ -417,7 +424,8 @@ module Explore
             }
           ],
           :parents => ['sample-6', 'sample-7'],
-          :children => []
+          :children => [],
+          :related => %w{了解小翻勺 了解大翻勺 了解刮装法}
         })
       ]
     end
