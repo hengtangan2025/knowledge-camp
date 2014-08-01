@@ -75,6 +75,7 @@ Rails.application.routes.draw do
     resources :nets, :shallow => true do
       resources :tutorials
       resources :students
+      resources :points
     end
   end
 

@@ -79,7 +79,7 @@
             - else
               %td.learning{:colspan => 2, :rowspan => 2}
                 - scount = tutorial.steps.count
-                - percent = (scount - 1) * 100.0 / scount
+                - percent = (1) * 100.0 / scount
                 - percent = percent.round(2)
                 .info
                   %span 未学完(#{percent}%)
@@ -98,8 +98,50 @@
               s = Math.sqrt(s).round(2)
             %span= s
 
-    %h3{:style => 'margin-bottom:20px;'} 后续教程 ……
+    .related-points
+      .col-pad-12
+        %h3{:style => 'margin-bottom:20px;'} 相关知识点 ……
+
+      :ruby
+        points = tutorial.related.map {|x|
+          KnowledgeNetStore::Point.where(:name => x)[0]
+        }
+
+      .col-pad-12
+        .cell-sample-points-list
+          - points.each do |point|
+            %a.point{:href => "/sample/points/#{point.id}", :data => {:toggle => true}}
+              :ruby
+                bg = string_grid_color(point.id)
+                bg1 = ApplicationHelper::ColorTransfer.darken(bg.to_s)
+
+              .icon{:style => "border-color:#{bg}"}
+              .name
+                %span= point.name
+
+              .stat
+                :ruby
+                  tutorials = @tutorials.select {|x|
+                    x.related.include? point.name
+                  }
+                  rates = tutorials.map {|x|
+                    c = x.steps.count
+                    a = (c + 1.0) / c / 2.0
+                    a.round(2)
+                  }
+                  percent = rates.sum * 100.0 / rates.length
+                  percent = percent.round(2)
+                .bb
+                  %span 相关课程
+                  %span.c= tutorials.count
+                .bb
+                  %span 平均掌握百分比
+                  %span.c #{percent}%
+
+
     .next-tutorials
+      .col-pad-12
+        %h3{:style => 'margin-bottom:20px;'} 后续教程 ……
 
       :ruby
         arr = tutorial.children.map { |x|

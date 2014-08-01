@@ -37,6 +37,15 @@
         border-top:solid 1px #eee;
         font-size: 12px;
         color:$black-50;
+        .points {
+          padding:10px;
+          border-bottom: solid 1px #eee;
+          i {
+            display: inline-block;
+            width:14px;
+          }
+        }
+
         .counts{
           @include border-box;
           float:left;
@@ -109,6 +118,14 @@
       .info {
         border-top:solid 1px #eee;
         color:$black-50;
+        .points {
+          padding:10px;
+          border-bottom:solid 1px #eee;
+          i {
+            display: inline-block;
+            width:16px;
+          }
+        }
         .counts{
           @include border-box;
           padding:10px;
@@ -163,9 +180,18 @@
       }
     }
 
+    .related-points {
+      margin-left: -5px;
+      margin-right: -5px;
+      overflow: hidden;
+      margin-bottom: 20px;
+    }
+
     .next-tutorials {
       margin-left: -5px;
       margin-right: -5px;
+      overflow: hidden;
+      margin-bottom: 20px;
       .tutorial {
         margin-bottom: 5px;
         @include col(3/3);
@@ -388,6 +414,251 @@
       i {
         font-size: 30px;
         color:$black-40;
+      }
+    }
+  }
+}
+
+
+.cell-sample-points-list {
+  margin-left: -5px;
+  margin-right: -5px;
+
+  .point {
+    color:#333;
+    &:hover{
+      background-color: $area-dawn;
+    }
+
+    display: block;
+    border:solid 1px #ddd;
+    padding:20px;
+    overflow: hidden;
+    $h: 20px;
+    background-color: #fff;
+    margin-bottom: 5px;
+    position: relative;
+
+    .icon {
+      float: left;
+      width:$h;height:$h;
+      border:solid 4px;
+      @include border-box;
+      border-radius:20px;
+    }
+    .name {
+      float: left;
+      line-height:$h;
+      margin-left:10px;
+
+      background-color: $black-80;
+      color:white;
+      border-radius: $border-radius-default;
+      padding:0 8px;
+
+      position: relative;
+
+      &:before {
+        $w: 5px;
+
+        content: "";
+        border:solid $w transparent;
+        border-right:solid $w $black-80;
+        position: absolute;
+        left: $w * -2;
+        top: $h / 2 - $w;
+      }
+
+      &:hover {
+        text-decoration: none;
+        background-color: $black-60;
+        &:before {border-right-color: $black-60;}
+      }
+    }
+
+    .stat {
+      position: absolute;
+      top:0;right:0;
+      .bb {
+        float: left;
+        line-height: 60px;
+        margin-right: 20px;
+        border-left:solid 1px #ddd;
+        padding-left: 20px;
+        .c {
+          font-family: $font-family-serif;
+          font-size: 20px;
+          font-weight: bold;
+        }
+      }
+    }
+  }
+}
+
+.page-sample-points-show {
+  a.back {
+    background-color: $area-night;
+    display: block;
+    margin-bottom: 10px;
+    color:white;
+    padding:10px;
+    border-radius:$border-radius-default;
+    i {margin-right: 10px;}
+    &:hover {
+      opacity: 0.8;
+      text-decoration: none;
+    }
+  }
+
+  .side .point {
+    pointer-events: none;
+    .box {
+      @include clearfix;
+      @include piece;
+      overflow: hidden;
+
+      margin-bottom: 20px;
+      display:block;
+      color: #333;
+      &:hover {
+        text-decoration: none;
+      }
+
+      $w:100px;
+      .img {
+        width:100%;
+        height:165px;
+        position: relative;
+        .circle {
+          width:50px;height:50px;
+          border:solid 10px;
+          border-radius:100px;
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          margin-top: -35px;
+          margin-left: -35px;
+        }
+      }
+      .title {
+        font-size: 16px;
+        // font-weight: bold;
+        padding:10px;
+      }
+      .desc {
+        color:$text-quiet;
+        padding:0 10px 10px;
+        height:60px;
+        overflow: hidden;
+      }
+      .info {
+        border-top:solid 1px #eee;
+        color:$black-50;
+        .points {
+          padding:10px;
+          border-bottom:solid 1px #eee;
+          i {
+            display: inline-block;
+            width:16px;
+          }
+        }
+        .counts{
+          @include border-box;
+          padding:10px;
+          border-bottom:solid 1px #eee;
+          i {
+            display: inline-block;
+            width:16px;
+          }
+        }
+        .learn-stat {
+          padding:10px;
+          i {
+            display: inline-block;
+            width:16px;
+          }
+        }
+      }
+    }
+  }
+
+  .tutorials .tutorial{
+    @include col(1/4, $gap:20px);
+
+    .box {
+      @include clearfix;
+      @include piece;
+      overflow: hidden;
+
+      margin-bottom: 20px;
+      display:block;
+      color: #333;
+      &:hover {
+        text-decoration: none;
+        background-color: $area-dawn;
+      }
+
+      $w:100px;
+      .img {
+        width:100%;
+        height:165px;
+      }
+      .title {
+        font-size: 16px;
+        // font-weight: bold;
+        padding:10px;
+      }
+      .desc {
+        color:$text-quiet;
+        padding:0 10px 10px;
+        height:60px;
+        overflow: hidden;
+      }
+      .info {
+        border-top:solid 1px #eee;
+        font-size: 12px;
+        color:$black-50;
+        .points {
+          padding:10px;
+          border-bottom: solid 1px #eee;
+          i {
+            display: inline-block;
+            width:14px;
+          }
+        }
+
+        .counts{
+          @include border-box;
+          float:left;
+          width:40%;
+          padding:10px;
+          border-right:solid 1px #eee;
+          i {
+            display: inline-block;
+            width:14px;
+          }
+        }
+        .learn-stat {
+          float: left;
+          padding:10px;
+          i {
+            display: inline-block;
+            width:14px;
+          }
+        }
+      }
+    }
+  }
+
+  table td.learned, table td.learning {
+    position: relative;
+    padding-bottom: 20px;
+
+    .bar {
+      position: absolute;
+      bottom:1px;left:1px;right:1px;
+      .p {
+        height:10px;background-color:$area-fresh;
       }
     }
   }
