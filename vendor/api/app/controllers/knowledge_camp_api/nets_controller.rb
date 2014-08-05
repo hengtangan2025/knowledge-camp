@@ -4,6 +4,7 @@ module KnowledgeCampApi
 
     def index
       if !user_signed_in?
+        response.headers['WWW-Authenticate'] = 'Basic realm="kc"'
         return render :status => 401, :json => {
           :error => '用户未进行身份验证'
         } 
