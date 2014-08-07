@@ -59,10 +59,18 @@ GIT
 
 GIT
   remote: git://github.com/mindpin/knowledge-net-store.git
-  revision: 183dff73645166fe212437abb7b8ec59c14045ea
-  tag: 0.0.9
+  revision: fecc91708f3d788426a21aebf203053a17d62ce8
+  tag: 0.1.0
   specs:
     knowledge-net-store (0.0.1)
+
+GIT
+  remote: git://github.com/mindpin/knowledge_camp_step.git
+  revision: 2751c3d1d7d7ac11e565ff66ad7f8a07f2764b68
+  tag: v0.0.2
+  specs:
+    knowledge_camp_step (0.0.1)
+      mongoid (~> 4.0.0)
 
 GIT
   remote: git://github.com/mindpin/simple-images.git
@@ -70,6 +78,13 @@ GIT
   ref: 1621939
   specs:
     simple-images (0.0.2)
+
+GIT
+  remote: git://github.com/mindpin/sort_char.git
+  revision: 7525285b9d03b8057df5aa760ceb4160ecf4e9f3
+  tag: 0.0.1
+  specs:
+    sort_char (0.0.1)
 
 GIT
   remote: git://github.com/mindpin/ueditor.rails.git
@@ -358,6 +373,7 @@ DEPENDENCIES
   knowledge-camp-api!
   knowledge-net-plan-store!
   knowledge-net-store!
+  knowledge_camp_step!
   mina!
   mini_magick
   mongoid (~> 4.0.0)
@@ -372,6 +388,7 @@ DEPENDENCIES
   simple-images!
   simple_form (~> 3.0.2)
   siye!
+  sort_char!
   spring
   turbolinks
   ueditor.rails!

@@ -52,7 +52,7 @@ gem "knowledge-net-plan-store",
 
 gem 'knowledge-net-store',
     :github => 'mindpin/knowledge-net-store',
-    :tag => '0.0.9'
+    :tag => '0.1.0'
 
 gem "generic_controller",
     :github => "mindpin/generic_controller",
@@ -61,6 +61,14 @@ gem "generic_controller",
 gem "user-auth",
     :github => "mindpin/user-auth",
     :tag => "0.0.7"
+
+gem "sort_char", 
+    :git => "git://github.com/mindpin/sort_char.git",
+    :tag => "0.0.1"
+
+gem "knowledge_camp_step",
+    :github => "mindpin/knowledge_camp_step",
+    :tag => "v0.0.2"
 
 # 文字文档持久化，以下两个 gem 是相关的
 gem "mongoid-versioning", 
