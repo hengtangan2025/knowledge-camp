@@ -1,0 +1,16 @@
+:ruby
+  tutorials_mock3()
+  toturial = @toturials[0]
+  steps = toturial.steps
+
+.col-phone-12
+  .header
+    .row
+      .img
+        .box= fit_image toturial.img, :width => '100%', :height => '100%'
+    .title= toturial.title
+    .desc= toturial.desc
+  .steps-flow
+    - steps.each do |step|
+      .step{:data => {:id => step.id}}
+        = render_cell 'explore/step', :flow_detail, step, self

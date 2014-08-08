@@ -6,43 +6,11 @@
   num = params[:num].to_i
   steps = @tutorial.steps
   step = steps[num - 1]
-
-  imgs = step[:imgs]
-  video = step[:video]
-
-  has_imgs = imgs.present?
-  has_video = video.present?
+  count = steps.count
 
 .step
-  .detail.col-phone-12
-    .num
-      %span.current= num
-      %span /
-      %span.total= steps.count
-
-    .icons
-      - if has_imgs
-        .icon.with-imgs
-          %i.fa.fa-image
-      - if has_video
-        .icon.with-video
-          %i.fa.fa-video-camera
-
-    - if has_video
-      .row
-        .video
-          .box
-            %video{:src => video, :controls => true, :width => '100%', :height => '100%'}
-
-    .title= step[:title]
-    .desc= step[:desc]
-
-    - if has_imgs
-      .imgs
-        - imgs.each do |img|
-          .img
-            .box
-              .box1= fit_image img, :width => '100%', :height => '100%'
+  .col-phone-12
+    = render_cell 'explore/step', :detail, step, num, count, self
 
   .note
     .link

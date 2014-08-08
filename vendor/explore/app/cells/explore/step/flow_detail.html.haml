@@ -1,0 +1,53 @@
+:ruby
+  @step.data = OpenStruct.new if @step.data.blank?
+
+  title = @step.data.title
+  desc  = @step.data.desc
+
+  video = @step.data.video
+  imgs  = @step.data.imgs
+
+  has_imgs = imgs.present?
+  has_video = video.present?
+
+  continue = @step.continue
+
+.detail
+  .title
+    %i.fa.fa-chevron-right
+    %span= title
+  .desc= desc
+
+  - if has_video
+    .row
+      .video
+        .box
+          %video{:src => video, :controls => true, :width => '100%', :height => '100%'}
+
+  - if has_imgs
+    .imgs
+      - imgs.each do |img|
+        .img
+          .box
+            .box1= fit_image img, :width => '100%', :height => '100%'
+
+  .continue
+    - if continue == 'end'
+      .end 
+        %i.fa.fa-smile-o
+        %span 教程结束啦
+    - elsif continue.id
+      %a.go{:href => 'javascript:;', :data => {:targetid => continue.id}} 继续阅读
+    - elsif continue.select
+      .select
+        .question= continue.select.question
+        .options
+          - continue.select.options.each do |o|
+            .option{:data => {:id => o.id}}
+              .check
+                %i.fa.fa-check
+              .icon
+                %i.fa.fa-circle-o
+                %i.fa.fa-circle
+              .text= o.text
+        %a.submit{:href => 'javascript:;'} 确定
