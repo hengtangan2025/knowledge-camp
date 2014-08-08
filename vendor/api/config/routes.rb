@@ -1,3 +1,14 @@
 KnowledgeCampApi::Engine.routes.draw do
-  get '/nets' => 'nets#index'
+  resources :nets
+  resources :points
+  resources :plans
+  resources :topics
+  resources :tutorials
+  resources :steps
+  resources :notes
+  resources :learn_records
+
+  match "/*a",
+        :to  => "errors#routing",
+        :via => %W(get post delete patch head put)
 end

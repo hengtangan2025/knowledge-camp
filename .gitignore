@@ -24,3 +24,10 @@ public/static_files/*
 public/uploads/*
 public/file_part_upload/*
 public/assets/
+
+*~
+\#*
+.\#*
+.DS_*
+._*
+
