@@ -1,30 +1,33 @@
 module KnowledgeCampApi
   class ApplicationController < ActionController::Base
+    include ::DisplayHelpers
+    include ::ErrorHelpers
+
     skip_before_action :verify_authenticity_token
     before_action :check_auth
 
-    rescue_from Mongoid::Errors::DocumentNotFound, :with => :not_found
-
     protected
 
-    def not_found
-      error NotFound.new
-    end
-
-    def display(obj, status=200)
-      render :json => data(obj), :status => status
-    end
-
-    def data(obj)
-      case obj
-      when Hash then obj
-      when Array, Mongoid::Criteria then obj.map(&:attrs)
-      when Error, Mongoid::Document then obj.attrs
+    def first_key(keys)
+      key = keys.detect do |k|
+        params[k]
       end
+
+      raise ActionController::ParameterMissing.new(keys.join(" || ")) if !key
+
+      key
     end
 
-    def error(error)
-      display error, error.status
+    def require_keys(keys)
+      required = keys.filter do |k|
+        params[k]
+      end
+
+      if required.size == 0
+        raise ActionController::ParameterMissing.new(keys.join(", "))
+      end
+
+      required
     end
 
     def check_auth

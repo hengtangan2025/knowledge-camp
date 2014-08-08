@@ -3,7 +3,7 @@ module KnowledgeCampApi
     include KnowledgeNetStore
 
     def index
-      display Point.where(:net_id => params[:net_id])
+      display Point.where(:net_id => params.require(:net_id))
     end
 
     def show

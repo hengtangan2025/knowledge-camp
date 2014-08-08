@@ -48,11 +48,11 @@ gem "acts-as-dag",
 
 gem "knowledge-net-plan-store",
     :github => "mindpin/knowledge-net-plan-store",
-    :ref => '8e05ad73c4eb2a895c8768bbeebc5271e11980aa'
+    :tag => "v0.0.6"
 
 gem 'knowledge-net-store',
     :github => 'mindpin/knowledge-net-store',
-    :tag => '0.1.0'
+    :tag => '0.1.1'
 
 gem "generic_controller",
     :github => "mindpin/generic_controller",
@@ -68,7 +68,7 @@ gem "sort_char",
 
 gem "knowledge_camp_step",
     :github => "mindpin/knowledge_camp_step",
-    :tag => "v0.0.2"
+    :tag => "v0.0.3"
 
 # 文字文档持久化，以下两个 gem 是相关的
 gem "mongoid-versioning", 

@@ -3,7 +3,7 @@ module KnowledgeCampApi
     include KnowledgeNetPlanStore
 
     def index
-      display Plan.where(:net_id => params[:net_id])
+      display Plan.where(:net_id => params.require(:net_id))
     end
 
     def show
