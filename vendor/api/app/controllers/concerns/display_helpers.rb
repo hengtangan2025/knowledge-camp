@@ -4,6 +4,10 @@ module DisplayHelpers
   end
 
   def data(obj)
+    if obj.class == Mongoid::Relations::Targets::Enumerable
+      return obj.map(&:attrs)
+    end
+
     case obj
     when Hash then obj
     when Array, Mongoid::Criteria then obj.map(&:attrs)

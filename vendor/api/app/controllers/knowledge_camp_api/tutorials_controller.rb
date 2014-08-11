@@ -18,6 +18,8 @@ module KnowledgeCampApi
       when :net_id
         net = Net.find(params[:net_id])
         net.plans.map(&:topics).flatten.map(&:tutorials).flatten
+      when :point_id
+        Point.find(params[:point_id]).tutorials
       when :ancestor_id
         base.try :descendants
       when :parent_id
@@ -36,6 +38,7 @@ module KnowledgeCampApi
     def query_key
       first_key [
         :net_id,
+        :point_id,
         :ancestor_id,
         :parent_id,
         :child_id,
