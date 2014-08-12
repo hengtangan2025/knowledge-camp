@@ -1,14 +1,11 @@
 module KnowledgeCampApi
   class TutorialsController < ApplicationController
-    include KnowledgeNetStore
-    include KnowledgeNetPlanStore
-
     def index
       display tutorial_collection.map {|t| t.with_learner(current_user)}
     end
 
     def show
-      display Tutorial.find(params[:id]).with_learner(current_user)
+      display KnowledgeNetPlanStore::Tutorial.find(params[:id]).with_learner(current_user)
     end
 
     private
@@ -16,10 +13,10 @@ module KnowledgeCampApi
     def tutorial_collection
       case query_key
       when :net_id
-        net = Net.find(params[:net_id])
+        net = KnowledgeNetStore::Net.find(params[:net_id])
         net.plans.map(&:topics).flatten.map(&:tutorials).flatten
       when :point_id
-        Point.find(params[:point_id]).tutorials
+        KnowledgeNetStore::Point.find(params[:point_id]).tutorials
       when :ancestor_id
         base.try :descendants
       when :parent_id
@@ -32,7 +29,7 @@ module KnowledgeCampApi
     end
 
     def base
-      Tutorial.find(params[query_key])
+      KnowledgeNetPlanStore::Tutorial.find(params[query_key])
     end
 
     def query_key

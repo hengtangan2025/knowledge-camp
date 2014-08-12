@@ -1,14 +1,11 @@
 module KnowledgeCampApi
   class PointsController < ApplicationController
-    include KnowledgeNetStore
-    include KnowledgeNetPlanStore
-
     def index
       display resources
     end
 
     def show
-      display Point.find(params[:id])
+      display KnowledgeNetStore::Point.find(params[:id])
     end
 
     private
@@ -16,9 +13,9 @@ module KnowledgeCampApi
     def resources
       case query_key
       when :net_id
-        Point.where(:net_id => params.require(:net_id))
+        KnowledgeNetStore::Point.where(:net_id => params.require(:net_id))
       when :tutorial_id
-        Tutorial.find(params[:tutorial_id]).points
+        KnowledgeNetPlanStore::Tutorial.find(params[:tutorial_id]).points
       end
     end
 

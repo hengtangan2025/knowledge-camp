@@ -1,12 +1,9 @@
 module KnowledgeCampApi
   class NotesController < ApplicationController
-    include KnowledgeNetPlanStore
-    include KnowledgeCamp
-
     def index
       case query_key
       when :tutorial_id
-        step_ids = Tutorial.find(params[:tutorial_id]).step_ids
+        step_ids = KnowledgeNetPlanStore::Tutorial.find(params[:tutorial_id]).step_ids
 
         display notes.where(:step_id.in => step_ids)
       when :step_id
