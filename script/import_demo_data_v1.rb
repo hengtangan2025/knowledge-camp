@@ -20,7 +20,7 @@ item_arr.each do |item|
     step = tutorial.steps.create!(:title => step_item["title"], :desc => step_item["desc"])
   end
   item["related"].each do |point_name|
-    point = KnowledgeNetStore::Point.where(:name => point_name, :id => net.id.to_s).first
+    point = KnowledgeNetStore::Point.where(:name => point_name, :net_id => net.id.to_s).first
     tutorial.points << point
   end
   id_kv_hash[item["id"]] = tutorial.id.to_s
