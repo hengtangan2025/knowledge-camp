@@ -17,10 +17,13 @@
       @include border-box;
       border-radius:20px;
     }
+    .name-box {
+      margin-left: 40px;
+      margin-right: 10px;
+    }
     .name {
+      float: left;
       line-height:$h;
-      margin-left:40px;
-      margin-right:10px;
 
       background-color: $black-80;
       color:white;
@@ -28,6 +31,7 @@
       padding:0 8px;
 
       position: relative;
+      // display: inline-block;
 
       &:before {
         $w: 5px;
