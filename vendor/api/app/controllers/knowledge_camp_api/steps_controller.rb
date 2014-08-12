@@ -1,15 +1,12 @@
 module KnowledgeCampApi
   class StepsController < ApplicationController
-    include KnowledgeNetPlanStore
-    include KnowledgeCamp
-
     def index
-      display Step.where(:stepped_id   => params.require(:tutorial_id),
-                         :stepped_type => Tutorial.name)
+      display KnowledgeCamp::Step.where(:stepped_id   => params.require(:tutorial_id),
+                                        :stepped_type => KnowledgeNetPlanStore::Tutorial.name)
     end
 
     def show
-      display Step.find(params[:id])
+      display KnowledgeCamp::Step.find(params[:id])
     end
   end
 end

@@ -1,7 +1,5 @@
 module KnowledgeCampApi
   class LearnRecordsController < ApplicationController
-    include KnowledgeNetPlanStore
-
     def create
       display current_user.learn_records.create!(record_params), 201
     end

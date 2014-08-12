@@ -16,6 +16,13 @@ module KnowledgeNetPlanStore
   end
 end
 
+module KnowledgeNetStore
+  class Point
+    has_and_belongs_to_many :tutorials,
+                            :class_name => "KnowledgeNetPlanStore::Tutorial"
+  end
+end
+
 # -----------------------------------------
 # virtual_file_system 相关
 module FileEntityVFSModule
