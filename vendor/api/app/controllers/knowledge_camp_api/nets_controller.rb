@@ -3,7 +3,7 @@ module KnowledgeCampApi
     include KnowledgeNetStore
 
     def index
-      display Net.includes(:points).all
+      display KnowledgeNetStore::Net.all
     end
 
     def show
