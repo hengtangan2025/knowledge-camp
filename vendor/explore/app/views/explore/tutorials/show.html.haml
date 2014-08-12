@@ -1,13 +1,7 @@
-:ruby
-  tutorials_mock2()
-  tid = params[:id]
-  @tutorial = @tutorials.select{|t| t.id == tid}[0]
-
 .tutorial
   - if @tutorial.parents.present?
     .parents
-      - @tutorial.parents.each do |pid|
-        - parent = get_tutorial_by_id(pid)
+      - @parents.each do |parent|
         .parent
           %span.adv 建议先掌握
           %span.t
@@ -26,6 +20,6 @@
         = render_cell 'explore/point', :list, points, self
 
     .enter
-      %a{:href => "/explore/tutorials/#{@tutorial.id}/steps/1"}
+      %a{:href => "/explore/tutorials/#{@tutorial.id}/flow"}
         %i.fa.fa-arrow-right
         %span 开始学习

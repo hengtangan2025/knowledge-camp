@@ -2,6 +2,9 @@
   tutorials_klass = @active == :tutorials ? 'active' : ''
   points_klass = @active == :points ? 'active' : ''
 
+  url_tutorials = "/explore/nets/#{@net.id}"
+  url_points = "/explore/nets/#{@net.id}/points"
+
 .tab
-  %a.tutorials{:class => tutorials_klass, :href => @view.url_for([@net, :tutorials])} 教程
-  %a.points{:class => points_klass, :href => @view.url_for([@net, :points])} 知识点
+  %a.tutorials{:class => tutorials_klass, :href => url_tutorials} 教程
+  %a.points{:class => points_klass, :href => url_points} 知识点

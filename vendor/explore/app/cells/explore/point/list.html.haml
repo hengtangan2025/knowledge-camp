@@ -6,7 +6,8 @@
 
   - else
     - @points.each do |point|
-      %a.point{:href => @view.url_for([point])}
+      - url = "/explore/points/#{point.id}"
+      %a.point{:href => url}
         :ruby
           bg = string_grid_color(point.id)
           bg1 = ApplicationHelper::ColorTransfer.darken(bg.to_s)

@@ -1,8 +1,11 @@
+- @nets = Explore::Mock.nets
+
 .nets
-  - KnowledgeNetStore::Net.all.each do |net|
-    - color = string_grid_color net.id
+  - @nets.each do |net|
+    - color = string_grid_color net.id.to_s
+    - url = "/explore/nets/#{net.id}"
     .net
-      %a.box{:style => "background:#{color}", :href => url_for([net])}
+      %a.box{:style => "background:#{color}", :href => url}
         .name= net.name
         .points
           .count= net.points.count

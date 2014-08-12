@@ -8,6 +8,11 @@ module Explore
     end
 
     def show
+      @tutorials = Explore::Mock.tutorials
+      @tutorial = @tutorials.select {|x| x.id.to_s == params[:id]}.first
+      @parents = @tutorial.parents.map {|pid|
+        @tutorials.select {|x| x.id.to_s == pid}.first
+      }
     end
   end
 end

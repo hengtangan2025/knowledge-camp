@@ -137,7 +137,7 @@ module ApplicationHelper
 
     # 颜色来自 http://flatuicolors.com/
 
-    md5 = Digest::MD5.hexdigest(str)
+    md5 = Digest::MD5.hexdigest str.to_s
     i1 = md5[0..1].to_i(16) % colors.length
     i2 = md5[2..3].to_i(16) % colors.length
     i3 = md5[4..5].to_i(16) % 100
