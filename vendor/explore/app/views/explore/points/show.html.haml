@@ -1,10 +1,10 @@
-- @net = @point.net
+:ruby
+  bg = string_grid_color(@point.id)
+  bg1 = ApplicationHelper::ColorTransfer.darken(bg.to_s)
+
+  net_url = "/explore/nets/#{@net.id}"
 
 .point
-  :ruby
-    bg = string_grid_color(@point.id)
-    bg1 = ApplicationHelper::ColorTransfer.darken(bg.to_s)
-
   .head
     .icon{:style => "border-color:#{bg}"}
     .name
@@ -14,7 +14,7 @@
     .desc= desc
 
 .wall 隶属于知识网络：
-%a.net{:href => url_for([@net])}
+%a.net{:href => net_url}
   .back
     %i.fa.fa-sitemap
   .name= @net.name
@@ -22,11 +22,6 @@
     %i.fa.fa-chevron-right
 
 .wall 相关教程：
-:ruby
-  tutorials_mock2()
-  tutorials = @tutorials.select { |x|
-    x.related.include? @point.name
-  }
 .col-phone-12
   .tutorials
-    = render_cell 'explore/tutorial', :list_finish, tutorials, self
+    = render_cell 'explore/tutorial', :list_finish, @tutorials, self

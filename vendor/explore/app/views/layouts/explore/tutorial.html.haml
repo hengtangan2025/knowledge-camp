@@ -15,7 +15,8 @@
   %body.tutorial
     .page-header
       .container
-        %a.back{:href => url_for([@tutorial.net])}
+        - url = "/explore/nets/#{@tutorial.net_id}"
+        %a.back{:href => url}
           %i.fa.fa-arrow-left
         .title= @tutorial.title
     .page-content.container
