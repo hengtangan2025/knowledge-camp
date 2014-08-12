@@ -19,6 +19,9 @@ body {
   background-color: #fff;
 
   .page-header {
+    z-index:100;
+    position: fixed;
+    top:0;left:0;right:0;
     $h: 50px;
     background: $black-70;
     height: $h;

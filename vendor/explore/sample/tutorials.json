@@ -1,3 +1,4 @@
+
 [
   {
     "net_id": "1",
@@ -322,6 +323,522 @@
       "了解小翻勺",
       "了解大翻勺",
       "了解刮装法"
+    ]
+  },
+
+  {
+    "net_id": "2",
+    "id": "sample-2-1",
+    "img": "http://mindpin.oss-cn-hangzhou.aliyuncs.com/image_service/images/dEpl8YVo/adaptive_height_300_dEpl8YVo.png",
+    "title": "教程一：关于水彩画的简介",
+    "desc": "帮读者对水彩画形成初步的印象",
+    "steps": [
+      {
+        "title": "欣赏水彩画的典型画作",
+        "desc": "在进入水彩画技法的讲解之前，让我们先来欣赏一些典型画作。不妨把自己想象成置身画廊的游人，来观察这些画作",
+        "imgs": [
+          "http://mindpin.oss-cn-hangzhou.aliyuncs.com/image_service/images/CctiVF9x/adaptive_height_300_CctiVF9x.png"
+        ],
+        "video": ""
+      },
+      {
+        "title": "典型的风景主题画作",
+        "desc": "从《圣托里尼岛的风（透明水彩）》，《伊美罗维格利的教堂（透明水彩）》，《Sweet Room（横滨港）》这几幅画作中可以观察到，利用水彩描绘阳光，天空，水面和建筑物等景物的表达效果。",
+        "imgs": [
+          "http://mindpin.oss-cn-hangzhou.aliyuncs.com/image_service/images/gdNv9HFR/adaptive_height_300_gdNv9HFR.png",
+          "http://mindpin.oss-cn-hangzhou.aliyuncs.com/image_service/images/klu90YNK/adaptive_height_300_klu90YNK.png",
+          "http://mindpin.oss-cn-hangzhou.aliyuncs.com/image_service/images/luLtXLKO/adaptive_height_300_luLtXLKO.png"
+        ],
+        "video": ""
+      },
+      {
+        "title": "典型的植物主题画作",
+        "desc": "《绛三叶草（透明水彩）》采用直接画法，画出近景中的花之后，再逐渐将其与斜坡上的风景连接",
+        "imgs": [
+          "http://mindpin.oss-cn-hangzhou.aliyuncs.com/image_service/images/eJW6jpfD/adaptive_height_300_eJW6jpfD.png"
+        ],
+        "video": ""
+      },
+      {
+        "title": "典型的人物主题画作",
+        "desc": "《夏天》描绘了一位吃烤饼时进入了思考，表现得心不在焉的女子；《里昂市场（早市）》绘制在明信片大小的水彩纸上，是站着创作的作品。",
+        "imgs": [
+          "http://mindpin.oss-cn-hangzhou.aliyuncs.com/image_service/images/xSQF1aq3/adaptive_height_300_xSQF1aq3.png",
+          "http://mindpin.oss-cn-hangzhou.aliyuncs.com/image_service/images/BTnvQZZi/adaptive_height_300_BTnvQZZi.png"
+        ],
+        "video": ""
+      },
+      {
+        "title": "水彩画的特点总结",
+        "desc": "以上这些典型画作，展现了水彩画所能表达的主题。水彩画不仅清新明快，而且可以随时随地进行创作，很适合初学绘画的人学习",
+        "imgs": [],
+        "video": ""
+      },
+      {
+        "title": "人们为什么想要亲手创作水彩画？",
+        "desc": "“将旅途中欣赏到的风景和日常生活中的美丽景象用画笔记录下来。” “不是简单地拍照留念，而是亲手将它们创造成作品保留下来。” …… 这种单纯的想法，就是很多人学习水彩画的动力~ 你也可以做到。",
+        "imgs": [
+          "http://mindpin.oss-cn-hangzhou.aliyuncs.com/image_service/images/pYAUmfWf/adaptive_height_300_pYAUmfWf.png"
+        ],
+        "video": ""
+      }
+    ],
+    "parents": [],
+    "children": [],
+    "related": [
+      "水彩/水粉/丙烯画技能观察前的引导",
+      "水彩画典型画作观察前的引导",
+      "典型植物画",
+      "典型风景画",
+      "典型人物画",
+      "水彩画典型画作观察后的说明",
+      "水彩画的简介",
+      "水彩画的创作动机"
+    ]
+  },
+  {
+    "net_id": "2",
+    "id": "sample-2-2",
+    "img": "http://mindpin.oss-cn-hangzhou.aliyuncs.com/image_service/images/dEpl8YVo/adaptive_height_300_dEpl8YVo.png",
+    "title": "教程二：水彩画技法课程的内容简介",
+    "desc": "本教程主要向大家介绍整个课程所覆盖的内容，以及课程所侧重的直接画法的特点等",
+    "steps": [
+      {
+        "title": "本课程的内容安排",
+        "desc": "本课程分为七个部分，前六部分逐层深入地讲解水彩画工具的特性和使用方法，基本涂色方法，各种静物的直接画法，必备的素描知识，各类主题的透明水彩画技法，水彩画的特效技法等。第七部分将带领读者进行比较复杂的创作",
+        "imgs": [],
+        "video": ""
+      },
+      {
+        "title": "本课程主要讲解直接画法",
+        "desc": "直接画法，是不依赖铅笔草图，直接以水彩画笔创作的技法。直接画法具有绘画速度快、色彩鲜艳以及容易修复形状的优点。",
+        "imgs": [],
+        "video": ""
+      },
+      {
+        "title": "铅笔起型并非必不可少",
+        "desc": "想到不用铅笔起形，很多人会感到不安。本课程包含专门的教程，介绍“不看实物作画”的运笔和混色训练等内容。对初学者而言，直接画法实用有效，更容易体验到作画的快乐。",
+        "imgs": [],
+        "video": ""
+      },
+      {
+        "title": "等待水分干透的心情",
+        "desc": "水彩画很有趣，直到水分完全干透才能见到最终成品。巧妙控制水分和颜料的流动，在它们相互交触时，我们能够感受到水彩画特有的魅力。",
+        "imgs": [],
+        "video": ""
+      },
+      {
+        "title": "从哪里开始？",
+        "desc": "我们将从了解主要的绘画工具、描绘简单的形状开始，逐步体验水彩绘画工具和技法的特点，感受作画的快乐，从而进入水彩绘画的世界。",
+        "imgs": [
+          "http://mindpin.oss-cn-hangzhou.aliyuncs.com/image_service/images/I5ajdcaW/adaptive_height_300_I5ajdcaW.png"
+        ],
+        "video": ""
+      }
+    ],
+    "parents": [],
+    "children": [],
+    "related": [
+      "水彩画的简介",
+      "水彩画的创作动机"
+    ]
+  },
+  {
+    "net_id": "2",
+    "id": "sample-2-3",
+    "img": "http://mindpin.oss-cn-hangzhou.aliyuncs.com/image_service/images/N5cdgVem/adaptive_height_300_N5cdgVem.png",
+    "title": "教程一：水彩画的颜料",
+    "desc": "本教程介绍了到画材店可以轻松购买到的水彩画颜料。",
+    "steps": [
+      {
+        "title": "管装颜料的好处",
+        "desc": "管装颜料细小，给人感觉比较贵。但管装颜料在预处理完毕后，仅仅在使用时才加水溶解，所以使用时间比较长。",
+        "imgs": [
+          "http://mindpin.oss-cn-hangzhou.aliyuncs.com/image_service/images/ZIKCIV0P/adaptive_height_300_ZIKCIV0P.png"
+        ],
+        "video": ""
+      },
+      {
+        "title": "介绍透明水彩颜料",
+        "desc": "",
+        "imgs": [
+          "http://mindpin.oss-cn-hangzhou.aliyuncs.com/image_service/images/SBsG9zAe/adaptive_height_300_SBsG9zAe.png"
+        ],
+        "video": ""
+      },
+      {
+        "title": "透明水彩颜料的特点",
+        "desc": "透明水彩的最大特点是，色彩透明度高，色彩叠加时，着色较深，富有层次感",
+        "imgs": [],
+        "video": ""
+      },
+      {
+        "title": "透明水彩颜料的使用方式",
+        "desc": "画透明水彩时不使用白色颜料，而是把绘画所用支撑材料（水彩纸等）的颜色作为白色进行创作。虽然颜料的色彩数目不多（平均十几个），但使用混色即可满足任何写生创作",
+        "imgs": [],
+        "video": ""
+      },
+      {
+        "title": "使用透明水彩颜料的乐趣",
+        "desc": "即使色彩的名称相同，品牌不同时色彩的浅淡也有区别。通过加减颜料，或混合各种色彩，调配出新的色彩，也是一种乐趣",
+        "imgs": [],
+        "video": ""
+      },
+      {
+        "title": "水彩画颜料的组成",
+        "desc": "绘画颜料基本的组成几乎大同小异，一般根据胶固剂不同或颜料的量及质的差异，来为绘画颜料命名。",
+        "imgs": [
+          "http://mindpin.oss-cn-hangzhou.aliyuncs.com/image_service/images/bPTOaKq7/adaptive_height_300_bPTOaKq7.png"
+        ],
+        "video": ""
+      },
+      {
+        "title": "怎样合理使用各种绘画颜料？",
+        "desc": "\"溶剂\"用于松弛和延展胶固剂，使其变成易于涂覆的物质，所以作为溶剂有一个基本条件，那就是不能完全挥发掉。溶剂应根据胶固剂进行选择，并不是所有溶剂和胶固剂都可以配合使用。因此，要努力掌握不同绘画颜料的特性。",
+        "imgs": [
+          "http://mindpin.oss-cn-hangzhou.aliyuncs.com/image_service/images/ajNPTJ6h/adaptive_height_300_ajNPTJ6h.png"
+        ],
+        "video": ""
+      },
+      {
+        "title": "了解其它水彩画颜料",
+        "desc": "下面的图片依次是：水粉画颜料，丙烯酸绘画颜料，广告色",
+        "imgs": [
+          "http://mindpin.oss-cn-hangzhou.aliyuncs.com/image_service/images/O4IA49Ne/adaptive_height_300_O4IA49Ne.png",
+          "http://mindpin.oss-cn-hangzhou.aliyuncs.com/image_service/images/w4cr4E1K/adaptive_height_300_w4cr4E1K.png",
+          "http://mindpin.oss-cn-hangzhou.aliyuncs.com/image_service/images/au2KJl3w/adaptive_height_300_au2KJl3w.png"
+        ],
+        "video": ""
+      },
+      {
+        "title": "透明水彩画作品欣赏（人物）",
+        "desc": "让我们观察一下透明水彩画颜料的绘制效果如何，这是以人为主题的绘画作品：《里昂的恋人们》",
+        "imgs": [
+          "http://mindpin.oss-cn-hangzhou.aliyuncs.com/image_service/images/xpzssbMH/adaptive_height_300_xpzssbMH.png"
+        ],
+        "video": ""
+      },
+      {
+        "title": "透明水彩画作品欣赏（风景）",
+        "desc": "这是以风景为主题的绘画作品：《林多斯的料理店（罗德斯岛）》以及《午休（米克诺斯岛）》",
+        "imgs": [
+          "http://mindpin.oss-cn-hangzhou.aliyuncs.com/image_service/images/SHE14nil/adaptive_height_300_SHE14nil.png",
+          "http://mindpin.oss-cn-hangzhou.aliyuncs.com/image_service/images/tJ25oEdY/adaptive_height_300_tJ25oEdY.png"
+        ],
+        "video": ""
+      },
+      {
+        "title": "了解水粉画颜料的特征",
+        "desc": "观察下面这幅以水粉画绘制的人物主题的作品，可以了解水粉画颜料的特征",
+        "imgs": [
+          "http://mindpin.oss-cn-hangzhou.aliyuncs.com/image_service/images/ZwQUW3RN/adaptive_height_300_ZwQUW3RN.png"
+        ],
+        "video": ""
+      },
+      {
+        "title": "了解丙烯画颜料的特征",
+        "desc": "观察下面这幅以丙烯画颜料绘制的风景主题的作品，可以了解丙烯画颜料的特征",
+        "imgs": [
+          "http://mindpin.oss-cn-hangzhou.aliyuncs.com/image_service/images/c6O8thf6/adaptive_height_300_c6O8thf6.png"
+        ],
+        "video": ""
+      }
+    ],
+    "parents": [],
+    "children": [],
+    "related": [
+      "水彩画主要工具观察之前的引导",
+      "水彩画颜料观察前的引导",
+      "丙烯画颜料的观察",
+      "不透明水彩画颜料（水粉画颜料）的观察",
+      "透明水彩画颜料的观察",
+      "水彩画颜料的组成和分类说明",
+      "岩彩（日本画）的观察",
+      "油漆的观察",
+      "彩色粉笔的观察",
+      "墨汁的观察",
+      "水彩画颜料实际运用观察前的引导",
+      "透明水彩画作品观察前的引导",
+      "透明水彩人物画作",
+      "取景和构图的伏笔",
+      "透明水彩风景画作",
+      "湿破湿画法的伏笔",
+      "留白胶的伏笔",
+      "透明水彩画作品的说明",
+      "丙烯颜料水彩画作品观察前的引导",
+      "丙烯颜料水彩风景画作",
+      "丙烯颜料使用技巧",
+      "不透明水彩画作品的说明",
+      "不透明水彩画作品观察前的引导",
+      "不透明水彩人物画作",
+      "不透明颜料使用技巧",
+      "不透明水彩画作品的说明",
+      "不透明水彩画作品的说明",
+      "水彩画颜料实际运用的说明"
+    ]
+  },
+  {
+    "net_id": "2",
+    "id": "sample-2-4",
+    "img": "http://mindpin.oss-cn-hangzhou.aliyuncs.com/image_service/images/N5cdgVem/adaptive_height_300_N5cdgVem.png",
+    "title": "教程二：了解水彩画的基本工具",
+    "desc": "绘制水彩画的最基本工具有哪些？本教程将对这些工具进行逐一介绍",
+    "steps": [
+      {
+        "title": "颜料和调色板",
+        "desc": "",
+        "imgs": [
+          "http://mindpin.oss-cn-hangzhou.aliyuncs.com/image_service/images/SBsG9zAe/adaptive_height_300_SBsG9zAe.png",
+          "http://mindpin.oss-cn-hangzhou.aliyuncs.com/image_service/images/tP3i5jf8/adaptive_height_300_tP3i5jf8.png"
+        ],
+        "video": ""
+      },
+      {
+        "title": "画笔和水桶",
+        "desc": "",
+        "imgs": [
+          "http://mindpin.oss-cn-hangzhou.aliyuncs.com/image_service/images/OvuOXREC/adaptive_height_300_OvuOXREC.png",
+          "http://mindpin.oss-cn-hangzhou.aliyuncs.com/image_service/images/IEWGMLFY/adaptive_height_300_IEWGMLFY.png"
+        ],
+        "video": ""
+      },
+      {
+        "title": "留白胶，消光耐光清漆",
+        "desc": "",
+        "imgs": [
+          "http://mindpin.oss-cn-hangzhou.aliyuncs.com/image_service/images/XYbKLbKY/adaptive_height_300_XYbKLbKY.png",
+          "http://mindpin.oss-cn-hangzhou.aliyuncs.com/image_service/images/vfwUKGM7/adaptive_height_300_vfwUKGM7.png"
+        ],
+        "video": ""
+      },
+      {
+        "title": "喷雾器，镊子和单眼望远镜",
+        "desc": "",
+        "imgs": [
+          "http://mindpin.oss-cn-hangzhou.aliyuncs.com/image_service/images/kwxB6Azs/adaptive_height_300_kwxB6Azs.png",
+          "http://mindpin.oss-cn-hangzhou.aliyuncs.com/image_service/images/AhuQJZWA/adaptive_height_300_AhuQJZWA.png",
+          "http://mindpin.oss-cn-hangzhou.aliyuncs.com/image_service/images/xQmWhG75/adaptive_height_300_xQmWhG75.png"
+        ],
+        "video": ""
+      },
+      {
+        "title": "玻璃棒，沟引尺和画架",
+        "desc": "",
+        "imgs": [
+          "http://mindpin.oss-cn-hangzhou.aliyuncs.com/image_service/images/tmGQxgez/adaptive_height_300_tmGQxgez.png",
+          "http://mindpin.oss-cn-hangzhou.aliyuncs.com/image_service/images/N9c2fiwg/adaptive_height_300_N9c2fiwg.png"
+        ],
+        "video": ""
+      },
+      {
+        "title": "素描工具，取景框和测量棒",
+        "desc": "",
+        "imgs": [
+          "http://mindpin.oss-cn-hangzhou.aliyuncs.com/image_service/images/ekuSsOdB/adaptive_height_300_ekuSsOdB.png",
+          "http://mindpin.oss-cn-hangzhou.aliyuncs.com/image_service/images/HT9MowWU/adaptive_height_300_HT9MowWU.png",
+          "http://mindpin.oss-cn-hangzhou.aliyuncs.com/image_service/images/HvSLT9SA/adaptive_height_300_HvSLT9SA.png"
+        ],
+        "video": ""
+      },
+      {
+        "title": "擦线板和电动橡皮擦",
+        "desc": "",
+        "imgs": [
+          "http://mindpin.oss-cn-hangzhou.aliyuncs.com/image_service/images/bVhSiCBM/adaptive_height_300_bVhSiCBM.png"
+        ],
+        "video": ""
+      }
+    ],
+    "parents": [],
+    "children": [],
+    "related": [
+      "水彩画基本工具观察前的引导",
+      "水桶",
+      "画笔",
+      "水彩画其它工具观察前的引导",
+      "留白胶",
+      "玻璃棒和沟引尺",
+      "消光耐光清漆",
+      "喷雾器",
+      "画架",
+      "镊子",
+      "单眼望远镜",
+      "素描工具观察前的引导",
+      "测量棒",
+      "铅笔",
+      "裁纸刀",
+      "削铅笔的技法",
+      "橡皮擦",
+      "橡皮擦使用和保养方法",
+      "擦线板和电动橡皮擦",
+      "素描橡皮",
+      "木炭笔",
+      "取景框"
+    ]
+  },
+  {
+    "net_id": "2",
+    "id": "sample-2-5",
+    "img": "http://mindpin.oss-cn-hangzhou.aliyuncs.com/image_service/images/N5cdgVem/adaptive_height_300_N5cdgVem.png",
+    "title": "教程三：画笔的种类和使用方法",
+    "desc": "",
+    "steps": [
+      {
+        "title": "平头画笔，椭圆形画笔等",
+        "desc": "",
+        "imgs": [
+          "http://mindpin.oss-cn-hangzhou.aliyuncs.com/image_service/images/sgAMStu5/adaptive_height_300_sgAMStu5.png"
+        ],
+        "video": ""
+      },
+      {
+        "title": "圆头笔，水彩画圆头笔等",
+        "desc": "",
+        "imgs": [
+          "http://mindpin.oss-cn-hangzhou.aliyuncs.com/image_service/images/iU9NGqjq/adaptive_height_300_iU9NGqjq.png"
+        ],
+        "video": ""
+      },
+      {
+        "title": "榛形笔和自吸水毛笔",
+        "desc": "",
+        "imgs": [
+          "http://mindpin.oss-cn-hangzhou.aliyuncs.com/image_service/images/WAh8RBkN/adaptive_height_300_WAh8RBkN.png",
+          "http://mindpin.oss-cn-hangzhou.aliyuncs.com/image_service/images/h38ydzYW/adaptive_height_300_h38ydzYW.png"
+        ],
+        "video": ""
+      }
+    ],
+    "parents": [],
+    "children": [],
+    "related": [
+      "水彩画的画笔种类观察前的引导",
+      "椭圆形画笔",
+      "平头画笔",
+      "画笔的保养方法"
+    ]
+  },
+  {
+    "net_id": "2",
+    "id": "sample-2-6",
+    "img": "http://mindpin.oss-cn-hangzhou.aliyuncs.com/image_service/images/N5cdgVem/adaptive_height_300_N5cdgVem.png",
+    "title": "教程四：制作原创调色板",
+    "desc": "制作调色板，可以培养分辨色彩的能力，还可以对色彩有更深的理解。",
+    "steps": [
+      {
+        "title": "为什么要制作原创调色板？",
+        "desc": "每个人喜欢的颜色都不同。在基本色的基础上添加自己偏爱的颜色，制作有助于选色的调色板。这就是所谓的原创调色板",
+        "imgs": [],
+        "video": ""
+      },
+      {
+        "title": "调色板上排列色彩的方法",
+        "desc": "基本的色彩排列如下，可根据自己的喜好追加颜色",
+        "imgs": [
+          "http://mindpin.oss-cn-hangzhou.aliyuncs.com/image_service/images/M61AVDtI/adaptive_height_300_M61AVDtI.png"
+        ],
+        "video": ""
+      },
+      {
+        "title": "制作原创调色板之前的准备工作",
+        "desc": "准备好水彩颜料和空白的调色板",
+        "imgs": [
+          "http://mindpin.oss-cn-hangzhou.aliyuncs.com/image_service/images/SBsG9zAe/adaptive_height_300_SBsG9zAe.png",
+          "http://mindpin.oss-cn-hangzhou.aliyuncs.com/image_service/images/tP3i5jf8/adaptive_height_300_tP3i5jf8.png"
+        ],
+        "video": ""
+      },
+      {
+        "title": "原创调色板的制作步骤（1）",
+        "desc": "按色相顺序排列颜料管，然后将颜料挤到调色板上",
+        "imgs": [
+          "http://mindpin.oss-cn-hangzhou.aliyuncs.com/image_service/images/WOhEVFec/adaptive_height_300_WOhEVFec.png",
+          "http://mindpin.oss-cn-hangzhou.aliyuncs.com/image_service/images/zYfUQHLt/adaptive_height_300_zYfUQHLt.png"
+        ],
+        "video": ""
+      },
+      {
+        "title": "原创调色板的制作步骤（2）",
+        "desc": "花 2~3 天时间晾干。仅在使用时，才加水溶解颜料",
+        "imgs": [
+          "http://mindpin.oss-cn-hangzhou.aliyuncs.com/image_service/images/jMsFzsxb/adaptive_height_300_jMsFzsxb.png",
+          "hangzhou.aliyuncs.com/image_service/images/ywelC6Ne/adaptive_height_300_ywelC6Ne.png"
+        ],
+        "video": ""
+      }
+    ],
+    "parents": [],
+    "children": [],
+    "related": [
+      "调色盘",
+      "水彩颜料",
+      "水彩画原创调色板观察前的引导",
+      "调色板上排列色彩的方法",
+      "原创调色板制作前的说明",
+      "获取特定品牌和型号的调色板",
+      "获取特定品牌和型号的调色板",
+      "塑料管的排列（按色相顺序）",
+      "调色板上的颜料的置入",
+      "颜料的自然干燥（晾干）",
+      "颜料的加水溶解（真正使用时）",
+      "方便作画的工具",
+      "原创调色板制作后的说明"
+    ]
+  },
+  {
+    "net_id": "2",
+    "id": "sample-2-7",
+    "img": "http://mindpin.oss-cn-hangzhou.aliyuncs.com/image_service/images/N5cdgVem/adaptive_height_300_N5cdgVem.png",
+    "title": "教程五：各种速写本和画纸",
+    "desc": "",
+    "steps": [
+      {
+        "title": "选择速写本和画纸的依据",
+        "desc": "环境条件不同，作画姿势也会多样，例如在桌子上画、坐着放在膝盖上画，或站着单手捧着作画等等。为了方便，应根据作画姿势选择大小适合的速写本，最好想象一下手持本画画时的感觉。",
+        "imgs": [],
+        "video": ""
+      },
+      {
+        "title": "常见的速写本类型",
+        "desc": "常见的速写本包括螺旋型和四面封胶型两种",
+        "imgs": [
+          "http://mindpin.oss-cn-hangzhou.aliyuncs.com/image_service/images/FZG05czh/adaptive_height_300_FZG05czh.png"
+        ],
+        "video": ""
+      },
+      {
+        "title": "水彩画三要素以及水彩纸的选择",
+        "desc": "水彩画三要素包括颜料、水彩纸及画笔。人们常常乐于探索和寻求适合自己的颜料和画笔，但对于水彩纸人们却漠不关心。究其原因，可能是不同的画纸从外观上不易分辨吧。",
+        "imgs": [],
+        "video": ""
+      },
+      {
+        "title": "选择水彩纸时的考虑因素",
+        "desc": "画纸不仅影响颜料的涂色和呈色，还会影响绘画技法及表现效果，所以寻找适合运笔速度及颜料浓厚度的画纸，是非常重要的事情。纸可以按纸张的重量即【每平方米多少克】来分类，例如厚度为 300g 或 600g 的纸等，纸的重量越大，纸就越厚。",
+        "imgs": [],
+        "video": ""
+      },
+      {
+        "title": "常用水彩纸纸简介",
+        "desc": "本教程的作者尝试了多种画纸，所以比较它们的性质。纸张表面的粗粒具有限制颜料流动的作用，粗纹纸可以表现均匀的色彩画面。以 法国的 ARCHE 纸为例，防渗水，适合表现晕染效果，且呈色好，颜料吸附强，反复层涂后，底层颜色仍不被破坏，所以稳定性较强。另外，日本的 Waston 纸，易吸附颜料，呈色也好。但重复层涂时，必须用柔软的画笔，且以浓厚的颜料快速涂刷，若不然底层颜料被溶解，会造成色彩不均匀的后果。尽管如此，它也有耐刷洗、易修改的特点，所以初学者用起来会比较放心。",
+        "imgs": [],
+        "video": ""
+      },
+      {
+        "title": "作为初学者，我该用什么样的水彩纸？",
+        "desc": "初学者最好使用较厚的画纸。",
+        "imgs": [],
+        "video": ""
+      }
+    ],
+    "parents": [],
+    "children": [],
+    "related": [
+      "速写本和画纸观察前的引导",
+      "水彩纸选择观察前的引导",
+      "速写本分类",
+      "速写本的纸面纹理",
+      "速写本和画纸的说明"
     ]
   }
 ]

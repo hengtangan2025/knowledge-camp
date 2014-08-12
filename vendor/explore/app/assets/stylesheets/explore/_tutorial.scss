@@ -1,6 +1,6 @@
 .page-explore-tutorials-show {
   .tutorial {
-    position:absolute;
+    position:fixed;
     top:50px;bottom:0;left:0;right:0;
 
     .parents {
@@ -45,6 +45,10 @@
     .info {
       margin-left: 101px;
       padding:40px;
+      height:100%;
+      overflow-y: auto;
+      padding-bottom: 60px;
+      box-sizing:border-box;
 
       .desc {
         font-size: 16px;
@@ -76,12 +80,18 @@
         }
       }
       .enter {
+        position: fixed;
+        left:101px;right:0;bottom:0;
+        background-color: #FFF;
+        height: 60px;
+        border-top:solid 1px #E6E6E6;
+
         a {
-          $w:60px;
+          $w:40px;
           background-color: $area-info;
           position:absolute;
           height:$w;line-height:$w;width:$w;
-          bottom:20px;right:20px;
+          bottom:10px;right:20px;
           border-radius:100px;
           text-align: center;
           color:white;
@@ -114,6 +124,7 @@
           .point {
             padding-top: 15px;
             padding-bottom: 15px;
+            text-decoration: none;
           }
         }
       }

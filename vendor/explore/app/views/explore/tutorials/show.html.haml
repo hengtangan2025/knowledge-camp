@@ -15,7 +15,9 @@
       .t 相关知识点：
       :ruby
         points = @tutorial.related
-        points = points.map {|x| KnowledgeNetStore::Point.where(:name => x)[0]}
+        points = points.map {|name|
+          @net.points.select {|x| x.name == name}.first
+        }
       .plist
         = render_cell 'explore/point', :list, points, self
 
