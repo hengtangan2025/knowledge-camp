@@ -1,6 +1,19 @@
 // 放一些临时的样式，里程碑结束时务必移走
 
 .page-sample-nets-index {
+  .nets .net {
+    margin-bottom: 20px;
+    font-size: 16px;
+    background-color: $black-10;
+    padding:10px;
+    i {opacity: 0.6;}
+    border:solid 1px rgba(black, 0.05);
+    border-radius:4px;
+  }
+
+  .tutorials {
+    margin-bottom: 40px;
+  }
   .tutorials .tutorial{
     @include col(1/4, $gap:20px);
 
@@ -26,6 +39,8 @@
         font-size: 16px;
         // font-weight: bold;
         padding:10px;
+        height:44px;
+        overflow: hidden;
       }
       .desc {
         color:$text-quiet;
@@ -357,7 +372,7 @@
           float: left;
           line-height: 50px; height:50px;
           margin-left: 15px;
-          max-width:120px;
+          max-width:160px;
           overflow: hidden;
         }
       }

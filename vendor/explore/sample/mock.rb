@@ -42,8 +42,18 @@ module Explore
       def tutorials
         # @_tutorials ||= begin
           json = File.read "vendor/explore/sample/tutorials.json"
-          JSONStruct.open json
+          arr0 = JSONStruct.open json
+
+          json = File.read "vendor/explore/sample/sp-tutorials.json"
+          arr1 = JSONStruct.open json
+
+          arr0 + arr1
         # end
+      end
+
+      def learners
+        json = File.read "vendor/explore/sample/learners.json"
+        JSONStruct.open json
       end
     end
   end

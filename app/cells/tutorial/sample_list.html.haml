@@ -1,12 +1,19 @@
+:ruby
+  learners = Explore::Mock.learners
+
 .tutorials
   - @tutorials.each do |tutorial|
     .tutorial
       %a.box{:href => "/sample/tutorials/#{tutorial.id}", :data => {:toggle => true}}
         :ruby
           steps_count = tutorial.steps.count
-          imgs_count = tutorial.steps.map{|s| s[:imgs].length}.sum
-          videos_count = tutorial.steps.map{|s| s[:video].blank? ? 0:1}.sum
+          imgs_count = tutorial.steps.map{|s| s.imgs.length}.sum
+          videos_count = tutorial.steps.map{|s| s.video.blank? ? 0:1}.sum
           related_count = tutorial.related.count
+          learning_count = learners.count
+          learned_count = learners.select {|x|
+            x.learned.include? tutorial.id
+          }.count
 
         .img= fit_image tutorial.img, :width => '100%', :height => '100%'
         .title= tutorial.title
@@ -32,7 +39,7 @@
           .learn-stat
             .learning
               %i.fa.fa-user
-              %span 4 人学过
+              %span #{learning_count} 人学过
             .learned
               %i.fa.fa-check
-              %span 2 人学完
+              %span #{learned_count} 人学完

@@ -1,0 +1,58 @@
+[
+  {
+    "newtype": true,
+    "net_id": "sp-1",
+    "id": "sample-sp-1",
+    "img": "http://mindpin.oss-cn-hangzhou.aliyuncs.com/image_service/images/jwprfBAQ/adaptive_height_300_jwprfBAQ.png",
+    "title": "带有选择分支的教程",
+    "desc": "",
+    "steps": [
+      {
+        "id": 1,
+        "continue" : {
+          "select" : {
+            "question" : "你使用什么操作系统？",
+            "options" : [
+              { "id" : 2, "text" : "Windows"},
+              { "id" : 3, "text" : "Linux/Unix"}
+            ]
+          }
+        },
+        "data" : {
+          "title": "检查 JAVA 运行环境",
+          "desc": "JAVA 可以运行在不同的操作系统上。在不同操作系统上，JAVA 的配置方法存在着一些区别。"
+        }
+      },
+      {
+        "id": 2, "continue" : { "id" : 4 },
+        "data" : {
+          "title": "在 Windows 操作系统中检查 JAVA 运行环境",
+          "desc": "点击“运行”，输入 CMD，打开命令行界面。输入 java -version 并回车。如果命令行界面显示以下的返回结果，说明系统已经成功安装配置了 JAVA.",
+          "imgs": [
+            "http://mindpin.oss-cn-hangzhou.aliyuncs.com/image_service/images/JfWwR1NL/JfWwR1NL.png"
+          ]
+        }
+      },
+      {
+        "id": 3, "continue" : { "id" : 4 },
+        "data" : {
+          "title": "在 Linux/Unix 操作系统中检查 JAVA 运行环境",
+          "desc": "打开系统的字符界面，输入 java -version 并回车。如果命令行界面显示以下的返回结果，说明系统已经成功安装配置了 JAVA.",
+          "imgs": [
+            "http://mindpin.oss-cn-hangzhou.aliyuncs.com/image_service/images/FLVenmJV/FLVenmJV.png"
+          ]
+        }
+      },
+      {
+        "id": 4, "continue": "end",
+        "data" : {
+          "title": "开始开发",
+          "desc": "如果运行环境检查正确。就可以开始 JAVA 程序的开发了。"
+        }
+      }
+    ],
+    "parents": [],
+    "children": [],
+    "related": []
+  }
+]

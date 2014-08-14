@@ -1,9 +1,6 @@
 :ruby
-  students_mock()
-  tutorials_mock2()
-  point = KnowledgeNetStore::Point.find params[:id]
+  point = @point
 
-:ruby
   toturials = @tutorials.select{ |x|
     x.related.include? point.name
   }
@@ -28,7 +25,7 @@
       %thead
         %tr
           %th 相关教程掌握程度
-          - @students.each do |s|
+          - @learners.each do |s|
             %th{:colspan => 2}
               %a{:href => "/sample/students/#{s.id}", :data => {:toggle => true}}
                 %span.avatar= avatar User.new, :small
@@ -38,19 +35,24 @@
       %tbody
         :ruby
           arru = {}
-          @students.each do |s|
+          @learners.each do |s|
             arru[s] = []
           end
 
-        - toturials.each do |tutorial|
+        - toturials.each_with_index do |tutorial, i|
+          :ruby
+            num = i + 1
+
           %tr
             %td
               %span.title= tutorial.title
-            - num = 0
             - ps = []
-            - @students.each do |s|
+            - @learners.each do |s|
               %td{:colspan => 2}
-                - if num == 0 || num == 2
+                :ruby
+                  learned = s.learned.include? tutorial.id
+
+                - if learned
                   - ps << 100
                   - arru[s] << 100
                   %span 100%
@@ -63,7 +65,6 @@
                     ps << p
                     arru[s] << p
                   %span #{p}%
-              - num += 1
 
             - rate = (ps.sum * 1.0 / ps.length).round(2)
             %td.hard-score #{rate}%
@@ -72,7 +73,7 @@
           %td 
             %b 
           - arrp = []
-          - @students.each do |s|
+          - @learners.each do |s|
             %td.learning{:colspan => 2, :rowspan => 2}
               :ruby
                 percent = (arru[s].sum * 1.0 / arru[s].length).round(2)

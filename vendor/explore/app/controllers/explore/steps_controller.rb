@@ -8,6 +8,8 @@ module Explore
     def flow
       @tutorial = Explore::Mock.tutorials.select {|x| x.id.to_s == params[:tutorial_id]}.first
 
+      return if @tutorial.newtype
+
       id = 0
       steps = @tutorial.steps.map {|x|
         id = id + 1

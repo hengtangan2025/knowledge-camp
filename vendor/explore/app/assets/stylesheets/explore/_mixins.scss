@@ -25,7 +25,7 @@
       box-shadow:2px 2px 0px $black-10;
     }
 
-    .title, .desc {margin-left: 100px;}
+    .title, .desc {margin-left: 100px; margin-right: 40px;}
     .title {
       font-size: 18px;
       margin-bottom: 5px;
@@ -40,7 +40,7 @@
       color: $area-fresh;
       position: absolute;
       top:0;right:0;bottom:0;width:40px;
-      background-color:lighten($area-fresh, 35%);
+      background-color:lighten($area-fresh, 40%);
       i {
         line-height: 30px;
         position: absolute;

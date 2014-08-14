@@ -1,15 +1,10 @@
-:ruby
-  students_mock()
-  tutorials_mock2()
-  tutorial = @tutorials.select{|x| x.id == params[:id]}[0]
-
 .col-pad-2
   %a.back{:href => '/sample/nets', :data => {:toggle => true}}
     %i.fa.fa-arrow-left
     %span 返回上级
 
   .side
-    = render_cell :tutorial, :sample_list, [tutorial]
+    = render_cell :tutorial, :sample_list, [@tutorial]
 
 .col-pad-10
   .main
@@ -22,53 +17,68 @@
         %span.learning
         %span 未学完
       .nandu
-        %span 难度系数由学生在学习过程中标注，其中：
-        %b 易-0，
-        %b 中-1，
-        %b 难-2。
-        %br
-        %span 平均难度反映了学生普遍的主观上的学习感想。
-        %br
-        %span 难度波动说明了学生在教程中各步骤时感觉到的难度变化，数字越小说明教程难度变化越均匀。
+        %span 难点由学生在学习过程中标注。
 
     %table.table.table-bordered.table-striped
       %thead
         %tr
           %th 教程步骤
-          - @students.each do |s|
+          - @learners.each do |s|
             %th{:colspan => 2}
               %a{:href => "/sample/students/#{s.id}", :data => {:toggle => true}}
-                %span.avatar= avatar User.new, :small
+                %span.avatar
+                  .-avatar-img.small
+                    %img{:src => s.avatar}
                 %span.name= s.name
-          %th 平均难度
+          %th 难点数量
 
       %tbody
-        - num = 1
+        - dptotal = 0
         - score_hash = {}
-        - tutorial.steps.each do |step|
-          - score_hash[step] = 0
+        - @tutorial.steps.each_with_index do |step, i|
+          :ruby
+            num = i + 1
+            dpcount = 0
+
           %tr
             %td
               %span.num= num
               %span.title= step[:title]
-            - @students.each do |s|
-              - if s.learned || num < 2
+            - @learners.each do |s|
+              :ruby
+                learned = s.learned.include? @tutorial.id
+                learned = true if num == 1
+
+                mark = s.marks.select {|x|
+                  x.tutorial_id == @tutorial.id
+                }.first
+
+                is_diffcult = mark.blank? ? false : mark.difficult_points.map(&:step).include?(num)
+
+                reason = is_diffcult ? mark.difficult_points.select {|x| x.step == num}.first.reason : ''
+
+              - if learned
                 %td.step-learned
                   %i.fa.fa-check
               - else
                 %td.step-learning
                   %span …
-              - score = rand(3)
-              - score_hash[step] += score
-              %td= %w{易 中 难}[rand(3)]
-            %td.hard-score= (score_hash[step] / 4.0).round(2)
+              %td
+                - if is_diffcult
+                  - dpcount += 1
+                  %b 难
+                  .reason= reason
+            %td.hard-score= dpcount
+            - dptotal += dpcount
 
-          - num += 1
         %tr
           %td 
             %b 学习进度
-          - @students.each do |s|
-            - if s.learned
+          - @learners.each do |s|
+            :ruby
+              learned = s.learned.include? @tutorial.id
+
+            - if learned
               %td.learned{:colspan => 2, :rowspan => 2}
                 .info
                   %i.fa.fa-check
@@ -78,8 +88,8 @@
 
             - else
               %td.learning{:colspan => 2, :rowspan => 2}
-                - scount = tutorial.steps.count
-                - percent = (1) * 100.0 / scount
+                - scount = @tutorial.steps.count
+                - percent = 100.0 / scount
                 - percent = percent.round(2)
                 .info
                   %span 未学完(#{percent}%)
@@ -87,24 +97,26 @@
                   .p{:style => "width:#{percent}%"}
           %td
             %i.fa.fa-bar-chart-o
-            %b 难度波动
+            %b 难点总计
+
         %tr
-          %td 2 人学完
+          :ruby
+            learned_count = @learners.select {|x|
+              x.learned.include? @tutorial.id
+            }.count
+          %td #{learned_count} 人学完
           %td.s-d
-            :ruby
-              arr = score_hash.values.map{|x| x/4.0}
-              ave = arr.sum * 1.0 / arr.length
-              s = arr.map{|x| (x - ave) * (x - ave) }.sum * 1.0 / arr.length
-              s = Math.sqrt(s).round(2)
-            %span= s
+            %span= dptotal
 
     .related-points
       .col-pad-12
         %h3{:style => 'margin-bottom:20px;'} 相关知识点 ……
 
       :ruby
-        points = tutorial.related.map {|x|
-          KnowledgeNetStore::Point.where(:name => x)[0]
+        points = Explore::Mock.nets.map(&:points).flatten
+
+        points = points.select {|x|
+          @tutorial.related.include? x.name
         }
 
       .col-pad-12
@@ -144,7 +156,7 @@
         %h3{:style => 'margin-bottom:20px;'} 后续教程 ……
 
       :ruby
-        arr = tutorial.children.map { |x|
+        arr = @tutorial.children.map { |x|
           @tutorials.select{|y| y.id == x}[0]
         }
 

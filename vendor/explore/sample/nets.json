@@ -3478,5 +3478,18 @@
         "child": "n66"
       }
     ]
+  },
+
+  {
+    "id": "sp-1",
+    "name": "--DEV--",
+    "points": [
+      {
+        "id": "sp-p-1",
+        "name": "dev-point",
+        "desc": ""
+      }
+    ],
+    "edges": []
   }
 ]

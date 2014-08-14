@@ -1,19 +1,16 @@
 :ruby
-  students_mock()
-  tutorials_mock2()
-  student = @students.select{|x| x.id == params[:id]}[0]
+  learner = @learners.select{|x| x.id == params[:id]}[0]
+  learned_tutorials = @tutorials.select {|x|
+    learner.learned.include? x.id
+  }
 
-  if student.learned
-    learned_tutorials = @tutorials
-  else
-    learned_tutorials = @tutorials[0..5]
-  end
-
-.col-pad-6
+.col-pad-12
   .history
     .user
-      .avatar= avatar User.new
-      .name= student.name
+      .avatar
+        .-avatar-img.normal
+          %img{:src => learner.avatar}
+      .name= learner.name
 
     - learned_tutorials.each do |tutorial|
       .his
@@ -27,17 +24,20 @@
             .img= fit_image tutorial.img, :width => '100%', :height => '100%'
             .info
               .title= tutorial.title
-        - if tutorial.id == 'sample-1'
-          .hard
-            %span 难
-        - if tutorial.id == 'sample-3'
-          .easy
-            %span 易
-        - if tutorial.id == 'sample-1' || tutorial.id == 'sample-5'
-          .question
-            %span
-              %i.fa.fa-question
-        - if tutorial.id == 'sample-1' || tutorial.id == 'sample-4'
-          .note
-            %span
-              %i.fa.fa-pencil
+        :ruby
+          mark = learner.marks.select {|x| 
+            x.tutorial_id == tutorial.id
+          }.first
+
+        - if mark.present?
+          - if mark.difficult_points.length > 0
+            .hard
+              %span 难
+          - if mark.questions.length > 0
+            .question
+              %span
+                %i.fa.fa-question
+          - if mark.notes.length > 0
+            .note
+              %span
+                %i.fa.fa-pencil
