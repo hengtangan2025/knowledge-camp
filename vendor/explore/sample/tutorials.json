@@ -459,17 +459,11 @@
         "video": ""
       },
       {
-        "title": "介绍透明水彩颜料",
-        "desc": "",
+        "title": "认识透明水彩颜料",
+        "desc": "透明水彩的最大特点是，色彩透明度高，色彩叠加时，着色较深，富有层次感",
         "imgs": [
           "http://mindpin.oss-cn-hangzhou.aliyuncs.com/image_service/images/SBsG9zAe/adaptive_height_300_SBsG9zAe.png"
         ],
-        "video": ""
-      },
-      {
-        "title": "透明水彩颜料的特点",
-        "desc": "透明水彩的最大特点是，色彩透明度高，色彩叠加时，着色较深，富有层次感",
-        "imgs": [],
         "video": ""
       },
       {
@@ -582,11 +576,11 @@
     "id": "sample-2-4",
     "img": "http://mindpin.oss-cn-hangzhou.aliyuncs.com/image_service/images/N5cdgVem/adaptive_height_300_N5cdgVem.png",
     "title": "教程二：了解水彩画的基本工具",
-    "desc": "绘制水彩画的最基本工具有哪些？本教程将对这些工具进行逐一介绍",
+    "desc": "水彩画的魅力之一是，只要配备了这里介绍的基本工具，马上就能投入作画。本教程将对这些工具进行逐一介绍。",
     "steps": [
       {
         "title": "颜料和调色板",
-        "desc": "",
+        "desc": "可购置的颜料品牌非常多，无论是哪种品牌的颜料，都可以配合使用。请避免一开始就购置大量各种各样的颜料，那样容易混淆而无法确定该使用的颜色，而且有的颜色暂时不一定会使用。不妨对常用颜色熟悉一段时间后，再慢慢添加需要的颜色。关于调色板，铝制和塑料调色盘比较轻、方便携带，但考虑耐用性，最好选择稍微重一点但结实的调色盘（如铁制调色盘）。",
         "imgs": [
           "http://mindpin.oss-cn-hangzhou.aliyuncs.com/image_service/images/SBsG9zAe/adaptive_height_300_SBsG9zAe.png",
           "http://mindpin.oss-cn-hangzhou.aliyuncs.com/image_service/images/tP3i5jf8/adaptive_height_300_tP3i5jf8.png"
@@ -595,7 +589,7 @@
       },
       {
         "title": "画笔和水桶",
-        "desc": "",
+        "desc": "本书使用了两种画笔，一种笔可用于大面积涂刷水和颜料，另一种是尖头画笔。只要配备了这两种笔，就可以尝试各种绘图技法。关于水桶，可以购买专用水桶，也可以使用广口瓶。在桌子上画画时，广口瓶更方便观察水的混浊状态。此外，矿泉水瓶（2L）切断后，也能成为不错的装水工具。",
         "imgs": [
           "http://mindpin.oss-cn-hangzhou.aliyuncs.com/image_service/images/OvuOXREC/adaptive_height_300_OvuOXREC.png",
           "http://mindpin.oss-cn-hangzhou.aliyuncs.com/image_service/images/IEWGMLFY/adaptive_height_300_IEWGMLFY.png"
@@ -604,7 +598,7 @@
       },
       {
         "title": "留白胶，消光耐光清漆",
-        "desc": "",
+        "desc": "留白胶是一种特殊的液体，干燥后可以剥去，通常会将不上色或留白的部分先涂抹留白胶。使用清漆的原因是，紫外线会使颜料褪色或画纸变黄，日常生活中的装饰画涂上这种漆后，可以起到防氧化作用，延长画稿保存时间。不过上了这种漆后，就不能再添笔作画了。",
         "imgs": [
           "http://mindpin.oss-cn-hangzhou.aliyuncs.com/image_service/images/XYbKLbKY/adaptive_height_300_XYbKLbKY.png",
           "http://mindpin.oss-cn-hangzhou.aliyuncs.com/image_service/images/vfwUKGM7/adaptive_height_300_vfwUKGM7.png"
@@ -613,7 +607,7 @@
       },
       {
         "title": "喷雾器，镊子和单眼望远镜",
-        "desc": "",
+        "desc": "喷雾器用来为画纸及调色盘中增添湿气或者表现材质感；镊子用来拾起纸上的笔毛，如果使用笔尖处理，会破坏颜料 的涂覆效果；望远镜的作用是，当绘制风景草图时，可以用来观察远处的细节。",
         "imgs": [
           "http://mindpin.oss-cn-hangzhou.aliyuncs.com/image_service/images/kwxB6Azs/adaptive_height_300_kwxB6Azs.png",
           "http://mindpin.oss-cn-hangzhou.aliyuncs.com/image_service/images/AhuQJZWA/adaptive_height_300_AhuQJZWA.png",
@@ -623,7 +617,7 @@
       },
       {
         "title": "玻璃棒，沟引尺和画架",
-        "desc": "",
+        "desc": "玻璃棒和沟引尺是用来引出直线的构图工具。画架在绘制建筑物时具有定形的作用，主要在户外写生时使用。相机的三脚架或者自制的器材都可以作 为画架，当然也可以购买专用的画架。画架的最大的优点是可以灵活调整角度。",
         "imgs": [
           "http://mindpin.oss-cn-hangzhou.aliyuncs.com/image_service/images/tmGQxgez/adaptive_height_300_tmGQxgez.png",
           "http://mindpin.oss-cn-hangzhou.aliyuncs.com/image_service/images/N9c2fiwg/adaptive_height_300_N9c2fiwg.png"
@@ -631,10 +625,17 @@
         "video": ""
       },
       {
-        "title": "素描工具，取景框和测量棒",
-        "desc": "",
+        "title": "铅笔素描工具",
+        "desc": "铅笔素描工具包括勾画草图的 HB/2B 铅笔，修补轮廓用的木炭笔，擦除铅笔笔迹的橡皮擦和素描橡皮，修正铅笔的裁纸刀等。如果不习惯直接使用颜料的直接画法，可以利用素描工具事先描边。",
         "imgs": [
-          "http://mindpin.oss-cn-hangzhou.aliyuncs.com/image_service/images/ekuSsOdB/adaptive_height_300_ekuSsOdB.png",
+          "http://mindpin.oss-cn-hangzhou.aliyuncs.com/image_service/images/ekuSsOdB/adaptive_height_300_ekuSsOdB.png"
+        ],
+        "video": ""
+      },
+      {
+        "title": "取景框和测量棒",
+        "desc": "取景框的作用是，在开始绘画之前，可以用它来确定基本图像的中心位置，使其更稳定，并且确定留白的形状；测量棒可以用来发现和纠正直觉的错误，后面的教程中会详细讲解。自行车车轮的辐条就可以作为测量棒使用。",
+        "imgs": [
           "http://mindpin.oss-cn-hangzhou.aliyuncs.com/image_service/images/HT9MowWU/adaptive_height_300_HT9MowWU.png",
           "http://mindpin.oss-cn-hangzhou.aliyuncs.com/image_service/images/HvSLT9SA/adaptive_height_300_HvSLT9SA.png"
         ],
@@ -642,7 +643,7 @@
       },
       {
         "title": "擦线板和电动橡皮擦",
-        "desc": "",
+        "desc": "擦线板的作用是，如果只想擦除一条线或擦除细节部分的多余线条，同时要保持画面清洁时，可以用擦线板遮挡画面，再使用橡皮擦擦除露出的部分。电动橡皮擦可以与擦线板配合使用，掉下来的残渣可以用素描橡皮将其粘走。",
         "imgs": [
           "http://mindpin.oss-cn-hangzhou.aliyuncs.com/image_service/images/bVhSiCBM/adaptive_height_300_bVhSiCBM.png"
         ],
@@ -681,7 +682,7 @@
     "id": "sample-2-5",
     "img": "http://mindpin.oss-cn-hangzhou.aliyuncs.com/image_service/images/N5cdgVem/adaptive_height_300_N5cdgVem.png",
     "title": "教程三：画笔的种类和使用方法",
-    "desc": "",
+    "desc": "刚开始学画时，只要准备平头画笔，圆头画笔以及松鼠毛画笔就能基本应付作画。平头画笔用来大面积涂色，松鼠毛画笔则用于引出细线。",
     "steps": [
       {
         "title": "平头画笔，椭圆形画笔等",
@@ -689,11 +690,11 @@
         "imgs": [
           "http://mindpin.oss-cn-hangzhou.aliyuncs.com/image_service/images/sgAMStu5/adaptive_height_300_sgAMStu5.png"
         ],
-        "video": ""
+        "video": "平头画笔可用于纸上涂抹水，也用于绘制宽阔、拖扫式的笔触。可用平头侧边画出粗糙的细线。画笔的毛是松鼠毛。浸水后几乎膨胀两倍左右，笔尖也容易聚拢，可以绘制细碎而尖锐的紧张感细线。还可以把画笔横卧，用画笔的腹部在画面鼓擦。"
       },
       {
         "title": "圆头笔，水彩画圆头笔等",
-        "desc": "",
+        "desc": "圆头笔有红貂毛（黄鼠狼）画笔。笔杆较细、容易握笔，多用于绘制细线；还有松鼠毛画笔。颜料吸收量大、笔毫容易聚拢。笔杆比较短，适合快速作画；水彩画圆头笔（紫貂毛）的笔尖较为整齐，能充分吸收颜料，运笔也较为容易。",
         "imgs": [
           "http://mindpin.oss-cn-hangzhou.aliyuncs.com/image_service/images/iU9NGqjq/adaptive_height_300_iU9NGqjq.png"
         ],
@@ -701,7 +702,7 @@
       },
       {
         "title": "榛形笔和自吸水毛笔",
-        "desc": "",
+        "desc": "榛形笔是油画及丙烯画常用的笔。其笔腰弹性大，较为适和细节处理。自吸水毛笔不使用笔洗器，适合完成即兴素描。",
         "imgs": [
           "http://mindpin.oss-cn-hangzhou.aliyuncs.com/image_service/images/WAh8RBkN/adaptive_height_300_WAh8RBkN.png",
           "http://mindpin.oss-cn-hangzhou.aliyuncs.com/image_service/images/h38ydzYW/adaptive_height_300_h38ydzYW.png"
@@ -762,7 +763,7 @@
         "desc": "花 2~3 天时间晾干。仅在使用时，才加水溶解颜料",
         "imgs": [
           "http://mindpin.oss-cn-hangzhou.aliyuncs.com/image_service/images/jMsFzsxb/adaptive_height_300_jMsFzsxb.png",
-          "hangzhou.aliyuncs.com/image_service/images/ywelC6Ne/adaptive_height_300_ywelC6Ne.png"
+          "http://mindpin.oss-cn-hangzhou.aliyuncs.com/image_service/images/ywelC6Ne/adaptive_height_300_ywelC6Ne.png"
         ],
         "video": ""
       }
