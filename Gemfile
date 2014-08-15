@@ -42,8 +42,8 @@ gem "mina",
     :tag => "v0.2.0fix"
 
 # tag 管理
-gem "acts-as-dag", 
-    :github => "mindpin/acts-as-dag", 
+gem "acts-as-dag",
+    :github => "mindpin/acts-as-dag",
     :tag => "v0.0.1"
 
 gem "knowledge-net-plan-store",
@@ -62,25 +62,25 @@ gem "user-auth",
     :github => "mindpin/user-auth",
     :tag => "0.0.7"
 
-gem "sort_char", 
+gem "sort_char",
     :git => "git://github.com/mindpin/sort_char.git",
     :tag => "0.0.1"
 
 gem "knowledge_camp_step",
     :github => "mindpin/knowledge_camp_step",
-    :tag => "v0.0.3"
+    :tag => "v0.0.4"
 
 # 文字文档持久化，以下两个 gem 是相关的
-gem "mongoid-versioning", 
+gem "mongoid-versioning",
     :github => "simi/mongoid-versioning"
 
-gem "documents-store",    
+gem "documents-store",
     :github => "mindpin/documents-store",
     :tag => "v0.0.4"
 
 gem 'ueditor.rails',
     # :path => '/web/songliang/kaid/ueditor.rails'
-    :github => 'mindpin/ueditor.rails', 
+    :github => 'mindpin/ueditor.rails',
     # :tag => 'v0.0.5'
     :ref => 'b832fde'
 
@@ -90,11 +90,11 @@ gem 'carrierwave-mongoid', :require => 'carrierwave/mongoid'
 gem "mini_magick", :require => false
 
 # 虚拟文件夹
-gem 'virtual_file_system',    
+gem 'virtual_file_system',
     :github => "mindpin/virtual-file",
     :tag => "v0.0.6"
 # 支持分段上传的文件持久化
-gem 'file-part-upload', 
+gem 'file-part-upload',
     :github => 'mindpin/file-part-upload',
     :tag => '1.0.5'
 
