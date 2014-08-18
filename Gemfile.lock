@@ -66,8 +66,8 @@ GIT
 
 GIT
   remote: git://github.com/mindpin/knowledge_camp_step.git
-  revision: 570e846164282c60e5a4f976c2e652c71aeb421f
-  tag: v0.0.5
+  revision: 74f1bd2920a0ea5ababbd926fde8e01376c16406
+  tag: v0.0.6
   specs:
     knowledge_camp_step (0.0.1)
       mongoid (~> 4.0.0)
