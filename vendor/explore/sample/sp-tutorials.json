@@ -4,7 +4,7 @@
     "net_id": "sp-1",
     "id": "sample-sp-1",
     "img": "http://mindpin.oss-cn-hangzhou.aliyuncs.com/image_service/images/jwprfBAQ/adaptive_height_300_jwprfBAQ.png",
-    "title": "带有选择分支的教程",
+    "title": "带有选择分支的教程，用来调试选择分支",
     "desc": "",
     "steps": [
       {

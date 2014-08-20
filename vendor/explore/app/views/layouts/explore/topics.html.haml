@@ -1,0 +1,29 @@
+!!!
+%html{:lang => :zh}
+  %head
+    %meta{:'http-equiv' => 'Content-Type', :content => 'text/html; charset=utf-8'}
+    %meta{:name => 'viewport', :content => 'width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no'}
+
+    - title = yield :page_title
+    - title = "KC Mobile" if title.blank?
+
+    %title= title
+    = stylesheet_link_tag 'explore/application', :media => 'screen'
+    = csrf_meta_tags
+    = javascript_include_tag 'application'
+
+  %body.topic
+    .page-drawer-front
+      .topic-bg
+        = fit_image @topic.img, :width => '100%', :height => '100%'
+
+      .page-header
+        %a.left.back{:href => "/explore"}
+          %i.fa.fa-arrow-left
+        .text= @topic.title
+
+      .page-content.container{:data => {:scroller => true}}
+        .row{:class => action_css_class}
+          - if !user_signed_in?
+            .page-not-signed-in 你正以未登录状态进行浏览
+          = yield

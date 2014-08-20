@@ -55,6 +55,11 @@ module Explore
         json = File.read "vendor/explore/sample/learners.json"
         JSONStruct.open json
       end
+
+      def topics
+        json = File.read "vendor/explore/sample/topics.json"
+        JSONStruct.open json
+      end
     end
   end
 end

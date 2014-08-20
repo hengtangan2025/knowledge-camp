@@ -74,8 +74,8 @@ GIT
 
 GIT
   remote: git://github.com/mindpin/simple-images.git
-  revision: 1621939e65701d5a10f7a8e18a7b91fe443e5345
-  ref: 1621939
+  revision: 052d70071b5f2862269d3eeaad355726e0941543
+  ref: 052d700
   specs:
     simple-images (0.0.2)
 
