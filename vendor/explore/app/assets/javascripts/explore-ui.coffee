@@ -1,3 +1,12 @@
+# -------------- header
+
+jQuery(document).delegate '.page-header a.toggle', 'click', ->
+  jQuery('.page-drawer-front').toggleClass('open')
+
+# --------------
+
+
+
 jQuery(document).delegate '.note .link a', 'click', ->
   $o = jQuery('.note-overlay')
   if $o.is(":visible")

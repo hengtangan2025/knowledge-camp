@@ -1,11 +1,16 @@
-- @nets = Explore::Mock.nets
+- content_for(:active) { 'all-topics' }
 
-.nets
-  - @nets.each do |net|
-    - color = string_grid_color net.id.to_s
-    - url = "/explore/nets/#{net.id}"
-    .net
-      %a.box{:style => "background:#{color}", :href => url}
-        .name= net.name
-        .points
-          .count= net.points.count
+.topics
+  - @topics.each do |topic|
+    .topic
+      %a.tbox{:href => "/explore/topics/#{topic.id}"}
+        .img
+          .ibox= fit_image topic.img, :width => '100%', :height => '100%'
+        .info
+          .ifbox
+            .title= topic.title
+            .desc= topic.desc
+        .stat
+          .tutorials-count
+            %i.fa.fa-book
+            %span= topic.tutorials.count

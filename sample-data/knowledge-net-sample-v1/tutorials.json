@@ -1,0 +1,844 @@
+[
+  {
+    "net_id": "1",
+    "id": "sample-1",
+    "img": "http://mindpin.oss-cn-hangzhou.aliyuncs.com/image_service/images/RRVMSwyI/adaptive_height_300_RRVMSwyI.png",
+    "title": "灶台前操作的基本姿势",
+    "desc": "学习灶台前操作的基本姿势，包括站立和移动等。",
+    "steps": [
+      {
+        "title": "站立姿势",
+        "desc": "灶台前操作的正确姿势应该是，两脚分开，自然站立。",
+        "imgs": [
+          "http://mindpin.oss-cn-hangzhou.aliyuncs.com/image_service/images/wN60Ly8I/adaptive_height_300_wN60Ly8I.png",
+          "http://mindpin.oss-cn-hangzhou.aliyuncs.com/image_service/images/p3Pualvi/adaptive_height_300_p3Pualvi.png"
+        ],
+        "video": ""
+      },
+      {
+        "title": "转身和移动",
+        "desc": "左转身加调料，在灶上翻炒；右转身出菜时，两脚要随身体自然移动。",
+        "imgs": [],
+        "video": ""
+      },
+      {
+        "title": "为何要遵循标准动作？",
+        "desc": "动作过于呆板，僵硬，长时间操作会出现疲劳，甚至损伤身体。所以要反复练习。",
+        "imgs": [],
+        "video": ""
+      },
+      {
+        "title": "观看示范动作",
+        "desc": "请观看视频，了解基本站姿的示范动作：",
+        "imgs": [],
+        "video": "http://oss.aliyuncs.com/pie-documents/20140729/1-灶台前操作的基本姿势.mp4"
+      }
+    ],
+    "parents": [],
+    "children": [
+      "sample-2"
+    ],
+    "related": [
+      "形成安全意识",
+      "锻炼身体"
+    ]
+  },
+  {
+    "net_id": "1",
+    "id": "sample-2",
+    "img": "http://mindpin.oss-cn-hangzhou.aliyuncs.com/image_service/images/ZuDWIyFj/adaptive_height_300_ZuDWIyFj.png",
+    "title": "基本的握勺动作",
+    "desc": "接下来学习基本的握勺动作，包括炒勺，手勺和边锅的握法。",
+    "steps": [
+      {
+        "title": "如何握炒勺",
+        "desc": "用左手握炒勺，握炒勺要牢而不死，翻勺时握紧，不翻勺时放松。",
+        "imgs": [
+          "http://mindpin.oss-cn-hangzhou.aliyuncs.com/image_service/images/Qe2zwWiQ/adaptive_height_300_Qe2zwWiQ.png",
+          "http://mindpin.oss-cn-hangzhou.aliyuncs.com/image_service/images/lRyHMzGQ/adaptive_height_300_lRyHMzGQ.png"
+        ],
+        "video": ""
+      },
+      {
+        "title": "如何握手勺",
+        "desc": "右手握手勺，用食指抵住勺柄。握勺姿势如果正确，那么手背朝上时，手勺口应该是竖起来的。",
+        "imgs": [
+          "http://mindpin.oss-cn-hangzhou.aliyuncs.com/image_service/images/xRqkFhlL/adaptive_height_300_xRqkFhlL.png",
+          "http://mindpin.oss-cn-hangzhou.aliyuncs.com/image_service/images/FCXIMvZx/adaptive_height_300_FCXIMvZx.png"
+        ],
+        "video": ""
+      },
+      {
+        "title": "如何握边锅",
+        "desc": "边锅的握法是，左手拇指勾住锅耳左侧，其余四指端住边锅底部。在灶上操作时，应该垫上毛巾。边锅握得正确，竖起来不能脱手。",
+        "imgs": [
+          "http://mindpin.oss-cn-hangzhou.aliyuncs.com/image_service/images/kU7ckqJh/adaptive_height_300_kU7ckqJh.png",
+          "http://mindpin.oss-cn-hangzhou.aliyuncs.com/image_service/images/vw414oPv/adaptive_height_300_vw414oPv.png"
+        ],
+        "video": ""
+      },
+      {
+        "title": "观看示范动作",
+        "desc": "请观看视频，了解各种握勺方法的示范动作：",
+        "imgs": [],
+        "video": "http://oss.aliyuncs.com/pie-documents/20140729/2-基本的握勺动作.mp4"
+      }
+    ],
+    "parents": [
+      "sample-1"
+    ],
+    "children": [
+      "sample-3",
+      "sample-7"
+    ],
+    "related": [
+      "熟悉炒勺",
+      "熟悉手勺",
+      "熟悉边锅",
+      "了解勺类厨具的不同说法"
+    ]
+  },
+  {
+    "net_id": "1",
+    "id": "sample-3",
+    "img": "http://mindpin.oss-cn-hangzhou.aliyuncs.com/image_service/images/oEXj1sYs/adaptive_height_300_oEXj1sYs.png",
+    "title": "小翻勺（前翻）",
+    "desc": "接下来学习小翻勺动作，这一节主要讲前翻动作",
+    "steps": [
+      {
+        "title": "前翻勺的动作要领",
+        "desc": "前翻的目的是使原料在锅中由前向后翻动。其动作要领是，靠手腕的力量前推后拉。后拉时翘起锅的前沿，翻动原料。",
+        "imgs": [
+          "http://mindpin.oss-cn-hangzhou.aliyuncs.com/image_service/images/Uh8UwG2i/adaptive_height_300_Uh8UwG2i.png",
+          "http://mindpin.oss-cn-hangzhou.aliyuncs.com/image_service/images/QuQoXC19/adaptive_height_300_QuQoXC19.png"
+        ],
+        "video": ""
+      },
+      {
+        "title": "观看示范动作",
+        "desc": "请观看视频，了解前翻勺的示范动作：",
+        "imgs": [],
+        "video": "http://oss.aliyuncs.com/pie-documents/20140729/3-小翻勺-前翻.mp4"
+      }
+    ],
+    "parents": [
+      "sample-2"
+    ],
+    "children": [
+      "sample-4"
+    ],
+    "related": [
+      "了解勺类厨具的不同说法",
+      "了解小翻勺"
+    ]
+  },
+  {
+    "net_id": "1",
+    "id": "sample-4",
+    "img": "http://mindpin.oss-cn-hangzhou.aliyuncs.com/image_service/images/oEXj1sYs/adaptive_height_300_oEXj1sYs.png",
+    "title": "小翻勺（后翻）",
+    "desc": "接下来学习小翻勺动作，这一节主要讲后翻动作",
+    "steps": [
+      {
+        "title": "后翻勺的动作要领",
+        "desc": "后翻勺的目的使原料在炒勺里由后向前翻动。这种翻勺动作难度较大，但是在加工调味汁较多的菜肴时，不容易烫手。",
+        "imgs": [
+          "http://mindpin.oss-cn-hangzhou.aliyuncs.com/image_service/images/iKosAokx/adaptive_height_300_iKosAokx.png",
+          "http://mindpin.oss-cn-hangzhou.aliyuncs.com/image_service/images/JFM8P19W/adaptive_height_300_JFM8P19W.png"
+        ],
+        "video": ""
+      },
+      {
+        "title": "观看示范动作",
+        "desc": "请观看视频，了解后翻勺的示范动作：",
+        "imgs": [],
+        "video": "http://oss.aliyuncs.com/pie-documents/20140729/4-小翻勺-后翻.mp4"
+      }
+    ],
+    "parents": [
+      "sample-3"
+    ],
+    "children": [
+      "sample-5"
+    ],
+    "related": [
+      "了解勺类厨具的不同说法",
+      "了解小翻勺"
+    ]
+  },
+  {
+    "net_id": "1",
+    "id": "sample-5",
+    "img": "http://mindpin.oss-cn-hangzhou.aliyuncs.com/image_service/images/Z4Ajzq4s/adaptive_height_300_Z4Ajzq4s.png",
+    "title": "大翻勺",
+    "desc": "接下来学习大翻勺动作，大翻勺比起小翻勺的动作范围更大，对力量和技巧要求也更高",
+    "steps": [
+      {
+        "title": "大翻勺的特点",
+        "desc": "烹饪某些菜肴时，需要用炒勺把菜扬起来，整个翻过来，再接住。这种翻勺动作，叫大翻勺。",
+        "imgs": [
+          "http://mindpin.oss-cn-hangzhou.aliyuncs.com/image_service/images/KJF1eLqH/adaptive_height_300_KJF1eLqH.png",
+          "http://mindpin.oss-cn-hangzhou.aliyuncs.com/image_service/images/BTYZE97x/adaptive_height_300_BTYZE97x.png"
+        ],
+        "video": ""
+      },
+      {
+        "title": "大翻勺的动作要领",
+        "desc": "大翻勺动作，要靠手臂手腕的力量，做出推、拉、扬、接四种动作的各种配合。可以做出前翻，后翻，左翻，右翻，不同的动作。",
+        "imgs": [],
+        "video": ""
+      },
+      {
+        "title": "观看示范动作",
+        "desc": "请观看视频，了解大翻勺的示范动作：",
+        "imgs": [],
+        "video": "http://oss.aliyuncs.com/pie-documents/20140729/5-大翻勺.mp4"
+      }
+    ],
+    "parents": [
+      "sample-4"
+    ],
+    "children": [
+      "sample-6"
+    ],
+    "related": [
+      "了解勺类厨具的不同说法",
+      "了解大翻勺"
+    ]
+  },
+  {
+    "net_id": "1",
+    "id": "sample-6",
+    "img": "http://mindpin.oss-cn-hangzhou.aliyuncs.com/image_service/images/zbn2jOBC/adaptive_height_300_zbn2jOBC.png",
+    "title": "顶翻",
+    "desc": "接下来学习顶翻动作，这种翻勺动作包含了手勺的推顶配合",
+    "steps": [
+      {
+        "title": "顶翻的特点",
+        "desc": "在翻勺过程中，可以依靠手勺的帮助翻动菜肴，这种翻勺方式叫顶翻。",
+        "imgs": [],
+        "video": ""
+      },
+      {
+        "title": "顶翻的动作要领",
+        "desc": "顶翻时，左手的动作和小翻一样。同时，右手用手勺顺着菜肴翻动的方向推顶，所以叫顶翻。有了手勺的配合，菜肴翻动充分，左手也比较省力。",
+        "imgs": [
+          "http://mindpin.oss-cn-hangzhou.aliyuncs.com/image_service/images/a4yJuOZZ/adaptive_height_300_a4yJuOZZ.png",
+          "http://mindpin.oss-cn-hangzhou.aliyuncs.com/image_service/images/OwiEAHeN/adaptive_height_300_OwiEAHeN.png"
+        ],
+        "video": ""
+      },
+      {
+        "title": "观看示范动作",
+        "desc": "请观看视频，了解顶翻的示范动作：",
+        "imgs": [],
+        "video": "http://oss.aliyuncs.com/pie-documents/20140729/6-顶翻.mp4"
+      }
+    ],
+    "parents": [
+      "sample-5"
+    ],
+    "children": [
+      "sample-8"
+    ],
+    "related": [
+      "了解勺类厨具的不同说法",
+      "了解小翻勺",
+      "了解大翻勺"
+    ]
+  },
+  {
+    "net_id": "1",
+    "id": "sample-7",
+    "img": "http://mindpin.oss-cn-hangzhou.aliyuncs.com/image_service/images/G8U9RRCp/adaptive_height_300_G8U9RRCp.png",
+    "title": "出菜和装盘",
+    "desc": "菜炒好以后要装盘，接下来学习出菜和装盘的动作",
+    "steps": [
+      {
+        "title": "装盘的基本要求",
+        "desc": "装盘要求装得周正，自然美观，盘子周围干净利落。",
+        "imgs": [],
+        "video": ""
+      },
+      {
+        "title": "刮装法的动作要领",
+        "desc": "最常用的装盘方法是刮装法，出菜的时候用的是刮装，用手勺把菜刮到盘里。",
+        "imgs": [],
+        "video": ""
+      },
+      {
+        "title": "观看示范动作",
+        "desc": "请观看视频，了解刮装法的示范动作：",
+        "imgs": [],
+        "video": "http://oss.aliyuncs.com/pie-documents/20140729/7-出菜和装盘.mp4"
+      }
+    ],
+    "parents": [
+      "sample-2"
+    ],
+    "children": [
+      "sample-8"
+    ],
+    "related": [
+      "了解勺类厨具的不同说法",
+      "了解装盘"
+    ]
+  },
+  {
+    "net_id": "1",
+    "id": "sample-8",
+    "img": "http://mindpin.oss-cn-hangzhou.aliyuncs.com/image_service/images/n044MyKs/adaptive_height_300_n044MyKs.png",
+    "title": "灶台用具的整理",
+    "desc": "了解灶台用具的整理要求",
+    "steps": [
+      {
+        "title": "灶台整理的要求",
+        "desc": "一名好的厨师，手底下要利落。各种原料用具摆放合理，讲究卫生，随时保持炉台和灶具的清洁。",
+        "imgs": [
+          "http://mindpin.oss-cn-hangzhou.aliyuncs.com/image_service/images/gyTuLzNF/adaptive_height_300_gyTuLzNF.png",
+          "http://mindpin.oss-cn-hangzhou.aliyuncs.com/image_service/images/z1fxOpp7/adaptive_height_300_z1fxOpp7.png"
+        ],
+        "video": ""
+      },
+      {
+        "title": "观看示范动作",
+        "desc": "请观看视频，了解灶台前操作时，用具摆放合理的好处。",
+        "imgs": [],
+        "video": "http://oss.aliyuncs.com/pie-documents/20140729/8-整理灶台.mp4"
+      },
+      {
+        "title": "观看示范性后厨照片",
+        "desc": "下面的后厨现场照片展示了各种原料用具的摆放都相对整齐的情况",
+        "imgs": [],
+        "video": ""
+      }
+    ],
+    "parents": [
+      "sample-6",
+      "sample-7"
+    ],
+    "children": [],
+    "related": [
+      "了解小翻勺",
+      "了解大翻勺",
+      "了解刮装法"
+    ]
+  },
+
+  {
+    "net_id": "2",
+    "id": "sample-2-1",
+    "img": "http://mindpin.oss-cn-hangzhou.aliyuncs.com/image_service/images/r6b2g0yy/r6b2g0yy.png",
+    "title": "水彩画入门简介",
+    "desc": "让大家对水彩画形成初步的印象。",
+    "steps": [
+      {
+        "title": "欣赏水彩画的典型画作",
+        "desc": "在进入水彩画技法的讲解之前，让我们先来欣赏一些典型画作。不妨把自己想象成置身画廊的游人，来观察这些画作",
+        "imgs": [
+          "http://mindpin.oss-cn-hangzhou.aliyuncs.com/image_service/images/CctiVF9x/adaptive_height_300_CctiVF9x.png"
+        ],
+        "video": ""
+      },
+      {
+        "title": "典型的风景主题画作",
+        "desc": "从《圣托里尼岛的风（透明水彩）》，《伊美罗维格利的教堂（透明水彩）》，《Sweet Room（横滨港）》这几幅画作中可以观察到，利用水彩描绘阳光，天空，水面和建筑物等景物的表达效果。",
+        "imgs": [
+          "http://mindpin.oss-cn-hangzhou.aliyuncs.com/image_service/images/gdNv9HFR/adaptive_height_300_gdNv9HFR.png",
+          "http://mindpin.oss-cn-hangzhou.aliyuncs.com/image_service/images/klu90YNK/adaptive_height_300_klu90YNK.png",
+          "http://mindpin.oss-cn-hangzhou.aliyuncs.com/image_service/images/luLtXLKO/adaptive_height_300_luLtXLKO.png"
+        ],
+        "video": ""
+      },
+      {
+        "title": "典型的植物主题画作",
+        "desc": "《绛三叶草（透明水彩）》采用直接画法，画出近景中的花之后，再逐渐将其与斜坡上的风景连接。",
+        "imgs": [
+          "http://mindpin.oss-cn-hangzhou.aliyuncs.com/image_service/images/eJW6jpfD/adaptive_height_300_eJW6jpfD.png"
+        ],
+        "video": ""
+      },
+      {
+        "title": "典型的人物主题画作",
+        "desc": "《夏天》描绘了一位吃烤饼时进入了思考，表现得心不在焉的女子；《里昂市场（早市）》绘制在明信片大小的水彩纸上，是站着创作的作品。",
+        "imgs": [
+          "http://mindpin.oss-cn-hangzhou.aliyuncs.com/image_service/images/xSQF1aq3/adaptive_height_300_xSQF1aq3.png",
+          "http://mindpin.oss-cn-hangzhou.aliyuncs.com/image_service/images/BTnvQZZi/adaptive_height_300_BTnvQZZi.png"
+        ],
+        "video": ""
+      },
+      {
+        "title": "水彩画的特点总结",
+        "desc": "以上这些典型画作，展现了水彩画所能表达的主题。水彩画不仅清新明快，而且可以随时随地进行创作，很适合初学绘画的人学习",
+        "imgs": [],
+        "video": ""
+      },
+      {
+        "title": "人们为什么想要亲手创作水彩画？",
+        "desc": "“将旅途中欣赏到的风景和日常生活中的美丽景象用画笔记录下来。” “不是简单地拍照留念，而是亲手将它们创造成作品保留下来。” …… 这种单纯的想法，就是很多人学习水彩画的动力~ 你也可以做到。",
+        "imgs": [
+          "http://mindpin.oss-cn-hangzhou.aliyuncs.com/image_service/images/pYAUmfWf/adaptive_height_300_pYAUmfWf.png"
+        ],
+        "video": ""
+      }
+    ],
+    "parents": [],
+    "children": [],
+    "related": [
+      "水彩/水粉/丙烯画技能观察前的引导",
+      "水彩画典型画作观察前的引导",
+      "典型植物画",
+      "典型风景画",
+      "典型人物画",
+      "水彩画典型画作观察后的说明",
+      "水彩画的简介",
+      "水彩画的创作动机"
+    ]
+  },
+  {
+    "net_id": "2",
+    "id": "sample-2-2",
+    "img": "http://mindpin.oss-cn-hangzhou.aliyuncs.com/image_service/images/dogfHsRV/adaptive_height_300_dogfHsRV.png",
+    "title": "水彩画技法课程内容简介",
+    "desc": "本教程主要向大家介绍整个课程所覆盖的内容，以及课程所侧重的直接画法的特点等。",
+    "steps": [
+      {
+        "title": "本课程的内容安排",
+        "desc": "本课程分为七个部分，前六部分逐层深入地讲解水彩画工具的特性和使用方法，基本涂色方法，各种静物的直接画法，必备的素描知识，各类主题的透明水彩画技法，水彩画的特效技法等。第七部分将带领读者进行比较复杂的创作",
+        "imgs": [],
+        "video": ""
+      },
+      {
+        "title": "本课程主要讲解直接画法",
+        "desc": "直接画法，是不依赖铅笔草图，直接以水彩画笔创作的技法。直接画法具有绘画速度快、色彩鲜艳以及容易修复形状的优点。",
+        "imgs": [],
+        "video": ""
+      },
+      {
+        "title": "铅笔起型并非必不可少",
+        "desc": "想到不用铅笔起形，很多人会感到不安。本课程包含专门的教程，介绍“不看实物作画”的运笔和混色训练等内容。对初学者而言，直接画法实用有效，更容易体验到作画的快乐。",
+        "imgs": [],
+        "video": ""
+      },
+      {
+        "title": "等待水分干透的心情",
+        "desc": "水彩画很有趣，直到水分完全干透才能见到最终成品。巧妙控制水分和颜料的流动，在它们相互交触时，我们能够感受到水彩画特有的魅力。",
+        "imgs": [],
+        "video": ""
+      },
+      {
+        "title": "从哪里开始？",
+        "desc": "我们将从了解主要的绘画工具、描绘简单的形状开始，逐步体验水彩绘画工具和技法的特点，感受作画的快乐，从而进入水彩绘画的世界。",
+        "imgs": [
+          "http://mindpin.oss-cn-hangzhou.aliyuncs.com/image_service/images/I5ajdcaW/adaptive_height_300_I5ajdcaW.png"
+        ],
+        "video": ""
+      }
+    ],
+    "parents": [],
+    "children": [],
+    "related": [
+      "水彩画的简介",
+      "水彩画的创作动机"
+    ]
+  },
+  {
+    "net_id": "2",
+    "id": "sample-2-3",
+    "img": "http://mindpin.oss-cn-hangzhou.aliyuncs.com/image_service/images/aZZ54Byp/adaptive_height_300_aZZ54Byp.png",
+    "title": "水彩画的颜料",
+    "desc": "本教程介绍了到画材店可以轻松购买到的水彩画颜料。",
+    "steps": [
+      {
+        "title": "管装颜料的好处",
+        "desc": "管装颜料细小，给人感觉比较贵。但管装颜料在预处理完毕后，仅仅在使用时才加水溶解，所以使用时间比较长。",
+        "imgs": [
+          "http://mindpin.oss-cn-hangzhou.aliyuncs.com/image_service/images/ZIKCIV0P/adaptive_height_300_ZIKCIV0P.png"
+        ],
+        "video": ""
+      },
+      {
+        "title": "认识透明水彩颜料",
+        "desc": "透明水彩的最大特点是，色彩透明度高，色彩叠加时，着色较深，富有层次感。",
+        "imgs": [
+          "http://mindpin.oss-cn-hangzhou.aliyuncs.com/image_service/images/SBsG9zAe/adaptive_height_300_SBsG9zAe.png"
+        ],
+        "video": ""
+      },
+      {
+        "title": "透明水彩颜料的使用方式",
+        "desc": "画透明水彩时不使用白色颜料，而是把绘画所用支撑材料（水彩纸等）的颜色作为白色进行创作。虽然颜料的色彩数目不多（平均十几个），但使用混色即可满足任何写生创作",
+        "imgs": [],
+        "video": ""
+      },
+      {
+        "title": "使用透明水彩颜料的乐趣",
+        "desc": "即使色彩的名称相同，品牌不同时色彩的浅淡也有区别。通过加减颜料，或混合各种色彩，调配出新的色彩，也是一种乐趣",
+        "imgs": [],
+        "video": ""
+      },
+      {
+        "title": "水彩画颜料的组成",
+        "desc": "绘画颜料基本的组成几乎大同小异，一般根据胶固剂不同或颜料的量及质的差异，来为绘画颜料命名。",
+        "imgs": [
+          "http://mindpin.oss-cn-hangzhou.aliyuncs.com/image_service/images/bPTOaKq7/adaptive_height_300_bPTOaKq7.png"
+        ],
+        "video": ""
+      },
+      {
+        "title": "怎样合理使用各种绘画颜料？",
+        "desc": "\"溶剂\"用于松弛和延展胶固剂，使其变成易于涂覆的物质，所以作为溶剂有一个基本条件，那就是不能完全挥发掉。溶剂应根据胶固剂进行选择，并不是所有溶剂和胶固剂都可以配合使用。因此，要努力掌握不同绘画颜料的特性。",
+        "imgs": [
+          "http://mindpin.oss-cn-hangzhou.aliyuncs.com/image_service/images/ajNPTJ6h/adaptive_height_300_ajNPTJ6h.png"
+        ],
+        "video": ""
+      },
+      {
+        "title": "了解其它水彩画颜料",
+        "desc": "下面的图片依次是：水粉画颜料，丙烯酸绘画颜料，广告色。",
+        "imgs": [
+          "http://mindpin.oss-cn-hangzhou.aliyuncs.com/image_service/images/O4IA49Ne/adaptive_height_300_O4IA49Ne.png",
+          "http://mindpin.oss-cn-hangzhou.aliyuncs.com/image_service/images/w4cr4E1K/adaptive_height_300_w4cr4E1K.png",
+          "http://mindpin.oss-cn-hangzhou.aliyuncs.com/image_service/images/au2KJl3w/adaptive_height_300_au2KJl3w.png"
+        ],
+        "video": ""
+      },
+      {
+        "title": "透明水彩画作品欣赏（人物）",
+        "desc": "让我们观察一下透明水彩画颜料的绘制效果如何，这是以人为主题的绘画作品：《里昂的恋人们》。",
+        "imgs": [
+          "http://mindpin.oss-cn-hangzhou.aliyuncs.com/image_service/images/xpzssbMH/adaptive_height_300_xpzssbMH.png"
+        ],
+        "video": ""
+      },
+      {
+        "title": "透明水彩画作品欣赏（风景）",
+        "desc": "这是以风景为主题的绘画作品：《林多斯的料理店（罗德斯岛）》以及《午休（米克诺斯岛）》。",
+        "imgs": [
+          "http://mindpin.oss-cn-hangzhou.aliyuncs.com/image_service/images/SHE14nil/adaptive_height_300_SHE14nil.png",
+          "http://mindpin.oss-cn-hangzhou.aliyuncs.com/image_service/images/tJ25oEdY/adaptive_height_300_tJ25oEdY.png"
+        ],
+        "video": ""
+      },
+      {
+        "title": "了解水粉画颜料的特征",
+        "desc": "观察下面这幅以水粉画绘制的人物主题的作品，可以了解水粉画颜料的特征。",
+        "imgs": [
+          "http://mindpin.oss-cn-hangzhou.aliyuncs.com/image_service/images/ZwQUW3RN/adaptive_height_300_ZwQUW3RN.png"
+        ],
+        "video": ""
+      },
+      {
+        "title": "了解丙烯画颜料的特征",
+        "desc": "观察下面这幅以丙烯画颜料绘制的风景主题的作品，可以了解丙烯画颜料的特征。",
+        "imgs": [
+          "http://mindpin.oss-cn-hangzhou.aliyuncs.com/image_service/images/c6O8thf6/adaptive_height_300_c6O8thf6.png"
+        ],
+        "video": ""
+      }
+    ],
+    "parents": [],
+    "children": [],
+    "related": [
+      "水彩画主要工具观察之前的引导",
+      "水彩画颜料观察前的引导",
+      "丙烯画颜料的观察",
+      "不透明水彩画颜料（水粉画颜料）的观察",
+      "透明水彩画颜料的观察",
+      "水彩画颜料的组成和分类说明",
+      "岩彩（日本画）的观察",
+      "油漆的观察",
+      "彩色粉笔的观察",
+      "墨汁的观察",
+      "水彩画颜料实际运用观察前的引导",
+      "透明水彩画作品观察前的引导",
+      "透明水彩人物画作",
+      "取景和构图的伏笔",
+      "透明水彩风景画作",
+      "湿破湿画法的伏笔",
+      "留白胶的伏笔",
+      "透明水彩画作品的说明",
+      "丙烯颜料水彩画作品观察前的引导",
+      "丙烯颜料水彩风景画作",
+      "丙烯颜料使用技巧",
+      "不透明水彩画作品的说明",
+      "不透明水彩画作品观察前的引导",
+      "不透明水彩人物画作",
+      "不透明颜料使用技巧",
+      "不透明水彩画作品的说明",
+      "不透明水彩画作品的说明",
+      "水彩画颜料实际运用的说明"
+    ]
+  },
+  {
+    "net_id": "2",
+    "id": "sample-2-4",
+    "img": "http://mindpin.oss-cn-hangzhou.aliyuncs.com/image_service/images/aA6dGjLx/adaptive_height_300_aA6dGjLx.png",
+    "title": "了解水彩画的基本工具",
+    "desc": "水彩画的魅力之一是，只要配备了这里介绍的基本工具，马上就能投入作画。本教程将对这些工具进行逐一介绍。",
+    "steps": [
+      {
+        "title": "颜料和调色板",
+        "desc": "可购置的颜料品牌非常多，无论是哪种品牌的颜料，都可以配合使用。请避免一开始就购置大量各种各样的颜料，那样容易混淆而无法确定该使用的颜色，而且有的颜色暂时不一定会使用。不妨对常用颜色熟悉一段时间后，再慢慢添加需要的颜色。关于调色板，铝制和塑料调色盘比较轻、方便携带，但考虑耐用性，最好选择稍微重一点但结实的调色盘（如铁制调色盘）。",
+        "imgs": [
+          "http://mindpin.oss-cn-hangzhou.aliyuncs.com/image_service/images/SBsG9zAe/adaptive_height_300_SBsG9zAe.png",
+          "http://mindpin.oss-cn-hangzhou.aliyuncs.com/image_service/images/tP3i5jf8/adaptive_height_300_tP3i5jf8.png"
+        ],
+        "video": ""
+      },
+      {
+        "title": "画笔和水桶",
+        "desc": "本书使用了两种画笔，一种笔可用于大面积涂刷水和颜料，另一种是尖头画笔。只要配备了这两种笔，就可以尝试各种绘图技法。关于水桶，可以购买专用水桶，也可以使用广口瓶。在桌子上画画时，广口瓶更方便观察水的混浊状态。此外，矿泉水瓶（2L）切断后，也能成为不错的装水工具。",
+        "imgs": [
+          "http://mindpin.oss-cn-hangzhou.aliyuncs.com/image_service/images/OvuOXREC/adaptive_height_300_OvuOXREC.png",
+          "http://mindpin.oss-cn-hangzhou.aliyuncs.com/image_service/images/IEWGMLFY/adaptive_height_300_IEWGMLFY.png"
+        ],
+        "video": ""
+      },
+      {
+        "title": "留白胶，消光耐光清漆",
+        "desc": "留白胶是一种特殊的液体，干燥后可以剥去，通常会将不上色或留白的部分先涂抹留白胶。使用清漆的原因是，紫外线会使颜料褪色或画纸变黄，日常生活中的装饰画涂上这种漆后，可以起到防氧化作用，延长画稿保存时间。不过上了这种漆后，就不能再添笔作画了。",
+        "imgs": [
+          "http://mindpin.oss-cn-hangzhou.aliyuncs.com/image_service/images/XYbKLbKY/adaptive_height_300_XYbKLbKY.png",
+          "http://mindpin.oss-cn-hangzhou.aliyuncs.com/image_service/images/vfwUKGM7/adaptive_height_300_vfwUKGM7.png"
+        ],
+        "video": ""
+      },
+      {
+        "title": "喷雾器，镊子和单眼望远镜",
+        "desc": "喷雾器用来为画纸及调色盘中增添湿气或者表现材质感；镊子用来拾起纸上的笔毛，如果使用笔尖处理，会破坏颜料 的涂覆效果；望远镜的作用是，当绘制风景草图时，可以用来观察远处的细节。",
+        "imgs": [
+          "http://mindpin.oss-cn-hangzhou.aliyuncs.com/image_service/images/kwxB6Azs/adaptive_height_300_kwxB6Azs.png",
+          "http://mindpin.oss-cn-hangzhou.aliyuncs.com/image_service/images/AhuQJZWA/adaptive_height_300_AhuQJZWA.png",
+          "http://mindpin.oss-cn-hangzhou.aliyuncs.com/image_service/images/xQmWhG75/adaptive_height_300_xQmWhG75.png"
+        ],
+        "video": ""
+      },
+      {
+        "title": "玻璃棒，沟引尺和画架",
+        "desc": "玻璃棒和沟引尺是用来引出直线的构图工具。画架在绘制建筑物时具有定形的作用，主要在户外写生时使用。相机的三脚架或者自制的器材都可以作 为画架，当然也可以购买专用的画架。画架的最大的优点是可以灵活调整角度。",
+        "imgs": [
+          "http://mindpin.oss-cn-hangzhou.aliyuncs.com/image_service/images/tmGQxgez/adaptive_height_300_tmGQxgez.png",
+          "http://mindpin.oss-cn-hangzhou.aliyuncs.com/image_service/images/N9c2fiwg/adaptive_height_300_N9c2fiwg.png"
+        ],
+        "video": ""
+      },
+      {
+        "title": "铅笔素描工具",
+        "desc": "铅笔素描工具包括勾画草图的 HB/2B 铅笔，修补轮廓用的木炭笔，擦除铅笔笔迹的橡皮擦和素描橡皮，修正铅笔的裁纸刀等。如果不习惯直接使用颜料的直接画法，可以利用素描工具事先描边。",
+        "imgs": [
+          "http://mindpin.oss-cn-hangzhou.aliyuncs.com/image_service/images/ekuSsOdB/adaptive_height_300_ekuSsOdB.png"
+        ],
+        "video": ""
+      },
+      {
+        "title": "取景框和测量棒",
+        "desc": "取景框的作用是，在开始绘画之前，可以用它来确定基本图像的中心位置，使其更稳定，并且确定留白的形状；测量棒可以用来发现和纠正直觉的错误，后面的教程中会详细讲解。自行车车轮的辐条就可以作为测量棒使用。",
+        "imgs": [
+          "http://mindpin.oss-cn-hangzhou.aliyuncs.com/image_service/images/HT9MowWU/adaptive_height_300_HT9MowWU.png",
+          "http://mindpin.oss-cn-hangzhou.aliyuncs.com/image_service/images/HvSLT9SA/adaptive_height_300_HvSLT9SA.png"
+        ],
+        "video": ""
+      },
+      {
+        "title": "擦线板和电动橡皮擦",
+        "desc": "擦线板的作用是，如果只想擦除一条线或擦除细节部分的多余线条，同时要保持画面清洁时，可以用擦线板遮挡画面，再使用橡皮擦擦除露出的部分。电动橡皮擦可以与擦线板配合使用，掉下来的残渣可以用素描橡皮将其粘走。",
+        "imgs": [
+          "http://mindpin.oss-cn-hangzhou.aliyuncs.com/image_service/images/bVhSiCBM/adaptive_height_300_bVhSiCBM.png"
+        ],
+        "video": ""
+      }
+    ],
+    "parents": [],
+    "children": [],
+    "related": [
+      "水彩画基本工具观察前的引导",
+      "水桶",
+      "画笔",
+      "水彩画其它工具观察前的引导",
+      "留白胶",
+      "玻璃棒和沟引尺",
+      "消光耐光清漆",
+      "喷雾器",
+      "画架",
+      "镊子",
+      "单眼望远镜",
+      "素描工具观察前的引导",
+      "测量棒",
+      "铅笔",
+      "裁纸刀",
+      "削铅笔的技法",
+      "橡皮擦",
+      "橡皮擦使用和保养方法",
+      "擦线板和电动橡皮擦",
+      "素描橡皮",
+      "木炭笔",
+      "取景框"
+    ]
+  },
+  {
+    "net_id": "2",
+    "id": "sample-2-5",
+    "img": "http://mindpin.oss-cn-hangzhou.aliyuncs.com/image_service/images/Dz8FdoaT/Dz8FdoaT.png",
+    "title": "画笔的种类和使用方法",
+    "desc": "刚开始学画时，只要准备平头画笔，圆头画笔以及松鼠毛画笔就能基本应付作画。平头画笔用来大面积涂色，松鼠毛画笔则用于引出细线。",
+    "steps": [
+      {
+        "title": "平头画笔，椭圆形画笔等",
+        "desc": "平头画笔可用于纸上涂抹水，也用于绘制宽阔、拖扫式的笔触。可用平头侧边画出粗糙的细线。画笔的毛是松鼠毛。浸水后几乎膨胀两倍左右，笔尖也容易聚拢，可以绘制细碎而尖锐的紧张感细线。还可以把画笔横卧，用画笔的腹部在画面鼓擦。",
+        "imgs": [
+          "http://mindpin.oss-cn-hangzhou.aliyuncs.com/image_service/images/sgAMStu5/adaptive_height_300_sgAMStu5.png"
+        ],
+        "video": ""
+      },
+      {
+        "title": "圆头笔，水彩画圆头笔等",
+        "desc": "圆头笔有红貂毛（黄鼠狼）画笔。笔杆较细、容易握笔，多用于绘制细线；还有松鼠毛画笔。颜料吸收量大、笔毫容易聚拢。笔杆比较短，适合快速作画；水彩画圆头笔（紫貂毛）的笔尖较为整齐，能充分吸收颜料，运笔也较为容易。",
+        "imgs": [
+          "http://mindpin.oss-cn-hangzhou.aliyuncs.com/image_service/images/iU9NGqjq/adaptive_height_300_iU9NGqjq.png"
+        ],
+        "video": ""
+      },
+      {
+        "title": "榛形笔和自吸水毛笔",
+        "desc": "榛形笔是油画及丙烯画常用的笔。其笔腰弹性大，较为适和细节处理。自吸水毛笔不使用笔洗器，适合完成即兴素描。",
+        "imgs": [
+          "http://mindpin.oss-cn-hangzhou.aliyuncs.com/image_service/images/WAh8RBkN/adaptive_height_300_WAh8RBkN.png",
+          "http://mindpin.oss-cn-hangzhou.aliyuncs.com/image_service/images/h38ydzYW/adaptive_height_300_h38ydzYW.png"
+        ],
+        "video": ""
+      }
+    ],
+    "parents": [],
+    "children": [],
+    "related": [
+      "水彩画的画笔种类观察前的引导",
+      "椭圆形画笔",
+      "平头画笔",
+      "画笔的保养方法"
+    ]
+  },
+  {
+    "net_id": "2",
+    "id": "sample-2-6",
+    "img": "http://mindpin.oss-cn-hangzhou.aliyuncs.com/image_service/images/HTuIzuQt/HTuIzuQt.png",
+    "title": "制作原创调色板",
+    "desc": "制作调色板，可以培养分辨色彩的能力，还可以加深对色彩的理解。本教程主要讲解原创调色板的制作方法",
+    "steps": [
+      {
+        "title": "为什么要制作原创调色板？",
+        "desc": "每个人喜欢的颜色都不同。在基本色的基础上添加自己偏爱的颜色，制作有助于选色的调色板。这就是所谓的原创调色板",
+        "imgs": [],
+        "video": ""
+      },
+      {
+        "title": "调色板上排列色彩的方法",
+        "desc": "基本的色彩排列如下，可根据自己的喜好追加颜色。",
+        "imgs": [
+          "http://mindpin.oss-cn-hangzhou.aliyuncs.com/image_service/images/M61AVDtI/adaptive_height_300_M61AVDtI.png"
+        ],
+        "video": ""
+      },
+      {
+        "title": "制作原创调色板之前的准备工作",
+        "desc": "准备好水彩颜料和空白的调色板。",
+        "imgs": [
+          "http://mindpin.oss-cn-hangzhou.aliyuncs.com/image_service/images/SBsG9zAe/adaptive_height_300_SBsG9zAe.png",
+          "http://mindpin.oss-cn-hangzhou.aliyuncs.com/image_service/images/tP3i5jf8/adaptive_height_300_tP3i5jf8.png"
+        ],
+        "video": ""
+      },
+      {
+        "title": "原创调色板的制作步骤（1）",
+        "desc": "按色相顺序排列颜料管，然后将颜料挤到调色板上。",
+        "imgs": [
+          "http://mindpin.oss-cn-hangzhou.aliyuncs.com/image_service/images/WOhEVFec/adaptive_height_300_WOhEVFec.png",
+          "http://mindpin.oss-cn-hangzhou.aliyuncs.com/image_service/images/zYfUQHLt/adaptive_height_300_zYfUQHLt.png"
+        ],
+        "video": ""
+      },
+      {
+        "title": "原创调色板的制作步骤（2）",
+        "desc": "花 2~3 天时间晾干。仅在使用时，才加水溶解颜料",
+        "imgs": [
+          "http://mindpin.oss-cn-hangzhou.aliyuncs.com/image_service/images/jMsFzsxb/adaptive_height_300_jMsFzsxb.png",
+          "http://mindpin.oss-cn-hangzhou.aliyuncs.com/image_service/images/ywelC6Ne/adaptive_height_300_ywelC6Ne.png"
+        ],
+        "video": ""
+      }
+    ],
+    "parents": [],
+    "children": [],
+    "related": [
+      "调色盘",
+      "水彩颜料",
+      "水彩画原创调色板观察前的引导",
+      "调色板上排列色彩的方法",
+      "原创调色板制作前的说明",
+      "获取特定品牌和型号的调色板",
+      "获取特定品牌和型号的调色板",
+      "塑料管的排列（按色相顺序）",
+      "调色板上的颜料的置入",
+      "颜料的自然干燥（晾干）",
+      "颜料的加水溶解（真正使用时）",
+      "方便作画的工具",
+      "原创调色板制作后的说明"
+    ]
+  },
+  {
+    "net_id": "2",
+    "id": "sample-2-7",
+    "img": "http://mindpin.oss-cn-hangzhou.aliyuncs.com/image_service/images/dVnpmpoT/adaptive_height_300_dVnpmpoT.png",
+    "title": "各种速写本和画纸",
+    "desc": "若希望随时随地即兴作画，作画所需的纸是不可少的，本教程介绍常见的速写本和画纸。",
+    "steps": [
+      {
+        "title": "选择速写本和画纸的依据",
+        "desc": "环境条件不同，作画姿势也会多样，例如在桌子上画、坐着放在膝盖上画，或站着单手捧着作画等等。为了方便，应根据作画姿势选择大小适合的速写本，最好想象一下手持本画画时的感觉。",
+        "imgs": [],
+        "video": ""
+      },
+      {
+        "title": "常见的速写本类型",
+        "desc": "常见的速写本包括螺旋型和四面封胶型两种。",
+        "imgs": [
+          "http://mindpin.oss-cn-hangzhou.aliyuncs.com/image_service/images/FZG05czh/adaptive_height_300_FZG05czh.png"
+        ],
+        "video": ""
+      },
+      {
+        "title": "水彩画三要素以及水彩纸的选择",
+        "desc": "水彩画三要素包括颜料、水彩纸及画笔。人们常常乐于探索和寻求适合自己的颜料和画笔，但对于水彩纸人们却漠不关心。究其原因，可能是不同的画纸从外观上不易分辨吧。",
+        "imgs": [],
+        "video": ""
+      },
+      {
+        "title": "选择水彩纸时的考虑因素",
+        "desc": "画纸不仅影响颜料的涂色和呈色，还会影响绘画技法及表现效果，所以寻找适合运笔速度及颜料浓厚度的画纸，是非常重要的事情。纸可以按纸张的重量即【每平方米多少克】来分类，例如厚度为 300g 或 600g 的纸等，纸的重量越大，纸就越厚。",
+        "imgs": [],
+        "video": ""
+      },
+      {
+        "title": "常用水彩纸简介",
+        "desc": "本教程的作者尝试了多种画纸，所以比较它们的性质。纸张表面的粗粒具有限制颜料流动的作用，粗纹纸可以表现均匀的色彩画面。以 法国的 ARCHE 纸为例，防渗水，适合表现晕染效果，且呈色好，颜料吸附强，反复层涂后，底层颜色仍不被破坏，所以稳定性较强。另外，日本的 Waston 纸，易吸附颜料，呈色也好。但重复层涂时，必须用柔软的画笔，且以浓厚的颜料快速涂刷，若不然底层颜料被溶解，会造成色彩不均匀的后果。尽管如此，它也有耐刷洗、易修改的特点，所以初学者用起来会比较放心。",
+        "imgs": [],
+        "video": ""
+      },
+      {
+        "title": "作为初学者，我该用什么样的水彩纸？",
+        "desc": "初学者最好使用较厚的画纸。",
+        "imgs": [],
+        "video": ""
+      }
+    ],
+    "parents": [],
+    "children": [],
+    "related": [
+      "速写本和画纸观察前的引导",
+      "水彩纸选择观察前的引导",
+      "速写本分类",
+      "速写本的纸面纹理",
+      "速写本和画纸的说明"
+    ]
+  }
+]

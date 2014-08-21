@@ -101,8 +101,7 @@ gem 'file-part-upload',
 # 图片加载的一个小工具
 gem 'simple-images',
     :github => "mindpin/simple-images",
-    :ref => '1621939'
-    # :tag => '0.0.4'
+    :ref => '052d700'
     # :path => '/web/songliang/simple-images'
 
 # 获取视频文件
