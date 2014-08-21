@@ -17,6 +17,8 @@ module KnowledgeCampApi
         net.plans.map(&:topics).flatten.map(&:tutorials).flatten
       when :point_id
         KnowledgeNetStore::Point.find(params[:point_id]).tutorials
+      when :topic_id
+        KnowledgeNetPlanStore::Topic.find(params[:topic_id]).tutorials
       when :ancestor_id
         base.try :descendants
       when :parent_id
