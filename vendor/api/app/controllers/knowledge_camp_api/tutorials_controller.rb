@@ -34,6 +34,7 @@ module KnowledgeCampApi
 
     def query_key
       first_key [
+        :topic_id,
         :net_id,
         :point_id,
         :ancestor_id,
