@@ -1,7 +1,13 @@
 module KnowledgeCampApi
   class TopicsController < ApplicationController
     def index
-      display KnowledgeNetPlanStore::Topic.where(:plan_id => params.require(:plan_id))
+      plan_id = params(:plan_id)
+
+      if plan_id
+        display KnowledgeNetPlanStore::Topic.where(:plan_id => plan_id)
+      else
+        display KnowledgeNetPlanStore::Topic.all
+      end
     end
 
     def show
