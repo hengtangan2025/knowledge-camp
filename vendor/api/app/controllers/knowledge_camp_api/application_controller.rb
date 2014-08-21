@@ -8,12 +8,14 @@ module KnowledgeCampApi
 
     protected
 
-    def first_key(keys)
+    def first_key(keys, allow_nil = false)
       key = keys.detect do |k|
         params[k]
       end
 
-      raise ActionController::ParameterMissing.new(keys.join(" || ")) if !key
+      if !key && !allow_nil
+        raise ActionController::ParameterMissing.new(keys.join(" || "))
+      end
 
       key
     end
