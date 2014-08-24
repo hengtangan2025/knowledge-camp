@@ -1,14 +1,54 @@
 .tutorial
-  - if @tutorial.parents.present?
-    .parents
-      - @parents.each do |parent|
-        .parent
-          %span.adv 建议先掌握
-          %span.t
-            %i.fa.fa-warning
-            %span= parent.title
   .brief
-    .img= fit_image @tutorial.img, :width => '100%', :height => '100%'
+    .bbox
+      .continue
+        %span 继续学习
+        %span [80%]
+        %i.fa.fa-chevron-right
+
+  .tabs
+    .tab.base.active
+      .tbox
+        %i.fa.fa-book
+        %span 简介
+    .tab.points
+      .tbox
+        %i.fa.fa-circle-o
+        %span 知识点
+    .tab.marks
+      .tbox
+        %i.fa.fa-pencil-square-o
+        %span 标注
+
+  .ti.base
+    .relations
+      .tt 前置教程
+      - if @parents.present?
+        - (@parents).each do |t|
+          :ruby
+            percent = rand(100)
+          .relation
+            .img= fit_image t.img, :width => '100%', :height => '100%'
+            %span.t
+              %span= t.title
+            .prog
+              = progress_circle percent
+
+      - else
+        .blank 没有前置教程
+
+    .relations
+      .tt 后续教程
+      - if @children.present?
+        - @children.each do |t|
+          .relation
+            .img= fit_image t.img, :width => '100%', :height => '100%'
+            %span.t
+              %span= t.title
+      - else
+        .blank 没有后续教程
+
+    
   .info
     .desc= @tutorial.desc
     .points

@@ -124,6 +124,7 @@ body {
         font-size: 20px;
         &:hover {
           background-color: rgba(black, 0.05);
+          text-decoration: none;
         }
       }
       a.right {
@@ -135,8 +136,20 @@ body {
         font-size: 20px;
         &:hover {
           background-color: rgba(black, 0.05);
+          text-decoration: none;
         }
       }
+
+      a.left, a.right {
+        i {
+          display: block;
+          height: $header-h;
+          line-height: $header-h;
+          width: $header-h;
+          text-align: center;
+        }
+      }
+
       .text {
         margin-left: $header-h;
         margin-right: $header-h;
@@ -166,6 +179,9 @@ body.topic {
       a.left {
         color:white;
       }
+      .text {
+        text-align: left;
+      }
 
       position: relative;
       &:after {
@@ -187,31 +203,18 @@ body.topic {
 }
 
 body.tutorial {
-  .page-header {
-    background-color: #555251;
-    a.back {
-      float: left;
-      display: block;
-      color:rgba(white, 0.6);
-      background-color:rgba(white, 0.1);
-      border-radius:100px;
-      text-align: center;
-      margin-left: 0;
-      margin-top: 10px;
+  @extend body.topic;
+  .page-drawer-front {
+    background-color: #f1f1f1;
+  }
 
-      i {
-        font-size:16px;
-        display: block;
-        width:30px;height:30px;line-height:30px;
-      }
-
-      &:hover {
-        background-color: rgba(white, 0.2);
-        text-decoration: none;
-      }
-    }
-    .title {
-      margin-left: 40px;
+  .tutorial-bg {
+    width:100%;padding-bottom:50%;
+    padding-top: 50px;
+    position: absolute;
+    .tbox {
+      position: absolute;
+      top:0;left:0;bottom:0;right:0;
     }
   }
 }

@@ -3,8 +3,26 @@
 jQuery(document).delegate '.page-header a.toggle', 'click', ->
   jQuery('.page-drawer-front').toggleClass('open')
 
-# --------------
+# -------------- circle-progress
+jQuery(document).on 'ready page:load', ->
+  jQuery('.page-progress-circle').each (index, elm)->
+    $elm = jQuery(elm)
+    return if $elm.hasClass('done')
 
+    percent = $elm.data('percent')
+    canvas = $elm.find('canvas')[0]
+    ctx = canvas.getContext('2d')
+    width = canvas.width
+    radius = width / 2
+
+    start = - Math.PI / 2
+    end = - Math.PI / 2 + Math.PI / 180 * (360 / 100 * percent)
+
+    ctx.beginPath()
+    ctx.strokeStyle = '#4CC85E'
+    ctx.lineWidth = 3
+    ctx.arc(radius, radius, radius - 1.5, start, end, false)
+    ctx.stroke()
 
 
 jQuery(document).delegate '.note .link a', 'click', ->

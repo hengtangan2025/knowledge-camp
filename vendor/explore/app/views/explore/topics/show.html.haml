@@ -8,8 +8,7 @@
           .info
             .author
               .avatar= avatar User.new
-            .learned
-              %i.fa.fa-check
+            .learned= progress_circle tutorial_percent(tutorial.id)
           .title= tutorial.title
           .desc= tutorial.desc
           .img

@@ -128,7 +128,7 @@
 .page-explore-topics-show {
   .topic-info {
     color:white;
-    padding:0 10px;
+    padding:10px 10px 0 50px;
   }
   .toturials {
     position:absolute;
@@ -192,14 +192,7 @@
               position: absolute;
               top:5px;
               left:5px + 35px;
-              // right:5px;
-              i {
-                width:$ih;height:$ih;line-height:$ih;
-                color:white;
-                background-color: $area-success;
-                text-align: center;
-                border-radius:100px;
-              }
+              
             }
           }
           .title {
