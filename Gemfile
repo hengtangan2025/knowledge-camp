@@ -48,7 +48,7 @@ gem "acts-as-dag",
 
 gem "knowledge-net-plan-store",
     :github => "mindpin/knowledge-net-plan-store",
-    :tag => "v0.0.7"
+    :tag => "v0.0.8"
 
 gem 'knowledge-net-store',
     :github => 'mindpin/knowledge-net-store',
