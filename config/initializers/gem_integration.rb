@@ -162,3 +162,4 @@ VirtualFileSystem::File.send :include, Kaminari::MongoidExtension::Document
 KnowledgeNetPlanStore::Tutorial.send :include, KnowledgeCamp::Step::Owner
 User.send :include, KnowledgeCamp::Step::NoteCreator
 User.send :include, KnowledgeNetPlanStore::HasManyLearnRecords
+KnowledgeNetPlanStore::Uploader.send :include, ImageUploaderMethods
