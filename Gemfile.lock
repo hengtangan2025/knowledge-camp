@@ -51,8 +51,8 @@ GIT
 
 GIT
   remote: git://github.com/mindpin/knowledge-net-plan-store.git
-  revision: b62262bffc530326276d271550be48012d3f77d2
-  tag: v0.0.7
+  revision: cc81422c1e3c09b64cd05a517b9e6aba209c4f63
+  tag: v0.0.8
   specs:
     knowledge-net-plan-store (0.0.2)
       carrierwave-mongoid
