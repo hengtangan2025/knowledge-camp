@@ -7,7 +7,7 @@ module KnowledgeCampApi
     def index
       criteria = current_user.learn_records
 
-      display criteria.find_by(:tutorial_id => params.require(:tutorial_id))
+      display criteria.find_by(:step_id => params.require(:step_id))
     end
 
     private
