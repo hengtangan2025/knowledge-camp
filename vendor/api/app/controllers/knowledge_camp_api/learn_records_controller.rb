@@ -1,7 +1,7 @@
 module KnowledgeCampApi
   class LearnRecordsController < ApplicationController
     def create
-      display current_user.learn_records.create!(record_params), 201
+      display current_user.learn_records.create!(record_params)
     end
 
     def index
