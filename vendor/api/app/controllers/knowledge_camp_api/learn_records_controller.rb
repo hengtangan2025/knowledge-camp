@@ -13,7 +13,7 @@ module KnowledgeCampApi
     private
 
     def record_params
-      params.require(:learn_record).permit(:tutorial_id)
+      params.require(:learn_record).permit(:step_id)
     end
   end
 end

@@ -51,8 +51,8 @@ GIT
 
 GIT
   remote: git://github.com/mindpin/knowledge-net-plan-store.git
-  revision: c0a897426026e985e877b844c2c23bed264e8fd4
-  tag: v0.0.9
+  revision: e9c9e9d041e0041f90c823d013bf011da5176a30
+  tag: v0.1.0
   specs:
     knowledge-net-plan-store (0.0.2)
       carrierwave-mongoid
@@ -67,8 +67,8 @@ GIT
 
 GIT
   remote: git://github.com/mindpin/knowledge_camp_step.git
-  revision: 5924e010e713e89d1d368b66e58107f90874aebf
-  tag: v0.1.0
+  revision: f68c9eb7c8a736baf2a26dcdbfec7eea8cbd03a7
+  tag: v0.1.1
   specs:
     knowledge_camp_step (0.0.1)
       mongoid (~> 4.0.0)

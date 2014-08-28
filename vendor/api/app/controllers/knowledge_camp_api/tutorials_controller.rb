@@ -1,14 +1,22 @@
 module KnowledgeCampApi
   class TutorialsController < ApplicationController
     def index
-      display tutorial_collection.map {|t| t.with_learner(current_user)}
+      display tutorial_collection.map {|tutorial| add_learned(tutorial)}
     end
 
     def show
-      display KnowledgeNetPlanStore::Tutorial.find(params[:id]).with_learner(current_user)
+      display add_learned(KnowledgeNetPlanStore::Tutorial.find(params[:id]))
     end
 
     private
+
+    def add_learned(tutorial)
+      learned = current_user.learn_records.where(:step_id.in => tutorial.step_ids).size
+      all = tutorial.steps.size
+
+      tutorial.attrs.merge(:step_count => all,
+                           :learned_step_count => learned)
+    end
 
     def tutorial_collection
       case query_key
