@@ -10,7 +10,8 @@ module DisplayHelpers
 
     case obj
     when Hash then obj
-    when Array, Mongoid::Criteria then obj.map(&:attrs)
+    when Array then obj.map {|o| o.is_a?(Hash) ? o : o.attrs}
+    when Mongoid::Criteria then obj.map(&:attrs)
     when Error, Mongoid::Document then obj.attrs
     end
   end
