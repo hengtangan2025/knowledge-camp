@@ -170,4 +170,12 @@ end
 
 class KnowledgeNetPlanStore::Tutorial
   belongs_to :creator, :class_name => User.name
+
+  validates :creator_id, :presence => true
+
+  alias old_attrs attrs
+
+  def attrs
+    old_attrs.merge(:creator => creator.info)
+  end
 end
