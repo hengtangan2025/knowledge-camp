@@ -6,9 +6,7 @@ module KnowledgeCampApi
         :stepped_type => KnowledgeNetPlanStore::Tutorial.name
       }
 
-      display KnowledgeCamp::Step.where(options).map do |step|
-        add_learned(step)
-      end
+      display KnowledgeCamp::Step.where(options).map {|step| add_learned(step)}
     end
 
     def show
