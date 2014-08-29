@@ -6,7 +6,7 @@ def url_to_file(url)
   tf
 end
 
-
+user = User.first
 # import net
 net_json_file_path = "../nets.json"
 
@@ -59,7 +59,7 @@ tutorials_item_arr.each do |tutorials_item|
   topic = tutorial_hash_id__to__topic[tutorials_item["id"]]
 
   img = url_to_file(tutorials_item["img"])
-  tutorial = topic.tutorials.create!(:title => tutorials_item["title"], :desc => tutorials_item["desc"], :image => img)
+  tutorial = topic.tutorials.create!(:title => tutorials_item["title"], :desc => tutorials_item["desc"], :image => img, :creator => user)
   img.close
 
   steps = tutorials_item["steps"].map do |step_item|
@@ -104,7 +104,7 @@ sp_tutorials_item_arr.each do |sp_tutorials_item|
   topic = tutorial_hash_id__to__topic[sp_tutorials_item["id"]]
 
   img = url_to_file(sp_tutorials_item["img"])
-  tutorial = topic.tutorials.create!(:title => sp_tutorials_item["title"], :desc => sp_tutorials_item["desc"], :image => img)
+  tutorial = topic.tutorials.create!(:title => sp_tutorials_item["title"], :desc => sp_tutorials_item["desc"], :image => img, :creator => user)
   img.close
 
   step_hash_id__to__step_id = {}
