@@ -1,0 +1,23 @@
+.net-debug
+  %h3.warning 这是调试页面！
+  .new-topic
+    %a.btn.btn-rounded.btn-bdb-fresh{:href => url_for([:new, @net, :topic])}
+      %i.fa.fa-plus
+      %span 创建教学主题
+  .topics
+    - @topics.each do |topic|
+      .topic
+        .info
+          %span.title= topic.title
+          %span.new-tutorial
+            %a{:href => url_for([:new, topic, :tutorial])}
+              %i.fa.fa-plus
+              %span 创建教程
+        .tutorials
+          - topic.tutorials.each do |tutorial|
+            .tutorial
+              %span.title= tutorial.title
+              %span.edit
+                %a{:href => url_for([:edit, tutorial])}
+                  %i.fa.fa-edit
+                  %span 编辑教程

@@ -12,6 +12,9 @@ Rails.application.routes.draw do
   # 学生界面
   mount Explore::Engine => '/explore'
 
+  # 课程编辑
+  mount CourseEditor::Engine => '/course_editor'
+
   # -----------------------
 
   root 'index#index'

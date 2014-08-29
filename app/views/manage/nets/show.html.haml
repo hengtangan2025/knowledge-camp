@@ -27,6 +27,10 @@
           %i.fa.fa-circle-o
           %span 图形化展示
 
+        %a.btn.btn-rounded.btn-bdb-fresh{:href => "/course_editor/nets/#{@net.id}", :data => {:toggle => true}}
+          %i.fa.fa-book
+          %span 教程管理
+
     = render_cell :net, :model_section, @net, :point, 24
 
     - [:document, :file].each do |model_name|

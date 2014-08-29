@@ -26,3 +26,6 @@
 
 // explore
 //= require explore-ui
+
+// tutorial-editor
+//= require course_editor/ui

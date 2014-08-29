@@ -110,6 +110,11 @@ gem 'video-fetcher',
     :ref => '33ba889e9f01bf8b83241feccdd953f26fdb1567'
     # :path => '/web/songliang/video-fetcher'
 
+# 阿里云
+gem 'aliyun',
+    :github => 'mindpin/aliyun',
+    :tag => '0.0.4'
+
 gem 'siye',
     :path => 'vendor/4ye'
 
@@ -120,10 +125,10 @@ gem 'kc-explore',
     :path => 'vendor/explore',
     :require => 'explore'
 
+gem 'kc-course-editor',
+    :path => 'vendor/course_editor',
+    :require => 'course_editor'
+
 gem 'kc-android-publish-uploader',
     :path => 'vendor/android-publish-uploader',
     :require => 'kc_android_publish_uploader'
-
-gem 'aliyun',
-    :github => 'mindpin/aliyun',
-    :tag => '0.0.4'

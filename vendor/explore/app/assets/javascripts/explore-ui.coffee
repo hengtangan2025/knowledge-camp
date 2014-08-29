@@ -9,6 +9,7 @@ jQuery(document).on 'ready page:load', ->
     $elm = jQuery(elm)
     return if $elm.hasClass('done')
 
+    stroke_color = $elm.data('stroke') || '#4CC85E'
     percent = $elm.data('percent')
     canvas = $elm.find('canvas')[0]
     ctx = canvas.getContext('2d')
@@ -19,9 +20,9 @@ jQuery(document).on 'ready page:load', ->
     end = - Math.PI / 2 + Math.PI / 180 * (360 / 100 * percent)
 
     ctx.beginPath()
-    ctx.strokeStyle = '#4CC85E'
-    ctx.lineWidth = 3
-    ctx.arc(radius, radius, radius - 1.5, start, end, false)
+    ctx.strokeStyle = stroke_color
+    ctx.lineWidth = canvas.width / 10
+    ctx.arc(radius, radius, radius - ctx.lineWidth / 2.0, start, end, false)
     ctx.stroke()
 
 

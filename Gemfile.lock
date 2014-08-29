@@ -144,6 +144,12 @@ PATH
       rails (~> 4.1.2)
 
 PATH
+  remote: vendor/course_editor
+  specs:
+    kc-course-editor (0.0.1)
+      rails (~> 4.1.2)
+
+PATH
   remote: vendor/explore
   specs:
     kc-explore (0.0.1)
@@ -369,6 +375,7 @@ DEPENDENCIES
   jquery-rails
   kaminari (~> 0.15.1)
   kc-android-publish-uploader!
+  kc-course-editor!
   kc-explore!
   knowledge-camp-api!
   knowledge-net-plan-store!

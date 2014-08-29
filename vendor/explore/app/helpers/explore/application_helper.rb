@@ -1,6 +1,6 @@
 module Explore
   module ApplicationHelper
-    def progress_circle(percent)
+    def progress_circle(percent, width = 30, stroke = '#4CC85E')
       # .page-progress-circle{:data => {:percent => percent}}
       #   %canvas{:width => 30, :height => 30}
       #   .percent
@@ -9,8 +9,8 @@ module Explore
 
       if percent < 100
         capture_haml {
-          haml_tag '.page-progress-circle', :data => {:percent => percent} do
-            haml_tag 'canvas', :width => 30, :height => 30
+          haml_tag '.page-progress-circle', :data => {:percent => percent, :stroke => stroke} do
+            haml_tag 'canvas', :width => width, :height => width
             haml_tag '.percent' do
               haml_tag 'span.num', percent
               haml_tag 'span.per', '%'

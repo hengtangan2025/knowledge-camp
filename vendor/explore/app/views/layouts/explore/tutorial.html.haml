@@ -18,8 +18,28 @@
           %i.fa.fa-chevron-left
         .text= @tutorial.title
 
-      .page-content.container
+      .tutorial-header
+        .tabs
+          .tab.base.active
+            .tbox
+              %i.fa.fa-book
+              %span 简介
+          .tab.points
+            .tbox
+              %i.fa.fa-circle-o
+              %span 知识点
+          .tab.marks
+            .tbox
+              %i.fa.fa-pencil-square-o
+              %span 标注
+
+      .page-content.container{:data => {:scroller => true}}
         .row{:class => action_css_class}
           - if !user_signed_in?
             .page-not-signed-in 你正以未登录状态进行浏览
           = yield
+
+      .tutorial-continue
+        %span 继续学习
+        %span [80%]
+        %i.fa.fa-chevron-right

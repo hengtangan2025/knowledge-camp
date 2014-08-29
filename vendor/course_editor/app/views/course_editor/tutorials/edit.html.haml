@@ -1,0 +1,60 @@
+:ruby
+  step_url_prefix = url_for([:root]) + 'steps/'
+.editor{:data => {:'create-url' => url_for([@tutorial, :steps]), :'step-url-prefix' => step_url_prefix}}
+  .top-bar
+    .new-step
+      %a.create.btn.btn-rounded.btn-bdb-fresh.btn-large{:href => 'javascript:;'}
+        %i.fa.fa-plus
+        %span 增加一个页面
+    .steps-count
+      %span 目前的页面总数：
+      %span.count= @tutorial.steps.count
+
+  .steps
+    - @tutorial.steps.each_with_index do |step, i|
+      .step{:class => (i == 0 ? 'begin' : ''), :style => 'display:none', :data => {:id => step.id}}
+        .text
+        .hoverdiv
+        %a.delete{:title => '删除此页面'}
+
+.overlay{:style => 'display:none;'}
+  .step-form
+    .header
+      %a.close.btn.btn-rounded.btn-bdb-night{:href => 'javascript:;'}
+        %span 关闭
+    .title-ipter
+      %input.form-control{:name => :title, :type => :text, :placeholder => '输入页面标题'}
+    .content-ipter
+      .content-container
+        .add
+          %i.fa.fa-plus
+          %span 添加内容
+
+        .assigns
+          .assign-continue
+            %i.fa.fa-level-down
+            %span 指定后续
+          .assign-continue-hover
+            .item.another-step
+              %i.fa.fa-file-o
+              %span 指定页面
+            .item.branch
+              %i.fa.fa-sitemap
+              %span 设置分支
+            .item.none
+              %i.fa.fa-ban
+              %span 无后续
+
+  .subform.continue-page-assigner{:style => 'display:none;'}
+    .main-area
+      .template
+        .step
+          .text
+      .list
+    .btns
+      .bbox
+        %a.ok.btn.btn-rounded.btn-bdb-fresh.btn-large{:href => 'javascript:;'}
+          %span 确定
+      .bbox
+        %a.cancel.btn.btn-rounded.btn-bdb.btn-large{:href => 'javascript:;'}
+          %span 取消

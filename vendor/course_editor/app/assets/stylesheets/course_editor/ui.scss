@@ -1,0 +1,361 @@
+body.tutorial-editor {
+  .page-header {
+    background-color: #fff;
+    height:50px;
+    border-bottom:solid 1px #e9e9e9;
+    position: relative;
+    color:#333;
+
+    a.back {
+      position:absolute;
+      width:50px;height:50px;line-height:50px;
+      color:#333;
+      font-size:20px;
+      text-align:center;
+      &:hover {
+        text-decoration:none;
+        background-color:#f7f7f7;
+      }
+    }
+
+    .title {
+      position:absolute;
+      top:0;left:60px;bottom:0;
+      height:50px;line-height:50px;
+      font-size:16px;
+    }
+
+    .right {
+      position:absolute;
+      top:0;right:0;bottom:0;
+      .ops {
+        float: left;
+        a.publish {
+          margin-top: (50px - 26px) / 2;
+          margin-right: 10px;
+        }
+      }
+
+      .current-user {
+        float:left;
+
+        .avatar {
+          width:50px;height:50px;
+          position:relative;
+          float: left;
+        }
+        .avatar .-avatar-img{
+          position:absolute;
+          top:10px;left:10px;
+          height:30px;width:30px;
+          img {height:30px;width:30px;}
+        }
+
+        .name {
+          float:left;
+          height:50px;line-height:50px;
+          padding:0 20px 0 0px;
+        }
+      }
+    }
+  }
+
+  .page-content {
+    position: absolute;
+    top:51px;left:0px;right:0;bottom:0;
+    margin:0;
+  }
+}
+
+.page-course-editor-tutorials-edit {
+  .editor {
+    position:absolute;
+    $w:10px;
+    top:$w;left:$w;right:$w;bottom:$w;
+    background-color:#fff;
+    box-shadow:0 1px 2px rgba(0, 0, 0, 0.07);
+
+    .top-bar {
+      position:absolute;
+      top:0;left:0;right:0;
+      border-bottom:dashed 1px #ddd;
+      background-color: #f7f7f7;
+      .new-step {
+        float:left;
+        padding:10px;
+        a.create {
+          height:40px;line-height:40px;
+        }
+      }
+      .steps-count {
+        float:left;
+        height:60px;line-height:60px;
+        font-size:16px;
+        margin-left:20px;
+      }
+    }
+
+    .steps {
+      position:absolute;
+      top:61px;left:0;bottom:0;width:50%;
+      border-right:dashed 1px #ddd;
+      overflow:auto;
+
+      .step {
+        width:120px;height:60px;
+        background-color:#fffbe3;
+        border-radius:3px;
+        border:solid 2px rgba(black, 0.1);
+        position: absolute;
+        margin-bottom:30px;
+
+        &.begin {
+          &:before {
+            content: "起始页面";
+            position: absolute;
+            bottom:0;left:0;right:0;
+            height:20px;line-height:20px;
+            background-color:rgba(black, 0.1);
+            text-align:center;
+          }
+        }
+
+        .text {
+          padding:5px;
+        }
+
+        .hoverdiv {
+          position: absolute;
+          top:0;left:0;right:0;bottom:0;
+          cursor: pointer;
+        }
+
+        &.hovered {
+          border-color: rgba(black, 0.3);
+        }
+
+        &.selected {
+          border-color: rgba(black, 0.5);
+          .hoverdiv {
+            background-color: rgba(black, 0.05);
+          }
+        }
+
+        .delete {
+          $w:18px;
+
+          position:absolute;
+          background-color:#888;
+          width:$w;height:$w;line-height:$w;
+          top:-$w/2;right:-$w/2;
+          border-radius:100px;
+          text-align:center;
+          color:white;
+          cursor:pointer;
+          &:hover {
+            background-color:#666;
+          }
+
+          &:after {
+            content: "";
+            position:absolute;
+            height:2px;width:8px;
+            background-color:white;
+            top:($w - 2px)/2;left:($w - 8px)/2;
+          }
+        }
+
+        &.begin .delete {
+          display: none;
+        }
+      }
+    }
+  }
+  .overlay {
+    position:absolute;
+    top:0;left:0;right:0;bottom:0;
+    background-color: rgba(black, 0.4);
+    .step-form {
+      position:absolute;
+      top:10px;right:0;bottom:10px;width:50%;
+      background-color: #FFF;
+      box-shadow:0 0 5px rgba(black, 0.5);
+      .header {
+        padding:10px;
+        background-color: #f7f7f7;
+        border-bottom:solid 1px #ddd;
+      }
+      .title-ipter {
+        background-color: #f7f7f7;
+        padding:10px;
+        border-bottom:solid 1px #ddd;
+        input {width:360px + 2px;}
+      }
+      .content-ipter {
+        position:absolute;
+        top:52px + 55px;
+        left:0;right:0;bottom:0;
+        background-color: #f7f7f7;
+        .content-container {
+          position:absolute;
+          top:10px;left:10px;bottom:10px;
+          width:360px;
+          border:solid 1px #ddd;
+          background-color: #FFF;
+          .add {
+            position:absolute;
+            top:5px;left:5px;right:5px;
+            height:60px;
+            text-align:center;
+            background-color:#f1f1f1;
+            cursor: pointer;
+            i {display:block;font-size:22px;line-height:20px;margin-top:10px;margin-bottom:5px;}
+            span {display:block;font-size:12px;}
+          }
+
+          .assigns {
+            .assign-continue {
+              pointer-events:none;
+              opacity:1;
+              position:absolute;
+              bottom:5px;left:5px;right:5px;
+              height:60px;
+              text-align:center;
+              background-color:#f1f1f1;
+              cursor: pointer;
+              i {display:block;font-size:22px;line-height:20px;margin-top:10px;margin-bottom:5px;}
+              span {display:block;font-size:12px;}
+            }
+            .assign-continue-hover {
+              opacity:0;
+              &:hover {
+                opacity:1;
+              }
+              position:absolute;
+              bottom:5px;left:5px;right:5px;
+              height:60px;
+              text-align:center;
+              background-color:#f1f1f1;
+              cursor: pointer;
+              i {display:block;font-size:22px;line-height:20px;margin-top:10px;margin-bottom:5px;}
+              span {display:block;font-size:12px;}
+              .item{
+                width:33.33333%;float:left;
+                height:100%;
+                &:hover, &.active{
+                  background-color:rgba(black, 0.05);
+                  // background-color:#FFFBE3;
+                }
+              }            
+            }
+
+            &.active {
+              .assign-continue {display:none;}
+              .assign-continue-hover {opacity: 1;}
+            }
+          }
+        }
+      }
+    }
+
+    .subform {
+      position:absolute;
+      width:360px;height:50%;
+      right:50%;
+      bottom:10px;
+      margin-right:10px;
+      background-color: #FFF;
+      box-shadow:0 0 5px rgba(black, 0.5);
+
+      .btns {
+        position:absolute;
+        bottom:0;left:0;right:0;height:50px;
+        background-color: #F7F7F7;
+        border-top:solid 1px #DDDDDD;
+
+        .bbox {
+          float:left;width:50%;height:50px;
+          position:relative;
+          a.btn {
+            position:absolute;
+            top:5px;bottom:5px;left:5px;right:5px;
+            height:40px;line-height:40px;
+            &.ok {right:2.5px;}
+            &.cancel {left:2.5px;}
+          }
+        }
+      }
+
+      .main-area {
+        overflow-y:scroll;
+        position:absolute;
+        top:0;left:0;right:0;bottom:51px;
+      }
+
+      &.continue-page-assigner {
+        .blank {
+          padding:10px;
+          background-color:#f7f7f7;
+        }
+
+        .step {
+          height:40px;line-height:40px;
+          border-bottom:solid 1px #ddd;
+          padding:0 10px;
+          cursor: pointer;
+          position: relative;
+
+          &:hover {
+            background-color: #FFFBE3;
+          }
+
+          .text {
+            float: left;
+            margin-left:10px;
+          }
+
+          &:before {
+            content: "\f10c";
+            font-family: FontAwesome;
+            float:left;
+          }
+
+          &.selected {
+            background-color: lighten(#44B2F5, 32%);
+            &:after {
+              content: "";
+              position: absolute;
+              top:0;right:0;bottom:0;
+              width:5px;
+              background-color: #44B2F5;
+            }
+
+            &:before {
+              content: "\f058";
+              color: darken(#44B2F5, 10%); 
+            }
+          }
+        }
+
+        .template {display:none;}
+      }
+    }
+  }
+}
+
+
+.page-course-editor-nets-show {
+  .net-debug {
+    .warning {margin-bottom:20px;margin-top:0;}
+    .new-topic {margin-bottom:20px;}
+    .topics {
+      .topic {
+        margin-bottom: 20px;
+        .tutorials {
+          margin-left: 40px;
+          margin-top:10px;
+        }
+      }
+    }
+  }
+}
