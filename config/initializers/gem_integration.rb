@@ -161,4 +161,21 @@ VirtualFileSystem::File.send :include, Kaminari::MongoidExtension::Document
 
 KnowledgeNetPlanStore::Tutorial.send :include, KnowledgeCamp::Step::Owner
 User.send :include, KnowledgeCamp::Step::NoteCreator
-User.send :include, KnowledgeNetPlanStore::HasManyLearnRecords
+User.send :include, KnowledgeCamp::HasManyLearnRecords
+KnowledgeNetPlanStore::Uploader.send :include, ImageUploaderMethods
+
+class User
+  has_many :tutorials, :class_name => KnowledgeNetPlanStore::Tutorial.name
+end
+
+class KnowledgeNetPlanStore::Tutorial
+  belongs_to :creator, :class_name => User.name
+
+  validates :creator_id, :presence => true
+
+  alias old_attrs attrs
+
+  def attrs
+    old_attrs.merge(:creator => creator.info)
+  end
+end

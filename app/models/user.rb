@@ -3,10 +3,10 @@ class User
   # carrierwave
   mount_uploader :avatar, AvatarUploader
 
-  auth_field :login, 
+  auth_field :login,
     :login_validate => {
       :format => {
-        :with => /\A[a-z0-9_]+\z/, 
+        :with => /\A[a-z0-9_]+\z/,
         :message => '只允许数字、字母和下划线'
       }
     }
@@ -20,7 +20,8 @@ class User
       :id    => self.id,
       :name  => self.name,
       :login => self.login,
-      :email => self.email
+      :email => self.email,
+      :avatar => self.avatar.url
     }
   end
 end
