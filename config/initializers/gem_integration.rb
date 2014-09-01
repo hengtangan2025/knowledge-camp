@@ -57,8 +57,25 @@ module VirtualFileSystem
     has_and_belongs_to_many :points,
                             :class_name => 'KnowledgeNetStore::Point',
                             :inverse_of => :virtual_files
+    has_one :block,
+            :class_name => 'KnowledgeCamp::block'
 
     default_scope -> { order_by(:updated_at => :desc) }
+
+    def attrs
+      {
+        :id           => self.id.to_s,
+        :is_dir       => self.is_dir,
+        :name         => self.name,
+        :virtual_path => self.path,
+        :created_at   => self.created_at,
+        :updated_at   => self.updated_at,
+      }.merge(file_entity ? {:url => file_entity.attach.url} : {})
+    end
+
+    def file_entity
+      self.store_id ? FilePartUpload::FileEntity.find(self.store_id) : nil
+    end
   end
 end
 
@@ -177,5 +194,17 @@ class KnowledgeNetPlanStore::Tutorial
 
   def attrs
     old_attrs.merge(:creator => creator.info)
+  end
+end
+
+class KnowledgeCamp::Block
+  belongs_to :virtual_file,
+             :class_name => 'VirtualFileSystem::File'
+
+  alias old_attrs attrs
+
+  def attrs
+    vf = self.virtual_file
+    old_attrs.merge(vf ? {:virtual_file => vf.attrs} : {})
   end
 end
