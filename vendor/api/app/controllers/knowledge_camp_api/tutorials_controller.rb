@@ -5,7 +5,6 @@ module KnowledgeCampApi
     end
 
     def show
-      binding.pry
       display add_learned(KnowledgeNetPlanStore::Tutorial.find(params[:id]))
     end
 
