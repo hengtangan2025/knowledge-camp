@@ -7,7 +7,8 @@ module CourseEditor
 
       @tutorial = KnowledgeNetPlanStore::Tutorial.create({
         :topic => @topic,
-        :title => "教程 #{Time.now}"  
+        :title => "教程 #{Time.now}",
+        :creator => current_user
       })
 
       redirect_to :back

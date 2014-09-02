@@ -141,6 +141,10 @@ body.tutorial-editor {
           }
         }
 
+        &.cannot-reach {
+          background-color: #eee;
+        }
+
         .delete {
           $w:18px;
 
@@ -169,6 +173,13 @@ body.tutorial-editor {
           display: none;
         }
       }
+    }
+
+    canvas {
+      pointer-events:none;
+      z-index: 100000;
+      position:absolute;
+      opacity:0.4;
     }
   }
   .overlay {
@@ -218,7 +229,7 @@ body.tutorial-editor {
               pointer-events:none;
               opacity:1;
               position:absolute;
-              bottom:5px;left:5px;right:5px;
+              bottom:40px;left:5px;right:5px;
               height:60px;
               text-align:center;
               background-color:#f1f1f1;
@@ -232,7 +243,7 @@ body.tutorial-editor {
                 opacity:1;
               }
               position:absolute;
-              bottom:5px;left:5px;right:5px;
+              bottom:40px;left:5px;right:5px;
               height:60px;
               text-align:center;
               background-color:#f1f1f1;
@@ -254,6 +265,32 @@ body.tutorial-editor {
               .assign-continue-hover {opacity: 1;}
             }
           }
+
+          .current-continue {
+            position:absolute;
+            bottom:5px;left:5px;right:5px;
+            height:30px;line-height:30px;
+            background-color:#f1f1f1;
+            padding:0 15px;
+            text-align:center;
+
+            .end {display:none;}
+            .step {display:none;}
+
+            &.end {
+              .end {display:inline;}
+            }
+            &.step {
+              .step {display:inline;}
+              .step.text {
+                background-color: #666;
+                color:white;
+                border-radius:3px;
+                padding:0 5px;
+              }
+            }
+          }
+
         }
       }
     }

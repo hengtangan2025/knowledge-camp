@@ -7,12 +7,14 @@
         %i.fa.fa-plus
         %span 增加一个页面
     .steps-count
-      %span 目前的页面总数：
-      %span.count= @tutorial.steps.count
+      %span> 目前的页面总数：
+      %span.count>= @tutorial.steps.count
+      %span> ，不可到达页面数：
+      %span.cant-reach-count> 0
 
   .steps
     - @tutorial.steps.each_with_index do |step, i|
-      .step{:class => (i == 0 ? 'begin' : ''), :style => 'display:none', :data => {:id => step.id}}
+      .step{:class => (i == 0 ? 'begin' : ''), :style => 'display:none', :data => {:id => step.id, :'continue-json' => step.continue.to_json}}
         .text
         .hoverdiv
         %a.delete{:title => '删除此页面'}
@@ -44,6 +46,11 @@
             .item.none
               %i.fa.fa-ban
               %span 无后续
+        .current-continue.end
+          %span 当前设置：
+          %span.end 无后续
+          %span.step 指定页面
+          %span.step.text ...
 
   .subform.continue-page-assigner{:style => 'display:none;'}
     .main-area
