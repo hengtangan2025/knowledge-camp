@@ -29,6 +29,7 @@ module CourseEditor
       }
     end
 
+
     def _clean_continue(parent, child)
       continue = parent.continue
       return if continue.blank?
@@ -71,6 +72,17 @@ module CourseEditor
       end
 
       render :json => step.continue
+    end
+
+    def update_title
+      step = KnowledgeCamp::Step.find params[:id]
+      step.title = params[:title]
+      step.save
+
+      render :json => {
+        :title => step.title
+      }
+
     end
   end
 end

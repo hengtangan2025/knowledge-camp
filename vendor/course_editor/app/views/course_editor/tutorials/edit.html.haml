@@ -1,5 +1,13 @@
 :ruby
   step_url_prefix = url_for([:root]) + 'steps/'
+
+.step-template{:style => 'display:none;'}
+  .step
+    .text
+    .hoverdiv
+    %a.delete{:title => '删除此页面'}
+      %i.fa.fa-times
+
 .editor{:data => {:'create-url' => url_for([@tutorial, :steps]), :'step-url-prefix' => step_url_prefix}}
   .top-bar
     .new-step
@@ -14,18 +22,21 @@
 
   .steps
     - @tutorial.steps.each_with_index do |step, i|
-      .step{:class => (i == 0 ? 'begin' : ''), :style => 'display:none', :data => {:id => step.id, :'continue-json' => step.continue.to_json}}
+      .step{:class => (i == 0 ? 'begin' : ''), :style => 'display:none', :data => {:id => step.id, :'continue-json' => step.continue.to_json, :title => step.title}}
         .text
         .hoverdiv
         %a.delete{:title => '删除此页面'}
+          %i.fa.fa-times
 
 .overlay{:style => 'display:none;'}
   .step-form
     .header
       %a.close.btn.btn-rounded.btn-bdb-night{:href => 'javascript:;'}
         %span 关闭
+
     .title-ipter
       %input.form-control{:name => :title, :type => :text, :placeholder => '输入页面标题'}
+
     .content-ipter
       .content-container
         .add
@@ -58,6 +69,15 @@
         .step
           .text
       .list
+    .btns
+      .bbox
+        %a.ok.btn.btn-rounded.btn-bdb-fresh.btn-large{:href => 'javascript:;'}
+          %span 确定
+      .bbox
+        %a.cancel.btn.btn-rounded.btn-bdb.btn-large{:href => 'javascript:;'}
+          %span 取消
+
+  .subform.branch-assigner{:style => 'display:none;'}
     .btns
       .bbox
         %a.ok.btn.btn-rounded.btn-bdb-fresh.btn-large{:href => 'javascript:;'}

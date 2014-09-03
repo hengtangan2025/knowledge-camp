@@ -21,6 +21,9 @@
         %span= @tutorial.title
 
       .right
+        .saved{:style => 'display:none;'}
+          %i.fa.fa-check
+          %span 对教程的编辑已被保存
         .ops
           %a.publish.btn.btn-rounded.btn-bdb.btn-small{:href => 'javascript:;'}
             %span 发布教程

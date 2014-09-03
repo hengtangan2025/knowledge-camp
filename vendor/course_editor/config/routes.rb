@@ -7,6 +7,7 @@ CourseEditor::Engine.routes.draw do
         resources :steps, :shallow => true do
           member do
             put :update_continue
+            put :update_title
           end
         end
       end

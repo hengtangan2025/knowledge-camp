@@ -8,9 +8,10 @@ class CurveArrow
     W = x1 - x0
     H = y1 - y0
     L = Math.pow Math.pow(H, 2) + Math.pow(W, 2), 0.5
-    
+
     # 计算曲线辅助点
     l = 10
+    # l = L / 3
     dx = l * H / L
     dy = l * W / L
     xm = (x0 + x1) / 2 + dx
@@ -38,7 +39,7 @@ class CurveArrow
 
     hx = 6
     ang = Math.atan ~~(xp - x1) / ~~(y1 - yp)
-    # ang += Math.PI if x0 < x1
+    ang += Math.PI if yp > y1
     # ang -= Math.PI / 2
 
     # console.log ang

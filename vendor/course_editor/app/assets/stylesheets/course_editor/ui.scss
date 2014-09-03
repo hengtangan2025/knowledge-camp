@@ -28,6 +28,15 @@ body.tutorial-editor {
     .right {
       position:absolute;
       top:0;right:0;bottom:0;
+
+      .saved {
+        float: left;
+        color:#7db500;
+        height:34px;line-height:34px;
+        padding:0 15px;
+        height:50px;line-height:50px;
+      }
+
       .ops {
         float: left;
         a.publish {
@@ -97,14 +106,13 @@ body.tutorial-editor {
 
     .steps {
       position:absolute;
-      top:61px;left:0;bottom:0;width:50%;
-      border-right:dashed 1px #ddd;
+      top:61px;left:0;bottom:0;width:100%;
       overflow:auto;
 
       .step {
         width:120px;height:60px;
         background-color:#fffbe3;
-        border-radius:3px;
+        // border-radius:3px;
         border:solid 2px rgba(black, 0.1);
         position: absolute;
         margin-bottom:30px;
@@ -149,7 +157,7 @@ body.tutorial-editor {
           $w:18px;
 
           position:absolute;
-          background-color:#888;
+          background-color:#999;
           width:$w;height:$w;line-height:$w;
           top:-$w/2;right:-$w/2;
           border-radius:100px;
@@ -159,14 +167,21 @@ body.tutorial-editor {
           &:hover {
             background-color:#666;
           }
-
-          &:after {
-            content: "";
+          i {
+            font-size:13px;
+            width:$w;height:$w;line-height:$w;
             position:absolute;
-            height:2px;width:8px;
-            background-color:white;
-            top:($w - 2px)/2;left:($w - 8px)/2;
+            top:0;left:0;
+            text-align:center;
           }
+
+          // &:after {
+          //   content: "";
+          //   position:absolute;
+          //   height:2px;width:8px;
+          //   background-color:white;
+          //   top:($w - 2px)/2;left:($w - 8px)/2;
+          // }
         }
 
         &.begin .delete {
@@ -177,7 +192,7 @@ body.tutorial-editor {
 
     canvas {
       pointer-events:none;
-      z-index: 100000;
+      z-index: 1;
       position:absolute;
       opacity:0.4;
     }
@@ -186,9 +201,12 @@ body.tutorial-editor {
     position:absolute;
     top:0;left:0;right:0;bottom:0;
     background-color: rgba(black, 0.4);
+    $sub-width: 382px;
+    z-index:2;
+
     .step-form {
       position:absolute;
-      top:10px;right:0;bottom:10px;width:50%;
+      top:10px;right:0;bottom:10px;width:$sub-width;
       background-color: #FFF;
       box-shadow:0 0 5px rgba(black, 0.5);
       .header {
@@ -200,7 +218,19 @@ body.tutorial-editor {
         background-color: #f7f7f7;
         padding:10px;
         border-bottom:solid 1px #ddd;
-        input {width:360px + 2px;}
+        overflow: hidden;
+
+        input {
+          width:360px + 2px;
+          float: left;
+        }
+        a.btn {
+          float: left;
+          height: 34px;line-height: 34px;
+          margin-left: 10px;
+          padding: 0 15px;
+          cursor: pointer;
+        }
       }
       .content-ipter {
         position:absolute;
@@ -298,7 +328,7 @@ body.tutorial-editor {
     .subform {
       position:absolute;
       width:360px;height:50%;
-      right:50%;
+      right:$sub-width;
       bottom:10px;
       margin-right:10px;
       background-color: #FFF;
@@ -324,7 +354,7 @@ body.tutorial-editor {
       }
 
       .main-area {
-        overflow-y:scroll;
+        overflow-y:auto;
         position:absolute;
         top:0;left:0;right:0;bottom:51px;
       }
@@ -358,18 +388,22 @@ body.tutorial-editor {
           }
 
           &.selected {
-            background-color: lighten(#44B2F5, 32%);
+            // background-color: lighten(#44B2F5, 32%);
+            $c: darken(#44B2F5, 10%);
+            background-color: $c;
+            border-bottom-color: $c;
+            color:white;
             &:after {
               content: "";
               position: absolute;
               top:0;right:0;bottom:0;
               width:5px;
-              background-color: #44B2F5;
+              // background-color: #44B2F5;
             }
 
             &:before {
               content: "\f058";
-              color: darken(#44B2F5, 10%); 
+              // color: darken(#44B2F5, 10%); 
             }
           }
         }

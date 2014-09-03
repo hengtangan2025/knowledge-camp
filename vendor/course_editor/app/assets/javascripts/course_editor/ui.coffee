@@ -1,10 +1,13 @@
 ANIMATE_DURATION = 200
+trigger_saved = ->
+  jQuery(document).trigger 'tutorial-editor:saved'
 
 class StepDom
   constructor: (@$step)->
     @$container = @$step.closest('.steps')
 
     @id = @$step.data('id')
+    @is_begin = @$step.hasClass('begin')
     @node_num_key = "#{@id}-node-num"
 
   get_node_num: ->
@@ -22,7 +25,10 @@ class StepDom
 
   _show_content: (node_num)->
     localStorage[@node_num_key] = node_num
-    @$step.find('.text').html("页面-#{node_num}")
+    if @$step.data('title')
+      @$step.find('.text').html @$step.data('title')
+    else
+      @$step.find('.text').html("页面-#{node_num}")
 
 
   set_pos: (left, top)->
@@ -43,7 +49,7 @@ class StepDom
     return {
       id: @$step.data('id')
       text: @get_text()
-      begin: @$step.hasClass('begin')
+      begin: @is_begin
     }
 
   get_text: ->
@@ -149,12 +155,13 @@ class Editor
         url: url
         type: 'POST'
         success: (step_data)=>
+          trigger_saved()
           @add_step_response step_data
 
 
     # 删除节点
     that = @
-    @$editor.delegate '.steps .step:not(.first) a.delete', 'click', (evt)->
+    @$editor.delegate '.steps .step:not(.begin) a.delete', 'click', (evt)->
       $elm = jQuery(this)
       step = new StepDom $elm.closest('.step')
       url = that.step_url_prefix + step.id
@@ -167,6 +174,7 @@ class Editor
           data:
             parent_ids: parent_ids 
           success: (res)->
+            trigger_saved()
             that.delete_step_response res
 
     # hover
@@ -193,11 +201,12 @@ class Editor
     steps = @get_step_doms()
 
     # 第一次，线性遍历
+    # 起始节点 depth = 1
     # 所有有后续的节点，depth = 1
     # 所有无后续的节点，depth = -1
     for step in steps
       step.reset_layout()
-      if step.children().length
+      if step.children().length || step.is_begin
         step.set_depth 1
       else
         step.set_depth -1
@@ -300,18 +309,29 @@ class Editor
 
   # 在指定的两个页面节点间绘制单箭头
   draw_arrow: ($begin_step, $end_step, color)->
+    # x0 = $begin_step.data('left') + $begin_step.outerWidth() / 2
+    # x1 = $end_step.data('left') + $begin_step.outerWidth() / 2
+
+    # bt = $begin_step.data('top')
+    # et = $end_step.data('top')
+
+    # if bt < et
+    #   y0 = bt + $begin_step.outerHeight()
+    #   y1 = et
+    # else
+    #   y0 = bt
+    #   y1 = et + $end_step.outerHeight()
+
     x0 = $begin_step.data('left') + $begin_step.outerWidth() / 2
-    x1 = $end_step.data('left') + $begin_step.outerWidth() / 2
+    y0 = $begin_step.data('top') + $begin_step.outerHeight()
 
-    bt = $begin_step.data('top')
-    et = $end_step.data('top')
-
-    if bt < et
-      y0 = bt + $begin_step.outerHeight()
-      y1 = et
+    if $begin_step.data('left') > $end_step.data('left')
+      x1 = $end_step.data('left') + $end_step.outerWidth()
+      y1 = $end_step.data('top') + $end_step.outerHeight() / 2
     else
-      y0 = bt
-      y1 = et + $end_step.outerHeight()
+      x1 = $end_step.data('left') + $end_step.outerWidth() / 2
+      y1 = $end_step.data('top')
+
 
     @curve_arrow.draw(x0, y0, x1, y1, color)
 
@@ -321,13 +341,12 @@ class Editor
     @last_node_num += 1 if re
 
   add_step_response: (step_data)->
-    $last = @$editor
-      .find('.step').last()
+    $template = jQuery('.step-template .step')
 
-    $new_step = $last.clone()
-      .attr('data-continue-json', '{}')
-      .removeClass('first')
+    $new_step = $template.clone()
       .attr('data-id', step_data.id)
+      .attr('data-continue-json', '{}')
+      .attr('data-title', null)
       .appendTo @$step_container
       .hide()
     @layout()
@@ -375,7 +394,12 @@ class Form
   constructor: (@$form)->
     @$overlay = @$form.closest('.overlay')
 
+    @$title_ipt = @$form.find('.title-ipter input')
+    @$title_submit = @$form.find('.title-ipter a.btn')
+
     @assign_another_subform = new AssignAnotherForm @$overlay.find('.subform.continue-page-assigner'), @
+
+    @branch_subform = new BranchForm  @$overlay.find('.subform.branch-assigner'), @
 
     @bind_events()
 
@@ -383,12 +407,30 @@ class Form
     @$form.delegate '.header a.close', 'click', =>
       @unload()
 
+    # 修改标题
+    that = @
+    @$form.delegate '.title-ipter input', 'keypress', (evt)=>
+      if evt.keyCode is 13
+        evt.preventDefault()
+        @do_update_title @$title_ipt.val()
+
+
     # 指定后续页面
     that = @
     @$form.delegate '.assigns .another-step', 'click', ->
       that.$form.find('.assigns').addClass('active')
       jQuery(this).addClass('active')
+      that.close_subforms()
       that.assign_another_subform.open that.continue_data
+
+
+    # 指定分支
+    that = @
+    @$form.delegate '.assigns .branch', 'click', ->
+      that.$form.find('.assigns').addClass('active')
+      jQuery(this).addClass('active')
+      that.close_subforms()
+      that.branch_subform.open that.continue_data
 
 
     # 指定无后续页面
@@ -407,6 +449,8 @@ class Form
     @step_id = $step.data('id')
     @$loaded_step = $step
     @_load_continue($step)
+
+    @$title_ipt.val($step.data('title'))
 
   _load_continue: ($step)->
     c = @continue_data = $step.data('continue-json')
@@ -450,6 +494,19 @@ class Form
 
       return true
 
+  do_update_title: (title)->
+    url = @editor.step_url_prefix + @step_id + '/update_title'
+    jQuery.ajax
+      url: url
+      type: 'PUT'
+      data: 
+        title: title
+      success: (res)=>
+        trigger_saved()
+        console.log '标题更新成功', res
+        @$loaded_step.data('title', res.title)
+        new StepDom(@$loaded_step).show_content()
+
 
   # 发出请求，更新 continue 数据
   do_update_continue: (continue_data)->
@@ -462,6 +519,7 @@ class Form
       type: 'PUT'
       data: continue_data
       success: (res)=>
+        trigger_saved()
         console.log '页面 continue 数据更新成功', res
 
         @$loaded_step.data('continue-json', res)
@@ -486,7 +544,6 @@ class AssignAnotherForm extends SubForm
     @$list = @$elm.find('.list')
     @$btn_ok = @$elm.find('.btn.ok')
     @$btn_cancel = @$elm.find('.btn.cancel')
-
     @bind_events()
 
 
@@ -554,8 +611,29 @@ class AssignAnotherForm extends SubForm
         step_id: data.id
 
 
+class BranchForm extends SubForm
+  constructor: (@$elm, @mainform)->
+    @$btn_ok = @$elm.find('.btn.ok')
+    @$btn_cancel = @$elm.find('.btn.cancel')
+    @bind_events()
+
+  bind_events: ->
+    # 取消按钮被按下
+    @$btn_cancel.on 'click', => @close()
+
+  open: (continue_data)->
+    @$elm.show(ANIMATE_DURATION)
+
 
 jQuery(document).on 'ready page:load', ->
   if jQuery('.page-course-editor-tutorials-edit .editor').length
     form = new Form jQuery('.page-course-editor-tutorials-edit .step-form')
     editor = new Editor jQuery('.page-course-editor-tutorials-edit .editor'), form
+
+jQuery(document).on 'tutorial-editor:saved', ->
+  $saved = jQuery('.page-header .saved')
+    .stop()
+    .hide()
+    .fadeIn(50)
+    .delay(2000)
+    .fadeOut 1000, -> $saved.hide()
