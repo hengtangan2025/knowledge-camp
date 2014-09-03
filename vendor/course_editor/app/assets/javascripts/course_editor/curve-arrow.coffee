@@ -2,6 +2,32 @@ class CurveArrow
   constructor: (@canvas)->
     # nothing
 
+  draw_by_dom: ($dom0, $dom1, color)->
+    # x0 = $dom0.data('left') + $dom0.outerWidth() / 2
+    # x1 = $dom1.data('left') + $dom0.outerWidth() / 2
+
+    # bt = $dom0.data('top')
+    # et = $dom1.data('top')
+
+    # if bt < et
+    #   y0 = bt + $dom0.outerHeight()
+    #   y1 = et
+    # else
+    #   y0 = bt
+    #   y1 = et + $dom1.outerHeight()
+
+    x0 = $dom0.data('left') + $dom0.outerWidth() / 2
+    y0 = $dom0.data('top') + $dom0.outerHeight()
+
+    if $dom0.data('left') > $dom1.data('left')
+      x1 = $dom1.data('left') + $dom1.outerWidth()
+      y1 = $dom1.data('top') + $dom1.outerHeight() / 2
+    else
+      x1 = $dom1.data('left') + $dom1.outerWidth() / 2
+      y1 = $dom1.data('top')
+
+    @draw(x0, y0, x1, y1, color)
+
   draw: (x0, y0, x1, y1, color)->
     # console.log '绘制曲线箭头', [x0, y0], [x1, y1]
 

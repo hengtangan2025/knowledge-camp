@@ -54,14 +54,19 @@
             .item.branch
               %i.fa.fa-sitemap
               %span 设置分支
-            .item.none
-              %i.fa.fa-ban
-              %span 无后续
         .current-continue.end
-          %span 当前设置：
-          %span.end 无后续
-          %span.step 指定页面
-          %span.step.text ...
+          .wrapper
+            %span 当前设置：
+            
+            %span.end 无后续
+            
+            %span.step 指定页面
+            %span.step.text ...
+            %span.step.edit
+              %i.fa.fa-pencil
+            %span.step.cancel
+              %i.fa.fa-times
+
 
   .subform.continue-page-assigner{:style => 'display:none;'}
     .main-area

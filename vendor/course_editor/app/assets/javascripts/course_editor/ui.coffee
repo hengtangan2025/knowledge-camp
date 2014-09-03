@@ -224,7 +224,7 @@ class Editor
     @max_left = 0
     @max_top = 0
     @deltaW = 124 + 30
-    @deltaH = 64 + 30
+    @deltaH = 74 + 30
 
     for step in steps
       depth = step.get_depth()
@@ -304,41 +304,14 @@ class Editor
         color = '#666666'
 
       for c in step.children()
-        @draw_arrow step.$step, c.$step, color
-
-
-  # 在指定的两个页面节点间绘制单箭头
-  draw_arrow: ($begin_step, $end_step, color)->
-    # x0 = $begin_step.data('left') + $begin_step.outerWidth() / 2
-    # x1 = $end_step.data('left') + $begin_step.outerWidth() / 2
-
-    # bt = $begin_step.data('top')
-    # et = $end_step.data('top')
-
-    # if bt < et
-    #   y0 = bt + $begin_step.outerHeight()
-    #   y1 = et
-    # else
-    #   y0 = bt
-    #   y1 = et + $end_step.outerHeight()
-
-    x0 = $begin_step.data('left') + $begin_step.outerWidth() / 2
-    y0 = $begin_step.data('top') + $begin_step.outerHeight()
-
-    if $begin_step.data('left') > $end_step.data('left')
-      x1 = $end_step.data('left') + $end_step.outerWidth()
-      y1 = $end_step.data('top') + $end_step.outerHeight() / 2
-    else
-      x1 = $end_step.data('left') + $end_step.outerWidth() / 2
-      y1 = $end_step.data('top')
-
-
-    @curve_arrow.draw(x0, y0, x1, y1, color)
+        # 绘制单箭头
+        @curve_arrow.draw_by_dom step.$step, c.$step, color
 
 
   _show_content: (step)->
     re = step.show_content(@last_node_num + 1)
     @last_node_num += 1 if re
+
 
   add_step_response: (step_data)->
     $template = jQuery('.step-template .step')
@@ -416,13 +389,21 @@ class Form
 
 
     # 指定后续页面
+    _f0 = =>
+      @close_subforms()
+      @assign_another_subform.open that.continue_data
+
     that = @
     @$form.delegate '.assigns .another-step', 'click', ->
       that.$form.find('.assigns').addClass('active')
       jQuery(this).addClass('active')
-      that.close_subforms()
-      that.assign_another_subform.open that.continue_data
+      _f0()
 
+    @$form.delegate '.current-continue .step.text', 'click', ->
+      _f0()
+
+    @$form.delegate '.current-continue .step.edit', 'click', ->
+      _f0()
 
     # 指定分支
     that = @
@@ -433,12 +414,12 @@ class Form
       that.branch_subform.open that.continue_data
 
 
-    # 指定无后续页面
+    # 取消已指定的后续
     that = @
-    @$form.delegate '.assigns .none', 'click', ->
+    @$form.delegate '.current-continue .step.cancel', 'click', ->
       that.$form.find('.assigns').addClass('active')
       jQuery(this).addClass('active')
-      if confirm('设置当前页面无后续页面吗？')
+      if confirm('取消当前已经指定的后续吗？')
         that.do_update_continue
           continue: 'end'
 
@@ -467,6 +448,9 @@ class Form
       when 'step'
         target_step = @editor.get_step_dom_by_id c.id
         $current_continue.find('.step.text').html target_step.get_text()
+        @$form.find('.assigns').addClass('has-continue')
+      else
+        @$form.find('.assigns').removeClass('has-continue')
 
 
   unload: ->

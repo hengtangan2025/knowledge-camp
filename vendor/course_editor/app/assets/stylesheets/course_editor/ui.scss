@@ -110,7 +110,7 @@ body.tutorial-editor {
       overflow:auto;
 
       .step {
-        width:120px;height:60px;
+        width:120px;height:70px;
         background-color:#fffbe3;
         // border-radius:3px;
         border:solid 2px rgba(black, 0.1);
@@ -130,6 +130,8 @@ body.tutorial-editor {
 
         .text {
           padding:5px;
+          overflow:hidden;
+          text-overflow: ellipsis;
         }
 
         .hoverdiv {
@@ -281,7 +283,7 @@ body.tutorial-editor {
               i {display:block;font-size:22px;line-height:20px;margin-top:10px;margin-bottom:5px;}
               span {display:block;font-size:12px;}
               .item{
-                width:33.33333%;float:left;
+                width:50%;float:left;
                 height:100%;
                 &:hover, &.active{
                   background-color:rgba(black, 0.05);
@@ -294,6 +296,11 @@ body.tutorial-editor {
               .assign-continue {display:none;}
               .assign-continue-hover {opacity: 1;}
             }
+
+            &.has-continue {
+              .assign-continue {display:none;}
+              .assign-continue-hover {display:none;}
+            }
           }
 
           .current-continue {
@@ -303,6 +310,17 @@ body.tutorial-editor {
             background-color:#f1f1f1;
             padding:0 15px;
             text-align:center;
+
+            .wrapper {
+              display:inline-block;
+              margin:5px auto 0;
+              overflow: hidden;
+            }
+
+            span {
+              float:left;
+              height:20px;line-height:20px;
+            }
 
             .end {display:none;}
             .step {display:none;}
@@ -316,7 +334,34 @@ body.tutorial-editor {
                 background-color: #666;
                 color:white;
                 border-radius:3px;
+                display: inline-block;
+                height:20px;line-height:20px;
                 padding:0 5px;
+                cursor:pointer;
+                max-width:100px;
+                overflow:hidden;
+                text-overflow: ellipsis;
+                margin-left:5px;
+              }
+              .step.edit, .step.cancel{
+                background-color:#666;
+                color:white;
+                border-radius:3px;
+                display: inline-block;
+                height:20px;line-height:20px;
+                width:20px;
+                text-align:center;
+                margin-left:5px;
+                cursor:pointer;
+                box-sizing:border-box;
+                font-size:13px;
+              }
+              .step.cancel {
+                i {position:relative;bottom:1px;}
+              }
+
+              .step.text, .step.edit, .step.cancel {
+                &:hover {background-color: #333;}
               }
             }
           }
