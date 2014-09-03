@@ -111,6 +111,15 @@ class StepDom
       return [new StepDom c] if c.length
       return []
 
+    if cont.type is 'select'
+      re = []
+      for k, data of cont.options
+        id = data.id
+        if id
+          c = @$container.find(".step[data-id=#{id}]")
+          re.push new StepDom c
+      return re
+
     return []
 
   update_continue_json: (cj)->
@@ -372,7 +381,7 @@ class Form
 
     @assign_another_subform = new AssignAnotherForm @$overlay.find('.subform.continue-page-assigner'), @
 
-    @branch_subform = new BranchForm  @$overlay.find('.subform.branch-assigner'), @
+    @branch_subform = new BranchForm @$overlay.find('.subform.branch-assigner'), @
 
     @bind_events()
 
@@ -399,24 +408,27 @@ class Form
       jQuery(this).addClass('active')
       _f0()
 
-    @$form.delegate '.current-continue .step.text', 'click', ->
-      _f0()
-
-    @$form.delegate '.current-continue .step.edit', 'click', ->
+    @$form.delegate '.current-continue .step.text, .current-continue .step.edit', 'click', ->
       _f0()
 
     # 指定分支
+    _f1 = =>
+      @close_subforms()
+      @branch_subform.open that.continue_data
+
     that = @
     @$form.delegate '.assigns .branch', 'click', ->
       that.$form.find('.assigns').addClass('active')
       jQuery(this).addClass('active')
-      that.close_subforms()
-      that.branch_subform.open that.continue_data
+      _f1()
+
+    @$form.delegate '.current-continue .select.text, .current-continue .select.edit', 'click', ->
+      _f1()
 
 
     # 取消已指定的后续
     that = @
-    @$form.delegate '.current-continue .step.cancel', 'click', ->
+    @$form.delegate '.current-continue .cancel', 'click', ->
       that.$form.find('.assigns').addClass('active')
       jQuery(this).addClass('active')
       if confirm('取消当前已经指定的后续吗？')
@@ -448,6 +460,8 @@ class Form
       when 'step'
         target_step = @editor.get_step_dom_by_id c.id
         $current_continue.find('.step.text').html target_step.get_text()
+        @$form.find('.assigns').addClass('has-continue')
+      when 'select'
         @$form.find('.assigns').addClass('has-continue')
       else
         @$form.find('.assigns').removeClass('has-continue')
@@ -597,16 +611,188 @@ class AssignAnotherForm extends SubForm
 
 class BranchForm extends SubForm
   constructor: (@$elm, @mainform)->
+    @option_subform = new OptionForm @mainform.$overlay.find('.subform.option-assigner'), @
+
+    @$options = @$elm.find('.options')
+    @$add_option = @$elm.find('.add-option')
+    @$question_ipter = @$elm.find('.question textarea')
+
     @$btn_ok = @$elm.find('.btn.ok')
     @$btn_cancel = @$elm.find('.btn.cancel')
     @bind_events()
 
   bind_events: ->
+    # 确定按钮被按下
+    @$btn_ok.on 'click', => @on_ok()
+
     # 取消按钮被按下
     @$btn_cancel.on 'click', => @close()
 
+    # 增加选项
+    @$add_option.on 'click', => @add_option().hide().slideDown()
+
+    # 移除选项
+    that = @
+    @$elm.delegate '.options .option .delete', 'click', ->
+      $option = jQuery(this).closest('.option')
+        .addClass('delete')
+        .slideUp ->
+          $option.remove()
+      that.refresh_count()
+
+    # 指定对应页面
+    that = @
+    @$elm.delegate '.options .option .assign-q-step', 'click', ->
+      $option = jQuery(this).closest('.option')
+      that.option_subform.open $option
+
+
   open: (continue_data)->
+    @enable()
     @$elm.show(ANIMATE_DURATION)
+    @$options.html('')
+
+    if continue_data.type is 'select'
+      @$question_ipter.val continue_data.question
+      for key, option of continue_data.options
+        # option = continue_data.options[key]
+        @add_option().find('textarea').val option.text
+
+    else
+      @$question_ipter.val '请从下列选项中选择：'
+      for i in [0...2]
+        @add_option()
+      
+
+  add_option: ->
+    $option = @$elm.find('.template .option').clone()
+    $option.appendTo @$options
+    setTimeout =>
+      @refresh_count()
+    , 1
+    $option
+
+  refresh_count: ->
+    if @$elm.find('.options .option:not(.delete)').length > 2
+      @$elm.find('.options .option .delete').show()
+    else
+      @$elm.find('.options .option .delete').hide()
+
+  get_data: ->
+    question = @$question_ipter.val()
+    options = []
+    @$elm.find('.options .option:not(.delete)').each ->
+      $option = jQuery(this)
+      options.push
+        text: $option.find('textarea').val()
+        id: $option.data('step-id')
+
+    return {
+      question: question
+      options: options
+    }
+
+  on_ok: ->
+    data = @get_data()
+    @mainform.do_update_continue
+      continue:
+        kind: 'select'
+        question: data.question
+        options: data.options
+
+  disable: ->
+    @$elm.addClass('disabled')
+
+  enable: ->
+    @$elm.removeClass('disabled')
+
+  get_optional_steps: ->
+    @mainform.get_optional_steps()
+
+  set_option: ($option, step_data)->
+    $option.data('step-id', step_data.id)
+    $option.find('.current').html step_data.text
+
+  get_option_step_ids: ->
+    re = []
+    @$elm.find('.options .option:not(.delete)').each ->
+      $option = jQuery(this)
+      re.push $option.data('step-id') if $option.data('step-id')
+    re
+
+class OptionForm extends SubForm
+  constructor: (@$elm, @mainform)->
+    @$list = @$elm.find('.list')
+    @$btn_ok = @$elm.find('.btn.ok')
+    @$btn_cancel = @$elm.find('.btn.cancel')
+    @bind_events()
+
+  bind_events: ->
+    # 列表项被点击
+    that = @
+    @$list.delegate '.step', 'click', ->
+      that.select_step jQuery(this)
+
+    # 确定按钮被按下
+    @$btn_ok.on 'click', => @on_ok()
+
+    # 取消按钮被按下
+    @$btn_cancel.on 'click', => @close()
+
+  open: ($option)->
+    @$loaded_option = $option
+    @mainform.disable()
+
+    @$elm.show(ANIMATE_DURATION)
+    @$list.html('')
+    @$btn_ok.addClass('disabled')
+
+    optional_steps_data = @mainform.get_optional_steps()
+    # 再过滤一次
+    optional_steps_data = optional_steps_data.filter (data)=>
+      option_id = $option.data('step-id')
+      return true if data.id is option_id
+      console.log @mainform.get_option_step_ids(), data.id
+      return false if @mainform.get_option_step_ids().indexOf(data.id) > -1
+      return true
+
+    if optional_steps_data.length is 0
+      jQuery('<div>')
+        .addClass('blank')
+        .html('没有可指定的页面')
+        .appendTo @$list
+      return
+
+    for data in optional_steps_data
+      $step = @$elm.find('.template .step').clone()
+      $step
+        .data('data', data)
+        .find('.text').html(data.text).end()
+        .appendTo @$list
+
+      if data.id is $option.data('step-id')
+        @select_step $step
+
+  close: ->
+    @mainform.enable()
+    @$elm.hide(ANIMATE_DURATION)
+
+  select_step: ($step)->
+    @$selected_step = $step
+
+    @$list.find('.step').removeClass('selected')
+    @$selected_step.addClass('selected')
+
+    @$btn_ok.removeClass('disabled')
+
+  on_ok: ->
+    return if @$btn_ok.hasClass('disabled')
+    return if not @$selected_step
+
+    data = @$selected_step.data('data')
+    @mainform.set_option @$loaded_option, data
+
+    @close()
 
 
 jQuery(document).on 'ready page:load', ->

@@ -324,44 +324,85 @@ body.tutorial-editor {
 
             .end {display:none;}
             .step {display:none;}
+            .select {display:none;}
 
             &.end {
               .end {display:inline;}
             }
             &.step {
-              .step {display:inline;}
-              .step.text {
-                background-color: #666;
-                color:white;
-                border-radius:3px;
-                display: inline-block;
-                height:20px;line-height:20px;
-                padding:0 5px;
-                cursor:pointer;
-                max-width:100px;
-                overflow:hidden;
-                text-overflow: ellipsis;
-                margin-left:5px;
-              }
-              .step.edit, .step.cancel{
-                background-color:#666;
-                color:white;
-                border-radius:3px;
-                display: inline-block;
-                height:20px;line-height:20px;
-                width:20px;
-                text-align:center;
-                margin-left:5px;
-                cursor:pointer;
-                box-sizing:border-box;
-                font-size:13px;
-              }
-              .step.cancel {
-                i {position:relative;bottom:1px;}
-              }
+              .step {
+                display:inline;
+                &.text {
+                  background-color: #666;
+                  color:white;
+                  border-radius:3px;
+                  display: inline-block;
+                  height:20px;line-height:20px;
+                  padding:0 5px;
+                  cursor:pointer;
+                  max-width:100px;
+                  overflow:hidden;
+                  text-overflow: ellipsis;
+                  margin-left:5px;
+                }
+                &.edit, &.cancel{
+                  background-color:#666;
+                  color:white;
+                  border-radius:3px;
+                  display: inline-block;
+                  height:20px;line-height:20px;
+                  width:20px;
+                  text-align:center;
+                  margin-left:5px;
+                  cursor:pointer;
+                  box-sizing:border-box;
+                  font-size:13px;
+                }
+                &.cancel {
+                  i {position:relative;bottom:1px;}
+                }
 
-              .step.text, .step.edit, .step.cancel {
-                &:hover {background-color: #333;}
+                &.text, &.edit, &.cancel {
+                  &:hover {background-color: #333;}
+                }
+              }
+            }
+            &.select {
+              .select {
+                display:inline;
+                &.text {
+                  background-color: #666;
+                  color:white;
+                  border-radius:3px;
+                  display: inline-block;
+                  height:20px;line-height:20px;
+                  padding:0 5px;
+                  cursor:pointer;
+                  max-width:100px;
+                  overflow:hidden;
+                  text-overflow: ellipsis;
+                  margin-left:5px;
+                }
+                &.edit, &.cancel{
+                  background-color:#666;
+                  color:white;
+                  border-radius:3px;
+                  display: inline-block;
+                  height:20px;line-height:20px;
+                  width:20px;
+                  text-align:center;
+                  margin-left:5px;
+                  cursor:pointer;
+                  box-sizing:border-box;
+                  font-size:13px;
+                }
+                &.cancel {
+                  i {position:relative;bottom:1px;}
+                }
+
+                &.text, &.edit, &.cancel {
+                  &:hover {background-color: #333;}
+                }
               }
             }
           }
@@ -404,7 +445,8 @@ body.tutorial-editor {
         top:0;left:0;right:0;bottom:51px;
       }
 
-      &.continue-page-assigner {
+
+      &.continue-page-assigner, &.option-assigner{
         .blank {
           padding:10px;
           background-color:#f7f7f7;
@@ -454,6 +496,78 @@ body.tutorial-editor {
         }
 
         .template {display:none;}
+      }
+
+      &.option-assigner {
+        right:$sub-width + 5px;
+        bottom:15px;
+      }
+
+      &.branch-assigner {
+        &.disabled {
+          opacity: 0.5;
+          pointer-events: none;
+        }
+
+        height:80%;
+        .question {
+          padding:10px;
+          textarea {resize:none;}
+          background-color:#f1f1f1;
+          border-bottom:solid 1px #ddd;
+        }
+
+        $btnc: lighten(#44B2F5, 5%);
+        $btnchover: darken(#44B2F5, 10%);
+        .options {
+          .option {
+            padding:10px 10px 10px;
+            border-bottom:solid 1px #ddd;
+            background-color:#F7F7F7;
+            textarea {resize:none;}
+            .ops {
+              overflow:hidden;
+              margin-top:10px;
+              $h:20px;
+              .assign-q-step {
+                color:#3F7FAF;
+                float:left;
+                height:$h;line-height:$h;
+                cursor: pointer;
+                border-bottom:dotted 1px;
+                padding:0 5px;
+                &:hover {background-color: #F2F7F9;}
+              }
+              .current {
+                float:left;
+                margin-left:5px;
+                height:$h;line-height:$h;
+              }
+              .delete {
+                float:right;
+                background-color: #888;
+                &:hover {background-color: #333;}
+                color:white;
+                height:$h;line-height:$h;
+                width:$h;text-align:center;
+                border-radius:3px;
+                cursor: pointer;
+              }
+            }
+          }
+        }
+        .add {
+          .add-option {
+            color:#3F7FAF;
+            height:20px;line-height:20px;
+            padding:0 5px;
+            display: inline-block;
+            margin:10px;
+            cursor: pointer;
+            border-bottom:dotted 1px;
+            &:hover {background-color: #F2F7F9;}
+          }
+        }
       }
     }
   }

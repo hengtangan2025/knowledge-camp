@@ -67,10 +67,15 @@
             %span.step.cancel
               %i.fa.fa-times
 
+            %span.select.text 选择分支
+            %span.select.edit
+              %i.fa.fa-pencil
+            %span.select.cancel
+              %i.fa.fa-times
 
   .subform.continue-page-assigner{:style => 'display:none;'}
     .main-area
-      .template
+      .template{:style => 'display:none;'}
         .step
           .text
       .list
@@ -83,6 +88,41 @@
           %span 取消
 
   .subform.branch-assigner{:style => 'display:none;'}
+    .main-area
+      .template{:style => 'display:none;'}
+        .option
+          %textarea.form-control{:name => :question, :type => :text, :rows => 2, :placeholder => '输入选项'}
+          .ops
+            .assign-q-step
+              %i.fa.fa-cog 
+              %span 指定对应页面
+            .current 尚未指定
+            .delete
+              %i.fa.fa-times
+
+      .question
+        %textarea.form-control{:name => :question, :type => :text, :rows => 2, :placeholder => '输入问题'}
+      .options
+
+      .add
+        .add-option
+          %i.fa.fa-plus
+          %span 增加选项
+
+    .btns
+      .bbox
+        %a.ok.btn.btn-rounded.btn-bdb-fresh.btn-large{:href => 'javascript:;'}
+          %span 确定
+      .bbox
+        %a.cancel.btn.btn-rounded.btn-bdb.btn-large{:href => 'javascript:;'}
+          %span 取消
+
+  .subform.option-assigner{:style => 'display:none;'}
+    .main-area
+      .template{:style => 'display:none;'}
+        .step
+          .text
+      .list
     .btns
       .bbox
         %a.ok.btn.btn-rounded.btn-bdb-fresh.btn-large{:href => 'javascript:;'}

@@ -67,6 +67,10 @@ module CourseEditor
         step.set_continue 'step', data['step_id']
       end
 
+      if data['kind'] == 'select'
+        step.set_continue 'select', :question => data['question'], :options => data['options']
+      end
+
       if data == 'end'
         step.set_continue false
       end
