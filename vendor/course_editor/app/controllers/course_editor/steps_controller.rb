@@ -51,10 +51,12 @@ module CourseEditor
       if continue['type'] == :select
         options = continue['options']
         options.each do |o|
-          o[id] == 'none' if o['id'] == child_id
+          o.delete 'id' if o['id'] == child_id
         end
 
-        parent.set_continue 'select', continue['question'], options
+        parent.set_continue 'select', 
+          :question => continue['question'], 
+          :options => options
       end
     end
 
@@ -68,7 +70,9 @@ module CourseEditor
       end
 
       if data['kind'] == 'select'
-        step.set_continue 'select', :question => data['question'], :options => data['options']
+        # Parameters: {"continue"=>{"kind"=>"select", "question"=>"12", "options"=>{"0"=>{"text"=>"1212", "id"=>"54083f4f6c696e4a42050000"}, "1"=>{"text"=>"1212", "id"=>"54083f506c696e4a42060000"}}}, "id"=>"54083f3e6c696e4a42040000"}
+
+        step.set_continue 'select', :question => data['question'], :options => data['options'].values
       end
 
       if data == 'end'

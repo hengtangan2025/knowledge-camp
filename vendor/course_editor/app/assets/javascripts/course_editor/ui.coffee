@@ -818,8 +818,10 @@ class BranchForm extends SubForm
       for key, option of continue_data.options
         $option = @add_option()
         $option.find('textarea').val option.text
-        step = @mainform.editor.get_step_dom_by_id option.id
-        @set_option $option, step.data()
+
+        if option.id and option.id is not ''
+          step = @mainform.editor.get_step_dom_by_id option.id
+          @set_option $option, step.data()
 
     else
       @$question_ipter.val ''
