@@ -272,7 +272,7 @@ body.tutorial-editor {
                   color: #333;
                   border:0 none;
                   font-size: 14px;
-                  font-family: "微软雅黑";
+                  font-family: arial, "微软雅黑";
                   min-height:20px;
                 }
 
@@ -304,7 +304,16 @@ body.tutorial-editor {
 
                 &.editing {
                   background-color:#FFFBE3;
-                  pre {display:none;}
+                  position:relative;
+                  pre {
+                    position:absolute;
+                    pointer-events:none;
+                    opacity: 0;
+                    visibility: none;
+                    border:solid 1px;
+                    top:5px;left:5px;right:5px;
+                    padding:5px;
+                  }
                   .edit, .delete {display:none;}
 
                   textarea {
@@ -314,6 +323,8 @@ body.tutorial-editor {
                     box-shadow: none !important;
                     min-height: 72px;
                     overflow: hidden;
+                    font-family: arial, "微软雅黑";
+                    word-break:break-all;
                   }
                   .ops {
                     margin-top:5px;

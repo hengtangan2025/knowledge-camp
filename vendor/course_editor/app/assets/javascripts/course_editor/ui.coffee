@@ -455,15 +455,7 @@ class Form
     that = @
     @$content_container.delegate '.blocks .block textarea', 'keydown', (evt)->
       $textarea = jQuery(this)
-      $pre = $textarea.closest('.block').find('pre')
-      setTimeout ->
-        val = $textarea.val()
-        $pre.html(val + ' ')
-        setTimeout ->
-          height = $pre.height()
-          $textarea.css 'height', height + 12 + 20
-        , 0
-      , 0
+      @_wrap_height $textarea
 
     # 编辑内容取消
     that = @
@@ -645,6 +637,8 @@ class Form
       .addClass 'cancel btn btn-rounded btn-bdb btn-mini'
       .appendTo $ops
 
+    @_wrap_height $textarea
+
 
   cancel_edit: ($block)->
     $block.find('pre').html $block.data('block-content')
@@ -681,6 +675,17 @@ class Form
           $block.remove()
         ANIMATE_DURATION
         trigger_saved()
+
+  _wrap_height: ($textarea)->
+    $pre = $textarea.closest('.block').find('pre')
+    setTimeout ->
+      val = $textarea.val()
+      $pre.html(val + ' ')
+      setTimeout ->
+        height = $pre.height()
+        $textarea.css 'height', height + 12 + 20
+      , 0
+    , 0
 
 
 class SubForm
