@@ -88,5 +88,43 @@ module CourseEditor
       }
 
     end
+
+    def load_content
+      step = KnowledgeCamp::Step.find params[:id]
+      render :json => {
+        :blocks => step.blocks.map {|b|
+          h = {}
+          h['id'] = b.id.to_s
+          h['kind'] = b.kind
+          h['content'] = b.content
+          h
+        }
+      }
+    end
+
+    def add_content
+      step = KnowledgeCamp::Step.find params[:id]
+      if params[:kind] == 'text'
+        step.add_content 'text', params[:data]
+      end
+
+      b = step.blocks.last
+
+      render :json => {
+        :block => {
+          :id => b.id.to_s,
+          :kind => b.kind,
+          :content => b.content
+        }
+      }
+    end
+
+    def delete_content
+      step = KnowledgeCamp::Step.find params[:id]
+      step.remove_content params[:block_id]
+      render :json => {
+        :status => :ok
+      }
+    end
   end
 end

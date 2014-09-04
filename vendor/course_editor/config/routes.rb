@@ -8,6 +8,9 @@ CourseEditor::Engine.routes.draw do
           member do
             put :update_continue
             put :update_title
+            put :add_content
+            get :load_content
+            delete :delete_content
           end
         end
       end

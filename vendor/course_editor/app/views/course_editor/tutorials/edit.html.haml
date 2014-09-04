@@ -17,7 +17,7 @@
     .steps-count
       %span> 目前的页面总数：
       %span.count>= @tutorial.steps.count
-      %span> ，不可到达页面数：
+      %span> ，读者无法访问的页面数：
       %span.cant-reach-count> 0
 
   .steps
@@ -39,39 +39,42 @@
 
     .content-ipter
       .content-container
-        .add
-          %i.fa.fa-plus
-          %span 添加内容
+        .scroller
+          .blocks
 
-        .assigns
-          .assign-continue
-            %i.fa.fa-level-down
-            %span 指定后续
-          .assign-continue-hover
-            .item.another-step
-              %i.fa.fa-file-o
-              %span 指定页面
-            .item.branch
-              %i.fa.fa-sitemap
-              %span 设置分支
-        .current-continue.end
-          .wrapper
-            %span 当前设置：
-            
-            %span.end 无后续
-            
-            %span.step 指定页面
-            %span.step.text ...
-            %span.step.edit
-              %i.fa.fa-pencil
-            %span.step.cancel
-              %i.fa.fa-times
+        .opps
+          .add
+            %i.fa.fa-plus
+            %span 添加内容
+          .assigns
+            .assign-continue
+              %i.fa.fa-level-down
+              %span 指定后续
+            .assign-continue-hover
+              .item.another-step
+                %i.fa.fa-file-o
+                %span 指定页面
+              .item.branch
+                %i.fa.fa-sitemap
+                %span 设置分支
+          .current-continue.end
+            .wrapper
+              %span 当前设置：
+              
+              %span.end 无后续
+              
+              %span.step 指定页面
+              %span.step.text ...
+              %span.step.edit
+                %i.fa.fa-pencil
+              %span.step.cancel
+                %i.fa.fa-times
 
-            %span.select.text 选择分支
-            %span.select.edit
-              %i.fa.fa-pencil
-            %span.select.cancel
-              %i.fa.fa-times
+              %span.select.text 选择分支
+              %span.select.edit
+                %i.fa.fa-pencil
+              %span.select.cancel
+                %i.fa.fa-times
 
   .subform.continue-page-assigner{:style => 'display:none;'}
     .main-area

@@ -238,7 +238,7 @@ class Editor
     for step in steps
       depth = step.get_depth()
       if depth is 1
-        @_r3(step)
+        @_r3(step, 0)
 
     # 第四次，线性遍历，摆放 depth == -1 的节点位置
     for step in steps
@@ -261,7 +261,7 @@ class Editor
       c.add_parent step
       @_r2(c)
 
-  _r3: (step)->
+  _r3: (step, parent_left)->
     return if step.is_positioned()
     step.set_positioned()
 
@@ -273,6 +273,8 @@ class Editor
       @hash[depth].push step
 
     left = @deltaW * (@hash[depth].length - 1)
+    left = Math.max parent_left, left
+
     top = @deltaH * (depth - 1)
     @max_top = top if top > @max_top
     @max_left = left if left > @max_left
@@ -281,7 +283,7 @@ class Editor
     @_show_content(step)
 
     for c in step.children()
-      @_r3 c
+      @_r3 c, left
 
 
   layout_arrows: (canvasW, canvasH)->
@@ -372,12 +374,15 @@ class Editor
   get_step_dom_by_id: (id)->
     new StepDom @$editor.find(".step[data-id=#{id}]")
 
+
+
 class Form
   constructor: (@$form)->
     @$overlay = @$form.closest('.overlay')
 
     @$title_ipt = @$form.find('.title-ipter input')
     @$title_submit = @$form.find('.title-ipter a.btn')
+    @$content_container = @$form.find('.content-container')
 
     @assign_another_subform = new AssignAnotherForm @$overlay.find('.subform.continue-page-assigner'), @
 
@@ -435,6 +440,23 @@ class Form
         that.do_update_continue
           continue: 'end'
 
+    # 添加内容
+    that = @
+    @$content_container.delegate '.add', 'click', (evt)=>
+      @_temp_add_text()
+
+    # 编辑内容
+    that = @
+    @$content_container.delegate '.blocks .block .edit', 'click', (evt)->
+      $block = jQuery(this).closest('.block')
+      that.edit_block $block
+
+    # 删除内容
+    that = @
+    @$content_container.delegate '.blocks .block .delete', 'click', (evt)->
+      $block = jQuery(this).closest('.block')
+      if confirm '确定要删除这块内容吗？'
+        that.do_delete_block $block
 
 
   load: ($step)->
@@ -442,6 +464,7 @@ class Form
     @step_id = $step.data('id')
     @$loaded_step = $step
     @_load_continue($step)
+    @_load_content($step)
 
     @$title_ipt.val($step.data('title'))
 
@@ -460,11 +483,21 @@ class Form
       when 'step'
         target_step = @editor.get_step_dom_by_id c.id
         $current_continue.find('.step.text').html target_step.get_text()
-        @$form.find('.assigns').addClass('has-continue')
+        @$form.find('.content-container').addClass('has-continue')
       when 'select'
-        @$form.find('.assigns').addClass('has-continue')
+        @$form.find('.content-container').addClass('has-continue')
       else
-        @$form.find('.assigns').removeClass('has-continue')
+        @$form.find('.content-container').removeClass('has-continue')
+
+  _load_content: ($step)->
+    @$form.find('.blocks').html('')
+    url = @editor.step_url_prefix + @step_id + '/load_content'
+    jQuery.ajax
+      url: url
+      type: 'GET'
+      success: (res)=>
+        for block_data in res.blocks
+          @add_block_dom block_data
 
 
   unload: ->
@@ -526,6 +559,63 @@ class Form
 
         @editor.layout()
 
+
+  _temp_add_text: ->
+    text = """
+      欲穷千里目
+      更上一层楼
+    """
+
+    @add_text_content text
+
+  add_text_content: (text)->
+    url = @editor.step_url_prefix + @step_id + '/add_content'
+    jQuery.ajax
+      url: url
+      type: 'PUT'
+      data:
+        kind: 'text'
+        data: text
+      success: (res)=>
+        block_data = res.block
+        @add_block_dom block_data
+        trigger_saved()
+
+  add_block_dom: (block_data)->
+    if block_data.kind is 'text'
+      $edit = jQuery('<div><i class="fa fa-pencil"></i></div>')
+        .addClass('edit')
+
+      $delete = jQuery('<div><i class="fa fa-times"></i></div>')
+        .addClass('delete')
+
+      $pre = jQuery('<pre>')
+        .html block_data.content
+
+      $block = jQuery('<div>')
+        .attr('data-block-id', block_data.id)
+        .addClass('block')
+        .addClass('text')
+        .append $pre
+        .append $edit
+        .append $delete
+        .appendTo @$content_container.find('.blocks')
+
+  edit_block: ($block)->
+    console.log $block.data('block-id')
+    # @$content_container.find('.blocks .block').removeClass('selected')
+    # $block.addClass('selected')
+
+  do_delete_block: ($block)->
+    url = @editor.step_url_prefix + @step_id + '/delete_content'
+    jQuery.ajax
+      url: url
+      type: 'DELETE'
+      data:
+        block_id: $block.data('block-id')
+      success: (res)=>
+        $block.fedeOut -> $block.remove()
+        trigger_saved()
 
 
 class SubForm
@@ -647,6 +737,12 @@ class BranchForm extends SubForm
       that.option_subform.open $option
 
 
+    @$elm.delegate 'textarea', 'keydown', =>
+      setTimeout =>
+        @check_data()
+      , 0
+
+
   open: (continue_data)->
     @enable()
     @$elm.show(ANIMATE_DURATION)
@@ -655,14 +751,17 @@ class BranchForm extends SubForm
     if continue_data.type is 'select'
       @$question_ipter.val continue_data.question
       for key, option of continue_data.options
-        # option = continue_data.options[key]
-        @add_option().find('textarea').val option.text
+        $option = @add_option()
+        $option.find('textarea').val option.text
+        step = @mainform.editor.get_step_dom_by_id option.id
+        @set_option $option, step.data()
 
     else
-      @$question_ipter.val '请从下列选项中选择：'
+      @$question_ipter.val ''
       for i in [0...2]
         @add_option()
-      
+
+    @check_data()
 
   add_option: ->
     $option = @$elm.find('.template .option').clone()
@@ -691,6 +790,29 @@ class BranchForm extends SubForm
       question: question
       options: options
     }
+
+  check_data: ->
+    flag = true
+    if not @$question_ipter.val().length
+      flag = false
+      @$question_ipter.addClass 'error'
+    else
+      @$question_ipter.removeClass 'error'
+
+    @$elm.find('.options .option:not(.delete)').each ->
+      $option = jQuery(this)
+      $textarea = $option.find('textarea')
+      if not $textarea.val().length
+        flag = false
+        $textarea.addClass 'error'
+      else
+        $textarea.removeClass 'error'
+
+    if flag
+      @$btn_ok.removeClass('disabled')
+    else
+      @$btn_ok.addClass('disabled')
+
 
   on_ok: ->
     data = @get_data()
