@@ -11,8 +11,79 @@ module KnowledgeNetPlanStore
   end
 
   class Tutorial
+    include KnowledgeCamp::Step::Owner
+
     has_and_belongs_to_many :points,
                             :class_name => "KnowledgeNetStore::Point"
+
+    belongs_to :creator, :class_name => User.name
+
+    validates :creator_id, :presence => true
+
+    alias old_attrs attrs
+
+    def attrs
+      old_attrs.merge(:creator => creator.info)
+    end
+
+    def clone
+      tutorial = self.class.new
+
+      tutorial.update_attributes(:title      => self.title,
+                                 :desc       => self.desc,
+                                 :creator_id => self.creator_id,
+                                 :topic_id   => self.topic_id,
+                                 :image      => self.image,
+                                 :point_ids  => self.point_ids)
+
+      mappings = self.steps.reduce([]) do |array, step|
+        array << {
+          :old => step,
+          :new => tutorial.steps.create(:title => step.title)
+        }
+
+        array
+      end
+
+      find_new = ->(old_id) {
+        mappings.detect do |h|
+          h[:old].id.to_s == old_id
+        end[:new]
+      }
+
+      mappings.each do |hash|
+        old = hash[:old]
+        new = hash[:new]
+
+        case old.continue[:type]
+        when :step
+          new.set_continue(:step,
+                           find_new.call(old.continue[:id].to_s).id)
+        when :select
+          new.set_continue(:select,
+                           :question => old.continue[:question],
+                           :options  => old.continue[:options].clone.map {|option|
+                             option[:id] = find_new.call(option[:id]).id
+                             option
+                           })
+        when :end
+          new.set_continue(false)
+        end
+
+        new.block_order = old.blocks.map do |block|
+          new_block = block.clone
+          new_block.save
+          new_block
+        end.map(&:id)
+
+        new.save
+      end
+
+      tutorial.step_ids = mappings.map {|hash| hash[:new].id}
+      tutorial.save
+
+      tutorial
+    end
   end
 end
 
@@ -176,25 +247,12 @@ end
 KnowledgeNetStore::Net.send :include, Kaminari::MongoidExtension::Document
 VirtualFileSystem::File.send :include, Kaminari::MongoidExtension::Document
 
-KnowledgeNetPlanStore::Tutorial.send :include, KnowledgeCamp::Step::Owner
 User.send :include, KnowledgeCamp::Step::NoteCreator
 User.send :include, KnowledgeCamp::HasManyLearnRecords
 KnowledgeNetPlanStore::Uploader.send :include, ImageUploaderMethods
 
 class User
   has_many :tutorials, :class_name => KnowledgeNetPlanStore::Tutorial.name
-end
-
-class KnowledgeNetPlanStore::Tutorial
-  belongs_to :creator, :class_name => User.name
-
-  validates :creator_id, :presence => true
-
-  alias old_attrs attrs
-
-  def attrs
-    old_attrs.merge(:creator => creator.info)
-  end
 end
 
 class KnowledgeCamp::Block
