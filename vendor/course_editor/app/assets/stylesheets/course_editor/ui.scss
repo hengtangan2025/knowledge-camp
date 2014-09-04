@@ -271,6 +271,9 @@ body.tutorial-editor {
                   background-color:transparent;
                   color: #333;
                   border:0 none;
+                  font-size: 14px;
+                  font-family: "微软雅黑";
+                  min-height:20px;
                 }
 
                 .edit {
@@ -297,6 +300,25 @@ body.tutorial-editor {
                 &:hover {
                   background-color:#FFFBE3;
                   .edit, .delete {display:block;}
+                }
+
+                &.editing {
+                  background-color:#FFFBE3;
+                  pre {display:none;}
+                  .edit, .delete {display:none;}
+
+                  textarea {
+                    padding:5px;
+                    resize: none;
+                    border: 1px solid #cccccc !important;
+                    box-shadow: none !important;
+                    min-height: 72px;
+                    overflow: hidden;
+                  }
+                  .ops {
+                    margin-top:5px;
+                    a {cursor:pointer;margin-right:5px;}
+                  }
                 }
               }
             }

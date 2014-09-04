@@ -443,13 +443,40 @@ class Form
     # 添加内容
     that = @
     @$content_container.delegate '.add', 'click', (evt)=>
-      @_temp_add_text()
+      @add_text_content ''
 
     # 编辑内容
     that = @
     @$content_container.delegate '.blocks .block .edit', 'click', (evt)->
       $block = jQuery(this).closest('.block')
       that.edit_block $block
+
+    # textarea 高度自动适应
+    that = @
+    @$content_container.delegate '.blocks .block textarea', 'keydown', (evt)->
+      $textarea = jQuery(this)
+      $pre = $textarea.closest('.block').find('pre')
+      setTimeout ->
+        val = $textarea.val()
+        $pre.html(val + ' ')
+        setTimeout ->
+          height = $pre.height()
+          $textarea.css 'height', height + 12 + 20
+        , 0
+      , 0
+
+    # 编辑内容取消
+    that = @
+    @$content_container.delegate '.blocks .block .ops .cancel', 'click', (evt)->
+      $block = jQuery(this).closest('.block')
+      that.cancel_edit $block
+
+    # 编辑内容确定
+    that = @
+    @$content_container.delegate '.blocks .block .ops .ok', 'click', (evt)->
+      $block = jQuery(this).closest('.block')
+      that.do_save_content $block
+
 
     # 删除内容
     that = @
@@ -497,7 +524,7 @@ class Form
       type: 'GET'
       success: (res)=>
         for block_data in res.blocks
-          @add_block_dom block_data
+         @add_block_dom block_data
 
 
   unload: ->
@@ -558,15 +585,7 @@ class Form
         @close_subforms()
 
         @editor.layout()
-
-
-  _temp_add_text: ->
-    text = """
-      欲穷千里目
-      更上一层楼
-    """
-
-    @add_text_content text
+    
 
   add_text_content: (text)->
     url = @editor.step_url_prefix + @step_id + '/add_content'
@@ -577,9 +596,13 @@ class Form
         kind: 'text'
         data: text
       success: (res)=>
-        block_data = res.block
-        @add_block_dom block_data
         trigger_saved()
+        block_data = res.block
+        $block = @add_block_dom(block_data)
+        @edit_block($block)
+        $block
+          .hide()
+          .fadeIn()
 
   add_block_dom: (block_data)->
     if block_data.kind is 'text'
@@ -594,6 +617,7 @@ class Form
 
       $block = jQuery('<div>')
         .attr('data-block-id', block_data.id)
+        .attr('data-block-content', block_data.content)
         .addClass('block')
         .addClass('text')
         .append $pre
@@ -601,10 +625,49 @@ class Form
         .append $delete
         .appendTo @$content_container.find('.blocks')
 
+      return $block 
+
   edit_block: ($block)->
     console.log $block.data('block-id')
-    # @$content_container.find('.blocks .block').removeClass('selected')
-    # $block.addClass('selected')
+    $block.addClass('editing')
+    $textarea = jQuery('<textarea>')
+      .addClass('form-control')
+      .val $block.data('block-content')
+      .attr 'placeholder', '请输入文字内容'
+      .appendTo $block
+    $ops = jQuery('<div>')
+      .addClass 'ops'
+      .appendTo $block
+    $ok = jQuery('<a>确定</a>')
+      .addClass 'ok btn btn-rounded btn-bdb-fresh btn-mini'
+      .appendTo $ops
+    $cancel = jQuery('<a>取消</a>')
+      .addClass 'cancel btn btn-rounded btn-bdb btn-mini'
+      .appendTo $ops
+
+
+  cancel_edit: ($block)->
+    $block.find('pre').html $block.data('block-content')
+    $block.find('textarea').remove()
+    $block.find('.ops').remove()
+    $block.removeClass('editing')
+
+  do_save_content: ($block)->
+    $textarea = $block.find('textarea')
+    $block.data('block-content', $textarea.val())
+
+    url = @editor.step_url_prefix + @step_id + '/update_content'
+
+    jQuery.ajax
+      url: url
+      type: 'PUT'
+      data:
+        block_id: $block.data('block-id')
+        content: $block.data('block-content')
+      success: (res)=>
+        trigger_saved()
+        @cancel_edit $block
+
 
   do_delete_block: ($block)->
     url = @editor.step_url_prefix + @step_id + '/delete_content'
@@ -614,7 +677,9 @@ class Form
       data:
         block_id: $block.data('block-id')
       success: (res)=>
-        $block.fedeOut -> $block.remove()
+        $block.fadeOut -> 
+          $block.remove()
+        ANIMATE_DURATION
         trigger_saved()
 
 

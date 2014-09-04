@@ -108,13 +108,13 @@ module CourseEditor
         step.add_content 'text', params[:data]
       end
 
-      b = step.blocks.last
+      block = step.blocks.last
 
       render :json => {
         :block => {
-          :id => b.id.to_s,
-          :kind => b.kind,
-          :content => b.content
+          :id => block.id.to_s,
+          :kind => block.kind,
+          :content => block.content
         }
       }
     end
@@ -124,6 +124,19 @@ module CourseEditor
       step.remove_content params[:block_id]
       render :json => {
         :status => :ok
+      }
+    end
+
+    def update_content
+      block = KnowledgeCamp::Block.find params[:block_id]
+      block.content = params[:content]
+      block.save
+      render :json => {
+        :block => {
+          :id => block.id.to_s,
+          :kind => block.kind,
+          :content => block.content
+        }
       }
     end
   end
