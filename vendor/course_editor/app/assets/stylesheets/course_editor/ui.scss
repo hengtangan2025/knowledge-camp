@@ -339,15 +339,45 @@ body.tutorial-editor {
             position:absolute;
             bottom:5px;left:5px;right:5px;
 
-            .add {
-              margin-bottom:5px;
-              box-sizing:border-box;
-              height:60px;padding-top:10px;
-              text-align:center;
-              background-color:#f1f1f1;
-              cursor: pointer;
-              i {display:block;font-size:22px;line-height:20px;margin-bottom:5px;}
-              span {display:block;font-size:12px;}
+            .adds {
+              margin-bottom: 5px;
+              position: relative;
+              height:60px;
+              .add {
+                pointer-events:none;
+                opacity:1;
+                position:absolute;
+                left:0;right:0;
+                box-sizing:border-box;
+                height:60px;padding-top:10px;
+                text-align:center;
+                background-color:#f1f1f1;
+                cursor: pointer;
+                i {display:block;font-size:22px;line-height:20px;margin-bottom:5px;}
+                span {display:block;font-size:12px;}
+              }
+              .add-hover {
+                opacity: 0;
+                &:hover {
+                  opacity: 1;
+                }
+                position:absolute;
+                left:0;right:0;
+                height:60px;
+                text-align:center;
+                background-color:#f1f1f1;
+                cursor: pointer;
+                i {display:block;font-size:22px;line-height:20px;margin-top:10px;margin-bottom:5px;}
+                span {display:block;font-size:12px;}
+                .item{
+                  width:33.3333%;float:left;
+                  height:100%;
+                  &:hover, &.active{
+                    background-color:rgba(black, 0.05);
+                    // background-color:#FFFBE3;
+                  }
+                }   
+              }
             }
 
             .assigns {
@@ -597,6 +627,59 @@ body.tutorial-editor {
 
         .template {display:none;}
       }
+
+      &.select-list {
+        .blank {
+          padding:10px;
+          background-color:#f7f7f7;
+        }
+
+        .item {
+          height:40px;line-height:40px;
+          border-bottom:solid 1px #ddd;
+          padding:0 10px;
+          cursor: pointer;
+          position: relative;
+
+          &:hover {
+            background-color: #FFFBE3;
+          }
+
+          .text {
+            float: left;
+            margin-left:10px;
+          }
+
+          &:before {
+            content: "\f10c";
+            font-family: FontAwesome;
+            float:left;
+          }
+
+          &.selected {
+            // background-color: lighten(#44B2F5, 32%);
+            $c: darken(#44B2F5, 10%);
+            background-color: $c;
+            border-bottom-color: $c;
+            color:white;
+            &:after {
+              content: "";
+              position: absolute;
+              top:0;right:0;bottom:0;
+              width:5px;
+              // background-color: #44B2F5;
+            }
+
+            &:before {
+              content: "\f058";
+              // color: darken(#44B2F5, 10%); 
+            }
+          }
+        }
+
+        .template {display:none;}
+      }
+
 
       &.option-assigner {
         right:$sub-width + 5px;

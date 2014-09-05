@@ -31,8 +31,8 @@
 .overlay{:style => 'display:none;'}
   .step-form
     .header
-      %a.close.btn.btn-rounded.btn-bdb-night{:href => 'javascript:;'}
-        %span 关闭
+      %a.close.btn.btn-rounded.btn-bdb-fresh{:href => 'javascript:;'}
+        %span 确定
 
     .title-ipter
       %input.form-control{:name => :title, :type => :text, :placeholder => '输入页面标题'}
@@ -43,9 +43,22 @@
           .blocks
 
         .opps
-          .add
-            %i.fa.fa-plus
-            %span 添加内容
+
+          .adds
+            .add
+              %i.fa.fa-plus
+              %span 添加内容
+            .add-hover
+              .item.text
+                %i.fa T
+                %span 文本
+              .item.image
+                %i.fa.fa-image
+                %span 图片
+              .item.video
+                %i.fa.fa-video-camera
+                %span 视频
+
           .assigns
             .assign-continue
               %i.fa.fa-level-down
@@ -124,6 +137,20 @@
     .main-area
       .template{:style => 'display:none;'}
         .step
+          .text
+      .list
+    .btns
+      .bbox
+        %a.ok.btn.btn-rounded.btn-bdb-fresh.btn-large{:href => 'javascript:;'}
+          %span 确定
+      .bbox
+        %a.cancel.btn.btn-rounded.btn-bdb.btn-large{:href => 'javascript:;'}
+          %span 取消
+
+  .subform.select-list{:style => 'display:none;'}
+    .main-area
+      .template{:style => 'display:none;'}
+        .item
           .text
       .list
     .btns

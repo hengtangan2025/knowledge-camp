@@ -82,3 +82,83 @@ class CurveArrow
 
 
 window.CurveArrow = CurveArrow
+
+# --------------------
+
+class SelectList
+  constructor: (@$elm, @mainform)->
+    @$btn_ok = @$elm.find('.btn.ok')
+    @$btn_cancel = @$elm.find('.btn.cancel')
+    @$list = @$elm.find('.list')
+
+    @$template_item = @$elm.find('.template .item')
+
+    @bind_events()
+
+    @close_func = -> {}
+
+  bind_events: ->
+    # 列表项被点击
+    that = @
+    @$list.delegate '.item', 'click', ->
+      that.select_item jQuery(this)
+
+    @$btn_ok.on 'click', => @on_ok()
+    @$btn_cancel.on 'click', => @on_cancel()
+
+  select_item: ($item)->
+    @$list.find('.item').removeClass('selected')
+    @$selected_item = $item.addClass('selected')
+    @$btn_ok.removeClass('disabled')
+
+  open: (data_list, funcs)->
+    funcs ||= {}
+    @ok_func = funcs.on_ok || -> {}
+    @open_func = funcs.on_open || -> {}
+    @close_func = funcs.on_close || -> {}
+
+
+    @open_func()
+
+    @$elm.show(200)
+    @$list.html('')
+    @$btn_ok.addClass('disabled')
+
+    if data_list.length is 0
+      jQuery('<div>')
+        .addClass('blank')
+        .html('没有可选择的选项')
+        .appendTo @$list
+      return
+
+    for data in data_list
+      $item = @$template_item.clone()
+      $item
+        .data('id', data.id)
+        .data('text', data.text)
+        .find('.text').html(data.text).end()
+        .appendTo @$list
+
+      @select_item $item if data.selected
+
+    @$elm.show 200
+
+  close: ->
+    @close_func()
+    @$elm.hide 200
+    @mainform.$form
+      .find('.assigns').removeClass('active').end()
+      .find('.assigns .item').removeClass('active').end()
+
+
+  on_ok: ->
+    return if @$btn_ok.hasClass('disabled')
+    return if not @$selected_item
+    @ok_func @$selected_item
+
+  on_cancel: ->
+    @close()
+
+
+
+window.SelectList = SelectList
