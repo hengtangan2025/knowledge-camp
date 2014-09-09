@@ -1,11 +1,17 @@
 module KnowledgeCampApi
   class PointsController < ApplicationController
     def index
-      display resources
+      display resources.map {|point|
+        point.attrs.merge(:color => string_grid_color(point.id.to_s).to_s)
+      }
     end
 
     def show
+      color = {:color => string_grid_color(params[:id]).to_s}
+
       display KnowledgeNetStore::Point.find(params[:id])
+                                      .attrs
+                                      .merge(color)
     end
 
     private
