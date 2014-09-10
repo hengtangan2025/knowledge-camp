@@ -10,6 +10,15 @@ module KnowledgeNetPlanStore
                :class_name => "KnowledgeNetStore::Net"
   end
 
+  class Topic
+    has_and_belongs_to_many :points,
+                            :class_name => "KnowledgeNetStore::Point"
+
+    def net
+      plan.net
+    end
+  end
+
   class Tutorial
     include KnowledgeCamp::Step::Owner
 
@@ -235,6 +244,22 @@ module KnowledgeNetStore
 
     has_many :virtual_files,
              :class_name => 'VirtualFileSystem::File'
+
+    after_create :create_default_plan
+
+    def default_plan
+      plans.first
+    end
+
+    def topics
+      default_plan.topics
+    end
+
+    private
+
+    def create_default_plan
+      KnowledgeNetPlanStore::Plan.create :title => "default_plan"
+    end
   end
 
   class Point

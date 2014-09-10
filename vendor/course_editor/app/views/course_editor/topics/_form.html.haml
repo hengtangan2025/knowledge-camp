@@ -1,0 +1,19 @@
+:ruby
+  is_new   = @topic.new_record?
+  resource = is_new ? [@topic.net, @topic] : @topic
+  selected = is_new ? [] : @topic.point_ids
+  cancel   = is_new ? url_for(@topic.net) : url_for(@topic)
+
+= simple_form_for resource, :defaults => {:label => false, :input_html => {:class => 'form-control'}} do |f|
+  .form-group
+    = f.input :title, :placeholder => "标题"
+  .form-group
+    - points = @topic.net.points.map {|p| [p.name, p.id]}
+    = f.association :points, :collection => points, :selected => selected
+  .form-group
+    = f.input :image, :placeholder => "上传封面"
+  .form-group
+    = f.input :desc, :placeholder => "描述", :as => :text, :input_html => {:rows => 10}
+  .form-group
+    = f.submit :class => 'btn btn-rounded btn-bdb-fresh'
+    %a.cancel.btn.btn-rounded.btn-bdb{:href => cancel} 取消

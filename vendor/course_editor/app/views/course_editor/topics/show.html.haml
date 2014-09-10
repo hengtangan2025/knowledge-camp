@@ -1,0 +1,37 @@
+.row.page-manage-nets-show.page-plan-store-show{:class => action_css_class}
+
+  .page-side.col-pad-2
+    .nav
+      .back
+        %a{:href => url_for(@topic.net), :data => {:toggle => true}}
+          %i.fa.fa-arrow-left
+          返回
+      .items.topics
+        %a.index{:href => url_for(@topic)}
+          .count= @topic.tutorials.size
+          .text 教程
+        .new
+          %a.btn.btn-rounded.btn-bdb-fresh.btn-small{:href =>  new_topic_tutorial_url(@topic)}
+            %i.fa.fa-plus
+            %span 创建教程
+
+  .page-main.col-pad-10
+    .sections.piece.piece-shelf.piece-paper
+      .piece.piece-box
+        %h2 #{@topic.title} - 教程管理
+        .piece.piece-ops
+          .op
+            %a.edit{:href => edit_topic_url(@topic)}
+              %i.fa.fa-pencil
+              %span 编辑修改
+      .piece.piece-box
+        %h4 教程
+        .tutorials
+          - @topic.tutorials.each do |tutorial|
+            %a.tutorial.plan-store-item{:href => edit_tutorial_url(tutorial)}
+              .image
+                %img{:src => tutorial.image.url}
+              .content
+                .title= tutorial.title
+                .desc= tutorial.desc
+

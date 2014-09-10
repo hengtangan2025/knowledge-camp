@@ -765,7 +765,7 @@ body.tutorial-editor {
 }
 
 
-.page-course-editor-nets-show {
+.page-plan-store-show {
   .net-debug {
     .warning {margin-bottom:20px;margin-top:0;}
     .new-topic {margin-bottom:20px;}
@@ -779,4 +779,47 @@ body.tutorial-editor {
       }
     }
   }
+  
+  .plan-store-item {
+    display: block;
+    border: 1px solid #D4C6B0;
+    border-radius: 4px;
+    margin-bottom: 12px;
+    
+    &:before, &:after {
+      content: " ";
+      display: table;
+      clear: both;
+    }
+
+    .image, .content {
+      box-sizing: border-box;
+      padding: 8px;
+      float: left;
+      vertical-align: top;
+    }
+    
+    .image {
+      background: #FCEBCF;
+      width: 30%;
+      
+      img {
+        width: 100%;
+      }
+    }
+
+    .content {
+      width: 70%;
+
+      .title {
+        margin-bottom: 8px;
+        font-size: 16px;
+        font-weight: bold;
+      }
+    }
+  }
+}
+
+.plan-store-item-form {
+  padding: 20px;
 }
