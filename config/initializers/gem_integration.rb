@@ -21,6 +21,7 @@ module KnowledgeNetPlanStore
 
   class Tutorial
     include KnowledgeCamp::Step::Owner
+    include PinyinSearch
 
     has_and_belongs_to_many :points,
                             :class_name => "KnowledgeNetStore::Point"
@@ -28,6 +29,8 @@ module KnowledgeNetPlanStore
     belongs_to :creator, :class_name => User.name
 
     validates :creator_id, :presence => true
+
+    pinyin :title
 
     alias old_attrs attrs
 
@@ -98,8 +101,12 @@ end
 
 module KnowledgeNetStore
   class Point
+    include PinyinSearch
+
     has_and_belongs_to_many :tutorials,
                             :class_name => "KnowledgeNetPlanStore::Tutorial"
+
+    pinyin :name
   end
 end
 

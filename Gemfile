@@ -36,6 +36,9 @@ gem "htmldiff"
 gem 'ruby-pinyin'
 # 代码高亮
 gem 'haml-coderay'
+# 全文搜索
+gem "elasticsearch-model", :require => "elasticsearch/model"
+gem "elasticsearch-rails", :require => "elasticsearch/rails"
 
 gem "mina",
     :github => "fushang318/mina",
