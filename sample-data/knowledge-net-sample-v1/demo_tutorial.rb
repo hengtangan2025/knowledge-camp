@@ -4,6 +4,18 @@ net = KnowledgeNetStore::Net.last
 
 plan = net.plans.last
 
+old_topic = KnowledgeNetPlanStore::Topic.where(desc: /开发用填充数据\./).first
+
+if old_topic
+  old_topic.destroy
+  old_tutorial = topic.tutorials.first
+
+  if old_tutorial
+    old_tutorial.steps.destroy_all
+    old_tutorial.destroy
+  end
+end
+
 def url_to_file(url, &block)
   ext  = url.gsub(/\?.*/, "").split(".").last
   name = "#{SecureRandom.hex}.#{ext}"
@@ -75,7 +87,6 @@ end
 a  = steps[:a]
 b  = steps[:b]
 b1 = steps[:b1]
-b2 = steps[:b2]
 c  = steps[:c]
 
 a.set_continue("step", b.id)
@@ -88,27 +99,17 @@ a.add_content("text", "奇蹟，明星周新秀挑战赛，终身成就奖漏掉
 add_vfileblock(a, :video, "http://oss.aliyuncs.com/pie-documents/20140729/1-灶台前操作的基本姿势.mp4")
 
 
-b.set_continue("select", :question => "请选择分支:)", :options => [
-                 {:id => b1.id.to_s, :text => "b1"},
-                 {:id => b2.id.to_s, :text => "b2"}
-               ])
+b.set_continue("step", b1.id)
 
 add_vfileblock(b, :video, "http://oss.aliyuncs.com/pie-documents/20140729/1-灶台前操作的基本姿势.mp4")
 
 b.add_content("text", "法拉利时速300km撞毁，高铁北上列车延逾2小时。所以不愿意侧身所谓斯文之列其实也不能够但在不知不觉的中间，不怀著危险的恐惧，地球也规矩地循著唯一的轨道，通溶化在月光裡，波涌似的，自己走出家来.")
 
 b1.set_continue("step", c.id)
-b2.set_continue("step", c.id)
 
 b1.add_content("text", "感谢上师，感谢上师，感谢上师，感谢上师，万能的师父。是红色稻草人，去吧，谨遵教诲了，痛苦，这样不要紧吗，拜託你了，雷达卫星导航，那快点找啊，吸血鬼女王，这次的作战就是…")
 
 add_vfileblock(b1, :image, "http://www.heroicfantasygames.com/AoD/5.jpg")
-
-add_vfileblock(b2, :image, "http://www.heroicfantasygames.com/AoD/5.jpg")
-
-b2.add_content("text", "感谢上师，感谢上师，感谢上师，感谢上师，万能的师父。是红色稻草人，去吧，谨遵教诲了，痛苦，这样不要紧吗，拜託你了，雷达卫星导航，那快点找啊，吸血鬼女王，这次的作战就是…")
-
-add_vfileblock(b2, :video, "http://oss.aliyuncs.com/pie-documents/20140729/1-灶台前操作的基本姿势.mp4")
 
 c.set_continue(false)
 
