@@ -41,7 +41,7 @@ task :setup => :environment do
   queue! %[mkdir -p "#{deploy_to}/shared/config/initializers"]
   queue! %[chmod g+rx,u+rwx "#{deploy_to}/shared/config/initializers"]
   queue! %[touch "#{deploy_to}/shared/config/initializers/r.rb"]
-  
+
 
   queue! %[mkdir -p "#{deploy_to}/shared/log"]
   queue! %[chmod g+rx,u+rwx "#{deploy_to}/shared/log"]
@@ -62,6 +62,8 @@ task :deploy => :environment do
     to :launch do
       queue %[
         source /etc/profile
+        ./deploy/sh/elasticsearch.sh stop
+        ./deploy/sh/elasticsearch.sh start
         ./deploy/sh/unicorn.sh stop
         ./deploy/sh/unicorn.sh start
       ]
@@ -84,8 +86,9 @@ task :restart => :environment do
   queue %[
     source /etc/profile
     cd #{deploy_to}/#{current_path}
+    ./deploy/sh/elasticsearch.sh stop
+    ./deploy/sh/elasticsearch.sh start
     ./deploy/sh/unicorn.sh stop
     ./deploy/sh/unicorn.sh start
   ]
 end
-
