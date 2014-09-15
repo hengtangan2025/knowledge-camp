@@ -2,6 +2,7 @@ module KnowledgeCampApi
   class ApplicationController < ActionController::Base
     include ::DisplayHelpers
     include ::ErrorHelpers
+    include ::ApplicationHelper
 
     skip_before_action :verify_authenticity_token
     before_action :check_auth

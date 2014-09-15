@@ -3,15 +3,19 @@ module CourseEditor
     layout 'course_editor/editor', :only => ['edit']
 
     def new
-      @topic = KnowledgeNetPlanStore::Topic.find params[:topic_id]
+      @topic = topic
+      @tutorial = @topic.tutorials.build
+    end
 
-      @tutorial = KnowledgeNetPlanStore::Tutorial.create({
-        :topic => @topic,
-        :title => "教程 #{Time.now}",
-        :creator => current_user
-      })
+    def update
+      tutorial = KnowledgeNetPlanStore::Tutorial.find(params[:id])
+      tutorial.update_attributes(allowed_params)
+      redirect_to tutorial
+    end
 
-      redirect_to :back
+    def create
+      tutorial = topic.tutorials.create(allowed_params.merge(:creator => current_user))
+      redirect_to tutorial.topic
     end
 
     def edit
@@ -23,6 +27,16 @@ module CourseEditor
       if @tutorial.steps.blank?
         @tutorial.steps.create
       end
+    end
+
+    private
+
+    def allowed_params
+      params.require(:tutorial).permit(:title, :desc, :image, {:point_ids => []})
+    end
+
+    def topic
+      KnowledgeNetPlanStore::Topic.find(params[:topic_id])
     end
   end
 end

@@ -29,6 +29,7 @@ gem "simple_form", "~> 3.0.2"
 gem "unicorn"
 gem "rest-client" # 简化 http 请求
 gem "htmldiff"
+gem "streamio-ffmpeg"
 
 # -------------
 
@@ -36,6 +37,9 @@ gem "htmldiff"
 gem 'ruby-pinyin'
 # 代码高亮
 gem 'haml-coderay'
+# 全文搜索
+gem "elasticsearch-model", :require => "elasticsearch/model"
+gem "elasticsearch-rails", :require => "elasticsearch/rails"
 
 gem "mina",
     :github => "fushang318/mina",
