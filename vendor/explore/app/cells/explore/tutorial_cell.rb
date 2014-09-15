@@ -11,5 +11,12 @@ module Explore
       @tutorials = tutorials
       render
     end
+
+    def list_with_title(tutorials, title, view)
+      @tutorials = tutorials
+      @title = title
+      @view = view
+      render
+    end
   end
 end

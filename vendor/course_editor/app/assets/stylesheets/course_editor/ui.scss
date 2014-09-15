@@ -250,15 +250,29 @@ body.tutorial-editor {
           border:solid 1px #ddd;
           background-color: #FFF;
 
-          .scroller {
+          .ct-wrapper {
             position: absolute;
+            top:0;left:0;right:0;bottom:105px;
+            overflow:hidden;
+          }
+
+          .scroller {
             overflow-y: auto;
-            top:0;left:0;right:0;bottom:170px;
-            border-bottom:solid 1px #ddd;
+            max-height:calc(100% - 65px);
+            position: relative;
 
             .blocks {
-              margin:5px;
+              padding:0 5px;
+              padding-bottom: 0;
               .block {
+                &:first-child {
+                  margin-top: 5px;
+                }
+
+                &:last-child {
+                  margin-bottom: 0;
+                }
+
                 display: block; width:100%;
                 box-sizing: border-box;
                 resize:none;
@@ -335,50 +349,51 @@ body.tutorial-editor {
             }
           }
 
+          .adds {
+            margin-bottom: 5px;
+            margin-top:5px;
+            position: relative;
+            height:60px;
+            .add {
+              pointer-events:none;
+              opacity:1;
+              position:absolute;
+              left:5px;right:5px;
+              box-sizing:border-box;
+              height:60px;padding-top:10px;
+              text-align:center;
+              background-color:#f1f1f1;
+              cursor: pointer;
+              i {display:block;font-size:22px;line-height:20px;margin-bottom:5px;}
+              span {display:block;font-size:12px;}
+            }
+            .add-hover {
+              opacity: 0;
+              &:hover {
+                opacity: 1;
+              }
+              position:absolute;
+              left:5px;right:5px;
+              height:60px;
+              text-align:center;
+              background-color:#f1f1f1;
+              cursor: pointer;
+              i {display:block;font-size:22px;line-height:20px;margin-top:10px;margin-bottom:5px;}
+              span {display:block;font-size:12px;}
+              .item{
+                width:33.3333%;float:left;
+                height:100%;
+                &:hover, &.active{
+                  background-color:rgba(black, 0.05);
+                  // background-color:#FFFBE3;
+                }
+              }   
+            }
+          }
+
           .opps {
             position:absolute;
             bottom:5px;left:5px;right:5px;
-
-            .adds {
-              margin-bottom: 5px;
-              position: relative;
-              height:60px;
-              .add {
-                pointer-events:none;
-                opacity:1;
-                position:absolute;
-                left:0;right:0;
-                box-sizing:border-box;
-                height:60px;padding-top:10px;
-                text-align:center;
-                background-color:#f1f1f1;
-                cursor: pointer;
-                i {display:block;font-size:22px;line-height:20px;margin-bottom:5px;}
-                span {display:block;font-size:12px;}
-              }
-              .add-hover {
-                opacity: 0;
-                &:hover {
-                  opacity: 1;
-                }
-                position:absolute;
-                left:0;right:0;
-                height:60px;
-                text-align:center;
-                background-color:#f1f1f1;
-                cursor: pointer;
-                i {display:block;font-size:22px;line-height:20px;margin-top:10px;margin-bottom:5px;}
-                span {display:block;font-size:12px;}
-                .item{
-                  width:33.3333%;float:left;
-                  height:100%;
-                  &:hover, &.active{
-                    background-color:rgba(black, 0.05);
-                    // background-color:#FFFBE3;
-                  }
-                }   
-              }
-            }
 
             .assigns {
               height:60px;
@@ -529,8 +544,8 @@ body.tutorial-editor {
           }
 
           &.has-continue {
-            .scroller {
-              bottom:105px;
+            .ct-wrapper {
+              bottom: 40px;
             }
             .assigns {
               display:none;

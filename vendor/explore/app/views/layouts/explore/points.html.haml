@@ -1,0 +1,11 @@
+!!!
+%html{:lang => :zh}
+  = render :partial => 'layouts/explore/head'
+
+  %body.point
+    .page-drawer-front
+      .page-content.container{:data => {:scroller => true}}
+        .row{:class => action_css_class}
+          - if !user_signed_in?
+            .page-not-signed-in 你正以未登录状态进行浏览
+          = yield

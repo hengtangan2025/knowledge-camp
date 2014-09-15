@@ -67,3 +67,50 @@
     }
   }
 }
+
+@mixin relations {
+  .relations, .author {
+    background-color: #FFF;
+    margin:5px;
+
+    .tt {
+      height:40px;line-height:40px;
+      padding:0 10px;
+    }
+
+    .blank {
+      border-top:solid 1px #eee;
+      height:40px;line-height:40px;
+      padding:0 10px;
+      color:#999;
+    }
+
+    .relation {
+      display:block;
+      border-top:solid 1px #eee;
+      height:50px;line-height:50px;
+      position:relative;
+      color:#333;
+      text-decoration: none !important;
+
+      &:active {
+        background-color: $area-dawn;
+      }
+
+      .img {
+        width:40px;height:40px;
+        position: absolute;
+        top:5px;left:5px;
+      }
+      span.t {
+        margin-left: 55px;
+      }
+
+      .prog {
+        position:absolute;
+        width:30px;height:30px;
+        top:10px;right:10px;
+      }
+    }
+  }
+}

@@ -13,10 +13,6 @@ module Explore
 
       tutorials = Explore::Mock.tutorials
       @tutorials = tutorials.select {|x| x.related.include? @point.name}
-      # render :json => {
-      #   :ts => tutorials.map {|t| t.related},
-      #   :name => @point.name 
-      # }
     end
   end
 end

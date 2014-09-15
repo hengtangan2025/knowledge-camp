@@ -20,11 +20,11 @@
 
       .tutorial-header
         .tabs
-          .tab.base.active
+          %a.tab.base{:href => "/explore/tutorials/#{@tutorial.id}", :class => (@active == :base ? 'active' : '')}
             .tbox
               %i.fa.fa-book
               %span 简介
-          .tab.points
+          %a.tab.points{:href => "/explore/tutorials/#{@tutorial.id}/points", :class => (@active == :points ? 'active' : '')}
             .tbox
               %i.fa.fa-circle-o
               %span 知识点
@@ -39,7 +39,7 @@
             .page-not-signed-in 你正以未登录状态进行浏览
           = yield
 
-      .tutorial-continue
+      %a.tutorial-continue{:href => "/explore/tutorials/#{@tutorial.id}/flow"}
         %span 继续学习
         %span [80%]
         %i.fa.fa-chevron-right

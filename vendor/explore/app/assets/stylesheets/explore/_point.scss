@@ -109,32 +109,60 @@
       }
     }
   }
+
   .point {
-    margin-bottom: 20px;
     .head {
-      padding:20px;
-      border-bottom:solid 1px #e6e6e6;
-      @include clearfix;
-      $w:70px;
-      .icon {
-        @include border-box;
-        width:$w;height:$w;
-        border:solid $w / 7;
-        border-radius:100px;
-        float: left;
-      }
-      .name {
-        font-size: 16px;
-        margin-left: $w + 20px;
-        margin-bottom: 10px;
-      }
-      .desc {
-        margin-left: $w + 20px;
-        color:$text-quiet;
+      background-color: #FFF;
+      width:100%;
+      padding-bottom:33.333333%;
+      position: relative;
+      border-bottom:solid 1px #DDDDDD;
+      .hbox {
+        position: absolute;
+        top:0;left:0;right:0;bottom:0;
+        .ibox {
+          position:absolute;
+          width:33.333333%;
+          top:0;left:0;
+          bottom:0;
+
+          $w:60px;
+          .icon {
+            @include border-box;
+            width:$w;height:$w;
+            border:solid $w / 7;
+            border-radius:100px;
+            position:absolute;
+            top:50%;margin-top:-$w/2;
+            left:50%;margin-left:-$w/2;
+          }
+        }
+
+        .nbox {
+          position:absolute;
+          width:66.6666666%;
+          top:0;right:0;
+          bottom:0;
+          @include border-box;
+          padding:10px;
+
+          .name {
+            margin-top:10px;
+            font-size: 16px;
+          }
+        }
       }
     }
   }
   .tutorials {
-    @include tutorials;
+    .desc {
+      background-color:#fff;
+      margin:5px;
+      line-height:20px;
+      padding:10px;
+    }
+
+    @include relations;
   }
+
 }

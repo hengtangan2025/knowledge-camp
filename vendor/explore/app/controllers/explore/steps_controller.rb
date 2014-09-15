@@ -1,6 +1,6 @@
 module Explore
   class StepsController < ApplicationController
-    layout 'explore/tutorial', :only => [:show, :finish, :flow]
+    layout 'explore/reading', :only => [:flow]
 
     def index
     end
@@ -20,9 +20,7 @@ module Explore
           },
           :data => {
             :title => x.title,
-            :desc => x.desc,
-            :imgs => x.imgs,
-            :video => x.video
+            :blocks => x.blocks
           }
         }
       }

@@ -655,9 +655,18 @@ class Form
       .appendTo $ops
 
     @_wrap_height $textarea
+    setTimeout =>
+      @__auto_block_bottom_pos $textarea.closest('.block')
+    , 50
 
 
   cancel_edit: ($block)->
+    val = $block.data('block-content')
+
+    if jQuery.trim(val).length is 0
+      @do_delete_block $block
+      return
+
     $block.find('pre').html $block.data('block-content')
     $block.find('textarea').remove()
     $block.find('.ops').remove()
@@ -665,7 +674,13 @@ class Form
 
   do_save_content: ($block)->
     $textarea = $block.find('textarea')
-    $block.data('block-content', $textarea.val())
+    val = $textarea.val()
+
+    if jQuery.trim(val).length is 0
+      @do_delete_block $block
+      return
+
+    $block.data('block-content', val)
 
     url = @editor.step_url_prefix + @step_id + '/update_content'
 
@@ -695,14 +710,45 @@ class Form
 
   _wrap_height: ($textarea)->
     $pre = $textarea.closest('.block').find('pre')
-    setTimeout ->
+
+    setTimeout =>
       val = $textarea.val()
       $pre.html(val + ' ')
-      setTimeout ->
+      setTimeout =>
         height = $pre.height()
         $textarea.css 'height', height + 12 + 20
+
+        setTimeout =>
+          caret_top = $textarea.textareaHelper('caretPos').top
+          $block = $textarea.closest('.block')
+          block_height = $block.outerHeight()
+
+          if block_height - caret_top < 110 || @_auto
+            @auto = false
+            @__auto_block_bottom_pos $block
+        , 0
       , 0
     , 0
+
+  __auto_block_bottom_pos: ($block)->
+    # console.log 'auto pos'
+    $scroller = $block.closest('.scroller')
+    scr_height   = $scroller.height()
+    scr_s_height = $scroller[0].scrollHeight
+    sct_s_top    = $scroller.scrollTop()
+    
+    block_height = $block.outerHeight()
+    block_top    = $block.position().top
+
+    realtop    = sct_s_top + block_top
+    realbottom = realtop + block_height
+
+    scr_s_bottom = sct_s_top + scr_height
+
+    # console.log scr_s_bottom, realbottom
+
+    if scr_s_bottom < realbottom
+      $scroller.scrollTop sct_s_top + realbottom - scr_s_bottom
 
 
 class SubForm

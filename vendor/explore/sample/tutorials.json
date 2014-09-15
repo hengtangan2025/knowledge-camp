@@ -8,30 +8,55 @@
     "steps": [
       {
         "title": "站立姿势",
-        "desc": "灶台前操作的正确姿势应该是，两脚分开，自然站立。",
-        "imgs": [
-          "http://mindpin.oss-cn-hangzhou.aliyuncs.com/image_service/images/wN60Ly8I/adaptive_height_300_wN60Ly8I.png",
-          "http://mindpin.oss-cn-hangzhou.aliyuncs.com/image_service/images/p3Pualvi/adaptive_height_300_p3Pualvi.png"
-        ],
-        "video": ""
+        "blocks": [
+          {
+            "kind": "text",
+            "text": "灶台前操作的正确姿势应该是，两脚分开，自然站立。"
+          },
+          {
+            "kind": "image",
+            "url": "http://mindpin.oss-cn-hangzhou.aliyuncs.com/image_service/images/wN60Ly8I/adaptive_height_300_wN60Ly8I.png",
+            "width": "300",
+            "height": "251"
+          },
+          {
+            "kind": "image",
+            "url": "http://mindpin.oss-cn-hangzhou.aliyuncs.com/image_service/images/p3Pualvi/adaptive_height_300_p3Pualvi.png",
+            "width": "300",
+            "height": "250"
+          }
+        ]
       },
       {
         "title": "转身和移动",
-        "desc": "左转身加调料，在灶上翻炒；右转身出菜时，两脚要随身体自然移动。",
-        "imgs": [],
-        "video": ""
+        "blocks": [
+          {
+            "kind": "text",
+            "text": "左转身加调料，在灶上翻炒；右转身出菜时，两脚要随身体自然移动。"
+          }
+        ]
       },
       {
         "title": "为何要遵循标准动作？",
-        "desc": "动作过于呆板，僵硬，长时间操作会出现疲劳，甚至损伤身体。所以要反复练习。",
-        "imgs": [],
-        "video": ""
+        "blocks": [
+          {
+            "kind": "text",
+            "text": "动作过于呆板，僵硬，长时间操作会出现疲劳，甚至损伤身体。所以要反复练习。"
+          }
+        ]
       },
       {
         "title": "观看示范动作",
-        "desc": "请观看视频，了解基本站姿的示范动作：",
-        "imgs": [],
-        "video": "http://oss.aliyuncs.com/pie-documents/20140729/1-灶台前操作的基本姿势.mp4"
+        "blocks": [
+          {
+            "kind": "text",
+            "text": "请观看视频，了解基本站姿的示范动作："
+          },
+          {
+            "kind": "video",
+            "url": "http://oss.aliyuncs.com/pie-documents/20140729/1-灶台前操作的基本姿势.mp4"
+          }
+        ]
       }
     ],
     "parents": [],
