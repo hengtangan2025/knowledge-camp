@@ -145,9 +145,35 @@ module VirtualFileSystem
                             :class_name => 'KnowledgeNetStore::Point',
                             :inverse_of => :virtual_files
     has_one :block,
-            :class_name => 'KnowledgeCamp::block'
+            :class_name => 'KnowledgeCamp::Block'
 
     default_scope -> { order_by(:updated_at => :desc) }
+
+    field :width,    :type => Integer
+    field :height,   :type => Integer
+    field :duration, :type => Integer
+
+    alias old_width    width
+    alias old_height   height
+    alias old_duration duration
+
+    def width
+      return if !image?
+      get_dimension! if !old_width
+      old_width
+    end
+
+    def height
+      return if !image?
+      get_dimension! if !old_height
+      old_height
+    end
+
+    def duration
+      return if !video?
+      get_duration! if !old_duration
+      old_duration
+    end
 
     def attrs
       {
@@ -157,11 +183,41 @@ module VirtualFileSystem
         :virtual_path => self.path,
         :created_at   => self.created_at,
         :updated_at   => self.updated_at,
-      }.merge(file_entity ? {:url => file_entity.attach.url} : {})
+      }.merge(file_entity ? {:url => attach.url} : {})
+       .merge(image? ? {:width => width, :height => height} : {})
+       .merge(video? ? {:duration => duration} : {})
     end
 
     def file_entity
       self.store_id ? FilePartUpload::FileEntity.find(self.store_id) : nil
+    end
+
+    def image?
+      self.attach.content_type.include?("image")
+    end
+
+    def video?
+      self.attach.content_type.include?("video") ||
+      self.attach.content_type.include?("application/mp4")
+    end
+
+    def attach
+      self.file_entity.attach
+    end
+
+    private
+
+    def get_dimension!
+      img = MiniMagick::Image.new(attach.path)
+      self.width  = img[:width]
+      self.height = img[:height]
+      self.save if !self.new_record?
+    end
+
+    def get_duration!
+      vid = FFMPEG::Movie.new(attach.path)
+      self.duration = vid.duration
+      self.save if !self.new_record?
     end
   end
 end

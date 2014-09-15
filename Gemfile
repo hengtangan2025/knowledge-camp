@@ -29,6 +29,7 @@ gem "simple_form", "~> 3.0.2"
 gem "unicorn"
 gem "rest-client" # 简化 http 请求
 gem "htmldiff"
+gem "streamio-ffmpeg"
 
 # -------------
 
