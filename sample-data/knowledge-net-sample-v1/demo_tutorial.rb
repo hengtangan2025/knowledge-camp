@@ -8,7 +8,7 @@ old_topic = KnowledgeNetPlanStore::Topic.where(desc: /开发用填充数据\./).
 
 if old_topic
   old_topic.destroy
-  old_tutorial = topic.tutorials.first
+  old_tutorial = old_topic.tutorials.first
 
   if old_tutorial
     old_tutorial.steps.destroy_all
@@ -114,11 +114,3 @@ add_vfileblock(b1, :image, "http://www.heroicfantasygames.com/AoD/5.jpg")
 c.set_continue(false)
 
 c.add_content("text", "所以不愿意侧身所谓斯文之列其实也不能够但在不知不觉的中间，不怀著危险的恐惧，地球也规矩地循著唯一的轨道，通溶化在月光裡，波涌似的，自己走出家来，就可自由假设吗？就是，闯入无人婚纱店.")
-
-
-
-
-
-
-
-
