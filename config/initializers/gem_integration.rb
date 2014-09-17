@@ -32,7 +32,7 @@ module KnowledgeNetPlanStore
 
     pinyin :title
 
-    alias old_attrs attrs
+    alias old_attrs    attrs
 
     def attrs
       old_attrs.merge(:creator => creator.info)
@@ -222,11 +222,6 @@ module VirtualFileSystem
   end
 end
 
-User.send :has_many,
-          :virtual_files,
-          :class_name => "VirtualFileSystem::File",
-          :foreign_key => :creator_id
-
 def randstr(length=8)
   base = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
   size = base.size
@@ -335,12 +330,24 @@ end
 KnowledgeNetStore::Net.send :include, Kaminari::MongoidExtension::Document
 VirtualFileSystem::File.send :include, Kaminari::MongoidExtension::Document
 
-User.send :include, KnowledgeCamp::Step::NoteCreator
-User.send :include, KnowledgeCamp::HasManyLearnRecords
 KnowledgeNetPlanStore::Uploader.send :include, ImageUploaderMethods
 
 class User
-  has_many :tutorials, :class_name => KnowledgeNetPlanStore::Tutorial.name
+  include KnowledgeCamp::Step::NoteCreator
+  include KnowledgeCamp::HasManyLearnRecords
+  include TutorialLearnProgress::UserMethods
+
+  has_many :virtual_files,
+           :class_name => "VirtualFileSystem::File",
+           :foreign_key => :creator_id
+
+  has_many :tutorials,
+           :class_name => KnowledgeNetPlanStore::Tutorial.name,
+           :foreign_key => :creator_id
+end
+
+class KnowledgeCamp::LearnRecord
+  include TutorialLearnProgress::LearnRecordMethods
 end
 
 class KnowledgeCamp::Block
