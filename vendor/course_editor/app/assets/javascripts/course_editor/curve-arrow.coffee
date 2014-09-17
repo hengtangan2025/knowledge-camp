@@ -117,7 +117,6 @@ class SelectList
     @open_func = funcs.on_open || -> {}
     @close_func = funcs.on_close || -> {}
 
-
     @open_func()
 
     @$elm.show(200)

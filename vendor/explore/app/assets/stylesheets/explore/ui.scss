@@ -233,6 +233,17 @@ body.tutorial {
       .tab {
         @include col(1/3, $gap:0);
         text-align:center;
+        color:#333;
+
+        &:hover {
+          text-decoration:none;
+          .tbox {
+            background-color: #f1f1f1;
+            span {
+            }
+          }
+        }
+
         .tbox {
           background-color: #FFF;
           border-left:solid 1px #ddd;
@@ -266,12 +277,16 @@ body.tutorial {
     bottom:0;left:0;right:0;
     height:50px;line-height:50px;
     padding-left:15px;
-    // text-align:center;
 
     background-color: $area-info;
     color:white;
-    // text-align: center;
     font-size: 16px;
+
+    text-decoration:none !important;
+    &:hover {
+      background-color: lighten($area-info, 10%);
+    }
+
     i {
       position: absolute;
       top:0;right:0;width:50px;height:50px;line-height:50px;
@@ -281,6 +296,26 @@ body.tutorial {
         position:relative;
         top:2px;
       }
+    }
+  }
+}
+
+body.point {
+  .page-drawer-front {
+    background-color: #f1f1f1;
+    .page-content {top:0;}
+  }
+}
+
+body.reading {
+  .page-header {
+    background-color:#44B2F5;
+    color:white;
+    a.left {
+      color:white;
+    }
+    .text {
+      text-align: left;
     }
   }
 }

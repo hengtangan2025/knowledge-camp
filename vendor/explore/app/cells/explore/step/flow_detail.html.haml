@@ -2,34 +2,34 @@
   @step.data = OpenStruct.new if @step.data.blank?
 
   title = @step.data.title
-  desc  = @step.data.desc
-
-  video = @step.data.video
-  imgs  = @step.data.imgs
-
-  has_imgs = imgs.present?
-  has_video = video.present?
-
+  blocks = @step.data.blocks
   continue = @step.continue
 
 .detail
   .title
-    %i.fa.fa-chevron-right
     %span= title
-  .desc= desc
 
-  - if has_video
-    .row
-      .video
-        .box
-          %video{:src => video, :controls => true, :width => '100%', :height => '100%'}
+  .blocks
+    - blocks.each do |block|
+      - b = block.table
 
-  - if has_imgs
-    .imgs
-      - imgs.each do |img|
-        .img
-          .box
-            .box1= fit_image img, :width => '100%', :height => '100%'
+      - if b.kind == 'text'
+        .block.text= b.text
+
+      - if b.kind == 'image'
+        :ruby
+          if b.width
+            pb = 100.0 * b.height.to_i / b.width.to_i
+          else
+            pb = 100
+          end
+
+        .block.image{:style => "padding-bottom:#{pb}%;"}
+          .box= fit_image b.url, :width => '100%', :height => '100%'
+
+      - if b.kind == 'video'
+        .block.video
+          %video{:src => b.url, :controls => true, :width => '100%', :height => '100%'}
 
   .continue
     - if continue == 'end'

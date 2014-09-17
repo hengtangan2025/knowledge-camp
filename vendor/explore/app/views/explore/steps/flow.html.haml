@@ -1,14 +1,4 @@
-:ruby
-  tutorial = @tutorial
-
-.col-phone-12
-  .header
-    .row
-      .img
-        .box= fit_image tutorial.img, :width => '100%', :height => '100%'
-    .title= tutorial.title
-    .desc= tutorial.desc
-  .steps-flow
-    - tutorial.steps.each do |step|
-      .step{:data => {:id => step.id}}
-        = render_cell 'explore/step', :flow_detail, step, self
+.steps-flow
+  - @tutorial.steps.each do |step|
+    .step{:data => {:id => step.id}}
+      = render_cell 'explore/step', :flow_detail, step, self

@@ -6,22 +6,16 @@
 
 .point
   .head
-    .icon{:style => "border-color:#{bg}"}
-    .name
-      %span= @point.name
-    :ruby
-      desc = @point.desc.blank? ? '没有描述信息' : @point.desc
-    .desc= desc
+    .hbox
+      .ibox
+        .icon{:style => "border-color:#{bg}"}
+      .nbox
+        .name
+          %span= @point.name
 
-.wall 隶属于知识网络：
-%a.net{:href => net_url}
-  .back
-    %i.fa.fa-sitemap
-  .name= @net.name
-  .go
-    %i.fa.fa-chevron-right
+.tutorials
+  :ruby
+    desc = @point.desc.blank? ? '没有描述信息' : @point.desc
+  .desc= desc
 
-.wall 相关教程：
-.col-phone-12
-  .tutorials
-    = render_cell 'explore/tutorial', :list_finish, @tutorials, self
+  = render_cell 'explore/tutorial', :list_with_title, @tutorials, '相关教程', self

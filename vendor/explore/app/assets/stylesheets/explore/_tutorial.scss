@@ -71,149 +71,7 @@
         }
       }
 
-      .relations, .author{
-        background-color: #FFF;
-        margin:5px;
-
-        .tt {
-          height:40px;line-height:40px;
-          padding:0 10px;
-        }
-
-        .blank {
-          border-top:solid 1px #eee;
-          height:40px;line-height:40px;
-          padding:0 10px;
-          color:#999;
-        }
-
-        .relation {
-          border-top:solid 1px #eee;
-          height:50px;line-height:50px;
-          position:relative;
-          .img {
-            width:40px;height:40px;
-            position: absolute;
-            top:5px;left:5px;
-          }
-          span.t {
-            margin-left: 55px;
-          }
-
-          .prog {
-            position:absolute;
-            width:30px;height:30px;
-            top:10px;right:10px;
-          }
-        }
-
-        // min-height:40px;
-        // background-color:lighten($area-warning, 30%);
-        // line-height: 40px;
-        // .parent {
-        //   overflow: hidden;
-        //   border-top:solid 1px rgba(black, 0.1);
-        //   span.adv {
-        //     float: left;
-        //     width:100px;
-        //     text-align: center;
-        //   }
-        //   span.t {
-        //     float: left;
-        //     padding-left: 20px;
-        //   }
-        // }
-      }
-    }
-
-
-    .info {
-      display: none;
-      margin-left: 101px;
-      padding:40px;
-      height:100%;
-      overflow-y: auto;
-      padding-bottom: 60px;
-      box-sizing:border-box;
-
-      .desc {
-        font-size: 16px;
-        position: relative;
-        // margin-top: 30px;
-
-        &:first-letter {
-          font-size: 30px;
-        }
-
-        &:before {
-          position: absolute;
-          content:"\f10d";
-          font-family: FontAwesome;
-          color:$black-30;
-          font-size: 18px;
-          top:0px;left:-25px;
-          line-height: 22px;
-        }
-        &:after {
-          position: absolute;
-          content:"\f10d";
-          font-family: FontAwesome;
-          color:$black-30;
-          font-size: 18px;
-          bottom:0px;right:-25px;
-          line-height:18px;
-          @include transform(rotateY(180deg));
-        }
-      }
-      .enter {
-        position: fixed;
-        left:101px;right:0;bottom:0;
-        background-color: #FFF;
-        height: 60px;
-        border-top:solid 1px #E6E6E6;
-
-        a {
-          $w:40px;
-          background-color: $area-info;
-          position:absolute;
-          height:$w;line-height:$w;width:$w;
-          bottom:10px;right:20px;
-          border-radius:100px;
-          text-align: center;
-          color:white;
-          font-size:0;
-          i {
-            line-height: $w;
-            font-size: $w*0.4;
-          }
-          span {
-            color:$black-30;
-            position: absolute;
-            left:-80px;
-            top:0;
-            font-size:16px;
-          }
-        }
-      }
-      .points {
-        margin-top: 40px;
-        margin-left: -40px;
-        margin-right: -40px;
-        .t {
-          // margin-bottom: 20px;
-          background-color: lighten($area-info, 35%);
-          padding:5px 10px;
-        }
-        .plist {
-          border-top:solid 1px #e6e6e6;
-          // background-color:#f7f7f7;
-          .point {
-            padding-top: 15px;
-            padding-bottom: 15px;
-            text-decoration: none;
-          }
-        }
-      }
+      @include relations;
     }
   }
 }
@@ -508,109 +366,59 @@
 }
 
 .page-explore-steps-flow {
-  .header {
-    border-bottom:dashed 2px #ccc;
-
-    .img {
-      padding-bottom: 60%;
-      position: relative;
-      .box {
-        position: absolute;
-        top:0;left:0;bottom:0;right:0;
-      }
-    }
-    .title {
-      padding: 0 10px;
-      font-size: 24px;
-      margin-top: 20px;
-      margin-bottom: 20px;
-    }
-    .desc {
-      padding: 0 10px;
-      font-size: 16px;
-      margin-bottom: 20px;
-    }
-  }
-
   .steps-flow {
+    background-color: #F1F1F1;
+    padding:5px;
+
     .step {
-      padding-top: 10px;
-      margin-bottom: 10px;
-      border-top:dashed 2px #ccc;
+      background-color: #FFF;
+      margin-top:5px;
       &:first-child {
-        border-top: 0 none;
-      }
-
-      .num {
-        height:21px;
-        margin-bottom: 10px;
-        position: relative;
-        color:$black-50;
-
-        &:after {
-          content:"";
-          position: absolute;
-          top:10px;left:0;right:0;
-          border-top:dashed 1px #ddd;
-          left:40px;
-        }
-
-        span {
-          height: 21px;
-          line-height: 21px;
-          float: left;
-          background-color: #fff;
-          padding-right: 4px;
-          &.current {
-            font-weight: bold;
-          }
-        }
-      }
-
-      .video {
-        margin-top: 10px;
-        margin-left: 20px;
-        margin-right: 20px;
-        margin-bottom: 20px;
+        margin-top: 0;
       }
 
       .title {
-        padding:10px;
-        font-size: 16px;
-        font-weight: bold;
-        i {color:$black-40;font-size: 14px;}
-      }
-      .desc {
-        font-size: 16px;
-        margin-bottom: 20px;
+        height:50px;line-height:50px;
+        border-bottom:solid 1px #EEEEEE;
+        font-size:16px;
         padding:0 10px;
-        padding-top: 10px;
+        position:relative;
+        &:before {
+          content:"";
+          position:absolute;
+          top:0;bottom:0;left:0;
+        }
       }
 
-      .imgs {
+      .blocks {
         padding:10px;
-        .img {
-          margin-bottom: 20px;
-          padding-bottom: 100%;
-          position: relative;
-          // background-color: $black-10;
-          border:solid 1px #E6E6E6;
-
+        .block {
+          margin-bottom:10px;
           &:last-child {
-            margin-bottom: 10px;
+            margin-bottom:0;
           }
+        }
 
-          .box1{
-            position: absolute;
-            top:3px;left:3px;right:3px;bottom:3px;
+        .block.text {
+          font-size: 16px;
+        }
+
+        .block.image {
+          position:relative;
+          .box {
+            position:absolute;
+            top:0;left:0;right:0;bottom:0;
           }
+        }
+
+        .block.video {
+          font-size:0;
         }
       }
 
       .continue {
+        padding:0 10px 10px;
         a.go, a.submit{
-          margin-left: 10px;margin-right: 10px;
-          margin-bottom: 20px;
           display: block;
           text-align: center;
           background-color: lighten($area-info, 30%);
@@ -623,14 +431,12 @@
           }
         }
         .end {
-          margin-left: -10px;margin-right: -10px;
-          margin-bottom: 20px;
           display: block;
           text-align: center;
           background-color: lighten($area-caution, 40%);
           font-size: 16px;
           height:40px;line-height: 40px;
-          // border-radius:4px;
+          border-radius:4px;
         }
         .select {
           .question {
@@ -678,6 +484,17 @@
           }
         }
       }
+    }
+  }
+}
+
+
+.page-explore-tutorials-points {
+  .list {
+    margin:5px;
+    background-color: #FFF;
+    .point {
+      border-bottom: solid 1px #eee;
     }
   }
 }
