@@ -11,6 +11,10 @@ module KnowledgeNetPlanStore
   end
 
   class Topic
+    include StandardSearch
+
+    standard :title, :desc
+
     has_and_belongs_to_many :points,
                             :class_name => "KnowledgeNetStore::Point"
 
@@ -21,6 +25,7 @@ module KnowledgeNetPlanStore
 
   class Tutorial
     include KnowledgeCamp::Step::Owner
+    include TutorialLearnProgress::TutorialMethods
     include PinyinSearch
 
     has_and_belongs_to_many :points,
@@ -31,8 +36,9 @@ module KnowledgeNetPlanStore
     validates :creator_id, :presence => true
 
     pinyin :title
+    standard :desc
 
-    alias old_attrs attrs
+    alias old_attrs    attrs
 
     def attrs
       old_attrs.merge(:creator => creator.info)
@@ -222,11 +228,6 @@ module VirtualFileSystem
   end
 end
 
-User.send :has_many,
-          :virtual_files,
-          :class_name => "VirtualFileSystem::File",
-          :foreign_key => :creator_id
-
 def randstr(length=8)
   base = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
   size = base.size
@@ -335,12 +336,24 @@ end
 KnowledgeNetStore::Net.send :include, Kaminari::MongoidExtension::Document
 VirtualFileSystem::File.send :include, Kaminari::MongoidExtension::Document
 
-User.send :include, KnowledgeCamp::Step::NoteCreator
-User.send :include, KnowledgeCamp::HasManyLearnRecords
 KnowledgeNetPlanStore::Uploader.send :include, ImageUploaderMethods
 
 class User
-  has_many :tutorials, :class_name => KnowledgeNetPlanStore::Tutorial.name
+  include KnowledgeCamp::Step::NoteCreator
+  include KnowledgeCamp::HasManyLearnRecords
+  include TutorialLearnProgress::UserMethods
+
+  has_many :virtual_files,
+           :class_name => "VirtualFileSystem::File",
+           :foreign_key => :creator_id
+
+  has_many :tutorials,
+           :class_name => KnowledgeNetPlanStore::Tutorial.name,
+           :foreign_key => :creator_id
+end
+
+class KnowledgeCamp::LearnRecord
+  include TutorialLearnProgress::LearnRecordMethods
 end
 
 class KnowledgeCamp::Block
