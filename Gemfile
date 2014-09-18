@@ -88,6 +88,10 @@ gem 'ueditor.rails',
     # :tag => 'v0.0.5'
     :ref => 'b832fde'
 
+# 解析 UserAgent
+# https://github.com/josh/useragent
+gem 'useragent'
+
 # 文件上传，用于用户头像逻辑
 gem 'carrierwave-mongoid', :require => 'carrierwave/mongoid'
 # carrierwave 用到的图片切割

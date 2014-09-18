@@ -1,0 +1,27 @@
+:ruby
+  nav_config = [
+    ['/explore/topics',  '所有主题', 'fa-book'],
+  ]
+
+.container
+  .row
+    .page-nav.home.col-pad-2
+      %a.home{:href => '/', :data => {:toggle => true}}
+        %i.fa.fa-home
+        %span 首页
+    .page-nav.col-pad-10
+      - path = request.path_info
+      - nav_config.each do |c|
+        - url, name, icon = c
+        - active_klass = ( path == url ? 'active' : '' )
+
+        %a{:href => url, :class => active_klass, :data => {:toggle => true}}
+          %i.fa{:class => icon}
+          %span= name
+
+      - if @user
+        .auth-info
+          %span.name= @user.name
+          %a{href: "/account/sign_out", data: { method: :delete }}
+            %i.fa.fa-sign-out
+            %span 用户登出

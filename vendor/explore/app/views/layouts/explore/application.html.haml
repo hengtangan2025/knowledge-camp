@@ -1,41 +1,20 @@
 !!!
 %html{:lang => :zh}
-  = render :partial => 'layouts/explore/head'
+  %head
+    %meta{:'http-equiv' => 'Content-Type', :content => 'text/html; charset=utf-8'}
+    %meta{:name => 'viewport', :content => 'width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no'}
+
+    - title = yield :page_title
+    - title = "Knowledge Camp" if title.blank?
+
+    %title= title
+    = stylesheet_link_tag 'application', :media => 'screen'
+    = csrf_meta_tags
+    = javascript_include_tag 'application'
 
   %body
-    .page-drawer-menu
-      .user
-        .avatar= avatar User.new, :large
-        .name 梁振东
-      .menu
-        - active = yield :active
-
-        .item.all-topics{:class => active == 'all-topics' ? 'active' : ''}
-          %i.fa.fa-home
-          .text 所有课程
-        .item.my-topics
-          %i.fa.fa-book
-          .text 我的课程
-        .item.my-difficult-points
-          %i.fa.fa-info-circle
-          .text 我的难点
-        .item.my-questions
-          %i.fa.fa-question-circle
-          .text 我的问题
-        .item.my-notes
-          %i.fa.fa-pencil-square-o
-          .text 我的笔记
-
-    .page-drawer-front
-      .page-header
-        %a.left.toggle{:href => 'javascript:;'}
-          %i.fa.fa-bars
-        .text= yield :bartext
-        %a.right.search{:href => 'javascript:;'}
-          %i.fa.fa-search
-
-      .page-content.container{:data => {:scroller => true}}
-        .row{:class => action_css_class}
-          - if !user_signed_in?
-            .page-not-signed-in 你正以未登录状态进行浏览
-          = yield
+    .page-header
+      = render_cell 'explore/layout', :nav, :user => current_user
+    .page-content.container
+      .row{:class => action_css_class}
+        = yield
