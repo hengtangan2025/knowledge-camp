@@ -11,6 +11,10 @@ module KnowledgeNetPlanStore
   end
 
   class Topic
+    include StandardSearch
+
+    standard :title, :desc
+
     has_and_belongs_to_many :points,
                             :class_name => "KnowledgeNetStore::Point"
 
@@ -32,6 +36,7 @@ module KnowledgeNetPlanStore
     validates :creator_id, :presence => true
 
     pinyin :title
+    standard :desc
 
     alias old_attrs    attrs
 

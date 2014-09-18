@@ -2,17 +2,11 @@ module PinyinSearch
   extend ActiveSupport::Concern
 
   included do
-    include Searchable
-
-    PinyinSearch.enabled_models.add(self)
+    include StandardSearch
 
     delegate :pinyin_fields, :to => :class
 
     before_save :save_pinyin_fields
-  end
-
-  def self.enabled_models
-    @_enabled_models ||= Set.new
   end
 
   private
@@ -28,6 +22,8 @@ module PinyinSearch
 
   module ClassMethods
     def pinyin(*fields)
+      standard(*fields)
+
       ext_fields = fields.select do |field|
         self.fields.include?(field.to_s) &&
         self.fields[field.to_s].type == String
@@ -63,13 +59,15 @@ module PinyinSearch
     end
 
     def pinyin_search(q)
+      fields = pinyin_fields.map {|f| pinyin_fields_from(f)}.flatten 
+
       param = {
         :query => {
           :multi_match => {
-            :fields   => [:name_pinyin, :name_abbrev],
+            :fields   => fields,
             :type     => "phrase",
             :query    => q,
-            :analyzer =>"standard"
+            :analyzer => "standard"
           }
         }
       }
