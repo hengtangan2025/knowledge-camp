@@ -18,6 +18,16 @@ class TutorialLearnProgress
   module TutorialMethods
     extend ActiveSupport::Concern
 
+    def progress_by(user)
+      progress = user.tutorial_learn_progresses.where(:tutorial_id => self.id).first
+      return 0 if !progress
+      progress.value
+    end
+
+    def is_learned_by?(user)
+      100 == self.progress_by(user)
+    end
+
     module ClassMethods
       def hot_list(since: Time.at(0))
         criteria = TutorialLearnProgress.where(:updated_at.gt => since,
