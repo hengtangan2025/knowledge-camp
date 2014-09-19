@@ -18,5 +18,10 @@ module Explore
       @view = view
       render
     end
+
+    def learning(tutorials)
+      @tutorials = tutorials
+      render
+    end
   end
 end

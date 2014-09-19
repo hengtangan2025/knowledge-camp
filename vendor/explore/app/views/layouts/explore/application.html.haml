@@ -9,12 +9,13 @@
 
     %title= title
     = stylesheet_link_tag 'application', :media => 'screen'
+    = stylesheet_link_tag 'explore/web', :media => 'screen'
     = csrf_meta_tags
     = javascript_include_tag 'application'
 
-  %body
+  %body.explore
     .page-header
       = render_cell 'explore/layout', :nav, :user => current_user
     .page-content.container
-      .row{:class => action_css_class}
+      .row{:class => "#{action_css_class}-web"}
         = yield

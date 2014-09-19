@@ -1,8 +1,7 @@
 module CourseEditor
   class TopicsController < ApplicationController
     def show
-      # @topic = KnowledgeNetPlanStore::Topic.find(params[:id])
-      render :text => 'asdsadadas'
+      @topic = KnowledgeNetPlanStore::Topic.find(params[:id])
     end
 
     def new

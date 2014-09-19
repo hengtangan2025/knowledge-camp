@@ -25,5 +25,7 @@ module KnowledgeCamp
     config.i18n.default_locale = 'zh'
     config.encoding = 'utf-8'
     config.autoload_paths += %W(#{config.root}/lib)
+
+    config.assets.precompile += %w( explore/web.css )
   end
 end

@@ -312,6 +312,7 @@ module KnowledgeNetStore
     after_create :create_default_plan
 
     def default_plan
+      create_default_plan if plans.blank?
       plans.first
     end
 
@@ -322,7 +323,7 @@ module KnowledgeNetStore
     private
 
     def create_default_plan
-      KnowledgeNetPlanStore::Plan.create :title => "default_plan"
+      self.plans.create :title => "default_plan"
     end
   end
 
@@ -333,8 +334,14 @@ module KnowledgeNetStore
   end
 end
 
-KnowledgeNetStore::Net.send :include, Kaminari::MongoidExtension::Document
-VirtualFileSystem::File.send :include, Kaminari::MongoidExtension::Document
+[
+  KnowledgeNetStore::Net,
+  VirtualFileSystem::File,
+  KnowledgeNetPlanStore::Topic,
+  KnowledgeNetPlanStore::Tutorial
+].each do |klass|
+  klass.send :include, Kaminari::MongoidExtension::Document
+end
 
 KnowledgeNetPlanStore::Uploader.send :include, ImageUploaderMethods
 

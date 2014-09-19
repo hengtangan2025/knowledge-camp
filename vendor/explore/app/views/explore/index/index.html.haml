@@ -1,14 +1,17 @@
-.section
-  %h3 正在学习的教程
+.col-pad-12
+  .sections.piece.piece-shelf
+    %section.piece.piece-box
+      %h4 正在学习的教程
+      = render_cell 'explore/tutorial', :learning, @learning_tutorials
 
-.section
-  %h3 推荐主题
-  = render_cell 'explore/topic', :grid, @topics
+    %section.piece.piece-box
+      %h4 推荐主题
+      = render_cell 'explore/topic', :grid, @topics
 
-.section
-  %h3 最新主题
-  = render_cell 'explore/topic', :grid, @recommend_topics
+    %section.piece.piece-box
+      %h4 最新主题
+      = render_cell 'explore/topic', :grid, @recommend_topics
 
-.section
-  %h3 热门主题
-  = render_cell 'explore/topic', :grid, @newest_topics
+    %section.piece.piece-box
+      %h4 热门主题
+      = render_cell 'explore/topic', :grid, @newest_topics

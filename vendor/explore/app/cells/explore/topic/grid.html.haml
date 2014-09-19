@@ -1,3 +1,13 @@
-.topics.grid
+.topics.grid.web
   - @topics.each do |topic|
-    = topic.title
+    %a.topic{:href => url_for(topic)}
+      .tbox
+        .img
+          .ibox= fit_image topic.image.url, :width => '100%', :height => '100%'
+        .textinfo
+          .title= topic.title
+
+          - if topic.desc.blank?
+            .desc.blank 没有描述信息
+          - else
+            .desc= topic.desc

@@ -7,7 +7,7 @@
       %a.box{:href => "/sample/tutorials/#{tutorial.id}", :data => {:toggle => true}}
         :ruby
           steps_count = tutorial.steps.count
-          imgs_count = tutorial.steps.map{|s| s.imgs.length}.sum
+          imgs_count = 0 #tutorial.steps.map{|s| s.imgs.length}.sum
           videos_count = tutorial.steps.map{|s| s.video.blank? ? 0:1}.sum
           related_count = tutorial.related.count
           learning_count = learners.count
