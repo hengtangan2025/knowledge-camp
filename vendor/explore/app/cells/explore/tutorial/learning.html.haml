@@ -1,10 +1,19 @@
-.cell-tutorials-list
+.tutorials.learning.web
   - @tutorials.each do |tutorial|
     .tutorial
-      %a.box{:href => "/explore/tutorials/#{tutorial.id}"}
-        .img= fit_image tutorial.image.url, :width => '100%', :height => '100%'
-        .title= tutorial.title
-        .desc= tutorial.desc
-        - if true
-          .learned
-            %i.fa.fa-check
+      %a.tbox{:href => "/explore/tutorials/#{tutorial.id}"}
+        .img
+          .ibox= fit_image tutorial.image.url, :width => '100%', :height => '100%'
+        .textinfo
+          .title= tutorial.title
+          - if tutorial.desc.blank?
+            .desc.blank 没有描述信息
+          - else
+            .desc= tutorial.desc
+        .progress
+          .bar
+            .p{:style => "width:#{50}%"}
+          .flag.done
+            .percent 50%
+            .done
+              %i.fa.fa-check

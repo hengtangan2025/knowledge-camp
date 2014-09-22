@@ -1,7 +1,25 @@
+$link-color:#2c5d8d;
+$link-hover-color:#2c5d8d;
+$border-radius-default:3px;
+$grid-gap:20px;
+
 @import "lily/css/lily.scss";
+@import "web-bread";
+@import "web-topic";
 
 body.explore {
-  background:white;
+  // background:white;
+}
+
+.piece.piece-bordered-paper {
+  border:solid 1px #E6E5E5;
+  background-color: #FFF;
+  border-radius:$border-radius-default;
+
+  > h4 {
+    margin-left:$grid-gap;
+    margin-bottom: $grid-gap;
+  }
 }
 
 .page-explore-index-index-web {
@@ -12,24 +30,30 @@ body.explore {
 
 .topics.grid.web {
   $gap:20px;
-
-  margin:0 -$gap/2;
+  margin:0 $gap / -2;
   @include clearfix;
   .topic {
     @include col(1/4, $gap:$gap);
     margin-bottom:40px;
 
     .tbox {
+      display:block;
       border:solid 1px transparent;
-      padding:1px;
       background-color:white;
-      // box-shadow:rgba(0, 0, 0, 0.0666667) 0px 1px 2px 0px;
-      // overflow:hidden;
-      // border-radius:3px;
       @include transition(all .5s ease-out);
+
+      &:hover {
+        text-decoration:none;
+        border:solid 1px #e7e7e7;
+        background-color:#f7f7f7;
+        .ibox {
+          @include transform(scale(1.2));
+        }
+      }
     }
 
     .img {
+      margin:-1px -1px 0 -1px;
       position:relative;
       padding-bottom:62.5%;
       overflow:hidden;
@@ -44,28 +68,118 @@ body.explore {
       padding:10px;
       .title {
         color:$black-80;
-        height:44px;
+        height:22px;
         line-height:22px;
         font-size:16px;
         margin-bottom:10px;
       }
       .desc {
         color:$black-40;
-        height:60px;line-height:20px;
+        height:40px;line-height:20px;
+        overflow:hidden;
+      }
+    }
+  }
+}
+
+.tutorials.learning.web {
+  $gap:20px;
+  margin:0 $gap / -2;
+  @include clearfix;
+
+  .tutorial {
+    @include col(1/5, $gap:$gap);
+    margin-bottom: 70px;
+
+    .tbox {
+      display: block;
+      border:solid 1px transparent;
+      background-color:white;
+      @include transition(all .5s ease-out);
+      position:relative;
+
+      &:hover {
+        text-decoration:none;
+        background-color:#f7f7f7;
+        .ibox {
+          @include transform(scale(1.2));
+        }
+      }
+
+    }
+
+    .img {
+      padding-bottom:100%;
+      position:relative;
+      margin:-1px -1px 0 -1px;
+      overflow:hidden;
+      .ibox {
+        position: absolute;
+        top:0;left:0;right:0;bottom:0;
+        @include transition(all .5s ease-out);
       }
     }
 
-    &:hover {
-      text-decoration:none;
-
-      .tbox {
-        // background:lighten($area-dawn, 10%);
-        // box-shadow:rgba(black, 0.1) 0 1px 2px;
-        border:solid 1px #e7e7e7;
-        background-color:#f7f7f7;
+    .textinfo {
+      position: absolute;
+      bottom:0;left:0;right:0;
+      background-color:rgba(black, 0.4);
+      color:white;
+      .title {
+        margin:10px;
+        font-size: 14px;
+        line-height: 20px; height: 20px;
+        overflow:hidden;
+        white-space: nowrap;
       }
-      .ibox {
-        @include transform(scale(1.2));
+      .desc {
+        font-size:12px;
+        margin:0 10px 10px 10px;
+        line-height:18px;
+        height:36px;
+        color:rgba(white, 0.8);
+      }
+    }
+
+    .progress {
+      position:absolute;
+      top:100%;left:-1px;right:-1px;
+      height:30px;
+
+      .bar {
+        background-color:#eee;
+        position:absolute;
+        top:10px;right:40px;
+        left:0;
+        height:16px;
+        border-radius:100px;
+        overflow:hidden;
+        .p {
+          height:100%;
+          background:$area-success;
+          border-radius:100px;
+        }
+      }
+
+      .flag {
+        position:absolute;
+        width:30px;right:0;top:10px;
+        height:16px;line-height:16px;
+        font-size:12px;
+        color:#333;
+        font-weight:bold;
+        font-family:$font-family-monospace;
+        text-align: center;
+
+        .done {
+          display:none;
+        }
+
+        &.done {
+          .percent {display:none;}
+          .done {display: block;}
+          i {color:$area-forest;font-size:16px;}
+        }
       }
     }
   }

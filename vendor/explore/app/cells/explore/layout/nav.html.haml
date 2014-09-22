@@ -1,15 +1,15 @@
 :ruby
   nav_config = [
     ['/explore/topics',  '所有主题', 'fa-book'],
+    ['/explore/topics/mine', '我的主题', 'fa-book']
   ]
 
 .container
   .row
-    .page-nav.home.col-pad-2
-      %a.home{:href => '/', :data => {:toggle => true}}
+    .page-nav.col-pad-12
+      %a.home{:href => '/explore', :data => {:toggle => true}}
         %i.fa.fa-home
         %span 首页
-    .page-nav.col-pad-10
       - path = request.path_info
       - nav_config.each do |c|
         - url, name, icon = c

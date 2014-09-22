@@ -1,7 +1,7 @@
 .topics.grid.web
   - @topics.each do |topic|
-    %a.topic{:href => url_for(topic)}
-      .tbox
+    .topic
+      %a.tbox{:href => url_for(topic), :data => {:toggle => true}}
         .img
           .ibox= fit_image topic.image.url, :width => '100%', :height => '100%'
         .textinfo

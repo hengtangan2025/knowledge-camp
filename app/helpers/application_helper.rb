@@ -35,7 +35,10 @@ module ApplicationHelper
 
     haml_tag "div.bread.#{name}" do
       haml_tag "div.bread-link" do
-        haml_tag 'a', text, :href => url, :data => {:toggle => toggle}
+        haml_tag 'a', :href => url, :data => {:toggle => toggle} do
+          # haml_tag 'i.fa.fa-bookmark'
+          haml_tag 'span', text
+        end
       end
 
       if index < data.length - 1

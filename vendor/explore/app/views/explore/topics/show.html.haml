@@ -1,15 +1,73 @@
-.topic-info
-  .desc= @topic.desc
-.toturials
-  .tobox{:data => {:scroller => true}}
-    - @tutorials.each do |tutorial|
-      .toturial
-        %a.tbox{:href => "/explore/tutorials/#{tutorial.id}"}
-          .info
-            .author
-              .avatar= avatar User.new
-            .learned= progress_circle tutorial_percent(tutorial.id)
-          .title= tutorial.title
-          .desc= tutorial.desc
-          .img
-            .ibox= fit_image tutorial.img, :width => '100%', :height => '100%'
+:ruby
+  bread_data = [
+    [ :home, '首页', root_url ],
+    [ :topics, '所有主题', url_for([:topics]) ]
+  ]
+
+.col-pad-12
+  = bread bread_data, true do
+    .point.piece.piece-shelf
+      .topicinfo.piece.piece-box
+        .row
+          .col-pad-7
+            .baseinfo
+              %h3= @topic.title
+
+              - if @topic.desc.blank?
+                .desc.blank 没有介绍信息
+              - else
+                .desc= @topic.desc
+
+              .count
+                %span 包含教程：
+                %span.c= @tutorials.count
+
+              .count
+                %span 涉及知识点：
+                %span.c= @topic.points.count
+
+          .col-pad-5
+            .img
+              .ibox= fit_image @topic.image.url, :width => '100%', :height => '100%'
+
+          - last_tutorial = @tutorials.last
+          .col-pad-7.continue
+            %a.cont.btn.btn-rounded.btn-flat-info.btn-jumbo.btn-block{:href => url_for([last_tutorial])}
+              %i.fa.fa-arrow-right
+              %span 继续学习
+              %span= last_tutorial.title
+
+      .toturials
+        %h4 
+          %i.fa.fa-list
+          %span 包含教程
+
+        - @tutorials.each do |tutorial|
+          .toturial.piece.piece-box
+            %a.tbox{:href => "/explore/tutorials/#{tutorial.id}"}
+              .row
+                .col-pad-3
+                  .img
+                    .ibox= fit_image tutorial.image.url, :width => '100%', :height => '100%'
+                .col-pad-6
+                  %h4.title= tutorial.title
+                  - if tutorial.desc.blank?
+                    .desc.blank 没有介绍信息
+                  - else
+                    .desc= tutorial.desc
+                .col-pad-3
+                  .author
+                    - if tutorial.creator.present?
+                      .avatar= avatar tutorial.creator
+                      .name= tutorial.creator.name
+                      .time
+                        %span 发布于
+                        %span= tutorial.created_at.to_s :short1
+
+                .progress.col-pad-6
+                  .bar
+                    .p{:style => "width:#{50}%"}
+                  .flag
+                    .percent 50%
+                    .done
+                      %i.fa.fa-check

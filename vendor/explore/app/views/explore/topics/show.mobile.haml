@@ -1,0 +1,15 @@
+.topic-info
+  .desc= @topic.desc
+.toturials
+  .tobox{:data => {:scroller => true}}
+    - @tutorials.each do |tutorial|
+      .toturial
+        %a.tbox{:href => "/explore/tutorials/#{tutorial.id}"}
+          .info
+            .author
+              .avatar= avatar User.new
+            .learned= progress_circle tutorial_percent(tutorial.id)
+          .title= tutorial.title
+          .desc= tutorial.desc
+          .img
+            .ibox= fit_image tutorial.img, :width => '100%', :height => '100%'

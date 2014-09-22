@@ -3,6 +3,7 @@
     border:solid 1px #E6E5E5;
     background-color: #F9F9F9;
     border-radius:$border-radius-default;
+    position:relative;
 
     .bread{
       margin-left:-1px + 15px;
@@ -17,16 +18,47 @@
       .bread-link {
         padding:10px 20px 10px;
         font-size: 16px;
-        text-decoration: underline;
+        text-decoration: none;
         font-weight: normal;
       }
     }
 
     .bread-link {
       padding:10px 20px 10px;
-      text-decoration: underline;
+      text-decoration: none;
       font-size: 24px;
       font-weight: bold;
+      height:30px;
+
+      a {
+        position:absolute;
+        background-color:lighten($area-warning, 20%);
+        color:#614E3C;
+        padding:0 15px 0 20px;
+        height:30px;line-height:30px;
+        left:-10px;
+        box-shadow:1px 1px 1px rgba(black, 0.2);
+        @include transition(all .3s ease-out);
+
+        &:before {
+          $c:rgba(black, 0.2);
+          content: "";
+          position:absolute;
+          border:solid 5px transparent;
+          border-top:solid 5px $c;
+          border-right:solid 5px $c;
+          // background-color:#666;
+          left:0;top:30px;
+
+        }
+
+        // border-bottom:dashed 1px;
+        &:hover {
+          text-decoration:none;
+          padding-left:30px;
+          background:lighten($area-warning, 10%);
+        }
+      }
     }
   }
 }
