@@ -25,7 +25,6 @@ module KnowledgeNetPlanStore
 
   class Tutorial
     include KnowledgeCamp::Step::Owner
-    include TutorialLearnProgress::TutorialMethods
     include PinyinSearch
 
     has_and_belongs_to_many :points,
@@ -341,7 +340,6 @@ KnowledgeNetPlanStore::Uploader.send :include, ImageUploaderMethods
 class User
   include KnowledgeCamp::Step::NoteCreator
   include KnowledgeCamp::HasManyLearnRecords
-  include TutorialLearnProgress::UserMethods
 
   has_many :virtual_files,
            :class_name => "VirtualFileSystem::File",
@@ -350,10 +348,6 @@ class User
   has_many :tutorials,
            :class_name => KnowledgeNetPlanStore::Tutorial.name,
            :foreign_key => :creator_id
-end
-
-class KnowledgeCamp::LearnRecord
-  include TutorialLearnProgress::LearnRecordMethods
 end
 
 class KnowledgeCamp::Block
@@ -367,3 +361,7 @@ class KnowledgeCamp::Block
     old_attrs.merge(vf ? {:virtual_file => vf.attrs} : {})
   end
 end
+
+# 载入这两个类以执行他们末尾的include逻辑 
+TutorialLearnProgress
+TopicLearnProgress
