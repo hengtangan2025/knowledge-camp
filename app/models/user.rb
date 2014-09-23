@@ -24,4 +24,15 @@ class User
       :avatar => self.avatar.url
     }
   end
+
+  include KnowledgeCamp::Step::NoteCreator
+  include KnowledgeCamp::HasManyLearnRecords
+
+  has_many :virtual_files,
+           :class_name => "VirtualFileSystem::File",
+           :foreign_key => :creator_id
+
+  has_many :tutorials,
+           :class_name => KnowledgeNetPlanStore::Tutorial.name,
+           :foreign_key => :creator_id
 end
