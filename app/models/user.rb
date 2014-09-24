@@ -26,6 +26,7 @@ class User
   end
 
   include KnowledgeCamp::Step::NoteCreator
+  include KnowledgeCamp::Step::QuestionCreator
   include KnowledgeCamp::HasManyLearnRecords
 
   has_many :virtual_files,

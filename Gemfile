@@ -71,8 +71,9 @@ gem "sort_char",
     :tag => "0.0.1"
 
 gem "knowledge_camp_step",
+    # :path => "../knowledge_camp_step"
     :github => "mindpin/knowledge_camp_step",
-    :tag => "v0.1.5"
+    :tag => "v0.1.6"
 
 # 文字文档持久化，以下两个 gem 是相关的
 gem "mongoid-versioning",

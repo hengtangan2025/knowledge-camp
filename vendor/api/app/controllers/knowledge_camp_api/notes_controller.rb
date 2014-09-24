@@ -1,39 +1,36 @@
 module KnowledgeCampApi
   class NotesController < ApplicationController
-    def index
-      case query_key
-      when :tutorial_id
-        step_ids = KnowledgeNetPlanStore::Tutorial.find(params[:tutorial_id]).step_ids
-
-        display notes.where(:step_id.in => step_ids)
-      when :step_id
-        display notes.where(:step_id => params[:step_id])
-      end
+    def show
+      display note
     end
 
-    def show
-      display notes.find(params[:id])
+    def update
+      note.update_attributes(note_params)
+
+      display note
     end
 
     def create
       display notes.create!(note_params), 201
     end
 
+    def destroy
+      note.destroy
+      display :nothing
+    end
+
     private
+
+    def note
+      notes.find(params[:id])
+    end
 
     def notes
       current_user.notes
     end
 
     def note_params
-      params.require(:note).permit(:step_id, :content, :kind)
-    end
-
-    def query_key
-      first_key [
-        :tutorial_id,
-        :step_id
-      ]
+      params.require(:note).permit(:step_id, :content)
     end
   end
 end

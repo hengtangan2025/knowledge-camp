@@ -6,6 +6,7 @@ KnowledgeCampApi::Engine.routes.draw do
   resources :tutorials
   resources :steps
   resources :notes
+  resources :questions
   resources :learn_records
 
   match "/*a",
