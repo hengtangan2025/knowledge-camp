@@ -23,5 +23,10 @@ module Explore
       @tutorials = tutorials
       render
     end
+
+    def web_list(tutorials)
+      @tutorials = tutorials
+      render
+    end
   end
 end

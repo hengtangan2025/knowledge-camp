@@ -151,4 +151,24 @@ module ApplicationHelper
     bgc = ColorTransfer.mix(c1, c2, i3)
     # ColorTransfer.darken bgc.to_s
   end
+
+  def text_span(text, blank_text = '')
+    capture_haml {
+      if text.blank?
+        haml_tag 'span.blank', blank_text
+      else
+        haml_tag 'span', text
+      end
+    }
+  end
+
+  def text_div(klass, text, blank_text = '')
+    capture_haml {
+      if text.blank?
+        haml_tag "#{klass}.blank", blank_text
+      else
+        haml_tag "#{klass}", text
+      end
+    }
+  end
 end

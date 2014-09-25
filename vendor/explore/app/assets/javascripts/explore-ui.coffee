@@ -72,3 +72,21 @@ jQuery(document).on 'ready page:load', ->
         $continue = jQuery(this).closest('.continue')
         $continue.find('a').hide(200)
         $continue.find('.option').not('.checked').hide(200)
+
+jQuery(document).on 'ready page:load', ->
+  if jQuery('.steps-flow').length
+    jQuery('.steps-flow .step .marks .note').click ->
+      jQuery('.mark-overflow')
+        .removeClass('disabled')
+        .addClass('note')
+
+    jQuery('.steps-flow .step .marks .question').click ->
+      jQuery('.mark-overflow')
+        .removeClass('disabled')
+        .addClass('question')
+
+    jQuery('.mark-overflow a.cancel').click ->
+      jQuery('.mark-overflow')
+        .addClass('disabled')
+        .removeClass('note')
+        .removeClass('question')

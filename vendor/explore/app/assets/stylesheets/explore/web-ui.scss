@@ -6,6 +6,8 @@ $grid-gap:20px;
 @import "lily/css/lily.scss";
 @import "web-bread";
 @import "web-topic";
+@import "web-tutorial";
+@import "web-point";
 
 body.explore {
   // background:white;
@@ -20,6 +22,30 @@ body.explore {
     margin-left:$grid-gap;
     margin-bottom: $grid-gap;
   }
+}
+
+.piece h4.piece {
+  margin-left:20px;
+  margin-bottom:20px;
+  color:#614E3C;
+}
+
+.piece-box h4 {
+  color: #614E3C;
+}
+
+.piece .outpiece {
+  margin: -20px;
+}
+
+.piece .piece-blank {
+  margin: -10px;
+  background-color: #f7f7f7;
+  font-size:16px;
+  line-height:100px;height:100px;
+  text-align:center;
+  border-radius:$border-radius-default;
+  color:$black-60;
 }
 
 .page-explore-index-index-web {

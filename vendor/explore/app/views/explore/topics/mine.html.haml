@@ -13,12 +13,12 @@
         %h4 
           %i.fa.fa-list
           %span 正在参与的主题
-          %span (#{@topics.count})
+          %span (#{@learning_topics.count})
 
         - if @learning_topics.present?
           = render_cell 'explore/topic', :grid, @learning_topics
         - else
-          .blank 目前还没有参与任何主题
+          .piece-blank 目前还没有参与任何主题
 
 .col-pad-2
   .user-info.piece.piece-shelf.piece-bordered-paper
@@ -26,8 +26,10 @@
       .avatar= avatar current_user
       .user-name= current_user.name
     .stat.piece.piece-box
-      %span 主题
-      %span.c #{@learning_topics.count}
+      %a{:href => url_for([:mine, :topics]), :data => {:toggle => true}}
+        %span 主题
+        %span.c #{@learning_topics.count}
     .stat.piece.piece-box
-      %span 教程
-      %span.c #{@learning_tutorials.count}
+      %a{:href => url_for([:mine, :tutorials]), :data => {:toggle => true}}
+        %span 教程
+        %span.c #{@learning_tutorials.count}

@@ -1,11 +1,5 @@
 module Explore
   class IndexController < ApplicationController
-    layout -> {
-      if mobile?
-        'explore/application.mobile'
-      end
-    }
-
     before_filter -> {
       if mobile?
         request.format = :mobile

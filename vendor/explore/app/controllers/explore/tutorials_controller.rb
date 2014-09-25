@@ -1,6 +1,10 @@
 module Explore
   class TutorialsController < ApplicationController
-    layout 'explore/tutorial', :only => [:show, :points]
+    before_filter -> {
+      if mobile?
+        request.format = :mobile
+      end
+    }
 
     def _preload
       @tutorials = Explore::Mock.tutorials
@@ -8,19 +12,32 @@ module Explore
     end
 
     def show
-      _preload
-      @active = :base
+      if mobile?
+        _preload
+        @active = :base
 
-      @parents = @tutorial.parents.map {|pid|
-        @tutorials.select {|x| x.id.to_s == pid}.first
-      }
+        @parents = @tutorial.parents.map {|pid|
+          @tutorials.select {|x| x.id.to_s == pid}.first
+        }
 
-      @children = @tutorials.select { |x|
-        x.parents.include? @tutorial.id.to_s
-      }
+        @children = @tutorials.select { |x|
+          x.parents.include? @tutorial.id.to_s
+        }
 
-      @net = Explore::Mock.nets.select {|x| x.id.to_s == @tutorial.net_id}.first
-    
+        @net = Explore::Mock.nets.select {|x| x.id.to_s == @tutorial.net_id}.first
+      
+        return
+      end
+
+      @tutorial = KnowledgeNetPlanStore::Tutorial.find params[:id]
+      @topic = @tutorial.topic
+
+      @prev_tutorials = @tutorial.parents
+      @next_tutorials = @tutorial.children
+
+      # @prev_tutorials = KnowledgeNetPlanStore::Tutorial.all
+      # @next_tutorials = KnowledgeNetPlanStore::Tutorial.all
+
     end
 
     def points

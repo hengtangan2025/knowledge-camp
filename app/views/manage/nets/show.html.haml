@@ -7,14 +7,14 @@
         %i.fa.fa-arrow-left
         %span 退出
 
-    - [:point, :document, :file, :plan].each do |model_name|
+    - [:point, :file].each do |model_name|
       = render_cell :net, :nav_items, @net, model_name
 
 .page-main.col-pad-10
   .sections.piece.piece-shelf.piece-paper
     %section.net.piece.piece-box
       %h2.name= @net.name
-      .desc= @net.desc
+      .desc= text_span @net.desc
 
       .piece.piece-ops
         .op
@@ -33,5 +33,5 @@
 
     = render_cell :net, :model_section, @net, :point, 24
 
-    - [:document, :file].each do |model_name|
+    - [:file].each do |model_name|
       = render_cell :net, :model_section, @net, model_name

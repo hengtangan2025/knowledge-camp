@@ -7,7 +7,7 @@
 
 .detail
   .title
-    %span= title
+    %strong= title
 
   .blocks
     - blocks.each do |block|
@@ -30,6 +30,16 @@
       - if b.kind == 'video'
         .block.video
           %video{:src => b.url, :controls => true, :width => '100%', :height => '100%'}
+  .marks
+    .m
+      %a.mbox.note{:href => 'javascript:;'}
+        %i.fa.fa-pencil-square
+    .m
+      %a.mbox.question{:href => 'javascript:;'}
+        %i.fa.fa-question-circle
+    .m
+      %a.mbox.bookmark{:href => 'javascript:;'}
+        %i.fa.fa-bookmark
 
   .continue
     - if continue == 'end'

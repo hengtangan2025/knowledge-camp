@@ -14,5 +14,14 @@ Explore::Engine.routes.draw do
     end
   end
 
+  resources :tutorials, :shallow => true do
+    collection do
+      get :mine
+    end
+    member do
+      get :flow
+    end
+  end
+
   resources :points, :shallow => true
 end
