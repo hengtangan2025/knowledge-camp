@@ -1,4 +1,10 @@
 require "open-uri"
+Searchable.enabled_models.each do |model|
+  puts "====: 开始导入 #{model.to_s} 的索引"
+  model.import :force => true
+  model.each(&:save)
+  puts "====: 导入完毕."
+end
 
 net = KnowledgeNetStore::Net.last
 
