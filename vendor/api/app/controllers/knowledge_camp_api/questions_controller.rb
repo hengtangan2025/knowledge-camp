@@ -1,5 +1,9 @@
 module KnowledgeCampApi
   class QuestionsController < ApplicationController
+    def index
+      display notes
+    end
+
     def show
       display question
     end
