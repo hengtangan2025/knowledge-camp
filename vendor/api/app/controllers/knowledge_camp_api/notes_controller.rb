@@ -5,9 +5,11 @@ module KnowledgeCampApi
     end
 
     def update
-      note.update_attributes(note_params)
+      @note = note
+      @note.update_attributes(note_params)
+      @note.save
 
-      display note
+      display @note
     end
 
     def create

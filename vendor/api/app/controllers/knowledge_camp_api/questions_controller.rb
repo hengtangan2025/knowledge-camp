@@ -5,9 +5,11 @@ module KnowledgeCampApi
     end
 
     def update
-      question.update_attributes(question_params)
+      @question = question
+      @question.update_attributes(question_params)
+      @question.save
 
-      display question
+      display @question
     end
 
     def create
