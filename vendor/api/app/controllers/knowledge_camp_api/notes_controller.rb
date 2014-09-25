@@ -1,5 +1,9 @@
 module KnowledgeCampApi
   class NotesController < ApplicationController
+    def index
+      display notes
+    end
+
     def show
       display note
     end

@@ -1,12 +1,7 @@
 module KnowledgeCampApi
   class StepsController < ApplicationController
     def index
-      options = {
-        :stepped_id   => params[:tutorial_id],
-        :stepped_type => KnowledgeNetPlanStore::Tutorial.name
-      }
-
-      display KnowledgeCamp::Step.where(options).map {|step| add_addons(step)}
+      display selection_collection
     end
 
     def show
@@ -47,6 +42,27 @@ module KnowledgeCampApi
       }
 
       @step.attrs.merge(attrs)
+    end
+
+    def selection_collection
+      case query_key
+      when :tutorial_id
+        options = {
+          :stepped_id   => params[:tutorial_id],
+          :stepped_type => KnowledgeNetPlanStore::Tutorial.name
+        }
+
+        KnowledgeCamp::Step.where(options).map {|step| add_addons(step)}
+      when :is_hard
+        current_user.selections.where(:hard => params[:is_hard]).map {|sel| sel.block.step}.uniq.compact
+      end
+    end
+
+    def query_key
+      first_key [
+        :tutorial_id,
+        :is_hard
+      ]
     end
   end
 end

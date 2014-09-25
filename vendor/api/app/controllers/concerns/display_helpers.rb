@@ -5,7 +5,7 @@ module DisplayHelpers
 
   def data(obj)
     if obj.class == Mongoid::Relations::Targets::Enumerable
-      return obj.map(&:attrs)
+      return {:json => obj.map(&:attrs)}
     end
 
     case obj
