@@ -300,13 +300,16 @@ end
 module KnowledgeNetStore
   class Net
     has_many :documents,
-             :class_name => 'DocumentsStore::Document'
+             :class_name => 'DocumentsStore::Document',
+             :dependent => :destroy
 
     has_many :plans,
-             :class_name => 'KnowledgeNetPlanStore::Plan'
+             :class_name => 'KnowledgeNetPlanStore::Plan',
+             :dependent => :destroy
 
     has_many :virtual_files,
-             :class_name => 'VirtualFileSystem::File'
+             :class_name => 'VirtualFileSystem::File',
+             :dependent => :destroy
 
     after_create :create_default_plan
 

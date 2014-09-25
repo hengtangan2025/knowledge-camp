@@ -22,7 +22,9 @@ class TutorialLearnProgress
     extend ActiveSupport::Concern
 
     included {
-      has_many :tutorial_learn_progresses, :class_name => "KnowledgeNetPlanStore::Tutorial"
+      has_many :tutorial_learn_progresses,
+               :class_name => "KnowledgeNetPlanStore::Tutorial",
+               :dependent => :destroy
     }
 
     def progress_by(user)
@@ -72,7 +74,7 @@ class TutorialLearnProgress
     extend ActiveSupport::Concern
 
     included {
-      has_many :tutorial_learn_progresses
+      has_many :tutorial_learn_progresses, :dependent => :destroy
     }
 
     def started_tutorials(offset: 0, limit: 0)

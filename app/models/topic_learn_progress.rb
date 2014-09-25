@@ -19,7 +19,7 @@ class TopicLearnProgress
     extend ActiveSupport::Concern
 
     included {
-      has_many :topic_learn_progresses
+      has_many :topic_learn_progresses, :dependent => :destroy
     }
   end
 
@@ -27,7 +27,7 @@ class TopicLearnProgress
     extend ActiveSupport::Concern
 
     included {
-      has_many :topic_learn_progresses
+      has_many :topic_learn_progresses, :dependent => :destroy
     }
 
     def started_topics(offset: 0, limit: 0)
