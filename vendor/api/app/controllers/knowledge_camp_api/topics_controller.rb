@@ -17,6 +17,8 @@ module KnowledgeCampApi
         net.plans.map(&:topics).flatten
       when :plan_id
         KnowledgeNetPlanStore::Topic.where(:plan_id => params[:plan_id])
+      when :is_started
+        current_user.started_topics
       else
         KnowledgeNetPlanStore::Topic.all
       end || []
@@ -29,7 +31,8 @@ module KnowledgeCampApi
         :ancestor_id,
         :parent_id,
         :child_id,
-        :descendant_id
+        :descendant_id,
+        :is_started
       ], true
     end
   end

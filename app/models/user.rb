@@ -29,6 +29,9 @@ class User
   include KnowledgeCamp::Step::QuestionCreator
   include KnowledgeCamp::Step::SelectionCreator
   include KnowledgeCamp::HasManyLearnRecords
+  include TutorialLearnProgress::UserMethods
+  include TopicLearnProgress::UserMethods
+
 
   has_many :virtual_files,
            :class_name => "VirtualFileSystem::File",

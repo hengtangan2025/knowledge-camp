@@ -4,6 +4,37 @@ class MindpinHTMLDiff
   end
 end
 
+module KnowledgeCamp
+  module TutorialId
+    extend ActiveSupport::Concern
+
+    included {
+      alias old_attrs attrs
+    }
+
+    def tutorial_id
+      return if self.step.stepped_type != KnowledgeNetPlanStore::Tutorial.name
+      self.step.stepped_id
+    end
+  end
+
+  class Note
+    include TutorialId
+
+    def attrs
+      old_attrs.merge(:tutorial_id => self.tutorial_id.to_s)
+    end
+  end
+
+  class Question
+    include TutorialId
+    
+    def attrs
+      old_attrs.merge(:tutorial_id => self.tutorial_id.to_s)
+    end
+  end
+end
+
 module KnowledgeNetPlanStore
   class Plan
     belongs_to :net,
@@ -37,7 +68,7 @@ module KnowledgeNetPlanStore
     pinyin :title
     standard :desc
 
-    alias old_attrs    attrs
+    alias old_attrs attrs
 
     def attrs
       old_attrs.merge(:creator => creator.info)
