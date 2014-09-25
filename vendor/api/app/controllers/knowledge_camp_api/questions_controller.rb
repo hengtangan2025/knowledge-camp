@@ -17,6 +17,7 @@ module KnowledgeCampApi
     end
 
     def create
+      return display(:nothing, 422) if questions.first
       display questions.create!(question_params), 201
     end
 
