@@ -1,7 +1,7 @@
 module KnowledgeCampApi
   class QuestionsController < ApplicationController
     def index
-      display notes
+      display questions
     end
 
     def show

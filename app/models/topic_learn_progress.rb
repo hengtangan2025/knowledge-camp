@@ -73,11 +73,11 @@ class TopicLearnProgress
 
       tutorial_ids = self.topic.tutorial_ids
 
-      tutorial_progresses = KnowledgeNetPlanStore::Tutorial.where(:id.in => tutorial_ids)
       progress = self.topic.topic_learn_progresses.find_or_create_by(:user_id => user.id)
 
-      learnt = TutorialLearnProgress.where(:value => 100, :tutorial_id.in => tutorial_ids).size
-      total  = tutorial_progresses.size.to_f
+      learnt_tutorials = TutorialLearnProgress.where(:value.gt => 0, :tutorial_id.in => tutorial_ids)
+      learnt = learnt_tutorials.pluck(:value).reduce(&:+).to_f / 100 * learnt_tutorials.size
+      total  = tutorial_ids.size.to_f
 
       progress.value = ((learnt / total) * 100).round
 
