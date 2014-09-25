@@ -8,6 +8,7 @@ end
 KnowledgeNetPlanStore::Topic.destroy_all
 KnowledgeNetPlanStore::Tutorial.destroy_all
 KnowledgeCamp::Step.destroy_all
+KnowledgeCamp::LearnRecord.destroy_all
 
 net_json_file_path = "../nets.json"
 
