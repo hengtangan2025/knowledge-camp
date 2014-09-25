@@ -19,8 +19,9 @@ module Explore
       render
     end
 
-    def learning(tutorials)
+    def learning(tutorials, user)
       @tutorials = tutorials
+      @user = user
       render
     end
 

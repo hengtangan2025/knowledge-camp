@@ -3,22 +3,15 @@
     - if user_signed_in?
       %section.piece.piece-box
         %h4 正在学习的教程
-        - if @topics.present?
-          = render_cell 'explore/tutorial', :learning, @learning_tutorials
+        - if @learning_tutorials.present?
+          = render_cell 'explore/tutorial', :learning, @learning_tutorials, current_user
         - else
           .piece-blank 还没有开始学习任何教程
 
     %section.piece.piece-box
-      %h4 推荐主题
-      - if @topics.present?
-        = render_cell 'explore/topic', :grid, @topics
-      - else
-        .piece-blank 没有主题
-
-    %section.piece.piece-box
       %h4 最新主题
-      - if @recommend_topics.present?
-        = render_cell 'explore/topic', :grid, @recommend_topics
+      - if @newest_topics.present?
+        = render_cell 'explore/topic', :grid, @newest_topics
       - else
         .piece-blank 没有主题
 

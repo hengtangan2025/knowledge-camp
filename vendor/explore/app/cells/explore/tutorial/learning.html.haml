@@ -1,5 +1,7 @@
 .tutorials.learning.web
   - @tutorials.each do |tutorial|
+    - progress = tutorial.progress_by @user
+
     .tutorial
       %a.tbox{:href => "/explore/tutorials/#{tutorial.id}"}
         .img
@@ -12,8 +14,8 @@
             .desc= tutorial.desc
         .progress
           .bar
-            .p{:style => "width:#{50}%"}
-          .flag.done
-            .percent 50%
+            .p{:style => "width:#{progress}%"}
+          .flag
+            .percent #{progress}%
             .done
               %i.fa.fa-check
