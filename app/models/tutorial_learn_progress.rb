@@ -137,7 +137,6 @@ class TutorialLearnProgress
     end
   end
 
-  User.send                            :include, UserMethods
   KnowledgeCamp::LearnRecord.send      :include, LearnRecordMethods
   KnowledgeNetPlanStore::Tutorial.send :include, TutorialMethods
 end

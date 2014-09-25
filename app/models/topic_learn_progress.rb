@@ -85,8 +85,6 @@ class TopicLearnProgress
     end
   end
 
-
-  User.send                         :include, UserMethods
   TutorialLearnProgress.send        :include, TutorialLearnProgressMethods
   KnowledgeNetPlanStore::Topic.send :include, TopicMethods
 end
