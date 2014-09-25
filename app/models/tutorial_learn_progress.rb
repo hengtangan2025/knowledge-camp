@@ -38,11 +38,11 @@ class TutorialLearnProgress
     end
 
     module ClassMethods
-      def hot_list(since: Time.at(0))
+      def hot_list(since: Time.at(0), limit: 0)
         criteria = TutorialLearnProgress.where(:updated_at.gt => since,
                                                :value.gt      => 0)
 
-        criteria.reduce([]) do |array, progress|
+        criteria.limit(limit).reduce([]) do |array, progress|
           tutorial = progress.tutorial
           hash = array.find {|h| h[:tutorial].id == tutorial.id}
           updated_at = progress.updated_at
