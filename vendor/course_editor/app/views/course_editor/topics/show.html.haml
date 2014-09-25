@@ -1,37 +1,52 @@
-.row.page-manage-nets-show.page-plan-store-show{:class => action_css_class}
+.page-side.col-pad-2
+  .nav
+    .back
+      %a{:href => url_for(@net), :data => {:toggle => true}}
+        %i.fa.fa-arrow-left
+        返回
+    .items.tutorials
+      %i.fa.fa-newspaper-o.icon
+      %a.index{:href => url_for(@topic)}
+        .count= @topic.tutorials.count
+        .text 教程
+      .new
+        %a.btn.btn-rounded.btn-bdb-fresh.btn-small{:href => url_for([:new, @topic, :tutorial]), :data => {:toggle => true}}
+          %i.fa.fa-plus
+          %span 创建教程
 
-  .page-side.col-pad-2
-    .nav
-      .back
-        %a{:href => url_for(@topic.net), :data => {:toggle => true}}
-          %i.fa.fa-arrow-left
-          返回
-      .items.topics
-        %a.index{:href => url_for(@topic)}
-          .count= @topic.tutorials.size
-          .text 教程
-        .new
-          %a.btn.btn-rounded.btn-bdb-fresh.btn-small{:href =>  new_topic_tutorial_url(@topic)}
-            %i.fa.fa-plus
-            %span 创建教程
+.page-main.col-pad-10
+  .piece.piece-shelf.piece-paper
+    .piece.piece-box
+      .piece.piece-ops
+        .op
+          %a.edit{:href => url_for([:edit, @topic])}
+            %i.fa.fa-pencil
+            %span 编辑修改
+        .op.danger
+          %a.delete{:href => url_for(@topic), :data => {:confirm => '确定要删除这个主题吗？', :method => :delete}}
+            %i.fa.fa-trash
+            %span 删除
+      .topic-head
+        .row
+          .col-pad-4
+            = fit_ibox @topic.image.url
+          .col-pad-8
+            %h3= @topic.title
+            = text_div :desc, @topic.desc, '没有描述信息'
+            .stats
+              .row
+                .stat
+                  %i.fa.fa-newspaper-o
+                  %span 教程：
+                  %span= @tutorials.count
+                .stat
+                  %i.fa.fa-circle-o
+                  %span 知识点：
+                  %span= @points.count
 
-  .page-main.col-pad-10
-    .sections.piece.piece-shelf.piece-paper
-      .piece.piece-box
-        %h2 #{@topic.title} - 教程管理
-        .piece.piece-ops
-          .op
-            %a.edit{:href => edit_topic_url(@topic)}
-              %i.fa.fa-pencil
-              %span 编辑修改
-      .piece.piece-box
-        %h4 教程
-        .tutorials
-          - @topic.tutorials.each do |tutorial|
-            %a.tutorial.plan-store-item{:href => edit_tutorial_url(tutorial)}
-              .image
-                %img{:src => tutorial.image.url}
-              .content
-                .title= tutorial.title
-                .desc= tutorial.desc
-
+    .piece.piece-box
+      %h4 主题“#{@topic.title}”下的教程
+      - if @tutorials.present?
+        = render_cell 'course_editor/tutorial', :list, @tutorials
+      - else
+        .piece.piece-blank 主题下没有教程

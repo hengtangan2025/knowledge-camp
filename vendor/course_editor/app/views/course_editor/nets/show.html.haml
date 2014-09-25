@@ -1,31 +1,24 @@
-.row.page-manage-nets-show.page-plan-store-show{:class => action_css_class}
+.page-side.col-pad-2
+  .nav
+    .back
+      %a{:href => "/manage/nets/#{@net.id}", :data => {:toggle => true}}
+        %i.fa.fa-arrow-left
+        返回
+    .items.topics
+      %i.fa.fa-book.icon
+      %a.index{:href => url_for(@net)}
+        .count= @net.topics.count
+        .text 教学主题
+      .new
+        %a.btn.btn-rounded.btn-bdb-fresh.btn-small{:href => url_for([:new, @net, :topic]), :data => {:toggle => true}}
+          %i.fa.fa-plus
+          %span 创建教学主题
 
-  .page-side.col-pad-2
-    .nav
-      .back
-        %a{:href => "/manage/nets/#{@net.id}", :data => {:toggle => true}}
-          %i.fa.fa-arrow-left
-          返回
-      .items.topics
-        %a.index{:href => url_for(@net)}
-          .count= @net.topics.size
-          .text 教学主题
-        .new
-          %a.btn.btn-rounded.btn-bdb-fresh.btn-small{:href => new_net_topic_url(@net)}
-            %i.fa.fa-plus
-            %span 创建教学主题
-
-  .page-main.col-pad-10
-    .sections.piece.piece-shelf.piece-paper
-      .piece.piece-box
-        %h2 #{@net.name} - 教学主题管理
-      .piece.piece-box
-        %h4 教学主题
-        .topics
-          - @net.topics.each do |topic|
-            %a.topic.plan-store-item{:href => url_for(topic)}
-              .image
-                %img{:src => topic.image.url}
-              .content
-                .title= topic.title
-                .desc= topic.desc
+.page-main.col-pad-10
+  .piece.piece-shelf.piece-paper
+    .piece.piece-box
+      %h4 #{@net.name} - 教学主题管理
+      - if @topics.present?
+        = render_cell 'course_editor/topic', :list, @topics
+      - else
+        .piece.piece-blank 没有教学主题

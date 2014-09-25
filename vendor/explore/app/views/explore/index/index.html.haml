@@ -9,7 +9,7 @@
           .piece-blank 还没有开始学习任何教程
 
     %section.piece.piece-box
-      %h4 最新主题
+      %h4 近期主题
       - if @newest_topics.present?
         = render_cell 'explore/topic', :grid, @newest_topics
       - else

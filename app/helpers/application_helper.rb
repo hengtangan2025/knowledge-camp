@@ -19,6 +19,14 @@ module ApplicationHelper
     }
   end
 
+  def avatar_with_size(user, size, version = :normal)
+    capture_haml {
+      haml_tag 'div.-avatar-img', :class => version, :style => "width:#{size}px;height:#{size}px;" do
+        haml_tag 'img', :src => user.avatar.versions[version].url, :style => "width:#{size}px;height:#{size}px;"
+      end
+    }
+  end
+
   # 层叠式面包屑
   def bread(data, toggle = ['open', 'close'], &block)
     mb = data.length * 29
@@ -165,9 +173,19 @@ module ApplicationHelper
   def text_div(klass, text, blank_text = '')
     capture_haml {
       if text.blank?
-        haml_tag "#{klass}.blank", blank_text
+        haml_tag "div.#{klass}.blank", blank_text
       else
-        haml_tag "#{klass}", text
+        haml_tag "div.#{klass}", text
+      end
+    }
+  end
+
+  def fit_ibox(img_url)
+    capture_haml {
+      haml_tag '.image' do
+        haml_tag '.ibox' do
+          haml_concat fit_image img_url, :width => '100%', :height => '100%'
+        end
       end
     }
   end

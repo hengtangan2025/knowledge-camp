@@ -2,6 +2,17 @@ module CourseEditor
   class TopicsController < ApplicationController
     def show
       @topic = KnowledgeNetPlanStore::Topic.find(params[:id])
+      @net = @topic.net
+      @tutorials = @topic.tutorials
+      @points = @topic.points
+    end
+
+    def destroy
+      @topic = KnowledgeNetPlanStore::Topic.find(params[:id])
+      @net = @topic.net
+
+      @topic.destroy
+      redirect_to @net
     end
 
     def new

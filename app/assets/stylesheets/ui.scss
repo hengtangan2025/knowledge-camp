@@ -219,3 +219,82 @@ body {
     margin-left: $left;
   }
 }
+
+.page-side {
+  .nav {
+    @include piece;
+    padding: 20px;
+
+    .back {
+      font-size: 16px;
+    }
+
+    .items {
+      position: relative;
+      margin-top: 20px;
+      border-top:$border-dash;
+
+      a.index {
+        // @include dev;
+        display: block;
+        margin-bottom: 10px;
+        // padding-left: 40px;
+        margin-top: 10px;
+
+
+        .count {
+          padding-left: 40px;
+          font-size: 16px;
+          font-weight: bold;
+          font-family: $font-family-serif;
+        }
+        .text {
+          padding-left: 40px;
+          font-weight: bold;
+        }
+      }
+
+      .new {
+        margin-top: 20px;
+        a.btn {display:block;}
+      }
+
+      &.plans {
+        pointer-events: none;
+        opacity: 0.5;
+      }
+    }
+
+    @mixin itemicon{
+      top:18px;
+      position: absolute;
+      opacity: 0.5;
+      pointer-events: none;
+    };
+
+    .items.points {
+      &:before {
+        @include itemicon;
+        @include border-box;
+        content: "";
+        width:30px;height:30px;
+        border:solid 6px $point-color;
+        border-radius:40px;
+      }
+    }
+
+    .items.documents, 
+    .items.files, 
+    .items.plans, 
+    .items.topics,
+    .items.tutorials {
+      i.icon {
+        @include itemicon;
+        font-size:30px;
+        color:$area-night;
+      }
+    }
+
+    .items.documents i.icon {color:$area-info;}
+  }
+}

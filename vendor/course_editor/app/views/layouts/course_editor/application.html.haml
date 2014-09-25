@@ -9,6 +9,7 @@
 
     %title= title
     = stylesheet_link_tag 'application', :media => 'screen'
+    = stylesheet_link_tag 'course_editor/application', :media => 'screen'
     = csrf_meta_tags
     = javascript_include_tag 'application'
 
@@ -16,4 +17,5 @@
     .page-header
       = render_cell :layout, :nav, :user => current_user
     .page-content.container
-      = yield
+      .row{:class => action_css_class}
+        = yield
