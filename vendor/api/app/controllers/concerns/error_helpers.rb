@@ -7,6 +7,7 @@ module ErrorHelpers
     rescue_from ActionController::UnpermittedParameters, :with => :bad_request
     rescue_from ActionController::RoutingError,          :with => :not_found
     rescue_from Mongoid::Errors::Validations,            :with => :unprocessable_entity
+    rescue_from KnowledgeCamp::NoContentBlock,           :with => :bad_request
   }
 
   def unprocessable_entity(ex)

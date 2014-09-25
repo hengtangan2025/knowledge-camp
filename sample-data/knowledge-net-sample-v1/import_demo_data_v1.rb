@@ -1,9 +1,46 @@
+Searchable.enabled_models.each do |model|
+  puts "====: 开始导入 #{model.to_s} 的拼音索引"
+  model.import :force => true
+  model.each(&:save)
+  puts "====: 拼音索引导入完毕."
+end
+
 def url_to_file(url)
   tf = Tempfile.new(["tmp", ".png"])
   tf.binmode
   tf << open(url).read
   tf.rewind
   tf
+end
+
+def url_to_file_super(url, &block)
+  ext  = url.gsub(/\?.*/, "").split(".").last
+  name = "#{SecureRandom.hex}.#{ext}"
+  path = "/tmp/#{name}"
+
+  open(path, "wb") do |f|
+    f << open(URI.escape url).read
+    block ? [name, path, block.call(f)] : f
+  end
+end
+
+def add_vfileblock(step, kind, url)
+  name, path, fe = url_to_file_super(url) do |f|
+    FilePartUpload::FileEntity.create(:attach => f)
+  end
+
+  FileUtils.rm_rf(path)
+
+  command = VirtualFileSystem::Command(:knowledge_net, User.first)
+
+  vfile = command.put("/" + name, fe.id.to_s, :mode => :default) do |vff|
+    vff.net = KnowledgeNetStore::Net.last
+    vff.visible_name = name
+  end
+
+  block = step.add_content(kind, vfile.id)
+
+  binding.pry if block.errors.any?
 end
 
 user = User.first
@@ -63,7 +100,22 @@ tutorials_item_arr.each do |tutorials_item|
   img.close
 
   steps = tutorials_item["steps"].map do |step_item|
-    tutorial.steps.create!(:title => step_item["title"])
+    step = tutorial.steps.create!(:title => step_item["title"])
+
+
+    content = step_item["desc"]
+    step.add_content("text", content)
+
+    step_item["imgs"].each do |image_url|
+      add_vfileblock(step, :image, image_url)
+    end
+
+    video = step_item["video"]
+    if !video.blank?
+      add_vfileblock(step, :video, video)
+    end
+
+    step
   end
   steps.each_with_index do |step, index|
     if index+1 != steps.count
@@ -112,7 +164,21 @@ sp_tutorials_item_arr.each do |sp_tutorials_item|
     step = tutorial.steps.create!(
       :title => step_item["data"]["title"]
     )
+
+    content = step_item["data"]["desc"]
+    step.add_content("text", content)
+
+    (step_item["data"]["imgs"] || []).each do |image_url|
+      add_vfileblock(step, :image, image_url)
+    end
+
+    video = step_item["data"]["video"]
+    if !video.blank?
+      add_vfileblock(step, :video, video)
+    end
+
     step_hash_id__to__step_id[step_item["id"]] = step.id.to_s
+    step
   end
 
   sp_tutorials_item["steps"].map do |step_item|

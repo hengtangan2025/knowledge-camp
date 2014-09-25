@@ -1,6 +1,14 @@
+Searchable.enabled_models.each do |model|
+  puts "====: 开始导入 #{model.to_s} 的拼音索引"
+  model.import :force => true
+  model.each(&:save)
+  puts "====: 拼音索引导入完毕."
+end
+
 KnowledgeNetPlanStore::Topic.destroy_all
 KnowledgeNetPlanStore::Tutorial.destroy_all
 KnowledgeCamp::Step.destroy_all
+KnowledgeCamp::LearnRecord.destroy_all
 
 net_json_file_path = "../nets.json"
 

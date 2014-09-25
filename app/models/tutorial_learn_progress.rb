@@ -1,6 +1,7 @@
 class TutorialLearnProgress
   include Mongoid::Document
   include Mongoid::Timestamps
+  include TopicLearnProgress::TutorialLearnProgressMethods
 
   field :value, :type => Integer
 
@@ -15,8 +16,16 @@ class TutorialLearnProgress
     :allow_nil => true
   }
 
+  delegate :topic, :to => :tutorial
+
   module TutorialMethods
     extend ActiveSupport::Concern
+
+    included {
+      has_many :tutorial_learn_progresses,
+               :class_name => "KnowledgeNetPlanStore::Tutorial",
+               :dependent => :destroy
+    }
 
     def progress_by(user)
       progress = user.tutorial_learn_progresses.where(:tutorial_id => self.id).first
@@ -65,7 +74,7 @@ class TutorialLearnProgress
     extend ActiveSupport::Concern
 
     included {
-      has_many :tutorial_learn_progresses
+      has_many :tutorial_learn_progresses, :dependent => :destroy
     }
 
     def started_tutorials(offset: 0, limit: 0)
@@ -127,4 +136,8 @@ class TutorialLearnProgress
       progress.save
     end
   end
+
+  User.send                            :include, UserMethods
+  KnowledgeCamp::LearnRecord.send      :include, LearnRecordMethods
+  KnowledgeNetPlanStore::Tutorial.send :include, TutorialMethods
 end
