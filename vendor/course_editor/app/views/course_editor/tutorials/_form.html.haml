@@ -2,18 +2,25 @@
   is_new   = @tutorial.new_record?
   resource = is_new ? [@tutorial.topic, @tutorial] : @tutorial
   selected = is_new ? [] : @tutorial.point_ids
-  cancel   = is_new ? url_for(@tutorial.topic) : url_for(@tutorial)
+  cancel   = is_new ? url_for(@tutorial.topic) : url_for([:design, @tutorial])
 
-= simple_form_for resource, :defaults => {:label => false, :input_html => {:class => 'form-control'}} do |f|
-  .form-group
-    = f.input :title, :placeholder => "标题"
-  .form-group
-    - points = @tutorial.topic.points.map {|p| [p.name, p.id]}
-    = f.association :points, :collection => points, :selected => selected
-  .form-group
-    = f.input :image, :placeholder => "上传封面"
-  .form-group
-    = f.input :desc, :placeholder => "描述", :as => :text, :input_html => {:rows => 10}
-  .form-group
-    = f.submit :class => 'btn btn-rounded btn-bdb-fresh'
-    %a.cancel.btn.btn-rounded.btn-bdb{:href => cancel} 取消
+= simple_form_for resource, :defaults => {:input_html => {:class => 'form-control'}} do |f|
+  .row
+    .col-pad-6
+      .form-group
+        = f.input :title, :placeholder => "标题"
+      .form-group
+        = f.input :desc, :placeholder => "描述", :as => :text, :input_html => {:rows => 3}
+      .form-group
+        = f.input :image, :placeholder => "上传封面", :input_html => {:class => ''}
+
+    .col-pad-6
+      .form-group
+        - points = @tutorial.topic.points.map {|p| [p.name, p.id]}
+        = f.association :points, :collection => points, :selected => selected
+
+  .row
+    .col-pad-12
+      .form-group.submit
+        = f.submit :class => 'btn btn-rounded btn-bdb-fresh'
+        %a.cancel.btn.btn-rounded.btn-bdb{:href => cancel} 取消

@@ -7,9 +7,13 @@ body.tutorial-editor {
   .page-header {
     background-color: #fff;
     height:50px;
-    border-bottom:solid 1px #e9e9e9;
+    // border-bottom:solid 1px #e9e9e9;
+    box-shadow:0 1px 2px rgba(0, 0, 0, 0.07);
     position: relative;
     color:#333;
+    margin:0 10px;
+    border-radius:0 0 3px 3px;
+    overflow:hidden;
 
     a.back {
       position:absolute;
@@ -44,8 +48,8 @@ body.tutorial-editor {
 
       .ops {
         float: left;
-        a.publish {
-          margin-top: (50px - 26px) / 2;
+        a.btn {
+          margin-top: (50px - 32px) / 2;
           margin-right: 10px;
         }
       }
@@ -82,7 +86,7 @@ body.tutorial-editor {
 }
 
 
-.page-course-editor-tutorials-edit {
+.page-course-editor-tutorials-design {
   .editor {
     position:absolute;
     $w:10px;
@@ -922,5 +926,19 @@ body.tutorial-editor {
         color:$black-50;
       }
     }
+  }
+}
+
+.page-course-editor-topics-new,
+.page-course-editor-topics-edit {
+  form select[multiple] {
+    height:300px + 14px;
+  }
+}
+
+.page-course-editor-tutorials-new,
+.page-course-editor-tutorials-edit {
+  form select[multiple] {
+    height:300px + 14px;
   }
 }

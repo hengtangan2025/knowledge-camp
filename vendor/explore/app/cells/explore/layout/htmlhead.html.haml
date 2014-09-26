@@ -6,6 +6,7 @@
   - title = "KC Mobile" if title.blank?
 
   %title= title
-  = stylesheet_link_tag 'explore/application', :media => 'screen'
   = csrf_meta_tags
-  = javascript_include_tag 'application'
+  
+  = stylesheet_link_tag 'explore/application', :media => 'screen', :'data-turbolinks-track' => true
+  = javascript_include_tag 'application', :'data-turbolinks-track' => true

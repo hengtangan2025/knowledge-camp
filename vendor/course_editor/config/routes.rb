@@ -4,6 +4,10 @@ CourseEditor::Engine.routes.draw do
   resources :nets, :shallow => true do
     resources :topics, :shallow => true do
       resources :tutorials, :shallow => true do
+        member do
+          get :design
+        end
+
         resources :steps, :shallow => true do
           member do
             put :update_continue

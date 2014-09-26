@@ -1,16 +1,11 @@
 module CourseEditor
   class TutorialsController < ApplicationController
-    layout 'course_editor/editor', :only => ['edit']
+    layout 'course_editor/editor', :only => ['design']
 
     def new
       @topic = topic
+      @net = @topic.net
       @tutorial = @topic.tutorials.build
-    end
-
-    def update
-      tutorial = KnowledgeNetPlanStore::Tutorial.find(params[:id])
-      tutorial.update_attributes(allowed_params)
-      redirect_to tutorial
     end
 
     def create
@@ -19,9 +14,27 @@ module CourseEditor
     end
 
     def edit
+      @tutorial = KnowledgeNetPlanStore::Tutorial.find(params[:id])
+      @topic = @tutorial.topic
+      @net = @topic.net
+    end
+
+    def update
+      tutorial = KnowledgeNetPlanStore::Tutorial.find(params[:id])
+      tutorial.update_attributes(allowed_params)
+      redirect_to [:design, tutorial]
+    end
+
+    def destroy
+      tutorial = KnowledgeNetPlanStore::Tutorial.find(params[:id])
+      topic = tutorial.topic
+      tutorial.destroy
+      redirect_to topic
+    end
+
+    def design
       @tutorial = KnowledgeNetPlanStore::Tutorial.find params[:id]
       @topic = @tutorial.topic
-      @net = KnowledgeNetStore::Net.first
 
       # 创建起始页面
       if @tutorial.steps.blank?

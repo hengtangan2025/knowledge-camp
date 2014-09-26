@@ -19,7 +19,7 @@
     .piece.piece-box
       .piece.piece-ops
         .op
-          %a.edit{:href => url_for([:edit, @topic])}
+          %a.edit{:href => url_for([:edit, @topic]), :data => {:toggle => true}}
             %i.fa.fa-pencil
             %span 编辑修改
         .op.danger
@@ -47,6 +47,6 @@
     .piece.piece-box
       %h4 主题“#{@topic.title}”下的教程
       - if @tutorials.present?
-        = render_cell 'course_editor/tutorial', :list, @tutorials
+        = render_cell 'course_editor/tutorial', :list, @tutorials, self
       - else
         .piece.piece-blank 主题下没有教程

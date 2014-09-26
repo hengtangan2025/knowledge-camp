@@ -140,6 +140,14 @@ body {
   }
 }
 
+textarea {
+  resize: none;
+}
+
+.form-group.submit {
+  margin-top: 50px;
+}
+
 // ------------------
 
 .page-flash-info.success {

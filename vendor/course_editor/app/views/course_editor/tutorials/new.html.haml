@@ -1,13 +1,12 @@
-.row
-  .page-main.col-pad-10.col-pad-offset-1
-    .page-bread-pieces
-      .bread.net
-        .bread-link
-          %a{:href => url_for(@topic)}= @topic.title
-        .bread.forms
-          .bread-link
-            %a{:href => url_for(@topic)} 查看相关教程
-          .bread.current
-            .plan-store-item-form
-              %h2.cell 新建教程
-              = render "form"
+:ruby
+  bread_data = [
+    [ :'net-topics', "#{@net.name} - 教学主题管理", url_for([@net])],
+    [ :topic, @topic.title, url_for(@topic)]
+  ]
+
+.col-pad-12
+  = bread bread_data, true do
+    .piece.piece-shelf
+      .piece.piece-box
+        %h4 创建教程
+        = render "form"

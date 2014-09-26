@@ -1,6 +1,6 @@
 .tutorials.ce.list
   - @tutorials.each do |tutorial|
-    %a.tutorial{:href => edit_tutorial_url(tutorial)}
+    %a.tutorial{:href => @view.url_for([:design, tutorial])}
       .row
         .col-pad-2
           = fit_ibox tutorial.image.url

@@ -926,9 +926,9 @@ class BranchForm extends SubForm
 
 
 jQuery(document).on 'ready page:load', ->
-  if jQuery('.page-course-editor-tutorials-edit .editor').length
-    form = new Form jQuery('.page-course-editor-tutorials-edit .step-form')
-    editor = new Editor jQuery('.page-course-editor-tutorials-edit .editor'), form
+  if jQuery('.page-course-editor-tutorials-design .editor').length
+    form = new Form jQuery('.page-course-editor-tutorials-design .step-form')
+    editor = new Editor jQuery('.page-course-editor-tutorials-design .editor'), form
 
 jQuery(document).on 'tutorial-editor:saved', ->
   $saved = jQuery('.page-header .saved')

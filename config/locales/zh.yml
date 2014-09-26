@@ -40,6 +40,17 @@ zh:
         password: 密码
         remember_me: 记住我的登录状态
         avatar: 头像
+      topic:
+        title: 标题
+        desc: 简单描述
+        points: 关联知识点
+        image: 上传封面图片
+      tutorial:
+        title: 标题
+        desc: 简单描述
+        points: 关联知识点（从主题的知识点中选取）
+        image: 上传封面图片
+
     placeholders:
       plan:
         name: 输入名称
@@ -47,14 +58,8 @@ zh:
 
   helpers:
     submit:
-      net:
-        create: 确定创建
-        update: 确定修改
-      plan:
-        create: 确定创建
-        update: 确定修改
-      point:
-        create: 确定创建
-        update: 确定修改
+      create: 确定创建
+      update: 确定修改
+
       user:
         login: 登录

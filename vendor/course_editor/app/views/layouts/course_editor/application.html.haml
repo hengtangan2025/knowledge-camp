@@ -1,17 +1,6 @@
 !!!
 %html{:lang => :zh}
-  %head
-    %meta{:'http-equiv' => 'Content-Type', :content => 'text/html; charset=utf-8'}
-    %meta{:name => 'viewport', :content => 'width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no'}
-
-    - title = yield :page_title
-    - title = "Knowledge Camp" if title.blank?
-
-    %title= title
-    = stylesheet_link_tag 'application', :media => 'screen'
-    = stylesheet_link_tag 'course_editor/application', :media => 'screen'
-    = csrf_meta_tags
-    = javascript_include_tag 'application'
+  = render_cell 'course_editor/layout', :htmlhead
 
   %body
     .page-header
