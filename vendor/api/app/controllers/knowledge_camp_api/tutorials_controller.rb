@@ -5,7 +5,7 @@ module KnowledgeCampApi
     end
 
     def show
-      display add_learned(KnowledgeNetPlanStore::Tutorial.find(params[:id]))
+      display add_learned(KnowledgeNetPlanStore::Tutorial.published.find(params[:id]))
     end
 
     private
@@ -39,7 +39,7 @@ module KnowledgeCampApi
     end
 
     def base
-      KnowledgeNetPlanStore::Tutorial.find(params[query_key])
+      KnowledgeNetPlanStore::Tutorial.published.find(params[query_key])
     end
 
     def query_key

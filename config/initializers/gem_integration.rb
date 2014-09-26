@@ -70,6 +70,8 @@ module KnowledgeNetPlanStore
 
     alias old_attrs attrs
 
+    after_create :create_default_step
+
     def attrs
       old_attrs.merge(:creator => creator.info)
     end
@@ -131,6 +133,11 @@ module KnowledgeNetPlanStore
       tutorial.save
 
       tutorial
+    end
+
+    def create_default_step
+      step = self.steps.create
+      step.add_content(:text, "欢迎阅读本教程")
     end
   end
 end
