@@ -10,6 +10,7 @@ gem "turbolinks"
 gem "jbuilder", "~> 2.0.2"
 gem "sdoc", "~> 0.4.0", :group => :doc
 gem "spring", :group => :development
+gem "pry-byebug", :group => :development
 
 group :test do
   gem "rspec"

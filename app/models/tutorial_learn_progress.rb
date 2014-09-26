@@ -23,8 +23,7 @@ class TutorialLearnProgress
 
     included {
       has_many :tutorial_learn_progresses,
-               :class_name => "KnowledgeNetPlanStore::Tutorial",
-               :dependent => :destroy
+               :class_name => "KnowledgeNetPlanStore::Tutorial"
     }
 
     def progress_by(user)
@@ -48,19 +47,19 @@ class TutorialLearnProgress
           updated_at = progress.updated_at
 
           if hash
-            hash[:count] += 1
+            hash[:learned_count] += 1
             hash[:time] = updated_at if hash[:time] < updated_at
           else
             array << {
-              :tutorial => tutorial,
-              :count    => 1,
-              :time     => updated_at
+              :tutorial      => tutorial,
+              :learned_count => 1,
+              :time          => updated_at
             }
           end
 
           array
         end.sort do |a, b|
-          count = b[:count] <=> a[:count]
+          count = b[:learned_count] <=> a[:learned_count]
           count == 0 ? b[:time] <=> a[:time] : count
         end.map do |h|
           h.delete(:time)
