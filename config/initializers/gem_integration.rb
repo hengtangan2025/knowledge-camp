@@ -200,6 +200,20 @@ module VirtualFileSystem
     alias old_height   height
     alias old_duration duration
 
+    def self.point_related(points, type: nil)
+      ids = points.pluck(:virtual_file_ids).flatten.uniq
+      files = self.where(:id.in => ids).order_by(:id => :asc)
+
+      case type.to_s
+      when "image"
+        files.select(&:image?)
+      when "video"
+        files.select(&:video?)
+      else
+        files
+      end
+    end
+
     def width
       return if !image?
       get_dimension! if !old_width
