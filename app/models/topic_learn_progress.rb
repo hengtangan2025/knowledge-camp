@@ -69,14 +69,21 @@ class TopicLearnProgress
     }
 
     def update_topic_progress!
-      return if self.topic.blank?
+      return if topic.blank?
 
-      tutorial_ids = self.topic.tutorial_ids
+      tutorial_ids = topic.tutorial_ids
 
-      progress = self.topic.topic_learn_progresses.find_or_create_by(:user_id => user.id)
+      progress = topic.topic_learn_progresses
+                      .find_or_initialize_by(:user_id => user.id)
 
-      learnt_tutorials = TutorialLearnProgress.where(:value.gt => 0, :tutorial_id.in => tutorial_ids)
-      learnt = learnt_tutorials.pluck(:value).reduce(&:+).to_f / 100 * learnt_tutorials.size
+      param = {
+        :value.gt => 0,
+        :tutorial_id.in => tutorial_ids,
+        :user_id => user.id
+      }
+
+      learnt_tutorials = TutorialLearnProgress.where(param)
+      learnt = learnt_tutorials.pluck(:value).reduce(&:+).to_f / 100
       total  = tutorial_ids.size.to_f
 
       progress.value = ((learnt / total) * 100).round

@@ -122,7 +122,7 @@ class TutorialLearnProgress
       return if !tutorial || tutorial.steps.blank?
 
       progress = user.tutorial_learn_progresses
-                     .find_or_create_by(:tutorial_id => tutorial.id)
+                     .find_or_initialize_by(:tutorial_id => tutorial.id)
 
       learnt = KnowledgeCamp::LearnRecord.where(:user_id => user.id).select {|record|
         record.step.stepped_id == tutorial.id
