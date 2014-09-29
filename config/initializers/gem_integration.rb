@@ -70,6 +70,8 @@ module KnowledgeNetPlanStore
 
     alias old_attrs attrs
 
+    after_create :create_default_step
+
     def attrs
       old_attrs.merge(:creator => creator.info)
     end
@@ -132,6 +134,11 @@ module KnowledgeNetPlanStore
 
       tutorial
     end
+
+    def create_default_step
+      step = self.steps.create
+      step.add_content(:text, "欢迎阅读本教程")
+    end
   end
 end
 
@@ -192,6 +199,20 @@ module VirtualFileSystem
     alias old_width    width
     alias old_height   height
     alias old_duration duration
+
+    def self.point_related(points, type: nil)
+      ids = points.pluck(:virtual_file_ids).flatten.uniq
+      files = self.where(:id.in => ids).order_by(:id => :asc)
+
+      case type.to_s
+      when "image"
+        files.select(&:image?)
+      when "video"
+        files.select(&:video?)
+      else
+        files
+      end
+    end
 
     def width
       return if !image?

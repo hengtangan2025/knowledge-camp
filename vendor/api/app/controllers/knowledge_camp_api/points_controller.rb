@@ -21,7 +21,7 @@ module KnowledgeCampApi
       when :net_id
         KnowledgeNetStore::Point.where(:net_id => params.require(:net_id))
       when :tutorial_id
-        KnowledgeNetPlanStore::Tutorial.find(params[:tutorial_id]).points
+        KnowledgeNetPlanStore::Tutorial.published.find(params[:tutorial_id]).points
       end
     end
 

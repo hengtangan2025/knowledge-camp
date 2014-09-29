@@ -17,7 +17,8 @@ module KnowledgeCampApi
     end
 
     def create
-      return display(:nothing, 422) if questions.first
+      selection = KnowledgeCamp::Step.find(question_params[:step_id]).selection_of(current_user)
+      return display(:nothing, 422) if questions.where(:selection_id => selection.id).first
       display questions.create!(question_params), 201
     end
 

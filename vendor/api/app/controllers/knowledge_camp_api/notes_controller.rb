@@ -17,7 +17,8 @@ module KnowledgeCampApi
     end
 
     def create
-      return display(:nothing, 422) if notes.first
+      selection = KnowledgeCamp::Step.find(note_params[:step_id]).selection_of(current_user)
+      return display(:nothing, 422) if notes.where(:selection_id => selection.id).first
       display notes.create!(note_params), 201
     end
 
