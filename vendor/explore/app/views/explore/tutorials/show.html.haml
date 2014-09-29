@@ -24,7 +24,7 @@
               .author
                 .avatar= avatar @tutorial.creator
           .col-pad-7.continue
-            %a.cont.btn.btn-rounded.btn-flat-info.btn-jumbo.btn-block{:href => url_for([@tutorial, :flow])}
+            %a.cont.btn.btn-rounded.btn-flat-info.btn-jumbo.btn-block{:href => url_for([:webflow, @tutorial])}
               %i.fa.fa-arrow-right
               %span 继续学习
               %span= @tutorial.title
@@ -39,7 +39,7 @@
               .outpiece
                 = render_cell 'explore/tutorial', :web_list, @prev_tutorials
             - else
-              .piece-blank 没有前置教程
+              .piece.piece-blank 没有前置教程
 
           .next-tutorials.piece.piece-box
             %h4
@@ -49,9 +49,11 @@
               .outpiece
                 = render_cell 'explore/tutorial', :web_list, @next_tutorials
             - else
-              .piece-blank 没有后续教程
+              .piece.piece-blank 没有后续教程
         .col-pad-4{:style => 'border-left:solid 1px #E7E7E7;margin-left:-1px;padding-left:0;padding-right:8px;'}
           .points.piece.piece-box
-            %h4 
-              %span 相关知识点
-            = render_cell 'explore/point', :web_list, @tutorial.points
+            %h4 相关知识点
+            - if @tutorial.points.blank?
+              .piece.piece-blank 没有相关知识点
+            - else
+              = render_cell 'explore/point', :web_list, @tutorial.points

@@ -26,3 +26,7 @@
 
 // explore
 //= require explore-ui
+
+// 视频播放
+//= require ckplayer/ckplayer
+//= require tricks/video

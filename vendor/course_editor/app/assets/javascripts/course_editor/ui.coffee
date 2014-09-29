@@ -16,14 +16,14 @@ class StepDom
   show_content: (node_num)->
     num = @get_node_num()
     if num
-      @_show_content(num)
+      @_change_content(num)
       return false
 
-    @_show_content node_num
+    @_change_content node_num
     return true
 
 
-  _show_content: (node_num)->
+  _change_content: (node_num)->
     localStorage[@node_num_key] = node_num
     if @$step.data('title')
       @$step.find('.text').html @$step.data('title')

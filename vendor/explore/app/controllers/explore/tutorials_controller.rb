@@ -50,5 +50,11 @@ module Explore
         @tutorial.related.include? x.name
       }
     end
+
+    def webflow
+      if not mobile?
+        @tutorial = KnowledgeNetPlanStore::Tutorial.find params[:id]
+      end
+    end
   end
 end

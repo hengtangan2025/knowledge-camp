@@ -6,6 +6,7 @@ CourseEditor::Engine.routes.draw do
       resources :tutorials, :shallow => true do
         member do
           get :design
+          get :simple_design
         end
 
         resources :steps, :shallow => true do
@@ -17,6 +18,14 @@ CourseEditor::Engine.routes.draw do
             get :load_content
             delete :delete_content
             put :update_content
+          end
+
+          member do
+            delete :simple_delete
+            post :simple_add
+            put :simple_up
+            put :simple_down
+            get :simple_load_content_html
           end
         end
       end

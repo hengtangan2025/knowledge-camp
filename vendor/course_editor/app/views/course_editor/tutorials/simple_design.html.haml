@@ -1,0 +1,50 @@
+:ruby
+  step_url_prefix = url_for([:root]) + 'steps/'
+
+.simple-editor{:data => {:'create-url' => url_for([@tutorial, :steps]), :'step-url-prefix' => step_url_prefix}}
+  .tutorial-steps
+    .steps
+      - step = @tutorial.steps.first
+      - idx = 0
+      - loop do
+        :ruby
+          next_step = @tutorial.steps.where(:id => step.continue['id']).first
+
+          klass = (idx == 0 ? 'begin' : (next_step.blank? ? 'end' : ''))
+
+        .step{:class => klass, :data => {:id => step.id}}
+          .num= idx += 1
+
+          .text
+            %i.fa.fa-file-text
+            = text_span step.title, '无标题页面'
+
+          .hoverdiv
+
+          .ops
+            %a.op.up{:title => '上移', :href => 'javascript:;'}
+              %i.fa.fa-arrow-up
+            %a.op.down{:title => '下移', :href => 'javascript:;'}
+              %i.fa.fa-arrow-down
+            %a.op.delete{:title => '删除', :href => 'javascript:;'}
+              %i.fa.fa-times
+            %a.op.add{:title => '插入新页面', :href => 'javascript:;'}
+              %i.fa.fa-plus
+
+          - step = next_step
+        - break if step.blank?
+
+  .content-editor
+    .content-editor-cell
+      .toolbar
+        %a.add.text{:href => 'javascript:;'}
+          %i.fa T
+          %span 增加文本
+        %a.add.image{:href => 'javascript:;'}
+          %i.fa.fa-image
+          %span 增加图片
+        %a.add.video{:href => 'javascript:;'}
+          %i.fa.fa-film
+          %span 增加视频
+
+    .blocks

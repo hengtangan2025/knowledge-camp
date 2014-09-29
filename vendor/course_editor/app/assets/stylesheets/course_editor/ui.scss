@@ -49,6 +49,7 @@ body.tutorial-editor {
       .ops {
         float: left;
         a.btn {
+          float:left;
           margin-top: (50px - 32px) / 2;
           margin-right: 10px;
         }
@@ -783,6 +784,183 @@ body.tutorial-editor {
             border-bottom:dotted 1px;
             &:hover {background-color: #F2F7F9;}
           }
+        }
+      }
+    }
+  }
+}
+
+.page-course-editor-tutorials-simple_design {
+  .simple-editor {
+    position:absolute;
+    $w:10px;
+    top:$w;left:$w;right:$w;bottom:$w;
+    background-color:#fff;
+    box-shadow:0 1px 2px rgba(0, 0, 0, 0.07);
+    border-radius:3px 3px 0 0;
+
+    $steps-w: 175px + 60px;
+    $steps-padding: 30px;
+
+    .tutorial-steps {
+      position:absolute;
+      top:0;bottom:0;
+      width:$steps-w;
+      overflow-y:scroll;
+      padding:$steps-padding;
+
+      .step {
+        width:145px;
+        height:100px;
+
+        border:solid 2px #E5E1CB;
+        background-color: #FFFBE3;
+        margin-bottom:30px;
+        position:relative;
+        margin-left: 35px;
+
+        &.hovered {
+          border-color:#B0AD9C;
+        }
+
+        &.selected {
+          border-color: rgba(black, 0.5);
+          .hoverdiv {
+            background-color: rgba(black, 0.05);
+          }
+        }
+
+        .text {
+          padding:5px;
+          line-height:20px;
+
+          i {
+            color:#B0AD9C;
+          }
+        }
+
+        .hoverdiv {
+          position: absolute;
+          top:0;left:0;right:0;bottom:0;
+          cursor:pointer;
+        }
+
+        .num {
+          line-height:30px;
+          height:30px;width:30px;
+          color:white;text-align:center;
+          background-color: $area-fresh;
+          // border-radius:100px;
+          border-radius: $border-radius-default;
+          position:absolute;
+          left:- 30px - 2px - 5px;
+          top:-2px;
+          font-weight: bold;
+        }
+
+        .ops {
+          position:absolute;
+          left:0;bottom:0;height:40px;right:0;
+          // background-color: rgba(black, 0.05);
+          border-top:dashed 1px rgba(black, 0.2);
+
+          .op {
+            float:left;
+            height:30px;width:30px;
+            margin-left:5px;margin-top:5px;
+            line-height:30px;text-align:center;
+            background: rgba(black, 0.1);
+            // border-radius:100px;
+            border-radius: $border-radius-default;
+            color:rgba(black, 0.5);
+            @include transition(all .5s ease-out);
+
+            &:hover {
+              color:rgba(black, 0.8);
+              background:rgba(black, 0.3);
+            }
+          }
+        }
+
+        &.begin {
+          &:after {
+            content: "起始页面";
+            position: absolute;
+            left:10px;bottom:10px;
+            pointer-events:none;
+            height:20px;line-height:20px;
+          }
+
+          .op.up, .op.delete, .op.down{
+            opacity: 0;
+            pointer-events: none;
+          }
+        }
+        &.end .op.down {
+          opacity: 0;
+          pointer-events: none;
+        }
+        &:nth-child(2) {
+          .op.up {
+            opacity: 0;
+            pointer-events: none;
+          }
+        }
+      }
+
+      canvas {
+        position: absolute;
+        top:0;left:0;
+        pointer-events:none;
+      }
+    }
+
+    .content-editor {
+      position:absolute;
+      top:0;bottom:0;right:0;
+      left:$steps-w + $steps-padding * 2;
+
+      .toolbar {
+        position:absolute;
+        top:0;left:0;right:0;height:80px;
+        border-bottom: solid 1px #e7e7e7;
+        // background-color: #fafafa;
+
+        a.add {
+          float:left;
+          height:60px;line-height:60px;
+          background-color:#F1F1F1;
+          margin-top:10px;margin-left:10px;
+          @include border-box;
+          border:solid 1px #ddd;
+          width:120px;border-radius:3px;
+          color:#333;text-align:center;
+          &:hover {
+            text-decoration:none;
+            background:#e7e7e7;
+          }
+          i {font-size:20px;color:$black-60;}
+        }
+      }
+
+      .blocks {
+        position:absolute;
+        top:81px;left:0;
+        width:500px;
+        padding:10px;
+        .block {
+          border:dashed 1px #ccc;
+          padding:10px;margin-bottom:10px;
+        }
+
+        .block.text pre {
+          padding:0;margin:0;
+          background-color:transparent;
+          color: #333;
+          border:0 none;
+          font-size: 14px;
+          font-family: arial, "微软雅黑";
+          min-height:20px;
         }
       }
     }
