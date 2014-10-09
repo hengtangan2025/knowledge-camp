@@ -119,7 +119,10 @@ module CourseEditor
           :id => block.id.to_s,
           :kind => block.kind,
           :content => block.content
-        }
+        },
+        :html => (
+          render_cell 'course_editor/step', :blocks, [block]
+        )
       }
     end
 
@@ -143,5 +146,120 @@ module CourseEditor
         }
       }
     end
+
+    # -------------------
+
+    # 在简单线性关联结构中删除 step 
+    def simple_delete
+      step = KnowledgeCamp::Step.find params[:id]
+
+      prev_id = params[:prev_id]
+      next_id = params[:next_id]
+
+      # 如果有前后关联，处理关联关系
+      if prev_id
+        prev_step = KnowledgeCamp::Step.find prev_id
+        _set_next prev_step, next_id
+      end
+
+      step.destroy
+
+      render :json => {
+        :id => step.id.to_s,
+        :total_count => step.stepped.steps.count,
+        :prev_id => prev_id,
+        :next_id => next_id
+      }
+    end
+
+    # 在简单线性关联结构中增加 step
+    def simple_add
+      prev_step = KnowledgeCamp::Step.find params[:id]
+      tutorial = prev_step.stepped
+      step = tutorial.steps.create
+
+      prev_step.set_continue 'step', step.id
+
+      next_id = params[:next_id]
+      if next_id
+        step.set_continue 'step', next_id
+      end
+
+      render :json => {
+        :id => step.id.to_s,
+        :total_count => step.stepped.steps.count,
+        :step_id => params[:id],
+        :next_id => next_id
+      }
+    end
+
+    # 简单关联结构中上移
+    def simple_up
+      prev_prev_id = params[:prev_prev_id]
+      prev_id      = params[:prev_id]
+      next_id      = params[:next_id]
+
+      step = _find params[:id]
+
+      if prev_prev_id
+        prev_prev_step = _find prev_prev_id
+        prev_prev_step.set_continue 'step', step.id
+      end
+
+      step.set_continue 'step', prev_id
+
+      prev_step = _find prev_id
+
+      _set_next prev_step, next_id
+
+      render :json => {
+        :id => step.id.to_s
+      }
+    end
+
+
+    def simple_down
+      next_next_id = params[:next_next_id]
+      next_id      = params[:next_id]
+      prev_id      = params[:prev_id]
+
+      step = _find params[:id]
+
+      prev_step = _find prev_id
+      next_step = _find next_id
+
+      prev_step.set_continue 'step', next_id
+      next_step.set_continue 'step', step.id
+      _set_next step, next_next_id
+
+      render :json => {
+        :id => step.id.to_s
+      }
+    end
+
+
+    def simple_load_content_html
+      step = KnowledgeCamp::Step.find params[:id]
+      render :json => {
+        :html => (
+          render_cell 'course_editor/step', :blocks, step.blocks
+        )
+      }
+    end
+
+
+    private
+      def _find(id)
+        KnowledgeCamp::Step.find id
+      end
+
+      def _set_next(step, id)
+        if id
+          step.set_continue 'step', id
+          return
+        end
+
+        step.set_continue false
+      end
   end
 end

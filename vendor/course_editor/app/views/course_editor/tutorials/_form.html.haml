@@ -2,7 +2,7 @@
   is_new   = @tutorial.new_record?
   resource = is_new ? [@tutorial.topic, @tutorial] : @tutorial
   selected = is_new ? [] : @tutorial.point_ids
-  cancel   = is_new ? url_for(@tutorial.topic) : url_for([:design, @tutorial])
+  cancel   = is_new ? url_for(@tutorial.topic) : url_for([:simple_design, @tutorial])
 
 = simple_form_for resource, :defaults => {:input_html => {:class => 'form-control'}} do |f|
   .row

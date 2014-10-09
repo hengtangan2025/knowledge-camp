@@ -1,6 +1,6 @@
 module CourseEditor
   class TutorialsController < ApplicationController
-    layout 'course_editor/editor', :only => ['design']
+    layout 'course_editor/editor', :only => ['design', 'simple_design']
 
     def new
       @topic = topic
@@ -22,7 +22,7 @@ module CourseEditor
     def update
       tutorial = KnowledgeNetPlanStore::Tutorial.find(params[:id])
       tutorial.update_attributes(allowed_params)
-      redirect_to [:design, tutorial]
+      redirect_to [:simple_design, tutorial]
     end
 
     def destroy
@@ -33,6 +33,17 @@ module CourseEditor
     end
 
     def design
+      @tutorial = KnowledgeNetPlanStore::Tutorial.find params[:id]
+      @topic = @tutorial.topic
+
+      # 创建起始页面
+      if @tutorial.steps.blank?
+        @tutorial.steps.create
+      end
+    end
+
+    # 简化的，线性的教程编写
+    def simple_design
       @tutorial = KnowledgeNetPlanStore::Tutorial.find params[:id]
       @topic = @tutorial.topic
 

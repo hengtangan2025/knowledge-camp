@@ -29,5 +29,10 @@ module Explore
       @tutorials = tutorials
       render
     end
+
+    def web_blocks(step)
+      @step = step
+      render
+    end
   end
 end

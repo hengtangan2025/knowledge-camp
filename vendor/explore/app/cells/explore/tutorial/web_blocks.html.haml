@@ -1,0 +1,15 @@
+- @step.blocks.each do |block|
+  - kind = block.kind
+  - case kind.to_s
+  - when 'text'
+    .block.text
+      %pre= block.content
+  - when 'image'
+    .block.image
+      = fit_ibox block.virtual_file.attach.url
+  - when 'video'
+    .block.video
+      .vbox
+        .page-video-player#player{:data => {:fileurl => block.virtual_file.attach.url}}
+  - else
+    .block= block.to_json

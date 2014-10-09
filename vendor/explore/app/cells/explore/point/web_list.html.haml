@@ -1,15 +1,11 @@
 .points.web.list
-  - if @points.blank?
-    .piece-blank{:style => 'margin:0 10px;'} 没有相关知识点
+  - @points.each do |point|
+    - url = "/explore/points/#{point.id}"
+    %a.point{:href => url}
+      :ruby
+        bg = string_grid_color(point.id)
 
-  - else
-    - @points.each do |point|
-      - url = "/explore/points/#{point.id}"
-      %a.point{:href => url}
-        :ruby
-          bg = string_grid_color(point.id)
-
-        .icon{:style => "border-color:#{bg}"}
-        .name-box
-          .name
-            %span= point.name
+      .icon{:style => "border-color:#{bg}"}
+      .name-box
+        .name
+          %span= point.name

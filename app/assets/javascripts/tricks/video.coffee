@@ -5,15 +5,22 @@ class WebVideoCkPlayer
     @elm_id = @$elm.attr('id')
 
     @video_list_xml_url = @$elm.data('xmlurl')
+    @video_file_url = @$elm.data('fileurl')
 
     @init()
 
   init: ->
-    vars =
-      p: 0 # 默认暂停，不自动播放
-      c: 1 # 读取 xml 配置，不使用 js 配置
-      f: @video_list_xml_url
-      s: 2 # 从 xml 读取视频文件信息，而不是直接传文件 url
+    if @video_list_xml_url
+      vars =
+        p: 0 # 默认暂停，不自动播放
+        c: 1 # 读取 xml 配置，不使用 js 配置
+        f: @video_list_xml_url
+        s: 2 # 从 xml 读取视频文件信息，而不是直接传文件 url
+    else if @video_file_url
+      vars =
+        p: 0 # 默认暂停，不自动播放
+        c: 1 # 读取 xml 配置，不使用 js 配置
+        f: @video_file_url
 
     params =
       bgcolor : '#161616'
@@ -21,7 +28,7 @@ class WebVideoCkPlayer
       allowScriptAccess : 'always'
       wmode : 'opaque'
 
-    CKobject.embedSWF @PLAYER_SWF_URL, @elm_id, 'mindpin_ckplayer', '960', '600', vars, params
+    CKobject.embedSWF @PLAYER_SWF_URL, @elm_id, 'mindpin_ckplayer', '100%', '100%', vars, params
 
     @player = CKobject.getObjectById('mindpin_ckplayer')
 

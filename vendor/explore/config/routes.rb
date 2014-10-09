@@ -19,7 +19,7 @@ Explore::Engine.routes.draw do
       get :mine
     end
     member do
-      get :flow
+      get :webflow
     end
   end
 

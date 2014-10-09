@@ -90,3 +90,50 @@ jQuery(document).on 'ready page:load', ->
         .addClass('disabled')
         .removeClass('note')
         .removeClass('question')
+
+
+# ----------------- web flow
+jQuery(document).on 'ready page:load', ->
+  if jQuery('.page-explore-tutorials-webflow-web').length
+    $webflow = jQuery('.webflow')
+    $page_next = $webflow.find('a.page.next')
+    $page_prev = $webflow.find('a.page.prev')
+
+    select = (num)->
+      step = jQuery(".webflow .steps .step").eq(num - 1)
+
+      o1 = parseInt step.offset().left
+      o2 = parseInt $webflow.find('.steps').offset().left
+      m1 = parseInt $webflow.find('.steps .step').first().css 'margin-left'
+
+      # console.log d = o1 - o2 - m1
+      d = o1 - o2 - m1
+
+      $webflow.find('.steps .step').first()
+        .stop()
+        .animate
+          'margin-left': -d+1
+        , ->
+          jQuery(document).trigger 'mindpin:load-fit-images'
+
+      $webflow.find('a.pg')
+        .removeClass('active')
+        .eq(num - 1).addClass('active')
+
+      $webflow.find('a.page').removeClass('disabled')
+      if num is $webflow.find('.steps .step').length
+        $page_next.addClass 'disabled'
+      if num is 1
+        $page_prev.addClass 'disabled'
+
+    $webflow.delegate '.pages a.pg', 'click', ->
+      num = jQuery(this).data('num')
+      select num
+
+    $webflow.delegate 'a.page.next:not(.disabled)', 'click', ->
+      num = jQuery('.webflow a.pg.active').data('num') + 1
+      select num
+
+    $webflow.delegate 'a.page.prev:not(.disabled)', 'click', ->
+      num = jQuery('.webflow a.pg.active').data('num') - 1
+      select num
