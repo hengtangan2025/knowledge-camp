@@ -399,15 +399,30 @@ end
 
 KnowledgeNetPlanStore::Uploader.send :include, ImageUploaderMethods
 
-class KnowledgeCamp::Block
-  belongs_to :virtual_file,
-             :class_name => 'VirtualFileSystem::File'
+module KnowledgeCamp
+  class Step
+    alias old_attrs attrs
 
-  alias old_attrs attrs
+    def tutorial_image
+      return if self.stepped_type != KnowledgeNetPlanStore::Tutorial.name
+      self.stepped.image.url
+    end
 
-  def attrs
-    vf = self.virtual_file
-    old_attrs.merge(vf ? {:virtual_file => vf.attrs} : {})
+    def attrs
+      old_attrs.merge(:tutorial_image => tutorial_image)
+    end
+  end
+
+  class Block
+    belongs_to :virtual_file,
+    :class_name => 'VirtualFileSystem::File'
+
+    alias old_attrs attrs
+
+    def attrs
+      vf = self.virtual_file
+      old_attrs.merge(vf ? {:virtual_file => vf.attrs} : {})
+    end
   end
 end
 
