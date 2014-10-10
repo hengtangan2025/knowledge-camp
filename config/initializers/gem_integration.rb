@@ -5,7 +5,7 @@ class MindpinHTMLDiff
 end
 
 module KnowledgeCamp
-  module TutorialId
+  module TutorialInfo
     extend ActiveSupport::Concern
 
     included {
@@ -16,21 +16,28 @@ module KnowledgeCamp
       return if self.step.stepped_type != KnowledgeNetPlanStore::Tutorial.name
       self.step.stepped_id
     end
+
+    def tutorial_image
+      return if !self.step
+      self.step.tutorial_image
+    end
   end
 
   class Note
-    include TutorialId
+    include TutorialInfo
 
     def attrs
-      old_attrs.merge(:tutorial_id => self.tutorial_id.to_s)
+      old_attrs.merge(:tutorial_id    => self.tutorial_id.to_s,
+                      :tutorial_image => tutorial_image)
     end
   end
 
   class Question
-    include TutorialId
+    include TutorialInfo
     
     def attrs
-      old_attrs.merge(:tutorial_id => self.tutorial_id.to_s)
+      old_attrs.merge(:tutorial_id    => self.tutorial_id.to_s,
+                      :tutorial_image => tutorial_image)
     end
   end
 end
