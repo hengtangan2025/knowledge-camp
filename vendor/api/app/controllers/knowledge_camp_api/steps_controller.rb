@@ -55,7 +55,7 @@ module KnowledgeCampApi
 
         KnowledgeCamp::Step.where(options).map {|step| add_addons(step)}
       when :is_hard
-        current_user.selections.where(:hard => params[:is_hard]).map {|sel| sel.block.step}.uniq.compact
+        current_user.selections.where(:hard => params[:is_hard]).map {|sel| add_addons(sel.block.step)}.uniq.compact
       end
     end
 
