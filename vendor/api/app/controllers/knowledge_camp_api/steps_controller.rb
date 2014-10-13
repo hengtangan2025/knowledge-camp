@@ -35,10 +35,11 @@ module KnowledgeCampApi
       note       = @step.note_of(current_user)
 
       attrs = {
-        :is_learned  => is_learned,
-        :question_id => question && question.id.to_s,
-        :note_id     => note && note.id.to_s,
-        :is_hard     => !!@step.selection_of(current_user).hard
+        :is_learned   => is_learned,
+        :question_id  => question && question.id.to_s,
+        :note_id      => note && note.id.to_s,
+        :is_hard      => !!@step.selection_of(current_user).hard,
+        :hard_mark_at => @step.selection_of(current_user).updated_at
       }
 
       @step.attrs.merge(attrs)
