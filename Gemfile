@@ -138,7 +138,3 @@ gem 'kc-explore',
 gem 'kc-course-editor',
     :path => 'vendor/course_editor',
     :require => 'course_editor'
-
-gem 'kc-android-publish-uploader',
-    :path => 'vendor/android-publish-uploader',
-    :require => 'kc_android_publish_uploader'

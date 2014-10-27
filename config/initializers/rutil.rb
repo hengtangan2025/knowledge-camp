@@ -36,22 +36,22 @@ if !defined? RUtil
   # 检查非必要配置项
   begin
     if !defined? R::ALIYUN_OSS_ACCESS_KEY_ID
-      p "*! 找不到配置: R::ALIYUN_OSS_ACCESS_KEY_ID"
+      p " ! 找不到配置: R::ALIYUN_OSS_ACCESS_KEY_ID"
       p " ! 阿里云存储模块无法使用"
     end
 
     if !defined? R::ALIYUN_OSS_ACCESS_KEY_SECRET
-      p "*! 找不到配置: R::ALIYUN_OSS_ACCESS_KEY_SECRET"
+      p " ! 找不到配置: R::ALIYUN_OSS_ACCESS_KEY_SECRET"
       p " ! 阿里云存储模块无法使用"
     end
 
     if !defined? R::ALIYUN_OSS_HOST
-      p "*! 找不到配置: R::ALIYUN_OSS_HOST"
+      p " ! 找不到配置: R::ALIYUN_OSS_HOST"
       p " ! 阿里云存储模块无法使用"
     end
 
     if !defined? R::ALIYUN_OSS_BUCKET_NAME
-      p "*! 找不到配置: R::ALIYUN_OSS_BUCKET_NAME"
+      p " ! 找不到配置: R::ALIYUN_OSS_BUCKET_NAME"
       p " ! 阿里云存储模块无法使用"
     end
 
@@ -69,18 +69,26 @@ if !defined? RUtil
 
       def get_aliyun_oss_access_key_id
         R::ALIYUN_OSS_ACCESS_KEY_ID
+      rescue
+        ""
       end
 
       def get_aliyun_oss_access_key_secret
         R::ALIYUN_OSS_ACCESS_KEY_SECRET
+      rescue
+        ""
       end
 
       def get_aliyun_oss_host
         R::ALIYUN_OSS_HOST
+      rescue
+        ""
       end
 
       def get_aliyun_oss_bucket_name
         R::ALIYUN_OSS_BUCKET_NAME
+      rescue
+        ""
       end
     end
   end

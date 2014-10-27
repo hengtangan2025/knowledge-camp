@@ -133,12 +133,6 @@ PATH
       rails (~> 4.1.2)
 
 PATH
-  remote: vendor/android-publish-uploader
-  specs:
-    kc-android-publish-uploader (0.0.1)
-      rails (~> 4.1.2)
-
-PATH
   remote: vendor/api
   specs:
     knowledge-camp-api (0.0.1)
@@ -404,7 +398,6 @@ DEPENDENCIES
   jbuilder (~> 2.0.2)
   jquery-rails
   kaminari (~> 0.15.1)
-  kc-android-publish-uploader!
   kc-course-editor!
   kc-explore!
   knowledge-camp-api!
