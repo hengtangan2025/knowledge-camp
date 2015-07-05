@@ -3,14 +3,25 @@
   = render_cell 'explore/layout', :htmlhead
 
   %body.reading
-    .page-drawer-front
-      .page-header
-        %a.left.back{:href => "/explore/tutorials/#{@tutorial.id}"}
-          %i.fa.fa-chevron-left
-        .text= @tutorial.title
+    .body-wallpaper
+    .phone-wrapper
+      .phone-top
+      .phone-menubar
+      .phone-screen
 
-      .page-content.container{:data => {:scroller => true}}
-        .row{:class => action_css_class}
-          - if !user_signed_in?
-            .page-not-signed-in 你正以未登录状态进行浏览
-          = yield
+        .page-drawer-front
+          .page-header
+            %a.left.back{:href => "/explore/tutorials/#{@tutorial.id}"}
+              %i.fa.fa-chevron-left
+            .text= @tutorial.title
+
+          .page-content.container{:data => {:scroller => true}}
+            .row{:class => action_css_class}
+              - if !user_signed_in?
+                .page-not-signed-in 你正以未登录状态进行浏览
+              = yield
+
+      .phone-bottom
+      .qr-code
+        .s 扫一扫，用手机访问！
+        .qr
