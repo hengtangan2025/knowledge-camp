@@ -123,7 +123,7 @@ gem 'video-fetcher',
 # 阿里云
 gem 'aliyun',
     :github => 'mindpin/aliyun',
-    :tag => '0.0.4'
+    :tag => '0.0.5'
 
 gem 'siye',
     :path => 'vendor/4ye'

@@ -17,8 +17,8 @@ GIT
 
 GIT
   remote: git://github.com/mindpin/aliyun.git
-  revision: 2618793cd26132d2f1d0e793b8e9f31ffc8b691e
-  tag: 0.0.4
+  revision: db13cf984b5d81fb5a6280925355da87cc979613
+  tag: 0.0.5
   specs:
     aliyun (0.0.1)
       mime-types (~> 1.16)
@@ -430,3 +430,6 @@ DEPENDENCIES
   useragent
   video-fetcher!
   virtual_file_system!
+
+BUNDLED WITH
+   1.10.5
