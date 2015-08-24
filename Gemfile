@@ -31,7 +31,7 @@ gem "unicorn"
 gem "rest-client" # 简化 http 请求
 gem "htmldiff"
 gem "streamio-ffmpeg"
-
+gem "figaro"
 # -------------
 
 # 全文搜索

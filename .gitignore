@@ -31,3 +31,6 @@ public/assets/
 .DS_*
 ._*
 
+
+# Ignore application configuration
+/config/application.yml

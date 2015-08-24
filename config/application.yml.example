@@ -1,0 +1,7 @@
+# 静态文件url的前缀
+# 见 RUtil.get_static_file_url(path)
+STATIC_FILE_URL_PREFIX: "static_files"
+
+# 静态文件硬盘路径的前缀
+# 见 RUtil.get_static_file_path(path)
+UPLOAD_FILE_BASE_PATH: <%= Rails.root.join("public/static_files") %>
