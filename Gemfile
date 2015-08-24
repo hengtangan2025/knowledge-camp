@@ -1,9 +1,10 @@
 # coding: utf-8
 source "http://ruby.taobao.org"
 
-gem "rails", "4.1.2"
-gem "uglifier", ">= 1.3.0"
-gem "coffee-rails", "~> 4.0.0"
+gem 'rails', '4.2.3'
+gem 'sass-rails', '~> 5.0'
+gem 'uglifier', '>= 1.3.0'
+gem 'coffee-rails', '~> 4.1.0'
 
 gem "jquery-rails"
 gem "turbolinks"
@@ -19,7 +20,6 @@ end
 
 # -------------
 
-gem "sass-rails", "~> 4.0.3"
 gem "kaminari", "~> 0.15.1"
 gem "haml"
 gem "pry" # 加强的 irb
@@ -34,10 +34,6 @@ gem "streamio-ffmpeg"
 
 # -------------
 
-# 中文转拼音
-gem 'ruby-pinyin'
-# 代码高亮
-gem 'haml-coderay'
 # 全文搜索
 gem "elasticsearch-model", :require => "elasticsearch/model"
 gem "elasticsearch-rails", :require => "elasticsearch/rails"
@@ -51,48 +47,21 @@ gem "acts-as-dag",
     :github => "mindpin/acts-as-dag",
     :tag => "v0.0.1"
 
-gem "knowledge-net-plan-store",
-    :github => "mindpin/knowledge-net-plan-store",
-    :tag => "v0.1.0.p3"
-
 gem 'knowledge-net-store',
     :github => 'mindpin/knowledge-net-store',
     :tag => '0.1.1'
 
 gem "generic_controller",
     :github => "mindpin/generic_controller",
-    :tag => "v0.0.3"
+    :tag => "v0.0.5"
 
 gem "user-auth",
     :github => "mindpin/user-auth",
-    :tag => "0.0.7"
+    :tag => "0.0.8"
 
 gem "sort_char",
     :git => "git://github.com/mindpin/sort_char.git",
     :tag => "0.0.1"
-
-gem "knowledge_camp_step",
-    # :path => "../knowledge_camp_step"
-    :github => "mindpin/knowledge_camp_step",
-    :tag => "v0.1.6.p10"
-
-# 文字文档持久化，以下两个 gem 是相关的
-gem "mongoid-versioning",
-    :github => "simi/mongoid-versioning"
-
-gem "documents-store",
-    :github => "mindpin/documents-store",
-    :tag => "v0.0.4"
-
-gem 'ueditor.rails',
-    # :path => '/web/songliang/kaid/ueditor.rails'
-    :github => 'mindpin/ueditor.rails',
-    # :tag => 'v0.0.5'
-    :ref => 'b832fde'
-
-# 解析 UserAgent
-# https://github.com/josh/useragent
-gem 'useragent'
 
 # 文件上传，用于用户头像逻辑
 gem 'carrierwave-mongoid', :require => 'carrierwave/mongoid'
@@ -106,7 +75,7 @@ gem 'virtual_file_system',
 # 支持分段上传的文件持久化
 gem 'file-part-upload',
     :github => 'mindpin/file-part-upload',
-    :tag => '1.0.5'
+    :tag => '2.0.0-beta3'
 
 # 图片加载的一个小工具
 gem 'simple-images',
@@ -114,27 +83,6 @@ gem 'simple-images',
     :ref => 'fc06f2b'
     # :path => '/web/songliang/simple-images'
 
-# 获取视频文件
-gem 'video-fetcher',
-    :github => 'mindpin/video-fetcher',
-    :ref => '33ba889e9f01bf8b83241feccdd953f26fdb1567'
-    # :path => '/web/songliang/video-fetcher'
-
-# 阿里云
-gem 'aliyun',
-    :github => 'mindpin/aliyun',
-    :tag => '0.0.5'
-
-gem 'siye',
-    :path => 'vendor/4ye'
-
-gem 'knowledge-camp-api',
-    :path => 'vendor/api'
-
 gem 'kc-explore',
     :path => 'vendor/explore',
     :require => 'explore'
-
-gem 'kc-course-editor',
-    :path => 'vendor/course_editor',
-    :require => 'course_editor'

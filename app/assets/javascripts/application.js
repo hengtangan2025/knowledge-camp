@@ -6,9 +6,6 @@
 //= require flowjs/flow
 //= require seajs/sea-2.2.1
 
-// gem
-//= require ueditor
-
 // 自己写的
 //= require auth
 //= require file

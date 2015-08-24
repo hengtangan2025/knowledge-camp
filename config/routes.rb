@@ -1,18 +1,7 @@
 Rails.application.routes.draw do
-  
-  # 4ye.me
-  constraints :subdomain => 'blog' do
-    mount Siye::Engine => '/'
-  end
-
-  # api
-  mount KnowledgeCampApi::Engine => '/api'
 
   # 学生界面
   mount Explore::Engine => '/explore'
-
-  # 课程编辑
-  mount CourseEditor::Engine => '/course_editor'
 
   # -----------------------
 
@@ -35,11 +24,11 @@ Rails.application.routes.draw do
       end
 
       resources :files, :shallow => true
-      
+
       resources :points, :shallow => true do
         member do
           # TODO 改成体验更好的形式
-          get :assign_parent 
+          get :assign_parent
           get :assign_child
           patch :do_assign
         end
@@ -48,8 +37,8 @@ Rails.application.routes.draw do
       end
 
       resources :documents, :shallow => true do
-        resources :versions, 
-                  :shallow => true, 
+        resources :versions,
+                  :shallow => true,
                   :controller => :document_versions do
           collection do
             get ":version", :action => :version
