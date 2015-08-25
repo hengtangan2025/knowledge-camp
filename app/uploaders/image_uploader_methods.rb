@@ -28,16 +28,6 @@ module ImageUploaderMethods
   private
     def secure_token
       var = :"@#{mounted_as}_secure_token"
-      model.instance_variable_get(var) || model.instance_variable_set(var, randstr)
-    end
-
-    def randstr(length=8)
-      base = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
-      size = base.size
-      re = '' << base[rand(size-10)]
-      (length - 1).times {
-        re << base[rand(size)]
-      }
-      re
+      model.instance_variable_get(var) || model.instance_variable_set(var, KcUtils::String.randstr())
     end
 end

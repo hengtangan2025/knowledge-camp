@@ -12,9 +12,9 @@ class Manage::FilesController < ApplicationController
 
   def create
     @net = KnowledgeNetStore::Net.find params[:net_id]
-    
+
     params[:files].each do |file_entity_id, visible_filename|
-      virtual_filename = get_virtual_filename(visible_filename)
+      virtual_filename = KcUtils::String.get_virtual_filename(visible_filename)
 
       command = VirtualFileSystem::Command(:knowledge_net , current_user)
       command.put("/" + virtual_filename, file_entity_id, :mode => :default) do |vff|

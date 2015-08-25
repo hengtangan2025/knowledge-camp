@@ -1,11 +1,4 @@
-class MindpinHTMLDiff
-  class << self
-    include HTMLDiff
-  end
-end
-
-# -----------------------------------------
-# virtual_file_system 相关
+p "virtual_file_system_decorator.rb load"
 module FileEntityVFSModule
   def get_uri(store_id)
     {
@@ -105,52 +98,4 @@ module VirtualFileSystem
 
   end
 end
-
-def randstr(length=8)
-  base = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
-  size = base.size
-  re = '' << base[rand(size-10)]
-  (length - 1).times {
-    re << base[rand(size)]
-  }
-  re
-end
-
-def get_virtual_filename(filename)
-  filename = filename.to_s
-  return "" if filename.blank?
-  arr = filename.split(".")
-  return "#{filename}-#{randstr(32)}" if arr.count == 1
-
-  extname = arr.pop
-  return "#{arr*"."}-#{randstr(32)}.#{extname}"
-end
-
-require_relative 'rutil'
-FilePartUpload.config do
-  path RUtil.get_static_file_path("files/:id/file/:name")
-  url RUtil.get_static_file_url("files/:id/file/:name")
-end
-
-# ---------------------------------------
-
-module KnowledgeNetStore
-  class Net
-    has_many :virtual_files,
-             :class_name => 'VirtualFileSystem::File',
-             :dependent => :destroy
-  end
-
-  class Point
-    has_and_belongs_to_many :virtual_files,
-                            :class_name => 'VirtualFileSystem::File',
-                            :inverse_of => :points
-  end
-end
-
-[
-  KnowledgeNetStore::Net,
-  VirtualFileSystem::File
-].each do |klass|
-  klass.send :include, Kaminari::MongoidExtension::Document
-end
+p "virtual_file_system_decorator.rb load success"

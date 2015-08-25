@@ -9,11 +9,11 @@ GIT
 
 GIT
   remote: git://github.com/mindpin/acts-as-dag.git
-  revision: af0887073f0cf9ab843f11ee247cb76b48eec215
-  tag: v0.0.1
+  revision: a94ff8ac1b946b8be5aa67792016eb26d5899282
+  tag: 0.0.2
   specs:
-    acts-as-dag (0.0.1)
-      mongoid
+    acts-as-dag (0.0.2)
+      mongoid (~> 4.0)
 
 GIT
   remote: git://github.com/mindpin/file-part-upload.git
@@ -35,11 +35,35 @@ GIT
     generic_controller (0.0.4)
 
 GIT
-  remote: git://github.com/mindpin/knowledge-net-store.git
-  revision: a9413c963d923734358edfae31c3a997b451d6ea
-  tag: 0.1.1
+  remote: git://github.com/mindpin/kc_courses.git
+  revision: 60edc429f9ac8c51d2a458e1c46344dad65d763a
+  ref: 60edc42
   specs:
-    knowledge-net-store (0.0.1)
+    kc_courses (0.1.0)
+
+GIT
+  remote: git://github.com/mindpin/kc_utils.git
+  revision: d4a8cb118f8b7f5253f89e33180335f09f3d9edd
+  tag: 0.0.1
+  specs:
+    kc_utils (0.0.1)
+      activesupport
+
+GIT
+  remote: git://github.com/mindpin/knowledge-net-store.git
+  revision: 848670d1685f302f5a2c7472e91da2b5244a1356
+  tag: v1.0.0-beta1
+  specs:
+    knowledge-net-store (0.1.0)
+
+GIT
+  remote: git://github.com/mindpin/question_bank.git
+  revision: 79138df1433123b7a744ca22d5d361c8ef81ad04
+  ref: 79138df
+  specs:
+    question_bank (0.0.1)
+      enumerize
+      simple_form
 
 GIT
   remote: git://github.com/mindpin/simple-images.git
@@ -297,7 +321,7 @@ GEM
     sdoc (0.4.1)
       json (~> 1.7, >= 1.7.7)
       rdoc (~> 4.0)
-    simple_form (3.0.4)
+    simple_form (3.1.0)
       actionpack (~> 4.0)
       activemodel (~> 4.0)
     slop (3.6.0)
@@ -348,19 +372,22 @@ DEPENDENCIES
   jquery-rails
   kaminari (~> 0.15.1)
   kc-explore!
+  kc_courses!
+  kc_utils!
   knowledge-net-store!
   mina!
   mini_magick
   mongoid (~> 4.0.0)
   pry
   pry-byebug
+  question_bank!
   rails (= 4.2.3)
   rest-client
   rspec
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
   simple-images!
-  simple_form (~> 3.0.2)
+  simple_form (~> 3.1.0)
   sort_char!
   spring
   streamio-ffmpeg

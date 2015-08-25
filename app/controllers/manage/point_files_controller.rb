@@ -14,9 +14,9 @@ class Manage::PointFilesController < ApplicationController
   def create
     @point = KnowledgeNetStore::Point.find params[:point_id]
     @net = @point.net
-    
+
     params[:files].each do |file_entity_id, visible_filename|
-      virtual_filename = get_virtual_filename(visible_filename)
+      virtual_filename = KcUtils::String.get_virtual_filename(visible_filename)
 
       command = VirtualFileSystem::Command(:knowledge_net , current_user)
       command.put("/" + virtual_filename, file_entity_id, :mode => :default) do |vff|
