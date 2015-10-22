@@ -16,5 +16,5 @@ cp config/initializers/r.rb.development config/initializers/r.rb
 rails s -b 0.0.0.0
 ```
 
-### 导入knowledge-net 数据说明
+### 导入knowledge-net 数据说明（已过时）
 https://github.com/mindpin/sample-data-knowledge-points/blob/master/README.md
