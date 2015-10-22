@@ -9,6 +9,7 @@ knowledge-camp
 ```
 git clone https://github.com/mindpin/knowledge-camp.git
 cd knowledge-camp
+git checkout bank
 git submodule init
 git submodule update
 bundle
