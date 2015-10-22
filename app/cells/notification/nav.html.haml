@@ -1,0 +1,4 @@
+%ul.nav.nav-tabs
+  - @navs.each do |nav|
+    %li{:role => "presentation", :class => nav[:action] == params[:action] ? "active" : "" }
+      %a{:href => nav[:url]}= nav[:name]

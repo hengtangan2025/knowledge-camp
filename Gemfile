@@ -26,7 +26,7 @@ gem "pry" # 加强的 irb
 gem "mongoid", "~> 4.0.0"
 gem "bson_ext"
 gem 'cells', '~> 3.10.1' # 用于复用一些前端组件
-gem "simple_form", "~> 3.0.2"
+gem "simple_form", "~> 3.2.0"
 gem "unicorn"
 gem "rest-client" # 简化 http 请求
 gem "htmldiff"
@@ -138,3 +138,13 @@ gem 'kc-explore',
 gem 'kc-course-editor',
     :path => 'vendor/course_editor',
     :require => 'course_editor'
+
+# -----金融学院相关
+gem 'kc_courses', :github => 'mindpin/kc_courses',
+                  :ref => "37d35b0"
+
+gem 'simple-navbar', :github => 'mindpin/simple-navbar',
+                     :tag => "0.0.3"
+
+gem 'bootstrap-sass', '~> 3.3.5'
+# ----
