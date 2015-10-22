@@ -151,7 +151,7 @@ PATH
       rails (~> 4.1.2)
 
 GEM
-  remote: http://ruby.taobao.org/
+  remote: https://ruby.taobao.org/
   specs:
     actionmailer (4.1.2)
       actionpack (= 4.1.2)
@@ -430,6 +430,3 @@ DEPENDENCIES
   useragent
   video-fetcher!
   virtual_file_system!
-
-BUNDLED WITH
-   1.10.5

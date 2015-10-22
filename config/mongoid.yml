@@ -3,13 +3,13 @@ development:
     default:
       database: knowledge-camp-development
       hosts:
-        - 192.168.1.99:27017
+        - 127.0.0.1:27017
 test:
   sessions:
     default:
       database: knowledge-camp-test
       hosts:
-        - 192.168.1.99:27017
+        - 127.0.0.1:27017
       options:
         read: primary
         max_retries: 1

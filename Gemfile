@@ -1,5 +1,5 @@
 # coding: utf-8
-source "http://ruby.taobao.org"
+source "https://ruby.taobao.org"
 
 gem "rails", "4.1.2"
 gem "uglifier", ">= 1.3.0"

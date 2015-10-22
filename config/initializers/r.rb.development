@@ -10,9 +10,9 @@ if !defined? R
 
     # aliyun oss 需要的配置(目前版本因为没有使用 oss，所以没有用到这些配置)
     #（目前没有任何代码引用了这几个参数）
-    ALIYUN_OSS_ACCESS_KEY_ID
-    ALIYUN_OSS_ACCESS_KEY_SECRET
-    ALIYUN_OSS_HOST
-    ALIYUN_OSS_BUCKET_NAME
+    ALIYUN_OSS_ACCESS_KEY_ID = ""
+    ALIYUN_OSS_ACCESS_KEY_SECRET = ""
+    ALIYUN_OSS_HOST = ""
+    ALIYUN_OSS_BUCKET_NAME = ""
   end
 end
