@@ -10,6 +10,7 @@ set :current_path, 'current'
 set :repository, 'git://github.com/mindpin/knowledge-camp.git'
 set :branch, 'bank'
 set :user, 'root'
+set :term_mode, nil
 
 # For system-wide RVM install.
 #   set :rvm_path, '/usr/local/rvm/bin/rvm'
@@ -79,7 +80,10 @@ task :deploy => :environment do
   deploy do
     invoke :'git:clone'
     invoke :'deploy:link_shared_paths'
-    queue! "bundle"
+    queue %[
+      source /etc/profile
+      bundle
+    ]
     invoke :'rails:assets_precompile'
 
     to :launch do
