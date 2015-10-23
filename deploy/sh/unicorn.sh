@@ -2,7 +2,9 @@
 
 current_path=`cd "$(dirname "$0")"; pwd`
 app_path=$current_path/../..
-. $current_path/function.sh
+
+source /etc/profile
+source $current_path/function.sh
 
 pid=$app_path/tmp/pids/unicorn.pid
 
@@ -37,5 +39,3 @@ case "$1" in
 esac
 
 exit 0
-
-
