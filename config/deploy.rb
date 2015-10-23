@@ -80,15 +80,11 @@ task :deploy => :environment do
   deploy do
     invoke :'git:clone'
     invoke :'deploy:link_shared_paths'
-    queue %[
-      source /etc/profile
-      bundle
-    ]
-    invoke :'rails:assets_precompile'
-
     to :launch do
       queue %[
         source /etc/profile
+        bundle
+        RAILS_ENV="production" bundle exec rake assets:precompile
         ./deploy/sh/unicorn.sh stop
         ./deploy/sh/unicorn.sh start
       ]
@@ -102,8 +98,13 @@ task :update_code => :environment do
   deploy do
     invoke :'git:clone'
     invoke :'deploy:link_shared_paths'
-    queue! "bundle"
-    invoke :'rails:assets_precompile'
+    to :launch do
+      queue %[
+        source /etc/profile
+        bundle
+        RAILS_ENV="production" bundle exec rake assets:precompile
+      ]
+    end
   end
 end
 
