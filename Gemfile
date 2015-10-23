@@ -42,9 +42,7 @@ gem 'haml-coderay'
 gem "elasticsearch-model", :require => "elasticsearch/model"
 gem "elasticsearch-rails", :require => "elasticsearch/rails"
 
-gem "mina",
-    :github => "fushang318/mina",
-    :tag => "v0.2.0fix"
+gem "mina", "0.3.7"
 
 # tag 管理
 gem "acts-as-dag",
