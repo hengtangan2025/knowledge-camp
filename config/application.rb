@@ -18,7 +18,7 @@ require "ueditor.rails"
 
 module KnowledgeCamp
   class Application < Rails::Application
-    config.assets.precompile += ['ueditor/iframe.css']
+    config.assets.precompile += ['ueditor/iframe.css','bank.css','bank.js']
 
     # 时区，国际化
     config.time_zone = 'Beijing'
