@@ -15,6 +15,13 @@ GIT
       mime-types (~> 1.16)
 
 GIT
+  remote: git://github.com/mindpin/bucketerize.git
+  revision: 31a2c0e8cfb13bb2aed7914de342a26bf2b99a8d
+  ref: 31a2c0e
+  specs:
+    bucketerize (0.1.0)
+
+GIT
   remote: git://github.com/mindpin/documents-store.git
   revision: 65c6847bfec20da0a3940cb6669f71ceb50e657e
   tag: v0.0.4
@@ -401,6 +408,7 @@ DEPENDENCIES
   aliyun!
   bootstrap-sass (~> 3.3.5)
   bson_ext
+  bucketerize!
   carrierwave-mongoid
   cells (~> 3.10.1)
   coffee-rails (~> 4.0.0)

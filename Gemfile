@@ -145,4 +145,7 @@ gem 'simple-navbar', :github => 'mindpin/simple-navbar',
                      :tag => "0.0.3"
 
 gem 'bootstrap-sass', '~> 3.3.5'
+
+gem 'bucketerize', :github => 'mindpin/bucketerize',
+                  :ref => "31a2c0e"
 # ----
