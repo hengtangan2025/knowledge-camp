@@ -1,16 +1,20 @@
 # coding: utf-8
 source "https://ruby.taobao.org"
 
-gem "rails", "4.1.2"
+gem "rails", "4.2.3"
+gem 'sass-rails', '~> 5.0'
 gem "uglifier", ">= 1.3.0"
-gem "coffee-rails", "~> 4.0.0"
-
+gem "coffee-rails", "~> 4.1.0"
 gem "jquery-rails"
 gem "turbolinks"
-gem "jbuilder", "~> 2.0.2"
-gem "sdoc", "~> 0.4.0", :group => :doc
-gem "spring", :group => :development
-gem "pry-byebug", :group => :development
+gem 'jbuilder', '~> 2.0'
+gem 'sdoc', '~> 0.4.0', group: :doc
+
+group :development, :test do
+  gem "spring"
+  gem "pry"
+  gem "pry-byebug"
+end
 
 group :test do
   gem "rspec"
@@ -19,10 +23,9 @@ end
 
 # -------------
 
-gem "sass-rails", "~> 4.0.3"
+gem "devise", "3.5.2"
 gem "kaminari", "~> 0.15.1"
 gem "haml"
-gem "pry" # 加强的 irb
 gem "mongoid", "~> 4.0.0"
 gem "bson_ext"
 gem 'cells', '~> 3.10.1' # 用于复用一些前端组件
@@ -59,11 +62,11 @@ gem 'knowledge-net-store',
 
 gem "generic_controller",
     :github => "mindpin/generic_controller",
-    :tag => "v0.0.3"
+    :tag => "v0.0.5"
 
 gem "user-auth",
     :github => "mindpin/user-auth",
-    :tag => "0.0.7"
+    :tag => "0.0.8"
 
 gem "sort_char",
     :git => "git://github.com/mindpin/sort_char.git",
@@ -72,7 +75,7 @@ gem "sort_char",
 gem "knowledge_camp_step",
     # :path => "../knowledge_camp_step"
     :github => "mindpin/knowledge_camp_step",
-    :tag => "v0.1.6.p10"
+    :tag => "0.1.7"
 
 # 文字文档持久化，以下两个 gem 是相关的
 gem "mongoid-versioning",
@@ -122,9 +125,6 @@ gem 'video-fetcher',
 gem 'aliyun',
     :github => 'mindpin/aliyun',
     :tag => '0.0.5'
-
-gem 'siye',
-    :path => 'vendor/4ye'
 
 gem 'knowledge-camp-api',
     :path => 'vendor/api'
