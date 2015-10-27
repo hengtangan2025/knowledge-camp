@@ -7,14 +7,6 @@ GIT
       mongoid
 
 GIT
-  remote: git://github.com/mindpin/aliyun.git
-  revision: db13cf984b5d81fb5a6280925355da87cc979613
-  tag: 0.0.5
-  specs:
-    aliyun (0.0.1)
-      mime-types (~> 1.16)
-
-GIT
   remote: git://github.com/mindpin/bucketerize.git
   revision: 31a2c0e8cfb13bb2aed7914de342a26bf2b99a8d
   ref: 31a2c0e
@@ -115,13 +107,6 @@ GIT
     user-auth (0.0.1)
       devise
       rest-client
-
-GIT
-  remote: git://github.com/mindpin/video-fetcher.git
-  revision: 33ba889e9f01bf8b83241feccdd953f26fdb1567
-  ref: 33ba889e9f01bf8b83241feccdd953f26fdb1567
-  specs:
-    video-fetcher (0.0.2)
 
 GIT
   remote: git://github.com/mindpin/virtual-file.git
@@ -417,7 +402,6 @@ PLATFORMS
 
 DEPENDENCIES
   acts-as-dag!
-  aliyun!
   bootstrap-sass (~> 3.3.5)
   bson_ext
   bucketerize!
@@ -468,5 +452,4 @@ DEPENDENCIES
   unicorn
   user-auth!
   useragent
-  video-fetcher!
   virtual_file_system!

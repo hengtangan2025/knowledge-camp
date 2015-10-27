@@ -115,17 +115,6 @@ gem 'simple-images',
     :ref => 'fc06f2b'
     # :path => '/web/songliang/simple-images'
 
-# 获取视频文件
-gem 'video-fetcher',
-    :github => 'mindpin/video-fetcher',
-    :ref => '33ba889e9f01bf8b83241feccdd953f26fdb1567'
-    # :path => '/web/songliang/video-fetcher'
-
-# 阿里云
-gem 'aliyun',
-    :github => 'mindpin/aliyun',
-    :tag => '0.0.5'
-
 gem 'knowledge-camp-api',
     :path => 'vendor/api'
 
