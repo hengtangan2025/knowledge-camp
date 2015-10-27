@@ -49,17 +49,17 @@ gem "elasticsearch-rails", :require => "elasticsearch/rails"
 gem "mina", "0.3.7"
 
 # tag 管理
+gem 'knowledge-net-store',
+  :git => 'git://github.com/mindpin/knowledge-net-store.git',
+  :tag => '1.0.0-beta2'
+
 gem "acts-as-dag",
-    :github => "mindpin/acts-as-dag",
-    :tag => "v0.0.1"
+  :git => "git://github.com/mindpin/acts-as-dag.git",
+  :tag => "0.0.2"
 
 gem "knowledge-net-plan-store",
     :github => "mindpin/knowledge-net-plan-store",
     :tag => "v0.1.0.p3"
-
-gem 'knowledge-net-store',
-    :github => 'mindpin/knowledge-net-store',
-    :tag => '0.1.1'
 
 gem "generic_controller",
     :github => "mindpin/generic_controller",

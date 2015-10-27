@@ -1,10 +1,10 @@
 GIT
   remote: git://github.com/mindpin/acts-as-dag.git
-  revision: af0887073f0cf9ab843f11ee247cb76b48eec215
-  tag: v0.0.1
+  revision: a94ff8ac1b946b8be5aa67792016eb26d5899282
+  tag: 0.0.2
   specs:
-    acts-as-dag (0.0.1)
-      mongoid
+    acts-as-dag (0.0.2)
+      mongoid (~> 4.0)
 
 GIT
   remote: git://github.com/mindpin/bucketerize.git
@@ -56,10 +56,10 @@ GIT
 
 GIT
   remote: git://github.com/mindpin/knowledge-net-store.git
-  revision: a9413c963d923734358edfae31c3a997b451d6ea
-  tag: 0.1.1
+  revision: 816df00aabbc1db6c3c4ca51229095af1842ed4c
+  tag: 1.0.0-beta2
   specs:
-    knowledge-net-store (0.0.1)
+    knowledge-net-store (1.0.0.pre.beta2)
 
 GIT
   remote: git://github.com/mindpin/knowledge_camp_step.git
