@@ -23,6 +23,7 @@ end
 
 # -------------
 
+gem "figaro"
 gem "devise", "3.5.2"
 gem "kaminari", "~> 0.15.1"
 gem "haml"

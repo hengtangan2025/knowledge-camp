@@ -34,7 +34,7 @@ module KnowledgeCamp
 
   class Question
     include TutorialInfo
-    
+
     def attrs
       old_attrs.merge(:tutorial_id    => self.tutorial_id.to_s,
                       :tutorial_image => tutorial_image)
@@ -180,7 +180,7 @@ module FileEntityVFSModule
   end
 end
 
-VirtualFileSystem.config do 
+VirtualFileSystem.config do
   bucket :knowledge_net, :store => :file_entity
 end
 
@@ -306,7 +306,18 @@ def get_virtual_filename(filename)
   return "#{arr*"."}-#{randstr(32)}.#{extname}"
 end
 
-require_relative 'rutil'
+class RUtil
+  class << self
+    def get_static_file_url(path)
+      File.join('/', ENV["static_file_url_prefix"], path)
+    end
+
+    def get_static_file_path(path)
+      File.join('/', ENV["upload_file_base_path"], path)
+    end
+  end
+end
+
 FilePartUpload.config do
   path RUtil.get_static_file_path("files/:id/file/:name")
   url RUtil.get_static_file_url("files/:id/file/:name")
@@ -433,6 +444,6 @@ module KnowledgeCamp
   end
 end
 
-# 载入这两个类以执行他们末尾的include逻辑 
+# 载入这两个类以执行他们末尾的include逻辑
 TutorialLearnProgress
 TopicLearnProgress
