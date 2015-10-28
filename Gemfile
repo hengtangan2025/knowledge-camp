@@ -49,6 +49,10 @@ gem "elasticsearch-rails", :require => "elasticsearch/rails"
 gem "mina", "0.3.7"
 
 # tag 管理
+gem "knowledge-graph-js",
+  :git => "git://github.com/mindpin/knowledge-graph-js.git",
+  :tag => "0.0.1"
+
 gem 'knowledge-net-store',
   :git => 'git://github.com/mindpin/knowledge-net-store.git',
   :tag => '1.0.0-beta2'

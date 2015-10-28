@@ -46,6 +46,14 @@ GIT
       simple_form
 
 GIT
+  remote: git://github.com/mindpin/knowledge-graph-js.git
+  revision: 01386378a0df05cf354ec62fad857aab52f085ad
+  tag: 0.0.1
+  specs:
+    knowledge-graph-js (0.0.1)
+      non-stupid-digest-assets
+
+GIT
   remote: git://github.com/mindpin/knowledge-net-plan-store.git
   revision: 3804b77a66abc0ef3cb88520ecc7165961d55be4
   tag: v0.1.0.p3
@@ -295,6 +303,7 @@ GEM
     multipart-post (2.0.0)
     nokogiri (1.6.6.2)
       mini_portile (~> 0.6.0)
+    non-stupid-digest-assets (1.0.5)
     open4 (1.3.4)
     optionable (0.2.0)
     origin (2.1.1)
@@ -428,6 +437,7 @@ DEPENDENCIES
   kc-explore!
   kc_courses!
   knowledge-camp-api!
+  knowledge-graph-js!
   knowledge-net-plan-store!
   knowledge-net-store!
   knowledge_camp_step!
@@ -456,6 +466,3 @@ DEPENDENCIES
   user-auth!
   useragent
   virtual_file_system!
-
-BUNDLED WITH
-   1.10.6
