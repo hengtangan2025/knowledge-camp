@@ -16,8 +16,8 @@ GIT
 
 GIT
   remote: git://github.com/mindpin/bucketerize.git
-  revision: 31a2c0e8cfb13bb2aed7914de342a26bf2b99a8d
-  ref: 31a2c0e
+  revision: 0c971bec87444ad8f349b06177b3f43733530e6a
+  ref: 0c971be
   specs:
     bucketerize (0.1.0)
 
@@ -458,3 +458,6 @@ DEPENDENCIES
   useragent
   video-fetcher!
   virtual_file_system!
+
+BUNDLED WITH
+   1.10.6
