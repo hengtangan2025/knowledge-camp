@@ -15,10 +15,10 @@ jQuery(document).delegate '.page-users-form .submit a.save', 'click', (evt)->
       jQuery.ajax
         url: url
         type: 'POST'
-        data: 
+        data:
           users: data
         success: (res)->
-          new UIToggle(url).visit()
+          Turbolinks.visit url
 
 jQuery(document).delegate '.page-users-form .users .user input', 'focus', (evt)->
   jQuery('.page-users-form .users .user').removeClass 'focus'
@@ -93,10 +93,10 @@ add_line = ($user)->
   $user.after $new_user
 
 caret = (node)->
-  if node.selectionStart 
+  if node.selectionStart
     return node.selectionStart
 
-  else if(!document.selection) 
+  else if(!document.selection)
     return 0
 
   c    = "\u0001"
