@@ -1,6 +1,3 @@
 [submodule "lily"]
 	path = vendor/assets/stylesheets/lily
 	url = git://github.com/mindpin/lily.git
-[submodule "knowledge-graph"]
-	path = public/js/knowledge-graph
-	url = git://github.com/mindpin/knowledge-graph-js.git
