@@ -34,7 +34,7 @@ module KnowledgeCamp
 
   class Question
     include TutorialInfo
-    
+
     def attrs
       old_attrs.merge(:tutorial_id    => self.tutorial_id.to_s,
                       :tutorial_image => tutorial_image)
@@ -149,17 +149,6 @@ module KnowledgeNetPlanStore
   end
 end
 
-module KnowledgeNetStore
-  class Point
-    include PinyinSearch
-
-    has_and_belongs_to_many :tutorials,
-                            :class_name => "KnowledgeNetPlanStore::Tutorial"
-
-    pinyin :name
-  end
-end
-
 # -----------------------------------------
 # virtual_file_system 相关
 module FileEntityVFSModule
@@ -180,7 +169,7 @@ module FileEntityVFSModule
   end
 end
 
-VirtualFileSystem.config do 
+VirtualFileSystem.config do
   bucket :knowledge_net, :store => :file_entity
 end
 
@@ -306,7 +295,18 @@ def get_virtual_filename(filename)
   return "#{arr*"."}-#{randstr(32)}.#{extname}"
 end
 
-require_relative 'rutil'
+class RUtil
+  class << self
+    def get_static_file_url(path)
+      File.join('/', ENV["static_file_url_prefix"], path)
+    end
+
+    def get_static_file_path(path)
+      File.join('/', ENV["upload_file_base_path"], path)
+    end
+  end
+end
+
 FilePartUpload.config do
   path RUtil.get_static_file_path("files/:id/file/:name")
   url RUtil.get_static_file_url("files/:id/file/:name")
@@ -356,47 +356,7 @@ module DocumentsStore
   end
 end
 
-module KnowledgeNetStore
-  class Net
-    has_many :documents,
-             :class_name => 'DocumentsStore::Document',
-             :dependent => :destroy
-
-    has_many :plans,
-             :class_name => 'KnowledgeNetPlanStore::Plan',
-             :dependent => :destroy
-
-    has_many :virtual_files,
-             :class_name => 'VirtualFileSystem::File',
-             :dependent => :destroy
-
-    after_create :create_default_plan
-
-    def default_plan
-      create_default_plan if plans.blank?
-      plans.first
-    end
-
-    def topics
-      default_plan.topics
-    end
-
-    private
-
-    def create_default_plan
-      self.plans.create :title => "default_plan"
-    end
-  end
-
-  class Point
-    has_and_belongs_to_many :virtual_files,
-                            :class_name => 'VirtualFileSystem::File',
-                            :inverse_of => :points
-  end
-end
-
 [
-  KnowledgeNetStore::Net,
   VirtualFileSystem::File,
   KnowledgeNetPlanStore::Topic,
   KnowledgeNetPlanStore::Tutorial
@@ -433,6 +393,6 @@ module KnowledgeCamp
   end
 end
 
-# 载入这两个类以执行他们末尾的include逻辑 
+# 载入这两个类以执行他们末尾的include逻辑
 TutorialLearnProgress
 TopicLearnProgress

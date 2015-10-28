@@ -1,18 +1,10 @@
 GIT
   remote: git://github.com/mindpin/acts-as-dag.git
-  revision: af0887073f0cf9ab843f11ee247cb76b48eec215
-  tag: v0.0.1
+  revision: a94ff8ac1b946b8be5aa67792016eb26d5899282
+  tag: 0.0.2
   specs:
-    acts-as-dag (0.0.1)
-      mongoid
-
-GIT
-  remote: git://github.com/mindpin/aliyun.git
-  revision: db13cf984b5d81fb5a6280925355da87cc979613
-  tag: 0.0.5
-  specs:
-    aliyun (0.0.1)
-      mime-types (~> 1.16)
+    acts-as-dag (0.0.2)
+      mongoid (~> 4.0)
 
 GIT
   remote: git://github.com/mindpin/bucketerize.git
@@ -40,12 +32,10 @@ GIT
 
 GIT
   remote: git://github.com/mindpin/generic_controller.git
-  revision: ae6a18598b807f54b9325379249ed05b3742839b
-  tag: v0.0.3
+  revision: 061d6055695bc025401af5aeb97164eab0285371
+  tag: v0.0.5
   specs:
-    generic_controller (0.0.3)
-      actionpack (~> 4.1.0)
-      activemodel (~> 4.1.0)
+    generic_controller (0.0.4)
 
 GIT
   remote: git://github.com/mindpin/kc_courses.git
@@ -66,15 +56,15 @@ GIT
 
 GIT
   remote: git://github.com/mindpin/knowledge-net-store.git
-  revision: a9413c963d923734358edfae31c3a997b451d6ea
-  tag: 0.1.1
+  revision: 816df00aabbc1db6c3c4ca51229095af1842ed4c
+  tag: 1.0.0-beta2
   specs:
-    knowledge-net-store (0.0.1)
+    knowledge-net-store (1.0.0.pre.beta2)
 
 GIT
   remote: git://github.com/mindpin/knowledge_camp_step.git
-  revision: 1cb18a7a790db56f4d04a71158692734ff2cd88b
-  tag: v0.1.6.p10
+  revision: 468c4f243323e1938720f1f276b6afd0701066fb
+  tag: 0.1.7
   specs:
     knowledge_camp_step (0.0.1)
       mongoid (~> 4.0.0)
@@ -111,19 +101,12 @@ GIT
 
 GIT
   remote: git://github.com/mindpin/user-auth.git
-  revision: afc6928b1945d7889f1dcef6623624df7d2752f7
-  tag: 0.0.7
+  revision: 8ac54325dfe1410bbc9ad6d63f9171763ed0e9ce
+  tag: 0.0.8
   specs:
     user-auth (0.0.1)
-      devise (~> 3.2.4)
+      devise
       rest-client
-
-GIT
-  remote: git://github.com/mindpin/video-fetcher.git
-  revision: 33ba889e9f01bf8b83241feccdd953f26fdb1567
-  ref: 33ba889e9f01bf8b83241feccdd953f26fdb1567
-  specs:
-    video-fetcher (0.0.2)
 
 GIT
   remote: git://github.com/mindpin/virtual-file.git
@@ -141,63 +124,66 @@ GIT
       mongoid (> 3)
 
 PATH
-  remote: vendor/4ye
-  specs:
-    siye (0.0.1)
-      rails (~> 4.1.2)
-
-PATH
   remote: vendor/api
   specs:
     knowledge-camp-api (0.0.1)
-      rails (~> 4.1.2)
+      rails (>= 4.0.0)
 
 PATH
   remote: vendor/course_editor
   specs:
     kc-course-editor (0.0.1)
-      rails (~> 4.1.2)
+      rails (>= 4.0.0)
 
 PATH
   remote: vendor/explore
   specs:
     kc-explore (0.0.1)
-      rails (~> 4.1.2)
+      rails (>= 4.0.0)
 
 GEM
   remote: https://ruby.taobao.org/
   specs:
-    actionmailer (4.1.2)
-      actionpack (= 4.1.2)
-      actionview (= 4.1.2)
-      mail (~> 2.5.4)
-    actionpack (4.1.2)
-      actionview (= 4.1.2)
-      activesupport (= 4.1.2)
-      rack (~> 1.5.2)
+    actionmailer (4.2.3)
+      actionpack (= 4.2.3)
+      actionview (= 4.2.3)
+      activejob (= 4.2.3)
+      mail (~> 2.5, >= 2.5.4)
+      rails-dom-testing (~> 1.0, >= 1.0.5)
+    actionpack (4.2.3)
+      actionview (= 4.2.3)
+      activesupport (= 4.2.3)
+      rack (~> 1.6)
       rack-test (~> 0.6.2)
-    actionview (4.1.2)
-      activesupport (= 4.1.2)
+      rails-dom-testing (~> 1.0, >= 1.0.5)
+      rails-html-sanitizer (~> 1.0, >= 1.0.2)
+    actionview (4.2.3)
+      activesupport (= 4.2.3)
       builder (~> 3.1)
       erubis (~> 2.7.0)
-    activemodel (4.1.2)
-      activesupport (= 4.1.2)
+      rails-dom-testing (~> 1.0, >= 1.0.5)
+      rails-html-sanitizer (~> 1.0, >= 1.0.2)
+    activejob (4.2.3)
+      activesupport (= 4.2.3)
+      globalid (>= 0.3.0)
+    activemodel (4.2.3)
+      activesupport (= 4.2.3)
       builder (~> 3.1)
-    activerecord (4.1.2)
-      activemodel (= 4.1.2)
-      activesupport (= 4.1.2)
-      arel (~> 5.0.0)
-    activesupport (4.1.2)
-      i18n (~> 0.6, >= 0.6.9)
+    activerecord (4.2.3)
+      activemodel (= 4.2.3)
+      activesupport (= 4.2.3)
+      arel (~> 6.0)
+    activesupport (4.2.3)
+      i18n (~> 0.7)
       json (~> 1.7, >= 1.7.7)
       minitest (~> 5.1)
-      thread_safe (~> 0.1)
+      thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
-    arel (5.0.1.20140414130214)
+    arel (6.0.3)
     autoprefixer-rails (6.0.3)
       execjs
       json
-    bcrypt (3.1.7)
+    bcrypt (3.1.10)
     bootstrap-sass (3.3.5)
       autoprefixer-rails (>= 5.0.0.1)
       sass (>= 3.2.19)
@@ -221,21 +207,22 @@ GEM
       railties (>= 3.0)
       uber (~> 0.0.4)
     coderay (1.1.0)
-    coffee-rails (4.0.1)
+    coffee-rails (4.1.0)
       coffee-script (>= 2.2.0)
       railties (>= 4.0.0, < 5.0)
-    coffee-script (2.2.0)
+    coffee-script (2.4.1)
       coffee-script-source
       execjs
-    coffee-script-source (1.7.0)
+    coffee-script-source (1.9.1.1)
     columnize (0.8.9)
     connection_pool (2.0.0)
     database_cleaner (1.2.0)
     debugger-linecache (1.2.0)
-    devise (3.2.4)
+    devise (3.5.2)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
       railties (>= 3.2.6, < 5)
+      responders
       thread_safe (~> 0.1)
       warden (~> 1.2.3)
     diff-lcs (1.2.5)
@@ -253,16 +240,19 @@ GEM
       faraday
       multi_json
     erubis (2.7.0)
-    execjs (2.2.1)
+    execjs (2.6.0)
     faraday (0.9.0)
       multipart-post (>= 1.2, < 3)
+    figaro (1.1.1)
+      thor (~> 0.14)
+    globalid (0.3.6)
+      activesupport (>= 4.1.0)
     haml (4.0.5)
       tilt
     haml-coderay (0.2.0)
       coderay
       haml
     hashie (3.3.1)
-    hike (1.2.3)
     htmldiff (0.0.1)
     i18n (0.7.0)
     jbuilder (2.0.8)
@@ -276,9 +266,10 @@ GEM
       actionpack (>= 3.0.0)
       activesupport (>= 3.0.0)
     kgio (2.9.2)
-    mail (2.5.4)
-      mime-types (~> 1.16)
-      treetop (~> 1.4.8)
+    loofah (2.0.3)
+      nokogiri (>= 1.5.9)
+    mail (2.6.3)
+      mime-types (>= 1.16, < 3)
     method_source (0.8.2)
     mime-types (1.25.1)
     mina (0.3.7)
@@ -286,7 +277,8 @@ GEM
       rake
     mini_magick (3.7.0)
       subexec (~> 0.2.1)
-    minitest (5.8.1)
+    mini_portile (0.6.2)
+    minitest (5.8.2)
     mongoid (4.0.0)
       activemodel (~> 4.0)
       moped (~> 2.0.0)
@@ -299,13 +291,14 @@ GEM
       bson (~> 2.2)
       connection_pool (~> 2.0)
       optionable (~> 0.2.0)
-    multi_json (1.10.1)
+    multi_json (1.11.2)
     multipart-post (2.0.0)
+    nokogiri (1.6.6.2)
+      mini_portile (~> 0.6.0)
     open4 (1.3.4)
     optionable (0.2.0)
     origin (2.1.1)
     orm_adapter (0.5.0)
-    polyglot (0.3.5)
     pry (0.10.0)
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
@@ -313,28 +306,39 @@ GEM
     pry-byebug (1.3.3)
       byebug (~> 2.7)
       pry (~> 0.10)
-    rack (1.5.5)
+    rack (1.6.4)
     rack-test (0.6.3)
       rack (>= 1.0)
-    rails (4.1.2)
-      actionmailer (= 4.1.2)
-      actionpack (= 4.1.2)
-      actionview (= 4.1.2)
-      activemodel (= 4.1.2)
-      activerecord (= 4.1.2)
-      activesupport (= 4.1.2)
+    rails (4.2.3)
+      actionmailer (= 4.2.3)
+      actionpack (= 4.2.3)
+      actionview (= 4.2.3)
+      activejob (= 4.2.3)
+      activemodel (= 4.2.3)
+      activerecord (= 4.2.3)
+      activesupport (= 4.2.3)
       bundler (>= 1.3.0, < 2.0)
-      railties (= 4.1.2)
-      sprockets-rails (~> 2.0)
-    railties (4.1.2)
-      actionpack (= 4.1.2)
-      activesupport (= 4.1.2)
+      railties (= 4.2.3)
+      sprockets-rails
+    rails-deprecated_sanitizer (1.0.3)
+      activesupport (>= 4.2.0.alpha)
+    rails-dom-testing (1.0.7)
+      activesupport (>= 4.2.0.beta, < 5.0)
+      nokogiri (~> 1.6.0)
+      rails-deprecated_sanitizer (>= 1.0.1)
+    rails-html-sanitizer (1.0.2)
+      loofah (~> 2.0)
+    railties (4.2.3)
+      actionpack (= 4.2.3)
+      activesupport (= 4.2.3)
       rake (>= 0.8.7)
       thor (>= 0.18.1, < 2.0)
     raindrops (0.13.0)
-    rake (10.3.2)
+    rake (10.4.2)
     rdoc (4.1.1)
       json (~> 1.4)
+    responders (2.1.0)
+      railties (>= 4.2.0, < 5)
     rest-client (1.6.7)
       mime-types (>= 1.16)
     rmmseg-cpp (0.2.9)
@@ -353,11 +357,12 @@ GEM
     ruby-pinyin (0.4.1)
       rmmseg-cpp (~> 0.2.9)
     sass (3.2.19)
-    sass-rails (4.0.3)
+    sass-rails (5.0.4)
       railties (>= 4.0.0, < 5.0)
-      sass (~> 3.2.0)
-      sprockets (~> 2.8, <= 2.11.0)
-      sprockets-rails (~> 2.0)
+      sass (~> 3.1)
+      sprockets (>= 2.8, < 4.0)
+      sprockets-rails (>= 2.0, < 4.0)
+      tilt (>= 1.1, < 3)
     sdoc (0.4.0)
       json (~> 1.8)
       rdoc (~> 4.0, < 5.0)
@@ -367,24 +372,18 @@ GEM
       activemodel (~> 4.0)
     slop (3.5.0)
     spring (1.1.3)
-    sprockets (2.11.0)
-      hike (~> 1.2)
-      multi_json (~> 1.0)
-      rack (~> 1.0)
-      tilt (~> 1.1, != 1.3.0)
-    sprockets-rails (2.1.3)
+    sprockets (3.4.0)
+      rack (> 1, < 3)
+    sprockets-rails (2.3.3)
       actionpack (>= 3.0)
       activesupport (>= 3.0)
-      sprockets (~> 2.8)
+      sprockets (>= 2.8, < 4.0)
     streamio-ffmpeg (1.0.0)
     subexec (0.2.3)
     thor (0.19.1)
     thread_safe (0.3.5)
-    tilt (1.4.1)
-    treetop (1.4.15)
-      polyglot
-      polyglot (>= 0.3.1)
-    turbolinks (2.2.2)
+    tilt (2.0.1)
+    turbolinks (2.5.3)
       coffee-rails
     tzinfo (1.2.2)
       thread_safe (~> 0.1)
@@ -405,23 +404,24 @@ PLATFORMS
 
 DEPENDENCIES
   acts-as-dag!
-  aliyun!
   bootstrap-sass (~> 3.3.5)
   bson_ext
   bucketerize!
   carrierwave-mongoid
   cells (~> 3.10.1)
-  coffee-rails (~> 4.0.0)
+  coffee-rails (~> 4.1.0)
   database_cleaner (~> 1.2.0)
+  devise (= 3.5.2)
   documents-store!
   elasticsearch-model
   elasticsearch-rails
+  figaro
   file-part-upload!
   generic_controller!
   haml
   haml-coderay
   htmldiff
-  jbuilder (~> 2.0.2)
+  jbuilder (~> 2.0)
   jquery-rails
   kaminari (~> 0.15.1)
   kc-course-editor!
@@ -437,16 +437,15 @@ DEPENDENCIES
   mongoid-versioning!
   pry
   pry-byebug
-  rails (= 4.1.2)
+  rails (= 4.2.3)
   rest-client
   rspec
   ruby-pinyin
-  sass-rails (~> 4.0.3)
+  sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
   simple-images!
   simple-navbar!
   simple_form (~> 3.2.0)
-  siye!
   sort_char!
   spring
   streamio-ffmpeg
@@ -456,7 +455,6 @@ DEPENDENCIES
   unicorn
   user-auth!
   useragent
-  video-fetcher!
   virtual_file_system!
 
 BUNDLED WITH

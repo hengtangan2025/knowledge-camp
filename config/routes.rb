@@ -1,10 +1,5 @@
 Rails.application.routes.draw do
 
-  # 4ye.me
-  constraints :subdomain => 'blog' do
-    mount Siye::Engine => '/'
-  end
-
   # api
   mount KnowledgeCampApi::Engine => '/api'
 

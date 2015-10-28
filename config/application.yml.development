@@ -1,0 +1,7 @@
+development:
+  static_file_url_prefix: static_files/development
+  upload_file_base_path: <%= Rails.root.join("public/static_files/development") %>
+
+test:
+  static_file_url_prefix: static_files/test
+  upload_file_base_path: <%= Rails.root.join("public/static_files/test") %>
