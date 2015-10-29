@@ -14,25 +14,10 @@
     = javascript_include_tag 'bank', :'data-turbolinks-track' => true
 
   %body
-    %nav.navbar.navbar-default
-      .container
-        .navbar-header
-          %a.navbar-brand{:href => "/bank"} 首页
 
-        %ul.nav.navbar-nav
-          %li
-            %a{:href => "/bank/courses"} 课程中心
-          %li
-            %a{:href => "/bank/dashboard"} 个人页
-        %ul.nav.navbar-nav.navbar-right
-          %li.dropdown
-            %a.dropdown-toggle{:href => "#", :"data-toggle" => "dropdown", :role => "button", :"aria-haspopup" => "true", :"aria-expanded" => "false"}
-              = current_user.name
-              %span.caret
-            %ul.dropdown-menu
-              %li
-                %a{:href => "/bank/notifications"} 通知
-              %li
-                %a{:href => "/account/sign_out", :data => {:method => :delete}} 退出登录
+    - if current_user.blank?
+      = render :partial => "/layouts/unsigned_in_nav"
+    - else
+      = render :partial => "/layouts/signed_in_nav"
 
     .container= yield

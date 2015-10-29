@@ -1,0 +1,18 @@
+%nav.navbar.navbar-default
+  .container
+    .navbar-header
+      %a.navbar-brand{:href => "/bank"} Kc-Finance
+
+    %ul.nav.navbar-nav
+      %li
+        %a{:href => "/bank/courses"} 课程中心
+
+    %form.navbar-form.navbar-left{:role => "search"}
+      .form-group
+        %input.form-control{:type => "text"}
+      %button.btn.btn-default{:type => "submit"} 搜索
+
+
+    %ul.nav.navbar-nav.navbar-right
+      %li
+        %a{:href => "/account/sign_in"} 登录
