@@ -1,9 +1,9 @@
 jQuery(document).on 'ready page:load', ->
   configs =
-    bucket_type: "Folder"
+    selector: '.like[data-rel=like]'
     resource_type: "KcCourses::Course"
     path_fix: "/bank/bucketerize"
-    mode: 'modal'
+    mode: 'standard'
 
-  window.bucketerize = new Bucketerize(configs)
-  window.bucketerize.get_resources_buckets()
+  window.standard = new Bucketerize(configs)
+  window.standard.get_resources_buckets()
