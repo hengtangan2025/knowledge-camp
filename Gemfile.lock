@@ -8,8 +8,8 @@ GIT
 
 GIT
   remote: git://github.com/mindpin/bucketerize.git
-  revision: 0c971bec87444ad8f349b06177b3f43733530e6a
-  ref: 0c971be
+  revision: a85750d25a9bd448db244d5e00ccea0088b005d7
+  ref: a85750d
   specs:
     bucketerize (0.1.0)
 
@@ -39,8 +39,8 @@ GIT
 
 GIT
   remote: git://github.com/mindpin/kc_courses.git
-  revision: 37d35b0606d958e64f678fa69b50f7981e2f70e0
-  ref: 37d35b0
+  revision: 8c93a2d72081d19d75457f880cc8e999cd46eae0
+  ref: 8c93a2d
   specs:
     kc_courses (0.1.0)
       simple_form
