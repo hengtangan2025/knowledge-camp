@@ -11,7 +11,7 @@
     .file
       .file-box
         %span 把要上传的文件拖拽到这里，或者
-        %a.select-file.btn.btn-rounded.btn-bdb-info.btn-mini{:href => 'javascript:;', :data => {:url => '/upload'}}
+        %a.select-file.btn.btn-rounded.btn-bdb-info.btn-mini{:href => 'javascript:;', :data => FilePartUpload.get_dom_data}
           %i.fa.fa-upload
           %span 选择要上传的文件
 
@@ -24,7 +24,7 @@
                 .stat
                   .bar-container
                     .bar
-                  .desc 
+                  .desc
                     %span.percent 24%
                     %span , 剩余时间
                     %span.remaining-time 00:05:59
