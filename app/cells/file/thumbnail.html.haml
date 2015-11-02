@@ -2,13 +2,13 @@
   feid = @file.store_id
   fe = FilePartUpload::FileEntity.find(feid)
 
-  content_type = fe.attach.content_type
+  content_type = fe.mime
 
 
 - case content_type
 - when 'image/jpeg', 'image/png', 'image/gif', 'image/x-bmp'
   .thumbnail.img{:data => {:'content-type' => content_type}}
-    = fit_image fe.attach.url(:fit500), :width => '100%', :height => '100%'
+    = fit_image fe.url, :width => '100%', :height => '100%'
 - else
-  .thumbnail{:data => {:'content-type' => content_type, :url => fe.attach.url}}
+  .thumbnail{:data => {:'content-type' => content_type, :url => fe.url}}
     .file-icon
