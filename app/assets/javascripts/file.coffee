@@ -35,7 +35,7 @@ jQuery(document).on 'ready page:load', ->
         QiniuFileProgress.data = {}
 
       file_entity_id = info['file_entity_id']
-      QiniuFileProgress.data[file_entity_id] = file.name
+      QiniuFileProgress.data[file_entity_id] = @file.name
 
       setTimeout =>
         @file.$item.addClass('completed')
