@@ -11,12 +11,20 @@ if !File.exists?(Rails.root.join("config/application.yml"))
   exit 0
 end
 
-if ENV["static_file_url_prefix"].blank?
-  p "!请在 config/application.yml 中增加 static_file_url_prefix 配置"
-  exit 0
-end
+configs = %w{
+  static_file_url_prefix
+  upload_file_base_path
+  qiniu_bucket
+  qiniu_domain
+  qiniu_base_path
+  qiniu_app_access_key
+  qiniu_app_secret_key
+  qiniu_callback_host
+}
 
-if ENV["upload_file_base_path"].blank?
-  p "!请在 config/application.yml 中增加 upload_file_base_path 配置"
-  exit 0
+configs.each do |config|
+  if ENV[config].blank?
+    p "!请在 config/application.yml 中增加 #{config} 配置"
+    exit 0
+  end
 end
