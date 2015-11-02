@@ -217,8 +217,8 @@ module FileEntityVFSModule
   def file_info(store_id)
     fe = FilePartUpload::FileEntity.find(store_id)
     {
-      :size => fe.attach.size,
-      :mime_type => fe.attach.content_type, # MIME TYPE
+      :size => fe.file_size,
+      :mime_type => fe.mime, # MIME TYPE
       :mime_type_info => {}
     }
   end
