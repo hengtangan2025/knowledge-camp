@@ -33,7 +33,7 @@
             .down{:style => 'margin-top:20px;'}
               - feid = @virtual_file.store_id
               - fe = FilePartUpload::FileEntity.find(feid)
-              %a.btn.btn-rounded.btn-bdb-info{:href => fe.attach.url, :target => '_blank'}
+              %a.btn.btn-rounded.btn-bdb-info{:href => fe.url, :target => '_blank'}
                 %span 打开
 
           .tags
