@@ -150,10 +150,27 @@
       color:$area-forest;
     }
 
+    .error {
+      display:none;
+      position: absolute;
+      left:60px;
+      top:29px;
+      right:0;
+
+      height:20px;line-height:20px;
+      color:$area-danger;
+    }
+
     &.completed {
       background-color:rgba($area-fresh, 0.07);
       .stat {display:none;}
       .completed {display:block;}
+    }
+
+    &.error {
+      background-color:rgba($area-danger, 0.07);
+      .stat {display:none;}
+      .error {display:block;}
     }
   }
 }

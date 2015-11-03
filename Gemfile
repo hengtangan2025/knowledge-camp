@@ -32,7 +32,6 @@ gem "bson_ext"
 gem 'cells', '~> 3.10.1' # 用于复用一些前端组件
 gem "simple_form", "~> 3.2.0"
 gem "unicorn"
-gem "rest-client" # 简化 http 请求
 gem "htmldiff"
 gem "streamio-ffmpeg"
 
@@ -112,7 +111,7 @@ gem 'virtual_file_system',
 # 支持分段上传的文件持久化
 gem 'file-part-upload',
     :github => 'mindpin/file-part-upload',
-    :tag => '1.0.5'
+    :tag => '2.0.0-beta3'
 
 # 图片加载的一个小工具
 gem 'simple-images',

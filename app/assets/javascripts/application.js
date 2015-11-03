@@ -3,7 +3,6 @@
 //= require turbolinks
 
 // 第三方库
-//= require flowjs/flow
 //= require seajs/sea-2.2.1
 
 // gem
@@ -11,6 +10,7 @@
 
 // 自己写的
 //= require auth
+//= require file_part_upload/application
 //= require file
 //= require net
 //= require user

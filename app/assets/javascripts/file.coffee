@@ -1,192 +1,143 @@
-# 一开始用的是 Resumeable.js
-# 然后改成了 Flow.js
-# 话说这两个库的关系很纠结。
-# 具体见 https://github.com/flowjs/flow.js/issues/1
+jQuery(document).on 'ready page:load', ->
 
-class MindpinFlowUploader
-  constructor: (config)->
-    @target         = config['target']
-    @csrf_token     = config['csrf_token']
-    @$browse_button = config['browse']
-    @$drop          = config['drop']
-    @$uploader      = config['uploader']
-    
-    @file_added_func = config['file_added_func']
-    @complete_func   = config['complete_func']
+  class QiniuFileProgress
+    constructor: (uploading_file, @uploader)->
+      @file = uploading_file
+      console.log @file
+      @started = false
 
+      $item = QiniuFileProgress.$item.clone()
+      @file.$item = $item
+      @__set_name()
+      @__set_progress()
+      @__set_remaining_time()
+      @__set_extension_klass()
+      @file.$item.show().appendTo QiniuFileProgress.$list
+      QiniuFileProgress.$container.find('.ops a.submit').addClass('disabled')
 
-    @$item = @$uploader.find('.progress-item')
-    @$list = @$uploader.find('.upload-list')
+    # 上传进度进度更新时调用此方法
+    update: ->
+      console.log "qiniu update"
+      console.log "#{@file.percent}%"
+      if !@started
+        @file.start_at = new Date().getTime()
+        @started = true
 
-    @init()
-    @events()
+      @__set_progress()
+      @__set_remaining_time()
 
-    @data = {}
+    # 上传成功时调用此方法
+    success: (info)->
+      console.log "qiniu success"
+      console.log info
 
-  init: ->
-    @r = new Flow
-      target: @target
-      headers:
-        'X-CSRF-Token': @csrf_token
-      chunkSize: 196608 # 1024 * 192 192K
-      testChunks: true
-      simultaneousUploads: 1 # 最多同时上传一个，保证顺序
-      generateUniqueIdentifier: (file)->
-        "#{file.size}|#{file.name}"
+      if !QiniuFileProgress.data
+        QiniuFileProgress.data = {}
 
-    @r.assignBrowse @$browse_button[0]
-    @r.assignDrop @$drop[0]
+      file_entity_id = info['file_entity_id']
+      QiniuFileProgress.data[file_entity_id] = @file.name
 
-    dc = 0
-    @$drop.on 'dragenter', (evt)=>
-      dc++
-      @$drop.addClass 'over'
-
-    @$drop.on 'dragleave drop', (evt)=>
-      dc--
-      if dc is 0
-        @$drop.removeClass 'over'
-
-  events: ->
-    @r.on 'fileAdded', (file, event)=>
-      @_clone_item(file)
-      file.start_at = new Date().getTime()
-      file.last_progress = 0
-
-      @file_added_func()
-
-    @r.on 'filesSubmitted', (array, event)=>
-      @r.upload()
-
-    @r.on 'fileProgress', (file)=>
-      $item = file.$item
-
-      @__set_progress(file)
-      @__set_remaining_time(file)
-
-    @r.on 'fileSuccess', (file, message)=>
-      file_entity_id = JSON.parse(message)['file_entity_id']
-      @data[file_entity_id] = file.name
-
-      setTimeout ->
-        file.$item.addClass('completed')
-      , 300
-
-    @r.on 'complete', (file)=>
       setTimeout =>
-        @complete_func()
+        @file.$item.addClass('completed')
       , 300
 
-  _clone_item: (file)->
-    $item = @$item.clone()
-    file.$item = $item
+    # 上传出错时调用此方法
+    error: ->
+      console.log "qiniu error"
 
-    @__set_name(file)
-    @__set_progress(file)
-    @__set_remaining_time(file)
-    @__set_extension_klass(file)
-    
-    $item.show().appendTo @$list
+      setTimeout =>
+        @file.$item.addClass('error')
+      , 300
 
+    @alldone: ->
+      console.log "qiniu alldone"
+      setTimeout =>
+        if QiniuFileProgress.data
+          QiniuFileProgress.$container.find('.ops a.submit').removeClass('disabled')
+      , 300
 
-  __set_name: (file)->
-    if file.$item
-      file.$item.find('.name').html file.name
+    __set_name: ->
+      @file.$item.find('.name').html @file.name
 
-  __set_progress: (file)->
-    if file.$item
-      percent = "#{(file.progress() * 100).toFixed()}%"
-      file.$item.find('.bar').css 'width', percent
-      file.$item.find('.percent').html percent
+    __set_progress: ->
+      percent = "#{@file.percent}%"
+      @file.$item.find('.bar').css 'width', percent
+      @file.$item.find('.percent').html percent
 
-  __set_remaining_time: (file)->
-    if file.$item
-      remaining = file.timeRemaining()
+    __set_remaining_time: ->
+      seconds = (new Date().getTime() - @file.start_at) / 1000
+      remaining = (@file.size - @file.loaded) / (@file.loaded / seconds)
+
       remaining =
         if remaining == Number.POSITIVE_INFINITY
         then '未知'
         else @__human_time(remaining)
 
-      file.$item.find('.remaining-time').html remaining
+      @file.$item.find('.remaining-time').html remaining
 
-  __human_time: (remaining)->
-    remaining += 1
+    __human_time: (remaining)->
+      remaining += 1
 
-    hour   = Math.floor(remaining / 3600)
-    minute = Math.floor(remaining % 3600 / 60)
-    second = remaining % 60
+      hour   = Math.floor(remaining / 3600)
+      minute = Math.floor(remaining % 3600 / 60)
+      second = Math.floor(remaining % 60)
 
-    hour = if hour >= 10 then hour else "0#{hour}"
-    minute = if minute >= 10 then minute else "0#{minute}"
-    second = if second >= 10 then second else "0#{second}"
+      hour = if hour >= 10 then hour else "0#{hour}"
+      minute = if minute >= 10 then minute else "0#{minute}"
+      second = if second >= 10 then second else "0#{second}"
 
-    "#{hour}:#{minute}:#{second}"
+      "#{hour}:#{minute}:#{second}"
 
-  __set_extension_klass: (file)->
-    if file.$item
-      file.$item.addClass file.getExtension()
+    __set_extension_klass: ->
+      strs = @file.name.split(".")
+      ext = strs[strs.length-1]
+      @file.$item.addClass ext
 
-  get_data: ->
-    @data
-    # [key, @data[key]] for key of @data
+  class KcUpload
+    constructor: (@$container)->
+      QiniuFileProgress.$container = @$container
 
-ready = ->
-  if jQuery('.page-manage-files-new').length > 0
-    $container = jQuery('.page-manage-files-new')
-    uploader = _init_uploader $container
-    _init_submit_button(uploader, $container)
+      $uploader = jQuery('.page-file-uploader')
+      QiniuFileProgress.$item = $uploader.find('.progress-item')
+      QiniuFileProgress.$list = $uploader.find('.upload-list')
 
-  if jQuery('.page-manage-point-files-new').length > 0
-    $container = jQuery('.page-manage-point-files-new')
-    uploader = _init_uploader $container
-    _init_submit_button(uploader, $container)
+      console.log @$container.find('a.select-file')
+      window.abc = @$container.find('a.select-file')
+      new FilePartUploader
+        browse_button: @$container.find('a.select-file')
+        dragdrop_area: @$container.find('.file-box')
+        file_progress: QiniuFileProgress
 
+      @bind_event()
 
-_init_uploader = ($container)->
-  token_value = jQuery('meta[name=csrf-token]').attr('content')
-  $button = $container.find('a.select-file')
-  $drop = $container.find('.file-box')
-  target = $button.data('url')
-  $uploader = jQuery('.page-file-uploader')
+    bind_event: ->
+      @$container.find('.ops a.submit').on 'click', (evt)->
+        $button = jQuery(this)
+        return if $button.hasClass('disabled')
 
-  new MindpinFlowUploader({
-    target: target
-    csrf_token: token_value
-    browse: $button
-    drop: $drop
-    uploader: $uploader
-    file_added_func: ->
-      $container.find('.ops a.submit').addClass('disabled')
-    complete_func: ->
-      $container.find('.ops a.submit').removeClass('disabled')
-  })
+        url = $button.data('url')
 
-_init_submit_button = (uploader, $container)->
-  $container.find('.ops a.submit').on 'click', (evt)->
-    $button = jQuery(this)
-    return if $button.hasClass('disabled')
-
-    data = uploader.get_data()
-    url = $button.data('url')
-
-    jQuery.ajax
-      url: url
-      type: 'POST'
-      data:
-        files: data
-      success: (res)->
-        Turbolinks.AniToggle.visit(url, ['open', 'close'])
+        jQuery.ajax
+          url: url
+          type: 'POST'
+          data:
+            files: QiniuFileProgress.data
+          success: (res)->
+            Turbolinks.AniToggle.visit(url, ['open', 'close'])
 
 
-jQuery(document).on 'ready page:load', ready
+  if jQuery('.page-manage-files-new').length
+    new KcUpload jQuery('.page-manage-files-new')
 
+  if jQuery('.page-manage-point-files-new').length
+    new KcUpload jQuery('.page-manage-point-files-new')
 
 # 排版方法
 # ----------------------
 class GridLayout
   constructor: (@$grid)->
     @col = @$grid.data('cols')
-  
+
   layout: ->
     stack = []
     @$grid.find('.gcell').each (index, cell)=>
