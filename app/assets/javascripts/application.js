@@ -3,7 +3,6 @@
 //= require turbolinks
 
 // 第三方库
-//= require flowjs/flow
 //= require seajs/sea-2.2.1
 
 // gem

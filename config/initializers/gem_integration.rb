@@ -46,13 +46,6 @@ FilePartUpload.config do
   url RUtil.get_static_file_url("files/:id/file/:name")
 end
 
-module FilePartUpload
-  class FileEntity
-    field :identifier, :type => String
-    index({:identifier => 1})
-  end
-end
-
 class MindpinHTMLDiff
   class << self
     include HTMLDiff
