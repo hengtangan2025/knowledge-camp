@@ -1,1 +1,5 @@
-%a.like.btn.btn-info{href: 'javascript:;', data: {rel: "like", resource: {type: 'kc_courses/course', id: course.id}}} 收藏
+.bucketerize{data: {rel: "bucketerize", bucketerize: {mode: 'standard', resource_type: 'KcCourses::Course', resource_id: course.id}}}
+  .unhas
+    %button.btn.btn-default 收藏
+  .has
+    %button.btn.btn-info 已收藏
