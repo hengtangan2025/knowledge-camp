@@ -132,7 +132,7 @@ gem 'kc-course-editor',
 
 # -----金融学院相关
 gem 'kc_courses', :github => 'mindpin/kc_courses',
-                  :ref => "8c93a2d"
+                  :ref => "25ffee4"
 
 gem 'simple-navbar', :github => 'mindpin/simple-navbar',
                      :tag => "0.0.3"
