@@ -1,5 +1,5 @@
 KnowledgeNetStore::Point.class_eval do
-  include PinyinSearch
+  include ElasticsearchSimple::Concerns::PinyinSearch
   pinyin :name
 
   has_and_belongs_to_many :tutorials,

@@ -22,6 +22,16 @@ GIT
       mongoid (~> 4.0.0)
 
 GIT
+  remote: git://github.com/mindpin/elasticsearch-simple.git
+  revision: c1b1515081d4ad3757e18da4bd97628cda403387
+  ref: c1b1515
+  specs:
+    elasticsearch-simple (0.1.0)
+      elasticsearch-model
+      elasticsearch-rails
+      ruby-pinyin
+
+GIT
   remote: git://github.com/mindpin/file-part-upload.git
   revision: 8768fd6e7c90e71cf413b6cf8d3da0bc0107e27c
   tag: 2.0.0-beta3
@@ -237,24 +247,24 @@ GEM
       thread_safe (~> 0.1)
       warden (~> 1.2.3)
     diff-lcs (1.2.5)
-    elasticsearch (1.0.5)
-      elasticsearch-api (= 1.0.5)
-      elasticsearch-transport (= 1.0.5)
-    elasticsearch-api (1.0.5)
+    elasticsearch (1.0.14)
+      elasticsearch-api (= 1.0.14)
+      elasticsearch-transport (= 1.0.14)
+    elasticsearch-api (1.0.14)
       multi_json
-    elasticsearch-model (0.1.5)
+    elasticsearch-model (0.1.8)
       activesupport (> 3)
       elasticsearch (> 0.4)
       hashie
-    elasticsearch-rails (0.1.5)
-    elasticsearch-transport (1.0.5)
+    elasticsearch-rails (0.1.8)
+    elasticsearch-transport (1.0.14)
       faraday
       multi_json
     enumerize (1.0.0)
       activesupport (>= 3.2)
     erubis (2.7.0)
     execjs (2.6.0)
-    faraday (0.9.0)
+    faraday (0.9.2)
       multipart-post (>= 1.2, < 3)
     figaro (1.1.1)
       thor (~> 0.14)
@@ -265,7 +275,7 @@ GEM
     haml-coderay (0.2.0)
       coderay
       haml
-    hashie (3.3.1)
+    hashie (3.4.3)
     htmldiff (0.0.1)
     i18n (0.7.0)
     jbuilder (2.0.8)
@@ -433,8 +443,7 @@ DEPENDENCIES
   database_cleaner (~> 1.2.0)
   devise (= 3.5.2)
   documents-store!
-  elasticsearch-model
-  elasticsearch-rails
+  elasticsearch-simple!
   figaro
   file-part-upload!
   generic_controller!

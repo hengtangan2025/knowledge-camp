@@ -97,7 +97,7 @@ module KnowledgeNetPlanStore
   end
 
   class Topic
-    include StandardSearch
+    include ElasticsearchSimple::Concerns::StandardSearch
 
     standard :title, :desc
 
@@ -111,7 +111,7 @@ module KnowledgeNetPlanStore
 
   class Tutorial
     include KnowledgeCamp::Step::Owner
-    include PinyinSearch
+    include ElasticsearchSimple::Concerns::PinyinSearch
 
     has_and_belongs_to_many :points,
                             :class_name => "KnowledgeNetStore::Point"
