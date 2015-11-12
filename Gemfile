@@ -42,8 +42,9 @@ gem 'ruby-pinyin'
 # 代码高亮
 gem 'haml-coderay'
 # 全文搜索
-gem "elasticsearch-model", :require => "elasticsearch/model"
-gem "elasticsearch-rails", :require => "elasticsearch/rails"
+gem "elasticsearch-simple",
+  :github => "mindpin/elasticsearch-simple",
+  :ref => 'c1b1515'
 
 gem "mina", "0.3.7"
 
