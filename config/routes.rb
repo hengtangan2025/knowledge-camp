@@ -81,7 +81,9 @@ Rails.application.routes.draw do
     mount KcCourses::Engine => '/kc_courses'
 
     root "index#index"
-    resources :courses
+    resources :courses do
+      get :mine, on: :collection
+    end
 
     resources :notifications do
       get :system, :on => :collection

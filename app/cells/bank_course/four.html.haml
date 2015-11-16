@@ -1,0 +1,6 @@
+.four
+  - @courses.each do |course|
+    .course.col-md-3
+      %img.img-responsive{src: course.cover}
+      %h4.title= course.title
+      .desc= course.desc

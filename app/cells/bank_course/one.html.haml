@@ -1,0 +1,19 @@
+.one
+  - @courses.each do |course|
+    .course.clearfix
+      .cover.pull-left
+        %img.img-responsive{src: course.cover}
+      .course-right
+        .info
+          %h3.title= course.title
+          .desc= course.desc
+
+          .bottom
+            %a.learn.btn.btn-default.btn-lg.pull-right{href: (bank_course_path(course))} 继续学习
+            .progress-info.pull-left
+              .to 已学习至：第8节 影响供给的因素
+              .cost 学习耗时：2小时 16分
+              .last 最后学习：2015-10-12 18:36
+              .progress
+                .progress-bar{role: 'progressbar', aria: {valuenow: '60', valuemin: '0', valuemax: '100'}, style: 'width: 60%'}
+            .clearfix
