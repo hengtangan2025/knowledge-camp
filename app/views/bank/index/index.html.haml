@@ -1,8 +1,9 @@
 .page-bank
-  .learning
-    .page-header 正在学习
+  - unless @learning_courses.blank?
+    .learning
+      .page-header 正在学习
 
-    = render_cell :bank_course, :one, courses: @learning_courses
+      = render_cell :bank_course, :one, courses: @learning_courses
 
   -#.recommend
     -#%h3.page-header
