@@ -1,9 +1,9 @@
 .page-courses
   %ul.courses
-    - [@courses, @courses].flatten.each do |course|
+    - @courses.each do |course|
       %li.course
-        %a{:href => "/bank/courses/#{course.id}"}
+        %a{:href => (bank_course_path(course))}
           .cover
-            %img{:src => 'http://ph.4ye.me/400/200'}
+            %img{:src => (course.cover.blank? ? 'http://ph.4ye.me/400/200' : course.cover)}
           .title= course.title
           .desc= course.desc
