@@ -2,7 +2,7 @@
   - @courses.each do |course|
     .course.clearfix
       .cover.pull-left
-        %img.img-responsive{src: course.cover}
+        %img.img-responsive{src: (course.cover.blank? ? 'http://ph.4ye.me/440/248' : course.cover)}
       .course-right
         .info
           %h3.title= course.title
