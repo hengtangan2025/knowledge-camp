@@ -1,0 +1,20 @@
+.page-bank
+  .learning
+    %h3.page-header 正在学习
+
+    = render_cell :bank_course, :one, courses: @learning_courses
+
+  -#.recommend
+    -#%h3.page-header 推荐课程
+
+    -#= render_cell :bank_course, :one, courses: @learning_courses
+
+  .recent
+    %h3.page-header 最新课程
+
+    = render_cell :bank_course, :four, courses: @recent_courses
+
+  .hot
+    %h3.page-header 热门课程
+
+    = render_cell :bank_course, :four, courses: @hot_courses
