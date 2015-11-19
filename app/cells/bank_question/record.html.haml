@@ -1,0 +1,41 @@
+%table.table.table-striped
+  %thead
+    %tr
+      %th 
+      %th 时间
+      %th 题目
+      %th 类型
+      %th 做题结果
+      %th 操作
+  %tbody
+    %tr
+      %td
+        %input{type: 'checkbox'}
+      %td 2015-10-20 15:33
+      %td 销售流程的各个环节包括：　　　　、有效拉近与客户距离、确认客户需求、成功说服客户、异议处理以及最终提供满意方案等。
+      %td 填空题
+      %td.text-success 正确
+      %th
+        %a{href: 'javascript:;', data: {confirm: '你确定吗？'}} 删除记录
+
+    %tr
+      %td
+        %input{type: 'checkbox'}
+      %td 2015-10-20 15:31
+      %td 判断客户购买欲望的大小，包括以下　　　　检查要点
+      %td 多选题
+      %td.text-danger 错误
+      %th
+        %a{href: 'javascript:;'} 加入错题本
+        %a{href: 'javascript:;', data: {confirm: '你确定吗？'}} 删除记录
+
+    %tr
+      %td
+        %input{type: 'checkbox'}
+      %td 2015-10-20 15:29
+      %td 0既不是奇数也不是偶数
+      %td 判断题
+      %td.text-danger 错误
+      %th
+        .text-muted 已加入错题本
+        %a{href: 'javascript:;', data: {confirm: '你确定吗？'}} 删除记录

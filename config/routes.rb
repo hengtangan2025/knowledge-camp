@@ -81,6 +81,8 @@ Rails.application.routes.draw do
     mount KcCourses::Engine => '/kc_courses'
 
     root "index#index"
+    resources :questions
+
     resources :courses do
       get :mine, on: :collection
     end
