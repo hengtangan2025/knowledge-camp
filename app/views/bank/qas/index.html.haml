@@ -1,0 +1,14 @@
+.page-q-and-a
+  %ul.nav.nav-tabs
+    %li.active{role: 'presentation'}
+      %a#my_questions-tab{href: '#my_questions', role: 'tab', data: {toggle: 'tab'}, aria: {controls: 'my_questions', expanded: 'true'}} 我的问题
+    %li{role: 'presentation'}
+      %a#my_answers-tab{href: '#my_answers', role: 'tab', data: {toggle: 'tab'}, aria: {controls: 'my_answers'}} 我的回答
+
+  .tab-content
+    #my_questions.tab-pane.fade.in.active{aria: {controls: 'my_questions-tab'}}
+      = render_cell :bank_qa, :question #, questions: @my_questions
+      
+    #my_answers.tab-pane.fade{aria: {controls: 'my_answers-tab'}}
+      = render_cell :bank_qa, :answer #, questions: @my_questions
+

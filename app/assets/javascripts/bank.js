@@ -4,3 +4,4 @@
 //= require bootstrap-sprockets
 //= require bucketerize
 //= require bank/fav_course
+//= require bank/qas

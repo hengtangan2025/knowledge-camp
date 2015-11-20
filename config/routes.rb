@@ -82,6 +82,7 @@ Rails.application.routes.draw do
 
     root "index#index"
     resources :questions
+    resources :qas
 
     resources :courses do
       get :mine, on: :collection
