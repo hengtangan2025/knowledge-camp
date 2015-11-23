@@ -1,6 +1,6 @@
 class Bank::CoursesController < Bank::ApplicationController
   def index
-    @courses = KcCourses::Course.all
+    @courses = KcCourses::Course.all.page(params[:page])
   end
 
   def show
@@ -15,4 +15,10 @@ class Bank::CoursesController < Bank::ApplicationController
 
     @completed_courses = current_user.courses.page
   end
+
+  def hot
+    @courses = KcCourses::Course.all.page(params[:page])
+    render :index
+  end
+
 end

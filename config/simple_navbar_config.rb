@@ -40,4 +40,13 @@ SimpleNavbar::Base.config do
 
   end
 
+  rule :bank_courses_index do
+    nav :recent, :name => '最新', :url => '/bank/courses' do
+      controller :"bank/courses", :only => :index
+    end
+
+    nav :hot, :name => '最热', :url => '/bank/courses/hot' do
+      controller :"bank/courses", :only => :hot
+    end
+  end
 end
