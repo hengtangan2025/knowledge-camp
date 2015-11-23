@@ -87,6 +87,9 @@ Rails.application.routes.draw do
     resources :courses do
       get :mine, on: :collection
       get :hot, on: :collection
+      get :studying, on: :collection
+      get :studied, on: :collection
+      get :fav, on: :collection
     end
 
     resources :notifications do

@@ -49,4 +49,18 @@ SimpleNavbar::Base.config do
       controller :"bank/courses", :only => :hot
     end
   end
+
+  rule :bank_courses_mine do
+    nav :studying, :name => '正在学习', :url => '/bank/courses/studying' do
+      controller :"bank/courses", :only => %i[mine studying]
+    end
+
+    nav :fav, :name => '课程收藏', :url => '/bank/courses/fav' do
+      controller :"bank/courses", :only => %i[fav]
+    end
+
+    nav :studied, :name => '已经学完', :url => '/bank/courses/studied' do
+      controller :"bank/courses", :only => %i[studied]
+    end
+  end
 end

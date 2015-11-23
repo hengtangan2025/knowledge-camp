@@ -8,17 +8,27 @@ class Bank::CoursesController < Bank::ApplicationController
   end
 
   def mine
-    @learning_courses = current_user.courses.page
-
-    @bucket = current_user.buckets.where(name: '默认').first_or_create
-    @fav_courses = @bucket.courses.page
-
-    @completed_courses = current_user.courses.page
+    redirect_to studying_bank_courses_path
   end
 
   def hot
     @courses = KcCourses::Course.all.page(params[:page])
     render :index
+  end
+
+  def studying
+    @courses = current_user.courses.page
+  end
+
+  def fav
+    @bucket = current_user.buckets.where(name: '默认').first_or_create
+    @courses = @bucket.courses.page
+    render :mine_four
+  end
+
+  def studied
+    @courses = current_user.courses.page
+    render :mine_four
   end
 
 end
