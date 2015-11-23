@@ -136,7 +136,7 @@ gem 'kc_courses', :github => 'mindpin/kc_courses',
                   :ref => "25ffee4"
 
 gem 'simple-navbar', :github => 'mindpin/simple-navbar',
-                     :tag => "0.0.3"
+                     :tag => "0.0.5"
 
 gem 'bootstrap-sass', '~> 3.3.5'
 

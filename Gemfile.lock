@@ -99,10 +99,10 @@ GIT
 
 GIT
   remote: git://github.com/mindpin/simple-navbar.git
-  revision: fef3671e44c036494ae54a86f608757cbbdebe76
-  tag: 0.0.3
+  revision: 1dba894d7598e9b5ab55196c292910be8c1b3bae
+  tag: 0.0.5
   specs:
-    simple-navbar (0.0.3)
+    simple-navbar (0.0.5)
       simple-page-compoents
 
 GIT
