@@ -78,7 +78,7 @@ SimpleNavbar::Base.config do
     end
   end
 
-  rule :bank_qas do
+  rule :bank_question_and_answer do
     nav :my_questions, :name => '我的问题', :url => '/bank/my_questions' do
       controller :"bank/my_questions", :only => :index
     end
