@@ -87,4 +87,10 @@ SimpleNavbar::Base.config do
       controller :"bank/my_answers", :only => :index
     end
   end
+
+  rule :bank_my_notes do
+    nav :notes, :name => '所有笔记', :url => '/bank/my_notes' do
+      controller :"bank/my_notes", :only => :index
+    end
+  end
 end

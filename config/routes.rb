@@ -92,6 +92,7 @@ Rails.application.routes.draw do
 
     resources :my_questions
     resources :my_answers
+    resources :my_notes
 
     resources :courses do
       get :mine, on: :collection
