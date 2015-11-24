@@ -1,21 +1,3 @@
 .one
   - @courses.each do |course|
-    .course.clearfix
-      .cover.pull-left
-        %a{href: bank_course_path(course)}
-          %img.img-responsive{src: (course.cover.blank? ? 'http://ph.4ye.me/440/248' : course.cover)}
-      .course-right
-        .info
-          %h3.title
-            %a{href: bank_course_path(course)}= course.title
-          .desc= course.desc
-
-          .bottom
-            .progress-info.pull-left
-              .to 已学习至：第8节 影响供给的因素
-              .cost 学习耗时：2小时 16分
-              .last 最后学习：2015-10-12 18:36
-              .progress
-                .progress-bar{role: 'progressbar', aria: {valuenow: '60', valuemin: '0', valuemax: '100'}, style: 'width: 60%'}
-            %a.learn.btn.btn-default.btn-lg.pull-right{href: (bank_course_path(course))} 继续学习
-            .clearfix
+    = render_cell :bank_course, :one_detail, course: course

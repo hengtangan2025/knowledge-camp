@@ -4,7 +4,7 @@
   }
 }
 
-.one{
+.one, .page-course-show{
   .course{
     height: 248px;
     margin-bottom: 30px;
@@ -45,5 +45,21 @@
     position: absolute;
     bottom: 10px;
     right: 10px;
+  }
+  .share_and_fav{
+    position: absolute;
+    top: 10px;
+    right: 20px;
+  }
+  .share{
+    margin-right: 20px;
+  }
+}
+.ul-list{
+  li{
+    padding: 5px 10px;
+  }
+  .ul-list-head{
+    background-color: #E4E4E4;
   }
 }
