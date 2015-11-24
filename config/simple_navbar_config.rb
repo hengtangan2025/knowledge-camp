@@ -63,4 +63,28 @@ SimpleNavbar::Base.config do
       controller :"bank/courses", :only => %i[studied]
     end
   end
+
+  rule :bank_my_test_questions do
+    nav :records, :name => '做题记录', :url => '/bank/my_test_questions/records' do
+      controller :"bank/my_test_questions", :only => %i[index records]
+    end
+
+    nav :mistakes, :name => '错题本', :url => '/bank/my_test_questions/mistakes' do
+      controller :"bank/my_test_questions", :only => %i[mistakes]
+    end
+
+    nav :fav, :name => '题目收藏', :url => '/bank/my_test_questions/fav' do
+      controller :"bank/my_test_questions", :only => %i[fav]
+    end
+  end
+
+  rule :bank_qas do
+    nav :my_questions, :name => '我的问题', :url => '/bank/my_questions' do
+      controller :"bank/my_questions", :only => :index
+    end
+
+    nav :my_answers, :name => '我的回答', :url => '/bank/my_answers' do
+      controller :"bank/my_answers", :only => :index
+    end
+  end
 end

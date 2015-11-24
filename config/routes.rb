@@ -81,8 +81,17 @@ Rails.application.routes.draw do
     mount KcCourses::Engine => '/kc_courses'
 
     root "index#index"
-    resources :questions
-    resources :qas
+    get '/my_test_questions', to: redirect{'/bank/my_test_questions/records'}
+    resources :my_test_questions do
+      collection do
+        get :records
+        get :mistakes
+        get :fav
+      end
+    end
+
+    resources :my_questions
+    resources :my_answers
 
     resources :courses do
       get :mine, on: :collection

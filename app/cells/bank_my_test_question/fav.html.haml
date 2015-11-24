@@ -1,3 +1,17 @@
+= quick_filter_bar do |b|
+  - b.group :type, text: '类型' do |g|
+    - g.add 'a', text: '单选题'
+    - g.add 'b', text: '多选题'
+    - g.add 'd', text: '填空题'
+    - g.add 'e', text: '连线题'
+    - g.add 'f', text: '判断题'
+    - g.add 'c', text: '论述题'
+
+  - b.group :created_at, text: '时间' do |g|
+    - g.add 'a', text: '一周内'
+    - g.add 'b', text: '一月内'
+    - g.add 'c', text: '三月内'
+
 %table.table.table-striped
   %thead
     %tr
