@@ -1,0 +1,5 @@
+.page-my-answers
+  = simple_navtabs(:bank_question_and_answer)
+
+  .tab-content
+    = render_cell :bank_qa, :answer #, questions: @my_questions

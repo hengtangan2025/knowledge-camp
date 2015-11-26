@@ -1,0 +1,5 @@
+.page-courses-mine
+  = simple_navtabs(:bank_courses_mine)
+  
+  .tab-content
+    = render_cell :bank_course, :four, courses: @courses

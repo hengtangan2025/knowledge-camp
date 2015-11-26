@@ -1,6 +1,7 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 @import "bucketerize";
+@import "quick_filter_bar";
 
 body {
   background-color: #fafafa;
@@ -39,7 +40,7 @@ ul{
 }
 
 
-.page-courses{
+.page-courses, .four{
   ul.courses{
     @include clearfix;
 

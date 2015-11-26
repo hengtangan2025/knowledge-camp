@@ -1,0 +1,36 @@
+= quick_filter_bar do |b|
+  - b.group :type, text: '类型' do |g|
+    - g.add 'a', text: '单选题'
+    - g.add 'b', text: '多选题'
+    - g.add 'd', text: '填空题'
+    - g.add 'e', text: '连线题'
+    - g.add 'f', text: '判断题'
+    - g.add 'c', text: '论述题'
+
+  - b.group :created_at, text: '时间' do |g|
+    - g.add 'a', text: '一周内'
+    - g.add 'b', text: '一月内'
+    - g.add 'c', text: '三月内'
+
+%table.table.table-striped
+  %thead
+    %tr
+      %th 
+      %th 时间
+      %th 题目
+      %th 正确答案
+      %th 答案解析
+      %th 类型
+      %th 操作
+  %tbody
+    %tr
+      %td
+        %input{type: 'checkbox'}
+      %td 2015-10-20 15:33
+      %td 0既不是奇数也不是偶数
+      %td.text-success 错
+      %td 0是偶数
+      %td 判断题
+      %th
+        %a 重做
+        %a 删除

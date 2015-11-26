@@ -1,0 +1,29 @@
+.page-bank
+  - unless @learning_courses.blank?
+    .learning
+      .page-header 正在学习
+
+      = render_cell :bank_course, :one, courses: @learning_courses
+
+  -#.recommend
+    -#%h3.page-header
+      推荐课程
+      %a.pull-right{href: (bank_courses_path)} 更多课程 &gt;
+
+    -#= render_cell :bank_course, :one, courses: @learning_courses
+
+  .recent
+    %h3.page-header
+      最新课程
+      %a.pull-right{href: (bank_courses_path)}
+        %small 更多课程 &gt;
+
+    = render_cell :bank_course, :four, courses: @recent_courses
+
+  .hot
+    %h3.page-header
+      热门课程
+      %a.pull-right{href: (bank_courses_path)}
+        %small 更多课程 &gt;
+
+    = render_cell :bank_course, :four, courses: @hot_courses
