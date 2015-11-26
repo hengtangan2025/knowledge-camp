@@ -32,6 +32,13 @@ GIT
       ruby-pinyin
 
 GIT
+  remote: git://github.com/mindpin/engine_manager.git
+  revision: fa8b4ceb005f51d285d5f69688d4fb726f80d948
+  tag: v0.0.1
+  specs:
+    engine_manager (0.1.0)
+
+GIT
   remote: git://github.com/mindpin/file-part-upload.git
   revision: 8768fd6e7c90e71cf413b6cf8d3da0bc0107e27c
   tag: 2.0.0-beta3
@@ -52,8 +59,8 @@ GIT
 
 GIT
   remote: git://github.com/mindpin/kc_courses.git
-  revision: 25ffee48bcefdb6eebc0c0240b2a2297018292e8
-  ref: 25ffee4
+  revision: fa6a5a3c029f4ea2023c5eee002d7c55fb2881a9
+  ref: fa6a5a3
   specs:
     kc_courses (0.1.0)
       simple_form
@@ -99,11 +106,10 @@ GIT
 
 GIT
   remote: git://github.com/mindpin/simple-navbar.git
-  revision: 1dba894d7598e9b5ab55196c292910be8c1b3bae
-  tag: 0.0.5
+  revision: 47e0ab0cdcecf8a83d268bdf86bfc4002d28d2d4
+  tag: 0.0.6
   specs:
-    simple-navbar (0.0.5)
-      simple-page-compoents
+    simple-navbar (0.0.6)
 
 GIT
   remote: git://github.com/mindpin/sort_char.git
@@ -396,7 +402,6 @@ GEM
     sdoc (0.4.0)
       json (~> 1.8)
       rdoc (~> 4.0, < 5.0)
-    simple-page-compoents (0.0.6.1)
     simple_form (3.2.0)
       actionpack (~> 4.0)
       activemodel (~> 4.0)
@@ -444,6 +449,7 @@ DEPENDENCIES
   devise (= 3.5.2)
   documents-store!
   elasticsearch-simple!
+  engine_manager!
   figaro
   file-part-upload!
   generic_controller!

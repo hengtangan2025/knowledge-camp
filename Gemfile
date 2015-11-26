@@ -133,13 +133,16 @@ gem 'kc-course-editor',
 
 # -----金融学院相关
 gem 'kc_courses', :github => 'mindpin/kc_courses',
-                  :ref => "25ffee4"
+                  :ref => "fa6a5a3"
 
 gem 'simple-navbar', :github => 'mindpin/simple-navbar',
-                     :tag => "0.0.5"
+                     :tag => "0.0.6"
 
 gem 'bootstrap-sass', '~> 3.3.5'
 
 gem 'bucketerize', :github => 'mindpin/bucketerize',
                   :ref => "988e840"
+
+gem 'engine_manager', github: 'mindpin/engine_manager',
+                     :tag => "v0.0.1"
 # ----

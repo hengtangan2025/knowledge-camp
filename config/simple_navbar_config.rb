@@ -93,4 +93,14 @@ SimpleNavbar::Base.config do
       controller :"bank/my_notes", :only => :index
     end
   end
+
+  rule :engine_manager do
+    nav :index, :name => '首页', :url => '/bank/manager/dashboard', html:{target: 'iframe_content'} do
+      controller :'engine_manager/home'
+    end
+
+    nav :auth, :name => '课程管理', :url => '/bank/kc_courses', html:{target: 'iframe_content'} do
+      controller :'kc_courses/courses'
+    end
+  end
 end
