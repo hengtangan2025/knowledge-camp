@@ -14,7 +14,7 @@
           .cost 学习耗时：2小时 16分
           .last 最后学习：2015-10-12 18:36
           .progress
-            .progress-bar{role: 'progressbar', aria: {valuenow: '60', valuemin: '0', valuemax: '100'}, style: 'width: 60%'}
+            .progress-bar{role: 'progressbar', aria: {valuenow: @percent, valuemin: '0', valuemax: '100'}, style: "width:#{@percent}%;"}
         %a.learn.btn.btn-default.btn-lg.pull-right{href: (bank_course_path(@course))} 继续学习
         .clearfix
 

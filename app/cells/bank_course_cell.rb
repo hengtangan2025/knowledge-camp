@@ -1,4 +1,6 @@
 class BankCourseCell < Cell::Rails
+  include Devise::Controllers::Helpers
+  helper_method :current_user #all your needed helper
 
   def one args
     @courses = args[:courses]
@@ -8,6 +10,7 @@ class BankCourseCell < Cell::Rails
   def one_detail args
     @course = args[:course]
     @show_share_and_fav = args[:show_share_and_fav]
+    @percent = current_user ? @course.read_percent_of_user(current_user) : 0
     render
   end
 

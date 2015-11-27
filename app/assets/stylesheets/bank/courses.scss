@@ -63,3 +63,22 @@
     background-color: #E4E4E4;
   }
 }
+
+.chapter-ware {
+  border:solid 1px #ddd;
+  height:40px;
+  line-height:40px;
+  position:relative;
+  
+  .progress-bar {
+    background-color:#D1EBFE;
+    position:absolute;
+    top:0;left:0;bottom:0;
+    pointer-events:none;
+  }
+  
+  .other-content {
+    position:absolute;
+    top:0;left:0;bottom:0;right:0;
+  }
+}
