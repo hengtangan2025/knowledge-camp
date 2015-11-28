@@ -59,8 +59,8 @@ GIT
 
 GIT
   remote: git://github.com/mindpin/kc_courses.git
-  revision: fa6a5a3c029f4ea2023c5eee002d7c55fb2881a9
-  ref: fa6a5a3
+  revision: 7aa22369a516d1434ed63692835e4075e0166043
+  ref:  7aa2236
   specs:
     kc_courses (0.1.0)
       simple_form
