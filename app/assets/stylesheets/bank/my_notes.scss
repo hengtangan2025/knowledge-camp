@@ -1,0 +1,16 @@
+.page-my-notes{
+  .actions{
+    a{
+      margin-right: 15px;
+    }
+  }
+  .note{
+    padding: 20px 0;
+  }
+  .note:not(:first-child){
+    border-top: dotted 1px #D0D0D0;
+  }
+  .updated_at, .bottom{
+    margin: 10px 0;
+  }
+}

@@ -1,0 +1,21 @@
+%ul.course-chapters.ul-list
+  - @chapters.each_with_index do |chapter, chapter_index|
+    %li.chapter.ul-list-head
+      .chapter-index.col-md-2.text-right= "第#{chapter_index}章"
+      .chapter-name.col-md-10= chapter.title
+      .clearfix
+    - chapter.wares.each_with_index do |ware, ware_index|
+      %li.ware.ul-list-item
+        .ware-index.col-md-2.text-right= "#{chapter_index}-#{ware_index}"
+        .ware-name.col-md-8= ware.title
+        .ware-action.col-md-2.text-success
+          %span.glyphicon.glyphicon-ok
+          已学完
+        .clearfix
+
+  %li.ware
+    .ware-index.col-md-2.text-right= "#{11}-#{11}"
+    .ware-name.col-md-8 测试标题
+    .ware-action.col-md-2.text-success
+      %a.btn.btn-default 继续学习
+    .clearfix
