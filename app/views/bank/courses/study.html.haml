@@ -1,0 +1,21 @@
+.page-course-study
+  .play-frame
+    .course-content.col-md-9
+      .player
+      .actions
+        %a.intro-button.btn.btn-default{tableindex: 0, role: 'button', data: {toggle: 'popover', placement: 'top', content: '功能描述：本交易通过客户号、客户名称、证件类型加证件号码为条件查询客户账号。客户操作的步骤：无。需要授权的步骤：无', trigger: 'focus'}}
+          %span.glyphicon.glyphicon-info-sign
+          本章概要
+        %a.share-button.btn.btn-default
+          %span.glyphicon.glyphicon-share
+          分享
+        %a.fav-button.btn.btn-default
+          %span.glyphicon.glyphicon-heart-empty
+          收藏
+      .clearfix
+    .sidebar.col-md-3
+      %h3 章节目录
+
+      = render_cell :bank_course, :chapters, course: @course
+
+    .clearfix

@@ -15,7 +15,7 @@
           .last 最后学习：2015-10-12 18:36
           .progress
             .progress-bar{role: 'progressbar', aria: {valuenow: @percent, valuemin: '0', valuemax: '100'}, style: "width:#{@percent}%;"}
-        %a.learn.btn.btn-default.btn-lg.pull-right{href: (bank_course_path(@course))} 继续学习
+        %a.learn.btn.btn-default.btn-lg.pull-right{href: (study_bank_course_path(@course))} 继续学习
         .clearfix
 
       - if @show_share_and_fav

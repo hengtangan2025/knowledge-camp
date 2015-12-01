@@ -31,4 +31,8 @@ class Bank::CoursesController < Bank::ApplicationController
     render :mine_four
   end
 
+  def study
+    @course = KcCourses::Course.find params[:id]
+  end
+
 end
