@@ -26,6 +26,7 @@ end
 gem "figaro"
 gem "devise", "3.5.2"
 gem "kaminari", "~> 0.15.1"
+gem 'bootstrap-kaminari-views'
 gem "haml"
 gem "mongoid", "~> 4.0.0"
 gem "bson_ext"

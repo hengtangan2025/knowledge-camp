@@ -1,6 +1,6 @@
 class Bank::CoursesController < Bank::ApplicationController
   def index
-    @courses = KcCourses::Course.all.page(params[:page])
+    @courses = KcCourses::Course.recent.page(params[:page])
   end
 
   def show
