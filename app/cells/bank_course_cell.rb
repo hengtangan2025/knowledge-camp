@@ -40,4 +40,9 @@ class BankCourseCell < Cell::Rails
     render
   end
 
+  def index args
+    @courses = args[:courses]
+    render
+  end
+
 end

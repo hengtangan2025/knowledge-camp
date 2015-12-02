@@ -45,7 +45,7 @@ gem 'haml-coderay'
 # 全文搜索
 gem "elasticsearch-simple",
   :github => "mindpin/elasticsearch-simple",
-  :ref => 'c1b1515'
+  :ref => '47e35a4'
 
 gem "mina", "0.3.7"
 
@@ -137,7 +137,7 @@ gem 'kc_courses', :github => 'mindpin/kc_courses',
                   :ref => " 7aa2236"
 
 gem 'simple-navbar', :github => 'mindpin/simple-navbar',
-                     :tag => "0.0.6"
+                     :tag => "0.0.6p1"
 
 gem 'bootstrap-sass', '~> 3.3.5'
 

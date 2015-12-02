@@ -101,6 +101,7 @@ Rails.application.routes.draw do
       get :studying, on: :collection
       get :studied, on: :collection
       get :fav, on: :collection
+      get :search, on: :collection
       get :study, on: :member
     end
 

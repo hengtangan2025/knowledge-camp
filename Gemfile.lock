@@ -23,8 +23,8 @@ GIT
 
 GIT
   remote: git://github.com/mindpin/elasticsearch-simple.git
-  revision: c1b1515081d4ad3757e18da4bd97628cda403387
-  ref: c1b1515
+  revision: 47e35a44f516f534ea83ea1d770f4e8cd480d610
+  ref: 47e35a4
   specs:
     elasticsearch-simple (0.1.0)
       elasticsearch-model
@@ -106,10 +106,10 @@ GIT
 
 GIT
   remote: git://github.com/mindpin/simple-navbar.git
-  revision: 47e0ab0cdcecf8a83d268bdf86bfc4002d28d2d4
-  tag: 0.0.6
+  revision: f891c0e0b6c39846c1c424ad0379b83b181db105
+  tag: 0.0.6p1
   specs:
-    simple-navbar (0.0.6)
+    simple-navbar (0.0.6p1)
 
 GIT
   remote: git://github.com/mindpin/sort_char.git

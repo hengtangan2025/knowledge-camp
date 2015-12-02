@@ -1,0 +1,12 @@
+.page-courses-search
+  .search-info
+    %span> “
+    %span.red= @q
+    %span>= "” 相关课程共#{@total}个"
+
+  = render_cell :bank_course, :index, courses: @courses
+
+  .paginate.pull-right
+    = paginate @courses, :theme => 'twitter-bootstrap-3'
+
+  .clearfix

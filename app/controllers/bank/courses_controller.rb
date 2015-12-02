@@ -35,4 +35,11 @@ class Bank::CoursesController < Bank::ApplicationController
     @course = KcCourses::Course.find params[:id]
   end
 
+  def search
+    @q = params[:q]
+    @courses = @q.blank? ? KcCourses::Course.where(id: []) : KcCourses::Course.standard_search(@q)
+    @total = @courses.count
+    @courses = @courses.page(params[:page])
+  end
+
 end
