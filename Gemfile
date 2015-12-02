@@ -142,7 +142,7 @@ gem 'simple-navbar', :github => 'mindpin/simple-navbar',
 gem 'bootstrap-sass', '~> 3.3.5'
 
 gem 'bucketerize', :github => 'mindpin/bucketerize',
-                  :ref => "988e840"
+                  :ref => "6e53e43"
 
 gem 'engine_manager', github: 'mindpin/engine_manager',
                      :tag => "v0.0.1"

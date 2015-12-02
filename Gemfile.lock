@@ -8,8 +8,8 @@ GIT
 
 GIT
   remote: git://github.com/mindpin/bucketerize.git
-  revision: 988e840a2cc1e9a53b7f9f96db75c91774f4673c
-  ref: 988e840
+  revision: 6e53e43a82023592a71191a7eeac6f092f32ee84
+  ref: 6e53e43
   specs:
     bucketerize (0.1.0)
 
