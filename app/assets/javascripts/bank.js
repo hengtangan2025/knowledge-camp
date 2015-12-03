@@ -5,3 +5,4 @@
 //= require bucketerize
 //= require bank/fav_course
 //= require bank/qas
+//= require bank/courses

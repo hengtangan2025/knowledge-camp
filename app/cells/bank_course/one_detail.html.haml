@@ -14,15 +14,22 @@
           .cost 学习耗时：2小时 16分
           .last 最后学习：2015-10-12 18:36
           .progress
-            .progress-bar{role: 'progressbar', aria: {valuenow: '60', valuemin: '0', valuemax: '100'}, style: 'width: 60%'}
-        %a.learn.btn.btn-default.btn-lg.pull-right{href: (bank_course_path(@course))} 继续学习
+            .progress-bar{role: 'progressbar', aria: {valuenow: @percent, valuemin: '0', valuemax: '100'}, style: "width:#{@percent}%;"}
+        %a.learn.btn.btn-default.btn-lg.pull-right{href: (study_bank_course_path(@course))} 继续学习
         .clearfix
 
       - if @show_share_and_fav
         .share_and_fav
-          .fav.pull-right
-            %span.glyphicon.glyphicon-heart-empty
-            收藏
+          .bucketerize.pull-right{data: {rel: "bucketerize", bucketerize: {mode: 'standard', resource_type: 'KcCourses::Course', resource_id: @course.id}}}
+            .unhas
+              %button.btn.btn-default 
+                %span.glyphicon.glyphicon-heart-empty
+                收藏
+            .has
+              %button.btn.btn-info
+                %span.glyphicon.glyphicon-heart-empty
+                已收藏
           .share.pull-right
-            %span.glyphicon.glyphicon-share
-            分享
+            %button.btn.btn-default
+              %span.glyphicon.glyphicon-share
+              分享

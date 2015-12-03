@@ -63,3 +63,55 @@
     background-color: #E4E4E4;
   }
 }
+
+.chapter-ware {
+  border:solid 1px #ddd;
+  height:40px;
+  line-height:40px;
+  position:relative;
+  
+  .progress-bar {
+    background-color:#D1EBFE;
+    position:absolute;
+    top:0;left:0;bottom:0;
+    pointer-events:none;
+  }
+  
+  .other-content {
+    position:absolute;
+    top:0;left:0;bottom:0;right:0;
+  }
+}
+
+.page-course-study{
+  .play-frame{
+    border: solid 1px #CACACA;
+  }
+  .sidebar{
+    height: 678px;
+    background-color: #F2F2F2;
+  }
+  .player{
+    height: 640px;
+  }
+  .actions{
+    height: 34px;
+    *{
+      float: left;
+    }
+  }
+}
+
+.red{
+  color: #FF0000;
+}
+
+.page-courses-search{
+  .search-not-found{
+    margin: 50px auto;
+  }
+}
+
+.mt40{
+  margin-top: 40px;
+}

@@ -8,8 +8,8 @@ GIT
 
 GIT
   remote: git://github.com/mindpin/bucketerize.git
-  revision: 988e840a2cc1e9a53b7f9f96db75c91774f4673c
-  ref: 988e840
+  revision: 6e53e43a82023592a71191a7eeac6f092f32ee84
+  ref: 6e53e43
   specs:
     bucketerize (0.1.0)
 
@@ -23,13 +23,20 @@ GIT
 
 GIT
   remote: git://github.com/mindpin/elasticsearch-simple.git
-  revision: c1b1515081d4ad3757e18da4bd97628cda403387
-  ref: c1b1515
+  revision: 47e35a44f516f534ea83ea1d770f4e8cd480d610
+  ref: 47e35a4
   specs:
     elasticsearch-simple (0.1.0)
       elasticsearch-model
       elasticsearch-rails
       ruby-pinyin
+
+GIT
+  remote: git://github.com/mindpin/engine_manager.git
+  revision: fa8b4ceb005f51d285d5f69688d4fb726f80d948
+  tag: v0.0.1
+  specs:
+    engine_manager (0.1.0)
 
 GIT
   remote: git://github.com/mindpin/file-part-upload.git
@@ -52,8 +59,8 @@ GIT
 
 GIT
   remote: git://github.com/mindpin/kc_courses.git
-  revision: 25ffee48bcefdb6eebc0c0240b2a2297018292e8
-  ref: 25ffee4
+  revision: 7aa22369a516d1434ed63692835e4075e0166043
+  ref:  7aa2236
   specs:
     kc_courses (0.1.0)
       simple_form
@@ -99,11 +106,10 @@ GIT
 
 GIT
   remote: git://github.com/mindpin/simple-navbar.git
-  revision: 1dba894d7598e9b5ab55196c292910be8c1b3bae
-  tag: 0.0.5
+  revision: f891c0e0b6c39846c1c424ad0379b83b181db105
+  tag: 0.0.6p1
   specs:
-    simple-navbar (0.0.5)
-      simple-page-compoents
+    simple-navbar (0.0.6p1)
 
 GIT
   remote: git://github.com/mindpin/sort_char.git
@@ -205,6 +211,9 @@ GEM
       execjs
       json
     bcrypt (3.1.10)
+    bootstrap-kaminari-views (0.0.5)
+      kaminari (>= 0.13)
+      rails (>= 3.1)
     bootstrap-sass (3.3.5.1)
       autoprefixer-rails (>= 5.0.0.1)
       sass (>= 3.3.0)
@@ -396,7 +405,6 @@ GEM
     sdoc (0.4.0)
       json (~> 1.8)
       rdoc (~> 4.0, < 5.0)
-    simple-page-compoents (0.0.6.1)
     simple_form (3.2.0)
       actionpack (~> 4.0)
       activemodel (~> 4.0)
@@ -434,6 +442,7 @@ PLATFORMS
 
 DEPENDENCIES
   acts-as-dag!
+  bootstrap-kaminari-views
   bootstrap-sass (~> 3.3.5)
   bson_ext
   bucketerize!
@@ -444,6 +453,7 @@ DEPENDENCIES
   devise (= 3.5.2)
   documents-store!
   elasticsearch-simple!
+  engine_manager!
   figaro
   file-part-upload!
   generic_controller!

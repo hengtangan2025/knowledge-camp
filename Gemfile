@@ -26,6 +26,7 @@ end
 gem "figaro"
 gem "devise", "3.5.2"
 gem "kaminari", "~> 0.15.1"
+gem 'bootstrap-kaminari-views'
 gem "haml"
 gem "mongoid", "~> 4.0.0"
 gem "bson_ext"
@@ -44,7 +45,7 @@ gem 'haml-coderay'
 # 全文搜索
 gem "elasticsearch-simple",
   :github => "mindpin/elasticsearch-simple",
-  :ref => 'c1b1515'
+  :ref => '47e35a4'
 
 gem "mina", "0.3.7"
 
@@ -133,13 +134,16 @@ gem 'kc-course-editor',
 
 # -----金融学院相关
 gem 'kc_courses', :github => 'mindpin/kc_courses',
-                  :ref => "25ffee4"
+                  :ref => " 7aa2236"
 
 gem 'simple-navbar', :github => 'mindpin/simple-navbar',
-                     :tag => "0.0.5"
+                     :tag => "0.0.6p1"
 
 gem 'bootstrap-sass', '~> 3.3.5'
 
 gem 'bucketerize', :github => 'mindpin/bucketerize',
-                  :ref => "988e840"
+                  :ref => "6e53e43"
+
+gem 'engine_manager', github: 'mindpin/engine_manager',
+                     :tag => "v0.0.1"
 # ----

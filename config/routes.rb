@@ -77,6 +77,7 @@ Rails.application.routes.draw do
   # 金融学院暂时单独使用 bank 命名空间
   FilePartUpload::Routing.mount "/bank/file_part_upload", :as => :file_part_upload
   Bucketerize::Routing.mount '/bank/bucketerize', as: 'bucketerize'
+  EngineManager::Routing.mount '/bank/manager', :as => 'engine_manager'
   namespace :bank do
     mount KcCourses::Engine => '/kc_courses'
 
@@ -100,6 +101,8 @@ Rails.application.routes.draw do
       get :studying, on: :collection
       get :studied, on: :collection
       get :fav, on: :collection
+      get :search, on: :collection
+      get :study, on: :member
     end
 
     resources :notifications do
