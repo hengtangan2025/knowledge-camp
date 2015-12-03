@@ -4,9 +4,46 @@
     %span.red= @q
     %span>= "” 相关课程共#{@total}个"
 
-  = render_cell :bank_course, :index, courses: @courses
+  - if @total > 0
+    = render_cell :bank_course, :index, courses: @courses
 
-  .paginate.pull-right
-    = paginate @courses, :theme => 'twitter-bootstrap-3'
+    .paginate.pull-right
+      = paginate @courses, :theme => 'twitter-bootstrap-3'
+
+  - else
+    = quick_filter_bar do |b|
+      - b.group :direction, text: '方向' do |g|
+        - g.add 'a', text: '基础理论'
+        - g.add 'b', text: '创业金融'
+        - g.add 'c', text: '财富管理'
+        - g.add 'd', text: '企业理财'
+        - g.add 'e', text: '互联网金融'
+        - g.add 'f', text: '资产证券'
+
+      - b.group :job, text: '职务' do |g|
+        - g.add 'a', text: '投资理财'
+        - g.add 'b', text: '税务管理'
+        - g.add 'd', text: '上市融资'
+        - g.add 'e', text: '经济法律'
+        - g.add 'f', text: '其他'
+
+      - b.group :type, text: '类型' do |g|
+        - g.add 'a', text: '交互课程'
+        - g.add 'b', text: '视频播放'
+        - g.add 'c', text: '图文展示'
+
+    = simple_navtabs(:bank_courses_index)
+
+    .text-center.search-not-found
+      %img{src: asset_path('bank/search_not_found.png')}
+      %span> 很抱歉！没有找到与"
+      %span.red= @q
+      %span> "相关的课程，要不换个关键词再找找吧！
+
+      %form.col-sm-4.col-sm-offset-4.mt40{:role => "search", action: search_bank_courses_path}
+        .input-group
+          %input.form-control{:type => "text", value: @q, name: 'q'}
+          %span.input-group-btn
+            %button.btn.btn-default{type:"submit"} 搜索
 
   .clearfix
