@@ -17,7 +17,7 @@ class Bank::CoursesController < Bank::ApplicationController
   end
 
   def studying
-    @courses = current_user.courses.page
+    @courses = KcCourses::Course.studing_of_user(current_user)
   end
 
   def fav
@@ -27,7 +27,7 @@ class Bank::CoursesController < Bank::ApplicationController
   end
 
   def studied
-    @courses = current_user.courses.page
+    @courses = KcCourses::Course.studied_of_user(current_user)
     render :mine_four
   end
 
