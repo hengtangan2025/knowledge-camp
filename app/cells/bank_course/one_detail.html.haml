@@ -10,12 +10,19 @@
 
       .bottom
         .progress-info.pull-left
-          .to 已学习至：第8节 影响供给的因素
-          .cost 学习耗时：2小时 16分
-          .last 最后学习：2015-10-12 18:36
+          - if ware = @course.studing_ware_of_user(current_user)
+            .to 
+              已学习至：
+              = ware.title
+            .cost 学习耗时：2小时 16分
+            .last 最后学习：2015-10-12 18:36
           .progress
             .progress-bar{role: 'progressbar', aria: {valuenow: @percent, valuemin: '0', valuemax: '100'}, style: "width:#{@percent}%;"}
-        %a.learn.btn.btn-default.btn-lg.pull-right{href: (study_bank_course_path(@course))} 继续学习
+        %a.learn.btn.btn-default.btn-lg.pull-right{href: (study_bank_course_path(@course))}
+          - if current_user and @course.read_percent_of_user(current_user) > 0
+            继续学习
+          - else
+            开始学习
         .clearfix
 
       - if @show_share_and_fav
