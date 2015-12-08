@@ -14,7 +14,9 @@
             .to 
               已学习至：
               = ware.title
-            .cost 学习耗时：2小时 16分
+            .cost
+              学习耗时：
+              = @str_spent
             .last 最后学习：2015-10-12 18:36
           .progress
             .progress-bar{role: 'progressbar', aria: {valuenow: @percent, valuemin: '0', valuemax: '100'}, style: "width:#{@percent}%;"}
