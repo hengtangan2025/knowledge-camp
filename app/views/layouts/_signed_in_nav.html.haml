@@ -15,9 +15,9 @@
       %li
         %a{:href => "/bank/my_notes"} 我的笔记
 
-    %form.navbar-form.navbar-left{:role => "search"}
+    %form.navbar-form.navbar-left{:role => "search", action: search_bank_courses_path}
       .form-group
-        %input.form-control{:type => "text"}
+        %input.form-control{type: "text", value: @q, name: 'q'}
       %button.btn.btn-default{:type => "submit"} 搜索
 
     %ul.nav.navbar-nav.navbar-right
