@@ -13,6 +13,8 @@ class BankCourseCell < Cell::Rails
     @percent = current_user ? @course.read_percent_of_user(current_user) : 0
     @spent = @course.spent_time_of_user(current_user)
     @str_spent = TimeDiy.pretty_seconds(@spent)
+
+    @last_studied_at = @course.last_studied_at_of_user(current_user)
     render
   end
 

@@ -17,7 +17,10 @@
             .cost
               学习耗时：
               = @str_spent
-            .last 最后学习：2015-10-12 18:36
+            - if @last_studied_at
+              .last
+                最后学习：
+                = @last_studied_at
           .progress
             .progress-bar{role: 'progressbar', aria: {valuenow: @percent, valuemin: '0', valuemax: '100'}, style: "width:#{@percent}%;"}
         %a.learn.btn.btn-default.btn-lg.pull-right{href: (study_bank_course_path(@course))}
