@@ -1,9 +1,7 @@
 class TimeDiy
   def self.pretty_seconds(seconds)
     case seconds.to_i
-    when 0
-      ""
-    when 1...60
+    when 0...60
       "1分钟"
     when 60...3600
       "#{seconds.to_i / 60}分钟"
