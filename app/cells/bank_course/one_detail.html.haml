@@ -23,10 +23,14 @@
                 = @last_studied_at
           .progress
             .progress-bar{role: 'progressbar', aria: {valuenow: @percent, valuemin: '0', valuemax: '100'}, style: "width:#{@percent}%;"}
-        %a.learn.btn.btn-default.btn-lg.pull-right{href: (study_bank_course_path(@course))}
-          - if current_user and @course.read_percent_of_user(current_user) > 0
+        - if current_user and (1...100).to_a.include?(@course.read_percent_of_user(current_user))
+          %a.learn.btn.btn-default.btn-lg.pull-right{href: (study_bank_course_path(@course))}
             继续学习
-          - else
+        - elsif current_user and @course.read_percent_of_user(current_user) == 100
+          %a.learn.btn.btn-default.btn-lg.pull-right{href: (study_bank_course_path(@course))}
+            已学完
+        - else
+          %a.learn.btn.btn-default.btn-lg.pull-right{href: (study_bank_course_path(@course))}
             开始学习
         .clearfix
 
