@@ -35,6 +35,13 @@ class BankCourseCell < Cell::Rails
     render
   end
 
+  def study_chapters args
+    @course = args[:course]
+    @chapters = @course.chapters.includes(:wares)
+    @current_ware = @course.studing_ware_of_user(current_user)
+    render
+  end
+
   def data args
     @course = args[:course]
     render

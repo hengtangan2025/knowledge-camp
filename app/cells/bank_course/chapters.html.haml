@@ -10,7 +10,7 @@
         .other-content
           .ware-index.col-md-2.text-right= "#{chapter_index + 1}-#{ware_index + 1}"
           .ware-name.col-md-8= ware.title
-          .ware-action.col-md-2
+          .ware-action.col-md-2.text-success
             - if current_user and ware.has_read_by_user?(current_user)
               %span.glyphicon.glyphicon-ok
               %span.text-success已学完
