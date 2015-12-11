@@ -10,10 +10,12 @@
         .other-content
           .ware-index.col-md-2.text-right= "#{chapter_index + 1}-#{ware_index + 1}"
           .ware-name.col-md-8= ware.title
-          .ware-action.col-md-2
+          .ware-action.col-md-2.text-success
             - if current_user and ware.has_read_by_user?(current_user)
               %span.glyphicon.glyphicon-ok
               %span.text-success已学完
             - elsif current_user and ware.read_percent_of_user(current_user) > 0
               %a.btn.btn-default{href: study_bank_course_path} 继续学习
+            - elsif !current_user or (@current_ware.nil? and chapter_index == 0 and ware_index == 0)
+              %a.btn.btn-default{href: study_bank_course_path} 开始学习
         .clearfix

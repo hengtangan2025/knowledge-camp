@@ -58,6 +58,10 @@
 .ul-list{
   li{
     padding: 5px 10px;
+    overflow: hidden;
+    div{
+      white-space:nowrap;
+    }
   }
   .ul-list-head{
     background-color: #E4E4E4;

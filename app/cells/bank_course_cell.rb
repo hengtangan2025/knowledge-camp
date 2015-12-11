@@ -11,6 +11,10 @@ class BankCourseCell < Cell::Rails
     @course = args[:course]
     @show_share_and_fav = args[:show_share_and_fav]
     @percent = current_user ? @course.read_percent_of_user(current_user) : 0
+    @spent = @course.spent_time_of_user(current_user)
+    @str_spent = TimeDiy.pretty_seconds(@spent)
+
+    @last_studied_at = @course.last_studied_at_of_user(current_user)
     render
   end
 
@@ -27,6 +31,14 @@ class BankCourseCell < Cell::Rails
   def chapters args
     @course = args[:course]
     @chapters = @course.chapters.includes(:wares)
+    @current_ware = @course.studing_ware_of_user(current_user)
+    render
+  end
+
+  def study_chapters args
+    @course = args[:course]
+    @chapters = @course.chapters.includes(:wares)
+    @current_ware = @course.studing_ware_of_user(current_user)
     render
   end
 
