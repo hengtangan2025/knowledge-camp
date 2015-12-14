@@ -1,0 +1,70 @@
+.well
+  %h1
+    %a{href: url_for([:bank, :manage, :courses])} 课程编排
+    %span /
+    %span= @course.title
+  你正则对课程
+  = @course.title
+  进行章节编排，你可以增减章节或者调整章节排序
+
+.page-manage-course-show
+  .pblock.modelinfo
+    .baseinfo.well
+      .btns.pull-right
+        %a.btn.btn-default.inverse.edit{:href => url_for([:edit, :bank, :manage, @course])}
+          %i.icon-edit
+          %span 修改课程信息
+
+      .infodata
+        %h2= @course.title
+        .data
+          .cover
+          -#= fit_image(@course.cover.versions[:normal].url, :width => 214, :height => 140)
+          .ds
+            .d
+              %span.t 学分：
+              -#%span.v= @course.credit
+            .d
+              %span.t 课时：
+              -#%span.v= @course.lesson_hour
+            .d
+              %span.t 上课时间：
+              -#%span.v= @course.time.blank? ? '--' : @course.time
+            .d
+              %span.t 上课地点：
+              -#%span.v= @course.location.blank? ? '--' : @course.location
+            .d
+              - desc = @course.desc.blank? ? '当前课程还没有简介' : @course.desc
+              %span.t 课程简介：
+              %span.v= simple_format(desc)
+
+          .clearfix
+
+  .panel.panel-default.panel-chapters
+    .panel-body
+      %span 课程下现有
+      %b.count= @chapters.count
+      %span 个章节
+      %a.btn.btn-success.btn-sm.new{:href => url_for([:new, :bank, :manage, @course, :chapter])}
+        %i.glyphicon.glyphicon-plus
+        %span 增加章节
+    %table.table.table-bordered.table-striped
+      %thead
+        %th.title 标题
+        %th.updated_at 更新时间
+        %th.opts 操作
+        %th.position 排序位置
+      %tbody
+        - @chapters.each do |chapter|
+          %tr.chapter
+            %td.title
+              %a{href: url_for([:bank, :manage, chapter])}= chapter.title
+            %td.updated_at= chapter.updated_at
+            %td.opts
+              %a{href: url_for([:edit, :bank, :manage, chapter])} 编辑
+              %a{href: url_for([:bank, :manage, chapter]), data: {method: 'delete', confirm: '你确定吗？'}} 删除
+            %td.position
+              %a.btn.btn-default.btn-xs.move-down.updown{href: url_for([:move_down, :bank, :manage, chapter]), data: {method: 'put'}, title: '向下移动'}
+                %i.glyphicon.glyphicon-arrow-down
+              %a.btn.btn-default.btn-xs.move-up.updown{href: url_for([:move_up, :bank, :manage, chapter]), data: {method: 'put'}, title: '向上移动'}
+                %i.glyphicon.glyphicon-arrow-up

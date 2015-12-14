@@ -1,0 +1,22 @@
+!!!
+%html{:lang => :zh}
+  %head
+    %meta{:'http-equiv' => 'Content-Type', :content => 'text/html; charset=utf-8'}
+    %meta{:name => 'viewport', :content => 'width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no'}
+
+    %title 后台管理系统
+    = csrf_meta_tags
+    = stylesheet_link_tag 'bank_manage', :media => 'screen'
+    = javascript_include_tag 'bank_manage'
+
+  %body
+    -#%header
+      -#= simple_navbar(:bank_manage)
+      
+    -#%main{role: "main"}
+      -#.container
+    .row
+      .col-md-2
+        = simple_navbar(:bank_manage)
+      .col-md-10
+        = yield

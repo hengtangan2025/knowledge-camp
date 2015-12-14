@@ -1,0 +1,10 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+@import "bucketerize";
+@import "quick_filter_bar";
+
+body {
+  background-color: #fafafa;
+  font-family: "Segoe UI", "Helvetica Neue", "Helvetica", "Arial", "sans-serif", "微软雅黑";
+  color: #444;
+}

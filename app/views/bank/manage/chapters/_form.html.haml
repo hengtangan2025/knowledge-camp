@@ -1,0 +1,9 @@
+= simple_form_for [:bank, :manage, @course, @chapter], wrapper: :kc_courses do |f|
+  .form-inputs
+    = f.input :title
+    = f.input :desc, as: :text
+  
+  .form-actions
+    = f.button :submit
+
+%a{href: url_for([:bank, :manage, @chapter.course])} 返回
