@@ -32,13 +32,6 @@ GIT
       ruby-pinyin
 
 GIT
-  remote: git://github.com/mindpin/engine_manager.git
-  revision: fa8b4ceb005f51d285d5f69688d4fb726f80d948
-  tag: v0.0.1
-  specs:
-    engine_manager (0.1.0)
-
-GIT
   remote: git://github.com/mindpin/file-part-upload.git
   revision: 8768fd6e7c90e71cf413b6cf8d3da0bc0107e27c
   tag: 2.0.0-beta3
@@ -453,7 +446,6 @@ DEPENDENCIES
   devise (= 3.5.2)
   documents-store!
   elasticsearch-simple!
-  engine_manager!
   figaro
   file-part-upload!
   generic_controller!
