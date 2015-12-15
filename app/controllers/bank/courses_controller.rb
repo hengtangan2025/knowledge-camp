@@ -1,6 +1,6 @@
 class Bank::CoursesController < Bank::ApplicationController
   def index
-    @courses = KcCourses::Course.published.recent.page(params[:page])
+    @courses = KcCourses::Course.published.recent.page(params[:page]).per(16)
   end
 
   def show
@@ -17,17 +17,17 @@ class Bank::CoursesController < Bank::ApplicationController
   end
 
   def studying
-    @courses = KcCourses::Course.studing_of_user(current_user).published.page(params[:page])
+    @courses = KcCourses::Course.studing_of_user(current_user).published.page(params[:page]).per(8)
   end
 
   def fav
     @bucket = current_user.buckets.where(name: '默认').first_or_create
-    @courses = @bucket.courses.published.page params[:page]
+    @courses = @bucket.courses.published.page(params[:page]).per(16)
     render :mine_four
   end
 
   def studied
-    @courses = KcCourses::Course.studied_of_user(current_user)
+    @courses = KcCourses::Course.studied_of_user(current_user).page(params[:page]).per(16)
     render :mine_four
   end
 
@@ -39,7 +39,7 @@ class Bank::CoursesController < Bank::ApplicationController
     @q = params[:q]
     @courses = @q.blank? ? KcCourses::Course.where(id: []) : KcCourses::Course.standard_search(@q)
     @total = @courses.count
-    @courses = @courses.published.page(params[:page])
+    @courses = @courses.published.page(params[:page]).per(16)
   end
 
 end
