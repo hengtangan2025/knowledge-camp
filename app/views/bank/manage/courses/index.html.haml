@@ -1,0 +1,31 @@
+.well
+  %h1
+    课程编排
+    %a.btn.btn-primary{href: url_for([:new, :bank, :manage, :course])} 增加课程
+  你好。你可以在这里对由你负责的课程进行章节编排。
+
+%table.table.table-bordered.table-striped
+  %thead
+    %tr
+      %th 课程名称
+      %th 章节数
+      %th 课件数
+      %th 
+      %th 
+      %th 
+  %tbody
+    - @courses.each do |course|
+      %tr
+        %td
+          %a{href: url_for([:bank, :manage, course])}= course.title
+        %td= course.chapters.count
+        %td= course.chapters.map{|chapter| chapter.wares.count}.sum
+        %td
+          %a{href: url_for([:edit, :bank, :manage, course])} 编辑
+        %td
+          %a{href: url_for([:bank, :manage, course]), data: {method: 'delete', confirm: '你确定吗？'}} 删除
+        %td
+          - if course.published
+            已发布
+          - else
+            %a{href: url_for([:publish, :bank, :manage, course]), data: {method: 'post'}} 发布

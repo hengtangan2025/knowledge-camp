@@ -103,4 +103,10 @@ SimpleNavbar::Base.config do
       controller :'kc_courses/courses'
     end
   end
+
+  rule :bank_manage do
+    nav :index, :name => '课程管理', :url => '/bank/manage/courses' do
+      controller :'bank/manage/courses'
+    end
+  end
 end
