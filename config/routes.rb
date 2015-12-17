@@ -123,6 +123,7 @@ Rails.application.routes.draw do
     namespace :manage do
       resources :courses, :shallow => true do
         post :publish, on: :member
+        resources :course_attachments, :shallow => true
         resources :chapters, :shallow => true do
           member do
             put :move_up
