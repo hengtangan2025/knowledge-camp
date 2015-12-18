@@ -33,10 +33,10 @@ GIT
 
 GIT
   remote: git://github.com/mindpin/file-part-upload.git
-  revision: 8768fd6e7c90e71cf413b6cf8d3da0bc0107e27c
-  tag: 2.0.0-beta3
+  revision: 710b320ae9367af4386576e3acae07c2fadfae28
+  tag: 2.1.0
   specs:
-    file-part-upload (2.0.0.pre.beta2)
+    file-part-upload (2.1.0)
       enumerize
       mime-types
       mini_magick
@@ -262,7 +262,7 @@ GEM
     elasticsearch-transport (1.0.14)
       faraday
       multi_json
-    enumerize (1.0.0)
+    enumerize (1.1.0)
       activesupport (>= 3.2)
     erubis (2.7.0)
     execjs (2.6.0)
