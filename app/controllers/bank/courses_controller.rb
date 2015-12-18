@@ -1,10 +1,10 @@
 class Bank::CoursesController < Bank::ApplicationController
   def index
-    @courses = KcCourses::Course.recent.page(params[:page])
+    @courses = KcCourses::Course.published.recent.page(params[:page]).per(16)
   end
 
   def show
-    @course = KcCourses::Course.find params[:id]
+    @course = KcCourses::Course.published.find params[:id]
   end
 
   def mine
@@ -12,34 +12,34 @@ class Bank::CoursesController < Bank::ApplicationController
   end
 
   def hot
-    @courses = KcCourses::Course.all.page(params[:page])
+    @courses = KcCourses::Course.published.page(params[:page])
     render :index
   end
 
   def studying
-    @courses = KcCourses::Course.studing_of_user(current_user)
+    @courses = KcCourses::Course.studing_of_user(current_user).published.page(params[:page]).per(8)
   end
 
   def fav
     @bucket = current_user.buckets.where(name: '默认').first_or_create
-    @courses = @bucket.courses.page
+    @courses = @bucket.courses.published.page(params[:page]).per(16)
     render :mine_four
   end
 
   def studied
-    @courses = KcCourses::Course.studied_of_user(current_user)
+    @courses = KcCourses::Course.studied_of_user(current_user).page(params[:page]).per(16)
     render :mine_four
   end
 
   def study
-    @course = KcCourses::Course.find params[:id]
+    @course = KcCourses::Course.published.find params[:id]
   end
 
   def search
     @q = params[:q]
     @courses = @q.blank? ? KcCourses::Course.where(id: []) : KcCourses::Course.standard_search(@q)
     @total = @courses.count
-    @courses = @courses.page(params[:page])
+    @courses = @courses.published.page(params[:page]).per(16)
   end
 
 end
