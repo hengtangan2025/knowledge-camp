@@ -6,3 +6,4 @@
 //= require bank/fav_course
 //= require bank/qas
 //= require bank/courses
+//= require_tree ./bank/test_question

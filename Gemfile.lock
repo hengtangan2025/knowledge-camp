@@ -98,6 +98,16 @@ GIT
       mongoid (~> 4.0.0)
 
 GIT
+  remote: git://github.com/mindpin/question_bank.git
+  revision: 81b83d7b7d2b3b8ed408ca59850e4285dedbbc51
+  ref:  81b83d7
+  specs:
+    question_bank (0.0.1)
+      enumerize
+      kaminari
+      simple_form
+
+GIT
   remote: git://github.com/mindpin/simple-images.git
   revision: fc06f2bdbba5dbbbc506c6e22c09caf32909a2df
   ref: fc06f2b
@@ -477,6 +487,7 @@ DEPENDENCIES
   mongoid-versioning!
   pry
   pry-byebug
+  question_bank!
   rails (= 4.2.3)
   rspec
   ruby-pinyin
@@ -495,6 +506,3 @@ DEPENDENCIES
   user-auth!
   useragent
   virtual_file_system!
-
-BUNDLED WITH
-   1.10.6

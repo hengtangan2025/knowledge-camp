@@ -146,4 +146,7 @@ gem 'bucketerize', :github => 'mindpin/bucketerize',
 
 gem 'engine_manager', github: 'mindpin/engine_manager',
                      :tag => "v0.0.1"
+
+gem 'question_bank', github: 'mindpin/question_bank',
+                     :ref => " 81b83d7"
 # ----
