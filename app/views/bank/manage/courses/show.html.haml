@@ -68,3 +68,24 @@
                 %i.glyphicon.glyphicon-arrow-down
               %a.btn.btn-default.btn-xs.move-up.updown{href: url_for([:move_up, :bank, :manage, chapter]), data: {method: 'put'}, title: '向上移动'}
                 %i.glyphicon.glyphicon-arrow-up
+
+  .panel.panel-default.panel-attachments
+    .panel-body
+      %span 课程下现有
+      %b.count= @attachments.count
+      %span 个相关资料
+      %a.btn.btn-success.btn-sm.new{:href => url_for([:new, :bank, :manage, @course, :course_attachment])}
+        %i.glyphicon.glyphicon-plus
+        %span 增加相关资料
+    %table.table.table-bordered.table-striped
+      %thead
+        %th.title 标题
+        %th.updated_at 更新时间
+        %th.opts 操作
+      %tbody
+        - @attachments.each do |attachment|
+          %tr.attachment
+            %td.title= attachment.file_entity.original
+            %td.updated_at= attachment.updated_at
+            %td.opts
+              %a{href: url_for([:bank, :manage, attachment]), data: {method: 'delete', confirm: '你确定吗？'}} 删除

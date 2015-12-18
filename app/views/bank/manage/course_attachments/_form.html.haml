@@ -1,0 +1,16 @@
+= simple_form_for [:bank, :manage, @course, @course_attachment] do |f|
+  .form-inputs
+    = f.input :file_entity_id, as: :hidden
+
+    %a.btn-upload-attachment.btn.btn-info.clearfix{href: 'javascript:;', data: FilePartUpload.get_dom_data} 上传资料
+
+    .result
+      上传结果：
+
+      #upload_result
+  
+  .form-actions
+    = f.button :submit
+
+%a{href: url_for([:bank, :manage, @course_attachment.course])} 返回
+

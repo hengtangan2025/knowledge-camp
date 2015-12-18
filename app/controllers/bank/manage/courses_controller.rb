@@ -6,6 +6,7 @@ class Bank::Manage::CoursesController < Bank::Manage::ApplicationController
   def show
     @course = current_user.courses.find params[:id]
     @chapters = @course.chapters
+    @attachments = @course.course_attachments
   end
 
   def new
