@@ -3,6 +3,7 @@
 //= require turbolinks
 //= require bootstrap-sprockets
 //= require bucketerize
+//= require kc_courses/ware_reading
 //= require bank/fav_course
 //= require bank/qas
 //= require bank/courses

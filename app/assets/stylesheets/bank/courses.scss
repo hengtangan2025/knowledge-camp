@@ -86,6 +86,13 @@
     top:0;left:0;bottom:0;right:0;
   }
 }
+.course-chapters{
+  .ware-action{
+    .studied, .continue_study, .start_study, .studying{
+      display: none;
+    }
+  }
+}
 
 .page-course-study{
   .play-frame{
