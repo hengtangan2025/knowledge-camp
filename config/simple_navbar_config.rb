@@ -69,8 +69,8 @@ SimpleNavbar::Base.config do
       controller :"bank/my_test_questions", :only => %i[index records]
     end
 
-    nav :mistakes, :name => '错题本', :url => '/bank/my_test_questions/mistakes' do
-      controller :"bank/my_test_questions", :only => %i[mistakes]
+    nav :flaw, :name => '错题本', :url => '/bank/my_test_questions/flaw' do
+      controller :"bank/my_test_questions", :only => %i[flaw]
     end
 
     nav :fav, :name => '题目收藏', :url => '/bank/my_test_questions/fav' do

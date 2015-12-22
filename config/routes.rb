@@ -75,6 +75,7 @@ Rails.application.routes.draw do
 
   # --------------------
   # 金融学院暂时单独使用 bank 命名空间
+  mount QuestionBank::Engine => '/bank/question_bank', :as => 'question_bank'
   FilePartUpload::Routing.mount "/bank/file_part_upload", :as => :file_part_upload
   Bucketerize::Routing.mount '/bank/bucketerize', as: 'bucketerize'
   #EngineManager::Routing.mount '/bank/manager', :as => 'engine_manager'
@@ -84,11 +85,13 @@ Rails.application.routes.draw do
     root "index#index"
     get '/my_test_questions', to: redirect{'/bank/my_test_questions/records'}
     resources :my_test_questions do
-      collection do
-        get :records
-        get :mistakes
-        get :fav
-      end
+      get :records, on: :collection
+      get :flaw,    on: :collection
+      get :fav,     on: :collection
+      get :random,  on: :collection
+
+      get  :do_form, on: :member
+      post :do,      on: :member
     end
 
     resources :my_questions

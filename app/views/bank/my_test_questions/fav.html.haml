@@ -1,0 +1,62 @@
+.page-question-favs
+  = simple_navtabs(:bank_my_test_questions)
+
+  = quick_filter_bar do |b|
+    - b.group :kind, text: '类型' do |g|
+      - g.add 'single_choice', text: '单选题'
+      - g.add 'multi_choice',  text: '多选题'
+      - g.add 'fill',          text: '填空题'
+      - g.add 'mapping',       text: '连线题'
+      - g.add 'bool',          text: '判断题'
+      - g.add 'essay',         text: '论述题'
+
+    - b.group :time, text: '时间' do |g|
+      - g.add 'a_week',       text: '一周内'
+      - g.add 'a_month',      text: '一个月内'
+      - g.add 'three_months', text: '三个月内'
+
+  %table.table
+    %thead
+      %tr
+        %th.th-check
+        %th.th-one 时间
+        %th.th-two 题目
+        %th.th-three 正确答案
+        %th.th-four 答案解析
+        %th.th-five 类型
+        %th.th-six 操作
+    %tbody
+      - @questions.each do |question|
+        %tr
+          %td
+          %td= question.created_at
+          %td
+            - case question.kind
+              - when "single_choice", "multi_choice"
+                %div= question.content
+                - question.choices.each_with_index do |choice, index|
+                  %div= "#{("A".."Z").to_a[index]} #{choice}"
+              - when "bool", "mapping", "essay","fill"
+                %div= question.content
+          %td
+            - case question.kind
+              - when "single_choice", "multi_choice"
+                %div= question.choice_answer_indexs.map{|index|("A".."Z").to_a[index]}.join(",")
+              - when "bool"
+                %div= question.bool_answer ? "正确" : "错误"
+              - when "mapping"
+                - question.mapping_answer.each do |option|
+                  %div= "#{option[0]} --- #{option[1]}"
+              - when "fill"
+                %div= question.fill_answer.join("，")
+              - when "essay"
+                %div= question.essay_answer
+          %td= question.analysis
+          %td= question.human_kind
+          %th
+            .question-fav
+              .bucketerize{data: {rel: "bucketerize", bucketerize: {mode: 'standard', resource_type: 'QuestionBank::Question', resource_id: question.id.to_s}}}
+                .unhas
+                  %a{href: 'javascript:;'} 收藏
+                .has
+                  %a{href: 'javascript:;'} 取消收藏

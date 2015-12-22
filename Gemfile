@@ -148,4 +148,7 @@ gem 'bucketerize', :github => 'mindpin/bucketerize',
 # 管理组件，2015-12-14改为直接搭建后台
 #gem 'engine_manager', github: 'mindpin/engine_manager',
                      #:tag => "v0.0.1"
+
+gem 'question_bank', github: 'mindpin/question_bank',
+                     :ref => "5a37862"
 # ----

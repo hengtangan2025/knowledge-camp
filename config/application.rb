@@ -22,7 +22,7 @@ module KnowledgeCamp
 
     # 时区，国际化
     config.time_zone = 'Beijing'
-    config.i18n.default_locale = 'zh'
+    config.i18n.default_locale = 'zh-CN'.to_sym
     config.encoding = 'utf-8'
     config.autoload_paths += %W(#{config.root}/lib)
 
