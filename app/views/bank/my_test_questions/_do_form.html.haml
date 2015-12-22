@@ -8,7 +8,7 @@
           .has
             %button.btn.btn-info 已收藏
 
-      %form{:action => "/bank/my_test_questions/#{@question.id.to_s}/do", :method => :post}
+      %form{:action => "/bank/question_bank/questions/#{@question.id.to_s}/do_question_validation", :method => :post}
 
         .question-title= @question.content
 
@@ -64,3 +64,5 @@
         .question-submit
           .form-group
             %input.btn.btn-default{:type => "submit"}
+
+        .question-result-info
