@@ -5,16 +5,15 @@
       .chapter-name.col-xs-10= chapter.title
       .clearfix
     - chapter.wares.each_with_index do |ware, ware_index|
-      %li.ware.ul-list-item.chapter-ware
+      %li.ware.ul-list-item.chapter-ware{data:{ware_id: ware.id}}
         .other-content
+          .progress-bar
           .ware-index.col-xs-2.text-right= "#{chapter_index + 1}-#{ware_index + 1}"
           .ware-name.col-xs-8= ware.title
           .ware-action.col-xs-2.text-success
-            - if ware.has_read_by_user?(current_user)
+            .studied
               %span.glyphicon.glyphicon-ok
-            - elsif ware.read_percent_of_user(current_user) > 0
+            .studying
               正在学习
-            - elsif @current_ware.nil? and chapter_index == 0 and ware_index == 0
-              %a.btn.btn-default{href: study_bank_course_path} 开始学习
         .clearfix
 
