@@ -86,11 +86,14 @@
     top:0;left:0;bottom:0;right:0;
   }
 }
-.course-chapters{
-  .ware-action{
-    .studied, .continue_study, .start_study, .studying{
-      display: none;
-    }
+.course-chapters, .course-one-detail{
+  .studied, .continue_study, .start_study, .studying{
+    display: none;
+  }
+}
+.course-one-detail{
+  .to, .cost, .last{
+    display: none;
   }
 }
 

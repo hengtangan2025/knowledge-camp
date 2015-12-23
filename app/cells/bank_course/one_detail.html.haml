@@ -1,4 +1,4 @@
-.course.clearfix
+.course.course-one-detail.clearfix{data: {course_id: @course.id}}
   .cover.pull-left
     %a{href: bank_course_path(@course)}
       %img.img-responsive{src: (@course.cover.blank? ? 'http://ph.4ye.me/440/248' : @course.cover)}
@@ -10,26 +10,24 @@
 
       .bottom
         .progress-info.pull-left
-          - if ware = @course.studing_ware_of_user(current_user)
-            .to 
-              已学习至：
-              = ware.title
-            .cost
-              学习耗时：
-              = @str_spent
-            - if @last_studied_at
-              .last
-                最后学习：
-                = @last_studied_at
+          .to 
+            已学习至：
+            %span.current-ware-title
+          .cost
+            学习耗时：
+            %span.course-spent-time
+          .last
+            最后学习：
+            %span.course-last-studied-at
           .progress
-            .progress-bar{role: 'progressbar', aria: {valuenow: @percent, valuemin: '0', valuemax: '100'}, style: "width:#{@percent}%;"}
-        - if current_user and (1...100).to_a.include?(@course.read_percent_of_user(current_user))
+            .progress-bar{role: 'progressbar', aria: {valuenow: @percent, valuemin: '0', valuemax: '100'}}
+        .continue_study
           %a.learn.btn.btn-default.btn-lg.pull-right{href: (study_bank_course_path(@course))}
             继续学习
-        - elsif current_user and @course.read_percent_of_user(current_user) == 100
+        .studied
           %a.learn.btn.btn-default.btn-lg.pull-right{href: (study_bank_course_path(@course))}
             已学完
-        - else
+        .start_study
           %a.learn.btn.btn-default.btn-lg.pull-right{href: (study_bank_course_path(@course))}
             开始学习
         .clearfix
