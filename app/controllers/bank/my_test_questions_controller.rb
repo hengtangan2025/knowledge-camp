@@ -70,14 +70,4 @@ class Bank::MyTestQuestionsController < Bank::ApplicationController
     @question = QuestionBank::Question.skip(rand(QuestionBank::Question.count)).first
   end
 
-  def do
-    question = QuestionBank::Question.find params[:id]
-
-    record = question.question_records.new(
-      :user          => current_user,
-      :answer        => params[:answer]
-    )
-    record.save
-    render :json => {:message => "success"}
-  end
 end

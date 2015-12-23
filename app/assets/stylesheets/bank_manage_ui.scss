@@ -8,3 +8,69 @@ body {
   font-family: "Segoe UI", "Helvetica Neue", "Helvetica", "Arial", "sans-serif", "微软雅黑";
   color: #444;
 }
+
+.page-bank-manage-test-questions{
+  table{
+    thead{
+      th{
+        background: #E4E4E4;
+      }
+      .th-check{
+        width: 3%;
+      }
+      .th-one{
+        width: 15%;
+      }
+      .th-two{
+        width: 25%;
+      }
+      .th-three{
+        width: 20%;
+      }
+      .th-four{
+        width: 20%;
+      }
+      .th-five{
+        width: 7%;
+      }
+
+      .th-six{
+        width: 10%;
+      }
+    }
+
+    tbody{
+      tr:nth-of-type(even) {
+        background-color: #f5f5f5;
+      }
+    }
+  }
+
+  .flaw-batch{
+    .checkbox{
+      display: inline-block;
+      margin-right: 20px;
+    }
+  }
+}
+
+
+.page-bank-manage-test-questions-new-single-choice{
+  label[for='question_choices']{
+    input[type='radio']{
+      line-height: 34px;
+      height: 34px;
+      margin-top: 0px;
+    }
+  }
+}
+
+.page-bank-manage-test-questions-new-multi-choice{
+  label[for='question_choices']{
+    input[type='checkbox']{
+      line-height: 34px;
+      height: 34px;
+      margin-top: 0px;
+    }
+  }
+}

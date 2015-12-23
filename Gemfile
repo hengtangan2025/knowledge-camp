@@ -150,5 +150,5 @@ gem 'bucketerize', :github => 'mindpin/bucketerize',
                      #:tag => "v0.0.1"
 
 gem 'question_bank', github: 'mindpin/question_bank',
-                     :ref => "5a37862"
+                     :ref => "b051910"
 # ----
