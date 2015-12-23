@@ -91,7 +91,6 @@ Rails.application.routes.draw do
       get :random,  on: :collection
 
       get  :do_form, on: :member
-      post :do,      on: :member
     end
 
     resources :my_questions
@@ -139,6 +138,15 @@ Rails.application.routes.draw do
             end
           end
         end
+      end
+
+      resources :test_questions do
+        get :new_single_choice, on: :collection
+        get :new_multi_choice, on: :collection
+        get :new_bool, on: :collection
+        get :new_fill, on: :collection
+        get :new_essay, on: :collection
+        get :new_mapping, on: :collection
       end
     end
   end

@@ -1,0 +1,35 @@
+- kind = @question.kind.to_s.gsub("_", "-")
+- if params[:action] == "edit"
+  - url = "/bank/manage/test_questions/#{@question.id}"
+- else
+  - url = "/bank/manage/test_questions"
+
+%div{:class => "page-bank-manage-test-questions-#{params[:action]}-#{kind}"}
+  %div{:class => "form-question-#{kind}"}
+    = simple_form_for @question, :url => url do |f|
+      = f.input :kind, :as => :hidden
+
+      = f.input :content, as: :text
+
+      - case @question.kind.to_s
+      - when "single_choice"
+        = f.input :choice_answer_indexs, as: :question_single_choice_answer
+      - when "multi_choice"
+        = f.input :choice_answer_indexs, as: :question_multi_choice_answer
+      - when "bool"
+        = f.input :bool_answer, as: :radio_buttons, collection: [[true,'正确'],[false,'错误']], value_method: :first, label_method: :last
+      - when "fill"
+        %a{:href => "javascript:;", :class => "insert"} 插入填空下划线
+        = f.input :fill_answer, as: :question_fill_answer
+      - when "essay"
+        = f.input :essay_answer , as: :text
+      - when "mapping"
+        = f.input :mapping_answer, as: :question_mapping_answer
+
+      = f.input :analysis, as: :text
+
+      = f.input :level, collection: [ "1", "2", "3","4","5", "6","7","8","9","10"], :prompt =>'请选择难度系数'
+
+      = f.input :enabled, as: :radio_buttons, collection: [[true,'启用'],[false,'禁用']], value_method: :first, label_method: :last
+
+      = f.button :submit, "添加题目"

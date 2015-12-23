@@ -108,5 +108,9 @@ SimpleNavbar::Base.config do
     nav :index, :name => '课程管理', :url => '/bank/manage/courses' do
       controller :'bank/manage/courses'
     end
+
+    nav :index, :name => '题库管理', :url => '/bank/manage/test_questions' do
+      controller :'bank/manage/test_questions'
+    end
   end
 end
