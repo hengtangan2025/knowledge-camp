@@ -147,6 +147,13 @@ Rails.application.routes.draw do
         get :new_fill, on: :collection
         get :new_essay, on: :collection
         get :new_mapping, on: :collection
+        get :search, on: :collection
+      end
+
+      resources :test_papers, :shallow => true do
+        post :preview, on: :collection
+        post :enable, on: :member
+        post :disable, on: :member
       end
     end
   end
