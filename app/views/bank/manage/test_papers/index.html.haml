@@ -12,7 +12,6 @@
       %th 考试时间
       %th 是否启用
       %th 
-      %th 
   %tbody
     - @test_papers.each do |test_paper|
       %tr
@@ -23,11 +22,8 @@
         %td= test_paper.enabled
         %td
           %a{href: url_for([:edit, :bank, :manage, test_paper])} 编辑
-        %td
           %a{href: url_for([:bank, :manage, test_paper]), data: {method: 'delete', confirm: '你确定吗？'}} 删除
-        %td
           - if test_paper.enabled
-            已启用
+            %a{href: url_for([:disable, :bank, :manage, test_paper]), data: {method: 'post'}} 禁用
           - else
-            启用
-            -#%a{href: url_for([:publish, :bank, :manage, test_paper]), data: {method: 'post'}} 发布
+            %a{href: url_for([:enable, :bank, :manage, test_paper]), data: {method: 'post'}} 启用

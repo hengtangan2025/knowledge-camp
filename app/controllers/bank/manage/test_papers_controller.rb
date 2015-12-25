@@ -39,6 +39,18 @@ class Bank::Manage::TestPapersController < Bank::Manage::ApplicationController
     render :show
   end
 
+  def enable
+    @test_paper = QuestionBank::TestPaper.find(params[:id])
+    @test_paper.update_attribute :enabled, true
+    redirect_to [:bank, :manage, :test_papers]
+  end
+
+  def disable
+    @test_paper = QuestionBank::TestPaper.find(params[:id])
+    @test_paper.update_attribute :enabled, false
+    redirect_to [:bank, :manage, :test_papers]
+  end
+
   protected
   def test_paper_params
     params.require(:test_paper).permit(:title, :score, :minutes, :sections_attributes => [:kind, :score, :min_level, :max_level, :position, :id, :_destroy, :question_ids_str])
