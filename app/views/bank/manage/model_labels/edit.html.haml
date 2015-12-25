@@ -1,0 +1,10 @@
+- url = "/bank/manage/model_labels/#{@model_label.id}"
+
+.page-bank-manage-model-label-edit
+  .well
+    = "修改#{params[:name]}的标签"
+  = simple_form_for @model_label, :url => url do |f|
+    = f.input :model, :as => :hidden
+    = f.input :name, :disabled => true
+    = f.input :values
+    = f.button :submit

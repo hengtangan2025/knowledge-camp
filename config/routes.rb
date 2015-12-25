@@ -148,6 +148,8 @@ Rails.application.routes.draw do
         get :new_essay, on: :collection
         get :new_mapping, on: :collection
       end
+
+      resources :model_labels
     end
   end
 end

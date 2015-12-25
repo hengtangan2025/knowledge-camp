@@ -1,4 +1,11 @@
 GIT
+  remote: git://github.com/kc-train/model_label.git
+  revision: 95bbf0613436329e437e0537090bb95ebe5890ba
+  ref: 95bbf06
+  specs:
+    model_label (0.0.1)
+
+GIT
   remote: git://github.com/mindpin/acts-as-dag.git
   revision: a94ff8ac1b946b8be5aa67792016eb26d5899282
   tag: 0.0.2
@@ -475,6 +482,7 @@ DEPENDENCIES
   knowledge_camp_step!
   mina (= 0.3.7)
   mini_magick
+  model_label!
   mongoid (~> 4.0.0)
   mongoid-versioning!
   pry
