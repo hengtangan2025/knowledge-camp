@@ -9,7 +9,7 @@
     - if fe = attachment.file_entity
       %li.ware.ul-list-item
         .ware-name.col-md-8
-          %a{href: (file_part_upload.file_entity_url(fe))}= fe.original
+          %a{href: (FilePartUpload.get_mount_prefix + file_part_upload.file_entity_path(fe))}= fe.original
         .ware-name.col-md-2= FilePartUpload::Util.human_file_size(fe.file_size)
         .ware-action.col-md-2
           %a{href: (fe.download_url)} 下载
