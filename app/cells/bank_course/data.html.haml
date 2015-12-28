@@ -5,23 +5,12 @@
     .data-action.col-md-2 操作
     .clearfix
 
-  %li.ware.ul-list-item
-    .ware-name.col-md-8 readme.txt
-    .ware-name.col-md-2 425KB
-    .ware-action.col-md-2
-      %a{href: 'javascript:;'} 下载
-    .clearfix
-
-  %li.ware.ul-list-item
-    .ware-name.col-md-8 新疆农信核心系统操作手册汇总0719新.doc
-    .ware-name.col-md-2 9.3M
-    .ware-action.col-md-2
-      %a{href: 'javascript:;'} 下载
-    .clearfix
-
-  %li.ware.ul-list-item
-    .ware-name.col-md-8 典型交易操作过程录像压缩包.rar
-    .ware-name.col-md-2 7.6M
-    .ware-action.col-md-2
-      %a{href: 'javascript:;'} 下载
-    .clearfix
+  - @course.course_attachments.each do |attachment|
+    - if fe = attachment.file_entity
+      %li.ware.ul-list-item
+        .ware-name.col-md-8
+          %a{href: (file_part_upload.file_entity_url(fe))}= fe.original
+        .ware-name.col-md-2= FilePartUpload::Util.human_file_size(fe.file_size)
+        .ware-action.col-md-2
+          %a{href: (fe.download_url)} 下载
+        .clearfix
