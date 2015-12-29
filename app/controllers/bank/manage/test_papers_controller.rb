@@ -35,7 +35,10 @@ class Bank::Manage::TestPapersController < Bank::Manage::ApplicationController
   end
 
   def preview
-    @test_paper = QuestionBank::TestPaper.new test_paper_params
+    tmp_params = test_paper_params
+    tmp_params.delete(:id)
+    tmp_params[:sections_attributes].each_value{|v| v.delete(:id)} if tmp_params[:sections_attributes]
+    @test_paper = QuestionBank::TestPaper.new tmp_params
     render :show
   end
 

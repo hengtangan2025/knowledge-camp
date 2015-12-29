@@ -9,7 +9,7 @@ class NewTestPaper
     @$template_section           = @$el.find '.template.section'
     @$template_selector_question = @$el.find '.template.selector_question'
 
-    @$new_test_paper = @$el.find '#new_test_paper'
+    @$new_test_paper = @$el.find 'form'
 
     @paper_prefix = '/bank/manage'
 

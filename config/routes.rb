@@ -151,7 +151,7 @@ Rails.application.routes.draw do
       end
 
       resources :test_papers, :shallow => true do
-        post :preview, on: :collection
+        match :preview, on: :collection, via: [:post, :patch]
         post :enable, on: :member
         post :disable, on: :member
       end
