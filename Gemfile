@@ -143,7 +143,8 @@ gem 'simple-navbar', :github => 'mindpin/simple-navbar',
 gem 'bootstrap-sass', '~> 3.3.5'
 
 gem 'bucketerize', :github => 'mindpin/bucketerize',
-                  :ref => "6e53e43"
+                  #:ref => "6e53e43"
+                  :tag => "v0.1.0"
 
 # 管理组件，2015-12-14改为直接搭建后台
 #gem 'engine_manager', github: 'mindpin/engine_manager',
