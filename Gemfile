@@ -151,4 +151,8 @@ gem 'bucketerize', :github => 'mindpin/bucketerize',
 
 gem 'question_bank', github: 'mindpin/question_bank',
                      :ref => "b051910"
+
+
+gem 'react-rails', '~> 1.0'
+gem 'sprockets-coffee-react', '~> 3.0.1'
 # ----
