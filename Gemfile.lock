@@ -8,8 +8,8 @@ GIT
 
 GIT
   remote: git://github.com/mindpin/bucketerize.git
-  revision: 6e53e43a82023592a71191a7eeac6f092f32ee84
-  ref: 6e53e43
+  revision: 3c336c7c4772e4a823721c1c317e8c2601cb30db
+  tag: v0.1.0
   specs:
     bucketerize (0.1.0)
 
@@ -498,3 +498,6 @@ DEPENDENCIES
   user-auth!
   useragent
   virtual_file_system!
+
+BUNDLED WITH
+   1.10.6

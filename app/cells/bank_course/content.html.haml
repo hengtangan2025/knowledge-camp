@@ -11,7 +11,7 @@
     = render_cell :bank_course, :chapters, course: @course
     
   #related-data.tab-pane.fade{aria: {controls: 'related-data-tab'}}
-    = render_cell :bank_course, :data, courses: @course
+    = render_cell :bank_course, :data, course: @course
 
   #related-questions.tab-pane.fade{aria: {controls: 'related-questions-tab'}}
     = render_cell :bank_course, :related, courses: @course
