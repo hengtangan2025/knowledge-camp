@@ -4,7 +4,7 @@
   %li{role: 'presentation'}
     %a#related-data-tab{href: '#related-data', role: 'tab', data: {toggle: 'tab'}, aria: {controls: 'related-data'}} 相关资料
   %li{role: 'presentation'}
-    %a#related-questions-tab{href: '#related-questions', role: 'tab', data: {toggle: 'tab'}, aria: {controls: 'related-questions'}} 相关试题
+    %a#related-questions-tab{href: '#related-questions', role: 'tab', data: {toggle: 'tab'}, aria: {controls: 'related-questions'}} 相关试卷
 
 .tab-content
   #course-chapters.tab-pane.fade.in.active{aria: {controls: 'course-chapters-tab'}}
@@ -14,4 +14,4 @@
     = render_cell :bank_course, :data, course: @course
 
   #related-questions.tab-pane.fade{aria: {controls: 'related-questions-tab'}}
-    = render_cell :bank_course, :related, courses: @course
+    = render_cell :bank_course, :related, course: @course
