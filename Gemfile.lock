@@ -1,7 +1,7 @@
 GIT
   remote: git://github.com/kc-train/model_label.git
-  revision: 49c65fe2c6fda2250a25cc2dd1beb7f7547d6d3e
-  ref: 49c65fe
+  revision: fc8393c30b3bd68634d5941e011e79d276a50d4f
+  ref: fc8393c
   specs:
     model_label (0.0.1)
 
@@ -526,6 +526,3 @@ DEPENDENCIES
   user-auth!
   useragent
   virtual_file_system!
-
-BUNDLED WITH
-   1.10.6
