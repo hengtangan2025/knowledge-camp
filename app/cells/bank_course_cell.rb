@@ -49,6 +49,7 @@ class BankCourseCell < Cell::Rails
 
   def related args
     @course = args[:course]
+    @related_test_paters = @course.related_test_paters
     render
   end
 

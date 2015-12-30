@@ -1,0 +1,29 @@
+.well
+  %h1
+    组卷管理
+    %a.btn.btn-primary{href: url_for([:new, :bank, :manage, :test_paper])} 组卷
+  你好。你可以在这里对组卷进行管理。
+
+%table.table.table-bordered.table-striped
+  %thead
+    %tr
+      %th 试卷标题
+      %th 试卷总分
+      %th 考试时间
+      %th 是否启用
+      %th 
+  %tbody
+    - @test_papers.each do |test_paper|
+      %tr
+        %td
+          %a{href: url_for([:bank, :manage, test_paper])}= test_paper.title
+        %td= test_paper.score
+        %td= test_paper.minutes
+        %td= test_paper.enabled
+        %td
+          %a{href: url_for([:edit, :bank, :manage, test_paper])} 编辑
+          %a{href: url_for([:bank, :manage, test_paper]), data: {method: 'delete', confirm: '你确定吗？'}} 删除
+          - if test_paper.enabled
+            %a{href: url_for([:disable, :bank, :manage, test_paper]), data: {method: 'post'}} 禁用
+          - else
+            %a{href: url_for([:enable, :bank, :manage, test_paper]), data: {method: 'post'}} 启用

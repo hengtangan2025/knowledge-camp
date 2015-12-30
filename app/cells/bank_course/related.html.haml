@@ -4,59 +4,9 @@
     .test-action.col-md-2 操作
     .clearfix
 
-  %li.test.ul-list-item
-    .test-title.col-md-10 《营销技巧考核练习卷》
-    .test-action.col-md-2
-      %a{href: 'javascript:;'} 开始测试
-    .clearfix
-
-  %li.test.ul-list-item
-    .test-title.col-md-10 新疆农信核心系统操作手册汇总0719新.doc
-    .test-action.col-md-2
-      %a{href: 'javascript:;'} 开始测试
-    .clearfix
-
-%br
-%br
-%br
-%br
-
-%ul.course-related-questions.ul-list
-  %li.question.ul-list-head
-    .question-title.col-md-8 题目
-    .question-type.col-md-2 类型
-    .question-action.col-md-2 操作
-    .clearfix
-
-  %li.question.ul-list-item
-    .question-title.col-md-8 0既不是奇数也不是偶数
-    .question-type.col-md-2 判断题
-    .question-action.col-md-2
-      %a{href: 'javascript:;'} 做题
-      %a{href: 'javascript:;'} 收藏
-    .clearfix
-
-  %li.question.ul-list-item
-    .question-title.col-md-8
-      树干为什么常常刷成白色？
-      %br
-      A. 防火
-      %br
-      B. 灭菌杀虫
-      %br
-      C. 防牲畜啃食
-      %br
-      D. 保暖
-    .question-type.col-md-2 单选题
-    .question-action.col-md-2
-      %a{href: 'javascript:;'} 做题
-      %a{href: 'javascript:;'} 收藏
-    .clearfix
-
-  %li.question.ul-list-item
-    .question-title.col-md-8 每年的_____月_____日是世界水日
-    .question-type.col-md-2 填空题
-    .question-action.col-md-2
-      %a{href: 'javascript:;'} 做题
-      %a{href: 'javascript:;'} 收藏
-    .clearfix
+  - @related_test_paters.each do |test_paper|
+    %li.test.ul-list-item
+      .test-title.col-md-10= test_paper.title
+      .test-action.col-md-2
+        %a{href: "/bank/test_papers/#{test_paper.id}/test_paper_results/new"} 开始测试
+      .clearfix

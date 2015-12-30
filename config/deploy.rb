@@ -20,7 +20,7 @@ set :term_mode, nil
 set :shared_paths, [
   'config/mongoid.yml',
   'config/secrets.yml',
-  'config/initializers/r.rb',
+  'config/application.yml',
   'tmp',
   'log'
 ]
@@ -58,18 +58,14 @@ task :setup => :environment do
   queue! %[chmod g+rx,u+rwx "#{deploy_to}/shared/config"]
   queue! %[touch "#{deploy_to}/shared/config/mongoid.yml"]
   queue! %[touch "#{deploy_to}/shared/config/secrets.yml"]
-
-  queue! %[mkdir -p "#{deploy_to}/shared/config/initializers"]
-  queue! %[chmod g+rx,u+rwx "#{deploy_to}/shared/config/initializers"]
-  queue! %[touch "#{deploy_to}/shared/config/initializers/r.rb"]
-
+  queue! %[touch "#{deploy_to}/shared/config/application.yml"]
 
   queue! %[mkdir -p "#{deploy_to}/shared/log"]
   queue! %[chmod g+rx,u+rwx "#{deploy_to}/shared/log"]
 
   queue  %[echo "-----> Be sure to edit 'shared/config/mongoid.yml'."]
   queue  %[echo "-----> Be sure to edit 'shared/config/secrets.yml'."]
-  queue  %[echo "-----> Be sure to edit 'shared/config/initializers/r.rb'."]
+  queue  %[echo "-----> Be sure to edit 'shared/config/application.yml'."]
 end
 
 desc "Deploys the current version to the server."

@@ -122,6 +122,10 @@ Rails.application.routes.draw do
     get "/dashboard/questions"             => "dashboard#questions"
     get "/dashboard/notes"                 => "dashboard#notes"
 
+    scope "test_papers/:test_paper_id" do
+      resources :test_paper_results
+    end
+
     namespace :manage do
       resources :courses, :shallow => true do
         post :publish, on: :member
@@ -147,6 +151,13 @@ Rails.application.routes.draw do
         get :new_fill, on: :collection
         get :new_essay, on: :collection
         get :new_mapping, on: :collection
+        get :search, on: :collection
+      end
+
+      resources :test_papers, :shallow => true do
+        match :preview, on: :collection, via: [:post, :patch]
+        post :enable, on: :member
+        post :disable, on: :member
       end
 
       resources :model_labels

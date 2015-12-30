@@ -39,6 +39,8 @@ FilePartUpload.config do
   qiniu_app_access_key ENV["qiniu_app_access_key"]
   qiniu_app_secret_key ENV["qiniu_app_secret_key"]
   qiniu_callback_host  ENV["qiniu_callback_host"]
+
+  qiniu_audio_and_video_transcode :enable
 end
 
 FilePartUpload.config do
