@@ -116,5 +116,9 @@ SimpleNavbar::Base.config do
     nav :index, :name => '组卷管理', :url => '/bank/manage/test_papers' do
       controller :'bank/manage/test_papers'
     end
+
+    nav :index, :name => '标签管理', :url => '/bank/manage/model_labels' do
+      controller :'bank/manage/model_labels'
+    end
   end
 end
