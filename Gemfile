@@ -153,5 +153,5 @@ gem 'question_bank', github: 'mindpin/question_bank',
                      :ref => "b051910"
 
 gem 'model_label', github: 'kc-train/model_label',
-                    :ref => "95bbf06"
+                    :ref => "49c65fe"
 # ----

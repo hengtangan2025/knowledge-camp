@@ -1,7 +1,7 @@
 GIT
   remote: git://github.com/kc-train/model_label.git
-  revision: 95bbf0613436329e437e0537090bb95ebe5890ba
-  ref: 95bbf06
+  revision: 49c65fe2c6fda2250a25cc2dd1beb7f7547d6d3e
+  ref: 49c65fe
   specs:
     model_label (0.0.1)
 

@@ -23,12 +23,14 @@
     %thead
       %tr
         %th.th-one 模型名
-        %th.th-two 允许值
-        %th.th-six 操作
+        %th.th-two 标签名
+        %th.th-three 允许值
+        %th.th-four 操作
     %tbody
       - @model_labels.each do |model_label|
         %tr
-          %td= model_label.model.to_s
+          %td= ModelLabel.get_name_by_model(model_label.model.constantize)
+          %td= model_label.name
           %td= model_label.values.join("，")
           %th
             = link_to "编辑", "/bank/manage/model_labels/#{model_label.id}/edit"
