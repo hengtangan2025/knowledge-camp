@@ -1,20 +1,30 @@
-.well
+.page-header
   %h1
     %a{href: url_for([:bank, :manage, :courses])} 课程编排
     %span /
     %span= @course.title
-  你正则对课程
-  = @course.title
-  进行章节编排，你可以增减章节或者调整章节排序
+    %small
+      你正则对课程
+      = @course.title
+      进行章节编排，你可以增减章节或者调整章节排序
+
+.nav.nav-tabs
+  %li.icon.active
+    %a{href: "/bank/manage/courses/#{@course.id}"}
+      %i.glyphicon.glyphicon-info-sign
+      %span 查看
+  %li.icon
+    %a{href: "/bank/manage/courses/#{@course.id}/edit"}
+      %i.glyphicon.glyphicon-pencil
+      %span 修改
+  %li.icon
+    %a{href: "/bank/manage/courses/#{@course.id}", data: {method: 'delete', confirm: '你确定？'}}
+      %i.glyphicon.glyphicon-trash
+      %span 删除
 
 .page-manage-course-show
   .pblock.modelinfo
     .baseinfo.well
-      .btns.pull-right
-        %a.btn.btn-default.inverse.edit{:href => url_for([:edit, :bank, :manage, @course])}
-          %i.icon-edit
-          %span 修改课程信息
-
       .infodata
         %h2= @course.title
         .data

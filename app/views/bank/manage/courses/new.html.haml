@@ -1,2 +1,14 @@
-%h1 增加课程
+.page-header
+  %h1 增加课程
+
+.nav.nav-tabs
+  %li.icon
+    %a{href: '/bank/manage/courses'}
+      %i.glyphicon.glyphicon-th-list
+      %span 列表
+  %li.icon.active
+    %a{href: '/bank/manage/courses/new'}
+      %i.glyphicon.glyphicon-plus
+      %span 新增
+
 = render "form"

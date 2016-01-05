@@ -91,3 +91,19 @@ body {
     margin-right: 0px;
   }
 }
+
+.page-manage{
+  .page-header{
+    margin-top: 0;
+  }
+  .nav.nav-tabs{
+    a{
+      color: #000;
+    }
+  }
+  .table{
+    .pagination{
+      margin: 0 1rem 0 0;
+    }
+  }
+}

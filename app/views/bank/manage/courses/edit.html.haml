@@ -1,2 +1,18 @@
-%h1 修改课程
+.page-header
+  %h1 修改课程
+
+.nav.nav-tabs
+  %li.icon
+    %a{href: '/bank/manage/courses'}
+      %i.glyphicon.glyphicon-th-list
+      %span 列表
+  %li.icon.active
+    %a{href: "/bank/manage/courses/#{@course.id}/edit"}
+      %i.glyphicon.glyphicon-pencil
+      %span 修改
+  %li.icon
+    %a{href: "/bank/manage/courses/#{@course.id}", data: {method: 'delete', confirm: '你确定？'}}
+      %i.glyphicon.glyphicon-trash
+      %span 删除
+
 = render "form"
