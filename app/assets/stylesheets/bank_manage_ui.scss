@@ -74,3 +74,20 @@ body {
     }
   }
 }
+
+.sidebar-nav{
+  padding: 9px 9px 9px 9px;
+  position: fixed;
+  width: 14%;
+  /*overflow-y: scroll;*/
+  top: 50px;
+  bottom: 0;
+  background: #eaf0f1;
+}
+
+.form-horizontal{
+  .form-group{
+    margin-left: 0px;
+    margin-right: 0px;
+  }
+}
