@@ -1,26 +1,8 @@
 .page-bank-manage-test-questions
-  .well
+  .page-header
     %h1
       题库管理
-      .btn-group
-        %button{:class => "btn btn-default dropdown-toggle", :type => "button", :"data-toggle"=> "dropdown", :"aria-haspopup" => "true", :"aria-expanded" => "false"}
-          创建题
-          %span{:class =>"caret"}
-        %ul{:class => "dropdown-menu"}
-          - base_url = "/bank/manage/test_questions/new?kind="
-          %li
-            %a{:href=> "#{base_url}single_choice" } 单选题
-          %li
-            %a{:href=> "#{base_url}multi_choice" } 多选题
-          %li
-            %a{:href=> "#{base_url}bool" } 判断题
-          %li
-            %a{:href=> "#{base_url}fill" } 填空题
-          %li
-            %a{:href=> "#{base_url}essay" } 论述题
-          %li
-            %a{:href=> "#{base_url}mapping" } 连线题
-    在这里可以管理题库
+      %small 在这里可以管理题库
 
 
   = quick_filter_bar do |b|
@@ -36,6 +18,31 @@
       - g.add 'a_week',       text: '一周内'
       - g.add 'a_month',      text: '一个月内'
       - g.add 'three_months', text: '三个月内'
+
+  .nav.nav-tabs
+    %li.icon.active
+      %a{href: '/bank/manage/courses'}
+        %i.glyphicon.glyphicon-th-list
+        %span 列表
+    %li.dropdown
+      %a.dropdown-toggle{href: 'javascript:;', role: 'button', data: {toggle: 'dropdown'}, aria: {haspopup: 'true', expanded: 'true'}}
+        %i.glyphicon.glyphicon-plus
+        新增
+        %span.caret
+      %ul.dropdown-menu
+        - base_url = "/bank/manage/test_questions/new?kind="
+        %li
+          %a{:href=> "#{base_url}single_choice" } 单选题
+        %li
+          %a{:href=> "#{base_url}multi_choice" } 多选题
+        %li
+          %a{:href=> "#{base_url}bool" } 判断题
+        %li
+          %a{:href=> "#{base_url}fill" } 填空题
+        %li
+          %a{:href=> "#{base_url}essay" } 论述题
+        %li
+          %a{:href=> "#{base_url}mapping" } 连线题
 
   %table.table
     %thead
@@ -79,4 +86,7 @@
             = link_to "编辑", "/bank/manage/test_questions/#{question.id}/edit"
             = link_to "删除", "/bank/manage/test_questions/#{question.id}", :method => :delete, :data => {:confirm => "确认删除吗？"}
 
-  = paginate @questions, :theme => 'twitter-bootstrap-3'
+    %tfoot
+      %tr
+        %th{colspan: 7}
+          .pull-right= paginate @questions, :theme => 'twitter-bootstrap-3'
