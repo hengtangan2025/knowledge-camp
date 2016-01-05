@@ -1,10 +1,39 @@
 - url = "/bank/manage/model_labels"
 
 .page-bank-manage-model-label-new
-  .well
-    = "给#{params[:name]}增加标签"
+  .page-header
+    %h1
+      %a{href: url_for([:bank, :manage, :model_labels])} 标签管理
+      %span /
+      = "给#{params[:name]}增加标签"
+
+  .nav.nav-tabs
+    %li.icon
+      %a{href: '/bank/manage/model_labels'}
+        %i.glyphicon.glyphicon-th-list
+        %span 列表
+    %li.dropdown.active
+      %a.dropdown-toggle{href: 'javascript:;', role: 'button', data: {toggle: 'dropdown'}, aria: {haspopup: 'true', expanded: 'true'}}
+        %i.glyphicon.glyphicon-plus
+        新增
+        %span.caret
+      %ul.dropdown-menu
+        - base_url = "/bank/manage/model_labels/new?name="
+        - ModelLabel.get_model_names.each do |name|
+          %li
+            %a{:href=> "#{base_url}#{name}" }= "#{name}标签"
+
   = simple_form_for @model_label, :url => url do |f|
     = f.input :model, :as => :hidden
     = f.input :name
     = f.input :values
-    = f.button :submit
+
+    %br
+    .form-actions
+      %button.btn.btn-primary
+        %i.glyphicon.glyphicon-ok{type: 'submit'}
+        保存
+      %span.extra_buttons
+        %a.btn.btn-default{type: 'button', href: url_for([:bank, :manage, :test_questions])}
+          %i.glyphicon.glyphicon-remove
+          取消

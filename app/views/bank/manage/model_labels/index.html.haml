@@ -1,23 +1,29 @@
 .page-bank-manage-model-label
-  .well
+  .page-header
     %h1
       标签管理
-      .btn-group
-        %button{:class => "btn btn-default dropdown-toggle", :type => "button", :"data-toggle"=> "dropdown", :"aria-haspopup" => "true", :"aria-expanded" => "false"}
-          创建标签
-          %span{:class =>"caret"}
-        %ul{:class => "dropdown-menu"}
-          - base_url = "/bank/manage/model_labels/new?name="
-          - ModelLabel.get_model_names.each do |name|
-            %li
-              %a{:href=> "#{base_url}#{name}" }= "#{name}标签"
-    在这里可以管理标签
-
+      %small 在这里可以管理标签
 
   = quick_filter_bar do |b|
     - b.group :name, text: '模型名' do |g|
       - ModelLabel.get_model_names.each do |name|
         - g.add name, text: name
+
+  .nav.nav-tabs
+    %li.icon.active
+      %a{href: '/bank/manage/model_labels'}
+        %i.glyphicon.glyphicon-th-list
+        %span 列表
+    %li.dropdown
+      %a.dropdown-toggle{href: 'javascript:;', role: 'button', data: {toggle: 'dropdown'}, aria: {haspopup: 'true', expanded: 'true'}}
+        %i.glyphicon.glyphicon-plus
+        新增
+        %span.caret
+      %ul.dropdown-menu
+        - base_url = "/bank/manage/model_labels/new?name="
+        - ModelLabel.get_model_names.each do |name|
+          %li
+            %a{:href=> "#{base_url}#{name}" }= "#{name}标签"
 
   %table.table
     %thead
@@ -36,4 +42,7 @@
             = link_to "编辑", "/bank/manage/model_labels/#{model_label.id}/edit"
             = link_to "删除", "/bank/manage/model_labels/#{model_label.id}", :method => :delete, :data => {:confirm => "确认删除吗？"}
 
-  = paginate @model_labels, :theme => 'twitter-bootstrap-3'
+    %tfoot
+      %tr
+        %th{colspan: 4}
+          .pull-right= paginate @model_labels, :theme => 'twitter-bootstrap-3'
