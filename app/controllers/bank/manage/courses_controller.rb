@@ -1,6 +1,6 @@
 class Bank::Manage::CoursesController < Bank::Manage::ApplicationController
   def index
-    @courses = current_user.courses
+    @courses = current_user.courses.page(params[:page])
   end
 
   def show

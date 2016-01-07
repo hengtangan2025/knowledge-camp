@@ -9,14 +9,13 @@
     = stylesheet_link_tag 'bank_manage', :media => 'screen'
     = javascript_include_tag 'bank_manage'
 
-  %body
-    -#%header
-      -#= simple_navbar(:bank_manage)
-      
-    -#%main{role: "main"}
-      -#.container
+  %body.page-manage
+    = render :partial => "/layouts/row_signed_in_nav"
+
     .row
-      .col-md-2
-        = simple_navbar(:bank_manage)
-      .col-md-10
-        = yield
+      .col-sm-3.col-md-2
+        .sidebar-nav
+          = simple_navbar(:bank_manage, ul_class: 'nav nav-pills nav-stacked')
+      .col-sm-9.col-sm-offset-3.col-md-10.col-md-offset-2
+        .row
+          = yield

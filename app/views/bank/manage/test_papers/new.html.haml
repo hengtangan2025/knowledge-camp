@@ -1,2 +1,15 @@
+.page-header
+  %h1 组卷
+
+.nav.nav-tabs
+  %li.icon
+    %a{href: '/bank/manage/test_papers'}
+      %i.glyphicon.glyphicon-th-list
+      %span 列表
+  %li.icon.active
+    %a{href: '/bank/manage/test_papers/new'}
+      %i.glyphicon.glyphicon-plus
+      %span 新增
+
 .page-new-test_paper.form-test_paper
   = render "form"

@@ -1,0 +1,17 @@
+%nav.navbar.navbar-default
+  .navbar-header
+    %a.navbar-brand{:href => "/bank"} Kc-Finance
+
+  %ul.nav.navbar-nav.navbar-right
+    %li.dropdown
+      %a.dropdown-toggle{:href => "#", :"data-toggle" => "dropdown", :role => "button", :"aria-haspopup" => "true", :"aria-expanded" => "false"}
+        = current_user.name
+        %span.caret
+      %ul.dropdown-menu
+        %li
+          %a{:href => "/bank/notifications"} 通知中心
+        %li
+          %a{:href => "#"} 个人设置
+        %li
+          %a{:href => "/account/sign_out", :data => {:method => :delete}} 退出登录
+

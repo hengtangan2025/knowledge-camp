@@ -22,7 +22,6 @@ class Bank::Manage::TestQuestionsController < Bank::Manage::ApplicationControlle
       return render :status => 422, :text => 422
     end
     @question = QuestionBank::Question.new(:kind => params[:kind])
-    render :form
   end
 
   def create
@@ -32,14 +31,13 @@ class Bank::Manage::TestQuestionsController < Bank::Manage::ApplicationControlle
     if @question.save
       redirect_to "/bank/manage/test_questions"
     else
-      render :form
+      render :new
     end
   end
 
   def edit
     @question = QuestionBank::Question.find(params[:id])
     @kind = @question.kind
-    render :form
   end
 
   def update
@@ -49,7 +47,7 @@ class Bank::Manage::TestQuestionsController < Bank::Manage::ApplicationControlle
     if @question.update_attributes(hash)
       redirect_to "/bank/manage/test_questions"
     else
-      render :form
+      render :edit
     end
   end
 

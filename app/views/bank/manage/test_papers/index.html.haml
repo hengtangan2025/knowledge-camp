@@ -1,8 +1,17 @@
-.well
+.page-header
   %h1
     组卷管理
-    %a.btn.btn-primary{href: url_for([:new, :bank, :manage, :test_paper])} 组卷
-  你好。你可以在这里对组卷进行管理。
+    %small 你好。你可以在这里对组卷进行管理。
+
+.nav.nav-tabs
+  %li.icon.active
+    %a{href: '/bank/manage/test_papers'}
+      %i.glyphicon.glyphicon-th-list
+      %span 列表
+  %li.icon
+    %a{href: '/bank/manage/test_papers/new'}
+      %i.glyphicon.glyphicon-plus
+      %span 新增
 
 %table.table.table-bordered.table-striped
   %thead
@@ -27,3 +36,8 @@
             %a{href: url_for([:disable, :bank, :manage, test_paper]), data: {method: 'post'}} 禁用
           - else
             %a{href: url_for([:enable, :bank, :manage, test_paper]), data: {method: 'post'}} 启用
+
+  %tfoot
+    %tr
+      %th{colspan: 5}
+        .pull-right= paginate @test_papers, :theme => 'twitter-bootstrap-3'

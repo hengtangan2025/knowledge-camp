@@ -105,7 +105,7 @@ SimpleNavbar::Base.config do
   end
 
   rule :bank_manage do
-    nav :index, :name => '课程管理', :url => '/bank/manage/courses' do
+    nav :index, :name => '课程编排', :url => '/bank/manage/courses' do
       controller :'bank/manage/courses'
     end
 
