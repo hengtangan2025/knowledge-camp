@@ -3,8 +3,12 @@
     = f.input :title
     = f.input :desc, as: :text
   
+  %br
   .form-actions
-    = f.button :submit
-
-%a{href: url_for([:bank, :manage, @ware.chapter])} 返回
-
+    %button.btn.btn-primary
+      %i.glyphicon.glyphicon-ok{type: 'submit'}
+      保存
+    %span.extra_buttons
+      %a.btn.btn-default{type: 'button', href: url_for([:bank, :manage, @ware.chapter])}
+        %i.glyphicon.glyphicon-remove
+        取消

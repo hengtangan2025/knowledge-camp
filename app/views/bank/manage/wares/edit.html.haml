@@ -1,2 +1,13 @@
-%h1 修改课件
+.page-header
+  %h1
+    %a{href: url_for([:bank, :manage, :courses])} 课程编排
+    %span /
+    %a{href: url_for([:bank, :manage, @ware.chapter.course])}= @ware.chapter.course.title
+    %span /
+    %a{href: url_for([:bank, :manage, @ware.chapter])}= @ware.chapter.title
+    %span /
+    %a{href: url_for([:bank, :manage, @ware])}= @ware.title
+    %span /
+    %span 修改
+
 = render "form"

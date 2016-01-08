@@ -1,24 +1,30 @@
-.well
-  %h1
-    %a{href: url_for([:bank, :manage, :courses])} 课程编排
-    %span /
-    %a{href: url_for([:bank, :manage, @chapter.course])}= @chapter.course.title
-    %span /
-    %span= @chapter.title
-
 .page-manage-chapter-show
-  .pblock.modelinfo
-    .baseinfo.well
-      .btns.pull-right
-        %a.btn.btn-default.edit{href: url_for([:edit, :bank, :manage, @chapter])}
-          %i.icon-edit
-          %span 修改章节信息
+  .page-header
+    %h1
+      %a{href: url_for([:bank, :manage, :courses])} 课程编排
+      %span /
+      %a{href: url_for([:bank, :manage, @chapter.course])}= @chapter.course.title
+      %span /
+      %span= @chapter.title
 
-      .infodata
-        %h2= @chapter.title
-        .desc
-          - desc = @chapter.desc.blank? ? '章节目前没有简介' : @chapter.desc
-          = simple_format("章节简介：#{desc}")
+  .nav.nav-tabs
+    %li.icon.active
+      %a{href: "/bank/manage/chapters/#{@chapter.id}"}
+        %i.glyphicon.glyphicon-info-sign
+        %span 查看
+    %li.icon
+      %a{href: "/bank/manage/chapters/#{@chapter.id}/edit"}
+        %i.glyphicon.glyphicon-pencil
+        %span 修改
+    %li.icon
+      %a{href: "/bank/manage/chapters/#{@chapter.id}", data: {method: 'delete', confirm: '你确定？'}}
+        %i.glyphicon.glyphicon-trash
+        %span 删除
+
+
+  .desc.well
+    - desc = @chapter.desc.blank? ? '章节目前没有简介' : @chapter.desc
+    = simple_format("章节简介：#{desc}")
 
 
   .panel.panel-default.panel-chapters

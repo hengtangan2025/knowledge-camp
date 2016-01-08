@@ -1,2 +1,11 @@
-%h1 上传课件
+.page-header
+  %h1
+    %a{href: url_for([:bank, :manage, :courses])} 课程编排
+    %span /
+    %a{href: url_for([:bank, :manage, @chapter.course])}= @chapter.course.title
+    %span /
+    %a{href: url_for([:bank, :manage, @chapter])}= @chapter.title
+    %span /
+    %span 上传课件
+
 = render "form"
