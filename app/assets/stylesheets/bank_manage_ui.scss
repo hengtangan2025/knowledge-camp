@@ -75,14 +75,40 @@ body {
   }
 }
 
-.sidebar-nav{
-  padding: 9px 9px 9px 9px;
-  position: fixed;
-  width: 14%;
-  /*overflow-y: scroll;*/
-  top: 50px;
-  bottom: 0;
-  background: #eaf0f1;
+.page-manage{
+  .sidebar-nav{
+    /*rails admin*/
+    /*padding: 9px 9px 9px 9px;*/
+    /*position: fixed;*/
+    /*width: 14%;*/
+    /*[>overflow-y: scroll;<]*/
+    /*top: 50px;*/
+    /*bottom: 0;*/
+    /*background: #eaf0f1;*/
+
+    /*from http://getbootstrap.com/examples/dashboard/*/
+    position: fixed;
+    top: 51px;
+    bottom: 0;
+    left: 0;
+    z-index: 1000;
+    display: block;
+    padding: 20px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    background-color: #f5f5f5;
+    border-right: 1px solid #eee;
+
+    /*.nav{*/
+    /*margin-right: -21px;*/
+    /*margin-bottom: 20px;*/
+    /*margin-left: -20px;*/
+    /*}*/
+  }
+
+  .content{
+    padding-top: 60px;
+  }
 }
 
 .form-horizontal{
