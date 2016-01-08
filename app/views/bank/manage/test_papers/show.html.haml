@@ -1,5 +1,5 @@
 .page-header
-  %h1
+  %h3
     %a{href: url_for([:bank, :manage, :test_papers])} 组卷管理
     %span /
     %span= @test_paper.title
@@ -17,7 +17,7 @@
 :ruby
   num_cn_conv = QuestionBank::NumCnConv.new
 .page-test_paper
-  %h1.text-center= @test_paper.title
+  %h3.text-center= @test_paper.title
   .text-center
     = "试卷满分 #{@test_paper.score} 分"
     = "考试时间 #{@test_paper.minutes} 分钟"

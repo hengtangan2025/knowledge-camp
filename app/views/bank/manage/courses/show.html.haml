@@ -1,14 +1,14 @@
 .page-header
-  %h1
+  %h3
     %a{href: url_for([:bank, :manage, :courses])} 课程编排
     %span /
     %span= @course.title
-    %small
-      你正则对课程
-      = @course.title
-      进行章节编排，你可以增减章节或者调整章节排序
+  %small
+    你正则对课程
+    = @course.title
+    进行章节编排，你可以增减章节或者调整章节排序
 
-.nav.nav-tabs
+%ul.nav.nav-tabs{role: 'tablist'}
   %li.icon.active
     %a{href: "/bank/manage/courses/#{@course.id}"}
       %i.glyphicon.glyphicon-info-sign
@@ -50,52 +50,73 @@
 
           .clearfix
 
-  .panel.panel-default.panel-chapters
-    .panel-body
-      %span 课程下现有
-      %b.count= @chapters.count
-      %span 个章节
-      %a.btn.btn-success.btn-sm.new{:href => url_for([:new, :bank, :manage, @course, :chapter])}
-        %i.glyphicon.glyphicon-plus
-        %span 增加章节
-    %table.table.table-bordered.table-striped
-      %thead
-        %th.title 标题
-        %th.updated_at 更新时间
-        %th.opts 操作
-        %th.position 排序位置
-      %tbody
-        - @chapters.each do |chapter|
-          %tr.chapter
-            %td.title
-              %a{href: url_for([:bank, :manage, chapter])}= chapter.title
-            %td.updated_at= chapter.updated_at
-            %td.opts
-              %a{href: url_for([:edit, :bank, :manage, chapter])} 编辑
-              %a{href: url_for([:bank, :manage, chapter]), data: {method: 'delete', confirm: '你确定吗？'}} 删除
-            %td.position
-              %a.btn.btn-default.btn-xs.move-down.updown{href: url_for([:move_down, :bank, :manage, chapter]), data: {method: 'put'}, title: '向下移动'}
-                %i.glyphicon.glyphicon-arrow-down
-              %a.btn.btn-default.btn-xs.move-up.updown{href: url_for([:move_up, :bank, :manage, chapter]), data: {method: 'put'}, title: '向上移动'}
-                %i.glyphicon.glyphicon-arrow-up
+  %ul.nav.nav-tabs
+    %li#chapters-tab.active{role: 'presentation'}
+      %a{href: "#chapters", role: 'tab', data: {toggle: 'tab'}, aria: {controls: 'chapters', expanded: 'true'}}
+        %span
+          章节(
+          = @chapters.count
+          )
 
-  .panel.panel-default.panel-attachments
-    .panel-body
-      %span 课程下现有
-      %b.count= @attachments.count
-      %span 个相关资料
-      %a.btn.btn-success.btn-sm.new{:href => url_for([:new, :bank, :manage, @course, :course_attachment])}
-        %i.glyphicon.glyphicon-plus
-        %span 增加相关资料
-    %table.table.table-bordered.table-striped
-      %thead
-        %th.title 标题
-        %th.updated_at 更新时间
-        %th.opts 操作
-      %tbody
-        - @attachments.each do |attachment|
-          %tr.attachment
-            %td.title= attachment.file_entity.original
-            %td.updated_at= attachment.updated_at
-            %td.opts
-              %a{href: url_for([:bank, :manage, attachment]), data: {method: 'delete', confirm: '你确定吗？'}} 删除
+    %li{role: 'presentation'}
+      %a{href: "#attachments", role: 'tab', data: {toggle: 'tab'}, aria: {controls: 'attachments'}}
+        %span
+          附件(
+          = @attachments.count
+          )
+
+  .tab-content
+    #chapters.tab-pane.active{aria: {labelledby: 'chapters-tab'}}
+      %table.table.table-bordered.table-striped
+        %thead
+          %th.title 标题
+          %th.updated_at 更新时间
+          %th.opts 操作
+          %th.position 排序位置
+        %tbody
+          - @chapters.each do |chapter|
+            %tr.chapter
+              %td.title
+                %a{href: url_for([:bank, :manage, chapter])}= chapter.title
+              %td.updated_at= chapter.updated_at
+              %td.opts
+                %a{href: url_for([:edit, :bank, :manage, chapter])} 编辑
+                %a{href: url_for([:bank, :manage, chapter]), data: {method: 'delete', confirm: '你确定吗？'}} 删除
+              %td.position
+                %a.btn.btn-default.btn-xs.move-down.updown{href: url_for([:move_down, :bank, :manage, chapter]), data: {method: 'put'}, title: '向下移动'}
+                  %i.glyphicon.glyphicon-arrow-down
+                %a.btn.btn-default.btn-xs.move-up.updown{href: url_for([:move_up, :bank, :manage, chapter]), data: {method: 'put'}, title: '向上移动'}
+                  %i.glyphicon.glyphicon-arrow-up
+        %tfoot
+          %tr
+            %th{colspan: 4}
+              .pull-left
+                %a.btn.btn-success.btn-sm.new{:href => url_for([:new, :bank, :manage, @course, :chapter])}
+                  %i.glyphicon.glyphicon-plus
+                  %span 增加章节
+              .pull-right
+                -#= paginate @chapters
+
+    #attachments.tab-pane.fade{aria: {labelledby: 'attachments-tab'}}
+      %table.table.table-bordered.table-striped
+        %thead
+          %th.title 标题
+          %th.updated_at 更新时间
+          %th.opts 操作
+        %tbody
+          - @attachments.each do |attachment|
+            %tr.attachment
+              %td.title= attachment.file_entity.original
+              %td.updated_at= attachment.updated_at
+              %td.opts
+                %a{href: url_for([:bank, :manage, attachment]), data: {method: 'delete', confirm: '你确定吗？'}} 删除
+
+          %tfoot
+            %tr
+              %th{colspan: 3}
+                .pull-left
+                  %a.btn.btn-success.btn-sm.new{:href => url_for([:new, :bank, :manage, @course, :course_attachment])}
+                    %i.glyphicon.glyphicon-plus
+                    %span 增加相关资料
+                .pull-right
+                  -#= paginate @chapters

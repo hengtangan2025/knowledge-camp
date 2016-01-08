@@ -2,7 +2,7 @@
 
 .page-bank-manage-model-label-edit
   .page-header
-    %h1
+    %h3
       %a{href: url_for([:bank, :manage, :model_labels])} 标签管理
       %span /
       = "修改#{ModelLabel.get_name_by_model(@model_label.model.constantize)}的标签"

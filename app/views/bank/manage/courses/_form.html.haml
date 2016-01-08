@@ -1,17 +1,20 @@
-= simple_form_for [:bank, :manage, @course], wrapper: :horizontal_form do |f|
+= simple_form_for [:bank, :manage, @course] do |f|
   .form-inputs
     = f.input :title
     = f.input :desc, as: :text
 
-    %a.btn-upload.btn.btn-info.clearfix{href: 'javascript:;', data: FilePartUpload.get_dom_data} 上传封面
-
     = f.input :cover, as: :hidden
-    .preview.clearfix
-      .text.optional.col-sm-3.control-label 图片预览
-      .col-sm-9
-        .cover_preview
-          - unless @course.cover.blank?
-            %img#img_course_cover.img-responsive{src: (@course.cover)}
+    .form-group.optional
+      %label.optional.control-label 封面
+      .cover_preview
+        - if @course.cover.blank?
+          %img#img_course_cover.img-responsive{src: 'https://placeholdit.imgix.net/~text?txtsize=33&txt=%E6%9C%AA%E4%B8%8A%E4%BC%A0%E5%9B%BE%E7%89%87&w=350&h=350'}
+        - else
+          %img#img_course_cover.img-responsive{src: (@course.cover)}
+      .cover_process
+
+      .cover_action
+        %a.btn-upload.btn.btn-info.clearfix{href: 'javascript:;', data: FilePartUpload.get_dom_data} 上传封面
   
   %br
   .form-actions

@@ -10,6 +10,7 @@ jQuery(document).on 'ready page:load', ->
     update: ->
       console.log "qiniu update"
       console.log "#{@file.percent}%"
+      jQuery('.cover_process').html "上传中...#{@file.percent}%"
 
     # 上传成功时调用此方法
     success: (info)->
@@ -26,6 +27,8 @@ jQuery(document).on 'ready page:load', ->
         jQuery('.cover_preview').append """
           <img id="img_course_cover" class="img-responsive" src="#{info.file_entity_url}" />
         """
+
+      jQuery('.cover_process').html "上传成功!"
 
     # 上传出错时调用此方法
     error: ->
