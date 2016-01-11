@@ -111,16 +111,17 @@ Rails.application.routes.draw do
       get :system, :on => :collection
     end
 
-    get "/dashboard"                       => "dashboard#index"
-    get "/dashboard/courses"               => "dashboard#courses"
-    get "/dashboard/join_courses"          => "dashboard#join_courses"
-    get "/dashboard/fav_courses"           => "dashboard#fav_courses"
-    get "/dashboard/test_questions"        => "dashboard#test_questions"
-    get "/dashboard/test_question_records" => "dashboard#test_question_records"
-    get "/dashboard/flaw_test_questions"   => "dashboard#flaw_test_questions"
-    get "/dashboard/fav_test_questions"    => "dashboard#fav_test_questions"
-    get "/dashboard/questions"             => "dashboard#questions"
-    get "/dashboard/notes"                 => "dashboard#notes"
+    # TODO 待梳理后，统一删除
+    # get "/dashboard"                       => "dashboard#index"
+    # get "/dashboard/courses"               => "dashboard#courses"
+    # get "/dashboard/join_courses"          => "dashboard#join_courses"
+    # get "/dashboard/fav_courses"           => "dashboard#fav_courses"
+    # get "/dashboard/test_questions"        => "dashboard#test_questions"
+    # get "/dashboard/test_question_records" => "dashboard#test_question_records"
+    # get "/dashboard/flaw_test_questions"   => "dashboard#flaw_test_questions"
+    # get "/dashboard/fav_test_questions"    => "dashboard#fav_test_questions"
+    # get "/dashboard/questions"             => "dashboard#questions"
+    # get "/dashboard/notes"                 => "dashboard#notes"
 
     scope "test_papers/:test_paper_id" do
       resources :test_paper_results
@@ -139,6 +140,7 @@ Rails.application.routes.draw do
             member do
               put :move_up
               put :move_down
+              get :preview
             end
           end
         end

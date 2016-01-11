@@ -1,0 +1,50 @@
+.popover.qrcode{
+  .popover-content{
+    width: 260px;
+    height: 260px;
+    padding: 15px;
+    .qrcode{
+      width: 230px;
+      height: 230px;
+      padding: 0;
+    }
+    
+  }
+}
+
+.page-ware-preview{
+  .ware-tilte{
+    color: #fff;
+    background-color: #337ab7;
+    padding: 15px 15px;
+    margin: 0 -15px;
+    font-size: 18px;
+    line-height: 20px;
+    height: 50px;   
+    box-shadow:1px 1px 1px rgba(black, 0.2);
+  }
+  
+  .ware-desc{
+    padding: 15px 15px 30px 15px;
+  }
+  
+  .content{
+    #image_slider_container{
+      position: relative; 
+      top: 0px; 
+      left: 0px; 
+      width: 100%; 
+      height: 300px;
+      
+      .slides{
+        cursor: move; 
+        position: absolute; 
+        overflow: hidden; 
+        left: 0px; 
+        top: 0px; 
+        width: 100%; 
+        height: 300px;
+      }
+    }
+  }
+}

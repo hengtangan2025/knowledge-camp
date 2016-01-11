@@ -47,6 +47,10 @@ class Bank::Manage::WaresController < Bank::Manage::ApplicationController
 
     return redirect_to [:bank, :manage, @chapter]
   end
+  
+  def preview
+    render :layout => "bank_manage_mobile"
+  end
 
   protected
   def set_chapter

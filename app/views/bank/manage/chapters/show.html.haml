@@ -47,6 +47,8 @@
             %td.title= ware.title
             %td.updated_at= ware.updated_at
             %td.opts
+              - qrcode_url = File.join(ENV["qiniu_callback_host"], "bank/manage/wares/#{ware.id}/preview")
+              %a{href: 'javascript:;', class: 'ware-preview-qrcode', rel: 'popover', data: {content: "<div class='qrcode' data-url='#{qrcode_url}'/>", :"original-title" => '手机扫描二维码，预览课件'}} 二维码
               %a{href: url_for([:edit, :bank, :manage, ware])} 编辑
               %a{href: url_for([:bank, :manage, ware]), data: {method: 'delete', confirm: '你确定吗？'}} 删除
             %td.position

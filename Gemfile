@@ -113,7 +113,7 @@ gem 'virtual_file_system',
 # 支持分段上传的文件持久化
 gem 'file-part-upload',
     :github => 'mindpin/file-part-upload',
-    :tag => '2.1.0'
+    :tag => '2.2.0'
 
 # 图片加载的一个小工具
 gem 'simple-images',

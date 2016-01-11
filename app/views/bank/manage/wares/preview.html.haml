@@ -1,0 +1,19 @@
+.container-fluid
+  .page-ware-preview
+    .ware-tilte 课件的标题
+    .ware-desc 课件的描述课件的描述课件的描述课件的描述课件的描述课件的描述课件的描述课件的描述课件的描述课件的描述课件的描述
+    .content
+      
+      // - file_entity = FilePartUpload::FileEntity.find("569374a66675730686010000")
+      // - xml_url = FilePartUpload::Engine.routes.url_helpers.file_entity_path(file_entity, "xml")
+      // .ckplayer{:id => "file_entity_#{file_entity.id.to_s}", :data => {:xml_url => xml_url, :url => file_entity.transcode_url}}
+      
+      - file_entity = FilePartUpload::FileEntity.find("56937a996675731a85000000")
+      - images = file_entity.transcode_urls("jpg")
+      #image_slider_container        
+        .slides{:u => "slides"}
+          - images.each do |image|
+            %div
+              %img{:u => "image", :src => image}
+
+      
