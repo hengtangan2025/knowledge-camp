@@ -21,36 +21,36 @@
         %i.glyphicon.glyphicon-trash
         %span 删除
 
+  .tab-content
+    .desc.well
+      - desc = @chapter.desc.blank? ? '章节目前没有简介' : @chapter.desc
+      = simple_format("章节简介：#{desc}")
 
-  .desc.well
-    - desc = @chapter.desc.blank? ? '章节目前没有简介' : @chapter.desc
-    = simple_format("章节简介：#{desc}")
 
-
-  .panel.panel-default.panel-chapters
-    .panel-body
-      %span 章节下现有
-      %b.count= @wares.count
-      %span 个课件
-      %a.btn.btn-success.btn-sm.new{href: url_for([:new, :bank, :manage, @chapter, :ware])}
-        %i.glyphicon.glyphicon-plus
-        %span 上传课件
-    %table.table.table-bordered.table-striped
-      %thead
-        %th.title 标题
-        %th.updated_at 更新时间
-        %th.opts 操作
-        %th.position 排序位置
-      %tbody
-        - @wares.each do |ware|
-          %tr.ware
-            %td.title= ware.title
-            %td.updated_at= ware.updated_at
-            %td.opts
-              %a{href: url_for([:edit, :bank, :manage, ware])} 编辑
-              %a{href: url_for([:bank, :manage, ware]), data: {method: 'delete', confirm: '你确定吗？'}} 删除
-            %td.position
-              %a.btn.btn-default.btn-xs.move-down.updown{href: url_for([:move_down, :bank, :manage, ware]), data: {method: 'put'}, title: '向下移动'}
-                %i.glyphicon.glyphicon-arrow-down
-              %a.btn.btn-default.btn-xs.move-up.updown{href: url_for([:move_up, :bank, :manage, ware]), data: {method: 'put'}, title: '向上移动'}
-                %i.glyphicon.glyphicon-arrow-up
+    .panel.panel-default.panel-chapters
+      .panel-body
+        %span 章节下现有
+        %b.count= @wares.count
+        %span 个课件
+        %a.btn.btn-success.btn-sm.new{href: url_for([:new, :bank, :manage, @chapter, :ware])}
+          %i.glyphicon.glyphicon-plus
+          %span 上传课件
+      %table.table.table-bordered.table-striped
+        %thead
+          %th.title 标题
+          %th.updated_at 更新时间
+          %th.opts 操作
+          %th.position 排序位置
+        %tbody
+          - @wares.each do |ware|
+            %tr.ware
+              %td.title= ware.title
+              %td.updated_at= ware.updated_at
+              %td.opts
+                %a{href: url_for([:edit, :bank, :manage, ware])} 编辑
+                %a{href: url_for([:bank, :manage, ware]), data: {method: 'delete', confirm: '你确定吗？'}} 删除
+              %td.position
+                %a.btn.btn-default.btn-xs.move-down.updown{href: url_for([:move_down, :bank, :manage, ware]), data: {method: 'put'}, title: '向下移动'}
+                  %i.glyphicon.glyphicon-arrow-down
+                %a.btn.btn-default.btn-xs.move-up.updown{href: url_for([:move_up, :bank, :manage, ware]), data: {method: 'put'}, title: '向上移动'}
+                  %i.glyphicon.glyphicon-arrow-up
