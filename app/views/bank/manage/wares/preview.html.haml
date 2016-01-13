@@ -1,0 +1,26 @@
+.container-fluid
+  .page-ware-preview
+    .ware-tilte= @ware.title
+    - if [KcCourses::SimpleDocumentWare, KcCourses::SimpleAudioWare, KcCourses::SimpleVideoWare ].include?(@ware.class)
+      .content
+        - file_entity = @ware.file_entity
+        - if !file_entity.transcode_success?
+          .info 正在转码中，暂时无法在线浏览，请稍后刷新页面重试
+        - else
+          
+          - if @ware.class == KcCourses::SimpleDocumentWare
+            - images = file_entity.transcode_urls("jpg")
+            .image_slider{:data => {:page_width => file_entity.meta["page_width"], :page_height => file_entity.meta["page_height"]}}
+              #image_slider_container        
+                .slides{:u => "slides"}
+                  - images.each do |image|
+                    %div.slide
+                      %img{:u => "image", :src => image}
+              .footer
+                .page-info    
+          - if [KcCourses::SimpleAudioWare, KcCourses::SimpleVideoWare ].include?(@ware.class)
+            - xml_url = FilePartUpload::Engine.routes.url_helpers.file_entity_path(file_entity, "xml")
+            .ckplayer{:id => "file_entity_#{file_entity.id.to_s}", :data => {:xml_url => xml_url, :url => file_entity.transcode_url}}    
+      
+    .ware-desc= @ware.desc
+      

@@ -57,6 +57,11 @@ class Bank::Manage::WaresController < Bank::Manage::ApplicationController
 
     return redirect_to [:bank, :manage, @chapter]
   end
+  
+  def preview
+    @ware = KcCourses::Ware.find params[:id]
+    render :layout => "bank_manage_mobile"
+  end
 
   protected
   def set_chapter

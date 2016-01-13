@@ -4,6 +4,9 @@ class Bank::Manage::ChaptersController < Bank::Manage::ApplicationController
   def show
     @chapter = current_user.chapters.find params[:id]
     @wares = @chapter.wares
+    if !params[:type].blank?
+      @wares = @wares.where("_type" => params[:type])
+    end
   end
 
   def new
