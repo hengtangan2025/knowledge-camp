@@ -23,7 +23,6 @@ class FileEntityCkPlayer
     @init_ckplayer()
 
   init_ckplayer: ->
-    console.log this
     CKobject.embed @swf_url, @$ele.attr('id'),
       "ckplayer_#{@$ele.attr('id')}", '100%', '100%', true, @flashvars, @url, @params
 
@@ -72,5 +71,4 @@ jQuery(document).on 'ready page:load', ->
       jQuery('.footer .page-info').text("#{slide_index + 1} / #{slider.$SlidesCount()}")
     
     jQuery('#image_slider_container .slides img').each ->
-      console.log jQuery(this)
       new RTP.PinchZoom jQuery(this)

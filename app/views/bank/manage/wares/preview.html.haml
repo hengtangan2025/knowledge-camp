@@ -1,6 +1,6 @@
 .container-fluid
   .page-ware-preview
-    .ware-tilte 课件的标题
+    .ware-tilte= @ware.title
     .content
       
       // - file_entity = FilePartUpload::FileEntity.find("569374a66675730686010000")
@@ -20,5 +20,5 @@
         .footer
           .page-info
         
-    .ware-desc 课件的描述课件的描述课件的描述课件的描述课件的描述课件的描述课件的描述课件的描述课件的描述课件的描述课件的描述
+    .ware-desc= @ware.desc
       

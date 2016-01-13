@@ -49,6 +49,7 @@ class Bank::Manage::WaresController < Bank::Manage::ApplicationController
   end
   
   def preview
+    @ware = KcCourses::Ware.find params[:id]
     render :layout => "bank_manage_mobile"
   end
 
