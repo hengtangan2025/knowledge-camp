@@ -138,6 +138,24 @@ body {
       margin: 0 1rem 0 0;
     }
   }
+
+  .cover_preview{
+    line-height: 400px;
+    height: 400px;
+    width: 400px;
+    background-color: #CCCCCC;
+    
+	overflow:hidden;
+	position:relative;
+	display:table-cell;
+	text-align:center;
+	vertical-align:middle;
+    img{
+      max-width: 400px;
+      max-height: 400px;
+      margin: auto;
+    }
+  }
   
   .cover_process, .cover_action{
     margin: 20px 0;
