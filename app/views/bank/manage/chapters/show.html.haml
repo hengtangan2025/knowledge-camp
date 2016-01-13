@@ -27,14 +27,15 @@
       = simple_format("章节简介：#{desc}")
 
 
-    .panel.panel-default.panel-chapters
-      .panel-body
-        %span 章节下现有
-        %b.count= @wares.count
-        %span 个课件
-        %a.btn.btn-success.btn-sm.new{href: url_for([:new, :bank, :manage, @chapter, :ware])}
-          %i.glyphicon.glyphicon-plus
-          %span 上传课件
+    %ul.nav.nav-tabs
+      %li#chapters-tab.active{role: 'presentation'}
+        %a{href: "#chapters", role: 'tab', data: {toggle: 'tab'}, aria: {controls: 'chapters', expanded: 'true'}}
+          %span
+            课件(
+            = @wares.count
+            )
+
+    .tab-content
       %table.table.table-bordered.table-striped
         %thead
           %th.title 标题
@@ -54,3 +55,12 @@
                   %i.glyphicon.glyphicon-arrow-down
                 %a.btn.btn-default.btn-xs.move-up.updown{href: "/bank/manage/wares/#{ware.id}/move_up", data: {method: 'put'}, title: '向上移动'}
                   %i.glyphicon.glyphicon-arrow-up
+        %tfoot
+          %tr
+            %th{colspan: 4}
+              .pull-left
+                %a.btn.btn-success.btn-sm.new{:href => url_for([:new, :bank, :manage, @chapter, :ware])}
+                  %i.glyphicon.glyphicon-plus
+                  %span 增加课件
+              .pull-right
+                -#= paginate @chapters
