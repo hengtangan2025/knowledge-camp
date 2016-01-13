@@ -40,10 +40,10 @@ GIT
 
 GIT
   remote: git://github.com/mindpin/file-part-upload.git
-  revision: 710b320ae9367af4386576e3acae07c2fadfae28
-  tag: 2.1.0
+  revision: 6898ae1f53b6290eb04ec50a5130f1748acf9404
+  tag: 2.2.1
   specs:
-    file-part-upload (2.1.0)
+    file-part-upload (2.2.1)
       enumerize
       mime-types
       mini_magick
@@ -59,8 +59,8 @@ GIT
 
 GIT
   remote: git://github.com/mindpin/kc_courses.git
-  revision: 232d217920ded883e1098378b8b1d54bf090edef
-  tag: v0.2.0
+  revision: e2d6072873d7214a6eb4ae1558a91e7d6b2dd5e7
+  tag: v0.5.0
   specs:
     kc_courses (0.1.0)
       simple_form
@@ -526,3 +526,6 @@ DEPENDENCIES
   user-auth!
   useragent
   virtual_file_system!
+
+BUNDLED WITH
+   1.10.6

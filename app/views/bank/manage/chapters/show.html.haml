@@ -27,14 +27,15 @@
       = simple_format("章节简介：#{desc}")
 
 
-    .panel.panel-default.panel-chapters
-      .panel-body
-        %span 章节下现有
-        %b.count= @wares.count
-        %span 个课件
-        %a.btn.btn-success.btn-sm.new{href: url_for([:new, :bank, :manage, @chapter, :ware])}
-          %i.glyphicon.glyphicon-plus
-          %span 上传课件
+    %ul.nav.nav-tabs
+      %li#chapters-tab.active{role: 'presentation'}
+        %a{href: "#chapters", role: 'tab', data: {toggle: 'tab'}, aria: {controls: 'chapters', expanded: 'true'}}
+          %span
+            课件(
+            = @wares.count
+            )
+
+    .tab-content
       %table.table.table-bordered.table-striped
         %thead
           %th.title 标题
@@ -47,10 +48,19 @@
               %td.title= ware.title
               %td.updated_at= ware.updated_at
               %td.opts
-                %a{href: url_for([:edit, :bank, :manage, ware])} 编辑
-                %a{href: url_for([:bank, :manage, ware]), data: {method: 'delete', confirm: '你确定吗？'}} 删除
+                %a{href: "/bank/manage/wares/#{ware.id}/edit"} 编辑
+                %a{href: "/bank/manage/wares/#{ware.id}", data: {method: 'delete', confirm: '你确定吗？'}} 删除
               %td.position
-                %a.btn.btn-default.btn-xs.move-down.updown{href: url_for([:move_down, :bank, :manage, ware]), data: {method: 'put'}, title: '向下移动'}
+                %a.btn.btn-default.btn-xs.move-down.updown{href: "/bank/manage/wares/#{ware.id}/move_down", data: {method: 'put'}, title: '向下移动'}
                   %i.glyphicon.glyphicon-arrow-down
-                %a.btn.btn-default.btn-xs.move-up.updown{href: url_for([:move_up, :bank, :manage, ware]), data: {method: 'put'}, title: '向上移动'}
+                %a.btn.btn-default.btn-xs.move-up.updown{href: "/bank/manage/wares/#{ware.id}/move_up", data: {method: 'put'}, title: '向上移动'}
                   %i.glyphicon.glyphicon-arrow-up
+        %tfoot
+          %tr
+            %th{colspan: 4}
+              .pull-left
+                %a.btn.btn-success.btn-sm.new{:href => url_for([:new, :bank, :manage, @chapter, :ware])}
+                  %i.glyphicon.glyphicon-plus
+                  %span 增加课件
+              .pull-right
+                -#= paginate @chapters
