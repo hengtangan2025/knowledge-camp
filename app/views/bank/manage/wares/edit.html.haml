@@ -6,8 +6,21 @@
     %span /
     %a{href: url_for([:bank, :manage, @ware.chapter])}= @ware.chapter.title
     %span /
-    %a{href: url_for([:bank, :manage, @ware])}= @ware.title
+    %a{href: "/bank/manage/wares/#{@ware.id}"}= @ware.title
     %span /
     %span 修改
 
-= render "form"
+= simple_form_for @ware, url: "/bank/manage/wares/#{@ware.id}", method: :put do |f|
+  .form-inputs
+    = f.input :title, input_html: {name: "ware[title]"}
+    = f.input :desc, as: :text, input_html: {name: "ware[desc]"}
+  
+  %br
+  .form-actions
+    %button.btn.btn-primary.btn-submit{type: 'submit'}
+      %i.glyphicon.glyphicon-ok
+      %span 保存
+    %span.extra_buttons
+      %a.btn.btn-default{type: 'button', href: url_for([:bank, :manage, @ware.chapter])}
+        %i.glyphicon.glyphicon-remove
+        取消
