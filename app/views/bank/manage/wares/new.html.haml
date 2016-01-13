@@ -8,4 +8,20 @@
     %span /
     %span 上传课件
 
-= render "form"
+%ul.nav.nav-tabs
+  %li.active{role: 'presentation'}
+    %a#ware-upload-tab{href: '#ware-upload', role: 'tab', data: {toggle: 'tab'}, aria: {controls: 'ware-upload', expanded: 'true'}}
+      %span 上传
+  %li{role: 'presentation'}
+    %a#ware-info-tab{href: '#ware-info', role: 'tab', data: {toggle: 'tab'}, aria: {controls: 'ware-info'}}
+      %span 信息
+
+.tab-content
+  #ware-upload.tab-pane.active{aria: {labelledby: 'ware-upload-tab'}}
+    .well.text-center
+      %button.btn.btn-lg.btn-primary.btn-ware-upload{data: FilePartUpload.get_dom_data} 点击上传
+
+  #ware-info.tab-pane.fade{aria: {labelledby: 'ware-info-tab'}}
+    .progress
+      #ware-upload-progress.progress-bar{role: 'progressbar', aria: {valuemin: 0, valuenow: 0, valuemax: 100}, style: "width:0%" } 0%
+    = render "form"

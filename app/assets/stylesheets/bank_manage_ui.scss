@@ -120,6 +120,12 @@ body {
 }
 
 .page-manage{
+  .simple_form, .progress{
+    max-width: 600px;
+  }
+  .tab-content{
+    padding-top: 10px;
+  }
   .page-header{
     margin-top: 0;
   }

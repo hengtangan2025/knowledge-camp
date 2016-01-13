@@ -135,7 +135,8 @@ gem 'kc-course-editor',
 # -----金融学院相关
 gem 'kc_courses', :github => 'mindpin/kc_courses',
                   #:ref => "0452a90"
-                  :tag => "v0.2.0"
+                  :tag => "v0.5.0"
+                  #:path => "../kc_courses"
 
 gem 'simple-navbar', :github => 'mindpin/simple-navbar',
                      :tag => "0.0.6p1"
