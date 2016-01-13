@@ -10,5 +10,9 @@
 
 //= require bank_manage/jquery.qrcode.min
 //= require bank_manage/jssor.slider.min
+
+//= require bank_manage/underscore
+//= require bank_manage/pinchzoom
+
 //= require bank_manage/ware
 
