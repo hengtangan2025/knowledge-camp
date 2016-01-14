@@ -29,10 +29,10 @@ class FileEntityCkPlayer
 jQuery(document).on 'ready page:load', ->
   if jQuery(".page-ware-preview .ckplayer").length != 0
     new FileEntityCkPlayer jQuery(".page-ware-preview .ckplayer")
-  
+
   if jQuery('.ware-preview-qrcode').length != 0
     jQuery('.ware-preview-qrcode').popover
-      placement: 'bottom'
+      placement: 'top'
       trigger: 'hover'
       html: true
       template: '<div class="popover qrcode" role="tooltip"><div class="arrow"></div><h3 class="popover-title"></h3><div class="popover-content"></div></div>'
@@ -44,20 +44,20 @@ jQuery(document).on 'ready page:load', ->
           text: url
           width: 230
           height: 230
-          
+
   if jQuery(".image_slider").length != 0
     img_width = jQuery(".image_slider").data("pageWidth")
     img_height = jQuery(".image_slider").data("pageHeight")
 
     width  = jQuery("#image_slider_container").closest("div").width()
     height = width * img_height / img_width
-        
+
     # jQuery("#image_slider_container").css("width", width)
     jQuery("#image_slider_container").css("height", height)
     # jQuery('#image_slider_container .slides').css("width", width)
     jQuery('#image_slider_container .slides').css("height", height)
-    
-    options = 
+
+    options =
       $AutoPlay: false
       $SlideWidth: width - 10
       $SlideSpacing: 0
@@ -65,10 +65,10 @@ jQuery(document).on 'ready page:load', ->
       $Align: 5
       $Loop: 1
       $FillMode: 0
-      
+
     slider = new $JssorSlider$('image_slider_container', options)
     slider.$On $JssorSlider$.$EVT_PARK, (slide_index)->
       jQuery('.footer .page-info').text("#{slide_index + 1} / #{slider.$SlidesCount()}")
-    
+
     jQuery('#image_slider_container .slides img').each ->
       new RTP.PinchZoom jQuery(this)
