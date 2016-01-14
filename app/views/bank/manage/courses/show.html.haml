@@ -59,12 +59,12 @@
             = @chapters.count
             )
 
-      %li{role: 'presentation'}
-        %a{href: "#attachments", role: 'tab', data: {toggle: 'tab'}, aria: {controls: 'attachments'}}
-          %span
-            附件(
-            = @attachments.count
-            )
+      -# %li{role: 'presentation'}
+      -#   %a{href: "#attachments", role: 'tab', data: {toggle: 'tab'}, aria: {controls: 'attachments'}}
+      -#     %span
+      -#       附件(
+      -#       = @attachments.count
+      -#       )
 
     .tab-content
       #chapters.tab-pane.active{aria: {labelledby: 'chapters-tab'}}
@@ -97,27 +97,27 @@
                     %span 增加章节
                 .pull-right
                   -#= paginate @chapters
-
-      #attachments.tab-pane.fade{aria: {labelledby: 'attachments-tab'}}
-        %table.table.table-bordered.table-striped
-          %thead
-            %th.title 标题
-            %th.updated_at 更新时间
-            %th.opts 操作
-          %tbody
-            - @attachments.each do |attachment|
-              %tr.attachment
-                %td.title= attachment.file_entity.original
-                %td.updated_at= attachment.updated_at
-                %td.opts
-                  %a{href: url_for([:bank, :manage, attachment]), data: {method: 'delete', confirm: '你确定吗？'}} 删除
-
-            %tfoot
-              %tr
-                %th{colspan: 3}
-                  .pull-left
-                    %a.btn.btn-success.btn-sm.new{:href => url_for([:new, :bank, :manage, @course, :course_attachment])}
-                      %i.glyphicon.glyphicon-plus
-                      %span 增加相关资料
-                  .pull-right
-                    -#= paginate @chapters
+      -# 
+      -# #attachments.tab-pane.fade{aria: {labelledby: 'attachments-tab'}}
+      -#   %table.table.table-bordered.table-striped
+      -#     %thead
+      -#       %th.title 标题
+      -#       %th.updated_at 更新时间
+      -#       %th.opts 操作
+      -#     %tbody
+      -#       - @attachments.each do |attachment|
+      -#         %tr.attachment
+      -#           %td.title= attachment.file_entity.original
+      -#           %td.updated_at= attachment.updated_at
+      -#           %td.opts
+      -#             %a{href: url_for([:bank, :manage, attachment]), data: {method: 'delete', confirm: '你确定吗？'}} 删除
+      -#
+      -#       %tfoot
+      -#         %tr
+      -#           %th{colspan: 3}
+      -#             .pull-left
+      -#               %a.btn.btn-success.btn-sm.new{:href => url_for([:new, :bank, :manage, @course, :course_attachment])}
+      -#                 %i.glyphicon.glyphicon-plus
+      -#                 %span 增加相关资料
+      -#             .pull-right
+      -#               -#= paginate @chapters
