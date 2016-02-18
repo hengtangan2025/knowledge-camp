@@ -1,4 +1,4 @@
-class Bank::CoursesController < Bank::ApplicationController
+class Bank::Teaching::CoursesController < Bank::ApplicationController
   def index
     @courses = KcCourses::Course.published.recent.page(params[:page]).per(16)
   end

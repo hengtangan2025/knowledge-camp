@@ -1,4 +1,4 @@
-class Bank::Manage::CoursesController < Bank::Manage::ApplicationController
+class Bank::Manage::Teaching::CoursesController < Bank::Manage::ApplicationController
   def index
     @courses = current_user.courses.page(params[:page])
   end

@@ -1,4 +1,4 @@
-class Bank::Manage::CourseAttachmentsController < Bank::Manage::ApplicationController
+class Bank::Manage::Teaching::CourseAttachmentsController < Bank::Manage::ApplicationController
   before_filter :set_course, only: [:create, :new]
 
   def new

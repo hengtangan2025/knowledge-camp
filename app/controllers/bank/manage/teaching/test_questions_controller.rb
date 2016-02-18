@@ -1,4 +1,4 @@
-class Bank::Manage::TestQuestionsController < Bank::Manage::ApplicationController
+class Bank::Manage::Teaching::TestQuestionsController < Bank::Manage::ApplicationController
   def index
     @questions = QuestionBank::Question.all.order(:created_at.desc).page(params[:page]).per(16)
 

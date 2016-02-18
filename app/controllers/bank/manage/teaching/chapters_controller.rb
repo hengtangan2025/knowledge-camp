@@ -1,4 +1,4 @@
-class Bank::Manage::ChaptersController < Bank::Manage::ApplicationController
+class Bank::Manage::Teaching::ChaptersController < Bank::Manage::ApplicationController
   before_action :set_course, only: [:create, :new]
 
   def show

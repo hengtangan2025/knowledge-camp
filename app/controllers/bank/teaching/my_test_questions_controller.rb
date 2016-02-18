@@ -1,4 +1,4 @@
-class Bank::MyTestQuestionsController < Bank::ApplicationController
+class Bank::Teaching::MyTestQuestionsController < Bank::ApplicationController
   def records
     @question_records = current_user.question_records
 

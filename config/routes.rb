@@ -86,11 +86,13 @@ Rails.application.routes.draw do
   Bucketerize::Routing.mount '/bank/bucketerize', as: 'bucketerize'
   KcCourses::Routing.mount '/bank/kc_courses', as: :kc_courses
   #EngineManager::Routing.mount '/bank/manager', :as => 'engine_manager'
-  namespace :bank do
+
+  # 新版功能的集成代码
+  scope :path => "/bank", module: 'bank', :as => :bank do
 
     root "index#index"
     get '/my_test_questions', to: redirect{'/bank/my_test_questions/records'}
-    resources :my_test_questions do
+    resources :my_test_questions, module: :teaching do
       get :records, on: :collection
       get :flaw,    on: :collection
       get :fav,     on: :collection
@@ -99,11 +101,11 @@ Rails.application.routes.draw do
       get  :do_form, on: :member
     end
 
-    resources :my_questions
-    resources :my_answers
-    resources :my_notes
+    resources :my_questions, module: :teaching
+    resources :my_answers, module: :teaching
+    resources :my_notes, module: :teaching
 
-    resources :courses do
+    resources :courses, module: :teaching do
       get :mine, on: :collection
       get :hot, on: :collection
       get :studying, on: :collection
@@ -129,12 +131,12 @@ Rails.application.routes.draw do
     # get "/dashboard/questions"             => "dashboard#questions"
     # get "/dashboard/notes"                 => "dashboard#notes"
 
-    scope "test_papers/:test_paper_id" do
+    scope "test_papers/:test_paper_id", module: :teaching do
       resources :test_paper_results
     end
 
-    namespace :manage do
-      resources :courses, :shallow => true do
+    scope :path => :manage, module: :manage, :as => :manage do
+      resources :courses, module: :teaching, :shallow => true do
         post :publish, on: :member
         resources :course_attachments, :shallow => true
         resources :chapters, :shallow => true do
@@ -152,7 +154,7 @@ Rails.application.routes.draw do
         end
       end
 
-      resources :test_questions do
+      resources :test_questions, module: :teaching do
         get :new_single_choice, on: :collection
         get :new_multi_choice, on: :collection
         get :new_bool, on: :collection
@@ -162,7 +164,7 @@ Rails.application.routes.draw do
         get :search, on: :collection
       end
 
-      resources :test_papers, :shallow => true do
+      resources :test_papers, module: :teaching, :shallow => true do
         match :preview, on: :collection, via: [:post, :patch]
         post :enable, on: :member
         post :disable, on: :member

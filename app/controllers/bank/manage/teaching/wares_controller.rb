@@ -1,4 +1,4 @@
-class Bank::Manage::WaresController < Bank::Manage::ApplicationController
+class Bank::Manage::Teaching::WaresController < Bank::Manage::ApplicationController
   before_action :set_chapter, only: [:new, :create]
   def show
     @ware = current_user.wares.find params[:id]
