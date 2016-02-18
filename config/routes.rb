@@ -1,13 +1,19 @@
 Rails.application.routes.draw do
 
   # api
-  mount KnowledgeCampApi::Engine => '/api'
+  #mount KnowledgeCampApi::Engine => '/api'
 
+  ## 学生界面
+  #mount Explore::Engine => '/explore'
+
+  ## 课程编辑
+  #mount CourseEditor::Engine => '/course_editor'
+  # api
+  mount KnowledgeCampApi::Engine => '/e/o/api', :as => :e_old_api
   # 学生界面
-  mount Explore::Engine => '/explore'
-
+  mount Explore::Engine          => '/e/o/explore', :as => :e_old_explore
   # 课程编辑
-  mount CourseEditor::Engine => '/course_editor'
+  mount CourseEditor::Engine     => '/e/o/course_editor', :as => :e_old_course_editor
 
   # -----------------------
 
