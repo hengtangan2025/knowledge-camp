@@ -110,19 +110,19 @@ module ApplicationHelper
       c2 = parse_color(s2)
       weight = Number.new(i3)
 
-      c = Functions::EvaluationContext.new({}).mix(c1, c2, weight)
+      c = Functions::EvaluationContext.new(Sass::Environment.new).mix(c1, c2, weight)
       c.options = {}
       return c
     end
 
     def self.invert(c1)
-      c = Functions::EvaluationContext.new({}).invert(c1)
+      c = Functions::EvaluationContext.new(Sass::Environment.new).invert(c1)
       c.options = {}
       return c
     end
 
     def self.grayscale(c1)
-      c = Functions::EvaluationContext.new({}).grayscale(c1)
+      c = Functions::EvaluationContext.new(Sass::Environment.new).grayscale(c1)
       c.options = {}
       return c
     end
@@ -131,7 +131,7 @@ module ApplicationHelper
       c1 = parse_color(s1)
 
       amount = Number.new(10)
-      c = Functions::EvaluationContext.new({}).darken(c1, amount)
+      c = Functions::EvaluationContext.new(Sass::Environment.new).darken(c1, amount)
       c.options = {}
       return c
     end
