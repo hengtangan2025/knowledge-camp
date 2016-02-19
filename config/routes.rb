@@ -76,11 +76,16 @@ Rails.application.routes.draw do
 
   # --------------------
   # 金融学院暂时单独使用 bank 命名空间
+
+  # 新版功能的 engine
   # 题库组卷
   mount QuestionBank::Engine   => '/e/test_question', :as => :e_test_question
-  FilePartUpload::Routing.mount "/bank/file_part_upload", :as => :file_part_upload
-  Bucketerize::Routing.mount '/bank/bucketerize', as: 'bucketerize'
-  KcCourses::Routing.mount '/bank/kc_courses', as: :kc_courses
+  # 文件上传
+  FilePartUpload::Routing.mount "/e/file_part_upload", :as => :e_file_part_upload
+  # 收藏功能
+  Bucketerize::Routing.mount '/e/bucketerize', as: :e_bucketerize
+  # 课程功能
+  KcCourses::Routing.mount '/e/kc_courses', as: :e_courses
   #EngineManager::Routing.mount '/bank/manager', :as => 'engine_manager'
 
   # 新版功能的集成代码
