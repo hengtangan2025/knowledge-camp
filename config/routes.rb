@@ -1,14 +1,6 @@
 Rails.application.routes.draw do
 
   # api
-  #mount KnowledgeCampApi::Engine => '/api'
-
-  ## 学生界面
-  #mount Explore::Engine => '/explore'
-
-  ## 课程编辑
-  #mount CourseEditor::Engine => '/course_editor'
-  # api
   mount KnowledgeCampApi::Engine => '/e/o/api', :as => :e_old_api
   # 学生界面
   mount Explore::Engine          => '/e/o/explore', :as => :e_old_explore
@@ -84,7 +76,8 @@ Rails.application.routes.draw do
 
   # --------------------
   # 金融学院暂时单独使用 bank 命名空间
-  mount QuestionBank::Engine => '/bank/question_bank', :as => 'question_bank'
+  # 题库组卷
+  mount QuestionBank::Engine   => '/e/test_question', :as => :e_test_question
   FilePartUpload::Routing.mount "/bank/file_part_upload", :as => :file_part_upload
   Bucketerize::Routing.mount '/bank/bucketerize', as: 'bucketerize'
   KcCourses::Routing.mount '/bank/kc_courses', as: :kc_courses

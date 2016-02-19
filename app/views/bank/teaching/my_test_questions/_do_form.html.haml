@@ -8,7 +8,7 @@
           .has
             %button.btn.btn-info 已收藏
 
-      %form{:action => "/bank/question_bank/questions/#{@question.id.to_s}/do_question_validation", :method => :post}
+      %form{:action => "/e/test_question/questions/#{@question.id.to_s}/do_question_validation", :method => :post}
 
         .question-title= @question.content
 

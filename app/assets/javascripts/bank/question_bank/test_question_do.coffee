@@ -1,4 +1,4 @@
-question_bank_engine_prefix = "/bank/question_bank"
+question_bank_engine_prefix = "/e/test_question"
 
 class Questiondo
   constructor: (@$ele, options)->
