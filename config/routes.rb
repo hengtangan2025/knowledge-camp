@@ -19,6 +19,7 @@ Rails.application.routes.draw do
 
   root 'index#index'
 
+  # 老版功能中的集成代码
   devise_for :users, :skip => :all
   as :user do
     get    "/account/sign_in"  => "sessions#new"
@@ -26,56 +27,58 @@ Rails.application.routes.draw do
     delete "/account/sign_out" => "sessions#destroy"
   end
 
-  namespace :manage do
-    resources :nets, :shallow => true do
-      member do
-        get :graph
-      end
-
-      resources :files, :shallow => true
-
-      resources :points, :shallow => true do
+  scope :path => "/o", :module => "old", :as => 'old' do
+    # 知识网咯管理
+    scope :path => '/manage', :module => 'manage', :as => 'manage' do
+      resources :nets, :shallow => true do
         member do
-          # TODO 改成体验更好的形式
-          get :assign_parent
-          get :assign_child
-          patch :do_assign
+          get :graph
         end
 
-        resources :files, :shallow => true, :controller => :point_files
-      end
+        resources :files, :shallow => true
 
-      resources :documents, :shallow => true do
-        resources :versions,
-                  :shallow => true,
-                  :controller => :document_versions do
-          collection do
-            get ":version", :action => :version
-            post ":version/restore", :action => :restore
+        resources :points, :shallow => true do
+          member do
+            # TODO 改成体验更好的形式
+            get :assign_parent
+            get :assign_child
+            patch :do_assign
+          end
+
+          resources :files, :shallow => true, :controller => :point_files
+        end
+
+        resources :documents, :shallow => true do
+          resources :versions,
+                    :shallow => true,
+                    :controller => :document_versions do
+            collection do
+              get ":version", :action => :version
+              post ":version/restore", :action => :restore
+            end
           end
         end
+        resources :plans, :shallow => true
       end
-      resources :plans, :shallow => true
+
+      resources :users, :shallow => true do
+        resource :avatar, :shallow => true
+      end
     end
 
-    resources :users, :shallow => true do
-      resource :avatar, :shallow => true
+    # 演示示例
+    scope :path => '/sample', :module => 'sample', :as => 'sample' do
+      resources :nets, :shallow => true do
+        resources :tutorials
+        resources :students
+        resources :points
+      end
     end
-  end
 
-  resources :plans, :shallow => true do
-    resources :topics do
-      resources :tutorials
-    end
-  end
-
-  # -----------------
-
-  namespace :sample do
-    resources :nets, :shallow => true do
-      resources :tutorials
-      resources :students
-      resources :points
+    resources :plans, :shallow => true do
+      resources :topics do
+        resources :tutorials
+      end
     end
   end
 

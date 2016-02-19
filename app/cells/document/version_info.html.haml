@@ -12,7 +12,7 @@
     %strong #{@document.version}
 
   .count
-    %a.history{:href => url_for([:manage, @document, :versions]), :data => {:toggle => ['open', 'close']}}
+    %a.history{:href => url_for([:old, :manage, @document, :versions]), :data => {:toggle => ['open', 'close']}}
       %span 总共 #{@document.versions.count + 1} 个历史版本
 
   = render_cell :document, :versions_list, @document, @document

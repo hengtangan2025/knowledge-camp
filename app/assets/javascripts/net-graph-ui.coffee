@@ -11,5 +11,5 @@ jQuery(document).on 'ready page:load', ->
     seajs.use 'graph/view', (KnowledgeView)->
       net_id = jQuery('body').data('net')
 
-      jQuery.getJSON "/manage/nets/#{net_id}.json", (data)->
+      jQuery.getJSON "/o/manage/nets/#{net_id}.json", (data)->
         new KnowledgeView jQuery('.graph-paper'), data

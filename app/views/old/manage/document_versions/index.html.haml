@@ -1,0 +1,18 @@
+.page-side.col-pad-1
+
+.page-main.col-pad-10
+  .page-bread-pieces
+    .bread{:style => 'margin-left:10px;margin-right:10px;'}
+      .link.net
+        %a{:href => url_for([:old, :manage, @document.net]), :data => {:toggle => ['open', 'close']}}
+          = @document.net.name
+      .bread.current
+        .documents
+          .title #{@document.title} - 历史版本
+          %ul
+            - @document.versions.each do |doc|
+              %li
+                %a{:href => "/o/manage/documents/#{@document.id}/versions/#{doc.version}"}= doc.title
+
+          %a.back{:href => "/o/manage/documents/#{@document.id}"}
+            返回
