@@ -165,4 +165,8 @@ Rails.application.routes.draw do
       resources :model_labels
     end
   end
+
+  # ------------------
+  # kc mobile 2016 mockup
+  get '/mockup/:page' => 'mockup#page'
 end

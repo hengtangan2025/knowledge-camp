@@ -157,6 +157,6 @@ gem 'question_bank', github: 'mindpin/question_bank',
 gem 'model_label', github: 'kc-train/model_label',
                     :ref => "ffbc999"
 
-gem 'react-rails', '~> 1.0'
+gem 'react-rails', '~> 1.2.0'
 gem 'sprockets-coffee-react', '~> 3.0.1'
 # ----
