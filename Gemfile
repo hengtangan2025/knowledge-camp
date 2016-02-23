@@ -159,4 +159,8 @@ gem 'model_label', github: 'kc-train/model_label',
 
 gem 'react-rails', '~> 1.2.0'
 gem 'sprockets-coffee-react', '~> 3.0.1'
-# ----
+
+# 通过 rails assets 服务加载前端包
+source 'https://rails-assets.org' do
+  gem 'rails-assets-semantic'
+end

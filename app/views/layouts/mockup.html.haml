@@ -8,8 +8,27 @@
 
     = csrf_meta_tags
 
-    = stylesheet_link_tag :mockup, media: :screen, :'data-turbolinks-track' => true
+    = stylesheet_link_tag :mockup, :'data-turbolinks-track' => true
     = javascript_include_tag :mockup, :'data-turbolinks-track' => true
 
   %body
-    
+    :ruby
+      menu_data = {
+        home: mockup_url(page: 'home'),
+        left: {
+          '课程类目一' => mockup_url(page: 'courses', category: '1'),
+          '课程类目二' => mockup_url(page: 'courses', category: '2'),
+          '课程类目三' => mockup_url(page: 'courses', category: '3'),
+        },
+
+        right: {
+          '登录' => mockup_url(page: 'sign_in'),
+          '注册' => mockup_url(page: 'sign_up'),
+          '帮助' => mockup_url(page: 'help'),
+          '关于' => mockup_url(page: 'about'),
+        }
+      }
+    = react_component 'LayoutTopMenu', data: menu_data
+
+    .layout-page-content
+      = yield

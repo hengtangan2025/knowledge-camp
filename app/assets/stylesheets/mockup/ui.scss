@@ -1,0 +1,126 @@
+.courses-page {
+  background-color: #F8F8F8;
+  padding-bottom: 3em;
+
+  .top-cover {
+    height: 14em;
+    position: relative;
+    margin-bottom: 1em;
+    background-size: cover;
+    background-color: #4E4E4E;
+
+    color: white;
+    .ui.header {
+      color: white;
+      margin-top: 1em;
+    }
+    .description {
+      font-size: 16px;
+    }
+  }
+
+  .cards-bg {
+    // background-color: #E6E6E6;
+    // padding: 1em;
+  }
+
+  .card {
+    border-radius: 0 !important;
+    box-shadow: 1px 2px 5px #ccc !important;
+    .image {
+      height: 150px;
+      position: relative;
+      overflow: hidden;
+      .ig {
+        position: absolute;
+        top:0;left:0;right:0;bottom:0;
+        background-size: cover;
+        -webkit-filter: blur(0) grayscale(0);
+        filter: blur(0) grayscale(0);
+      }
+      .btnoverlay {
+        transition: opacity ease .3s;
+        opacity: 0;
+        pointer-events: none;
+        position: absolute;
+        top:0;left:0;right:0;bottom:0;
+        background-color: rgba(black, 0.6);
+        text-align: center;
+        .button {
+          margin-right: 0;
+          margin-top: 3em;
+          pointer-events: none;
+        }
+      }
+    }
+    .content {
+      border-top:0 none !important;
+
+      .header {
+        // font-size: 16px !important;
+      }
+    }
+
+    &:hover {
+      .image .ig {
+        -webkit-filter: blur(5px) grayscale(0.7);
+        filter: blur(5px) grayscale(0.7);
+      }
+      .image .btnoverlay {
+        opacity: 1;
+      }
+    }
+  }
+
+  .pagination-bar {
+    margin-top: 2em;
+    @include clearfix;
+  }
+}
+
+
+.course-show-page {
+  .c-head {
+    background-color: #2185D0;
+
+    .c-info {
+      background-color: #FFF;
+      padding: 1em;
+      @include clearfix;
+
+      $w: 24em;
+      $h: $w / 16 * 10;
+
+      $w1: 16em;
+      .image {
+        width: $w;
+        height: $h;
+        background-size: cover;
+        float: left;
+      }
+
+      .detail {
+        margin-left: $w + 2em;
+        margin-right: $w1 + 2em;
+        .ui.header {
+          font-weight: normal !important;
+        }
+        .description {
+          font-size: 16px;
+        }
+      }
+
+      .ops {
+        float: right;
+        width: $w1;
+        height: $h;
+        text-align: center;
+        background-color: rgba(black, 0.05);
+        .start {
+          margin-top: 2em;
+          margin-right: 0;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,33 @@
+// *= require semantic
+
+@mixin clearfix {
+  &:after {
+    content: " ";
+    display: block;
+    clear: both;
+    height: 0;
+  }
+}
+
+@import 'mockup/layout';
+@import 'mockup/ui';
+
+body,
+
+.ui.menu,
+
+.ui.cards > .card > .content > .header, 
+.ui.card > .content > .header,
+
+.ui.header,
+
+.ui.button
+{
+  font-family: "Segoe UI", "Helvetica Neue", "Helvetica", "Arial", "sans-serif", "微软雅黑" !important;
+}
+
+.ui.cards > .card > :first-child, 
+.ui.card > :first-child
+{
+  border-radius: 0 !important;
+}

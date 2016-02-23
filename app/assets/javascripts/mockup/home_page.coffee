@@ -1,3 +1,3 @@
 @HomePage = React.createClass
   render: ->
-    <div>aaa</div>
+    <div className='home-page'>首页</div>
