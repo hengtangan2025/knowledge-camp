@@ -56,12 +56,12 @@
           %td= flaw.question.human_kind
           %td
             %a{class: "redo-question", target: '_blank', href: "/bank/my_test_questions/#{flaw.question_id.to_s}/do_form"} 重做
-            %a{class: "delete-flaw", href: 'javascript:;', data: {:question_flaw_id => flaw.id.to_s}} 删除
+            %a{class: "delete-flaw", href: 'javascript:;', data: {question_flaw_id: flaw.id.to_s, question_flaw_url: e_test_question.question_flaw_path(flaw)}} 删除
 
   .flaw-batch
     .checkbox
       %label
         %input{type: 'checkbox', name: "check-all"} 全选
-    %a.btn.btn-default.batch-delete-flaw{:role=>"button"}
+    %a.btn.btn-default.batch-delete-flaw{:role=>"button", data: {batch_destroy_question_flaws_url: e_test_question.batch_destroy_question_flaws_path}}
       %i.glyphicon.glyphicon-trash
       %span 批量删除

@@ -9,7 +9,7 @@ jQuery(document).on 'ready page:load', ->
         'graph': 'graph'
 
     seajs.use 'graph/view', (KnowledgeView)->
-      net_id = jQuery('body').data('net')
+      #net_id = jQuery('body').data('net')
 
-      jQuery.getJSON "/o/manage/nets/#{net_id}.json", (data)->
+      jQuery.getJSON jQuery('body').data('url'), (data)->
         new KnowledgeView jQuery('.graph-paper'), data

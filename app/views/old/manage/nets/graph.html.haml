@@ -9,7 +9,7 @@
     = csrf_meta_tags
     = javascript_include_tag 'application'
 
-  %body.net-graph{:data => {:net => @net.id}}
+  %body.net-graph{:data => {net: @net.id, url: old_manage_net_path(@net)}}
     .page-content
       .sidebar
         .net-info

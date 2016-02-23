@@ -21,9 +21,9 @@ class QuestionFlawList
 
       target = jQuery evt.target
       tr = target.closest "tr"
-      question_flaw_id = target.data "questionFlawId"
+      question_flaw_url = target.data "questionFlawUrl"
       jQuery.ajax
-        url: "#{question_bank_engine_prefix}/question_flaws/#{question_flaw_id}"
+        url: questionFlawUrl
         method: "DELETE"
         success: (msg)=>
           tr.remove()
@@ -41,16 +41,18 @@ class QuestionFlawList
       return if ids.length == 0
       return if !confirm("确定删除么？")
 
-      jQuery.ajax
-        url: "#{question_bank_engine_prefix}/question_flaws/batch_destroy"
-        method: "delete"
-        data:
-          question_flaw_ids: ids
-        dataType: "json"
-        success: (msg)=>
-          console.log msg
-          jQuery.each $tr_arr, (index, $tr)=>
-            $tr.remove()
+      $target = jQuery(evt.target).closest('.batch-delete-flaw')
+      if $target.data('batchDestroyQuestionFlawsUrl')
+        jQuery.ajax
+          url: $target.data('batchDestroyQuestionFlawsUrl')
+          method: "delete"
+          data:
+            question_flaw_ids: ids
+          dataType: "json"
+          success: (msg)=>
+            console.log msg
+            jQuery.each $tr_arr, (index, $tr)=>
+              $tr.remove()
 
 
 jQuery(document).on "ready page:load", ->

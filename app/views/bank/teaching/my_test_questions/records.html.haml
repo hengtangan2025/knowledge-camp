@@ -1,4 +1,4 @@
-.page-question-records
+.page-question-records{data: {question_flaws_url: e_test_question.question_flaws_path, batch_destroy_question_records_url: e_test_question.batch_destroy_question_records_path, batch_create_question_flaws_url: e_test_question.batch_create_question_flaws_path}}
   = simple_navtabs(:bank_my_test_questions)
 
   = quick_filter_bar do |b|
@@ -47,7 +47,7 @@
                 %span.flawed.hide 已经加入错题本
               - else
                 %span.flawed 已经加入错题本
-            %a{class: "delete-record", href: 'javascript:;', data: {question_record_id: record.id.to_s}} 删除记录
+            %a{class: "delete-record", href: 'javascript:;', data: {question_record_url: e_test_question.question_record_path(record)}} 删除记录
 
   .record-batch
     .checkbox
