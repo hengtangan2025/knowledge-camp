@@ -1,5 +1,4 @@
 .courses-page {
-  background-color: #F8F8F8;
   padding-bottom: 3em;
 
   .top-cover {
@@ -75,13 +74,17 @@
   .pagination-bar {
     margin-top: 2em;
     @include clearfix;
+    text-align: center;
   }
 }
 
 
 .course-show-page {
+  // $bgc: #2185D0;
+  $bgc: #2A70E8;
+
   .c-head {
-    background-color: #2185D0;
+    background-color: lighten($bgc, 10%);
 
     .c-info {
       background-color: #FFF;
@@ -102,10 +105,25 @@
       .detail {
         margin-left: $w + 2em;
         margin-right: $w1 + 2em;
+        max-height: 11em;
         .ui.header {
           font-weight: normal !important;
         }
         .description {
+          font-size: 16px;
+        }
+      }
+
+      .publisher {
+        margin-left: $w + 2em;
+        margin-right: $w1 + 2em;
+        margin-top: 2em;
+        color: rgba(black, 0.4);
+        .instructor {
+          font-size: 16px;
+          margin-right: 1em;
+        }
+        .published_at {
           font-size: 16px;
         }
       }
@@ -115,10 +133,26 @@
         width: $w1;
         height: $h;
         text-align: center;
-        background-color: rgba(black, 0.05);
+        background-color: rgba($bgc, 0.05);
         .start {
-          margin-top: 2em;
+          width: 160px;
+          margin-top: 3em;
           margin-right: 0;
+        }
+        .fav {
+          margin-top: 1em;
+          margin-right: 0;
+          .label {
+            width: 70px;
+            text-align: center;
+            display: block;
+            line-height: 1.5em;
+          }
+          .button {
+            width: 90px;
+            padding-left: 10px;
+            padding-right: 10px;
+          }
         }
       }
     }

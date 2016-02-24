@@ -11,6 +11,11 @@
 
 @import 'mockup/layout';
 @import 'mockup/ui';
+@import 'mockup/widgets';
+
+body {
+  background-color: #F8F8F8;
+}
 
 body,
 
@@ -21,13 +26,20 @@ body,
 
 .ui.header,
 
-.ui.button
+.ui.button,
 {
   font-family: "Segoe UI", "Helvetica Neue", "Helvetica", "Arial", "sans-serif", "微软雅黑" !important;
 }
 
 .ui.cards > .card > :first-child, 
-.ui.card > :first-child
+.ui.card > :first-child,
+
+.ui.segment,
 {
   border-radius: 0 !important;
+}
+
+.ui.segment.noshadow {
+  box-shadow: none;
+  border-color: #CACACA;
 }

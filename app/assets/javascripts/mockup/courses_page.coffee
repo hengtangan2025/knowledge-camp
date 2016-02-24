@@ -49,11 +49,5 @@
     Pagination: React.createClass
       render: ->
         <div className='pagination-bar'>
-          <div className="ui pagination menu floated right">
-            <a className="active item">1</a>
-            <div className="disabled item">...</div>
-            <a className="item">10</a>
-            <a className="item">11</a>
-            <a className="item">12</a>
-          </div>
+          <Pagination />
         </div>
