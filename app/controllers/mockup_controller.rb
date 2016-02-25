@@ -126,6 +126,16 @@ class MockupController < ApplicationController
       subject: '电子商务',
       price: '免费',
       effort: '4 个视频，合计 120 分钟；有结课测验；',
+
+      chapters: [
+        name: '电商基础',
+        wares: [
+          {name:'农民朋友做农产品如何选择电商平台', kind: 'video', learned: 'done', time: '37′12″'},
+          {name:'教做农产品的朋友认识天猫平台', kind: 'video', learned: 'half', time: '37′12″'},
+          {name:'教做农产品的朋友认识淘宝平台', kind: 'video', learned: 'no', time: '37′12″'},
+          {name:'电子商务和物流的基础概念', kind: 'document', learned: 'no'},
+        ]
+      ]
     }
   end
 end

@@ -16,7 +16,7 @@
                 </div>
 
                 <div className='ops'>
-                  <a className='ui button orange large start'>开始学习</a>
+                  <a className='ui button blue large start'>开始学习</a>
                   <div className='ui left labeled button fav'>
                     <span className='ui basic right pointing label'>128</span>
                     <div className='ui button large olive'>
@@ -62,8 +62,9 @@
           <div className='ui container'>
             <div className='ui segment basic grid'>
               <div className='eleven wide column'>
-                <div className='ui segment noshadow'>
-                  课程详情
+                <div className='ui segment noshadow contents'>
+                  <h3 className='ui header'>课程目录</h3>
+                  <CourseWaresList data={@props.data} />
                 </div>
               </div>
 

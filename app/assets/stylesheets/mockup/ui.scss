@@ -85,6 +85,7 @@
 
   .c-head {
     background-color: lighten($bgc, 10%);
+    // background-color: rgba($bgc, 0.7);
 
     .c-info {
       background-color: #FFF;
@@ -111,6 +112,7 @@
         }
         .description {
           font-size: 16px;
+          color: $desc-text-color;
         }
       }
 
@@ -154,6 +156,15 @@
             padding-right: 10px;
           }
         }
+      }
+    }
+  }
+  .c-body {
+    .contents {
+      .ui.header {
+        font-size: 1.5rem;
+        font-weight: normal;
+        // margin-left: 10px;
       }
     }
   }
