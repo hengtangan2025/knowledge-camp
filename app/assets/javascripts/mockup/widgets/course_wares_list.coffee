@@ -36,7 +36,7 @@
                 else
                   <span></span>
 
-            <a key={idx} className="ware learned-#{ware.learned}" href='javascript:;'>
+            <a key={idx} className="ware learned-#{ware.learned}" href="/mockup/ware_show">
               <span className='tail'>{tail}</span>
               <div className='pipe'></div>
               <div className='cwicon'>

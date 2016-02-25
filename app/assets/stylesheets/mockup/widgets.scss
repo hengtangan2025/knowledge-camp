@@ -158,3 +158,23 @@
     }
   }
 }
+
+.comments-list {
+  .ui.reply.form {
+    margin-bottom: 1em;
+    border-bottom: solid 1px #ddd;
+    padding-bottom: 1em;
+
+    textarea.text-ipt {
+      min-height: 5em;
+      height: 6em;
+      resize: none;
+    }
+    .btns {
+      text-align: right;
+      .ui.button {
+        margin-right: 0;
+      }
+    }
+  }
+}

@@ -1,8 +1,8 @@
 class MockupController < ApplicationController
   layout -> {
     case params[:page]
-    when 'condition'
-      'mockup'
+    when 'ware_show'
+      'mockup_course_ware'
     else
       'mockup'
     end
@@ -15,6 +15,8 @@ class MockupController < ApplicationController
       get_courses_data
     when 'course_show'
       get_course_show_data
+    when 'ware_show'
+      get_ware_show_data
     end
   end
 
@@ -135,6 +137,37 @@ class MockupController < ApplicationController
           {name:'教做农产品的朋友认识淘宝平台', kind: 'video', learned: 'no', time: '37′12″'},
           {name:'电子商务和物流的基础概念', kind: 'document', learned: 'no'},
         ]
+      ]
+    }
+  end
+
+  def get_ware_show_data
+    @component_data = {
+      comments: [
+        {
+          author: {
+            name: '若水之约',
+            avatar: 'http://i.teamkn.com/i/mT5dd6tj.png',
+          },
+          content: '好，很细致',
+          date: '2016-02-02',
+        },
+        {
+          author: {
+            name: 'ia0020028',
+            avatar: 'http://i.teamkn.com/i/c0qMJWx9.png',
+          },
+          content: '讲得蛮好，课程再出多些就好了，期待后续',
+          date: '2016-02-02',
+        },
+        {
+          author: {
+            name: '轩维诗',
+            avatar: 'http://i.teamkn.com/i/ws2SUCrM.png',
+          },
+          content: '很详细，就是太累了',
+          date: '2016-02-02',
+        },
       ]
     }
   end

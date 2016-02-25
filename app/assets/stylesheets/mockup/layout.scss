@@ -1,3 +1,7 @@
+body.course-ware {
+  overflow: hidden;
+}
+
 .layout-top-menu {
   .item.logo {
     font-weight: bold;
@@ -7,4 +11,39 @@
 .layout-page-content {
   position: relative;
   top: 5em;
+}
+
+.layout-page-footer {
+  background-color: #FFF;
+  border-top: solid 1px #ddd;
+  min-height: 14em;
+  position: relative;
+  top: 7em;
+
+  .description {
+    color: $desc-text-color;
+  }
+
+  .links {
+    @include clearfix;
+    margin-bottom: 2em;
+    .link {
+      float: left;
+      margin-right: 1em;
+      margin-bottom: 1em;
+      border-bottom: transparent solid 1px;
+      &:hover {
+        border-bottom: solid 1px #4183c4;
+      }
+    }
+  }
+
+  .logo {
+    .lbg {
+      min-height: 7em;
+      background-size: contain;
+      background-position: center center;
+      background-repeat: no-repeat;
+    }
+  }
 }
