@@ -1,5 +1,3 @@
-question_bank_engine_prefix = "/e/test_question"
-
 class Questiondo
   constructor: (@$ele, options)->
     @bind_event()

@@ -1,5 +1,3 @@
-question_bank_engine_prefix = "/e/test_question"
-
 class TestPaperResult
   constructor: (@$ele)->
     @bind_event()

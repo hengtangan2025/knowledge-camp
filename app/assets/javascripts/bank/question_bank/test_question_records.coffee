@@ -1,5 +1,3 @@
-question_bank_engine_prefix = "/e/test_question"
-
 class QuestionRecordList
   constructor: (@$ele)->
     @_init()

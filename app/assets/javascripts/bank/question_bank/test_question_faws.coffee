@@ -1,5 +1,3 @@
-question_bank_engine_prefix = "/e/test_question"
-
 class QuestionFlawList
   constructor: (@$ele)->
     @bind_event()
