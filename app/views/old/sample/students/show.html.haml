@@ -15,7 +15,7 @@
     - learned_tutorials.each do |tutorial|
       .his
         .tutorial
-          %a.box{:href => "/o/sample/tutorials/#{tutorial.id}", :data => {:toggle => true}}
+          %a.box{:href => old_sample_tutorial_path(tutorial.id), :data => {:toggle => true}}
             :ruby
               steps_count = tutorial.steps.count
               imgs_count = tutorial.steps.map{|s| s[:imgs].length}.sum
@@ -25,7 +25,7 @@
             .info
               .title= tutorial.title
         :ruby
-          mark = learner.marks.select {|x| 
+          mark = learner.marks.select {|x|
             x.tutorial_id == tutorial.id
           }.first
 

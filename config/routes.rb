@@ -41,12 +41,10 @@ Rails.application.routes.draw do
         end
 
         resources :documents, :shallow => true do
-          resources :versions,
-                    :shallow => true,
-                    :controller => :document_versions do
+          resources :versions, :shallow => true, :controller => :document_versions do
             collection do
-              get ":version", :action => :version
-              post ":version/restore", :action => :restore
+              get ":version", :action => :version, :as => :version
+              post ":version/restore", :action => :restore, :as => :restore
             end
           end
         end

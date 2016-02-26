@@ -10,7 +10,7 @@
           - label_l = t('simple_form.labels.user.login')
           - label_p = t('simple_form.labels.user.password')
 
-          = simple_form_for :user, url: '/account/sign_in', html: { novalidate: true } do |f|
+          = simple_form_for :user, url: account_sign_in_path, html: { novalidate: true } do |f|
             .form-group
               = f.input :login, input_html: { class: 'form-control' }, placeholder: label_l, label: false
             .form-group
@@ -21,7 +21,7 @@
               = f.input :remember_me, as: :boolean, input_html: { checked: true }
             .auth-msg{style: 'display:none;'} 提示信息
             .form-group.btns{:'data-no-turbolink' => true}
-              %a.btn.btn-rounded.btn-bdb-info.btn-block.btn-large{href: '/e/o/explore'}
+              %a.btn.btn-rounded.btn-bdb-info.btn-block.btn-large{href: e_old_explore.root_path}
                 %i.fa.fa-arrow-right
                 %span 进入浏览
 
@@ -30,7 +30,7 @@
         .intro
           .version VERSION: PREALPHA-2
           %hr
-          .dev 
+          .dev
             %span 开发中版本，问题回报请往：
             %a{href: 'http://s.4ye.me/ELYZmv'} http://s.4ye.me/ELYZmv
           %hr

@@ -9,15 +9,15 @@
 
   .nav.nav-tabs
     %li.icon.active
-      %a{href: "/bank/manage/chapters/#{@chapter.id}"}
+      %a{href: bank_manage_chapter_path(@chapter.id)}
         %i.glyphicon.glyphicon-info-sign
         %span 查看
     %li.icon
-      %a{href: "/bank/manage/chapters/#{@chapter.id}/edit"}
+      %a{href: edit_bank_manage_chapter_path(@chapter.id)}
         %i.glyphicon.glyphicon-pencil
         %span 修改
     %li.icon
-      %a{href: "/bank/manage/chapters/#{@chapter.id}", data: {method: 'delete', confirm: '你确定？'}}
+      %a{href: bank_manage_chapter_path(@chapter.id), data: {method: 'delete', confirm: '你确定？'}}
         %i.glyphicon.glyphicon-trash
         %span 删除
 
@@ -36,13 +36,13 @@
             )
 
     .tab-content
-    
+
       = quick_filter_bar do |b|
         - b.group :type, text: '类型' do |g|
           - g.add "KcCourses::SimpleDocumentWare", text: "文档"
           - g.add "KcCourses::SimpleVideoWare", text: "视频"
           - g.add "KcCourses::SimpleAudioWare", text: "音频"
-            
+
       %table.table.table-bordered.table-striped
         %thead
           %th.title 标题
@@ -60,14 +60,14 @@
               - else
                 %td.transcode_status= ware.file_entity.transcode_success? ? "完成" : "转码中"
               %td.opts
-                - qrcode_url = File.join(ENV["qiniu_callback_host"], "bank/manage/wares/#{ware.id}/preview")
+                - qrcode_url = File.join(ENV["qiniu_callback_host"], preview_bank_manage_ware_path(ware.id))
                 %a{href: 'javascript:;', class: 'ware-preview-qrcode', rel: 'popover', data: {content: "<div class='qrcode' data-url='#{qrcode_url}'/>", :"original-title" => '手机扫描二维码，预览课件'}} 二维码
-                %a{href: "/bank/manage/wares/#{ware.id}/edit"} 编辑
-                %a{href: "/bank/manage/wares/#{ware.id}", data: {method: 'delete', confirm: '你确定吗？'}} 删除
+                %a{href: edit_bank_manage_ware_path(ware.id)} 编辑
+                %a{href: bank_manage_ware_path(ware.id), data: {method: 'delete', confirm: '你确定吗？'}} 删除
               %td.position
-                %a.btn.btn-default.btn-xs.move-down.updown{href: "/bank/manage/wares/#{ware.id}/move_down", data: {method: 'put'}, title: '向下移动'}
+                %a.btn.btn-default.btn-xs.move-down.updown{href: move_down_bank_manage_ware_path(ware.id), data: {method: 'put'}, title: '向下移动'}
                   %i.glyphicon.glyphicon-arrow-down
-                %a.btn.btn-default.btn-xs.move-up.updown{href: "/bank/manage/wares/#{ware.id}/move_up", data: {method: 'put'}, title: '向上移动'}
+                %a.btn.btn-default.btn-xs.move-up.updown{href: move_up_bank_manage_ware_path(ware.id), data: {method: 'put'}, title: '向上移动'}
                   %i.glyphicon.glyphicon-arrow-up
         %tfoot
           %tr

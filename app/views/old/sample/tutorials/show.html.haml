@@ -1,5 +1,5 @@
 .col-pad-2
-  %a.back{:href => '/o/sample/nets', :data => {:toggle => true}}
+  %a.back{:href => url_for([:old, :sample, :nets]), :data => {:toggle => true}}
     %i.fa.fa-arrow-left
     %span 返回上级
 
@@ -25,7 +25,7 @@
           %th 教程步骤
           - @learners.each do |s|
             %th{:colspan => 2}
-              %a{:href => "/o/sample/students/#{s.id}", :data => {:toggle => true}}
+              %a{:href => old_sample_student_path(s.id), :data => {:toggle => true}}
                 %span.avatar
                   .-avatar-img.small
                     %img{:src => s.avatar}
@@ -72,7 +72,7 @@
             - dptotal += dpcount
 
         %tr
-          %td 
+          %td
             %b 学习进度
           - @learners.each do |s|
             :ruby
@@ -122,7 +122,7 @@
       .col-pad-12
         .cell-sample-points-list
           - points.each do |point|
-            %a.point{:href => "/o/sample/points/#{point.id}", :data => {:toggle => true}}
+            %a.point{:href => old_sample_point_path(point.id), :data => {:toggle => true}}
               :ruby
                 bg = string_grid_color(point.id)
                 bg1 = ApplicationHelper::ColorTransfer.darken(bg.to_s)
@@ -162,7 +162,7 @@
 
       - arr.each do |tutorial|
         .tutorial
-          %a.box{:href => "/o/sample/tutorials/#{tutorial.id}", :data => {:toggle => true}}
+          %a.box{:href => old_sample_tutorial_path(tutorial.id), :data => {:toggle => true}}
             :ruby
               steps_count = tutorial.steps.count
               imgs_count = tutorial.steps.map{|s| s[:imgs].length}.sum

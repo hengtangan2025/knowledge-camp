@@ -1,6 +1,6 @@
 // 放一些临时的样式，里程碑结束时务必移走
 
-.page-sample-nets-index {
+.page-old-sample-nets-index {
   .nets .net {
     margin-bottom: 20px;
     font-size: 16px;
@@ -85,7 +85,7 @@
   }
 }
 
-.page-sample-tutorials-show {
+.page-old-sample-tutorials-show {
   a.back {
     background-color: $area-night;
     display: block;
@@ -323,7 +323,7 @@
   }
 }
 
-.page-sample-students-show {
+.page-old-sample-students-show {
   .user {
     @include clearfix;
     @include piece;
@@ -510,7 +510,7 @@
   }
 }
 
-.page-sample-points-show {
+.page-old-sample-points-show {
   a.back {
     background-color: $area-night;
     display: block;

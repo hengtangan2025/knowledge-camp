@@ -5,11 +5,11 @@
 
 .nav.nav-tabs
   %li.icon.active
-    %a{href: '/bank/manage/test_papers'}
+    %a{href: bank_manage_test_papers_path}
       %i.glyphicon.glyphicon-th-list
       %span 列表
   %li.icon
-    %a{href: '/bank/manage/test_papers/new'}
+    %a{href: new_bank_manage_test_paper_path}
       %i.glyphicon.glyphicon-plus
       %span 新增
 
@@ -21,7 +21,7 @@
         %th 试卷总分
         %th 考试时间
         %th 是否启用
-        %th 
+        %th
     %tbody
       - @test_papers.each do |test_paper|
         %tr

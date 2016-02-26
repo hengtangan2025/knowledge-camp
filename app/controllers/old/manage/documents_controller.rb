@@ -1,6 +1,6 @@
 class Old::Manage::DocumentsController < BaseGenericController
   before_filter :authenticate_user!
-  
+
   set_model DocumentsStore::Document,
             :allow_attrs => [:title, :content, :creator_id, :last_editor_id]
 
@@ -22,7 +22,7 @@ class Old::Manage::DocumentsController < BaseGenericController
       return redirect_to url if !request.xhr?
       return render :json => {:url => url}
     end
-    
+
     url = url_for([:new, :old, :manage, @net, :documents])
     return redirect_to url if !request.xhr?
     return render :json => {:error => '创建失败'}, :status => 400
@@ -56,7 +56,7 @@ class Old::Manage::DocumentsController < BaseGenericController
   end
 
   destroy_with do
-    redirect_to "/o/manage/nets/#{@document.net.id}/documents"
+    redirect_to old_manage_net_documents_path(@document.net.id)
   end
 
   def versions

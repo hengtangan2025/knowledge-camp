@@ -3,11 +3,11 @@
 
 .nav.nav-tabs
   %li.icon
-    %a{href: '/bank/manage/test_papers'}
+    %a{href: bank_manage_test_papers_path}
       %i.glyphicon.glyphicon-th-list
       %span 列表
   %li.icon.active
-    %a{href: "/bank/manage/test_papers/#{@test_paper.id}/edit"}
+    %a{href: edit_bank_manage_test_paper_path(@test_paper.id)}
       %i.glyphicon.glyphicon-pencil
       %span 修改
 

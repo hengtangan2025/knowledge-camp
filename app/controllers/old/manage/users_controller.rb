@@ -1,6 +1,6 @@
-class Manage::UsersController < BaseGenericController
+class Old::Manage::UsersController < BaseGenericController
   before_filter :authenticate_user!
-  
+
   set_model User,
     :allow_attrs  => []
 

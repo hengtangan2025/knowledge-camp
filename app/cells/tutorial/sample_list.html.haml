@@ -4,7 +4,7 @@
 .tutorials
   - @tutorials.each do |tutorial|
     .tutorial
-      %a.box{:href => "/o/sample/tutorials/#{tutorial.id}", :data => {:toggle => true}}
+      %a.box{:href => old_sample_tutorial_path(tutorial.id), :data => {:toggle => true}}
         :ruby
           steps_count = tutorial.steps.count
           imgs_count = 0 #tutorial.steps.map{|s| s.imgs.length}.sum

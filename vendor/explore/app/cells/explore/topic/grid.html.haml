@@ -1,7 +1,10 @@
 .topics.grid.web
   - @topics.each do |topic|
     .topic
-      %a.tbox{:href => url_for(topic), :data => {:toggle => true}}
+      -# TODO 在 engine 中的 cell 文件中的 url helper 会有 bug
+      -# 必须带 engine as
+      -# 该 engine 内所有 cell 文件中的 url helper 都有这个问题
+      %a.tbox{:href => e_old_explore.url_for([topic, :only_path => true]), :data => {:toggle => true}}
         .img
           .ibox= fit_image topic.image.url, :width => '100%', :height => '100%'
         .textinfo

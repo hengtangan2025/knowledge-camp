@@ -1,12 +1,12 @@
 module ApplicationHelper
   def action_css_class
-    "page-#{params[:controller].sub('/', '-').gsub('_', '-')}-#{params[:action]}"
+    "page-#{params[:controller].gsub('/', '-').gsub('_', '-')}-#{params[:action]}"
   end
 
   # 网页标题
   def page_title(title)
     content_for :page_title do
-      title 
+      title
     end
   end
 
@@ -78,7 +78,7 @@ module ApplicationHelper
       }
     end
 
-    prev_version_obj = 
+    prev_version_obj =
       document.versions.unscoped.where(:version.lt => version_obj.version).last
 
     return {
@@ -139,10 +139,10 @@ module ApplicationHelper
 
   # 根据字符串生成适合 grid 显示的 颜色值
   def string_grid_color(str)
-    colors = 
+    colors =
       %w(
-        #1ABC9C #2ECC71 #3498DB #9B59B6 
-        #34495E #F1C40F #E67E22 #E74C3C 
+        #1ABC9C #2ECC71 #3498DB #9B59B6
+        #34495E #F1C40F #E67E22 #E74C3C
         #95A5A6
       )
 

@@ -6,7 +6,7 @@
   }
 
 .col-pad-2
-  %a.back{:href => '/o/sample/nets', :data => {:toggle => true}}
+  %a.back{:href => url_for([:old, :sample, :nets]), :data => {:toggle => true}}
     %i.fa.fa-arrow-left
     %span 返回上级
   .side
@@ -27,7 +27,7 @@
           %th 相关教程掌握程度
           - @learners.each do |s|
             %th{:colspan => 2}
-              %a{:href => "/o/sample/students/#{s.id}", :data => {:toggle => true}}
+              %a{:href => old_sample_student_path(s.id), :data => {:toggle => true}}
                 %span.avatar= avatar User.new, :small
                 %span.name= s.name
           %th 平均掌握程度
@@ -70,8 +70,8 @@
             %td.hard-score #{rate}%
 
         %tr
-          %td 
-            %b 
+          %td
+            %b
           - arrp = []
           - @learners.each do |s|
             %td.learning{:colspan => 2, :rowspan => 2}

@@ -1,8 +1,8 @@
 - kind = @question.kind.to_s.gsub("_", "-")
 - if params[:action] == "edit"
-  - url = "/bank/manage/test_questions/#{@question.id}"
+  - url = bank_manage_test_question_path(@question.id)
 - else
-  - url = "/bank/manage/test_questions"
+  - url = bank_manage_test_questions_path
 
 %div{:class => "page-bank-manage-test-questions-#{params[:action]}-#{kind}"}
   %div{:class => "form-question-#{kind}"}
@@ -32,7 +32,7 @@
 
       = f.input :enabled, as: :radio_buttons, collection: [[true,'启用'],[false,'禁用']], value_method: :first, label_method: :last
 
-  
+
       %br
       .form-actions
         %button.btn.btn-primary

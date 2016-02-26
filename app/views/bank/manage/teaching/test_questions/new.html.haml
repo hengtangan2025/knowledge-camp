@@ -4,7 +4,7 @@
 
 .nav.nav-tabs
   %li.icon
-    %a{href: '/bank/manage/test_questions'}
+    %a{href: bank_manage_test_questions_path}
       %i.glyphicon.glyphicon-th-list
       %span 列表
   %li.icon.active
@@ -13,7 +13,7 @@
       新增
       %span.caret
     %ul.dropdown-menu
-      - base_url = "/bank/manage/test_questions/new?kind="
+      - base_url = new_bank_manage_test_question_path + "?kind="
       %li
         %a{:href=> "#{base_url}single_choice" } 单选题
       %li
@@ -29,4 +29,3 @@
 
 .tab-content
   = render "form"
-

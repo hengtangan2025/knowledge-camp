@@ -1,7 +1,7 @@
 .tutorials.web.list
   - @tutorials.each do |tutorial|
     .toturial.piece.piece-box
-      %a.tbox{:href => "/explore/tutorials/#{tutorial.id}"}
+      %a.tbox{:href => e_old_explore.tutorial_path(tutorial.id)}
         .row
           .col-pad-3
             .img

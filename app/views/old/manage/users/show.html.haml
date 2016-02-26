@@ -5,11 +5,11 @@
       .info
         .name= @user.name
         .login= @user.login
-        .last-sign-in 
+        .last-sign-in
           - if @user.last_sign_in_at.present?
             %span 最后登录时间：#{@user.last_sign_in_at}
           - else
             %span 从未登录过
     .ops
       - if @user == current_user
-        %a.btn.btn-rounded.btn-bdb-fresh{:href => url_for([:manage, @user, :avatar]), :data => {:toggle => true}} 更改头像
+        %a.btn.btn-rounded.btn-bdb-fresh{:href => url_for([:old, :manage, @user, :avatar]), :data => {:toggle => true}} 更改头像

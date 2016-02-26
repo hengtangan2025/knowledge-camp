@@ -12,7 +12,7 @@
           %ul
             - @document.versions.each do |doc|
               %li
-                %a{:href => "/o/manage/documents/#{@document.id}/versions/#{doc.version}"}= doc.title
+                %a{:href => url_for([:version, :old, :manage, @document, :versions, :version => doc.version])}= doc.title
 
-          %a.back{:href => "/o/manage/documents/#{@document.id}"}
+          %a.back{:href => url_for([:old, :manage, @document])}
             返回

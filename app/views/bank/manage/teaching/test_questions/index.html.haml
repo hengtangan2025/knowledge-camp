@@ -21,7 +21,7 @@
 
   .nav.nav-tabs
     %li.icon.active
-      %a{href: '/bank/manage/courses'}
+      %a{href: bank_manage_courses_path}
         %i.glyphicon.glyphicon-th-list
         %span 列表
     %li.dropdown
@@ -30,7 +30,7 @@
         新增
         %span.caret
       %ul.dropdown-menu
-        - base_url = "/bank/manage/test_questions/new?kind="
+        - base_url = new_bank_manage_test_question_path + "?kind="
         %li
           %a{:href=> "#{base_url}single_choice" } 单选题
         %li
@@ -84,8 +84,8 @@
             %td= question.analysis
             %td= question.human_kind
             %th
-              = link_to "编辑", "/bank/manage/test_questions/#{question.id}/edit"
-              = link_to "删除", "/bank/manage/test_questions/#{question.id}", :method => :delete, :data => {:confirm => "确认删除吗？"}
+              = link_to "编辑", edit_bank_manage_test_question_path(question.id)
+              = link_to "删除", bank_manage_test_question_path(question.id), :method => :delete, :data => {:confirm => "确认删除吗？"}
 
       %tfoot
         %tr

@@ -55,7 +55,7 @@
           %td= flaw.question.analysis
           %td= flaw.question.human_kind
           %td
-            %a{class: "redo-question", target: '_blank', href: "/bank/my_test_questions/#{flaw.question_id.to_s}/do_form"} 重做
+            %a{class: "redo-question", target: '_blank', href: do_form_bank_my_test_question_path(flaw.question_id.to_s)} 重做
             %a{class: "delete-flaw", href: 'javascript:;', data: {question_flaw_id: flaw.id.to_s, question_flaw_url: e_test_question.question_flaw_path(flaw)}} 删除
 
   .flaw-batch

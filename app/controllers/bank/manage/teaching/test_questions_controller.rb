@@ -29,7 +29,7 @@ class Bank::Manage::Teaching::TestQuestionsController < Bank::Manage::Applicatio
     hash = send("question_#{kind}_params")
     @question = QuestionBank::Question.new(hash)
     if @question.save
-      redirect_to "/bank/manage/test_questions"
+      redirect_to bank_manage_test_questions_path
     else
       render :new
     end
@@ -45,7 +45,7 @@ class Bank::Manage::Teaching::TestQuestionsController < Bank::Manage::Applicatio
     @kind = @question.kind
     hash = send("question_#{@kind}_params")
     if @question.update_attributes(hash)
-      redirect_to "/bank/manage/test_questions"
+      redirect_to bank_manage_test_questions_path
     else
       render :edit
     end
@@ -55,7 +55,7 @@ class Bank::Manage::Teaching::TestQuestionsController < Bank::Manage::Applicatio
   def destroy
     @question = QuestionBank::Question.find(params[:id])
     @question.destroy
-    redirect_to "/bank/manage/test_questions"
+    redirect_to bank_manage_test_questions_path
   end
 
   def search

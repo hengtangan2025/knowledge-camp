@@ -27,7 +27,7 @@
           %i.fa.fa-circle-o
           %span 图形化展示
 
-        %a.btn.btn-rounded.btn-bdb-fresh{:href => "/e/o/course_editor/nets/#{@net.id}", :data => {:toggle => true}}
+        %a.btn.btn-rounded.btn-bdb-fresh{:href => e_old_course_editor.url_for([@net, :only_path => true]), :data => {:toggle => true}}
           %i.fa.fa-book
           %span 教程管理
 

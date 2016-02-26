@@ -3,15 +3,15 @@
 
 .nav.nav-tabs
   %li.icon
-    %a{href: '/bank/manage/courses'}
+    %a{href: bank_manage_courses_path}
       %i.glyphicon.glyphicon-th-list
       %span 列表
   %li.icon.active
-    %a{href: "/bank/manage/courses/#{@course.id}/edit"}
+    %a{href: edit_bank_manage_course_path(@course.id)}
       %i.glyphicon.glyphicon-pencil
       %span 修改
   %li.icon
-    %a{href: "/bank/manage/courses/#{@course.id}", data: {method: 'delete', confirm: '你确定？'}}
+    %a{href: bank_manage_course_path(@course.id), data: {method: 'delete', confirm: '你确定？'}}
       %i.glyphicon.glyphicon-trash
       %span 删除
 
