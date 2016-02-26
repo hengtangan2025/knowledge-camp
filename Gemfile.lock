@@ -59,8 +59,8 @@ GIT
 
 GIT
   remote: git://github.com/mindpin/kc_courses.git
-  revision: e2d6072873d7214a6eb4ae1558a91e7d6b2dd5e7
-  tag: v0.5.0
+  revision: 541b4d9eed6765b200351da30a51bb343cfe7afe
+  tag: v0.6.0
   specs:
     kc_courses (0.1.0)
       simple_form
@@ -537,3 +537,6 @@ DEPENDENCIES
   user-auth!
   useragent
   virtual_file_system!
+
+BUNDLED WITH
+   1.10.6
