@@ -1,14 +1,20 @@
 @CourseWaresList = React.createClass
+  getInitialState: ->
+    active_ware_id: @props.active_ware_id
+
   render: ->
-    <div className='course-wares-list'>
+    style = @props.style || 'detail'
+
+    <div className="course-wares-list style-#{style}">
     {
       for chapter, idx in @props.data.chapters
-        <CourseWaresList.Chapter key={idx} data={chapter} />
+        <CourseWaresList.Chapter key={idx} data={chapter} root={@} />
     }
     </div>
 
   statics:
     Chapter: React.createClass
+      displayName: 'Chapter'
       render: ->
         <div className='chapter'>
           <div className='chname'>
@@ -36,7 +42,12 @@
                 else
                   <span></span>
 
-            <a key={idx} className="ware learned-#{ware.learned}" href="/mockup/ware_show">
+            klass = new ClassName
+              'ware': true
+              "learned-#{ware.learned}": true
+              'active': @props.root.state.active_ware_id is ware.id
+
+            <a key={idx} className={klass} href="/mockup/ware_show?id=#{ware.id}">
               <span className='tail'>{tail}</span>
               <div className='pipe'></div>
               <div className='cwicon'>

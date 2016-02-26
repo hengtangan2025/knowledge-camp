@@ -79,17 +79,19 @@
     .ware {
       display: block;
       color: $text-color;
-      height: $h;
-      line-height: $h;
+      min-height: $h;
+      line-height: 24px;
       border-bottom: solid 1px #ddd;
-      transition: background-color ease 0.3s;
+      transition: background-color ease 0.2s;
       &:last-child {
         border-bottom: 0 none;
       }
       position: relative;
       padding-left: $h;
-      font-size: 16px;
+      padding-top: $h / 2 - 24px / 2;
+      padding-bottom: $h / 2 - 24px / 2;
       padding-right: $h / 6;
+      font-size: 16px;
 
       .cwicon {
         height:$iw;width:$iw;
@@ -135,10 +137,11 @@
         left: $iw / 2 + $h / 6 - 4px / 2;
       }
       &:first-child .pipe {
-        top: $h / 2;
+        top: 14px + $iw / 2;
       }
       &:last-child .pipe {
-        bottom: $h / 2;
+        bottom:auto;
+        height: 14px + $iw / 2;
       }
 
       &.learned-done {
@@ -157,10 +160,28 @@
       background-color: rgba(#588FED, 0.1);
     }
   }
+
+  &.style-narrow {
+    .ware {padding-right: 1rem;}
+    .ware span.tail {display:none;}
+    .ware.active {
+      background-color: #FFFAF3;
+      &:after {
+        $w: 14px;
+        content:"";
+        position: absolute;
+        border:solid $w transparent;
+        border-right:solid $w #FBBD08;
+        top:50%;right:-$w/2;
+        margin-top: -$w;
+      }
+    }
+  }
 }
 
 .comments-list {
   .ui.reply.form {
+    margin-top: 0;
     margin-bottom: 1em;
     border-bottom: solid 1px #ddd;
     padding-bottom: 1em;

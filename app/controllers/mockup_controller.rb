@@ -116,29 +116,7 @@ class MockupController < ApplicationController
   end
 
   def get_course_show_data
-    @component_data = {
-      id: '1',
-      link: "/mockup/course_show",
-      img: 'http://i.teamkn.com/i/dHCg8ulr.png',
-      name: '农业电商：找到合适的电商平台',
-      desc: '农民朋友在做电商的时候如果选择电商平台，各个电商平台主要面对的市场是什么？本节课程帮助你理解电商平台，帮助你选择电商平台...',
-      instructor: '美客商学院',
-      published_at: '2015-03-17',
-
-      subject: '电子商务',
-      price: '免费',
-      effort: '4 个视频，合计 120 分钟；有结课测验；',
-
-      chapters: [
-        name: '电商基础',
-        wares: [
-          {name:'农民朋友做农产品如何选择电商平台', kind: 'video', learned: 'done', time: '37′12″'},
-          {name:'教做农产品的朋友认识天猫平台', kind: 'video', learned: 'half', time: '37′12″'},
-          {name:'教做农产品的朋友认识淘宝平台', kind: 'video', learned: 'no', time: '37′12″'},
-          {name:'电子商务和物流的基础概念', kind: 'document', learned: 'no'},
-        ]
-      ]
-    }
+    @component_data = SAMPLE_COURSE_DATA
   end
 
   def get_ware_show_data
@@ -168,7 +146,33 @@ class MockupController < ApplicationController
           content: '很详细，就是太累了',
           date: '2016-02-02',
         },
-      ]
+      ],
+      course: SAMPLE_COURSE_DATA,
+      current_ware_id: params[:id]
     }
   end
+
+  SAMPLE_COURSE_DATA = {
+    id: '1',
+    link: "/mockup/course_show",
+    img: 'http://i.teamkn.com/i/dHCg8ulr.png',
+    name: '农业电商：找到合适的电商平台',
+    desc: '农民朋友在做电商的时候如果选择电商平台，各个电商平台主要面对的市场是什么？本节课程帮助你理解电商平台，帮助你选择电商平台...',
+    instructor: '美客商学院',
+    published_at: '2015-03-17',
+
+    subject: '电子商务',
+    price: '免费',
+    effort: '4 个视频，合计 120 分钟；有结课测验；',
+
+    chapters: [
+      name: '电商基础',
+      wares: [
+        {id: '1', name:'农民朋友做农产品如何选择电商平台', kind: 'video', learned: 'done', time: '37′12″'},
+        {id: '2', name:'教做农产品的朋友认识天猫平台', kind: 'video', learned: 'half', time: '37′12″'},
+        {id: '3', name:'教做农产品的朋友认识淘宝平台', kind: 'video', learned: 'no', time: '37′12″'},
+        {id: '4', name:'电子商务和物流的基础概念', kind: 'document', learned: 'no'},
+      ]
+    ]
+  }
 end
