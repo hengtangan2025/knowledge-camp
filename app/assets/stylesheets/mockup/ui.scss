@@ -188,6 +188,25 @@
       left: 14px - $w;
     }
 
+    .clist {
+      .course-title {
+        line-height: 20px;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        margin-bottom: 1rem;
+        display: block;
+        margin-left: 1.5rem;
+        color: $text-color;
+        font-weight: bold;
+
+        i {
+          width:20px;
+          margin-left: -20px;
+          margin-right: 0;
+        }
+      }
+    }
+
     .contents-toggle {
       position: absolute;
       top:1rem;right:-30px;

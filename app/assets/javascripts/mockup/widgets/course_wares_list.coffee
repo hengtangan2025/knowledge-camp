@@ -8,7 +8,7 @@
     <div className="course-wares-list style-#{style}">
     {
       for chapter, idx in @props.data.chapters
-        <CourseWaresList.Chapter key={idx} data={chapter} root={@} />
+        <CourseWaresList.Chapter key={idx} data={chapter} root={@} style={style} />
     }
     </div>
 
@@ -47,7 +47,7 @@
               "learned-#{ware.learned}": true
               'active': @props.root.state.active_ware_id is ware.id
 
-            <a key={idx} className={klass} href="/mockup/ware_show?id=#{ware.id}">
+            <a key={idx} className={klass} href='javascript:;' onClick={@do_click(ware.id)}>
               <span className='tail'>{tail}</span>
               <div className='pipe'></div>
               <div className='cwicon'>
@@ -57,3 +57,12 @@
             </a>
         }
         </div>
+
+      do_click: (ware_id)->
+        switch @props.style
+          when 'narrow'
+            ->
+              Turbolinks.visit "/mockup/ware_show?id=#{ware_id}"
+          when 'detail'
+            ->
+              Turbolinks.visit "/mockup/ware_show?id=#{ware_id}"

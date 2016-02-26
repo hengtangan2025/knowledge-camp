@@ -165,7 +165,8 @@
     .ware {padding-right: 1rem;}
     .ware span.tail {display:none;}
     .ware.active {
-      background-color: #FFFAF3;
+      // background-color: #FFFAF3;
+      background-color: rgba(#FBBD08, 0.1);
       &:after {
         $w: 14px;
         content:"";

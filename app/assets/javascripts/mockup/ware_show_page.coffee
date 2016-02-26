@@ -16,11 +16,15 @@
 
         toggle_icon_klass = new ClassName
           'icon': true
-          'chevron right': @state.close
+          'content': @state.close
           'chevron left': not @state.close
 
         <div className={klass}>
           <div className='ui segment basic clist'>
+            <a className='course-title' href='/mockup/course_show'>
+              <i className='icon caret left' />
+              {@props.data.course.name}
+            </a>
             <CourseWaresList data={@props.data.course} style='narrow' active_ware_id={@props.data.current_ware_id} />
           </div>
           <a href='javascript:;' className='contents-toggle' onClick={@toggle}>
@@ -42,7 +46,7 @@
         toggle_icon_klass = new ClassName
           'icon': true
           'chevron right': not @state.close
-          'chevron left': @state.close
+          'comments': @state.close
 
 
         <div className={klass}>
