@@ -42,55 +42,55 @@ SimpleNavbar::Base.config do
 
   rule :bank_courses_index do
     nav :recent, :name => '最新', :url => '/bank/courses' do
-      controller :"bank/courses", :only => :index
+      controller :"bank/teaching/courses", :only => :index
     end
 
     nav :hot, :name => '最热', :url => '/bank/courses/hot' do
-      controller :"bank/courses", :only => :hot
+      controller :"bank/teaching/courses", :only => :hot
     end
   end
 
   rule :bank_courses_mine do
     nav :studying, :name => '正在学习', :url => '/bank/courses/studying' do
-      controller :"bank/courses", :only => %i[mine studying]
+      controller :"bank/teaching/courses", :only => %i[mine studying]
     end
 
     nav :fav, :name => '课程收藏', :url => '/bank/courses/fav' do
-      controller :"bank/courses", :only => %i[fav]
+      controller :"bank/teaching/courses", :only => %i[fav]
     end
 
     nav :studied, :name => '已经学完', :url => '/bank/courses/studied' do
-      controller :"bank/courses", :only => %i[studied]
+      controller :"bank/teaching/courses", :only => %i[studied]
     end
   end
 
   rule :bank_my_test_questions do
     nav :records, :name => '做题记录', :url => '/bank/my_test_questions/records' do
-      controller :"bank/my_test_questions", :only => %i[index records]
+      controller :"bank/teaching/my_test_questions", :only => %i[index records]
     end
 
     nav :flaw, :name => '错题本', :url => '/bank/my_test_questions/flaw' do
-      controller :"bank/my_test_questions", :only => %i[flaw]
+      controller :"bank/teaching/my_test_questions", :only => %i[flaw]
     end
 
     nav :fav, :name => '题目收藏', :url => '/bank/my_test_questions/fav' do
-      controller :"bank/my_test_questions", :only => %i[fav]
+      controller :"bank/teaching/my_test_questions", :only => %i[fav]
     end
   end
 
   rule :bank_question_and_answer do
     nav :my_questions, :name => '我的问题', :url => '/bank/my_questions' do
-      controller :"bank/my_questions", :only => :index
+      controller :"bank/teaching/my_questions", :only => :index
     end
 
     nav :my_answers, :name => '我的回答', :url => '/bank/my_answers' do
-      controller :"bank/my_answers", :only => :index
+      controller :"bank/teaching/my_answers", :only => :index
     end
   end
 
   rule :bank_my_notes do
     nav :notes, :name => '所有笔记', :url => '/bank/my_notes' do
-      controller :"bank/my_notes", :only => :index
+      controller :"bank/teaching/my_notes", :only => :index
     end
   end
 
@@ -106,15 +106,15 @@ SimpleNavbar::Base.config do
 
   rule :bank_manage do
     nav :index, :name => '课程编排', :url => '/bank/manage/courses' do
-      controller :'bank/manage/courses'
+      controller :'bank/manage/teaching/courses'
     end
 
     nav :index, :name => '题库管理', :url => '/bank/manage/test_questions' do
-      controller :'bank/manage/test_questions'
+      controller :'bank/manage/teaching/test_questions'
     end
 
     nav :index, :name => '组卷管理', :url => '/bank/manage/test_papers' do
-      controller :'bank/manage/test_papers'
+      controller :'bank/manage/teaching/test_papers'
     end
 
     nav :index, :name => '标签管理', :url => '/bank/manage/model_labels' do

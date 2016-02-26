@@ -1,0 +1,37 @@
+- page_title @net.name
+
+.page-side.col-pad-2
+  .nav{:data => {:'fixtop-offset' => 30}}
+    .back
+      %a{:href => url_for([:old, :manage, :nets]), :data => {:toggle => true}}
+        %i.fa.fa-arrow-left
+        %span 退出
+
+    - [:point, :file].each do |model_name|
+      = render_cell :net, :nav_items, @net, model_name
+
+.page-main.col-pad-10
+  .sections.piece.piece-shelf.piece-paper
+    %section.net.piece.piece-box
+      %h2.name= @net.name
+      .desc= text_span @net.desc
+
+      .piece.piece-ops
+        .op
+          %a.edit{:href => url_for([:edit, :old, :manage, @net]), :data => {:toggle => true}}
+            %i.fa.fa-pencil
+            %span 编辑修改
+
+      .graph-show
+        %a.btn.btn-rounded.btn-bdb-dream{:href => url_for([:graph, :old, :manage, @net]), :data => {:toggle => ['fade', 'fade']}}
+          %i.fa.fa-circle-o
+          %span 图形化展示
+
+        %a.btn.btn-rounded.btn-bdb-fresh{:href => e_old_course_editor.url_for([@net, :only_path => true]), :data => {:toggle => true}}
+          %i.fa.fa-book
+          %span 教程管理
+
+    = render_cell :net, :model_section, @net, :point, 24
+
+    - [:file].each do |model_name|
+      = render_cell :net, :model_section, @net, model_name

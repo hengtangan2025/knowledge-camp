@@ -1,0 +1,15 @@
+- page_title '管理用户'
+
+.col-pad-2
+  %a.create-user{:href => url_for([:new, :old, :manage, :user]), :data => {:toggle => true}}
+    %i.fa.fa-plus
+    %span 快速增加用户
+
+.col-pad-8
+  - success = flash[:success]
+  - if success.present?
+    .page-flash-info.success
+      %span= success
+
+  %h2.cell 现有以下用户，共 #{User.count} 个 …
+  = render_cell :user, :grid, :users => @users

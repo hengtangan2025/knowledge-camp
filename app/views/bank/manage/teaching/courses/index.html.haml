@@ -1,0 +1,42 @@
+.page-header
+  %h3
+    课程编排
+  %small 你好。你可以在这里对由你负责的课程进行章节编排。
+
+.nav.nav-tabs
+  %li.icon.index_collection_link.active
+    %a{href: bank_manage_courses_path}
+      %i.glyphicon.glyphicon-th-list
+      %span 列表
+  %li.icon.index_collection_link
+    %a{href: new_bank_manage_course_path}
+      %i.glyphicon.glyphicon-plus
+      %span 新增
+
+.tab-content
+  %table.table.table-bordered.table-striped
+    %thead
+      %tr
+        %th 课程名称
+        %th 章节数
+        %th 课件数
+        %th 操作
+    %tbody
+      - @courses.each do |course|
+        %tr
+          %td
+            %a{href: url_for([:bank, :manage, course])}= course.title
+          %td= course.chapters.count
+          %td= course.chapters.map{|chapter| chapter.wares.count}.sum
+          %td
+            %a{href: url_for([:edit, :bank, :manage, course])} 编辑
+            %a{href: url_for([:bank, :manage, course]), data: {method: 'delete', confirm: '你确定吗？'}} 删除
+            - if course.published
+              已发布
+            - else
+              %a{href: url_for([:publish, :bank, :manage, course]), data: {method: 'post'}} 发布
+
+    %tfoot
+      %tr
+        %th{colspan: 4}
+          .pull-right= paginate @courses, :theme => 'twitter-bootstrap-3'

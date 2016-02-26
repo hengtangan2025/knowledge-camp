@@ -11,7 +11,7 @@
 
         .page-drawer-front
           .page-header
-            %a.left.back{:href => "/explore/tutorials/#{@tutorial.id}"}
+            %a.left.back{:href => e_old_explore.tutorial_path(@tutorial.id)}
               %i.fa.fa-chevron-left
             .text= @tutorial.title
 

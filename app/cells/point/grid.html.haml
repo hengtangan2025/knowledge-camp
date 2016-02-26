@@ -5,6 +5,6 @@
         bg = string_grid_color(point.id)
         bg1 = ApplicationHelper::ColorTransfer.darken(bg.to_s)
 
-      %a.box{:style => "background:#{bg}", :href => url_for([:manage, point]), :data => {:toggle => ['open', 'close']}}
+      %a.box{:style => "background:#{bg}", :href => url_for([:old, :manage, point]), :data => {:toggle => ['open', 'close']}}
         .name{:style => "background:#{bg1}"}= point.name
         .desc= point.desc

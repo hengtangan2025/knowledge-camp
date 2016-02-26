@@ -1,4 +1,4 @@
-- url = "/bank/manage/model_labels"
+- url = bank_manage_model_labels_path
 
 .page-bank-manage-model-label-new
   .page-header
@@ -9,7 +9,7 @@
 
   .nav.nav-tabs
     %li.icon
-      %a{href: '/bank/manage/model_labels'}
+      %a{href: bank_manage_model_labels_path}
         %i.glyphicon.glyphicon-th-list
         %span 列表
     %li.dropdown.active
@@ -18,7 +18,7 @@
         新增
         %span.caret
       %ul.dropdown-menu
-        - base_url = "/bank/manage/model_labels/new?name="
+        - base_url = new_bank_manage_model_label_path + "?name="
         - ModelLabel.get_model_names.each do |name|
           %li
             %a{:href=> "#{base_url}#{name}" }= "#{name}标签"

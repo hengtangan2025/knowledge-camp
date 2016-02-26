@@ -1,0 +1,14 @@
+- page_title '新建知识网络'
+
+.col-pad-8.col-pad-offset-2
+  .page-net-form
+    %h2.cell 新建知识网络 …
+
+    = simple_form_for [:old, :manage, @net], :defaults => {:label => false, :input_html => {:class => 'form-control'}} do |f|
+      .form-group
+        = f.input :name, :placeholder => "输入知识网络名称"
+      .form-group
+        = f.input :desc, :placeholder => "添加一些描述（选填）"
+      .form-group.submit
+        = f.submit :class => 'btn btn-rounded btn-bdb-fresh'
+        %a.cancel.btn.btn-rounded.btn-bdb{:href => url_for([:old, :manage, :nets]), :data => {:toggle => true}} 取消

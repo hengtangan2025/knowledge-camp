@@ -11,7 +11,7 @@
 
   .nav.nav-tabs
     %li.icon.active
-      %a{href: '/bank/manage/model_labels'}
+      %a{href: bank_manage_model_labels_path}
         %i.glyphicon.glyphicon-th-list
         %span 列表
     %li.dropdown
@@ -20,7 +20,7 @@
         新增
         %span.caret
       %ul.dropdown-menu
-        - base_url = "/bank/manage/model_labels/new?name="
+        - base_url = new_bank_manage_model_label_path + "?name="
         - ModelLabel.get_model_names.each do |name|
           %li
             %a{:href=> "#{base_url}#{name}" }= "#{name}标签"
@@ -40,8 +40,8 @@
             %td= model_label.name
             %td= model_label.values.join("，")
             %th
-              = link_to "编辑", "/bank/manage/model_labels/#{model_label.id}/edit"
-              = link_to "删除", "/bank/manage/model_labels/#{model_label.id}", :method => :delete, :data => {:confirm => "确认删除吗？"}
+              = link_to "编辑", edit_bank_manage_model_label_path(model_label.id)
+              = link_to "删除", bank_manage_model_label_path(model_label.id), :method => :delete, :data => {:confirm => "确认删除吗？"}
 
       %tfoot
         %tr

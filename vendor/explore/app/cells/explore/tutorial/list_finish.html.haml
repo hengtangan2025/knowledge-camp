@@ -1,7 +1,7 @@
 .cell-tutorials-list
   - @tutorials.each do |tutorial|
     .tutorial
-      %a.box{:href => "/explore/tutorials/#{tutorial.id}"}
+      %a.box{:href => e_old_explore.tutorial_path(tutorial.id)}
         .img= fit_image tutorial.img, :width => '100%', :height => '100%'
         .title= tutorial.title
         .desc= tutorial.desc

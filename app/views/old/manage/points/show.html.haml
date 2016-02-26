@@ -1,0 +1,50 @@
+:ruby
+  @net = @point.net
+
+  bread_data = [
+    [ :net, @net.name, url_for([:old, :manage, @net]) ],
+    [ :points, '查看所有知识点', url_for([:old, :manage, @net, :points]) ]
+  ]
+
+.page-main.col-pad-10.col-pad-offset-1
+  = bread bread_data do
+    .point.piece.piece-shelf
+      .info.piece.piece-box
+        .piece.piece-ops
+          .edit.op
+            %a{:href => url_for([:edit, :old, :manage, @point]), :data => {:toggle => ['open', 'close']}}
+              %i.fa.fa-pencil
+              %span 编辑修改
+
+        %h2.name=@point.name
+        .desc=@point.desc
+
+      .parents.piece.piece-box
+        .piece.piece-ops
+          .assign.op
+            %a{:href => url_for([:assign_parent, :old, :manage, @point]), :data => {:toggle => ['open', 'close']}}
+              %i.fa.fa-circle-o
+              %span 指定前置
+
+        %h3.title 前置知识点
+        = render_cell :point, :list, @point.parents
+
+      .children.piece.piece-box
+        .piece.piece-ops
+          .assign.op
+            %a{:href => url_for([:assign_child, :old, :manage, @point]), :data => {:toggle => ['open', 'close']}}
+              %i.fa.fa-circle-o
+              %span 指定后续
+
+        %h3.title 后续知识点
+        = render_cell :point, :list, @point.children
+
+      .files.piece.piece-box
+        .piece.piece-ops
+          .assign.op
+            %a{:href => url_for([:new, :old, :manage, @point, :file]), :data => {:toggle => ['open', 'close']}}
+              %i.fa.fa-upload
+              %span 上传文件
+
+        %h3.title 文件
+        = render_cell :file, :grid, @point.virtual_files

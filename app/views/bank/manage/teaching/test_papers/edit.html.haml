@@ -1,0 +1,16 @@
+.page-header
+  %h3 组卷
+
+.nav.nav-tabs
+  %li.icon
+    %a{href: bank_manage_test_papers_path}
+      %i.glyphicon.glyphicon-th-list
+      %span 列表
+  %li.icon.active
+    %a{href: edit_bank_manage_test_paper_path(@test_paper.id)}
+      %i.glyphicon.glyphicon-pencil
+      %span 修改
+
+.tab-content
+  .page-edit-test_paper.form-test_paper{data: {search_bank_manage_test_questions_url: search_bank_manage_test_questions_path, preview_bank_manage_test_papers_url: preview_bank_manage_test_papers_path, bank_manage_test_papers_url: url_for([:bank, :manage, @test_paper])}}
+    = render "form"

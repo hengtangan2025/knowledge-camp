@@ -7,7 +7,7 @@
   .detail.col-phone-12
     .num
       %span end
-    .title 
+    .title
       %span 学习结束
       %i.fa.fa-check
     .desc 你已经完成了对“#{@tutorial.title}”的学习，接下来你可以学习：
@@ -21,11 +21,11 @@
   .control
     .prev
       :ruby
-        href ="/explore/tutorials/#{@tutorial.id}/steps/#{@tutorial.steps.count}"
+        href = e_old_explore.step_path(@tutorial.steps.count)
 
       %a{:href => href}
         %i.fa.fa-chevron-left
 
     .finished
-      %a.finish{:href => "/explore/tutorials/#{@tutorial.id}"}
+      %a.finish{:href => e_old_explore.tutorial_path(@tutorial.id)}
         %i.fa.fa-refresh
