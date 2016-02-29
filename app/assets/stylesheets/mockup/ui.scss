@@ -177,7 +177,10 @@
   position: absolute;
   top:0;left:0;right:0;bottom:0;
 
-  $w: 260px;
+  $contents-width: 260px;
+  $comments-width: 320px;
+
+  $w: $contents-width;
   .ware-show-contents {
     position: absolute;
     top:0;bottom:0;left:0;width:$w;
@@ -212,7 +215,7 @@
       top:1rem;right:-30px;
       width:30px;height:30px;line-height: 30px;
       text-align: center;
-      background-color: rgba(black, 0.1);
+      background-color: #dfdfdf;
       border-radius: 0 3px 3px 0;
       font-size: 18px;
       color: $text-color;
@@ -224,9 +227,10 @@
     }
   }
 
+  $w: $comments-width;
   .ware-show-comments {
     position: absolute;
-    top:0;bottom:0;right:0;width:320px;
+    top:0;bottom:0;right:0;width:$w;
     background-color: #FFF;
 
     transition: right ease-in .2s;
@@ -235,7 +239,7 @@
     }
 
     &.close {
-      right:14px - 320px;
+      right:14px - $w;
       .clist {
         opacity: 0;
       }
@@ -246,7 +250,7 @@
       top:1rem;left:-30px;
       width:30px;height:30px;line-height: 30px;
       text-align: center;
-      background-color: rgba(black, 0.1);
+      background-color: #dfdfdf;
       border-radius: 3px 0 0 3px;
       font-size: 18px;
       color: $text-color;
@@ -255,6 +259,42 @@
       &:hover {
         background-color: #fff;
       }
+    }
+  }
+
+  .ware-show-shower {
+    position: absolute;
+    top:0;bottom:0;
+    left:$contents-width;
+    right:$comments-width;
+    transition: left ease-in .2s, right ease-in .2s;
+    &.contents-close {
+      left:14px;
+    }
+    &.comments-close {
+      right:14px;
+    }
+    background-color: #333;
+
+    $h1: 30px + 28px;
+    $h2: (30px + 28px) * 2;
+    .shower-head {
+      position: absolute;
+      left:0;top:0;right:0;
+      height: $h1;
+    }
+    .shower-main {
+      position: absolute;
+      left:0;right:0;top:$h1;bottom:$h2;
+
+      .video-box {
+        position: absolute;
+        top:1em;left:1em;right:1em;bottom:1em;
+      }
+    }
+    .shower-foot {
+      position: absolute;
+      left:0;right:0;bottom:0;height:$h2;
     }
   }
 }

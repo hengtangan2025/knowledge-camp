@@ -148,9 +148,22 @@ class MockupController < ApplicationController
         },
       ],
       course: SAMPLE_COURSE_DATA,
-      current_ware_id: params[:id]
+      ware: SAMPLE_WARES_DATA.select {|x| x[:id] == params[:id]}.first
     }
   end
+
+  SAMPLE_WARES_DATA = [
+    {
+      id: '1', name:'农民朋友做农产品如何选择电商平台', kind: 'video', learned: 'done', time: '37′12″',
+      video_url: 'http://movie.ks.js.cn/flv/other/1_0.mp4'
+    },
+    {
+      id: '2', name:'教做农产品的朋友认识天猫平台', kind: 'video', learned: 'half', time: '37′12″',
+      video_url: 'http://mediaelementjs.com/media/echo-hereweare.mp4'
+    },
+    {id: '3', name:'教做农产品的朋友认识淘宝平台', kind: 'video', learned: 'no', time: '37′12″'},
+    {id: '4', name:'电子商务和物流的基础概念', kind: 'document', learned: 'no'},
+  ]
 
   SAMPLE_COURSE_DATA = {
     id: '1',
@@ -167,12 +180,7 @@ class MockupController < ApplicationController
 
     chapters: [
       name: '电商基础',
-      wares: [
-        {id: '1', name:'农民朋友做农产品如何选择电商平台', kind: 'video', learned: 'done', time: '37′12″'},
-        {id: '2', name:'教做农产品的朋友认识天猫平台', kind: 'video', learned: 'half', time: '37′12″'},
-        {id: '3', name:'教做农产品的朋友认识淘宝平台', kind: 'video', learned: 'no', time: '37′12″'},
-        {id: '4', name:'电子商务和物流的基础概念', kind: 'document', learned: 'no'},
-      ]
+      wares: SAMPLE_WARES_DATA
     ]
   }
 end

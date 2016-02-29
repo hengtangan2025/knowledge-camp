@@ -200,3 +200,19 @@
     }
   }
 }
+
+.widget-ware-video {
+  position: absolute;
+  top:0;left:0;right:0;bottom:0;
+  .wbox {
+    position: absolute;
+    top:0;left:0;right:0;bottom:0;
+    width:auto !important; // fix ckplayer html5
+    height:auto !important; // fix ckplayer html5
+
+    .mejs-container.svg.mejs-video {
+      width:100% !important; // fix mediaelement html5
+      height:100% !important; // fix mediaelement html5
+    }
+  }
+}
