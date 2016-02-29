@@ -3,7 +3,7 @@ class CmsConfig
   include Mongoid::Timestamps
 
   field :name, :type => String
-  field :value, :type => String
+  field :value
 
   validates :name, presence: true
 end

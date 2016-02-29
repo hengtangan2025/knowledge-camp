@@ -36,4 +36,11 @@ RSpec.describe CmsConfig, type: :model do
       KcCourses::CourseSubject.find(CmsConfig.where(name: 'show_course_subject_in_nav_item').map(&:value))
     ).to eq @subjects
   end
+
+  it '传入Hash' do
+    @config_hash = {name: 'About', url: 'http://a.com/b', open_in_new: true}
+    @cms_config = create(:cms_config, value: @config_hash)
+    @cms_config.reload
+    expect(@cms_config.value).to eq(@config_hash.as_json)
+  end
 end
