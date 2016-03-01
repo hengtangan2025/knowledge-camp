@@ -157,8 +157,11 @@ gem 'question_bank', github: 'mindpin/question_bank',
 gem 'model_label', github: 'kc-train/model_label',
                     :ref => "ffbc999"
 
-gem 'react-rails', '~> 1.2.0'
-gem 'sprockets-coffee-react', '~> 3.0.1'
+gem 'sprockets', '3.4.0'
+gem 'sprockets-rails', '2.3.3'
+
+gem 'react-rails', '1.2.0'
+gem 'sprockets-coffee-react', '3.0.1'
 
 # 通过 rails assets 服务加载前端包
 source 'https://rails-assets.org' do
