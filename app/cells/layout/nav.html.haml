@@ -1,8 +1,9 @@
 :ruby
+
   nav_config = [
-    ['/manage/nets',  '管理知识网络', 'fa-sitemap'],
-    ['/manage/users', '管理用户', 'fa-user'],
-    ['/sample/nets',  '教学统计(SAMPLE)', 'fa-bar-chart-o']
+    [url_for([:old, :manage, :nets]),  '管理知识网络', 'fa-sitemap'],
+    [url_for([:old, :manage, :users]), '管理用户', 'fa-user'],
+    [url_for([:old, :sample, :nets]),  '教学统计(SAMPLE)', 'fa-bar-chart-o']
   ]
 
 .container
@@ -24,6 +25,6 @@
       - if @user
         .auth-info
           %span.name= @user.name
-          %a{href: "/account/sign_out", data: { method: :delete }}
+          %a{href: account_sign_out_path, data: { method: :delete }}
             %i.fa.fa-sign-out
             %span 用户登出

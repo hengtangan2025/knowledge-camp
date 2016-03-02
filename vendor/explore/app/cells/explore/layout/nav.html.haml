@@ -1,13 +1,13 @@
 :ruby
   nav_config = [
-    ['/explore/topics',  '所有主题', 'fa-book'],
-    ['/explore/topics/mine', '我的主题', 'fa-book']
+    [e_old_explore.url_for([:topics, :only_path => true]),  '所有主题', 'fa-book'],
+    [e_old_explore.url_for([:mine, :topics, :only_path => true]), '我的主题', 'fa-book']
   ]
 
 .container
   .row
     .page-nav.col-pad-12
-      %a.home{:href => '/explore', :data => {:toggle => true}}
+      %a.home{:href => e_old_explore.root_path, :data => {:toggle => true}}
         %i.fa.fa-home
         %span 首页
       - path = request.path_info
@@ -22,6 +22,6 @@
       - if @user
         .auth-info
           %span.name= @user.name
-          %a{href: "/account/sign_out", data: { method: :delete }}
+          %a{href: account_sign_out_path, data: { method: :delete }}
             %i.fa.fa-sign-out
             %span 用户登出

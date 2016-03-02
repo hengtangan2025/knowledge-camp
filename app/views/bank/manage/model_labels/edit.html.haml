@@ -1,4 +1,4 @@
-- url = "/bank/manage/model_labels/#{@model_label.id}"
+- url = bank_manage_model_label_path(@model_label.id)
 
 .page-bank-manage-model-label-edit
   .page-header
@@ -9,11 +9,11 @@
 
   .nav.nav-tabs
     %li.icon
-      %a{href: '/bank/manage/model_labels'}
+      %a{href: bank_manage_model_labels_path}
         %i.glyphicon.glyphicon-th-list
         %span 列表
     %li.icon.active
-      %a{href: "/bank/manage/model_labels/#{@model_label.id}/edit"}
+      %a{href: edit_bank_manage_model_label_path(@model_label.id)}
         %i.glyphicon.glyphicon-pencil
         修改
 

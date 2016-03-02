@@ -12,5 +12,5 @@
           bg1 = ApplicationHelper::ColorTransfer.darken(bg.to_s)
 
         .icon{:style => "border-color:#{bg}"}
-        %a.name{:href => url_for([:manage, point]), :data => {:toggle => ['open', 'close']}}
+        %a.name{:href => url_for([:old, :manage, point]), :data => {:toggle => ['open', 'close']}}
           %span= point.name

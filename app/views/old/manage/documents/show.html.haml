@@ -1,0 +1,34 @@
+:ruby
+  @net = @document.net
+  bread_data = [
+    [ :net, @net.name, url_for([:old, :manage, @net]) ],
+    [ :documents, '查看所有文档', url_for([:old, :manage, @net, :documents]) ]
+  ]
+
+- page_title "#{@net.name}: #{@document.title}"
+
+.page-main.col-pad-10.col-pad-offset-1
+  = bread bread_data do
+    .document
+      .row
+        .col-pad-9
+          .page
+            .title= @document.title
+            .content= @document.content
+
+        .col-pad-3
+          .side
+            .info 
+              %span 你随时可以对这里的文档进行编辑修改，所有修改的版本都将被记录。
+            .ops
+              %a.edit.btn.btn-rounded.btn-bdb-info{:href => url_for([:edit, :old, :manage, @document])} 
+                %i.fa.fa-pencil
+                %span 编辑修改
+
+          .side.versions
+            = render_cell :document, :version_info, @document
+
+          .model-ops
+            %a.delete{:href => url_for([:old, :manage, @document]), :data => {:method => :delete, :confirm => "确定要删除这个文档吗？"}}
+              %i.fa.fa-trash-o
+              %span 删除文档…

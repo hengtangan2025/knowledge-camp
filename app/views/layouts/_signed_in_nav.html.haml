@@ -1,19 +1,19 @@
 %nav.navbar.navbar-default
   .container
     .navbar-header
-      %a.navbar-brand{:href => "/bank"} Kc-Finance
+      %a.navbar-brand{:href => bank_root_path} Kc-Finance
 
     %ul.nav.navbar-nav
       %li
-        %a{:href => "/bank/courses"} 课程中心
+        %a{:href => bank_courses_path} 课程中心
       %li
-        %a{:href => "/bank/courses/mine"} 我的课程
+        %a{:href => mine_bank_courses_path} 我的课程
       %li
-        %a{:href => "/bank/my_test_questions"} 我的题库
+        %a{:href => bank_my_test_questions_path} 我的题库
       %li
-        %a{:href => "/bank/my_questions"} 我的问答
+        %a{:href => bank_my_questions_path} 我的问答
       %li
-        %a{:href => "/bank/my_notes"} 我的笔记
+        %a{:href => bank_my_notes_path} 我的笔记
 
     %form.navbar-form.navbar-left{:role => "search", action: search_bank_courses_path}
       .form-group
@@ -27,8 +27,8 @@
           %span.caret
         %ul.dropdown-menu
           %li
-            %a{:href => "/bank/notifications"} 通知中心
+            %a{:href => bank_notifications_path} 通知中心
           %li
             %a{:href => "#"} 个人设置
           %li
-            %a{:href => "/account/sign_out", :data => {:method => :delete}} 退出登录
+            %a{:href => account_sign_out_path, :data => {:method => :delete}} 退出登录

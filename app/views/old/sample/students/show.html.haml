@@ -1,0 +1,43 @@
+:ruby
+  learner = @learners.select{|x| x.id == params[:id]}[0]
+  learned_tutorials = @tutorials.select {|x|
+    learner.learned.include? x.id
+  }
+
+.col-pad-12
+  .history
+    .user
+      .avatar
+        .-avatar-img.normal
+          %img{:src => learner.avatar}
+      .name= learner.name
+
+    - learned_tutorials.each do |tutorial|
+      .his
+        .tutorial
+          %a.box{:href => old_sample_tutorial_path(tutorial.id), :data => {:toggle => true}}
+            :ruby
+              steps_count = tutorial.steps.count
+              imgs_count = tutorial.steps.map{|s| s[:imgs].length}.sum
+              videos_count = tutorial.steps.map{|s| s[:video].blank? ? 0:1}.sum
+
+            .img= fit_image tutorial.img, :width => '100%', :height => '100%'
+            .info
+              .title= tutorial.title
+        :ruby
+          mark = learner.marks.select {|x|
+            x.tutorial_id == tutorial.id
+          }.first
+
+        - if mark.present?
+          - if mark.difficult_points.length > 0
+            .hard
+              %span 难
+          - if mark.questions.length > 0
+            .question
+              %span
+                %i.fa.fa-question
+          - if mark.notes.length > 0
+            .note
+              %span
+                %i.fa.fa-pencil

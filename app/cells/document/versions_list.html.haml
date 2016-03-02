@@ -2,7 +2,7 @@
   .title 版本清单
 
   - @vers.each do |ver|
-    - url = url_for([:manage, @document, :versions])
+    - url = url_for([:old, :manage, @document, :versions])
     - url = "#{url}/#{ver.version}"
     - klass = (ver.version == @current_version.version) ? 'current' : ''
 

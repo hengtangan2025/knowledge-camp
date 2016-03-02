@@ -1,0 +1,179 @@
+.col-pad-2
+  %a.back{:href => url_for([:old, :sample, :nets]), :data => {:toggle => true}}
+    %i.fa.fa-arrow-left
+    %span 返回上级
+
+  .side
+    = render_cell :tutorial, :sample_list, [@tutorial]
+
+.col-pad-10
+  .main
+    .intro
+      %h4.title 说明(SAMPLE)
+      .desc 此界面仅作为演示说明，数据为预置的演示数据，不完全代表最终实际系统运行效果
+      .tuli
+        %span.learned
+        %span 已学完
+        %span.learning
+        %span 未学完
+      .nandu
+        %span 难点由学生在学习过程中标注。
+
+    %table.table.table-bordered.table-striped
+      %thead
+        %tr
+          %th 教程步骤
+          - @learners.each do |s|
+            %th{:colspan => 2}
+              %a{:href => old_sample_student_path(s.id), :data => {:toggle => true}}
+                %span.avatar
+                  .-avatar-img.small
+                    %img{:src => s.avatar}
+                %span.name= s.name
+          %th 难点数量
+
+      %tbody
+        - dptotal = 0
+        - score_hash = {}
+        - @tutorial.steps.each_with_index do |step, i|
+          :ruby
+            num = i + 1
+            dpcount = 0
+
+          %tr
+            %td
+              %span.num= num
+              %span.title= step[:title]
+            - @learners.each do |s|
+              :ruby
+                learned = s.learned.include? @tutorial.id
+                learned = true if num == 1
+
+                mark = s.marks.select {|x|
+                  x.tutorial_id == @tutorial.id
+                }.first
+
+                is_diffcult = mark.blank? ? false : mark.difficult_points.map(&:step).include?(num)
+
+                reason = is_diffcult ? mark.difficult_points.select {|x| x.step == num}.first.reason : ''
+
+              - if learned
+                %td.step-learned
+                  %i.fa.fa-check
+              - else
+                %td.step-learning
+                  %span …
+              %td
+                - if is_diffcult
+                  - dpcount += 1
+                  %b 难
+                  .reason= reason
+            %td.hard-score= dpcount
+            - dptotal += dpcount
+
+        %tr
+          %td
+            %b 学习进度
+          - @learners.each do |s|
+            :ruby
+              learned = s.learned.include? @tutorial.id
+
+            - if learned
+              %td.learned{:colspan => 2, :rowspan => 2}
+                .info
+                  %i.fa.fa-check
+                  %span 已学完
+                .bar
+                  .p{:style => 'width:100%'}
+
+            - else
+              %td.learning{:colspan => 2, :rowspan => 2}
+                - scount = @tutorial.steps.count
+                - percent = 100.0 / scount
+                - percent = percent.round(2)
+                .info
+                  %span 未学完(#{percent}%)
+                .bar
+                  .p{:style => "width:#{percent}%"}
+          %td
+            %i.fa.fa-bar-chart-o
+            %b 难点总计
+
+        %tr
+          :ruby
+            learned_count = @learners.select {|x|
+              x.learned.include? @tutorial.id
+            }.count
+          %td #{learned_count} 人学完
+          %td.s-d
+            %span= dptotal
+
+    .related-points
+      .col-pad-12
+        %h3{:style => 'margin-bottom:20px;'} 相关知识点 ……
+
+      :ruby
+        points = Explore::Mock.nets.map(&:points).flatten
+
+        points = points.select {|x|
+          @tutorial.related.include? x.name
+        }
+
+      .col-pad-12
+        .cell-sample-points-list
+          - points.each do |point|
+            %a.point{:href => old_sample_point_path(point.id), :data => {:toggle => true}}
+              :ruby
+                bg = string_grid_color(point.id)
+                bg1 = ApplicationHelper::ColorTransfer.darken(bg.to_s)
+
+              .icon{:style => "border-color:#{bg}"}
+              .name
+                %span= point.name
+
+              .stat
+                :ruby
+                  tutorials = @tutorials.select {|x|
+                    x.related.include? point.name
+                  }
+                  rates = tutorials.map {|x|
+                    c = x.steps.count
+                    a = (c + 1.0) / c / 2.0
+                    a.round(2)
+                  }
+                  percent = rates.sum * 100.0 / rates.length
+                  percent = percent.round(2)
+                .bb
+                  %span 相关课程
+                  %span.c= tutorials.count
+                .bb
+                  %span 平均掌握百分比
+                  %span.c #{percent}%
+
+
+    .next-tutorials
+      .col-pad-12
+        %h3{:style => 'margin-bottom:20px;'} 后续教程 ……
+
+      :ruby
+        arr = @tutorial.children.map { |x|
+          @tutorials.select{|y| y.id == x}[0]
+        }
+
+      - arr.each do |tutorial|
+        .tutorial
+          %a.box{:href => old_sample_tutorial_path(tutorial.id), :data => {:toggle => true}}
+            :ruby
+              steps_count = tutorial.steps.count
+              imgs_count = tutorial.steps.map{|s| s[:imgs].length}.sum
+              videos_count = tutorial.steps.map{|s| s[:video].blank? ? 0:1}.sum
+
+            .img= fit_image tutorial.img, :width => '100%', :height => '100%'
+            .info
+              .title= tutorial.title
+              .desc= tutorial.desc
+            .select-percent
+              .desc 选择继续阅读此教程的学生
+              .p 50.0%
+            .next-icon
+              %i.fa.fa-chevron-right

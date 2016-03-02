@@ -17,8 +17,9 @@ group :development, :test do
 end
 
 group :test do
-  gem "rspec"
-  gem "database_cleaner", "~> 1.2.0"
+  gem 'rspec-rails', '~> 3.0'
+  gem 'database_cleaner', '~> 1.4.1'
+  gem "factory_girl_rails"
 end
 
 # -------------
@@ -135,7 +136,7 @@ gem 'kc-course-editor',
 # -----金融学院相关
 gem 'kc_courses', :github => 'mindpin/kc_courses',
                   #:ref => "0452a90"
-                  :tag => "v0.5.0"
+                  :tag => "v0.6.0"
                   #:path => "../kc_courses"
 
 gem 'simple-navbar', :github => 'mindpin/simple-navbar',

@@ -4,7 +4,7 @@
   .tobox{:data => {:scroller => true}}
     - @tutorials.each do |tutorial|
       .toturial
-        %a.tbox{:href => "/explore/tutorials/#{tutorial.id}"}
+        %a.tbox{:href => e_old_explore.tutorial_path(tutorial.id)}
           .info
             .author
               .avatar= avatar User.new
