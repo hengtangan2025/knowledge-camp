@@ -5,10 +5,10 @@ require 'mina/git'
 # require 'mina/rvm'    # for rvm support. (http://rvm.io)
 
 set :domain, '124.115.26.218'
-set :deploy_to, '/web/knowledge-camp'
+set :deploy_to, '/web/knowledge-camp-mobile'
 set :current_path, 'current'
 set :repository, 'git://github.com/mindpin/knowledge-camp.git'
-set :branch, 'bank'
+set :branch, 'mobile'
 set :user, 'root'
 set :term_mode, nil
 
