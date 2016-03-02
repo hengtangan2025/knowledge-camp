@@ -48,8 +48,8 @@ class NetCell < Cell::Rails
     @count = @net.send(HAS_MANY[name]).send(:count)
     @models = @net.send(HAS_MANY[name]).unscoped.limit(limit).order(:updated_at => :desc)
 
-    @more_url = url_for([:manage, @net, @names])
-    @new_url = url_for([:new, :manage, @net, @name])
+    @more_url = url_for([:old, :manage, @net, @names])
+    @new_url = url_for([:new, :old, :manage, @net, @name])
     @data_toggle = {:toggle => ['open', 'close']}
     @new_icon_klass = "fa-#{NEW_ICON[name]}"
     @new_string = I18n.t("views.new.#{name}")
@@ -70,8 +70,8 @@ class NetCell < Cell::Rails
     @title = @name_human
     @count = @net.send(HAS_MANY[name]).send(:count)
 
-    @more_url = url_for([:manage, @net, @names])
-    @new_url = url_for([:new, :manage, @net, @name])
+    @more_url = url_for([:old, :manage, @net, @names])
+    @new_url = url_for([:new, :old, :manage, @net, @name])
     @data_toggle = {:toggle => ['open', 'close']}
     @new_icon_klass = "fa-#{NEW_ICON[name]}"
     @new_string = I18n.t("views.new.#{name}")

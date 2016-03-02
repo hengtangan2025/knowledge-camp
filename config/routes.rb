@@ -1,18 +1,17 @@
 Rails.application.routes.draw do
 
   # api
-  mount KnowledgeCampApi::Engine => '/api'
-
+  mount KnowledgeCampApi::Engine => '/e/o/api', :as => :e_old_api
   # 学生界面
-  mount Explore::Engine => '/explore'
-
+  mount Explore::Engine          => '/e/o/explore', :as => :e_old_explore
   # 课程编辑
-  mount CourseEditor::Engine => '/course_editor'
+  mount CourseEditor::Engine     => '/e/o/course_editor', :as => :e_old_course_editor
 
   # -----------------------
 
   root 'index#index'
 
+  # 老版功能中的集成代码
   devise_for :users, :skip => :all
   as :user do
     get    "/account/sign_in"  => "sessions#new"
@@ -20,71 +19,79 @@ Rails.application.routes.draw do
     delete "/account/sign_out" => "sessions#destroy"
   end
 
-  namespace :manage do
-    resources :nets, :shallow => true do
-      member do
-        get :graph
-      end
-
-      resources :files, :shallow => true
-
-      resources :points, :shallow => true do
+  scope :path => "/o", :module => "old", :as => 'old' do
+    # 知识网咯管理
+    scope :path => '/manage', :module => 'manage', :as => 'manage' do
+      resources :nets, :shallow => true do
         member do
-          # TODO 改成体验更好的形式
-          get :assign_parent
-          get :assign_child
-          patch :do_assign
+          get :graph
         end
 
-        resources :files, :shallow => true, :controller => :point_files
-      end
+        resources :files, :shallow => true
 
-      resources :documents, :shallow => true do
-        resources :versions,
-                  :shallow => true,
-                  :controller => :document_versions do
-          collection do
-            get ":version", :action => :version
-            post ":version/restore", :action => :restore
+        resources :points, :shallow => true do
+          member do
+            # TODO 改成体验更好的形式
+            get :assign_parent
+            get :assign_child
+            patch :do_assign
+          end
+
+          resources :files, :shallow => true, :controller => :point_files
+        end
+
+        resources :documents, :shallow => true do
+          resources :versions, :shallow => true, :controller => :document_versions do
+            collection do
+              get ":version", :action => :version, :as => :version
+              post ":version/restore", :action => :restore, :as => :restore
+            end
           end
         end
+        resources :plans, :shallow => true
       end
-      resources :plans, :shallow => true
+
+      resources :users, :shallow => true do
+        resource :avatar, :shallow => true
+      end
     end
 
-    resources :users, :shallow => true do
-      resource :avatar, :shallow => true
+    # 演示示例
+    scope :path => '/sample', :module => 'sample', :as => 'sample' do
+      resources :nets, :shallow => true do
+        resources :tutorials
+        resources :students
+        resources :points
+      end
     end
-  end
 
-  resources :plans, :shallow => true do
-    resources :topics do
-      resources :tutorials
-    end
-  end
-
-  # -----------------
-
-  namespace :sample do
-    resources :nets, :shallow => true do
-      resources :tutorials
-      resources :students
-      resources :points
+    resources :plans, :shallow => true do
+      resources :topics do
+        resources :tutorials
+      end
     end
   end
 
   # --------------------
   # 金融学院暂时单独使用 bank 命名空间
-  mount QuestionBank::Engine => '/bank/question_bank', :as => 'question_bank'
-  FilePartUpload::Routing.mount "/bank/file_part_upload", :as => :file_part_upload
-  Bucketerize::Routing.mount '/bank/bucketerize', as: 'bucketerize'
-  KcCourses::Routing.mount '/bank/kc_courses', as: :kc_courses
+
+  # 新版功能的 engine
+  # 题库组卷
+  mount QuestionBank::Engine   => '/e/test_question', :as => :e_test_question
+  # 文件上传
+  FilePartUpload::Routing.mount "/e/file_part_upload", :as => :e_file_part_upload
+  # 收藏功能
+  Bucketerize::Routing.mount '/e/bucketerize', as: :e_bucketerize
+  # 课程功能
+  KcCourses::Routing.mount '/e/kc_courses', as: :e_courses
   #EngineManager::Routing.mount '/bank/manager', :as => 'engine_manager'
-  namespace :bank do
+
+  # 新版功能的集成代码
+  scope :path => "/bank", module: 'bank', :as => :bank do
 
     root "index#index"
     get '/my_test_questions', to: redirect{'/bank/my_test_questions/records'}
-    resources :my_test_questions do
+    resources :my_test_questions, module: :teaching do
       get :records, on: :collection
       get :flaw,    on: :collection
       get :fav,     on: :collection
@@ -93,11 +100,11 @@ Rails.application.routes.draw do
       get  :do_form, on: :member
     end
 
-    resources :my_questions
-    resources :my_answers
-    resources :my_notes
+    resources :my_questions, module: :teaching
+    resources :my_answers, module: :teaching
+    resources :my_notes, module: :teaching
 
-    resources :courses do
+    resources :courses, module: :teaching do
       get :mine, on: :collection
       get :hot, on: :collection
       get :studying, on: :collection
@@ -123,12 +130,12 @@ Rails.application.routes.draw do
     # get "/dashboard/questions"             => "dashboard#questions"
     # get "/dashboard/notes"                 => "dashboard#notes"
 
-    scope "test_papers/:test_paper_id" do
+    scope "test_papers/:test_paper_id", module: :teaching do
       resources :test_paper_results
     end
 
-    namespace :manage do
-      resources :courses, :shallow => true do
+    scope :path => :manage, module: :manage, :as => :manage do
+      resources :courses, module: :teaching, :shallow => true do
         post :publish, on: :member
         resources :course_attachments, :shallow => true
         resources :chapters, :shallow => true do
@@ -146,7 +153,7 @@ Rails.application.routes.draw do
         end
       end
 
-      resources :test_questions do
+      resources :test_questions, module: :teaching do
         get :new_single_choice, on: :collection
         get :new_multi_choice, on: :collection
         get :new_bool, on: :collection
@@ -156,7 +163,7 @@ Rails.application.routes.draw do
         get :search, on: :collection
       end
 
-      resources :test_papers, :shallow => true do
+      resources :test_papers, module: :teaching, :shallow => true do
         match :preview, on: :collection, via: [:post, :patch]
         post :enable, on: :member
         post :disable, on: :member

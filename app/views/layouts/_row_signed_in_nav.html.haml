@@ -1,7 +1,7 @@
 %nav.navbar.navbar-default.navbar-fixed-top
   .container-fluid
     .navbar-header
-      %a.navbar-brand{:href => "/"} Knowledge Camp
+      %a.navbar-brand{:href => bank_root_path} Kc-Finance
 
     %ul.nav.navbar-nav.navbar-right
       %li.dropdown
@@ -10,4 +10,8 @@
           %span.caret
         %ul.dropdown-menu
           %li
-            %a{:href => "/account/sign_out", :data => {:method => :delete}} 退出登录
+            %a{:href => bank_notifications_path} 通知中心
+          %li
+            %a{:href => "#"} 个人设置
+          %li
+            %a{:href => account_sign_out_path, :data => {:method => :delete}} 退出登录

@@ -1,6 +1,6 @@
 .points.web.list
   - @points.each do |point|
-    - url = "/explore/points/#{point.id}"
+    - url = e_old_explore.point_path(point.id)
     %a.point{:href => url}
       :ruby
         bg = string_grid_color(point.id)

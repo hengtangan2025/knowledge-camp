@@ -1,11 +1,11 @@
 %nav.navbar.navbar-default
   .container
     .navbar-header
-      %a.navbar-brand{:href => "/bank"} Kc-Finance
+      %a.navbar-brand{:href => bank_root_path} Kc-Finance
 
     %ul.nav.navbar-nav
       %li
-        %a{:href => "/bank/courses"} 课程中心
+        %a{:href => bank_courses_path} 课程中心
 
     %form.navbar-form.navbar-left{:role => "search", action: search_bank_courses_path}
       .form-group
@@ -15,4 +15,4 @@
 
     %ul.nav.navbar-nav.navbar-right
       %li
-        %a{:href => "/account/sign_in"} 登录
+        %a{:href => account_sign_in_path} 登录

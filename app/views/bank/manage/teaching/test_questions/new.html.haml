@@ -1,0 +1,31 @@
+.page-header
+  %h3
+    新增题目
+
+.nav.nav-tabs
+  %li.icon
+    %a{href: bank_manage_test_questions_path}
+      %i.glyphicon.glyphicon-th-list
+      %span 列表
+  %li.icon.active
+    %a.dropdown-toggle{href: 'javascript:;', role: 'button', data: {toggle: 'dropdown'}, aria: {haspopup: 'true', expanded: 'true'}}
+      %i.glyphicon.glyphicon-plus
+      新增
+      %span.caret
+    %ul.dropdown-menu
+      - base_url = new_bank_manage_test_question_path + "?kind="
+      %li
+        %a{:href=> "#{base_url}single_choice" } 单选题
+      %li
+        %a{:href=> "#{base_url}multi_choice" } 多选题
+      %li
+        %a{:href=> "#{base_url}bool" } 判断题
+      %li
+        %a{:href=> "#{base_url}fill" } 填空题
+      %li
+        %a{:href=> "#{base_url}essay" } 论述题
+      %li
+        %a{:href=> "#{base_url}mapping" } 连线题
+
+.tab-content
+  = render "form"

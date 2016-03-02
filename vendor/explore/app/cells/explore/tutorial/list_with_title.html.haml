@@ -4,7 +4,7 @@
     - @tutorials.each do |t|
       :ruby
         percent = rand(100)
-      %a.relation{:href => "/explore/tutorials/#{t.id}"}
+      %a.relation{:href => e_old_explore.tutorial_path(t.id)}
         .img= fit_image t.img, :width => '100%', :height => '100%'
         %span.t
           %span= t.title

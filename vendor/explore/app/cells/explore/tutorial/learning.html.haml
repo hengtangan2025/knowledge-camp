@@ -3,7 +3,7 @@
     - progress = tutorial.progress_by @user
 
     .tutorial
-      %a.tbox{:href => "/explore/tutorials/#{tutorial.id}"}
+      %a.tbox{:href => e_old_explore.tutorial_path(tutorial.id)}
         .img
           .ibox= fit_image tutorial.image.url, :width => '100%', :height => '100%'
         .textinfo

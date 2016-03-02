@@ -25,7 +25,7 @@ class Bank::Manage::ModelLabelsController < Bank::Manage::ApplicationController
     attrs = label_params
     attrs[:values] = attrs[:values].split(" ")
     if @model_label.save
-      redirect_to "/bank/manage/model_labels"
+      redirect_to bank_manage_model_labels_path
     else
       render :edit
     end
@@ -37,7 +37,7 @@ class Bank::Manage::ModelLabelsController < Bank::Manage::ApplicationController
 
     @model_label = ModelLabel::Label.new(attrs)
     if @model_label.save
-      redirect_to "/bank/manage/model_labels"
+      redirect_to bank_manage_model_labels_path
     else
       render :new
     end
@@ -46,7 +46,7 @@ class Bank::Manage::ModelLabelsController < Bank::Manage::ApplicationController
   def destroy
     @model_label = ModelLabel::Label.find params[:id]
     @model_label.destroy
-    redirect_to "/bank/manage/model_labels"
+    redirect_to bank_manage_model_labels_path
   end
 
 

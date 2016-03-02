@@ -19,18 +19,18 @@
               topic = Explore::Mock.topics.select {|x|
                 x.tutorials.include? @tutorial.id
               }.first
-              url = "/explore/topics/#{topic.id}"
+              url = e_old_explore.topic_path(topic.id)
             %a.left.back{:href => url}
               %i.fa.fa-chevron-left
             .text= @tutorial.title
 
           .tutorial-header
             .tabs
-              %a.tab.base{:href => "/explore/tutorials/#{@tutorial.id}", :class => (@active == :base ? 'active' : '')}
+              %a.tab.base{:href => e_old_explore.tutorial_path(@tutorial.id), :class => (@active == :base ? 'active' : '')}
                 .tbox
                   %i.fa.fa-book
                   %span 简介
-              %a.tab.points{:href => "/explore/tutorials/#{@tutorial.id}/points", :class => (@active == :points ? 'active' : '')}
+              %a.tab.points{:href => e_old_explore.points_tutorial_path(@tutorial.id), :class => (@active == :points ? 'active' : '')}
                 .tbox
                   %i.fa.fa-circle-o
                   %span 知识点
@@ -45,7 +45,7 @@
                 .page-not-signed-in 你正以未登录状态进行浏览
               = yield
 
-          %a.tutorial-continue{:href => "/explore/tutorials/#{@tutorial.id}/flow"}
+          %a.tutorial-continue{:href => e_old_explore.tutorial_flow_path(@tutorial.id)}
             %span 继续学习
             %span [80%]
             %i.fa.fa-chevron-right

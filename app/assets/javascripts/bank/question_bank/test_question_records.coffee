@@ -1,8 +1,12 @@
-question_bank_engine_prefix = "/bank/question_bank"
-
 class QuestionRecordList
   constructor: (@$ele)->
+    @_init()
     @bind_event()
+
+  _init: () ->
+    @question_flaws_url = @$ele.data('questionFlawsUrl')
+    @batch_destroy_question_records_url = @$ele.data('batchDestroyQuestionRecordsUrl')
+    @batch_create_question_flaws_url = @$ele.data('batchCreateQuestionFlawsUrl')
 
   bind_event: ()->
     @bind_check_all_event()
@@ -24,9 +28,9 @@ class QuestionRecordList
 
       target = jQuery evt.target
       tr = target.closest "tr"
-      question_record_id = target.data "questionRecordId"
+      question_record_url = target.data "questionRecordUrl"
       jQuery.ajax
-        url: "#{question_bank_engine_prefix}/question_records/#{question_record_id}"
+        url: question_record_url
         method: "DELETE"
         dataType: "json"
         success: (msg)=>
@@ -41,7 +45,7 @@ class QuestionRecordList
 
       question_id = target.data "questionId"
       jQuery.ajax
-        url: "#{question_bank_engine_prefix}/question_flaws"
+        url: @question_flaws_url
         method: "post"
         data:
           question_id: question_id
@@ -66,7 +70,7 @@ class QuestionRecordList
       return if !confirm("确定么？")
 
       jQuery.ajax
-        url: "#{question_bank_engine_prefix}/question_flaws/batch_create"
+        url: @batch_create_question_flaws_url
         method: "post"
         data:
           question_ids: ids
@@ -89,7 +93,7 @@ class QuestionRecordList
       return if !confirm("确定么？")
 
       jQuery.ajax
-        url: "#{question_bank_engine_prefix}/question_records/batch_destroy"
+        url: @batch_destroy_question_records_url
         method: "delete"
         data:
           question_record_ids: ids

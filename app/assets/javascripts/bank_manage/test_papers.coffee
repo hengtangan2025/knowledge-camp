@@ -11,7 +11,9 @@ class NewTestPaper
 
     @$new_test_paper = @$el.find 'form'
 
-    @paper_prefix = '/bank/manage'
+    @test_papers_url = @$el.data('bank-manage-test-papers-url')
+    @preview_test_papers_url = @$el.data('preview-bank-manage-test-papers-url')
+    @search_test_questions_url = @$el.data('search-bank-manage-test-questions-url') + '.json'
 
     @set_scores()
     @bind_set_cores_event()
@@ -28,13 +30,13 @@ class NewTestPaper
       if @total == NaN or @total <= 0 or @surplus != 0
         alert('未分配分数不为0')
         return false
-      @$new_test_paper.prop('action', "#{@paper_prefix}/test_papers").prop('target', '')
+      @$new_test_paper.prop('action', @test_papers_url).prop('target', '')
 
     @$el.on 'click', '.btn-preview', =>
       if @total == NaN or @total <= 0 or @surplus != 0
         alert('未分配分数不为0')
         return false
-      @$new_test_paper.prop('action', "#{@paper_prefix}/test_papers/preview").prop('target', '_blank').submit()
+      @$new_test_paper.prop('action', @preview_test_papers_url).prop('target', '_blank').submit()
 
   bind_section_event: ->
     @bind_add_section_event()
@@ -292,7 +294,7 @@ class NewTestPaper
     $question_selector = @$el.find('.question_selector')
     $question_selector.html('读取中...')
     jQuery.ajax
-      url: "#{@paper_prefix}/test_questions/search.json"
+      url: @search_test_questions_url
       method: 'GET'
       data:
         min_level: min_level
@@ -318,7 +320,7 @@ class NewTestPaper
     min_level = $section.find('.min_level').val()
     max_level = $section.find('.max_level').val()
     jQuery.ajax
-      url: "#{@paper_prefix}/test_questions/search.json"
+      url: @search_test_questions_url
       method: 'GET'
       data:
         min_level: min_level

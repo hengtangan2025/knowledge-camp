@@ -1,0 +1,15 @@
+.page-header
+  %h3 增加课程
+
+.nav.nav-tabs
+  %li.icon
+    %a{href: bank_manage_courses_path}
+      %i.glyphicon.glyphicon-th-list
+      %span 列表
+  %li.icon.active
+    %a{href: new_bank_manage_course_path}
+      %i.glyphicon.glyphicon-plus
+      %span 新增
+
+.tab-content
+  = render "form"

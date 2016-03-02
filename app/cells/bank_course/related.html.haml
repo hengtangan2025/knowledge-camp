@@ -8,5 +8,5 @@
     %li.test.ul-list-item
       .test-title.col-md-10= test_paper.title
       .test-action.col-md-2
-        %a{href: "/bank/test_papers/#{test_paper.id}/test_paper_results/new"} 开始测试
+        %a{href: new_bank_test_paper_result_path(test_paper.id)} 开始测试
       .clearfix
