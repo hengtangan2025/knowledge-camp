@@ -1,0 +1,48 @@
+!!!
+%html{ lang: "zh" }
+  %head
+    %meta{ content: "text/html; charset=utf-8", http:{ equiv: "Content-Type" } }
+    %meta{ content: "width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no", name: "viewport"}
+
+    %title Knowledge Camp
+
+    = csrf_meta_tags
+
+    = stylesheet_link_tag :mockup, :'data-turbolinks-track' => true
+    = javascript_include_tag :mockup, :'data-turbolinks-track' => true
+
+  %body
+    :ruby
+      menu_data = {
+        home: mockup_url(page: 'home'),
+        left: {
+          '课程类目一' => mockup_url(page: 'courses', category: '1'),
+          '课程类目二' => mockup_url(page: 'courses', category: '2'),
+          '课程类目三' => mockup_url(page: 'courses', category: '3'),
+        },
+
+        right: {
+          '登录' => mockup_url(page: 'sign_in'),
+          '注册' => mockup_url(page: 'sign_up'),
+          '帮助' => mockup_url(page: 'help'),
+          '关于' => mockup_url(page: 'about'),
+        }
+      }
+    = react_component 'LayoutTopMenu', data: menu_data
+
+    .layout-page-content
+      = yield
+
+    :ruby
+      footer_data = {
+        logo: 'http://i.teamkn.com/i/uJnxbhr3.png',
+        links: {
+          '关于' => mockup_url(page: 'about'),
+          '使用帮助' => mockup_url(page: 'about'),
+          '联系我们' => mockup_url(page: 'about'),
+          '服务条款' => mockup_url(page: 'about'),
+        },
+        desc: '京ICP备********号 ©2016 MINDPIN'
+      }
+
+    = react_component 'LayoutFooter', data: footer_data

@@ -1,0 +1,20 @@
+!!!
+%html{ lang: "zh" }
+  %head
+    %meta{ content: "text/html; charset=utf-8", http:{ equiv: "Content-Type" } }
+    %meta{ content: "width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no", name: "viewport"}
+
+    %title Knowledge Camp
+
+    = csrf_meta_tags
+
+    = stylesheet_link_tag :mockup, :'data-turbolinks-track' => true
+    = javascript_include_tag :mockup, :'data-turbolinks-track' => true
+
+    = javascript_include_tag '/ckplayer/6.7/ckplayer.js', :'data-turbolinks-track' => true
+
+    = javascript_include_tag '/mediaelement/mediaelement-and-player.min.js', :'data-turbolinks-track' => true
+    = stylesheet_link_tag '/mediaelement/mediaelementplayer.min.css', :'data-turbolinks-track' => true
+
+  %body.course-ware
+    = yield
