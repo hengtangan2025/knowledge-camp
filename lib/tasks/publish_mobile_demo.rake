@@ -15,6 +15,8 @@ module PublishTaskMethods
       app/models
       app/uploaders
 
+      app/assets/images
+
       config/initializers/gem_integration.rb
       config/initializers/devise.rb
       config/initializers/figaro.rb
@@ -32,6 +34,41 @@ module PublishTaskMethods
     system "cp demo_files/application_controller.rb app/controllers/"
     system "cp demo_files/Gemfile ./"
   end
+
+  def move_files
+    _move "app/assets/javascripts", %w{
+      mockup
+      mockup.js
+    }
+
+    _move "app/assets/stylesheets", %w{
+      mockup
+      mockup.scss
+    }
+
+    _move "app/views", %w{
+      layouts
+      mockup
+    }
+
+    _move "app/controllers", %w{
+      application_controller.rb
+      mockup_controller.rb
+    }
+  end
+
+  def _move(from, files)
+    files.each do |path|
+      system "mv #{File.join from, path} demo_files/"
+    end
+
+    system "rm -rf #{File.join from, '*'}"
+
+    files.each do |path|
+      system "mv #{File.join "demo_files", path} #{from}"
+    end
+  end
+
 end
 
 
@@ -52,8 +89,39 @@ namespace :demo do
     end
 
     puts '开始发布 …'
-    delete_files
-    copy_files
-  end
+    puts '处理文件 …'
+    Dir.mktmpdir do |tmp|
+      delete_files
+      copy_files
+      move_files
 
+      %w{
+        app
+        bin
+        config
+        public
+        tmp
+
+        Gemfile
+        Gemfile.lock
+        config.ru
+        Rakefile
+      }.each do |path|
+        system "mv #{path} #{tmp}"
+      end
+
+      system "git checkout ."
+      system "git checkout -B mobile-demo"
+      system "rm -rf *"
+
+      system "mv #{tmp}/* ."
+
+      message = "Site updated at #{Time.now.utc}"
+      system "git add ."
+      system "git commit -am #{message.shellescape}"
+      system "git push origin mobile-demo --force"
+      system "git checkout mobile-mockup"
+    end
+  end
+  
 end
