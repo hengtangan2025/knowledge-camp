@@ -30,6 +30,7 @@ module PublishTaskMethods
     system "cp demo_files/application.rb config/"
     system "cp demo_files/routes.rb config/"
     system "cp demo_files/application_controller.rb app/controllers/"
+    system "cp demo_files/Gemfile ./"
   end
 end
 
