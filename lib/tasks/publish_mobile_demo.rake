@@ -25,6 +25,12 @@ module PublishTaskMethods
       system "rm -rf #{path}"
     end
   end
+
+  def copy_files
+    system "cp demo_files/application.rb config/"
+    system "cp demo_files/routes.rb config/"
+    system "cp demo_files/application_controller.rb app/controllers/"
+  end
 end
 
 
@@ -46,6 +52,7 @@ namespace :demo do
 
     puts '开始发布 …'
     delete_files
+    copy_files
   end
 
 end
