@@ -8,4 +8,7 @@
 
 //= require semantic
 
+// https://github.com/medialize/URI.js
+//= require URIjs
+
 //= require_tree ./mockup
