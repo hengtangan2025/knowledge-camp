@@ -56,6 +56,7 @@ module PublishTaskMethods
     _move "app/controllers", %w{
       application_controller.rb
       mockup_controller.rb
+      index_controller.rb
     }
   end
 
