@@ -188,5 +188,13 @@ Rails.application.routes.draw do
       post   :add_fav,    on: :member
       delete :remove_fav, on: :member
     end
+    
+    devise_for :users,
+      :path => '',
+      :controllers => {
+        :registrations => 'users/registrations',
+        :sessions => 'users/sessions'
+      }
   end
+
 end
