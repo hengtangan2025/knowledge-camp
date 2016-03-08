@@ -27,7 +27,7 @@
         <div className='ui four link cards'>
           {
             for course, idx in @props.data
-              <a key={idx} className='card' href={course.link}>
+              <a key={idx} className='card' href={course.url}>
                 <div className='image'>
                   <div className='ig' style={'backgroundImage': "url(#{course.img})"} />
                   <div className='btnoverlay'>
