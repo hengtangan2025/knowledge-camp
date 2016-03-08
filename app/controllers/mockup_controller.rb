@@ -11,6 +11,12 @@ class MockupController < ApplicationController
   def page
     @page_name = params[:page]
     case @page_name
+
+    when 'sign_in'
+      get_sign_in_data
+    when 'sign_up'
+      get_sign_up_data
+
     when 'courses'
       get_courses_data
     when 'course_show'
@@ -18,6 +24,22 @@ class MockupController < ApplicationController
     when 'ware_show'
       get_ware_show_data
     end
+  end
+
+  def get_sign_in_data
+    @component_data = {
+      sign_in_url: mockup_url(page: 'sign_in'),
+      sign_up_url: mockup_url(page: 'sign_up'),
+      submit_url: mockup_url(page: 'do_sign_in')
+    }
+  end
+
+  def get_sign_up_data
+    @component_data = {
+      sign_in_url: mockup_url(page: 'sign_in'),
+      sign_up_url: mockup_url(page: 'sign_up'),
+      submit_url: mockup_url(page: 'do_sign_up')
+    }
   end
 
   def get_courses_data
@@ -166,14 +188,22 @@ class MockupController < ApplicationController
   SAMPLE_WARES_DATA = [
     {
       id: '1', name:'农民朋友做农产品如何选择电商平台', kind: 'video', learned: 'done', time: '37′12″',
+      url: "/mockup/ware_show?id=1",
       video_url: 'http://movie.ks.js.cn/flv/other/1_0.mp4'
     },
     {
       id: '2', name:'教做农产品的朋友认识天猫平台', kind: 'video', learned: 'half', time: '37′12″',
+      url: "/mockup/ware_show?id=2",
       video_url: 'http://mediaelementjs.com/media/echo-hereweare.mp4'
     },
-    {id: '3', name:'教做农产品的朋友认识淘宝平台', kind: 'video', learned: 'no', time: '37′12″'},
-    {id: '4', name:'电子商务和物流的基础概念', kind: 'document', learned: 'no'},
+    {
+      id: '3', name:'教做农产品的朋友认识淘宝平台', kind: 'video', learned: 'no', time: '37′12″',
+      url: "/mockup/ware_show?id=3",
+    },
+    {
+      id: '4', name:'电子商务和物流的基础概念', kind: 'document', learned: 'no',
+      url: "/mockup/ware_show?id=4",
+    },
   ]
 
   SAMPLE_COURSE_DATA = {
