@@ -121,7 +121,10 @@ namespace :demo do
       system "git add ."
       system "git commit -am #{message.shellescape}"
       system "git push origin mobile-demo --force"
+      system "git push coding mobile-demo --force"
       system "git checkout mobile-mockup"
+      system "git submodule update"
+      puts "发布完毕"
     end
   end
   
