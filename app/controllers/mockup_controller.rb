@@ -174,9 +174,19 @@ class MockupController < ApplicationController
     instructor: '美客商学院',
     published_at: '2015-03-17',
 
-    subject: '电子商务',
+    # subject: '电子商务',
+    # 20160308 课程类型结构调整为数组
+    subjects: [
+      {name: '电子商务', url: '/mockup/subject_show'},
+      {name: '农产品销售', url: '/mockup/subject_show'},
+    ],
+
     price: '免费',
-    effort: '4 个视频，合计 120 分钟；有结课测验；',
+    # 20160308 这里目前先一律写免费
+
+    # effort: '4 个视频，合计 120 分钟；有结课测验；',
+    # 20160308 这里目前先只做时间统计
+    effort: '4 个视频，合计 120 分钟；',
 
     chapters: [
       name: '电商基础',

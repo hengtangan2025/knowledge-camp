@@ -48,7 +48,7 @@
           ['内容量', 'dashboard', @props.data.effort]
           ['价格', 'tag', @props.data.price]
           ['讲师', 'university', <a href='javascript:;'>{@props.data.instructor}</a>]
-          ['类别', 'graduation cap', <a href='javascript:;'>{@props.data.subject}</a>]
+          ['类别', 'graduation cap', <CourseShowPage.Subjects data={@props.data.subjects} />]
         ]
         .map (x)->
           {
@@ -75,4 +75,16 @@
               </div>
             </div>
           </div>
+        </div>
+
+    Subjects: React.createClass
+      render: ->
+        <div className='subjects'>
+        {
+          for subject, idx in @props.data
+            <div key={idx} className='subject'>
+              <a href={subject.url}>{subject.name}</a>
+            </div>
+            
+        }
         </div>
