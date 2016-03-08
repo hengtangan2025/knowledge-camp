@@ -36,7 +36,7 @@
 
         <div className={klass}>
           <div className='ui segment basic clist'>
-            <a className='course-title' href='/mockup/course_show'>
+            <a className='course-title' href={@props.data.course.url}>
               <i className='icon caret left' />
               {@props.data.course.name}
             </a>
