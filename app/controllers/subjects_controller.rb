@@ -1,4 +1,4 @@
-class CategoriesController < ApplicationController
+class SubjectsController < ApplicationController
   layout "new_version_base"
 
   def show

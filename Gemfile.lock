@@ -542,6 +542,3 @@ DEPENDENCIES
   user-auth!
   useragent
   virtual_file_system!
-
-BUNDLED WITH
-   1.11.2

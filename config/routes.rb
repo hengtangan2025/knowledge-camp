@@ -179,6 +179,6 @@ Rails.application.routes.draw do
 
   # --------------------
   # kc mobile 2016
-  resources :categories
+  resources :subjects
   resources :courses
 end

@@ -15,7 +15,7 @@
     :ruby
       left = CmsConfig.where(name: "show_course_subject_in_nav_item").map do |cms_config|
         cs = KcCourses::CourseSubject.find(cms_config.value)
-        [cs.name, category_path(cs.id)]
+        [cs.name, subject_path(cs.id)]
       end.to_h
       menu_data = {
         home: mockup_url(page: 'home'),
