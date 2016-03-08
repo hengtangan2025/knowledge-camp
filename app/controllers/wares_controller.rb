@@ -3,6 +3,8 @@ class WaresController < ApplicationController
 
   def show
     @page_name = 'ware_show'
+    
+    ware = KcCourses::Ware.find params[:id]
 
     @component_data = {
       comments: [
@@ -31,8 +33,8 @@ class WaresController < ApplicationController
           date: '2016-02-02',
         },
       ],
-      course: SAMPLE_COURSE_DATA,
-      ware: SAMPLE_WARES_DATA.select {|x| x[:id] == params[:id]}.first
+      course: ware.chapter.course.to_detail_component_data(self),
+      ware: ware.to_brief_component_data(self)
     }
 
 

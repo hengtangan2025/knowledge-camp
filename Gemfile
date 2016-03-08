@@ -113,7 +113,7 @@ source "https://ruby.taobao.org" do
   # 支持分段上传的文件持久化
   gem 'file-part-upload',
       :github => 'mindpin/file-part-upload',
-      :tag => '2.2.1'
+      :tag => '2.2.2'
 
   # 图片加载的一个小工具
   gem 'simple-images',

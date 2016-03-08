@@ -66,7 +66,10 @@ KcCourses::Ware.class_eval do
       data[:kind] = "video"
       seconds = self.file_entity.meta[:video][:total_duration].to_i
       data[:time] = "#{seconds/60}′#{seconds%60}″"
-      data[:video_url] = self.file_entity.transcode_url("超请")
+      data[:video_url] = self.file_entity.transcode_url("超请") || 
+        self.file_entity.transcode_url("高请") || 
+        self.file_entity.transcode_url("标清") ||
+        self.file_entity.transcode_url("低清")
     end
 
     data

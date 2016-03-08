@@ -40,10 +40,10 @@ GIT
 
 GIT
   remote: git://github.com/mindpin/file-part-upload.git
-  revision: 6898ae1f53b6290eb04ec50a5130f1748acf9404
-  tag: 2.2.1
+  revision: ec46181885278603648ac432673132aa7afe304e
+  tag: 2.2.2
   specs:
-    file-part-upload (2.2.1)
+    file-part-upload (2.2.2)
       enumerize
       mime-types
       mini_magick
