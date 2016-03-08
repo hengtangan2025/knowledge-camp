@@ -51,6 +51,7 @@ KcCourses::Ware.class_eval do
     data = {
       id: self.id.to_s,
       name: self.title,
+      url: controller.ware_path(self.id.to_s),
       kind: self._type,
       learned: learned,
     }
