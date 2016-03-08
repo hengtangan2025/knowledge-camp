@@ -23,7 +23,7 @@ KcCourses::Course.class_eval do
       instructor: self.user.name,
       published_at: self.updated_at.strftime("%Y-%m-%d"),
       # TODO 统计信息方法等待封装完成
-      subject: self.course_subjects.map(&:name),
+      subjects: self.course_subjects.map{|subject| {name: subject.name, url: controller.subject_path(subject.id.to_s)}},
       price: '免费',
       effort: '4 个视频，合计 120 分钟',
 
@@ -49,22 +49,23 @@ KcCourses::Ware.class_eval do
     learned = 'no'   if percent == 0
 
     data = {
-      # TODO ware.type
       id: self.id.to_s,
       name: self.title,
-      kind: self.type,
+      kind: self._type,
       learned: learned,
     }
 
     data[:kind] = "document"
-    if self.type == SimpleAudio
-      data[:kind] = "audio"
-      data[:time] = self.file_entity.meta[:video][:total_duration]
+    if self._type == "KcCourses::SimpleAudioWare"
+      data[:kind] = "audio" 
+      seconds = self.file_entity.meta[:audio][:audio_duration].to_i
+      data[:time] = "#{seconds/60}′#{seconds%60}″"
     end
 
-    if self.type == SimpleVideo
+    if self._type == "KcCourses::SimpleVideoWare"
       data[:kind] = "video"
-      data[:time] = self.file_entity.meta[:audio][:audio_duration]
+      seconds = self.file_entity.meta[:video][:total_duration].to_i
+      data[:time] = "#{seconds/60}′#{seconds%60}″"
       data[:video_url] = self.file_entity.transcode_url("超请")
     end
 

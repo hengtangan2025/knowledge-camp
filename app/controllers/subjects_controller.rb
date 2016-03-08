@@ -6,7 +6,6 @@ class SubjectsController < ApplicationController
 
     cs = KcCourses::CourseSubject.find params[:id]
     courses = cs.courses.page(params[:page])
-    # TODO 分页信息
     @component_data = {
       courses: courses.map{|course| course.to_brief_component_data self},
       paginate: {
