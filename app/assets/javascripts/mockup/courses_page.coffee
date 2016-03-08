@@ -4,8 +4,8 @@
       <CoursesPage.TopCover />
       <div className='ui container'>
         <div className='cards-bg ui segment basic'>
-        <CoursesPage.Cards data={@props.data} />
-        <CoursesPage.Pagination />
+        <CoursesPage.Cards data={@props.data.courses} />
+        <CoursesPage.Pagination data={@props.data.paginate} />
         </div>
       </div>
     </div>
@@ -49,5 +49,5 @@
     Pagination: React.createClass
       render: ->
         <div className='pagination-bar'>
-          <Pagination />
+          <Pagination data={@props.data} />
         </div>

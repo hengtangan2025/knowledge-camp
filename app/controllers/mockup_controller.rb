@@ -21,98 +21,10 @@ class MockupController < ApplicationController
   end
 
   def get_courses_data
-    @component_data = [
-      {
-        id: '1',
-        link: "/mockup/course_show",
-        img: 'http://i.teamkn.com/i/dHCg8ulr.png',
-        name: '农业电商：找到合适的电商平台',
-        desc: '农民朋友在做电商的时候如果选择电商平台，各个电商平台主要面对的市场是什么？本节课程帮助你理解电商平台，帮助你选择电商平台...',
-        instructor: '美客商学院',
-        published_at: '2015-03-17'
-      },
-      {
-        id: '2',
-        link: "/mockup/course_show",
-        img: 'http://i.teamkn.com/i/RO62ePgE.png',
-        name: '淘宝规则：淘宝信用评价那些事儿',
-        desc: '信用评价是掌握店铺权重的核心技术，掌握信用评价掌握店铺权重...',
-        instructor: '美客商学院',
-        published_at: '2015-03-17'
-      },
-      {
-        id: '3',
-        link: "/mockup/course_show",
-        img: 'http://i.teamkn.com/i/RsDd9YIG.png',
-        name: '淘大讲师专场：淘宝规则',
-        desc: '【淘大讲师与你有约】为你详解买家与卖家规则及处罚申诉流程，客服必看 新手必备！',
-        instructor: '美客商学院',
-        published_at: '2015-03-17'
-      },
-      {
-        id: '4',
-        link: "/mockup/course_show",
-        img: 'http://i.teamkn.com/i/Vhqq2y4s.png',
-        name: '淘大讲师专场：淘宝规则',
-        desc: '【淘大讲师与你有约】为你详解买家与卖家规则及处罚申诉流程，客服必看 新手必备！本节课为您一一揭晓答案...',
-        instructor: '美客商学院',
-        published_at: '2015-03-17'
-      },
-      {
-        id: '5',
-        link: "/mockup/course_show",
-        img: 'http://i.teamkn.com/i/rAWqREdl.png',
-        name: '淘大讲师专场：淘宝规则',
-        desc: '【淘大讲师与你有约】为你详解买家与卖家规则及处罚申诉流程，客服必看 新手必备！本节课为您一一揭晓答案...',
-        instructor: '美客商学院',
-        published_at: '2015-03-17'
-      },
-      {
-        id: '6',
-        link: "/mockup/course_show",
-        img: 'http://i.teamkn.com/i/M8lbQ67z.png',
-        name: '淘大讲师专场：淘宝规则',
-        desc: '【淘大讲师与你有约】为你详解买家与卖家规则及处罚申诉流程，客服必看 新手必备！本节课为您一一揭晓答案...',
-        instructor: '美客商学院',
-        published_at: '2015-03-17'
-      },
-      {
-        id: '7',
-        link: "/mockup/course_show",
-        img: 'http://i.teamkn.com/i/RYJ5MOCG.png',
-        name: '淘大讲师专场：淘宝规则',
-        desc: '【淘大讲师与你有约】为你详解买家与卖家规则及处罚申诉流程，客服必看 新手必备！本节课为您一一揭晓答案...',
-        instructor: '美客商学院',
-        published_at: '2015-03-17'
-      },
-      {
-        id: '8',
-        link: "/mockup/course_show",
-        img: 'http://i.teamkn.com/i/NHZUvhjk.png',
-        name: '淘大讲师专场：淘宝规则',
-        desc: '【淘大讲师与你有约】为你详解买家与卖家规则及处罚申诉流程，客服必看 新手必备！本节课为您一一揭晓答案...',
-        instructor: '美客商学院',
-        published_at: '2015-03-17'
-      },
-      {
-        id: '9',
-        link: "/mockup/course_show",
-        img: 'http://i.teamkn.com/i/MvoCifwZ.jpg',
-        name: '淘大讲师专场：淘宝规则',
-        desc: '【淘大讲师与你有约】为你详解买家与卖家规则及处罚申诉流程，客服必看 新手必备！本节课为您一一揭晓答案...',
-        instructor: '美客商学院',
-        published_at: '2015-03-17'
-      },
-      {
-        id: '10',
-        link: "/mockup/course_show",
-        img: 'http://i.teamkn.com/i/R789g1D1.png',
-        name: '淘大讲师专场：淘宝规则',
-        desc: '【淘大讲师与你有约】为你详解买家与卖家规则及处罚申诉流程，客服必看 新手必备！本节课为您一一揭晓答案...',
-        instructor: '美客商学院',
-        published_at: '2015-03-17'
-      }
-    ]
+    @component_data = {
+      courses: SAMPLE_COURSES_DATA,
+      paginate: SAMPLE_PAGINATE_DATA
+    }
   end
 
   def get_course_show_data
@@ -152,6 +64,105 @@ class MockupController < ApplicationController
     }
   end
 
+  SAMPLE_PAGINATE_DATA = {
+    total_pages: 12,
+    current_page: 5,
+    per_page: 25
+  }  
+
+  SAMPLE_COURSES_DATA = [
+    {
+      id: '1',
+      link: "/mockup/course_show",
+      img: 'http://i.teamkn.com/i/dHCg8ulr.png',
+      name: '农业电商：找到合适的电商平台',
+      desc: '农民朋友在做电商的时候如果选择电商平台，各个电商平台主要面对的市场是什么？本节课程帮助你理解电商平台，帮助你选择电商平台...',
+      instructor: '美客商学院',
+      published_at: '2015-03-17'
+    },
+    {
+      id: '2',
+      link: "/mockup/course_show",
+      img: 'http://i.teamkn.com/i/RO62ePgE.png',
+      name: '淘宝规则：淘宝信用评价那些事儿',
+      desc: '信用评价是掌握店铺权重的核心技术，掌握信用评价掌握店铺权重...',
+      instructor: '美客商学院',
+      published_at: '2015-03-17'
+    },
+    {
+      id: '3',
+      link: "/mockup/course_show",
+      img: 'http://i.teamkn.com/i/RsDd9YIG.png',
+      name: '淘大讲师专场：淘宝规则',
+      desc: '【淘大讲师与你有约】为你详解买家与卖家规则及处罚申诉流程，客服必看 新手必备！',
+      instructor: '美客商学院',
+      published_at: '2015-03-17'
+    },
+    {
+      id: '4',
+      link: "/mockup/course_show",
+      img: 'http://i.teamkn.com/i/Vhqq2y4s.png',
+      name: '淘大讲师专场：淘宝规则',
+      desc: '【淘大讲师与你有约】为你详解买家与卖家规则及处罚申诉流程，客服必看 新手必备！本节课为您一一揭晓答案...',
+      instructor: '美客商学院',
+      published_at: '2015-03-17'
+    },
+    {
+      id: '5',
+      link: "/mockup/course_show",
+      img: 'http://i.teamkn.com/i/rAWqREdl.png',
+      name: '淘大讲师专场：淘宝规则',
+      desc: '【淘大讲师与你有约】为你详解买家与卖家规则及处罚申诉流程，客服必看 新手必备！本节课为您一一揭晓答案...',
+      instructor: '美客商学院',
+      published_at: '2015-03-17'
+    },
+    {
+      id: '6',
+      link: "/mockup/course_show",
+      img: 'http://i.teamkn.com/i/M8lbQ67z.png',
+      name: '淘大讲师专场：淘宝规则',
+      desc: '【淘大讲师与你有约】为你详解买家与卖家规则及处罚申诉流程，客服必看 新手必备！本节课为您一一揭晓答案...',
+      instructor: '美客商学院',
+      published_at: '2015-03-17'
+    },
+    {
+      id: '7',
+      link: "/mockup/course_show",
+      img: 'http://i.teamkn.com/i/RYJ5MOCG.png',
+      name: '淘大讲师专场：淘宝规则',
+      desc: '【淘大讲师与你有约】为你详解买家与卖家规则及处罚申诉流程，客服必看 新手必备！本节课为您一一揭晓答案...',
+      instructor: '美客商学院',
+      published_at: '2015-03-17'
+    },
+    {
+      id: '8',
+      link: "/mockup/course_show",
+      img: 'http://i.teamkn.com/i/NHZUvhjk.png',
+      name: '淘大讲师专场：淘宝规则',
+      desc: '【淘大讲师与你有约】为你详解买家与卖家规则及处罚申诉流程，客服必看 新手必备！本节课为您一一揭晓答案...',
+      instructor: '美客商学院',
+      published_at: '2015-03-17'
+    },
+    {
+      id: '9',
+      link: "/mockup/course_show",
+      img: 'http://i.teamkn.com/i/MvoCifwZ.jpg',
+      name: '淘大讲师专场：淘宝规则',
+      desc: '【淘大讲师与你有约】为你详解买家与卖家规则及处罚申诉流程，客服必看 新手必备！本节课为您一一揭晓答案...',
+      instructor: '美客商学院',
+      published_at: '2015-03-17'
+    },
+    {
+      id: '10',
+      link: "/mockup/course_show",
+      img: 'http://i.teamkn.com/i/R789g1D1.png',
+      name: '淘大讲师专场：淘宝规则',
+      desc: '【淘大讲师与你有约】为你详解买家与卖家规则及处罚申诉流程，客服必看 新手必备！本节课为您一一揭晓答案...',
+      instructor: '美客商学院',
+      published_at: '2015-03-17'
+    }
+  ]
+
   SAMPLE_WARES_DATA = [
     {
       id: '1', name:'农民朋友做农产品如何选择电商平台', kind: 'video', learned: 'done', time: '37′12″',
@@ -177,8 +188,8 @@ class MockupController < ApplicationController
     # subject: '电子商务',
     # 20160308 课程类型结构调整为数组
     subjects: [
-      {name: '电子商务', url: '/mockup/subject_show'},
-      {name: '农产品销售', url: '/mockup/subject_show'},
+      {name: '电子商务', url: '/mockup/courses?subject=1'},
+      {name: '农产品销售', url: '/mockup/courses?subject=2'},
     ],
 
     price: '免费',

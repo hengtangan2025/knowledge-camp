@@ -165,6 +165,7 @@ source "https://ruby.taobao.org" do
 end
 
 # 通过 rails assets 服务加载前端包
-source 'https://rails-assets.org' do
-  gem 'rails-assets-semantic'
-end
+source 'https://rails-assets.org'
+
+gem 'rails-assets-semantic'
+gem 'rails-assets-URIjs'
