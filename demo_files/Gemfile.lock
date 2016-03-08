@@ -78,6 +78,8 @@ GEM
     multi_json (1.11.2)
     nokogiri (1.6.7.2)
       mini_portile2 (~> 2.0.0.rc2)
+    non-stupid-digest-assets (1.0.8)
+      sprockets (>= 2.0)
     rack (1.6.4)
     rack-test (0.6.3)
       rack (>= 1.0)
@@ -159,6 +161,7 @@ DEPENDENCIES
   haml
   jbuilder (~> 2.0)
   jquery-rails
+  non-stupid-digest-assets
   rails (= 4.2.3)
   rails-assets-URIjs
   rails-assets-semantic
