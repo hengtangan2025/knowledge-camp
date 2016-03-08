@@ -4,7 +4,7 @@ KcCourses::Course.class_eval do
     # TODO 课程发布时间
     {
       id: self.id.to_s,
-      link: controller.course_path(self.id.to_s),
+      url: controller.course_path(self.id.to_s),
       img: 'http://i.teamkn.com/i/dHCg8ulr.png',
       name: self.title,
       desc: self.desc,
@@ -16,7 +16,7 @@ KcCourses::Course.class_eval do
   def to_detail_component_data(controller = nil)
     {
       id: self.id.to_s,
-      link: controller.course_path(self.id.to_s),
+      url: controller.course_path(self.id.to_s),
       img: 'http://i.teamkn.com/i/dHCg8ulr.png',
       name: self.title,
       desc: self.desc,
