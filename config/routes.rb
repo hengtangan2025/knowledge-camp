@@ -182,4 +182,11 @@ Rails.application.routes.draw do
   resources :subjects
   resources :courses
   resources :wares
+  
+  scope :path => "/api", module: 'api', :as => :api do
+    resources :courses do
+      post   :add_fav,    on: :member
+      delete :remove_fav, on: :member
+    end
+  end
 end
