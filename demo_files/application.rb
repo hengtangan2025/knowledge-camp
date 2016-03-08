@@ -11,10 +11,13 @@ Bundler.require(*Rails.groups)
 
 module KnowledgeCamp
   class Application < Rails::Application
-    config.assets.precompile += [
-      'mockup.css',
-      'mockup.js',
-    ]
+    config.assets.precompile += %w{
+      mockup.css
+      mockup.js
+
+      *.png *.svg
+      *.ttf *.eot *.woff *.woff2 *.otf'
+    }
 
     # 时区，国际化
     config.time_zone = 'Beijing'
