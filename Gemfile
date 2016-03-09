@@ -134,8 +134,8 @@ source "https://ruby.taobao.org" do
 
   # -----金融学院相关
   gem 'kc_courses', :github => 'mindpin/kc_courses',
-                    #:ref => "0452a90"
-                    :tag => "v0.6.0"
+                    :ref => "f062768"
+                    # :tag => "v0.6.0"
                     #:path => "../kc_courses"
 
   gem 'simple-navbar', :github => 'mindpin/simple-navbar',
@@ -156,6 +156,9 @@ source "https://ruby.taobao.org" do
 
   gem 'model_label', github: 'kc-train/model_label',
                       :ref => "ffbc999"
+                      
+  gem 'kc_comments', github: "mindpin/kc_comments",
+                     ref: "d3d64e6"
 
   gem 'sprockets', '3.4.0'
   gem 'sprockets-rails', '2.3.3'

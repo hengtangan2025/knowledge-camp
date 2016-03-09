@@ -187,7 +187,10 @@ Rails.application.routes.draw do
     resources :courses do
       post   :add_fav,    on: :member
       delete :remove_fav, on: :member
+      post   :comments,   on: :member
     end
+    
+    resources :comments
     
     devise_for :users,
       :path => '',

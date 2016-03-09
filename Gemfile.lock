@@ -58,11 +58,19 @@ GIT
     generic_controller (0.0.4)
 
 GIT
+  remote: git://github.com/mindpin/kc_comments.git
+  revision: d3d64e6214aa22f98821b5cf0233896e3bdafe9f
+  ref: d3d64e6
+  specs:
+    kc_comments (0.1.0)
+
+GIT
   remote: git://github.com/mindpin/kc_courses.git
-  revision: 541b4d9eed6765b200351da30a51bb343cfe7afe
-  tag: v0.6.0
+  revision: f0627682da3d6feec5f432d9857785e4f2e65243
+  ref: f062768
   specs:
     kc_courses (0.1.0)
+      mongoid-tree
       simple_form
 
 GIT
@@ -331,6 +339,8 @@ GEM
     mongoid-grid_fs (2.2.1)
       mime-types (>= 1.0, < 3.0)
       mongoid (>= 3.0, < 6.0)
+    mongoid-tree (2.0.1)
+      mongoid (>= 4.0, < 6.0)
     moped (2.0.7)
       bson (~> 3.0)
       connection_pool (~> 2.0)
@@ -496,6 +506,7 @@ DEPENDENCIES
   kaminari (~> 0.15.1)!
   kc-course-editor!
   kc-explore!
+  kc_comments!
   kc_courses!
   knowledge-camp-api!
   knowledge-graph-js!

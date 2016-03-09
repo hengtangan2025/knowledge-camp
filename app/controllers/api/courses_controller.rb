@@ -13,4 +13,15 @@ class Api::CoursesController < Api::ApplicationController
     bucket.remove_resource course
     render json: {fav: false}
   end
+  
+  def comments
+    course = KcCourses::Course.find params[:id]
+    
+    comment_params = params.require(:comment).permit(:content)
+    comment = course.comments.new comment_params
+    comment.user = current_user
+    comment.save
+    
+    render json: comment.to_brief_component_data
+  end
 end

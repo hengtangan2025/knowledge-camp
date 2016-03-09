@@ -1,31 +1,31 @@
 KcCourses::Course.class_eval do
   def to_brief_component_data(controller = nil)
-    # TODO 课程封面
-    # TODO 课程发布时间
     {
       id: self.id.to_s,
       url: controller.course_path(self.id.to_s),
-      img: 'http://i.teamkn.com/i/dHCg8ulr.png',
+      img: self.get_cover,
       name: self.title,
       desc: self.desc,
       instructor: self.user.name,
-      published_at: self.updated_at.strftime("%Y-%m-%d")
+      published_at: self.published_at.strftime("%Y-%m-%d")
     }
   end
 
   def to_detail_component_data(controller = nil)
+    video_count = self.statistic_info[:video][:count]
+    total_minute = self.statistic_info[:video][:total_minute]
+    
     {
       id: self.id.to_s,
       url: controller.course_path(self.id.to_s),
-      img: 'http://i.teamkn.com/i/dHCg8ulr.png',
+      img: self.get_cover,
       name: self.title,
       desc: self.desc,
       instructor: self.user.name,
       published_at: self.updated_at.strftime("%Y-%m-%d"),
-      # TODO 统计信息方法等待封装完成
       subjects: self.course_subjects.map{|subject| {name: subject.name, url: controller.subject_path(subject.id.to_s)}},
       price: '免费',
-      effort: '4 个视频，合计 120 分钟',
+      effort: "#{video_count} 个视频，合计 #{total_minute} 分钟",
 
       chapters: self.chapters.map{|chapter|chapter.to_brief_component_data(controller)}
     }
@@ -74,5 +74,21 @@ KcCourses::Ware.class_eval do
     end
 
     data
+  end
+end
+
+
+KcComments::Comment.class_eval do
+  def to_brief_component_data(controller = nil)
+    {
+      id: self.id.to_s,
+      author: {
+        id: self.user.id.to_s,
+        name: self.user.name,
+        avatar: self.user.avatar.url,
+      },
+      content: self.content,
+      date: self.updated_at.strftime("%Y-%m-%d")
+    }
   end
 end
