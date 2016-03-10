@@ -4,12 +4,10 @@ body.course-ware {
 
 .layout-top-menu {
   .item.logo {
-    padding: 0;
-    position: relative;
-    width: 130px;
+    padding: 0 1em;
     .logo-i {
-      position: absolute;
-      top:5px;left:5px;right:5px;bottom:5px;
+      height:50px;
+      width:150px;
       background-size: contain;
       background-position: center center;
       background-repeat: no-repeat;
@@ -19,7 +17,7 @@ body.course-ware {
 
 .layout-page-content {
   position: relative;
-  top: 5em;
+  padding-top: 51px + 2 * $rem;
 }
 
 .layout-page-footer {
@@ -27,7 +25,7 @@ body.course-ware {
   border-top: solid 1px #ddd;
   min-height: 14em;
   position: relative;
-  top: 7em;
+  margin-top: 2 * $rem;
 
   .description {
     color: $desc-text-color;
