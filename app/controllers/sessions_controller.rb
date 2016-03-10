@@ -1,15 +1,18 @@
 class SessionsController < Devise::SessionsController
-  layout 'auth'
-  skip_before_action :verify_authenticity_token, :only => :create, :if => :format_is_json
-  def format_is_json
-    "json" == params[:format]
+  layout "new_version_base"
+  skip_before_action :verify_authenticity_token, :only => :create, :if => :request_is_xhr
+  def request_is_xhr
+    request.xhr?
   end
-
-  def create
-    return super if params[:format] != "json"
-    self.resource = warden.authenticate!(auth_options)
-    set_flash_message(:notice, :signed_in) if is_navigational_format?
-    sign_in(resource_name, resource)
-    render :json => current_user.info
+  
+  def new
+    @page_name = 'sign_in'
+    @component_data = {
+      sign_in_url: sign_in_path,
+      sign_up_url: sign_up_path,
+      submit_url: api_sign_in_path
+    }
+    render :page
   end
+  
 end

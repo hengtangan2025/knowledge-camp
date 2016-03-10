@@ -14,9 +14,9 @@ Rails.application.routes.draw do
   # 老版功能中的集成代码
   devise_for :users, :skip => :all
   as :user do
-    get    "/account/sign_in"  => "sessions#new"
-    post   "/account/sign_in"  => "sessions#create"
-    delete "/account/sign_out" => "sessions#destroy"
+    get    "/account/sign_in"  => "old/sessions#new"
+    post   "/account/sign_in"  => "old/sessions#create"
+    delete "/account/sign_out" => "old/sessions#destroy"
   end
 
   scope :path => "/o", :module => "old", :as => 'old' do
@@ -192,12 +192,15 @@ Rails.application.routes.draw do
     
     resources :comments
     
-    devise_for :users,
-      :path => '',
-      :controllers => {
-        :registrations => 'users/registrations',
-        :sessions => 'users/sessions'
-      }
+  end
+  
+  devise_scope :user do
+    get    "/sign_in"      => "sessions#new"
+    post   "/api/sign_in"  => "sessions#create"
+    delete "/api/sign_out" => "sessions#destroy"
+    
+    get    "/sign_up"      => "registrations#new"
+    post   "/api/sign_up"  => "registrations#create"
   end
 
 end
