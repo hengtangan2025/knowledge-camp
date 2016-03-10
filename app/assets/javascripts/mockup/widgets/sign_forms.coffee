@@ -36,11 +36,14 @@
       @setState "#{input_name}": evt.target.value
 
   do_submit: ->
+    # 登录
     data =
-      email: @state.email
-      password: @state.password
+      user:
+        email: @state.email
+        password: @state.password
+        remember_me: true
 
-    jQuery.post @props.submit_url, data
+    jQuery.get @props.submit_url, data
     .done (res)->
       1
     .fail (res)->
@@ -85,10 +88,13 @@
       @setState "#{input_name}": evt.target.value
 
   do_submit: ->
+    # 注册
+
     data =
-      name: @state.name
-      email: @state.email
-      password: @state.password
+      user:
+        name: @state.name
+        email: @state.email
+        password: @state.password
 
     jQuery.post @props.submit_url, data
     .done (res)->

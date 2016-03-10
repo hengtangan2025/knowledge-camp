@@ -4,7 +4,16 @@ body.course-ware {
 
 .layout-top-menu {
   .item.logo {
-    font-weight: bold;
+    padding: 0;
+    position: relative;
+    width: 130px;
+    .logo-i {
+      position: absolute;
+      top:5px;left:5px;right:5px;bottom:5px;
+      background-size: contain;
+      background-position: center center;
+      background-repeat: no-repeat;
+    }
   }
 }
 
