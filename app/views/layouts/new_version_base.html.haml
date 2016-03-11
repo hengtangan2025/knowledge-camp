@@ -13,18 +13,21 @@
 
   %body
     :ruby
-      left = CmsConfig.where(name: "show_course_subject_in_nav_item").map do |cms_config|
+      nav_items = CmsConfig.where(name: "show_course_subject_in_nav_item").map do |cms_config|
         cs = KcCourses::CourseSubject.find(cms_config.value)
-        [cs.name, subject_path(cs.id)]
-      end.to_h
+        {name: cs.name, url: subject_path(cs.id)}
+      end
       menu_data = {
-        home: mockup_url(page: 'home'),
-        left: left,
+        logo: {
+          image: 'http://i.teamkn.com/i/WvMTqFbH.png',
+          url: "/"
+        },
+        
+        nav_items: nav_items,
+        
         right: {
           '登录' => sign_in_path,
           '注册' => sign_up_path,
-          '帮助' => mockup_url(page: 'help'),
-          '关于' => mockup_url(page: 'about'),
         }
       }
     = react_component 'LayoutTopMenu', data: menu_data
@@ -37,9 +40,9 @@
         logo: 'http://i.teamkn.com/i/uJnxbhr3.png',
         links: {
           '关于' => mockup_url(page: 'about'),
-          '使用帮助' => mockup_url(page: 'about'),
-          '联系我们' => mockup_url(page: 'about'),
-          '服务条款' => mockup_url(page: 'about'),
+          '使用帮助' => mockup_url(page: 'help'),
+          '联系我们' => mockup_url(page: 'contact'),
+          '服务条款' => mockup_url(page: 'terms'),
         },
         desc: '京ICP备********号 ©2016 MINDPIN'
       }
