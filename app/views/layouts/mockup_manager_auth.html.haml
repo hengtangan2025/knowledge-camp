@@ -1,0 +1,28 @@
+!!!
+%html{ lang: "zh" }
+  %head
+    %meta{ content: "text/html; charset=utf-8", http:{ equiv: "Content-Type" } }
+    %meta{ content: "width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no", name: "viewport"}
+
+    %title Knowledge Camp
+
+    = csrf_meta_tags
+
+    = stylesheet_link_tag :mockup, :'data-turbolinks-track' => true
+    = javascript_include_tag :mockup, :'data-turbolinks-track' => true
+
+  %body
+    .layout-page-content
+      = yield
+
+    :ruby
+      footer_data = {
+        logo: 'http://i.teamkn.com/i/uJnxbhr3.png',
+        links: {
+          '关于' => mockup_url(page: 'about'),
+          '使用帮助' => mockup_url(page: 'help'),
+          '联系我们' => mockup_url(page: 'contact'),
+          '服务条款' => mockup_url(page: 'terms'),
+        },
+        desc: '京ICP备********号 ©2016 MINDPIN'
+      }

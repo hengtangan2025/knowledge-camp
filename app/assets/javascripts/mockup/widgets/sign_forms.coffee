@@ -56,9 +56,13 @@
       type: "POST"
       data: data
       dataType: "json"
-      success: (res)->
+      success: (res)=>
         console.log res
-        location.reload()
+        if @props.jump
+          Turbolinks.visit @props.jump
+        else
+          location.reload()
+
       statusCode: 
         401: (res)=>
           @setState
