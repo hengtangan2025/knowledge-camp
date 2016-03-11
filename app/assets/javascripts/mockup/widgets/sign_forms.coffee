@@ -2,6 +2,7 @@
   getInitialState: ->
     email: ''
     password: ''
+    error: null
 
   render: ->
     <div className='sign-in-form ui form' ref='form'>
@@ -18,6 +19,13 @@
           <input type='password' placeholder='密码' value={@state.password} onChange={@on_change('password')}/>
         </div>
       </div>
+
+      {
+        if @state.error
+          <div className="ui yellow message small">
+            <i className='icon info circle' />{@state.error}
+          </div>
+      }
 
       <div className='field'>
         <a className='ui button fluid green large' onClick={@do_submit}>登录</a>
@@ -49,17 +57,20 @@
       data: data
       dataType: "json"
       success: (res)->
-        1
-      statusCode: {
-        401: (res)->
-          1
-      }
+        console.log res
+        location.reload()
+      statusCode: 
+        401: (res)=>
+          @setState
+            error: res.responseJSON?.error
         
 @SignUpForm = React.createClass
   getInitialState: ->
     name: ''
     email: ''
     password: ''
+
+    errors: null
 
   render: ->
     <div className='sign-up-form ui form' ref='form'>
@@ -83,6 +94,17 @@
           <input type='password' placeholder='登录密码' value={@state.password} onChange={@on_change('password')} />
         </div>
       </div>
+      {
+        if @state.errors
+          <div className="ui yellow message small">
+          {
+            for key, value of @state.errors
+              <div key={key}><i className='icon info circle' />{value[0]}</div>
+          }
+          </div>
+          
+
+      }
 
       <div className='field'>
         <a className='ui button fluid green large' onClick={@do_submit}>我要注册</a>
@@ -108,8 +130,9 @@
       data: data
       dataType: "json"
       success: (res)->
-        1
-      statusCode: {
-        422: (res)->
-          1
-      }
+        console.log res
+        location.reload()
+      statusCode:
+        422: (res)=>
+          @setState
+            errors: res.responseJSON?.errors

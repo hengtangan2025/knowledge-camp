@@ -175,8 +175,9 @@ Rails.application.routes.draw do
 
   # ------------------
   # kc mobile 2016 mockup
-  get '/mockup/:page' => 'mockup#page', as: 'mockup'
-
+  get     '/mockup/:page' => 'mockup#page', as: 'mockup'
+  post    '/mockup/:req' => 'mockup#do_post', as: 'mockup_post'
+  delete  '/mockup/:req' => 'mockup#do_delete', as: 'mockup_delete'
   # --------------------
   # kc mobile 2016
   resources :subjects
@@ -202,5 +203,6 @@ Rails.application.routes.draw do
     get    "/sign_up"      => "registrations#new"
     post   "/api/sign_up"  => "registrations#create"
   end
+
 
 end
