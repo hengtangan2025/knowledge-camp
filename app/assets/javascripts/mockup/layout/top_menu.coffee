@@ -19,9 +19,28 @@
             for name, url of @props.data.right
               <a key={name} className='item' href={url}>{name}</a>
           }
+
+          {
+            if @props.current_user_data
+              user = @props.current_user_data
+              [
+                <a key='avatar' className='item' href='javascript:;'>
+                  <img src={user.avatar.url} />
+                </a>
+                <a key='name' className='item' href='javascript:;'>{user.name}</a>
+                <a key='sign-out' className='item' onClick={@do_sign_out}>登出</a>
+              ]
+          }
         </div>
       </div>
     </div>
+
+  do_sign_out: ->
+    jQuery.ajax
+      url: @props.data.sign_out_url
+      type: 'delete'
+    .done ->
+      location.reload()
 
   statics:
     NestedItems: React.createClass

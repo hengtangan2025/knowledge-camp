@@ -26,6 +26,76 @@ class MockupController < ApplicationController
     end
   end
 
+  def do_post
+    data = 
+      case params[:req]
+      when 'do_sign_in'
+        post_do_sign_in
+      when 'do_sign_up'
+        post_do_sign_up
+      end
+  end
+
+  def do_delete
+    render json: {}
+  end
+
+  def post_do_sign_in
+    if params[:user][:email].blank?
+      data = { error: "用户名/密码不对" }
+      render status: 401, json: data
+
+    else
+      data = {
+        _id: {
+          "$oid" => "569316116675730f7d000000",
+        },
+        avatar: {
+          url: "/assets/default_avatars/avatar_200.png",
+          large:{ url: "/assets/default_avatars/large.png"},
+          normal:{ url: "/assets/default_avatars/normal.png"},
+          small:{ url: "/assets/default_avatars/small.png"}
+        },
+        created_at: "2016-01-11T10:40:17.647+08:00",
+        email: "root@root.com",
+        login: "root",
+        name: "root",
+        updated_at: "2016-03-11T13:07:32.765+08:00"
+      }
+      render json: data
+    end
+  end
+
+  def post_do_sign_up
+    if params[:user][:name].blank?
+      data = { errors: {
+        email: ['邮箱没填'],
+        password: ['密码没填', '密码太短'],
+        name: ['啥都没填'],
+      } }
+      render status: 422, json: data
+
+    else
+      data = {
+        _id: {
+          "$oid" => "569316116675730f7d000000",
+        },
+        avatar: {
+          url: "/assets/default_avatars/avatar_200.png",
+          large:{ url: "/assets/default_avatars/large.png"},
+          normal:{ url: "/assets/default_avatars/normal.png"},
+          small:{ url: "/assets/default_avatars/small.png"}
+        },
+        created_at: "2016-01-11T10:40:17.647+08:00",
+        email: "root@root.com",
+        login: "root",
+        name: "root",
+        updated_at: "2016-03-11T13:07:32.765+08:00"
+      }
+      render json: data
+    end
+  end
+
   def get_sign_in_data
     @component_data = {
       sign_in_url: mockup_url(page: 'sign_in'),
