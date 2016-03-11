@@ -1,4 +1,4 @@
-module PublishTaskMethods
+module PublishMobileDemoTaskMethods
   def get_current_branch_name
     output = `git branch`
     return output.lines.map(&:strip).select { |x|
@@ -29,46 +29,50 @@ module PublishTaskMethods
   end
 
   def copy_files
-    system "cp demo_files/application.rb config/"
-    system "cp demo_files/routes.rb config/"
-    system "cp demo_files/application_controller.rb app/controllers/"
-    system "cp demo_files/index_controller.rb app/controllers/"
-    system "cp demo_files/Gemfile ./"
-    system "cp demo_files/Gemfile.lock ./"
+    dir = "publish_files/mobile_demo"
+
+    system "cp #{dir}/application.rb            config/"
+    system "cp #{dir}/routes.rb                 config/"
+    system "cp #{dir}/application_controller.rb app/controllers/"
+    system "cp #{dir}/index_controller.rb       app/controllers/"
+    system "cp #{dir}/Gemfile                   ./"
+    system "cp #{dir}/Gemfile.lock              ./"
   end
 
-  def move_files
-    _move "app/assets/javascripts", %w{
+  def reserve_files
+    _reserve "app/assets/javascripts", %w{
       mockup
       mockup.js
     }
 
-    _move "app/assets/stylesheets", %w{
+    _reserve "app/assets/stylesheets", %w{
       mockup
       mockup.scss
     }
 
-    _move "app/views", %w{
+    _reserve "app/views", %w{
       layouts
       mockup
     }
 
-    _move "app/controllers", %w{
+    _reserve "app/controllers", %w{
       application_controller.rb
       mockup_controller.rb
       index_controller.rb
     }
   end
 
-  def _move(from, files)
-    files.each do |path|
-      system "mv #{File.join from, path} demo_files/"
-    end
+  def _reserve(from, files)
+    Dir.mktmpdir do |tmp|
+      files.each do |path|
+        system "mv #{File.join from, path} #{tmp}"
+      end
 
-    system "rm -rf #{File.join from, '*'}"
+      system "rm -rf #{File.join from, '*'}"
 
-    files.each do |path|
-      system "mv #{File.join "demo_files", path} #{from}"
+      files.each do |path|
+        system "mv #{File.join tmp, path} #{from}"
+      end
     end
   end
 
@@ -76,7 +80,7 @@ end
 
 
 namespace :demo do
-  include PublishTaskMethods
+  include PublishMobileDemoTaskMethods
 
   # ben7th
   # 2016-03-07
@@ -93,11 +97,12 @@ namespace :demo do
 
     puts '开始发布 …'
     puts '处理文件 …'
-    Dir.mktmpdir do |tmp|
-      delete_files
-      copy_files
-      move_files
 
+    delete_files
+    copy_files
+    reserve_files
+
+    Dir.mktmpdir do |tmp|
       %w{
         app
         bin
@@ -126,8 +131,8 @@ namespace :demo do
       system "git push coding mobile-demo --force"
       system "git checkout mobile-mockup"
       system "git submodule update"
+
       puts "发布完毕"
     end
   end
-  
 end
