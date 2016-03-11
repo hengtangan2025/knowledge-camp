@@ -1,6 +1,14 @@
 class MockupController < ApplicationController
   layout -> {
     case params[:page]
+    when 'sign_in'
+      if params[:role]
+        'mockup_manager_auth'
+      else
+        'mockup'
+      end
+    when 'manager_home'
+      'mockup_manager'
     when 'ware_show'
       'mockup_course_ware'
     else
@@ -11,6 +19,9 @@ class MockupController < ApplicationController
   def page
     @page_name = params[:page]
     case @page_name
+
+    when 'home'
+      get_home_data
 
     when 'sign_in'
       get_sign_in_data
@@ -96,12 +107,26 @@ class MockupController < ApplicationController
     end
   end
 
-  def get_sign_in_data
+  def get_home_data
     @component_data = {
-      sign_in_url: mockup_url(page: 'sign_in'),
-      sign_up_url: mockup_url(page: 'sign_up'),
-      submit_url: mockup_url(page: 'do_sign_in')
+      manager_sign_in_url: mockup_url(page: 'sign_in', role: 'manager')
     }
+  end
+
+  def get_sign_in_data
+    if params[:role] == 'manager'
+      @component_name = 'ManagerSignInPage'
+      @component_data = {
+        submit_url: mockup_url(page: 'do_sign_in'),
+        manager_home_url: mockup_url(page: 'manager_home'),
+      }
+    else
+      @component_data = {
+        sign_in_url: mockup_url(page: 'sign_in'),
+        sign_up_url: mockup_url(page: 'sign_up'),
+        submit_url: mockup_url(page: 'do_sign_in')
+      }
+    end
   end
 
   def get_sign_up_data

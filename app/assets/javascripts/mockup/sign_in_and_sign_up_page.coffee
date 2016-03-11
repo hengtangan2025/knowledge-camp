@@ -24,6 +24,23 @@
       </div>
     </div>
 
+
+@ManagerSignInPage = React.createClass
+  render: ->
+    <div className='sign-in-page'>
+      <div className='ui container'>
+        <div className='ui segment nomtop basic centered grid'>
+          <div className='five wide column'>
+            <div className='head'>
+              <span className='sign-in link'>管理员登录</span>
+            </div>
+            <SignInForm submit_url={@props.data.submit_url} jump={@props.data.manager_home_url} />
+          </div>
+        </div>
+      </div>
+    </div>
+
+
 SignHead = React.createClass
   render: ->
     sign_in_url = @props.data.sign_in_url
