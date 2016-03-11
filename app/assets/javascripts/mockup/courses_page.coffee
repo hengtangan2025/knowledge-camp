@@ -13,7 +13,7 @@
   statics:
     TopCover: React.createClass
       render: ->
-        <div className='top-cover' style={'backgroundImage': "url(http://i.teamkn.com/i/y6PIbv2w.png)"}>
+        <div className='top-cover' style={'backgroundImage': "url(http://i.teamkn.com/i/LyhMfKq1.png)"}>
           <div className='ui container'>
             <div className='ui segment basic'>
               <h1 className='ui header'>网络公开课</h1>
