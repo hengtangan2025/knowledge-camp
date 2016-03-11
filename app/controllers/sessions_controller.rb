@@ -6,13 +6,22 @@ class SessionsController < Devise::SessionsController
   end
   
   def new
+    if params[:role] == "manager"
+      @component_name = 'ManagerSignInPage'
+      @component_data = {
+        submit_url: api_sign_in_path,
+        manager_home_url: bank_manage_courses_path
+      }
+      return render :page, layout: "mockup_manager_auth"
+    end
+    
     @page_name = 'sign_in'
     @component_data = {
       sign_in_url: sign_in_path,
       sign_up_url: sign_up_path,
       submit_url: api_sign_in_path
-    }
-    render :page
+    }      
+    render :page, layout: "new_version_base"
   end
   
 end

@@ -17,20 +17,30 @@
         cs = KcCourses::CourseSubject.find(cms_config.value)
         {name: cs.name, url: subject_path(cs.id)}
       end
+      
+      if current_user.blank?
+        right_data = {
+          '登录' => sign_in_path,
+          '注册' => sign_up_path
+        }
+        current_user_data = nil
+      else
+        right_data = {}
+        current_user_data = current_user
+      end
+      
+      
       menu_data = {
         logo: {
           image: 'http://i.teamkn.com/i/WvMTqFbH.png',
           url: "/"
         },
-        
         nav_items: nav_items,
         
-        right: {
-          '登录' => sign_in_path,
-          '注册' => sign_up_path,
-        }
+        right: right_data,
+        sign_out_url: api_sign_out_path
       }
-    = react_component 'LayoutTopMenu', data: menu_data
+    = react_component 'LayoutTopMenu', data: menu_data, current_user_data: current_user_data
 
     .layout-page-content
       = yield
