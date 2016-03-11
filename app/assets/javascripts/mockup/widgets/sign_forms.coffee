@@ -43,12 +43,18 @@
         password: @state.password
         remember_me: true
 
-    jQuery.get @props.submit_url, data
-    .done (res)->
-      1
-    .fail (res)->
-      1
-
+    jQuery.ajax
+      url: @props.submit_url
+      type: "POST"
+      data: data
+      dataType: "json"
+      success: (res)->
+        1
+      statusCode: {
+        401: (res)->
+          1
+      }
+        
 @SignUpForm = React.createClass
   getInitialState: ->
     name: ''
@@ -96,8 +102,14 @@
         email: @state.email
         password: @state.password
 
-    jQuery.post @props.submit_url, data
-    .done (res)->
-      1
-    .fail (res)->
-      1
+    jQuery.ajax
+      url: @props.submit_url
+      type: "POST"
+      data: data
+      dataType: "json"
+      success: (res)->
+        1
+      statusCode: {
+        422: (res)->
+          1
+      }
