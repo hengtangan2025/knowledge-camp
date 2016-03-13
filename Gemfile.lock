@@ -187,8 +187,8 @@ PATH
       rails (>= 4.0.0)
 
 GEM
-  remote: https://rails-assets.org/
   remote: https://ruby.taobao.org/
+  remote: https://rails-assets.org/
   specs:
     actionmailer (4.2.3)
       actionpack (= 4.2.3)
@@ -484,26 +484,26 @@ PLATFORMS
 
 DEPENDENCIES
   acts-as-dag!
-  bootstrap-kaminari-views!
+  bootstrap-kaminari-views
   bootstrap-sass (~> 3.3.5)
-  bson_ext!
+  bson_ext
   bucketerize!
   carrierwave-mongoid
-  cells (~> 3.10.1)!
-  coffee-rails (~> 4.1.0)!
-  database_cleaner (~> 1.2.0)!
-  devise (= 3.5.2)!
+  cells (~> 3.10.1)
+  coffee-rails (~> 4.1.0)
+  database_cleaner (~> 1.2.0)
+  devise (= 3.5.2)
   documents-store!
   elasticsearch-simple!
-  figaro!
+  figaro
   file-part-upload!
   generic_controller!
-  haml!
-  haml-coderay!
-  htmldiff!
-  jbuilder (~> 2.0)!
-  jquery-rails!
-  kaminari (~> 0.15.1)!
+  haml
+  haml-coderay
+  htmldiff
+  jbuilder (~> 2.0)
+  jquery-rails
+  kaminari (~> 0.15.1)
   kc-course-editor!
   kc-explore!
   kc_comments!
@@ -516,32 +516,32 @@ DEPENDENCIES
   mina (= 0.3.7)
   mini_magick
   model_label!
-  mongoid (~> 4.0.0)!
+  mongoid (~> 4.0.0)
   mongoid-versioning!
-  pry!
-  pry-byebug!
+  pry
+  pry-byebug
   question_bank!
-  rails (= 4.2.3)!
+  rails (= 4.2.3)
   rails-assets-URIjs
   rails-assets-semantic
   react-rails (= 1.2.0)
-  rspec!
-  ruby-pinyin!
-  sass-rails (~> 5.0)!
-  sdoc (~> 0.4.0)!
+  rspec
+  ruby-pinyin
+  sass-rails (~> 5.0)
+  sdoc (~> 0.4.0)
   simple-images!
   simple-navbar!
-  simple_form (~> 3.2.0)!
+  simple_form (~> 3.2.0)
   sort_char!
-  spring!
+  spring
   sprockets (= 3.4.0)
   sprockets-coffee-react (= 3.0.1)
   sprockets-rails (= 2.3.3)
-  streamio-ffmpeg!
-  turbolinks!
+  streamio-ffmpeg
+  turbolinks
   ueditor.rails!
-  uglifier (>= 1.3.0)!
-  unicorn!
+  uglifier (>= 1.3.0)
+  unicorn
   user-auth!
   useragent
   virtual_file_system!
