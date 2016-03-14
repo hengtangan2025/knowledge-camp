@@ -135,7 +135,7 @@ gem 'kc-course-editor',
 
 # -----金融学院相关
 gem 'kc_courses', :github => 'mindpin/kc_courses',
-                  :ref => "f062768"
+                  :ref => "db2979840e105f3a7b92be44361d4a8871a03abb"
                   # :tag => "v0.6.0"
                   #:path => "../kc_courses"
 

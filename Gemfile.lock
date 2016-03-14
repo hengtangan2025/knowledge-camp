@@ -66,11 +66,12 @@ GIT
 
 GIT
   remote: git://github.com/mindpin/kc_courses.git
-  revision: f0627682da3d6feec5f432d9857785e4f2e65243
-  ref: f062768
+  revision: db2979840e105f3a7b92be44361d4a8871a03abb
+  ref: db2979840e105f3a7b92be44361d4a8871a03abb
   specs:
     kc_courses (0.1.0)
       mongoid-tree
+      ruby-pinyin
       simple_form
 
 GIT
