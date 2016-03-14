@@ -9,3 +9,4 @@ bundle install --without development:test --path vendor/bundle --binstubs vendor
 
 echo '开始构建 assets'
 rake assets:precompile
+
