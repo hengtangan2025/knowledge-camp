@@ -17,4 +17,149 @@
     = stylesheet_link_tag '/mediaelement/mediaelementplayer.min.css', :'data-turbolinks-track' => true
 
   %body.manager
-    = yield
+    :ruby
+      manager_sidebar_data = {
+        dashboard: {
+          name: '总控面板',
+          url: mockup_url(page: 'manager_home'),
+          icon: 'dashboard'
+        },
+
+        scenes: [
+          {
+            name: '场景一',
+            funcs: [
+              {
+                name: '功能 A',
+                url: mockup_url(page: 'manager_home'),
+                icon: 'circle thin'
+              },
+              {
+                name: '功能 B',
+                url: mockup_url(page: 'manager_home'),
+                icon: 'leaf'
+              },
+              {
+                name: '功能 C',
+                url: mockup_url(page: 'manager_home'),
+                icon: 'user'
+              }
+            ]
+          },
+          {
+            name: '场景二',
+            funcs: [
+              {
+                name: '功能 D',
+                url: mockup_url(page: 'manager_home'),
+                icon: 'apple'
+              },
+              {
+                name: '功能 E',
+                url: mockup_url(page: 'manager_home'),
+                icon: 'android'
+              },
+              {
+                name: '功能 F',
+                url: mockup_url(page: 'manager_home'),
+                icon: 'bitbucket'
+              }
+            ]
+          },
+          {
+            name: '场景三',
+            funcs: [
+              {
+                name: '功能 G',
+                url: mockup_url(page: 'manager_home'),
+                icon: 'github alternate'
+              },
+              {
+                name: '功能 H',
+                url: mockup_url(page: 'manager_home'),
+                icon: 'google'
+              },
+              {
+                name: '功能 I',
+                url: mockup_url(page: 'manager_home'),
+                icon: 'weibo'
+              }
+            ]
+          },
+          {
+            name: '场景 ..',
+            funcs: [
+              {
+                name: '功能 ..',
+                url: mockup_url(page: 'manager_home'),
+                icon: 'github alternate'
+              },
+              {
+                name: '功能 ..',
+                url: mockup_url(page: 'manager_home'),
+                icon: 'google'
+              },
+              {
+                name: '功能 ..',
+                url: mockup_url(page: 'manager_home'),
+                icon: 'weibo'
+              },
+              {
+                name: '功能 ..',
+                url: mockup_url(page: 'manager_home'),
+                icon: 'weibo'
+              },
+              {
+                name: '功能 ..',
+                url: mockup_url(page: 'manager_home'),
+                icon: 'weibo'
+              },
+              {
+                name: '功能 ..',
+                url: mockup_url(page: 'manager_home'),
+                icon: 'weibo'
+              },
+              {
+                name: '功能 ..',
+                url: mockup_url(page: 'manager_home'),
+                icon: 'weibo'
+              },
+              {
+                name: '功能 ..',
+                url: mockup_url(page: 'manager_home'),
+                icon: 'weibo'
+              },
+              {
+                name: '功能 ..',
+                url: mockup_url(page: 'manager_home'),
+                icon: 'weibo'
+              },
+              {
+                name: '功能 ..',
+                url: mockup_url(page: 'manager_home'),
+                icon: 'weibo'
+              },
+              {
+                name: '功能 ..',
+                url: mockup_url(page: 'manager_home'),
+                icon: 'weibo'
+              },
+              {
+                name: '功能 ..',
+                url: mockup_url(page: 'manager_home'),
+                icon: 'weibo'
+              },
+              {
+                name: '功能 ..',
+                url: mockup_url(page: 'manager_home'),
+                icon: 'weibo'
+              }
+            ]
+          }
+        ]
+      }
+
+    = react_component 'LayoutManagerSidebar', data: manager_sidebar_data
+
+    .manager-page-content
+      = yield
