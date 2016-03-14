@@ -1,0 +1,37 @@
+// _table.scss (网格结构)
+// =================
+// 实现网格结构布局
+
+
+// 弹性定宽容器
+.container {
+  @include container-fixed();
+  @include -above(pad) { width: $container-pad; }
+  @include -above(desk) { width: $container-desk; }
+  @include -above(wide) { width: $container-wide; }
+}
+
+
+// 全屏宽容器
+.container-fluid,
+.container-full {
+  @include container-fixed;
+}
+
+
+// 网格行
+// 主要用途是消除容器/上层网格的 padding
+// 便于嵌套
+.row {
+  @include make-row();
+}
+
+
+// 预生成不同屏幕尺寸下的网格
+@include make-grid-columns();
+
+// 预生成不同屏幕尺寸下的网格
+@include make-grid(phone);
+@include -above(pad) { @include make-grid(pad); }
+@include -above(desk) { @include make-grid(desk); }
+@include -above(wide) { @include make-grid(wide); }

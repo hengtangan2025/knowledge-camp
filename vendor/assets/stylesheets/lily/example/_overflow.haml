@@ -1,0 +1,82 @@
+.example-section
+  %h1.header-title 概述
+  %p.lead
+    Lily 目前用于和将用于 MINDPIN 团队的 web 产品的开发。<br/>
+    它将以 git submodule 或者 封装到 Ruby Gem 中的形式引用到其他工程里。<br/>
+    基于 Lily 进行开发，需要了解 SASS 和 CoffeeScript. 并且强烈建议了解 HAML.
+
+  %h3 SASS, CoffeeScript 和 HAML
+  %p
+    SASS 对应 CSS; CoffeeScript 对应 JavaScript; HAML 对应 HTML; <br/>
+    他们都是对原始语法的增强和扩充，在现代 web 开发技术中十分常用。
+
+  %ul
+    %li
+      %span SASS 参考：
+      %a{:href => 'http://s.4ye.me/HCJtAa', :target => '_blank'} http://s.4ye.me/HCJtAa
+    %li
+      %span CoffeeScript 参考：
+      %a{:href => 'http://coffeescript.org/', :target => '_blank'} http://coffeescript.org/
+    %li
+      %span HAML 参考：
+      %a{:href => 'http://haml.info/', :target => '_blank'} http://haml.info/
+
+  %h3 HTML5 顶部声明
+  %p 
+    %span Lily 以 HTML5 标准下的现代浏览器（Chrome / Firefox / IE9+ / Safari 等）为基准进行设计。
+    %br
+    %span 并且，文字编码应为 UTF-8。强烈建议所有 web 页面代码应该以此代码作为顶部声明：
+  .code-highlight
+    :coderay
+      #!html
+      <!DOCTYPE html>
+      <html lang='zh'>
+        <meta content='text/html; charset=utf-8' http-equiv='Content-Type'>
+        ...
+      </html>
+
+  %p 在 haml 里，对应的写法是（为简化起见，下文一般不再写 haml 对应代码）：
+  .code-highlight
+    :coderay
+      #!haml
+      !!!
+      %html{:lang => :zh}
+        %head
+          %meta{:'http-equiv' => 'Content-Type', :content => 'text/html; charset=utf-8'}
+
+  %h3 移动设备显示支持
+  %p 
+    %span 为了在移动设备上更好地呈现页面效果，需要在页面代码的
+    %code 
+      :escaped
+        <head>
+    %span 部分增加一个包含
+    %b viewport
+    %span 信息的
+    %code 
+      :escaped
+        <meta>
+    %span 声明。<br/>
+    当允许手势缩放页面时，采用这样的声明：
+  .code-highlight
+    :coderay
+      #!html
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+  %p
+    %span 当声明中包含
+    %code user-scalable=no
+    %span 时，手势缩放将被禁止。
+    %br
+    %span 在某些场景下，需要 web 页面在移动设备上的体验更接近原生应用，此时就需要进行这样的声明：
+  .code-highlight
+    :coderay
+      #!html
+      <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  %p
+    %span 关于 viewport 特性，以及 Device Adaptation
+    %br
+    %span 可参考：
+    %a{:href => 'http://s.4ye.me/yNWDei', :target => '_blank'} http://s.4ye.me/yNWDei
+    %br
+    %span 以及参考：
+    %a{:href => 'http://s.4ye.me/JWzCj1', :target => '_blank'} http://s.4ye.me/JWzCj1

@@ -1,0 +1,139 @@
+.example-section
+  %h1.header-title 网格结构
+  %p.lead
+    有人喜欢管 Grid 叫栅格，但我还是喜欢称他为网格。网格结构是一种行之有效的（但未必是完美的）平面排版设计原则（包括网页和纸媒）。在当下的网页设计理念中，为了兼容不同设备上的显示效果，通常会采用多级固定自适应宽度或全屏 + 网格结构的设计思路。能更有效地兼容从宽屏显示器到智能手机屏幕等多种场合。
+
+  %h3 基本概念
+  %p 网格结构可以这样理解：页面自上而下分为多个容器（container），例如当一个页面同时具有顶部导航，中间内容和底部页脚时，可以看做页面由三个容器构成。其中顶部导航和底部页脚可能是全屏宽度，而中间内容是固定有限宽度。
+  %p 每个容器又分为多个行（row）与列（col），容器宽度被横向分为多个网格，每个列的宽度一般是整数个网格。所有的网页内容，包括文字，图片，多媒体组件，都排布在这些网格之中。形成一种视觉上的整齐，有秩序的观感。网格结构设计的另一个好处时，它非常兼容语义化的 HTML 文档结构。
+  %ul
+    %li 
+      %span 容器的宽度有两种设定，分别是
+      %code .container
+      %span （多级弹性自适应定宽）和
+      %code .container-full
+      %span （全屏宽）。其中，多级弹性自适应定宽的含义是，他会根据不同显示器的屏幕宽度，来调整具体的定宽宽度，分为几个不同的“档位”；
+    %li
+      %code .container
+      %span 中可以放置多个
+      %code .row
+      %span 元素；
+    %li
+      %code .row
+      %span 可以放置多个
+      %code .col-\#{class}-\#{width}
+      %span 元素。网格类型 (class) 有四种，分别是
+      %code phone
+      %code pad
+      %code desk
+      %code wide
+    %li
+      %span 相邻的 col 之间存在视觉间距。这个视觉间距由常量
+      %code $grid-gap
+      %span 指定，默认是 30px.
+    %li
+      每个 row 中默认的网格数是 12. 每个 col 占据的网格宽度可以是 1 ~ 12.
+  %p 关于网格结构的具体使用方法，下文会写出范例。
+
+  %h3 多级弹性自适应定宽
+  %p 在不同宽度的设备上，我们希望网页能呈现出合适的样式，但是又不希望增加太多重复编码。幸好目前已经有了相对比较靠谱的解决方法。即弹性自适应布局。
+  %p 借助 CSS3 的 Media Queries 机制，我们不使用任何 JavaScript 就可以实现期望的布局：当屏幕宽度在某个值以下时，这样显示，而在某个值以上时，那样显示。
+  %p 
+    %span 这里有一些很好的网页范例：
+    %a{:href => "http://mediaqueri.es/"} http://mediaqueri.es/
+  %p Lily 使用以下的 SASS 声明来实现弹性自适应：
+  .code-highlight
+    :coderay
+      #!sass
+      @media (min-width: $screen-pad-min) {
+        width: $container-pad;
+      }
+      @media (min-width: $screen-desk-min) {
+        width: $container-desk;
+      }
+      @media (min-width: $screen-wide-min) {
+        width: $container-wide;
+      }
+
+  %p 
+    %span 其中，三个宽度等级的默认取值分别为：
+    %code $screen-pad-min: 768px;
+    %code $screen-desk-min: 992px;
+    %code $screen-wide-min: 1200px;
+    %br
+    %span 而三种屏幕宽度等级下的容器固定宽度取值为：
+    %code $container-pad: 720px;
+    %code $container-desk: 970px;
+    %code $container-wide: 1170px;
+    %br
+    %span 以上代码的含义是：
+
+  %ul
+    %li 当屏幕宽度大于等于 1200px 时，容器取定宽 1170px
+    %li 当屏幕宽度大于等于 992px 而小于 1200px 时，容器取定宽 970px
+    %li 当屏幕宽度大于等于 768px 而小于 992px 时，容器取定宽 750px
+    %li 当屏幕宽度小于 768px 时，容器宽度等于 100% 屏幕宽度
+
+  %p 
+    %span> 这也就是所谓的
+    %strong> 多级弹性自适应定宽
+    %span> 了。
+
+  %p 
+    %span 关于这种设计，有人又称他为响应式设计，参考：
+    %a{:href => "http://s.4ye.me/FaC5Fb"} http://s.4ye.me/FaC5Fb
+
+  %h3 默认的网格参数
+  %p Lily 默认的网格参数和 Bootstrap 保持一致，这样可以兼容一些增强 Bootstrap 的设计方案和组件。
+
+  .table-responsive
+    %table.table.table-bordered.table-striped
+      %thead
+        %tr
+          %th
+          %th 
+            %span 很小的屏幕
+            .small 手机 (<768px)
+          %th 
+            %span 较小屏幕
+            .small 平板电脑 (<992px)
+          %th 
+            %span 一般屏幕
+            .small 普通显示器 (<1200px)
+          %th 
+            %span 宽屏幕
+            .small 宽屏显示器 (>=1200px)
+      %tbody
+        %tr
+          %th 容器宽度
+          %td 100%
+          %td 750px
+          %td 970px
+          %td 1170px
+        %tr
+          %th 样式名
+          %td 
+            %code .col-phone-
+          %td 
+            %code .col-pad-
+          %td 
+            %code .col-desk-
+          %td 
+            %code .col-wide-
+        %tr
+          %th 网格列数
+          %td{:colspan => 4} 12
+        %tr
+          %th 每列宽度
+          %td 自动。全屏宽度减去间隔值再除以 12
+          %td (750 - 30) / 12 = 60px
+          %td (970 - 30) / 12 ~= 78px
+          %td (1170 - 30) / 12 = 95px
+        %tr
+          %th 间隔值(grid-gap)
+          %td{:colspan => 4} 30px
+
+  %p 
+    %span 网格样式被设计为向上适应，如果用
+    %code .col-desk-
+    %span 来声明网格宽度，则在小尺寸屏幕上，此网格宽度不生效，而在大尺寸屏幕上，如果没有特别声明网格宽度，则网格宽度也按此向上适应。（比较绕，看例子说明好了。）

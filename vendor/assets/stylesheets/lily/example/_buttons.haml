@@ -1,0 +1,234 @@
+.example-section
+  %h1.header-title 按钮
+  %p.lead 
+    %span 一些常见的按钮样式，可以被用在
+    %code
+      :escaped
+        <a>
+    %span 标签上。
+
+  %h3 扁平化样式（flat）
+  %p 
+    样式名后面可以附加颜色名，
+    所有颜色常量都可以使用，比较推荐的是这几种：
+    <code>info</code>
+    <code>fresh</code>
+    <code>caution</code>
+    <code>danger</code>
+    <code>dream</code>
+    %br
+    当不附加颜色名时，按钮是默认灰色。
+
+  %p 首先，最普通的样式是方角样式：
+  .example
+    %a.btn.btn-flat{:href => 'javascript:void(0);'} 我是按钮
+    %a.btn.btn-flat-info{:href => 'javascript:void(0);'} 我是按钮
+    %a.btn.btn-flat-fresh{:href => 'javascript:void(0);'} 我是按钮
+    %a.btn.btn-flat-caution{:href => 'javascript:void(0);'} 我是按钮
+    %a.btn.btn-flat-danger{:href => 'javascript:void(0);'} 我是按钮
+    %a.btn.btn-flat-dream{:href => 'javascript:void(0);'} 我是按钮
+
+  .code-highlight
+    :coderay
+      #!haml
+      %a.btn.btn-flat{:href => 'javascript:void(0);'} 我是按钮
+      %a.btn.btn-flat-info{:href => 'javascript:void(0);'} 我是按钮
+      %a.btn.btn-flat-fresh{:href => 'javascript:void(0);'} 我是按钮
+      %a.btn.btn-flat-caution{:href => 'javascript:void(0);'} 我是按钮
+      %a.btn.btn-flat-danger{:href => 'javascript:void(0);'} 我是按钮
+      %a.btn.btn-flat-dream{:href => 'javascript:void(0);'} 我是按钮
+
+  %p 圆角样式，也很常用：<code>btn-rounded</code>
+  .example
+    %a.btn.btn-rounded.btn-flat{:href => 'javascript:void(0);'} 我是按钮
+    %a.btn.btn-rounded.btn-flat-info{:href => 'javascript:void(0);'} 我是按钮
+    %a.btn.btn-rounded.btn-flat-fresh{:href => 'javascript:void(0);'} 我是按钮
+    %a.btn.btn-rounded.btn-flat-caution{:href => 'javascript:void(0);'} 我是按钮
+    %a.btn.btn-rounded.btn-flat-danger{:href => 'javascript:void(0);'} 我是按钮
+    %a.btn.btn-rounded.btn-flat-dream{:href => 'javascript:void(0);'} 我是按钮
+
+  .code-highlight
+    :coderay
+      #!haml
+      %a.btn.btn-rounded.btn-flat{:href => 'javascript:void(0);'} 我是按钮
+      %a.btn.btn-rounded.btn-flat-info{:href => 'javascript:void(0);'} 我是按钮
+      %a.btn.btn-rounded.btn-flat-fresh{:href => 'javascript:void(0);'} 我是按钮
+      %a.btn.btn-rounded.btn-flat-caution{:href => 'javascript:void(0);'} 我是按钮
+      %a.btn.btn-rounded.btn-flat-danger{:href => 'javascript:void(0);'} 我是按钮
+      %a.btn.btn-rounded.btn-flat-dream{:href => 'javascript:void(0);'} 我是按钮
+
+  %p 药丸样式，长得像药丸：<code>btn-pill</code>
+  .example
+    %a.btn.btn-pill.btn-flat{:href => 'javascript:void(0);'} 我是按钮
+    %a.btn.btn-pill.btn-flat-info{:href => 'javascript:void(0);'} 我是按钮
+    %a.btn.btn-pill.btn-flat-fresh{:href => 'javascript:void(0);'} 我是按钮
+    %a.btn.btn-pill.btn-flat-caution{:href => 'javascript:void(0);'} 我是按钮
+    %a.btn.btn-pill.btn-flat-danger{:href => 'javascript:void(0);'} 我是按钮
+    %a.btn.btn-pill.btn-flat-dream{:href => 'javascript:void(0);'} 我是按钮
+
+  .code-highlight
+    :coderay
+      #!haml
+      %a.btn.btn-pill.btn-flat{:href => 'javascript:void(0);'} 我是按钮
+      %a.btn.btn-pill.btn-flat-info{:href => 'javascript:void(0);'} 我是按钮
+      %a.btn.btn-pill.btn-flat-fresh{:href => 'javascript:void(0);'} 我是按钮
+      %a.btn.btn-pill.btn-flat-caution{:href => 'javascript:void(0);'} 我是按钮
+      %a.btn.btn-pill.btn-flat-danger{:href => 'javascript:void(0);'} 我是按钮
+      %a.btn.btn-pill.btn-flat-dream{:href => 'javascript:void(0);'} 我是按钮
+
+  %p 圆形样式，大小是固定的，不随文字变化，用的不多：<code>btn-circle</code>
+  .example
+    %a.btn.btn-circle.btn-flat{:href => 'javascript:void(0);'} 我是按钮
+    %a.btn.btn-circle.btn-flat-info{:href => 'javascript:void(0);'} 我是按钮
+    %a.btn.btn-circle.btn-flat-fresh{:href => 'javascript:void(0);'} 我是按钮
+    %a.btn.btn-circle.btn-flat-caution{:href => 'javascript:void(0);'} 我是按钮
+    %a.btn.btn-circle.btn-flat-danger{:href => 'javascript:void(0);'} 我是按钮
+    %a.btn.btn-circle.btn-flat-dream{:href => 'javascript:void(0);'} 我是按钮
+
+  .code-highlight
+    :coderay
+      #!haml
+      %a.btn.btn-circle.btn-flat{:href => 'javascript:void(0);'} 我是按钮
+      %a.btn.btn-circle.btn-flat-info{:href => 'javascript:void(0);'} 我是按钮
+      %a.btn.btn-circle.btn-flat-fresh{:href => 'javascript:void(0);'} 我是按钮
+      %a.btn.btn-circle.btn-flat-caution{:href => 'javascript:void(0);'} 我是按钮
+      %a.btn.btn-circle.btn-flat-danger{:href => 'javascript:void(0);'} 我是按钮
+      %a.btn.btn-circle.btn-flat-dream{:href => 'javascript:void(0);'} 我是按钮
+
+
+  %h3 按钮图标
+  %p Lily 内嵌了 FontAwesome 图标系统，可以用在按钮上。
+  .example
+    %a.btn.btn-rounded.btn-flat{:href => 'javascript:void(0);'} 
+      %i.fa.fa-github
+      %span 我是按钮
+    %a.btn.btn-rounded.btn-flat-info{:href => 'javascript:void(0);'} 
+      %i.fa.fa-refresh
+      %span 我是按钮
+    %a.btn.btn-rounded.btn-flat-fresh{:href => 'javascript:void(0);'} 
+      %i.fa.fa-cloud
+      %span 我是按钮
+    %a.btn.btn-rounded.btn-flat-caution{:href => 'javascript:void(0);'} 
+      %i.fa.fa-camera
+      %span 我是按钮
+    %a.btn.btn-rounded.btn-flat-danger{:href => 'javascript:void(0);'} 
+      %i.fa.fa-code
+      %span 我是按钮
+    %a.btn.btn-rounded.btn-flat-dream{:href => 'javascript:void(0);'} 
+      %i.fa.fa-envelope
+      %span 我是按钮 
+
+  .code-highlight
+    :coderay 
+      #!haml
+      %a.btn.btn-rounded.btn-flat{:href => 'javascript:void(0);'} 
+        %i.fa.fa-github
+        %span 我是按钮
+      %a.btn.btn-rounded.btn-flat-info{:href => 'javascript:void(0);'} 
+        %i.fa.fa-refresh
+        %span 我是按钮
+      %a.btn.btn-rounded.btn-flat-fresh{:href => 'javascript:void(0);'} 
+        %i.fa.fa-cloud
+        %span 我是按钮
+      %a.btn.btn-rounded.btn-flat-caution{:href => 'javascript:void(0);'} 
+        %i.fa.fa-camera
+        %span 我是按钮
+      %a.btn.btn-rounded.btn-flat-danger{:href => 'javascript:void(0);'} 
+        %i.fa.fa-code
+        %span 我是按钮
+      %a.btn.btn-rounded.btn-flat-dream{:href => 'javascript:void(0);'} 
+        %i.fa.fa-envelope
+        %span 我是按钮
+
+  %h3 立体样式（solid）
+  %p 使用 <code>btn-solid-</code> 样式来产生立体按钮
+  .example
+    %a.btn.btn-rounded.btn-solid{:href => 'javascript:void(0);'} 我是按钮
+    %a.btn.btn-pill.btn-solid-info{:href => 'javascript:void(0);'} 我是按钮
+    %a.btn.btn-solid-fresh{:href => 'javascript:void(0);'} 我是按钮
+    %a.btn.btn-circle.btn-solid-caution{:href => 'javascript:void(0);'} 我是按钮
+    %a.btn.btn-rounded.btn-solid-danger{:href => 'javascript:void(0);'} 我是按钮
+    %a.btn.btn-rounded.btn-solid-dream{:href => 'javascript:void(0);'} 我是按钮
+  .code-highlight
+    :coderay
+      #!haml 
+      %a.btn.btn-rounded.btn-solid-dream{:href => 'javascript:void(0);'} 我是按钮
+
+  %h3 底边样式（bdb）
+  %p 使用 <code>btn-solid-</code> 样式来产生立体按钮
+  .example
+    %a.btn.btn-rounded.btn-bdb{:href => 'javascript:void(0);'} 我是按钮
+    %a.btn.btn-pill.btn-bdb-info{:href => 'javascript:void(0);'} 我是按钮
+    %a.btn.btn-bdb-fresh{:href => 'javascript:void(0);'} 我是按钮
+    %a.btn.btn-circle.btn-bdb-caution{:href => 'javascript:void(0);'} 我是按钮
+    %a.btn.btn-rounded.btn-bdb-danger{:href => 'javascript:void(0);'} 我是按钮
+    %a.btn.btn-rounded.btn-bdb-dream{:href => 'javascript:void(0);'} 我是按钮
+  .code-highlight
+    :coderay
+      #!haml 
+      %a.btn.btn-rounded.btn-solid-dream{:href => 'javascript:void(0);'} 我是按钮
+
+  %h3 全宽按钮
+  %p 使用 <code>btn-block</code> 样式来产生全宽按钮
+  .example
+    %a.btn.btn-block.btn-rounded.btn-flat{:href => 'javascript:void(0);'} 我是按钮
+    %br
+    %a.btn.btn-block.btn-pill.btn-solid-info{:href => 'javascript:void(0);'} 我是按钮
+    %br
+    %a.btn.btn-block.btn-solid-fresh{:href => 'javascript:void(0);'} 我是按钮
+    %br
+    %a.btn.btn-block.btn-pill.btn-flat-caution.btn-large{:href => 'javascript:void(0);'} 我是按钮
+  .code-highlight
+    :coderay
+      #!haml
+      %a.btn.btn-block.btn-rounded.btn-flat{:href => 'javascript:void(0);'} 我是按钮
+
+  %h3 按钮大小
+  %p 可以通过 <code>large</code> <code>small</code> <code>mini</code> 给按钮指定不同的大小
+  .example
+    %button.btn.btn-rounded.btn-flat-caution.btn-jumbo 超大按钮
+    %button.btn.btn-rounded.btn-flat-caution.btn-large 大按钮
+    %button.btn.btn-rounded.btn-flat-caution 普通按钮
+    %button.btn.btn-rounded.btn-flat-caution.btn-small 小按钮
+    %button.btn.btn-rounded.btn-flat-caution.btn-mini 迷你按钮
+
+    %button.btn.btn-circle.btn-flat-info.btn-jumbo 超大按钮
+    %button.btn.btn-circle.btn-flat-info.btn-large 大按钮
+    %button.btn.btn-circle.btn-flat-info 普通按钮
+    %button.btn.btn-circle.btn-flat-info.btn-small 小按钮
+    %button.btn.btn-circle.btn-flat-info.btn-mini 迷你按钮
+
+    %button.btn.btn-circle.btn-solid-fresh.btn-jumbo 超大按钮
+    %button.btn.btn-circle.btn-solid-fresh.btn-large 大按钮
+    %button.btn.btn-circle.btn-solid-fresh 普通按钮
+    %button.btn.btn-circle.btn-solid-fresh.btn-small 小按钮
+    %button.btn.btn-circle.btn-solid-fresh.btn-mini 迷你按钮
+
+  %h3 表单组件
+  .example
+    %input.btn.btn-rounded.btn-flat-fresh{:type => :submit, :value => '确定提交'}
+    %a.btn.btn-rounded.btn-solid{:href => 'javascript:void(0);'} 取消
+    %button.btn.btn-rounded.btn-flat-danger
+      %i.fa.fa-trash-o
+      %span 删除
+
+    %input.btn.btn-rounded.btn-flat-fresh{:type => :submit, :value => '确定提交', :disabled => true}
+    %a.btn.btn-circle.btn-solid.disabled{:href => 'javascript:void(0);'} 取消
+    %button.btn.btn-pill.btn-flat-danger.disabled.btn-large
+      %i.fa.fa-trash-o
+      %span 删除
+
+  .code-highlight
+    :coderay
+      #!haml
+      %input.btn.btn-rounded.btn-flat-fresh{:type => :submit, :value => '确定提交'}
+      %a.btn.btn-rounded.btn-solid{:href => 'javascript:void(0);'} 取消
+      %button.btn.btn-rounded.btn-flat-danger
+        %i.fa.fa-trash-o
+        %span 删除
+
+      %input.btn.btn-rounded.btn-flat-fresh{:type => :submit, :value => '确定提交', :disabled => true}
+      %a.btn.btn-circle.btn-solid.disabled{:href => 'javascript:void(0);'} 取消
+      %button.btn.btn-pill.btn-flat-danger.disabled.btn-large
+        %i.fa.fa-trash-o
+        %span 删除
