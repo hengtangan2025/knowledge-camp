@@ -3,6 +3,8 @@ $link-hover-color:#2c5d8d;
 $border-radius-default:3px;
 $grid-gap:20px;
 
+@import "lily/css/lily.scss";
+
 // -----------------------------------
 
 $lightgray: lighten($black-10, 5%);
