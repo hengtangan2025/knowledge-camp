@@ -5,5 +5,5 @@ production:
       hosts:
         - 10.9.58.169:27017
       options:
-        user: c7cbccaf-0966-4c00-b2be-0fd99e37ece1
+        username: c7cbccaf-0966-4c00-b2be-0fd99e37ece1
         password: Oj7ui-VyUNDqKKR-UMfiQA
