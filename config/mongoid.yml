@@ -1,9 +1,8 @@
 production:
   sessions:
     default:
-      database: 30e32d05-44a3-4c94-b149-bf17e2bc70e1
       hosts:
         - 10.9.58.169:27017
-      options:
-        username: c7cbccaf-0966-4c00-b2be-0fd99e37ece1
-        password: Oj7ui-VyUNDqKKR-UMfiQA
+      database: 30e32d05-44a3-4c94-b149-bf17e2bc70e1
+      username: c7cbccaf-0966-4c00-b2be-0fd99e37ece1
+      password: Oj7ui-VyUNDqKKR-UMfiQA
