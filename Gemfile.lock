@@ -518,6 +518,7 @@ DEPENDENCIES
   model_label!
   mongoid (~> 4.0.0)
   mongoid-versioning!
+  non-stupid-digest-assets
   pry
   pry-byebug
   question_bank!
