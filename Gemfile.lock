@@ -123,13 +123,6 @@ GIT
     simple-images (0.0.2)
 
 GIT
-  remote: git://github.com/mindpin/simple-navbar.git
-  revision: f891c0e0b6c39846c1c424ad0379b83b181db105
-  tag: 0.0.6p1
-  specs:
-    simple-navbar (0.0.6p1)
-
-GIT
   remote: git://github.com/mindpin/sort_char.git
   revision: 7525285b9d03b8057df5aa760ceb4160ecf4e9f3
   tag: 0.0.1
@@ -530,7 +523,6 @@ DEPENDENCIES
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
   simple-images!
-  simple-navbar!
   simple_form (~> 3.2.0)
   sort_char!
   spring
