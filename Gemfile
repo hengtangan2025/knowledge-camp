@@ -57,7 +57,7 @@ gem "knowledge-graph-js",
 
 gem 'knowledge-net-store',
   :git => 'git://github.com/mindpin/knowledge-net-store.git',
-  :tag => '1.0.0-beta2'
+  :tag => '1.0.2'
 
 gem "acts-as-dag",
   :git => "git://github.com/mindpin/acts-as-dag.git",
