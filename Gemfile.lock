@@ -92,10 +92,10 @@ GIT
 
 GIT
   remote: git://github.com/mindpin/knowledge-net-store.git
-  revision: 816df00aabbc1db6c3c4ca51229095af1842ed4c
-  tag: 1.0.0-beta2
+  revision: 4ba528503a615ffa328b31252ead70b437976391
+  tag: 1.0.2
   specs:
-    knowledge-net-store (1.0.0.pre.beta2)
+    knowledge-net-store (1.0.2)
 
 GIT
   remote: git://github.com/mindpin/knowledge_camp_step.git
