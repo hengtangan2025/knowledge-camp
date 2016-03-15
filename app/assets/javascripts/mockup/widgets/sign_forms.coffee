@@ -9,14 +9,14 @@
       <div className='field'>
         <div className='ui left icon input'>
           <i className='icon mail' />
-          <input type='text' placeholder='邮箱' value={@state.email} onChange={@on_change('email')} />
+          <input type='text' placeholder='邮箱' value={@state.email} onChange={@on_change('email')} onKeyPress={@enter_submit} />
         </div>
       </div>
 
       <div className='field'>
         <div className='ui left icon input'>
           <i className='icon asterisk' />
-          <input type='password' placeholder='密码' value={@state.password} onChange={@on_change('password')}/>
+          <input type='password' placeholder='密码' value={@state.password} onChange={@on_change('password')} onKeyPress={@enter_submit} />
         </div>
       </div>
 
@@ -42,6 +42,10 @@
   on_change: (input_name)->
     (evt)=>
       @setState "#{input_name}": evt.target.value
+
+  enter_submit: (evt)->
+    if evt.which is 13
+      @do_submit()
 
   do_submit: ->
     # 登录
@@ -81,21 +85,21 @@
       <div className='field'>
         <div className='ui left icon input'>
           <i className='icon user' />
-          <input type='text' placeholder='用户名' value={@state.name} onChange={@on_change('name')} />
+          <input type='text' placeholder='用户名' value={@state.name} onChange={@on_change('name')} onKeyPress={@enter_submit} />
         </div>
       </div>
 
       <div className='field'>
         <div className='ui left icon input'>
           <i className='icon mail' />
-          <input type='text' placeholder='注册邮箱' value={@state.email} onChange={@on_change('email')} />
+          <input type='text' placeholder='注册邮箱' value={@state.email} onChange={@on_change('email')} onKeyPress={@enter_submit} />
         </div>
       </div>
 
       <div className='field'>
         <div className='ui left icon input'>
           <i className='icon asterisk' />
-          <input type='password' placeholder='登录密码' value={@state.password} onChange={@on_change('password')} />
+          <input type='password' placeholder='登录密码' value={@state.password} onChange={@on_change('password')} onKeyPress={@enter_submit} />
         </div>
       </div>
       {
@@ -118,6 +122,10 @@
   on_change: (input_name)->
     (evt)=>
       @setState "#{input_name}": evt.target.value
+
+  enter_submit: (evt)->
+    if evt.which is 13
+      @do_submit()
 
   do_submit: ->
     # 注册
