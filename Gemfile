@@ -46,7 +46,7 @@ gem 'haml-coderay'
 # 全文搜索
 gem "elasticsearch-simple",
   :github => "mindpin/elasticsearch-simple",
-  :ref => '47e35a4'
+  :ref => 'c64b550a59e66047245d56a506857745b9e583b8'
 
 gem "mina", "0.3.7"
 
