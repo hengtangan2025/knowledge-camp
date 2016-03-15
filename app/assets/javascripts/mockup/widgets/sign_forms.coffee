@@ -3,6 +3,7 @@
     email: ''
     password: ''
     error: null
+    success: null
 
   render: ->
     <div className='sign-in-form ui form' ref='form'>
@@ -23,7 +24,14 @@
       {
         if @state.error
           <div className="ui yellow message small">
-            <i className='icon info circle' />{@state.error}
+            <i className='icon info circle' /> {@state.error}
+          </div>
+      }
+
+      {
+        if @state.success
+          <div className="ui green message small">
+            <i className='icon checkmark' /> 登录成功
           </div>
       }
 
@@ -61,9 +69,13 @@
       data: data
       dataType: "json"
       success: (res)=>
-        console.log res
+        @setState
+          success: true
+          error: null
+
         if @props.jump
-          Turbolinks.visit @props.jump
+          # Turbolinks.visit @props.jump
+          location.href = @props.jump
         else
           location.reload()
 
@@ -71,6 +83,7 @@
         401: (res)=>
           @setState
             error: res.responseJSON?.error
+            success: null
         
 @SignUpForm = React.createClass
   getInitialState: ->
@@ -102,6 +115,7 @@
           <input type='password' placeholder='登录密码' value={@state.password} onChange={@on_change('password')} onKeyPress={@enter_submit} />
         </div>
       </div>
+
       {
         if @state.errors
           <div className="ui yellow message small">
@@ -110,8 +124,13 @@
               <div key={key}><i className='icon info circle' />{value[0]}</div>
           }
           </div>
-          
+      }
 
+      {
+        if @state.success
+          <div className="ui green message small">
+            <i className='icon checkmark' /> 注册成功
+          </div>
       }
 
       <div className='field'>
@@ -141,9 +160,13 @@
       type: "POST"
       data: data
       dataType: "json"
-      success: (res)->
-        console.log res
+      success: (res)=>
+        @setState
+          success: true
+          errors: null
+
         location.reload()
+
       statusCode:
         422: (res)=>
           @setState
