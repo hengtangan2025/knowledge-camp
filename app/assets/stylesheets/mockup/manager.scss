@@ -105,5 +105,35 @@ body.manager {
     position: absolute;
     top:0;left:$sidebar-width;bottom:0;right:0;
     background-color: $manager-bgc;
+    overflow: auto;
+
+    .func-content {
+      .ui.message {
+        border-radius: 0 !important;
+        box-shadow: none !important;
+      }
+
+      .ui.segment {
+        box-shadow: none !important;
+        border:0 none !important;
+
+        h3.header {
+          font-size: 1.8rem;
+          font-weight: normal;
+          margin-bottom: 1rem;
+        }
+
+        .manager-table {
+          .table {
+            font-size: 12px;
+            border-radius: 0;
+          }
+        }
+      }
+
+      .ui.segment.func-not-ready {
+        background-color: #F8F8F9 !important;
+      }
+    }
   }
 }

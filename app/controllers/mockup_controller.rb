@@ -28,6 +28,9 @@ class MockupController < ApplicationController
     when 'sign_up'
       get_sign_up_data
 
+    when 'manager_home'
+      get_manager_data
+
     when 'courses'
       get_courses_data
     when 'course_show'
@@ -105,6 +108,18 @@ class MockupController < ApplicationController
       }
       render json: data
     end
+  end
+
+  def get_manager_data
+    @current_func = params[:func] || 'dashboard'
+
+    @component_name, @component_data = 
+      case @current_func
+      when 'courses_empty'
+        ['ManagerCoursesPage', { courses: [] }]
+      when 'courses'
+        ['ManagerCoursesPage', { courses: SAMPLE_COURSES_DATA }]
+      end
   end
 
   def get_home_data
@@ -195,6 +210,7 @@ class MockupController < ApplicationController
       name: '农业电商：找到合适的电商平台',
       desc: '农民朋友在做电商的时候如果选择电商平台，各个电商平台主要面对的市场是什么？本节课程帮助你理解电商平台，帮助你选择电商平台...',
       instructor: '美客商学院',
+      updated_at: '2015-03-17',
       published_at: '2015-03-17'
     },
     {
@@ -204,6 +220,7 @@ class MockupController < ApplicationController
       name: '淘宝规则：淘宝信用评价那些事儿',
       desc: '信用评价是掌握店铺权重的核心技术，掌握信用评价掌握店铺权重...',
       instructor: '美客商学院',
+      updated_at: '2015-03-17',
       published_at: '2015-03-17'
     },
     {
@@ -213,6 +230,7 @@ class MockupController < ApplicationController
       name: '淘大讲师专场：淘宝规则',
       desc: '【淘大讲师与你有约】为你详解买家与卖家规则及处罚申诉流程，客服必看 新手必备！',
       instructor: '美客商学院',
+      updated_at: '2015-03-17',
       published_at: '2015-03-17'
     },
     {
@@ -222,6 +240,7 @@ class MockupController < ApplicationController
       name: '淘大讲师专场：淘宝规则',
       desc: '【淘大讲师与你有约】为你详解买家与卖家规则及处罚申诉流程，客服必看 新手必备！本节课为您一一揭晓答案...',
       instructor: '美客商学院',
+      updated_at: '2015-03-17',
       published_at: '2015-03-17'
     },
     {
@@ -231,6 +250,7 @@ class MockupController < ApplicationController
       name: '淘大讲师专场：淘宝规则',
       desc: '【淘大讲师与你有约】为你详解买家与卖家规则及处罚申诉流程，客服必看 新手必备！本节课为您一一揭晓答案...',
       instructor: '美客商学院',
+      updated_at: '2015-03-17',
       published_at: '2015-03-17'
     },
     {
@@ -240,6 +260,7 @@ class MockupController < ApplicationController
       name: '淘大讲师专场：淘宝规则',
       desc: '【淘大讲师与你有约】为你详解买家与卖家规则及处罚申诉流程，客服必看 新手必备！本节课为您一一揭晓答案...',
       instructor: '美客商学院',
+      updated_at: '2015-03-17',
       published_at: '2015-03-17'
     },
     {
@@ -249,6 +270,7 @@ class MockupController < ApplicationController
       name: '淘大讲师专场：淘宝规则',
       desc: '【淘大讲师与你有约】为你详解买家与卖家规则及处罚申诉流程，客服必看 新手必备！本节课为您一一揭晓答案...',
       instructor: '美客商学院',
+      updated_at: '2015-03-17',
       published_at: '2015-03-17'
     },
     {
@@ -258,6 +280,7 @@ class MockupController < ApplicationController
       name: '淘大讲师专场：淘宝规则',
       desc: '【淘大讲师与你有约】为你详解买家与卖家规则及处罚申诉流程，客服必看 新手必备！本节课为您一一揭晓答案...',
       instructor: '美客商学院',
+      updated_at: '2015-03-17',
       published_at: '2015-03-17'
     },
     {
@@ -267,6 +290,7 @@ class MockupController < ApplicationController
       name: '淘大讲师专场：淘宝规则',
       desc: '【淘大讲师与你有约】为你详解买家与卖家规则及处罚申诉流程，客服必看 新手必备！本节课为您一一揭晓答案...',
       instructor: '美客商学院',
+      updated_at: '2015-03-17',
       published_at: '2015-03-17'
     },
     {
@@ -276,6 +300,7 @@ class MockupController < ApplicationController
       name: '淘大讲师专场：淘宝规则',
       desc: '【淘大讲师与你有约】为你详解买家与卖家规则及处罚申诉流程，客服必看 新手必备！本节课为您一一揭晓答案...',
       instructor: '美客商学院',
+      updated_at: '2015-03-17',
       published_at: '2015-03-17'
     }
   ]

@@ -19,7 +19,10 @@
   %body.manager
     :ruby
       manager_sidebar_data = {
+        current_func: @current_func,
+
         dashboard: {
+          id: 'dashboard',
           name: '总控面板',
           url: mockup_url(page: 'manager_home'),
           icon: 'dashboard'
@@ -27,17 +30,18 @@
 
         scenes: [
           {
-            name: '场景一',
+            name: '课程编排',
             funcs: [
               {
-                name: '功能 A',
-                url: mockup_url(page: 'manager_home'),
-                icon: 'circle thin'
+                id: 'courses_empty',
+                name: '开课管理（空）',
+                url: mockup_url(page: 'manager_home', func: 'courses_empty'),
+                icon: 'grid layout'
               },
               {
-                name: '功能 B',
-                url: mockup_url(page: 'manager_home'),
-                icon: 'leaf'
+                name: '开课管理（非空）',
+                url: mockup_url(page: 'manager_home', func: 'courses'),
+                icon: 'grid layout'
               },
               {
                 name: '功能 C',
@@ -87,70 +91,70 @@
             ]
           },
           {
-            name: '场景 ..',
+            name: '场景 xx',
             funcs: [
               {
-                name: '功能 ..',
+                name: '功能 xx',
                 url: mockup_url(page: 'manager_home'),
                 icon: 'github alternate'
               },
               {
-                name: '功能 ..',
+                name: '功能 xx',
                 url: mockup_url(page: 'manager_home'),
                 icon: 'google'
               },
               {
-                name: '功能 ..',
+                name: '功能 xx',
                 url: mockup_url(page: 'manager_home'),
                 icon: 'weibo'
               },
               {
-                name: '功能 ..',
+                name: '功能 xx',
                 url: mockup_url(page: 'manager_home'),
                 icon: 'weibo'
               },
               {
-                name: '功能 ..',
+                name: '功能 xx',
                 url: mockup_url(page: 'manager_home'),
                 icon: 'weibo'
               },
               {
-                name: '功能 ..',
+                name: '功能 xx',
                 url: mockup_url(page: 'manager_home'),
                 icon: 'weibo'
               },
               {
-                name: '功能 ..',
+                name: '功能 xx',
                 url: mockup_url(page: 'manager_home'),
                 icon: 'weibo'
               },
               {
-                name: '功能 ..',
+                name: '功能 xx',
                 url: mockup_url(page: 'manager_home'),
                 icon: 'weibo'
               },
               {
-                name: '功能 ..',
+                name: '功能 xx',
                 url: mockup_url(page: 'manager_home'),
                 icon: 'weibo'
               },
               {
-                name: '功能 ..',
+                name: '功能 xx',
                 url: mockup_url(page: 'manager_home'),
                 icon: 'weibo'
               },
               {
-                name: '功能 ..',
+                name: '功能 xx',
                 url: mockup_url(page: 'manager_home'),
                 icon: 'weibo'
               },
               {
-                name: '功能 ..',
+                name: '功能 xx',
                 url: mockup_url(page: 'manager_home'),
                 icon: 'weibo'
               },
               {
-                name: '功能 ..',
+                name: '功能 xx',
                 url: mockup_url(page: 'manager_home'),
                 icon: 'weibo'
               }
@@ -162,4 +166,5 @@
     = react_component 'LayoutManagerSidebar', data: manager_sidebar_data
 
     .manager-page-content
-      = yield
+      .func-content.ui.segment.basic
+        = yield

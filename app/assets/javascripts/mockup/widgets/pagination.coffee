@@ -27,7 +27,7 @@
     prev_href = URI(location.href).addSearch({page: prev})
     next_href = URI(location.href).addSearch({page: next})
 
-    <div className="ui pagination menu">
+    <div className="ui pagination menu small">
       <a className='item' href={first_href}><i className='icon step backward' /></a>
       <a className='item' href={prev_href}><i className='icon chevron left' /></a>
 

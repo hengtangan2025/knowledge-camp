@@ -2,10 +2,13 @@
   render: ->
     <div className='manager-sidebar'>
       <div className='sidebar-inner'>
-        <LayoutManagerSidebar.Item data={@props.data.dashboard} active={true} />
+        {
+          active = @props.data.current_func is @props.data.dashboard.id
+          <LayoutManagerSidebar.Item data={@props.data.dashboard} active={active} />
+        }
         {
           for scene, idx in @props.data.scenes
-            <LayoutManagerSidebar.Scene key={idx} data={scene} />
+            <LayoutManagerSidebar.Scene key={idx} data={scene} parent={@} />
         }
       </div>
     </div>
@@ -38,7 +41,8 @@
           <div className='funcs' style={'height': "#{funcs_height}px"}>
           {
             for func, idx in @props.data.funcs || []
-              <LayoutManagerSidebar.Item key={idx} data={func} />
+              active = @props.parent.props.data.current_func is func.id
+              <LayoutManagerSidebar.Item key={idx} data={func} active={active} />
           }
           </div>
         </div>

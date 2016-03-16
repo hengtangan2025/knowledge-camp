@@ -24,14 +24,16 @@
       {
         if @state.error
           <div className="ui yellow message small">
-            <i className='icon info circle' /> {@state.error}
+            <i className='icon info circle' />
+            <span>{@state.error}</span>
           </div>
       }
 
       {
         if @state.success
           <div className="ui green message small">
-            <i className='icon checkmark' /> 登录成功
+            <i className='icon checkmark' /> 
+            <span>登录成功</span>
           </div>
       }
 
@@ -121,7 +123,10 @@
           <div className="ui yellow message small">
           {
             for key, value of @state.errors
-              <div key={key}><i className='icon info circle' />{value[0]}</div>
+              <div key={key}>
+                <i className='icon info circle' />
+                <span>{value[0]}</span>
+              </div>
           }
           </div>
       }
@@ -129,7 +134,8 @@
       {
         if @state.success
           <div className="ui green message small">
-            <i className='icon checkmark' /> 注册成功
+            <i className='icon checkmark' />
+            <span>注册成功</span>
           </div>
       }
 
