@@ -3,9 +3,13 @@ class SubjectsController < ApplicationController
 
   def show
     @page_name = 'courses'
+    if params[:id] == "all"
+      courses = KcCourses::Course.all.page(params[:page])
+    else
+      cs = KcCourses::CourseSubject.find params[:id]
+      courses = cs.courses.page(params[:page])
+    end
 
-    cs = KcCourses::CourseSubject.find params[:id]
-    courses = cs.courses.page(params[:page])
     @component_data = {
       courses: courses.map{|course| course.to_brief_component_data self},
       paginate: {
