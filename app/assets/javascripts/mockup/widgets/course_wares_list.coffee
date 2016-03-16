@@ -47,7 +47,7 @@
               "learned-#{ware.learned}": true
               'active': @props.root.state.active_ware_id is ware.id
 
-            <a key={idx} className={klass} href='javascript:;' onClick={@do_click(ware.id)}>
+            <a key={idx} className={klass} href='javascript:;' onClick={@do_click(ware)}>
               <span className='tail'>{tail}</span>
               <div className='pipe'></div>
               <div className='cwicon'>
@@ -58,11 +58,11 @@
         }
         </div>
 
-      do_click: (ware_id)->
+      do_click: (ware)->
         switch @props.style
           when 'narrow'
             ->
-              Turbolinks.visit "/mockup/ware_show?id=#{ware_id}"
+              Turbolinks.visit ware.url
           when 'detail'
             ->
-              Turbolinks.visit "/mockup/ware_show?id=#{ware_id}"
+              Turbolinks.visit ware.url

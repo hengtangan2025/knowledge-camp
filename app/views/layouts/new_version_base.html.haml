@@ -1,0 +1,60 @@
+!!!
+%html{ lang: "zh" }
+  %head
+    %meta{ content: "text/html; charset=utf-8", http:{ equiv: "Content-Type" } }
+    %meta{ content: "width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no", name: "viewport"}
+
+    %title Knowledge Camp
+
+    = csrf_meta_tags
+
+    = stylesheet_link_tag :mockup, :'data-turbolinks-track' => true
+    = javascript_include_tag :mockup, :'data-turbolinks-track' => true
+
+  %body
+    :ruby
+      nav_items = CmsConfig.where(name: "show_course_subject_in_nav_item").map do |cms_config|
+        cs = KcCourses::CourseSubject.find(cms_config.value)
+        {name: cs.name, url: subject_path(cs.id)}
+      end
+      
+      if current_user.blank?
+        right_data = {
+          '登录' => sign_in_path,
+          '注册' => sign_up_path
+        }
+        current_user_data = nil
+      else
+        right_data = {}
+        current_user_data = current_user
+      end
+      
+      
+      menu_data = {
+        logo: {
+          image: 'http://i.teamkn.com/i/WvMTqFbH.png',
+          url: "/"
+        },
+        nav_items: nav_items,
+        
+        right: right_data,
+        sign_out_url: api_sign_out_path
+      }
+    = react_component 'LayoutTopMenu', data: menu_data, current_user_data: current_user_data
+
+    .layout-page-content
+      = yield
+
+    :ruby
+      footer_data = {
+        logo: 'http://i.teamkn.com/i/uJnxbhr3.png',
+        links: {
+          '关于' => mockup_url(page: 'about'),
+          '使用帮助' => mockup_url(page: 'help'),
+          '联系我们' => mockup_url(page: 'contact'),
+          '服务条款' => mockup_url(page: 'terms'),
+        },
+        desc: '京ICP备********号 ©2016 MINDPIN'
+      }
+
+    = react_component 'LayoutFooter', data: footer_data

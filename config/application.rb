@@ -36,5 +36,10 @@ module KnowledgeCamp
     config.autoload_paths += %W(#{config.root}/lib)
 
     config.assets.precompile += %w( explore/web.css )
+    
+    # 允许 ajax 注册登录
+    config.to_prepare do
+      DeviseController.respond_to :html, :json
+    end
   end
 end

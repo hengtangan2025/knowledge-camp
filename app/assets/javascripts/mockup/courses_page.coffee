@@ -4,8 +4,8 @@
       <CoursesPage.TopCover />
       <div className='ui container'>
         <div className='cards-bg ui segment basic'>
-        <CoursesPage.Cards data={@props.data} />
-        <CoursesPage.Pagination />
+        <CoursesPage.Cards data={@props.data.courses} />
+        <CoursesPage.Pagination data={@props.data.paginate} />
         </div>
       </div>
     </div>
@@ -13,7 +13,7 @@
   statics:
     TopCover: React.createClass
       render: ->
-        <div className='top-cover' style={'backgroundImage': "url(http://i.teamkn.com/i/y6PIbv2w.png)"}>
+        <div className='top-cover' style={'backgroundImage': "url(http://i.teamkn.com/i/LyhMfKq1.png)"}>
           <div className='ui container'>
             <div className='ui segment basic'>
               <h1 className='ui header'>网络公开课</h1>
@@ -27,7 +27,7 @@
         <div className='ui four link cards'>
           {
             for course, idx in @props.data
-              <a key={idx} className='card' href={course.link}>
+              <a key={idx} className='card' href={course.url}>
                 <div className='image'>
                   <div className='ig' style={'backgroundImage': "url(#{course.img})"} />
                   <div className='btnoverlay'>
@@ -49,5 +49,5 @@
     Pagination: React.createClass
       render: ->
         <div className='pagination-bar'>
-          <Pagination />
+          <Pagination data={@props.data} />
         </div>

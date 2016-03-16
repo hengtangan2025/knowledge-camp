@@ -14,9 +14,9 @@ Rails.application.routes.draw do
   # 老版功能中的集成代码
   devise_for :users, :skip => :all
   as :user do
-    get    "/account/sign_in"  => "sessions#new"
-    post   "/account/sign_in"  => "sessions#create"
-    delete "/account/sign_out" => "sessions#destroy"
+    get    "/account/sign_in"  => "old/sessions#new"
+    post   "/account/sign_in"  => "old/sessions#create"
+    delete "/account/sign_out" => "old/sessions#destroy"
   end
 
   scope :path => "/o", :module => "old", :as => 'old' do
@@ -79,7 +79,7 @@ Rails.application.routes.draw do
   # 题库组卷
   mount QuestionBank::Engine   => '/e/test_question', :as => :e_test_question
   # 文件上传
-  FilePartUpload::Routing.mount "/e/file_part_upload", :as => :e_file_part_upload
+  mount FilePartUpload::Engine => "/e/file_part_upload", :as => :e_file_part_upload
   # 收藏功能
   Bucketerize::Routing.mount '/e/bucketerize', as: :e_bucketerize
   # 课程功能
@@ -175,5 +175,34 @@ Rails.application.routes.draw do
 
   # ------------------
   # kc mobile 2016 mockup
-  get '/mockup/:page' => 'mockup#page', as: 'mockup'
+  get     '/mockup/:page' => 'mockup#page', as: 'mockup'
+  post    '/mockup/:req' => 'mockup#do_post', as: 'mockup_post'
+  delete  '/mockup/:req' => 'mockup#do_delete', as: 'mockup_delete'
+  # --------------------
+  # kc mobile 2016
+  resources :subjects
+  resources :courses
+  resources :wares
+
+  scope :path => "/api", module: 'api', :as => :api do
+    resources :courses do
+      post   :add_fav,    on: :member
+      delete :remove_fav, on: :member
+      post   :comments,   on: :member
+    end
+
+    resources :comments
+
+  end
+
+  devise_scope :user do
+    get    "/sign_in"      => "sessions#new"
+    post   "/api/sign_in"  => "sessions#create"
+    delete "/api/sign_out" => "sessions#destroy"
+
+    get    "/sign_up"      => "registrations#new"
+    post   "/api/sign_up"  => "registrations#create"
+  end
+
+
 end

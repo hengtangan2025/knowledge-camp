@@ -1,4 +1,4 @@
-// *= require semantic
+// *= require mockup/semantic
 
 @mixin clearfix {
   &:after {
@@ -11,6 +11,7 @@
 
 $text-color: rgba(black, 0.87);
 $desc-text-color: rgba(black, 0.66);
+$rem: 14px;
 
 @import 'mockup/layout';
 @import 'mockup/ui';
@@ -45,4 +46,8 @@ body,
 .ui.segment.noshadow {
   box-shadow: none;
   border-color: #CACACA;
+}
+
+.ui.segment.nomtop {
+  margin-top: 0;
 }

@@ -4,13 +4,20 @@ body.course-ware {
 
 .layout-top-menu {
   .item.logo {
-    font-weight: bold;
+    padding: 0 1em;
+    .logo-i {
+      height:50px;
+      width:150px;
+      background-size: contain;
+      background-position: center center;
+      background-repeat: no-repeat;
+    }
   }
 }
 
 .layout-page-content {
   position: relative;
-  top: 5em;
+  padding-top: 51px + 2 * $rem;
 }
 
 .layout-page-footer {
@@ -18,7 +25,7 @@ body.course-ware {
   border-top: solid 1px #ddd;
   min-height: 14em;
   position: relative;
-  top: 7em;
+  margin-top: 2 * $rem;
 
   .description {
     color: $desc-text-color;

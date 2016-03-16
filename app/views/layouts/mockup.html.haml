@@ -14,21 +14,66 @@
   %body
     :ruby
       menu_data = {
-        home: mockup_url(page: 'home'),
-        left: {
-          '课程类目一' => mockup_url(page: 'courses', category: '1'),
-          '课程类目二' => mockup_url(page: 'courses', category: '2'),
-          '课程类目三' => mockup_url(page: 'courses', category: '3'),
+        logo: {
+          image: 'http://i.teamkn.com/i/WvMTqFbH.png',
+          url: mockup_url(page: 'home')
         },
-
+        
+        nav_items: [
+          {
+            name: '课程类目一',
+            url: mockup_url(page: 'courses', subject: '1')
+          },
+          {
+            name: '课程类目二',
+            url: mockup_url(page: 'courses', subject: '2')
+          },
+          {
+            name: '课程类目三',
+            url: mockup_url(page: 'courses', subject: '3')
+          },
+          {
+            name: '下拉',
+            url: mockup_url(page: 'courses', subject: '1'),
+            sub_items: [
+              {
+                name: '课程类目四',
+                url: mockup_url(page: 'courses', subject: '4')
+              },
+              {
+                name: '课程类目五',
+                url: mockup_url(page: 'courses', subject: '5')
+              },
+            ]
+          }
+        ],
+        
         right: {
           '登录' => mockup_url(page: 'sign_in'),
           '注册' => mockup_url(page: 'sign_up'),
-          '帮助' => mockup_url(page: 'help'),
-          '关于' => mockup_url(page: 'about'),
-        }
+        },
+
+        sign_out_url: mockup_url(page: 'sign_out'),
       }
-    = react_component 'LayoutTopMenu', data: menu_data
+
+      current_user_data = {
+        _id: {
+          "$oid" => "569316116675730f7d000000",
+        },
+        avatar: {
+          url: "/assets/default_avatars/avatar_200.png",
+          large:{ url: "/assets/default_avatars/large.png"},
+          normal:{ url: "/assets/default_avatars/normal.png"},
+          small:{ url: "/assets/default_avatars/small.png"}
+        },
+        created_at: "2016-01-11T10:40:17.647+08:00",
+        email: "root@root.com",
+        login: "root",
+        name: "root",
+        updated_at: "2016-03-11T13:07:32.765+08:00"
+      }
+
+    = react_component 'LayoutTopMenu', data: menu_data, current_user_data: current_user_data
 
     .layout-page-content
       = yield
@@ -38,9 +83,9 @@
         logo: 'http://i.teamkn.com/i/uJnxbhr3.png',
         links: {
           '关于' => mockup_url(page: 'about'),
-          '使用帮助' => mockup_url(page: 'about'),
-          '联系我们' => mockup_url(page: 'about'),
-          '服务条款' => mockup_url(page: 'about'),
+          '使用帮助' => mockup_url(page: 'help'),
+          '联系我们' => mockup_url(page: 'contact'),
+          '服务条款' => mockup_url(page: 'terms'),
         },
         desc: '京ICP备********号 ©2016 MINDPIN'
       }
