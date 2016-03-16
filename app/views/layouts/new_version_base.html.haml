@@ -17,6 +17,10 @@
         cs = KcCourses::CourseSubject.find(cms_config.value)
         {name: cs.name, url: subject_path(cs.id)}
       end
+      nav_items.push({
+        name: '全部课程',
+        url: subject_path("all")
+      })
       
       if current_user.blank?
         right_data = {
