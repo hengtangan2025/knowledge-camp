@@ -30,8 +30,8 @@ GIT
 
 GIT
   remote: git://github.com/mindpin/elasticsearch-simple.git
-  revision: 47e35a44f516f534ea83ea1d770f4e8cd480d610
-  ref: 47e35a4
+  revision: c64b550a59e66047245d56a506857745b9e583b8
+  ref: c64b550
   specs:
     elasticsearch-simple (0.1.0)
       elasticsearch-model

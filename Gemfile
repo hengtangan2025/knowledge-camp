@@ -45,7 +45,7 @@ source "https://ruby.taobao.org" do
   # 全文搜索
   gem "elasticsearch-simple",
     :github => "mindpin/elasticsearch-simple",
-    :ref => '47e35a4'
+    :ref => 'c64b550'
 
   gem "mina", "0.3.7"
 
