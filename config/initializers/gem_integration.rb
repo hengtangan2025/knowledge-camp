@@ -41,6 +41,7 @@ FilePartUpload.config do
   qiniu_callback_host  ENV["qiniu_callback_host"]
 
   qiniu_audio_and_video_transcode :enable
+  qiniu_pfop_pipeline  ENV["qiniu_pfop_pipeline"]
 end
 
 FilePartUpload.config do
