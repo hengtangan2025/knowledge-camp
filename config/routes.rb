@@ -79,7 +79,7 @@ Rails.application.routes.draw do
   # 题库组卷
   mount QuestionBank::Engine   => '/e/test_question', :as => :e_test_question
   # 文件上传
-  FilePartUpload::Routing.mount "/e/file_part_upload", :as => :e_file_part_upload
+  mount FilePartUpload::Engine => "/e/file_part_upload", :as => :e_file_part_upload
   # 收藏功能
   Bucketerize::Routing.mount '/e/bucketerize', as: :e_bucketerize
   # 课程功能
@@ -183,23 +183,23 @@ Rails.application.routes.draw do
   resources :subjects
   resources :courses
   resources :wares
-  
+
   scope :path => "/api", module: 'api', :as => :api do
     resources :courses do
       post   :add_fav,    on: :member
       delete :remove_fav, on: :member
       post   :comments,   on: :member
     end
-    
+
     resources :comments
-    
+
   end
-  
+
   devise_scope :user do
     get    "/sign_in"      => "sessions#new"
     post   "/api/sign_in"  => "sessions#create"
     delete "/api/sign_out" => "sessions#destroy"
-    
+
     get    "/sign_up"      => "registrations#new"
     post   "/api/sign_up"  => "registrations#create"
   end

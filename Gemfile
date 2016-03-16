@@ -113,7 +113,7 @@ source "https://ruby.taobao.org" do
   # 支持分段上传的文件持久化
   gem 'file-part-upload',
       :github => 'mindpin/file-part-upload',
-      :tag => '2.2.2'
+      :tag => '2.3.2'
 
   # 图片加载的一个小工具
   gem 'simple-images',
@@ -134,7 +134,7 @@ source "https://ruby.taobao.org" do
 
   # -----金融学院相关
   gem 'kc_courses', :github => 'mindpin/kc_courses',
-                    :ref => "f062768"
+                    :ref => "db297984"
                     # :tag => "v0.6.0"
                     #:path => "../kc_courses"
 
@@ -156,7 +156,7 @@ source "https://ruby.taobao.org" do
 
   gem 'model_label', github: 'kc-train/model_label',
                       :ref => "ffbc999"
-                      
+
   gem 'kc_comments', github: "mindpin/kc_comments",
                      ref: "d3d64e6"
 
