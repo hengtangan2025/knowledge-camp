@@ -58,7 +58,11 @@
               - if ware.file_entity.blank?
                 %td.transcode_status 无需转码
               - else
-                %td.transcode_status= ware.file_entity.transcode_success? ? "完成" : "转码中"
+                %td.transcode_status
+                  %span= ware.file_entity.transcode_success? ? "完成" : "转码中"
+                  %span{style: 'display:none'}
+                    = ware.file_entity.transcoding_records.to_json
+
               %td.opts
                 - qrcode_url = File.join(ENV["qiniu_callback_host"], preview_bank_manage_ware_path(ware.id))
                 %a{href: 'javascript:;', class: 'ware-preview-qrcode', rel: 'popover', data: {content: "<div class='qrcode' data-url='#{qrcode_url}'/>", :"original-title" => '手机扫描二维码，预览课件'}} 二维码
