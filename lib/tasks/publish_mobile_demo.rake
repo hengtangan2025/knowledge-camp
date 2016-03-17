@@ -40,6 +40,10 @@ module PublishMobileDemoTaskMethods
   end
 
   def reserve_files
+    _reserve "app/assets/images", %w{
+      default_avatars
+    }
+
     _reserve "app/assets/javascripts", %w{
       mockup
       mockup.js
