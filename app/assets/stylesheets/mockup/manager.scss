@@ -108,6 +108,7 @@ body.manager {
     overflow: auto;
 
     .func-content {
+      padding: 1rem 2rem;
       .ui.message {
         border-radius: 0 !important;
         box-shadow: none !important;
@@ -124,15 +125,91 @@ body.manager {
         }
 
         .manager-table {
+          h4.header {
+            margin-bottom: 2em;
+            i {
+              font-size: 16px;
+              opacity: 0.5;
+            }
+            .content {
+              // opacity: 0.8;
+            }
+          }
+
+          .table-filters {
+            margin-bottom: 1em;
+          }
+
           .table {
-            font-size: 12px;
             border-radius: 0;
+            td {
+              line-height: 20px;
+
+              .ui.button.mini {
+                min-height: 0;
+                height: 24px;
+                line-height: 24px;
+                padding: 0 0.7rem;
+                margin-top: -2px;
+                margin-bottom: -2px;
+              }
+            }
+            tfoot {
+              .ui.pagination {
+                box-shadow: none;
+                min-height: 0;
+                float: right;
+                .item {
+                  height: 34px;
+                  &:not(.number) {
+                    min-width: 0;
+                    padding-left: 0.8em;
+                    padding-right: 0.8em;
+                  }
+                  &.number {
+                    padding-top: 0;
+                    padding-bottom: 0;
+                    line-height: 34px;
+                    // i {height: 34px;}
+                  }
+                }
+              }
+              .pagination-text-info {
+                line-height: 36px;
+              }
+            }
           }
         }
       }
 
       .ui.segment.func-not-ready {
         background-color: #F8F8F9 !important;
+      }
+    }
+  }
+}
+
+.manager-form {
+  .field {
+    @include clearfix;
+    display: flex;
+
+    label {
+      box-sizing:border-box;
+      display: block;
+      float: left;
+      text-align: right;
+      padding-right: 0.5rem;
+      margin-bottom: 0 !important;
+      margin-top: 8px !important;
+    }
+    .wrapper {
+      box-sizing:border-box;
+      display: block;
+      float: left;
+
+      textarea {
+        resize: none;
       }
     }
   }

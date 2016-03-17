@@ -116,9 +116,27 @@ class MockupController < ApplicationController
     @component_name, @component_data = 
       case @current_func
       when 'courses_empty'
-        ['ManagerCoursesPage', { courses: [] }]
+        ['ManagerCoursesPage', { 
+          new_course_url: mockup_url(page: 'manager_home', func: 'new_course'),
+          courses: [] 
+        }]
       when 'courses'
-        ['ManagerCoursesPage', { courses: SAMPLE_COURSES_DATA }]
+        ['ManagerCoursesPage', { 
+          new_course_url: mockup_url(page: 'manager_home', func: 'new_course'),
+          courses: SAMPLE_COURSES_DATA,
+          paginate: SAMPLE_PAGINATE_DATA,
+          # 用于生成顶部过滤
+          filter_subjects: [ 
+            {name: '电子商务', id: '1'},
+            {name: '农产品销售', id: '2'},
+          ],
+        }]
+
+      when 'new_course'
+        ['ManagerNewCoursePage', {
+          
+        }]
+
       end
   end
 
@@ -199,8 +217,9 @@ class MockupController < ApplicationController
   SAMPLE_PAGINATE_DATA = {
     total_pages: 12,
     current_page: 5,
-    per_page: 25
-  }  
+    per_page: 25,
+    total_count: 291
+  }
 
   SAMPLE_COURSES_DATA = [
     {
