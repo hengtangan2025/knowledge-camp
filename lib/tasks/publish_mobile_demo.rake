@@ -88,8 +88,8 @@ namespace :demo do
   # 2016-03-07
   # 根据 mobile-mockup 分支清理代码，并发布到 mobile-demo 分支
 
-  desc "根据 mobile-mockup 分支清理代码，并发布到 mobile-demo 分支"
-  task :publish_mobile => [:environment] do
+  desc "根据 mobile-mockup 分支清理代码，并切换本地代码到 mobile-demo 分支，并不发布"
+  task :clean_for_publish_mobile => [:environment] do
     current_branch = get_current_branch_name
 
     if current_branch != 'mobile-mockup'
@@ -129,12 +129,16 @@ namespace :demo do
       message = "Site updated at #{Time.now.utc}"
       system "git add ."
       system "git commit -am #{message.shellescape}"
-      system "git push origin mobile-demo --force"
-      system "git push coding mobile-demo --force"
-      system "git checkout mobile-mockup"
-      system "git submodule update"
-
-      puts "发布完毕"
     end
+  end
+
+  desc "根据 mobile-mockup 分支清理代码，并发布到远程 mobile-demo 分支"
+  task :publish_mobile => [:clean_for_publish_mobile] do
+    system "git push origin mobile-demo --force"
+    system "git push coding mobile-demo --force"
+    system "git checkout mobile-mockup"
+    system "git submodule update"
+
+    puts "发布完毕"
   end
 end
