@@ -7,7 +7,10 @@
   statics:
     Form: React.createClass
       render: ->
-        {Form, Field, TextInput, TextArea, Submit} = DataForm
+        {
+          Form, Field, Submit 
+          TextInput, TextArea, OneImageUpload
+        } = DataForm
 
         layout =
           label_width: '100px'
@@ -15,20 +18,25 @@
 
         <div className='ui segment'>
           <Form onSubmit={@handle_submit}>
-            <Field
-              {...layout}
-              label='课程名：'
-            >
+            <Field {...layout} label='课程名：'>
               <TextInput name='name' />
             </Field>
-            <Field
-              {...layout}
-              label='课程简介：'
-            ><TextArea name='desc' /></Field>
-            <Field
-              {...layout}
-              label=''
-            ><Submit text='确定保存' /></Field>
+
+            <Field {...layout} label='课程简介：'>
+              <TextArea name='desc' rows={10} />
+            </Field>
+
+            <Field {...layout} label='课程封面：'>
+              {
+                params =
+                  'title': '添加封面'
+                <OneImageUpload name='file_entity_id' {...params} />
+              }
+            </Field>
+
+            <Field {...layout} label=''>
+              <Submit text='确定保存' />
+            </Field>
           </Form>
         </div>
 

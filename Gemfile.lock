@@ -1,4 +1,16 @@
 GIT
+  remote: git://github.com/ben7th/file-part-upload.git
+  revision: 2e364e04be0acfb2af372f632e0b2e2470ae5289
+  ref: 2e364e0
+  specs:
+    file-part-upload (3.0.0)
+      enumerize
+      mime-types
+      mini_magick
+      qiniu (~> 6.4.1)
+      streamio-ffmpeg
+
+GIT
   remote: git://github.com/kc-train/model_label.git
   revision: ffbc999778b2179b898c2263d303c8c0749385ee
   ref: ffbc999
@@ -37,18 +49,6 @@ GIT
       elasticsearch-model
       elasticsearch-rails
       ruby-pinyin
-
-GIT
-  remote: git://github.com/mindpin/file-part-upload.git
-  revision: 6898ae1f53b6290eb04ec50a5130f1748acf9404
-  tag: 2.2.1
-  specs:
-    file-part-upload (2.2.1)
-      enumerize
-      mime-types
-      mini_magick
-      qiniu (~> 6.4.1)
-      streamio-ffmpeg
 
 GIT
   remote: git://github.com/mindpin/generic_controller.git

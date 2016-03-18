@@ -19,6 +19,10 @@
       (evt)=>
         @setState "#{name}": evt.target.value
 
+    do_change: (name)->
+      (value)=>
+        @setState "#{name}": value
+
     submit: ->
       @props.onSubmit @state
 
@@ -46,6 +50,7 @@
             props = {
               form: @props.form
               _change: @props.form.on_change(name)
+              _set_value: @props.form.do_change(name)
               _value: @props.form.state[name]
             }
 
@@ -78,3 +83,5 @@
       <textarea rows={rows} onChange={@props._change}>
       {@props._value}
       </textarea>
+
+  OneImageUpload: null # 在 data_form/image_upload.coffee 中定义

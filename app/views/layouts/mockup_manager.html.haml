@@ -15,8 +15,13 @@
 
     = javascript_include_tag '/mediaelement/mediaelement-and-player.min.js', :'data-turbolinks-track' => true
     = stylesheet_link_tag '/mediaelement/mediaelementplayer.min.css', :'data-turbolinks-track' => true
+    
+    :javascript
+      window.file_part_upload_dom_data = #{FilePartUpload.get_dom_data.to_json}
+      window.file_part_upload_dom_data.qiniu_callback_url = "#{mockup_post_path(req: 'create_file_entity')}"
 
   %body.manager
+
     :ruby
       manager_sidebar_data = {
         current_func: @current_func,

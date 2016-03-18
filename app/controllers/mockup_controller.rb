@@ -47,6 +47,8 @@ class MockupController < ApplicationController
         post_do_sign_in
       when 'do_sign_up'
         post_do_sign_up
+      when 'create_file_entity'
+        post_create_file_entity
       end
   end
 
@@ -110,6 +112,12 @@ class MockupController < ApplicationController
     end
   end
 
+  def post_create_file_entity
+    render json: {
+      id: 'id_12345678'
+    }
+  end
+
   def get_manager_data
     @current_func = params[:func] || 'dashboard'
 
@@ -134,7 +142,7 @@ class MockupController < ApplicationController
 
       when 'new_course'
         ['ManagerNewCoursePage', {
-          
+
         }]
 
       end
