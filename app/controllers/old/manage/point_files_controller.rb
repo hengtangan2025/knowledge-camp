@@ -1,4 +1,4 @@
-class Manage::PointFilesController < ApplicationController
+class Old::Manage::PointFilesController < ApplicationController
   before_filter :authenticate_user!
 
   def new
@@ -14,7 +14,7 @@ class Manage::PointFilesController < ApplicationController
   def create
     @point = KnowledgeNetStore::Point.find params[:point_id]
     @net = @point.net
-    
+
     params[:files].each do |file_entity_id, visible_filename|
       virtual_filename = get_virtual_filename(visible_filename)
 

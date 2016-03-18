@@ -1,4 +1,4 @@
-class Manage::AvatarsController < ApplicationController
+class Old::Manage::AvatarsController < ApplicationController
   before_filter :authenticate_user!
 
   def show
