@@ -23,7 +23,7 @@ source "https://ruby.taobao.org" do
 
   # -------------
 
-  gem "figaro"
+  gem "figaro", "~> 1.1.1"
   gem "devise", "3.5.2"
   gem "kaminari", "~> 0.15.1"
   gem 'bootstrap-kaminari-views'

@@ -496,7 +496,7 @@ DEPENDENCIES
   devise (= 3.5.2)!
   documents-store!
   elasticsearch-simple!
-  figaro!
+  figaro (~> 1.1.1)!
   file-part-upload!
   generic_controller!
   haml!
