@@ -1,17 +1,20 @@
 if !File.exists?(Rails.root.join("config/application.yml"))
-  p "******************************************"
-  p "* 缺少                                   *"
-  p "* config/application.yml 配置文件      *"
-  p "*                                        *"
-  p "* 请参考                                 *"
-  p "* config/application.yml.development   *"
-  p "* 创建配置文件                           *"
-  p "******************************************"
-
-  exit 0
+  puts ""
+  puts ""
+  puts "****************** 警告 ********************************"
+  puts "* 工程目录下没有找到  config/application.yml  文件        "
+  puts "*                                                     "
+  puts "* 该文件的作用是配置工程运行时所需的环境变量                 "
+  puts "*                                                     "
+  puts "* 请参考 config/application.yml.sample 来创建和配置该文件 "
+  puts "*                                                     "
+  puts "* 如果你已经通过其他方式设置了这些环境变量，请忽略该信息       "
+  puts "*******************************************************"
+  puts ""
+  puts ""
 end
 
-configs = %w{
+required_configs = %w{
   static_file_url_prefix
   upload_file_base_path
   qiniu_bucket
@@ -21,10 +24,18 @@ configs = %w{
   qiniu_app_secret_key
   qiniu_callback_host
 }
+blank_configs = required_configs.select { |config| ENV[config].blank? }
 
-configs.each do |config|
-  if ENV[config].blank?
-    p "!请在 config/application.yml 中增加 #{config} 配置"
-    exit 0
+if blank_configs.count != 0
+  puts ""
+  puts "****************** 错误提示 ***********************************"
+  puts "* 缺少如下这些环境变量"
+  blank_configs.each do |config|
+    puts "*   #{config}"
   end
+  puts "*   "
+  puts "* 请在 config/application.yml 中或其他方式增加这些环境变量 "
+  puts "**************************************************************"
+  puts ""
+  exit 1
 end
