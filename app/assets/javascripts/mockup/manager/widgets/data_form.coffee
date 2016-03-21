@@ -139,7 +139,7 @@
 
   TextInputField: React.createClass
     render: ->
-      <DataForm.Form.Field label={@props.label} name={@props.name} required={@props.required}>
+      <DataForm.Form.Field {...@props}>
         <input type='text' value={@props._value} onChange={@props._change} />
         {
           if @props._error_message
@@ -151,7 +151,7 @@
     render: ->
       rows = @props.rows || 5
 
-      <DataForm.Form.Field label={@props.label} name={@props.name} required={@props.required}>
+      <DataForm.Form.Field {...@props}>
         <textarea rows={rows} onChange={@props._change}>
         {@props._value}
         </textarea>

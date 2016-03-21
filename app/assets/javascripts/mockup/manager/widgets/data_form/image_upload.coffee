@@ -177,6 +177,6 @@ OneImageUpload = React.createClass
   render: ->
     title = @props.title || '上传图片'
     
-    <DataForm.Form.Field label={@props.label} name={@props.name} required={@props.required}>
+    <DataForm.Form.Field {...@props}>
       <OneImageUpload done={@props._set_value} value={@props._value} />
     </DataForm.Form.Field>
