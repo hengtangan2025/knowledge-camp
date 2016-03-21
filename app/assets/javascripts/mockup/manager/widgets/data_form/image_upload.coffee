@@ -1,4 +1,4 @@
-@DataForm.OneImageUpload = ImageUpload = React.createClass
+OneImageUpload = React.createClass
   getInitialState: ->
     status: 'ready' # uploading, remote_done, local_done, error
     percent: 0
@@ -23,7 +23,7 @@
               status: @state.status
               preview_url: @state.preview_url
 
-            <ImageUpload.Percent {...params} />
+            <OneImageUpload.Percent {...params} />
         }
         {
           style = switch @state.status
@@ -43,10 +43,10 @@
                 建议图片尺寸大于 640×360px，最佳比例 16:9
               </div>
 
-          <ImageUpload.BrowseBtn {...params} ref='browse_btn' style={style} />
+          <OneImageUpload.BrowseBtn {...params} ref='browse_btn' style={style} />
         }
       </div>
-      <input type='hidden' value={@props._value} onChange={@props._change} />
+      <input type='hidden' value={@props.value} readOnly />
     </div>
 
   set_file_entity_id: (id)->
@@ -142,7 +142,7 @@
 
       # 某个文件上传成功时，此方法会被调用
       success: (info)->
-        that.set_file_entity_id info.id
+        that.props.done info.id
         that.setState status: 'local_done'
 
       # 某个文件上传出错时，此方法会被调用
@@ -171,3 +171,12 @@
       # 所有上传队列项处理完毕时（成功或失败），此方法会被调用
       @alldone: ->
         # console.log "alldone"
+
+
+@DataForm.OneImageUploadField = React.createClass
+  render: ->
+    title = @props.title || '上传图片'
+    
+    <DataForm.Form.Field label={@props.label} name={@props.name} required={@props.required}>
+      <OneImageUpload done={@props._set_value} value={@props._value} />
+    </DataForm.Form.Field>

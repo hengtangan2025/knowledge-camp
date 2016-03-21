@@ -6,10 +6,15 @@
 
   statics:
     Form: React.createClass
+      getInitialState: ->
+        errors: {}
+
       render: ->
         {
-          Form, Field, Submit 
-          TextInput, TextArea, OneImageUpload
+          TextInputField
+          TextAreaField
+          OneImageUploadField
+          Submit
         } = DataForm
 
         layout =
@@ -17,28 +22,18 @@
           wrapper_width: '50%'
 
         <div className='ui segment'>
-          <Form onSubmit={@handle_submit}>
-            <Field {...layout} label='课程名：' required>
-              <TextInput name='name' />
-            </Field>
-
-            <Field {...layout} label='课程简介：' required>
-              <TextArea name='desc' rows={10} />
-            </Field>
-
-            <Field {...layout} label='课程封面：'>
-              {
-                params =
-                  'title': '添加封面'
-                <OneImageUpload name='file_entity_id' {...params} />
-              }
-            </Field>
-
-            <Field {...layout} label=''>
-              <Submit text='确定保存' />
-            </Field>
-          </Form>
+          <SimpleDataForm
+            model='course'
+            data={name: 'true'}
+            post={@props.data.create_course_url}
+            done={@done}  
+          >
+            <TextInputField {...layout} label='课程名：' name='name' required />
+            <TextAreaField {...layout} label='课程简介：' name='desc' rows={10} required />
+            <OneImageUploadField label='课程封面：' name='file_entity_id' />
+            <Submit text='确定保存' />
+          </SimpleDataForm>
         </div>
 
-      handle_submit: (data)->
-        console.log data
+      done: (res)->
+        alert('提交成功')

@@ -49,6 +49,8 @@ class MockupController < ApplicationController
         post_do_sign_up
       when 'create_file_entity'
         post_create_file_entity
+      when 'create_course'
+        post_create_course
       end
   end
 
@@ -118,6 +120,17 @@ class MockupController < ApplicationController
     }
   end
 
+  def post_create_course
+    if params[:course][:name] == 'true'
+      render json: SAMPLE_COURSES_DATA[0]
+    else
+      render status: 422, json: {
+        name: ['测试校验错误'],
+        desc: ['测试校验错误']
+      }
+    end
+  end
+
   def get_manager_data
     @current_func = params[:func] || 'dashboard'
 
@@ -142,7 +155,7 @@ class MockupController < ApplicationController
 
       when 'new_course'
         ['ManagerNewCoursePage', {
-
+          create_course_url: mockup_post_url(req: 'create_course')
         }]
 
       end
