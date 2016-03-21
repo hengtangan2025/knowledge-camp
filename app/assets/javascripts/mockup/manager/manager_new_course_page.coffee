@@ -18,11 +18,11 @@
 
         <div className='ui segment'>
           <Form onSubmit={@handle_submit}>
-            <Field {...layout} label='课程名：'>
+            <Field {...layout} label='课程名：' required>
               <TextInput name='name' />
             </Field>
 
-            <Field {...layout} label='课程简介：'>
+            <Field {...layout} label='课程简介：' required>
               <TextArea name='desc' rows={10} />
             </Field>
 

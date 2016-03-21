@@ -113,7 +113,7 @@ source "https://ruby.taobao.org" do
   # 支持分段上传的文件持久化
   gem 'file-part-upload',
       :github => 'ben7th/file-part-upload',
-      :ref => '2e364e0'
+      :ref => '13bbe54'
 
   # 图片加载的一个小工具
   gem 'simple-images',

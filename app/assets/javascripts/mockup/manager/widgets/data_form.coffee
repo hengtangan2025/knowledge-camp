@@ -29,10 +29,7 @@
   Field: React.createClass
     render: ->
       label_style = 
-        if not @props.label_width
-          {width: '100px'}
-        else
-          {width: @props.label_width}
+        width: @props.label_width || '100px'
 
       wrapper_style =
         if not @props.wrapper_width
@@ -41,7 +38,13 @@
           {width: @props.wrapper_width}
 
       <div className='field'>
-        <label style={label_style}>{@props.label}</label>
+        <label style={label_style}>
+          {
+            if @props.required
+              <span className='required'>* </span>
+          }
+          <span>{@props.label}</span>
+        </label>
         <div className='wrapper' style={wrapper_style}>
         {
           React.Children.map @props.children, (child)=>

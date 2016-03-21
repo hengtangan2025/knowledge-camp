@@ -1,7 +1,7 @@
 GIT
   remote: git://github.com/ben7th/file-part-upload.git
-  revision: 2e364e04be0acfb2af372f632e0b2e2470ae5289
-  ref: 2e364e0
+  revision: 13bbe5496ba7993247846b8931289ef20e58d601
+  ref: 13bbe54
   specs:
     file-part-upload (3.0.0)
       enumerize

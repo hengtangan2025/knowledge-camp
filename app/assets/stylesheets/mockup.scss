@@ -13,6 +13,8 @@ $text-color: rgba(black, 0.87);
 $desc-text-color: rgba(black, 0.66);
 $rem: 14px;
 
+$mindpin-font-family: "Segoe UI", "Helvetica Neue", "Helvetica", "Arial", "sans-serif", "微软雅黑" !important;
+
 @import 'mockup/layout';
 @import 'mockup/ui';
 @import 'mockup/widgets';
@@ -33,7 +35,7 @@ body,
 
 .ui.button,
 {
-  font-family: "Segoe UI", "Helvetica Neue", "Helvetica", "Arial", "sans-serif", "微软雅黑" !important;
+  font-family: $mindpin-font-family;
 }
 
 .ui.cards > .card > :first-child, 
@@ -55,4 +57,8 @@ body,
 
 .ui.pagination.menu {
   i.icon {margin-right: 0;}
+}
+
+.ui.form input {
+  font-family: $mindpin-font-family;
 }

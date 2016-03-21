@@ -346,6 +346,7 @@ class MockupController < ApplicationController
     {
       id: '3', name:'教做农产品的朋友认识淘宝平台', kind: 'video', learned: 'no', time: '37′12″',
       url: "/mockup/ware_show?id=3",
+      video_url: 'http://7xie1v.com1.z0.glb.clouddn.com/static_filesACU_Trailer_480.mp4'
     },
     {
       id: '4', name:'电子商务和物流的基础概念', kind: 'document', learned: 'no',

@@ -202,6 +202,13 @@ body.manager {
       padding-right: 0.5rem;
       margin-bottom: 0 !important;
       margin-top: 8px !important;
+      font-weight: normal !important;
+      font-size: 13px !important;
+
+      span.required {
+        color: #f50;
+        font-family: simsun;
+      }
     }
     .wrapper {
       box-sizing:border-box;
