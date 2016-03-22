@@ -10,6 +10,12 @@ source "https://ruby.taobao.org" do
   gem 'jbuilder', '~> 2.0'
   gem 'sdoc', '~> 0.4.0', group: :doc
 
+  group :development do
+    # 去除测试环境 assets提示
+    gem 'quiet_assets'
+    gem 'pry-rails'
+  end
+
   group :development, :test do
     gem "spring"
     gem "pry"
