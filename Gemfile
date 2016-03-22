@@ -134,7 +134,7 @@ source "https://ruby.taobao.org" do
 
   # -----金融学院相关
   gem 'kc_courses', :github => 'mindpin/kc_courses',
-                    :ref => "db297984"
+                    :ref => "0a0c2fe"
                     # :tag => "v0.6.0"
                     #:path => "../kc_courses"
 

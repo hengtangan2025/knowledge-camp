@@ -92,3 +92,43 @@ KcComments::Comment.class_eval do
     }
   end
 end
+
+KcCourses::PublishedCourse.class_eval do
+  def to_brief_component_data(controller = nil)
+    {
+      id: self.id.to_s,
+      url: controller.course_path(self.id.to_s),
+      img: self.data['file_entity_id'].blank? ? ENV['course_default_cover_url'] : FilePartUpload::FileEntity.find(self.data['file_entity_id']).url,
+      name: self.data['title'],
+      desc: self.data['desc'],
+      instructor: self.data['user_id'].blank? ? '' : User.find(self.data['user_id']).try(:name) ,
+      published_at: self.created_at.strftime("%Y-%m-%d")
+    }
+  end
+
+  def to_detail_component_data(controller = nil)
+    if self.data['statistic_info'] and self.data['statistic_info']['video']
+      video_count = self.data['statistic_info']['video']['count']
+      total_minute = self.data['statistic_info']['video']['total_minute']
+    else
+      video_count = 0
+      total_minute = 0
+    end
+
+    {
+      id: self.id.to_s,
+      url: controller.course_path(self.id.to_s),
+      img: self.data['file_entity_id'].blank? ? ENV['course_default_cover_url'] : FilePartUpload::FileEntity.find(self.data['file_entity_id']).url,
+      name: self.data['title'],
+      desc: self.data['desc'],
+      instructor: self.data['user_id'].blank? ? '' : User.find(self.data['user_id']).try(:name) ,
+      published_at: self.created_at.strftime("%Y-%m-%d"),
+      #subjects: self.data['course_subjects'].map{|subject| {name: subject['name'], url: controller.subject_path(subject['id'])}},
+      subjects: [],
+      price: '免费',
+      effort: "#{video_count} 个视频，合计 #{total_minute} 分钟",
+
+      chapters: self.data['chapters'],
+    }
+  end
+end
