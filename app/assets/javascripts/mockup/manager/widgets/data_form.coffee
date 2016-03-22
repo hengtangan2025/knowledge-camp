@@ -8,13 +8,12 @@
       Form
     } = DataForm
 
-    <Form onSubmit={@on_submit} data={@props.data} errors={@state.errors}>
+    <Form onSubmit={@on_submit} data={@props.data} errors={@state.errors} ref='form'>
     {@props.children}
     </Form>
 
   on_submit: (data)->
     _data = {"#{@props.model}": data}
-    console.log _data
 
     if @props.post
       type = 'post'
@@ -23,6 +22,8 @@
       type = 'update'
       url = @props.update
 
+    @refs.form.set_submiting?(true)
+
     jQuery.ajax
       url: url
       type: type
@@ -30,10 +31,15 @@
     .done (res)=>
       @props.done res
     .fail (res)=>
+      console.debug '表单提交错误响应数据：'
       console.debug res.responseJSON
       @setState errors: res.responseJSON
+    .always =>
+      @refs.form.set_submiting?(false)
 
 
+
+# 更基础的一个组件，没有封装提交行为，有特殊需要时再使用
 @DataForm =
   Form: React.createClass
     render: ->
@@ -106,45 +112,64 @@
           required_dom = if @props.required
             <span className='required'>* </span>
 
-          <div className='field'>
+          error_tip = if @props._error_message
+            <div className='error-tip'>{@props._error_message}</div>
+
+          klass = new ClassName
+            'field': true
+            'error': @props._error_message?
+
+          <div className={klass}>
             <label style={label_style}>
               {required_dom}
               <span>{@props.label}</span>
             </label>
             <div className='wrapper' style={wrapper_style}>
               {@props.children}
+              {error_tip}
             </div>
           </div>
 
 
   Submit: React.createClass
+    getInitialState: ->
+      is_submiting: false
+
     render: ->
       text = @props.text || '确定提交'
 
+      klass = new ClassName
+        'ui button green small': true
+        'loading': @state.is_submiting
+        'disabled': not @is_valid()
+
+      on_click = 
+        if @is_valid() and not @state.is_submiting
+        then @props.form.submit 
+        else null
+
+      button = 
+        <a className={klass} href='javascript:;' onClick={on_click}>
+          <i className='icon check' />
+          {text}
+        </a>
+
       <DataForm.Form.Field>
-      {
-        if @props.form.is_all_required_filled()
-          <a className='ui button green small' href='javascript:;' onClick={@props.form.submit}>
-            <i className='icon check' />
-            {text}
-          </a>
-        else
-          <a className='ui button green small disabled' href='javascript:;'>
-            <i className='icon check' />
-            {text}
-          </a>
-      }
+      {button}
       </DataForm.Form.Field>
+
+    componentWillMount: ->
+      @props.form.set_submiting = (is_submiting)=>
+        @setState is_submiting: is_submiting
+
+    is_valid: ->
+      @props.form.is_all_required_filled()
 
 
   TextInputField: React.createClass
     render: ->
       <DataForm.Form.Field {...@props}>
         <input type='text' value={@props._value} onChange={@props._change} />
-        {
-          if @props._error_message
-            <span>{@props._error_message}</span>
-        }
       </DataForm.Form.Field>
 
   TextAreaField: React.createClass

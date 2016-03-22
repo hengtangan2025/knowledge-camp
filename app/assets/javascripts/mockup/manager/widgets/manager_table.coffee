@@ -68,7 +68,20 @@
         <div ref='filters' className='table-filters'>
         {
           for key, sdata of @props.data
-            <div key={key} className='ui floating labeled icon dropdown button mini'>
+            {#<ManagerTable.Filter.IconDropDown key={key} sdata={sdata} />}
+            <ManagerTable.Filter.SelectionDropDown key={key} sdata={sdata} />
+        }
+        </div>
+
+      componentDidMount: ->
+        jQuery(React.findDOMNode @refs.filters).find('.ui.dropdown').dropdown()
+
+      statics:
+        IconDropDown: React.createClass
+          render: ->
+            sdata = @props.sdata
+
+            <div className='ui floating labeled icon dropdown button mini'>
               <i className='filter icon'></i>
               <span className='text disabled'>选择{sdata.text}</span>
               <div className='menu'>
@@ -82,11 +95,21 @@
                 }
               </div>
             </div>
-        }
-        </div>
 
-      componentDidMount: ->
-        jQuery(React.findDOMNode @refs.filters).find('.ui.dropdown').dropdown()
+        SelectionDropDown: React.createClass
+          render: ->
+            sdata = @props.sdata
+
+            <div className='ui selection dropdown'>
+              <i className='dropdown icon'></i>
+              <span className='text default'>选择{sdata.text}</span>
+              <div className='menu'>
+                {
+                  for value, idx in sdata.values
+                    <ManagerTable.FilterDropDownItem key={idx} data={value} />
+                }
+              </div>
+            </div>
 
     FilterDropDownItem: React.createClass
       render: ->

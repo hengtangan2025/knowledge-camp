@@ -29,7 +29,7 @@
         dashboard: {
           id: 'dashboard',
           name: '总控面板',
-          url: mockup_url(page: 'manager_home'),
+          url: mockup_manager_url(page: 'dashboard'),
           icon: 'dashboard'
         },
 
@@ -40,12 +40,12 @@
               {
                 id: 'courses_empty',
                 name: '开课管理（空）',
-                url: mockup_url(page: 'manager_home', func: 'courses_empty'),
+                url: mockup_manager_url(page: 'courses', empty: true),
                 icon: 'grid layout'
               },
               {
                 name: '开课管理（非空）',
-                url: mockup_url(page: 'manager_home', func: 'courses'),
+                url: mockup_manager_url(page: 'courses'),
                 icon: 'grid layout'
               },
             ]

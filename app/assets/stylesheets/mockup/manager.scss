@@ -193,6 +193,7 @@ body.manager {
   .field {
     @include clearfix;
     display: flex;
+    margin-bottom: 24px !important;
 
     label {
       box-sizing:border-box;
@@ -214,10 +215,26 @@ body.manager {
       box-sizing:border-box;
       display: block;
       float: left;
+    }
+  }
 
-      textarea {
-        // resize: none;
-      }
+  .field.error {
+    margin-bottom: 6px !important;
+    .error-tip {
+      font-size: 12px;
+      line-height: 18px;
+      color: #f50;
+    }
+
+    label {
+      color: inherit !important;
+    }
+    input, textarea{
+      border-color: #f50 !important;
+      // background-color: rgba(#f50, 0.05) !important;
+      background-color: inherit !important;
+      box-shadow:0 0 0 2px #fdc !important;
+      color: inherit !important;
     }
   }
 
@@ -289,6 +306,62 @@ body.manager {
           i.icon {
             font-size: 50px;
           }
+        }
+      }
+    }
+  }
+}
+
+.manager-course-contents-page {
+  .chapter {
+    border:solid 1px #DEDEDE;
+    min-height: 3rem;
+    .ch-header {
+      background-color: #F5FDFF;
+      height: 4rem;
+      padding: 1rem;
+      label {
+        float: left;
+        height:2rem;line-height:2rem;
+        width:4rem;text-align: right;
+        margin-right: 2rem;
+        .idx {
+          font-weight: bold;
+          font-size: 16px;
+        }
+      }
+      .content {
+        float: left;
+        height: 2rem;line-height: 2rem;
+        input {
+          height: 2rem;line-height: 2rem;
+        }
+      }
+    }
+
+    .ware {
+      padding:1rem 0;
+      border-bottom: solid 1px #eee;
+
+      .wa-header {
+        height: 4rem;
+        padding: 1rem;
+        label {
+          float: left;
+          height:2rem;line-height:2rem;
+          width:4rem;text-align: right;
+          margin-right: 2rem;
+          .idx {
+            font-weight: bold;
+            font-size: 16px;
+          }
+        }
+      }
+      .content {
+        float: left;
+        height: 2rem;line-height: 2rem;
+        input {
+          height: 2rem;line-height: 2rem;
         }
       }
     }

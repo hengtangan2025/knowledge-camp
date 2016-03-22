@@ -36,4 +36,4 @@
         </div>
 
       done: (res)->
-        alert('提交成功')
+        location.href = res.jump_url

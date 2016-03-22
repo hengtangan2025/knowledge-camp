@@ -39,9 +39,9 @@
               instructor: x.instructor
               updated_at: x.updated_at
               actions: 
-                <a className='ui button mini' href='javascript:;'>
-                  <i className='icon edit' />
-                  编辑
+                <a className='ui button mini' href={x.manager_contents_url}>
+                  <i className='icon pencil' />
+                  内容编排
                 </a>
             }
 

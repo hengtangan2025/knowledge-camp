@@ -216,3 +216,18 @@
     }
   }
 }
+
+.inline-input-edit {
+  .inline-edit-text {
+    padding: 0 0.5rem;
+    // min-width: 400px;
+    &:hover {
+      background-color: #ffffdc;
+    }
+  }
+  input.inline-edit-text-ipt {
+    padding: 0 0.5rem;
+    margin-left: -1px;
+    width: 400px;
+  }
+}
