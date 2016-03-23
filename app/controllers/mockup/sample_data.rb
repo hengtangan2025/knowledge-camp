@@ -94,6 +94,7 @@ module Mockup::SampleData
     effort: '4 个视频，合计 120 分钟；',
 
     chapters: [
+      id: 'c1',
       name: '电商基础',
       wares: SAMPLE_WARES_DATA
     ]

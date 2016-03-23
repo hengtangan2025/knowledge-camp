@@ -11,6 +11,9 @@
 // https://github.com/medialize/URI.js
 //= require URIjs
 
+// http://facebook.github.io/immutable-js/
+//= require immutable
+
 // 自己封装的七牛上传组件
 //= require file_part_upload/uploader
 

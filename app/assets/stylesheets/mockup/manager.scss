@@ -313,6 +313,10 @@ body.manager {
 }
 
 .manager-course-contents-page {
+  .chapters {
+    max-width: 900px;
+  }
+
   .chapter {
     border:solid 1px #DEDEDE;
     min-height: 3rem;
@@ -342,6 +346,9 @@ body.manager {
     .ware {
       padding:1rem 0;
       border-bottom: solid 1px #eee;
+      &:last-child {
+        border-bottom: 0 none;
+      }
 
       .wa-header {
         height: 4rem;
@@ -362,6 +369,15 @@ body.manager {
         height: 2rem;line-height: 2rem;
         input {
           height: 2rem;line-height: 2rem;
+        }
+      }
+      .buttons {
+        float: right;
+        height: 28px;
+        .button {
+          padding:0;
+          width:32px;
+          height: 26px;line-height: 26px;
         }
       }
     }
