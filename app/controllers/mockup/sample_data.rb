@@ -100,6 +100,12 @@ module Mockup::SampleData
     ]
   }
 
+  SAMPLE_CHAPTER_DATA = {
+    id: 'ch1',
+    name: '未命名章节',
+    wares: []
+  }
+
   SAMPLE_COURSES_DATA = [
     {
       id: '1',

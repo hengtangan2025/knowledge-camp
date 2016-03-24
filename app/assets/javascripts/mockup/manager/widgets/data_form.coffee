@@ -139,7 +139,7 @@
       text = @props.text || '确定提交'
 
       klass = new ClassName
-        'ui button green small': true
+        'ui button green': true
         'loading': @state.is_submiting
         'disabled': not @is_valid()
 

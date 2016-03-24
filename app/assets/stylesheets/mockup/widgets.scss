@@ -236,3 +236,74 @@
   width: 320px;
   margin-left: -160px;
 }
+
+.ui.modal.ware {
+  width: 800px;
+  margin-left: -400px;
+}
+
+.widget-video-upload {
+  margin-bottom: 1rem;
+
+  .browse {
+    border: solid 5px #eee;
+    text-align: center;
+    position: relative;
+
+    .browse-btn {
+      position: absolute;
+      top:0;left:0;right:0;bottom:0;
+      cursor: pointer;
+      &:hover {
+        background-color: #ffffee;
+      }
+
+      .btn-text {
+        pointer-events: none;
+        .header {
+          font-size: 2rem;
+          line-height: 80px;
+          color: #bbb;
+          margin-left: -1em;
+        }
+      }
+    }
+    .percent {
+      position: absolute;
+      top:0;left:0;right:0;bottom:0;
+      pointer-events: none;
+      background-repeat: no-repeat;
+      background-position: center center;
+      background-size: cover;
+
+      .bar {
+        position: absolute;
+        top:0;right:0;bottom:0;
+        background-color: rgba(white, 0.618);
+        // background-color: rgba(black, 0.1);
+        transition: width .1s linear;
+      }
+      .p {
+        position: absolute;
+        top: 50%;
+        line-height: 50px;
+        height: 50px;
+        left:0;right:0;
+        text-align: center;
+        margin-top: -25px;
+        font-size: 40px;
+        font-weight: bold;
+        color: white;
+        text-shadow:1px 1px 3px rgba(black, 0.5);
+
+        .ui.loader {
+          font-size: 30px;
+        }
+
+        i.icon {
+          font-size: 50px;
+        }
+      }
+    }
+  }
+}

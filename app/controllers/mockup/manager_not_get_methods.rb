@@ -5,6 +5,8 @@ module Mockup::ManagerNotGetMethods
     case params[:req]
       when 'create_course'
         post_create_course
+      when 'create_chapter'
+        post_create_chapter
       end
   end
 
@@ -19,5 +21,9 @@ module Mockup::ManagerNotGetMethods
         desc: ['测试校验错误']
       }
     end
+  end
+
+  def post_create_chapter
+    render json: SAMPLE_CHAPTER_DATA.merge(id: randstr)
   end
 end

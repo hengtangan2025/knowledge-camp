@@ -53,7 +53,9 @@ module Mockup::ManagerMethods
 
   def get_manager_course_contents_data
     @component_data = {
-      course: SAMPLE_COURSE_DATA
+      course: SAMPLE_COURSE_DATA,
+      manager_courses_url: mockup_manager_url(page: 'courses'),
+      manager_create_chapter_url: mockup_manager_post_url(req: 'create_chapter')
     }
   end
 end
