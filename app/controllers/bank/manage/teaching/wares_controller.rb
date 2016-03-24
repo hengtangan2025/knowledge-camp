@@ -12,11 +12,11 @@ class Bank::Manage::Teaching::WaresController < Bank::Manage::ApplicationControl
     @file_entity_kind = FilePartUpload::FileEntity.find(ware_params[:file_entity_id]).kind unless ware_params[:file_entity_id].blank?
     case @file_entity_kind
     when 'video'
-      @ware = KcCourses::SimpleVideoWare.new ware_params.merge(chapter_id: @chapter.id, user_id: current_user.id)
+      @ware = KcCourses::SimpleVideoWare.new ware_params.merge(chapter_id: @chapter.id, creator_id: current_user.id)
     when 'audio'
-      @ware = KcCourses::SimpleAudioWare.new ware_params.merge(chapter_id: @chapter.id, user_id: current_user.id)
+      @ware = KcCourses::SimpleAudioWare.new ware_params.merge(chapter_id: @chapter.id, creator_id: current_user.id)
     when 'pdf', 'office'
-      @ware = KcCourses::SimpleDocumentWare.new ware_params.merge(chapter_id: @chapter.id, user_id: current_user.id)
+      @ware = KcCourses::SimpleDocumentWare.new ware_params.merge(chapter_id: @chapter.id, creator_id: current_user.id)
     else
       @ware = current_user.wares.new ware_params.merge(chapter: @chapter)
     end

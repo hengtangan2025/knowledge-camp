@@ -31,8 +31,8 @@
           %td
             %a{href: url_for([:edit, :bank, :manage, course])} 编辑
             %a{href: url_for([:bank, :manage, course]), data: {method: 'delete', confirm: '你确定吗？'}} 删除
-            - if course.published
-              已发布
+            - if course.published_course and course.published_course.enabled
+              %a{href: url_for([:publish, :bank, :manage, course]), data: {method: 'post'}} 重新发布
             - else
               %a{href: url_for([:publish, :bank, :manage, course]), data: {method: 'post'}} 发布
 
