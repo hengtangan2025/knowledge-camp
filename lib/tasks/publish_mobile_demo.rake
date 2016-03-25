@@ -58,6 +58,7 @@ module PublishMobileDemoTaskMethods
     }
 
     _reserve "app/controllers", %w{
+      mockup
       application_controller.rb
       mockup_controller.rb
       index_controller.rb
