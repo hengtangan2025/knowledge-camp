@@ -14,6 +14,7 @@ module PublishMobileDemoTaskMethods
       app/models
       app/uploaders
 
+      config/initializers/figaro.rb
       config/initializers/gem_integration.rb
       config/initializers/devise.rb
       config/initializers/kaminari_config.rb
