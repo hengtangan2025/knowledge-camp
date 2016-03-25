@@ -172,3 +172,6 @@ gem 'rails-assets-URIjs'
 
 # http://facebook.github.io/immutable-js/
 gem 'rails-assets-immutable'
+
+# https://github.com/Olical/EventEmitter/blob/master/docs/guide.md
+gem 'rails-assets-eventEmitter'

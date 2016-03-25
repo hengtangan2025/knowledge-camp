@@ -240,70 +240,57 @@
 .ui.modal.ware {
   width: 800px;
   margin-left: -400px;
+
+  .buttons {
+    text-align: right;
+    .button {
+      margin-right: 0;
+      margin-left: 1rem;
+    }
+  }
 }
 
 .widget-video-upload {
   margin-bottom: 1rem;
+  height: 500px;
 
-  .browse {
-    border: solid 5px #eee;
+  .browse-btn {
+    border:dashed 2px #eee;
+    cursor: pointer;
     text-align: center;
-    position: relative;
+    margin-bottom: 1rem;
+    &:hover {
+      background-color: #ffffee;
+    }
 
-    .browse-btn {
-      position: absolute;
-      top:0;left:0;right:0;bottom:0;
-      cursor: pointer;
-      &:hover {
-        background-color: #ffffee;
-      }
-
-      .btn-text {
-        pointer-events: none;
-        .header {
-          font-size: 2rem;
-          line-height: 80px;
-          color: #bbb;
-          margin-left: -1em;
-        }
+    .btn-text {
+      pointer-events: none;
+      .header {
+        font-size: 1.5rem;
+        line-height: 80px;
+        color: #bbb;
+        margin-left: -1em;
       }
     }
-    .percent {
-      position: absolute;
-      top:0;left:0;right:0;bottom:0;
-      pointer-events: none;
-      background-repeat: no-repeat;
-      background-position: center center;
-      background-size: cover;
+  }
 
-      .bar {
-        position: absolute;
-        top:0;right:0;bottom:0;
-        background-color: rgba(white, 0.618);
-        // background-color: rgba(black, 0.1);
-        transition: width .1s linear;
-      }
-      .p {
-        position: absolute;
-        top: 50%;
-        line-height: 50px;
-        height: 50px;
-        left:0;right:0;
-        text-align: center;
-        margin-top: -25px;
-        font-size: 40px;
-        font-weight: bold;
-        color: white;
-        text-shadow:1px 1px 3px rgba(black, 0.5);
+  .percent-bar {
+    .filename {
+      margin-bottom: 0.5rem;
+      font-weight: bold;
+    }
+    .ui.progress .bar {
+      min-width: 0;
+    }
+  }
 
-        .ui.loader {
-          font-size: 30px;
-        }
-
-        i.icon {
-          font-size: 50px;
-        }
-      }
+  .ui.segment {
+    box-shadow: none;
+    background-color: #fafafa;
+    border:0 none;
+    margin-bottom: 0;
+    .field:last-child {
+      margin-bottom: 0;
     }
   }
 }

@@ -1,109 +1,158 @@
 @VideoUpload = React.createClass
   getInitialState: ->
-    status: 'ready' # uploading, remote_done, local_done, error
+    status: UploadStatus.READY
     percent: 0
+    file_entity_id: @props.file_entity_id
+
+    qiniu_file: null
+    error_tip: null
 
   render: ->
-    browse_style = 
-      width: "100%"
-      height: "90px"
-
     <div className='widget-video-upload'>
-      <div className='browse' style={browse_style}>
-        {
-          if @state.status != 'ready'
-            params =
-              percent: @state.percent
-              status: @state.status
+      <VideoUpload.BrowseButton ref='browse_btn' status={@state.status}>
+        <div className='btn-text'>
+          <div className='header'><i className='icon upload' /> 点击上传视频</div>
+        </div>
+      </VideoUpload.BrowseButton>
 
-            <VideoUpload.Percent {...params} />
-        }
-        {
-          style = switch @state.status
-            when 'ready'
-              opacity: 1
-            when 'local_done', 'error'
-              opacity: 0
-            else
-              display: 'none'
+      <VideoUpload.Percent {...@state} />
+      
+      <VideoUpload.ErrorMessage {...@state} />
 
-          <VideoUpload.BrowseBtn ref='browse_btn' style={style} />
-        }
-      </div>
-      <input type='hidden' value={@props.value} readOnly />
+      <VideoUpload.WareForm {...@state} ref='form'/>
+
+      <input type='hidden' value={@state.file_entity_id} readOnly />
     </div>
 
-  set_file_entity_id: (id)->
-    @props._set_value id
 
   statics:
-    BrowseBtn: React.createClass
+    BrowseButton: React.createClass
       render: ->
-        <div className='browse-btn' {...window.$$browse_btn_data} style={@props.style}>
-          <div className='btn-text'>
-            <div className='header'>＋ 点击上传视频</div>
-          </div>
-        </div>
+        {READY, UPLOADING, REMOTE_DONE, LOCAL_DONE, ERROR} = UploadStatus
 
-    # props: percent, status
+        style = switch @props.status
+          when READY, LOCAL_DONE, ERROR
+            <div className='browse-btn' {...window.$$browse_btn_data} style={style}>
+            {@props.children}
+            </div>
+          when UPLOADING, REMOTE_DONE
+            <div />
+
     Percent: React.createClass
       render: ->
-        percent = @props.percent
+        {READY, UPLOADING, REMOTE_DONE, LOCAL_DONE, ERROR} = UploadStatus
 
-        bar_style = 
-          'transition-duration': '300ms'
-          'width': "#{percent}%"
+        switch @props.status
+          when READY
+            <div />
+          when LOCAL_DONE
+            <div className='ui success message'>
+              <p><i className='icon check' /> 上传完毕</p>
+            </div>
+          else
+            percent = @props.percent
 
-        <div className='ui teal progress' data-percent={percent}>
-          <div className='bar' style={bar_style}>
+            bar_style = 
+              'transitionDuration': '300ms'
+              'width': "#{percent}%"
+            <div className='percent-bar'>
+              <div className='filename'>正在上传 {@props.qiniu_file?.name}</div>
+              <div className='ui indicating active progress' data-percent={percent}>
+                <div className='bar' style={bar_style}>
+                </div>
+                {
+                  switch @props.status
+                    when REMOTE_DONE
+                      <div className='label'><i className='notched circle loading icon' /> 正在处理</div>
+                    else
+                      <div className='label'>已上传 {percent}% </div>
+                }
+              </div>
+            </div>
+
+      componentDidUpdate: ->
+        # if @props.status == UploadStatus.LOCAL_DONE
+        #   jQuery React.findDOMNode @
+        #     .delay(300)
+        #     .hide(300)
+
+    ErrorMessage: React.createClass
+      render: ->
+        if @props.error_tip?
+          <div className='ui negative message'>
+            <p>{@props.error_tip}</p>
           </div>
-          <div className='label'>{percent}% 已上传</div>
-        </div>
+        else
+          <div></div>
+
+    WareForm: React.createClass
+      render: ->
+        if @props.status == UploadStatus.LOCAL_DONE
+          {
+            TextInputField
+            TextAreaField
+          } = DataForm
+
+          layout =
+            label_width: '80px'
+
+          <div className='ui segment'>
+            <h4 className='ui header'>视频信息</h4>
+            <DataForm.Form ref='form'>
+              <TextInputField {...layout} label='视频标题：' name='name' />
+              <TextAreaField {...layout} label='视频简介：' name='desc' rows={10} />
+            </DataForm.Form>
+          </div>
+
+        else
+          <div />
+
+      get_data: ->
+        @refs.form.get_data?()
+
 
   componentDidMount: ->
     $browse_button = jQuery React.findDOMNode @refs.browse_btn
-
-    new QiniuFilePartUploader
+    @uploader = new QiniuFilePartUploader
+      # debug: true
       browse_button:        $browse_button
       dragdrop_area:        null
-      file_progress_class:  @generate_progress()
+      file_progress_class:  UploadUtils.GenerateOneFileUploadProgress(@)
       max_file_size:        '1024mb' 
       mime_types :          [{ title: 'Video Files', extensions: '*' }]
 
-  generate_progress: ->
-    that = this
+    @ee = new EventEmitter()
 
-    class
-      constructor: (qiniu_uploading_file, @uploader)->
-        @file = qiniu_uploading_file
-        that.setState
-          percent: 0
-          status: 'uploading'
+  on_upload_event: (evt, params...)->
+    switch evt
+      when 'start'
+        qiniu_file = params[0]
+        # 格式参考 http://i.teamkn.com/i/NU3tx6no.png
+        @setState 
+          error_tip: null
+          qiniu_file: qiniu_file
 
-      # 某个文件上传进度更新时，此方法会被调用
-      update: ->
-        jQuery({ num: that.state.percent })
-          .animate { num: @file.percent }, {
-            step: (num)=>
-              that.setState percent: Math.ceil num
-          }
+        @ee.trigger 'start'
 
-      # 某个文件上传成功时，此方法会被调用
-      success: (info)->
-        that.props.done info.id
-        that.setState status: 'local_done'
+      when 'local_done'
+        @ee.trigger 'local_done'
 
-      # 某个文件上传出错时，此方法会被调用
-      file_error: (up, err, err_tip)->
+      when 'file_too_large'
+        @setState error_tip: "文件太大了，最大支持上传 1G 文件"
+      when 'file_error', 'file_entity_error'
+        @setState error_tip: "文件上传出错"
 
-      # 当七牛上传成功，尝试创建 file_entity 时，此方法会被调用
-      deal_file_entity: (info)->
-        that.setState status: 'remote_done'
 
-      file_entity_error: (xhr)->
+  stop: ->
+    # 参考 http://www.plupload.com/docs/Uploader
+    @uploader.qiniu.stop()
 
-      # 出现全局错误时（如文件大小超限制，文件类型不对），此方法会被调用
-      @uploader_error: (up, err, err_tip)->
+  get_data: ->
+    data = @refs.form.get_data?()
+    name = if jQuery.is_blank(data.name) then '未命名视频' else data.name
 
-      # 所有上传队列项处理完毕时（成功或失败），此方法会被调用
-      @alldone: ->
+    {
+      name: name
+      desc: data.desc
+      file_entity_id: @state.file_entity_id
+    }

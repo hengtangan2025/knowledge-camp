@@ -86,7 +86,7 @@
           <div className='actions'>
             <a href='javascript:;' ref='add_ware'><i className='icon plus' /> 添加小节</a>
             <div className="ui popup basic hidden" ref='add_ware_popup'>
-              <a href='javascript:;' onClick={window.CreateWare.video(chapter)}><i className='icon video' /> 上传视频</a>
+              <a href='javascript:;' onClick={window.CreateWare.video(@)}><i className='icon video' /> 上传视频</a>
             </div>
           </div>
         </div>
@@ -116,6 +116,9 @@
 
       move_down: ->
         Actions.move_chapter_down @props.data
+
+      add_ware: (modal_data)->
+        Actions.add_ware @props.data, modal_data
 
 
     Ware: React.createClass
@@ -275,6 +278,17 @@ class DataStore
     @reload_page @course.update 'chapters', (chapters)->
       Util.move_up chapters, chapter
 
+  create_ware: (chapter, data)->
+    @reload_page @course.update 'chapters', (chapters)->
+      chapters.map (ch)->
+        if ch.get('id') is chapter.id
+          ch = ch.update 'wares', (wares)->
+            data.id = Math.random()
+            wares.push Immutable.fromJS data
+        ch
+
+    console.log chapter, data
+
   reload_page: (course)->
     @course = course
     @page.setState
@@ -316,3 +330,6 @@ Actions = class
 
   @move_chapter_down: (chapter)->
     @store.move_chapter_down chapter
+
+  @add_ware: (chapter, data)->
+    @store.create_ware chapter, data
