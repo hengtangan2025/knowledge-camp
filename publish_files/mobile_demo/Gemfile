@@ -29,6 +29,10 @@ gem 'file-part-upload',
     :github => 'ben7th/file-part-upload',
     :ref => '13bbe54'
 
+# file-part-upload 依赖这个，暂时去不掉
+# 不然 rake assets:precompile 会报错
+gem 'bootstrap-sass', '~> 3.3.5'
+
 # 通过 rails assets 服务加载前端包
 source 'https://rails-assets.org'
 gem 'rails-assets-semantic'
