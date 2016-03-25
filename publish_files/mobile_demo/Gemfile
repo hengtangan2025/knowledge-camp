@@ -19,6 +19,11 @@ gem 'sprockets-coffee-react', '3.0.1'
 
 gem 'non-stupid-digest-assets'
 
+gem "mongoid", "~> 4.0.0"
+
+# 加载 application.yml 配置
+gem "figaro"
+
 # 支持分段上传的文件持久化
 gem 'file-part-upload',
     :github => 'ben7th/file-part-upload',

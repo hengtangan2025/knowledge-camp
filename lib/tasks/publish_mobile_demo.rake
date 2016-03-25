@@ -10,14 +10,12 @@ module PublishMobileDemoTaskMethods
     %w{
       app/cells
       app/decorators
-      app/helpers
       app/mailers
       app/models
       app/uploaders
 
       config/initializers/gem_integration.rb
       config/initializers/devise.rb
-      config/initializers/figaro.rb
       config/initializers/kaminari_config.rb
       config/initializers/simple_form_bootstrap.rb
       config/initializers/simple_form.rb
@@ -29,6 +27,7 @@ module PublishMobileDemoTaskMethods
   def copy_files
     dir = "publish_files/mobile_demo"
 
+    system "cp #{dir}/gem_integration.rb        config/initializers"   
     system "cp #{dir}/application.rb            config/"
     system "cp #{dir}/routes.rb                 config/"
     system "cp #{dir}/application_controller.rb app/controllers/"
@@ -62,6 +61,10 @@ module PublishMobileDemoTaskMethods
       application_controller.rb
       mockup_controller.rb
       index_controller.rb
+    }
+
+    _reserve "app/helpers", %w{
+      application.rb
     }
   end
 
