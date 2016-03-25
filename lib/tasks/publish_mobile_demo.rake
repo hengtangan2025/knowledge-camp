@@ -64,7 +64,7 @@ module PublishMobileDemoTaskMethods
     }
 
     _reserve "app/helpers", %w{
-      application.rb
+      application_helper.rb
     }
   end
 
