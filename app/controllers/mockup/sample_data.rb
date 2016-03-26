@@ -45,28 +45,24 @@ module Mockup::SampleData
 
   SAMPLE_WARES_DATA = [
     {
-      id: '1', name:'农民朋友做农产品如何选择电商平台', kind: 'video', learned: 'done', time: '37′12″',
+      id: '1', name:'测试视频一', kind: 'video', learned: 'done', time: '37′12″',
       url: "/mockup/ware_show?id=1",
       video_url: 'http://movie.ks.js.cn/flv/other/1_0.mp4'
     },
     {
-      id: '2', name:'教做农产品的朋友认识天猫平台', kind: 'video', learned: 'half', time: '37′12″',
+      id: '2', name:'测试视频二', kind: 'video', learned: 'half', time: '37′12″',
       url: "/mockup/ware_show?id=2",
       video_url: 'http://mediaelementjs.com/media/echo-hereweare.mp4'
     },
     {
-      id: '3', name:'教做农产品的朋友认识淘宝平台', kind: 'video', learned: 'no', time: '37′12″',
+      id: '3', name:'测试视频三', kind: 'video', learned: 'no', time: '37′12″',
       url: "/mockup/ware_show?id=3",
       video_url: 'http://7xie1v.com1.z0.glb.clouddn.com/static_filesACU_Trailer_480.mp4'
     },
     {
-      id: '4', name:'神奇的视频', kind: 'video', learned: 'no', time: '37′12″',
-      url: "/mockup/ware_show?id=3",
-      video_url: 'http://mockups.mindpin.com/TaobaoEdu_teaching.mp4'
-    },
-    {
-      id: '5', name:'电子商务和物流的基础概念', kind: 'document', learned: 'no',
+      id: '4', name:'测试视频四', kind: 'video', learned: 'no', time: '37′12″',
       url: "/mockup/ware_show?id=4",
+      video_url: 'http://42.120.41.92/video/shejian2.mp4'
     },
   ]
 
