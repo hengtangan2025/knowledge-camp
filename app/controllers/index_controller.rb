@@ -1,7 +1,5 @@
 class IndexController < ActionController::Base
-  before_filter :authenticate_user!
-
   def index
-    redirect_to [:bank, :manage, :courses], :status => 301
+    redirect_to '/mockup/home'
   end
 end
