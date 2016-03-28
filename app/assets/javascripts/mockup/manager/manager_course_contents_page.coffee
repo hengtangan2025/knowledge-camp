@@ -78,8 +78,8 @@
           </div>
           <div className='wares'>
           {
-            size = chapter.wares.length
-            for ware, idx in chapter.wares
+            size = chapter.wares?.length
+            for ware, idx in chapter.wares || []
               <ManagerCourseContentsPage.Ware key={ware.id} data={ware} idx={idx} wares_size={size}/>
           }
           </div>
