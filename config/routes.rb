@@ -211,11 +211,12 @@ Rails.application.routes.draw do
     post   "/api/sign_up"  => "registrations#create"
   end
 
-  scope :path => "/manager", module: 'manager', :as => :manager do
+  scope :path => "/manager", module: 'manager', as: :manager do
     get "dashboard" => "dashboard#index"
 
-    resources :courses, :shallow => true do
-      resources :chapters, :shallow => true do
+    resources :courses, shallow: true do
+      get :organize, on: :member
+      resources :chapters, shallow: true do
         resources :wares
       end
     end

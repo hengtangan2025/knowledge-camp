@@ -19,7 +19,6 @@
     :javascript
       (function(){
         window.file_part_upload_dom_data = fd = #{FilePartUpload.get_dom_data.to_json};
-        window.file_part_upload_dom_data.qiniu_callback_url = "#{mockup_post_path(req: 'create_file_entity')}";
         window.$$browse_btn_data = {
           'data-qiniu-domain':        fd.qiniu_domain,
           'data-qiniu-base-path':     fd.qiniu_base_path,
@@ -46,16 +45,10 @@
             name: '课程编排',
             funcs: [
               {
-                id: 'courses_empty',
-                name: '开课管理（空）',
-                url: mockup_manager_url(page: 'courses', empty: true),
+                name: '开课管理',
+                url: manager_courses_path,
                 icon: 'grid layout'
-              },
-              {
-                name: '开课管理（非空）',
-                url: mockup_manager_url(page: 'courses'),
-                icon: 'grid layout'
-              },
+              }
             ]
           }
         ]
