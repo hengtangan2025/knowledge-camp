@@ -18,6 +18,7 @@ class Manager::CoursesController < ApplicationController
 
   def create
     course = KcCourses::Course.new course_params
+    course.creator = current_user
     if course.save
       render json: manager_courses_create_response_data(course)
     else
@@ -25,8 +26,19 @@ class Manager::CoursesController < ApplicationController
     end
   end
 
+  def organize
+    course = KcCourses::Course.find params[:id]
+    @page_name = 'manager_course_contents'
+    @component_data = {
+      course: manager_course_contents_component_data(course),
+      manager_courses_url: manager_courses_path,
+      manager_create_chapter_url: manager_course_chapters_path(course)
+    }
+    render "/mockup/page"
+  end
+
   private
   def course_params
-    params.require(:course).permit(:title, :desc, :cover)
+    params.require(:course).permit(:title, :desc, :cover_file_entity_id)
   end
 end

@@ -4,7 +4,7 @@ class SessionsController < Devise::SessionsController
   def request_is_xhr
     request.xhr?
   end
-  
+
   def new
     if params[:role] == "manager"
       @component_name = 'ManagerSignInPage'
@@ -14,14 +14,14 @@ class SessionsController < Devise::SessionsController
       }
       return render :page, layout: "mockup_manager_auth"
     end
-    
-    @page_name = 'sign_in'
+
+    @page_name = 'auth_sign_in'
     @component_data = {
       sign_in_url: sign_in_path,
       sign_up_url: sign_up_path,
       submit_url: api_sign_in_path
-    }      
+    }
     render :page, layout: "new_version_base"
   end
-  
+
 end
