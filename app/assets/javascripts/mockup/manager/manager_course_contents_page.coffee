@@ -361,11 +361,11 @@ Actions = class
 
   @change_chapter_name: (chapter, name)->
     @store.update_chapter chapter,
-      name: name
+      title: name
 
   @change_ware_name: (ware, name)->
     @store.update_ware ware,
-      name: name
+      title: name
 
   @remove_ware: (ware)->
     @store.delete_ware ware
@@ -378,7 +378,7 @@ Actions = class
 
   @add_chapter: (name)->
     @store.create_chapter
-      name: name
+      title: name
 
   @remove_chapter: (chapter)->
     @store.delete_chapter chapter
