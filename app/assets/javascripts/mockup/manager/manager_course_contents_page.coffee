@@ -222,36 +222,70 @@ class DataStore
     @course = Immutable.fromJS course
 
   update_chapter: (chapter, data)->
-    @reload_page @course.update 'chapters', (chapters)->
-      chapters.map (c)->
-        c = c.merge data if c.get('id') is chapter.id
-        c
+    jQuery.ajax
+      type: 'PUT'
+      data: 
+        chapter: data
+      url: chapter.update_url
+    .done (res)=>
+      @reload_page @course.update 'chapters', (chapters)->
+        chapters.map (c)->
+          c = c.merge data if c.get('id') is chapter.id
+          c
+    .fail (res)->
+      console.log res.responseJSON
 
   update_ware: (ware, data)->
-    @reload_page @course.update 'chapters', (chapters)->
-      chapters.map (c)->
-        c.update 'wares', (wares)->
-          wares.map (w)->
-            w = w.merge data if w.get('id') is ware.id
-            w
+    jQuery.ajax
+      type: 'PUT'
+      data:
+        ware: data
+      url: ware.update_url
+    .done (res)=>
+      @reload_page @course.update 'chapters', (chapters)->
+        chapters.map (c)->
+          c.update 'wares', (wares)->
+            wares.map (w)->
+              w = w.merge data if w.get('id') is ware.id
+              w
+    .fail (res)->
+      console.log res.responseJSON
 
   delete_ware: (ware)->
-    @reload_page @course.update 'chapters', (chapters)->
-      chapters.map (c)->
-        c.update 'wares', (wares)->
-          Util.delete wares, ware
+    jQuery.ajax
+      type: 'DELETE'
+      url: ware.delete_url
+    .done (res)=>
+      @reload_page @course.update 'chapters', (chapters)->
+        chapters.map (c)->
+          c.update 'wares', (wares)->
+            Util.delete wares, ware
+    .fail (res)->
+      console.log res.responseJSON
 
   move_ware_down: (ware)->
-    @reload_page @course.update 'chapters', (chapters)->
-      chapters.map (c)->
-        c.update 'wares', (wares)->
-          Util.move_down wares, ware
+    jQuery.ajax
+      type: 'PUT'
+      url: ware.move_down_url
+    .done (res)=>
+      @reload_page @course.update 'chapters', (chapters)->
+        chapters.map (c)->
+          c.update 'wares', (wares)->
+            Util.move_down wares, ware
+    .fail (res)->
+      console.log res.responseJSON
 
   move_ware_up: (ware)->
-    @reload_page @course.update 'chapters', (chapters)->
-      chapters.map (c)->
-        c.update 'wares', (wares)->
-          Util.move_up wares, ware
+    jQuery.ajax
+      type: 'PUT'
+      url: ware.move_up_url
+    .done (res)=>
+      @reload_page @course.update 'chapters', (chapters)->
+        chapters.map (c)->
+          c.update 'wares', (wares)->
+            Util.move_up wares, ware
+    .fail (res)->
+      console.log res.responseJSON
 
   create_chapter: (data)->
     @page.setState creating_chapter: true
@@ -267,27 +301,51 @@ class DataStore
       @page.setState creating_chapter: false
 
   delete_chapter: (chapter)->
-    @reload_page @course.update 'chapters', (chapters)->
-      Util.delete chapters, chapter
+    jQuery.ajax
+      type: 'DELETE'
+      url: chapter.delete_url
+    .done (res)=>
+      @reload_page @course.update 'chapters', (chapters)->
+        Util.delete chapters, chapter
+    .fail (res)->
+      console.log res.responseJSON
 
   move_chapter_down: (chapter)->
-    @reload_page @course.update 'chapters', (chapters)->
-      Util.move_down chapters, chapter
+    jQuery.ajax
+      type: 'PUT'
+      url: chapter.move_down_url
+    .done (res)=>
+      @reload_page @course.update 'chapters', (chapters)->
+        Util.move_down chapters, chapter
+    .fail (res)->
+      console.log res.responseJSON
 
   move_chapter_up: (chapter)->
-    @reload_page @course.update 'chapters', (chapters)->
-      Util.move_up chapters, chapter
+    jQuery.ajax
+      type: 'PUT'
+      url: chapter.move_up_url
+    .done (res)=>
+      @reload_page @course.update 'chapters', (chapters)->
+        Util.move_up chapters, chapter
+    .fail (res)->
+      console.log res.responseJSON
 
   create_ware: (chapter, data)->
-    @reload_page @course.update 'chapters', (chapters)->
-      chapters.map (ch)->
-        if ch.get('id') is chapter.id
-          ch = ch.update 'wares', (wares)->
-            data.id = Math.random()
-            wares.push Immutable.fromJS data
-        ch
-
-    console.log chapter, data
+    jQuery.ajax
+      type: 'POST'
+      data:
+        ware: data
+      url: chapter.create_ware_url
+    .done (res)=>
+      @reload_page @course.update 'chapters', (chapters)->
+        chapters.map (ch)->
+          if ch.get('id') is chapter.id
+            ch = ch.update 'wares', (wares)->
+              data.id = Math.random()
+              wares.push Immutable.fromJS data
+          ch
+    .fail (res)->
+      console.log res.responseJSON
 
   reload_page: (course)->
     @course = course
