@@ -28,4 +28,15 @@ module Data::Former
       ],
     }
   end
+
+  def manager_courses_create_response_data(course)
+    {
+      id: course.id.to_s,
+      img: course.cover,
+      name: course.title,
+      desc: course.desc,
+      instructor: course.creator.name,
+      manager_contents_url: organize_manager_course_path(course)
+    }
+  end
 end

@@ -17,5 +17,16 @@ class Manager::CoursesController < ApplicationController
   end
 
   def create
+    course = KcCourses::Course.new course_params
+    if course.save
+      render json: manager_courses_create_response_data(course)
+    else
+      render json: course.errors.messages, :status => 422
+    end
+  end
+
+  private
+  def course_params
+    params.require(:course).permit(:title, :desc, :cover)
   end
 end
