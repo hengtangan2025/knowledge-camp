@@ -24,7 +24,6 @@
         <div className='ui segment'>
           <SimpleDataForm
             model='course'
-            data={name: 'true'}
             post={@props.data.create_course_url}
             done={@done}  
           >
