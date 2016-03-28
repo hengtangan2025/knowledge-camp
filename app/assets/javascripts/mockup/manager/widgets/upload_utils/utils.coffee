@@ -77,7 +77,8 @@
       success: (response_info)->
         react.setState 
           status: UploadStatus.LOCAL_DONE
-          file_entity_id: response_info.id
+          file_entity_id: response_info.file_entity_id
+          file_entity_url: response_info.file_entity_url
         react.on_upload_event? 'local_done', response_info
 
       # 某个文件上传出错时，此方法会被调用

@@ -57,6 +57,6 @@ class MockupController < ApplicationController
   end
 
   def post_create_file_entity
-    render json: { id: 'id_12345678' }
+    render json: { file_entity_id: 'id_12345678' }
   end
 end
