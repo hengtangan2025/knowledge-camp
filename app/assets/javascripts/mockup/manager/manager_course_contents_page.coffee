@@ -293,7 +293,8 @@ class DataStore
     jQuery.ajax
       type: 'POST'
       url: @page.props.data.manager_create_chapter_url
-      data: data
+      data: 
+        chapter: data
     .done (res)=>
       @reload_page @course.update 'chapters', (chapters)->
         chapters.push Immutable.fromJS res
