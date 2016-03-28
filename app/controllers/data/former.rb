@@ -68,7 +68,7 @@ module Data::Former
   def _chapter_data(chapter)
     {
       id: chapter.id.to_s,
-      name: chapter.name,
+      name: chapter.title,
       wares: chapter.wares.map{|ware|  _ware_data(ware) }
     }
   end

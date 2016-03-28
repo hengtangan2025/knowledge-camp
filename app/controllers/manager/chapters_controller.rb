@@ -5,6 +5,7 @@ class Manager::ChaptersController < ApplicationController
   def create
     course = KcCourses::Course.find params[:course_id]
     chapter = course.chapters.new chapter_params
+    chapter.creator = current_user
     if chapter.save
       render json: manager_chapters_create_response_data(chapter)
     else
