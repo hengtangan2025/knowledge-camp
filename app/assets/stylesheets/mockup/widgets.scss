@@ -216,3 +216,81 @@
     }
   }
 }
+
+.inline-input-edit {
+  .inline-edit-text {
+    padding: 0 0.5rem;
+    // min-width: 400px;
+    &:hover {
+      background-color: #ffffdc;
+    }
+  }
+  input.inline-edit-text-ipt {
+    padding: 0 0.5rem;
+    margin-left: -1px;
+    width: 400px;
+  }
+}
+
+.ui.modal.confirm {
+  width: 320px;
+  margin-left: -160px;
+}
+
+.ui.modal.ware {
+  width: 800px;
+  margin-left: -400px;
+
+  .buttons {
+    text-align: right;
+    .button {
+      margin-right: 0;
+      margin-left: 1rem;
+    }
+  }
+}
+
+.widget-video-upload {
+  margin-bottom: 1rem;
+  height: 500px;
+
+  .browse-btn {
+    border:dashed 2px #eee;
+    cursor: pointer;
+    text-align: center;
+    margin-bottom: 1rem;
+    &:hover {
+      background-color: #ffffee;
+    }
+
+    .btn-text {
+      pointer-events: none;
+      .header {
+        font-size: 1.5rem;
+        line-height: 80px;
+        color: #bbb;
+        margin-left: -1em;
+      }
+    }
+  }
+
+  .percent-bar {
+    .filename {
+      margin-bottom: 0.5rem;
+      font-weight: bold;
+    }
+    .ui.progress .bar {
+      min-width: 0;
+    }
+  }
+
+  .ui.segment {
+    box-shadow: none;
+    background-color: #fafafa;
+    border:0 none;
+    margin-bottom: 0;
+    .field:last-child {
+      margin-bottom: 0;
+    }
+  }
+}

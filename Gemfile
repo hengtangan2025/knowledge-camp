@@ -116,10 +116,11 @@ source "https://ruby.taobao.org" do
   gem 'virtual_file_system',
       :github => "mindpin/virtual-file",
       :tag => "v0.0.6"
+
   # 支持分段上传的文件持久化
   gem 'file-part-upload',
-      :github => 'mindpin/file-part-upload',
-      :tag => '2.3.2'
+      :github => 'ben7th/file-part-upload',
+      :ref => '13bbe54'
 
   # 图片加载的一个小工具
   gem 'simple-images',
@@ -175,6 +176,9 @@ end
 
 # 通过 rails assets 服务加载前端包
 source 'https://rails-assets.org'
-
 gem 'rails-assets-semantic'
 gem 'rails-assets-URIjs'
+# http://facebook.github.io/immutable-js/
+gem 'rails-assets-immutable'
+# https://github.com/Olical/EventEmitter/blob/master/docs/guide.md
+gem 'rails-assets-eventEmitter'

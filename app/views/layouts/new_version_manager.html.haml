@@ -1,0 +1,68 @@
+!!!
+%html{ lang: "zh" }
+  %head
+    %meta{ content: "text/html; charset=utf-8", http:{ equiv: "Content-Type" } }
+    %meta{ content: "width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no", name: "viewport"}
+
+    %title Knowledge Camp
+
+    = csrf_meta_tags
+
+    = stylesheet_link_tag :mockup, :'data-turbolinks-track' => true
+    = javascript_include_tag :mockup, :'data-turbolinks-track' => true
+
+    = javascript_include_tag '/ckplayer/6.7/ckplayer.js', :'data-turbolinks-track' => true
+
+    = javascript_include_tag '/mediaelement/mediaelement-and-player.min.js', :'data-turbolinks-track' => true
+    = stylesheet_link_tag '/mediaelement/mediaelementplayer.min.css', :'data-turbolinks-track' => true
+
+    :javascript
+      (function(){
+        window.file_part_upload_dom_data = fd = #{FilePartUpload.get_dom_data.to_json};
+        window.file_part_upload_dom_data.qiniu_callback_url = "#{mockup_post_path(req: 'create_file_entity')}";
+        window.$$browse_btn_data = {
+          'data-qiniu-domain':        fd.qiniu_domain,
+          'data-qiniu-base-path':     fd.qiniu_base_path,
+          'data-qiniu-uptoken-url':   fd.qiniu_uptoken_url,
+          'data-qiniu-callback-url':  fd.qiniu_callback_url,
+        }
+      })();
+
+  %body.manager
+
+    :ruby
+      manager_sidebar_data = {
+        current_func: @current_func,
+
+        dashboard: {
+          id: 'dashboard',
+          name: '总控面板',
+          url: manager_dashboard_path,
+          icon: 'dashboard'
+        },
+
+        scenes: [
+          {
+            name: '课程编排',
+            funcs: [
+              {
+                id: 'courses_empty',
+                name: '开课管理（空）',
+                url: mockup_manager_url(page: 'courses', empty: true),
+                icon: 'grid layout'
+              },
+              {
+                name: '开课管理（非空）',
+                url: mockup_manager_url(page: 'courses'),
+                icon: 'grid layout'
+              },
+            ]
+          }
+        ]
+      }
+
+    = react_component 'LayoutManagerSidebar', data: manager_sidebar_data
+
+    .manager-page-content
+      .func-content.ui.segment.basic
+        = yield

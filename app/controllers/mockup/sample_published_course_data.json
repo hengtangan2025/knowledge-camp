@@ -1,0 +1,68 @@
+// SAMPLE_PUBLISH_COURSE_DATA
+
+{
+  "bucket_ids": [
+    "56802b7d6368657137000000"
+  ],
+  "course_subject_ids": [
+    "56f1136dd4d1238cf1000008"
+  ],
+  "cover": "http://www.mindpin.com/mockups/kc/kc-finance_20151023/images/home_-_%E6%9C%AA%E7%99%BB%E5%BD%95/u53.png",
+  "created_at": "2015-11-04T04:48:11.811Z",
+  "desc": "微观经济学微观经济学微观经济学微观经济学",
+  "file_entity_id": null,
+  "label_info": {},
+  "published": true,
+  "published_at": "2016-03-22T02:04:27.317Z",
+  "title": "微观经济学",
+  "updated_at": "2016-03-22T09:40:40.650Z",
+  "user_id": "56398de56368657ac1000000",
+  "chapters": [
+    {
+      "course_id": "56398e0b6368657aa3010000",
+      "created_at": "2015-12-15T17:18:35.431+08:00",
+      "desc": "zhangjie1",
+      "position": 1450171115,
+      "title": "章节1",
+      "updated_at": "2015-12-15T17:18:35.431+08:00",
+      "user_id": "56398de56368657ac1000000",
+      "wares": [
+        {
+          "chapter_id": "566fdaeb6368655d75010000",
+          "created_at": "2015-12-15T17:18:47.377+08:00",
+          "desc": "kejian1",
+          "file_entity_id": null,
+          "position": 1450171127,
+          "title": "课件1222",
+          "updated_at": "2016-02-18T15:08:37.678+08:00",
+          "user_id": "56398de56368657ac1000000",
+          "id": "566fdaf76368655d75030000"
+        },
+        {
+          "chapter_id": "566fdaeb6368655d75010000",
+          "created_at": "2015-12-15T17:18:53.230+08:00",
+          "desc": "kejian2",
+          "file_entity_id": null,
+          "position": 1450171133,
+          "title": "课件2",
+          "updated_at": "2015-12-15T17:18:53.230+08:00",
+          "user_id": "56398de56368657ac1000000",
+          "id": "566fdafd6368655d75040000"
+        }
+      ],
+      "id": "566fdaeb6368655d75010000"
+    },
+    {
+      "course_id": "56398e0b6368657aa3010000",
+      "created_at": "2016-01-08T11:22:56.633+08:00",
+      "desc": "章节2章节2章节2",
+      "position": 1452223376,
+      "title": "章节2",
+      "updated_at": "2016-01-08T11:22:56.633+08:00",
+      "user_id": "56398de56368657ac1000000",
+      "wares": [],
+      "id": "568f2b90636865aeb5010000"
+    }
+  ],
+  "id": "56398e0b6368657aa3010000"
+}

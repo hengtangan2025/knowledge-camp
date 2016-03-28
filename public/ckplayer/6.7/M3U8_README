@@ -1,0 +1,17 @@
+http://www.ckplayer.com/bbs/forum.php?mod=viewthread&tid=8947
+
+使用该插件可以支持在pc端播放m3u8格式的视频文件
+使用方法：
+把m3u8.swf拷贝到index.htm同目录下(如果放在其它目录请注意flashvars里的路径要正确，而且不能放在其它域下)。在调用代码里作如下修改
+
+var flashvars={
+   f:'m3u8.swf',
+   a:'http://www.../m.m3u8',
+   c:0,
+   s:4,
+   lv:0//注意，如果是直播，需设置lv:1
+}
+注意s:4
+用该插件请注意，m3u8或m3u8里的ts文件是受到安全策略文件限制的，如果服务器用安全策略文件限制不让你播放的话，则该插件也无能为力。
+
+其次，如果文件源是直播源，请注意设置flashvars里的lv:1
