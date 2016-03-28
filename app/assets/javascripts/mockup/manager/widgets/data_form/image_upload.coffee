@@ -105,7 +105,7 @@ OneImageUpload = React.createClass
 
       when 'local_done'
         response_info = params[0]
-        file_entity_id = response_info.id
+        file_entity_id = response_info.file_entity_id
         @props.done? file_entity_id
 
 
