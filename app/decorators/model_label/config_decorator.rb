@@ -1,3 +1,3 @@
 ModelLabel.set_config({
-  "课程"   => KcCourses::Course
+  #"课程"   => KcCourses::Course
 })

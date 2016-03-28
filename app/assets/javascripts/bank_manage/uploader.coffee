@@ -56,7 +56,7 @@ jQuery(document).on 'ready page:load', ->
       console.log "qiniu success"
       console.log info
 
-      jQuery('#course_attachment_file_entity_id').val(info.file_entity_id)
+      jQuery('#course_cover_file_entity_id').val(info.file_entity_id)
       jQuery('#upload_result').html('上传成功')
 
     # 上传出错时调用此方法
