@@ -490,10 +490,10 @@ PLATFORMS
 DEPENDENCIES
   acts-as-dag!
   bootstrap-kaminari-views!
-  bootstrap-sass (~> 3.3.5)
+  bootstrap-sass (~> 3.3.5)!
   bson_ext!
   bucketerize!
-  carrierwave-mongoid
+  carrierwave-mongoid!
   cells (~> 3.10.1)!
   coffee-rails (~> 4.1.0)!
   database_cleaner (~> 1.2.0)!
@@ -518,8 +518,8 @@ DEPENDENCIES
   knowledge-net-plan-store!
   knowledge-net-store!
   knowledge_camp_step!
-  mina (= 0.3.7)
-  mini_magick
+  mina (= 0.3.7)!
+  mini_magick!
   model_label!
   mongoid (~> 4.0.0)!
   mongoid-versioning!
@@ -531,7 +531,7 @@ DEPENDENCIES
   rails (= 4.2.3)!
   rails-assets-URIjs
   rails-assets-semantic
-  react-rails (= 1.2.0)
+  react-rails (= 1.2.0)!
   rspec!
   ruby-pinyin!
   sass-rails (~> 5.0)!
@@ -541,16 +541,16 @@ DEPENDENCIES
   simple_form (~> 3.2.0)!
   sort_char!
   spring!
-  sprockets (= 3.4.0)
-  sprockets-coffee-react (= 3.0.1)
-  sprockets-rails (= 2.3.3)
+  sprockets (= 3.4.0)!
+  sprockets-coffee-react (= 3.0.1)!
+  sprockets-rails (= 2.3.3)!
   streamio-ffmpeg!
   turbolinks!
   ueditor.rails!
   uglifier (>= 1.3.0)!
   unicorn!
   user-auth!
-  useragent
+  useragent!
   virtual_file_system!
 
 BUNDLED WITH
