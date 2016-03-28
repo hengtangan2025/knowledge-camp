@@ -99,7 +99,7 @@
           <div className='ui segment'>
             <h4 className='ui header'>视频信息</h4>
             <DataForm.Form ref='form'>
-              <TextInputField {...layout} label='视频标题：' name='name' />
+              <TextInputField {...layout} label='视频标题：' name='title' />
               <TextAreaField {...layout} label='视频简介：' name='desc' rows={10} />
             </DataForm.Form>
           </div>
