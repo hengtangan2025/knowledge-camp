@@ -152,7 +152,7 @@
     name = if jQuery.is_blank(data.name) then '未命名视频' else data.name
 
     {
-      name: name
+      title: name
       desc: data.desc
       file_entity_id: @state.file_entity_id
     }
