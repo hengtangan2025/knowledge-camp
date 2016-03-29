@@ -52,8 +52,23 @@ module Mockup::ManagerMethods
   end
 
   def get_manager_course_contents_data
+    data = SAMPLE_COURSE_DATA.clone
+    data[:chapters].each do |c|
+      c[:create_ware_url] = mockup_manager_post_url(req: 'create_ware')
+      c[:update_url] = mockup_manager_put_url(req: 'common')
+      c[:move_up_url] = mockup_manager_put_url(req: 'common')
+      c[:move_down_url] = mockup_manager_put_url(req: 'common')
+      c[:delete_url] = mockup_manager_delete_url(req: 'common')
+      c[:wares].each do |w|
+        w[:update_url] = mockup_manager_put_url(req: 'common')
+        w[:move_up_url] = mockup_manager_put_url(req: 'common')
+        w[:move_down_url] = mockup_manager_put_url(req: 'common')
+        w[:delete_url] = mockup_manager_delete_url(req: 'common')
+      end
+    end
+
     @component_data = {
-      course: SAMPLE_COURSE_DATA,
+      course: data,
       manager_courses_url: mockup_manager_url(page: 'courses'),
       manager_create_chapter_url: mockup_manager_post_url(req: 'create_chapter')
     }

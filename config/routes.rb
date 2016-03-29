@@ -185,6 +185,8 @@ Rails.application.routes.draw do
 
   get     '/mockup/manager/:page' => 'mockup#manager_page', as: 'mockup_manager'
   post    '/mockup/manager/:req'  => 'mockup#manager_do_post', as: 'mockup_manager_post'
+  put     '/mockup/manager/:req'  => 'mockup#manager_do_put', as: 'mockup_manager_put'
+  delete  '/mockup/manager/:req'  => 'mockup#manager_do_delete', as: 'mockup_manager_delete'
   # --------------------
   # kc mobile 2016
   resources :subjects

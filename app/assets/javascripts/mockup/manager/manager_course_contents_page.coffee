@@ -222,6 +222,10 @@ class DataStore
     @course = Immutable.fromJS course
 
   update_chapter: (chapter, data)->
+    if not chapter.update_url?
+      console.warn '没有传入 chapter.update_url 接口'
+      return
+
     jQuery.ajax
       type: 'PUT'
       data: 
@@ -236,6 +240,10 @@ class DataStore
       console.log res.responseJSON
 
   update_ware: (ware, data)->
+    if not ware.update_url?
+      console.warn '没有传入 ware.update_url 接口'
+      return
+
     jQuery.ajax
       type: 'PUT'
       data:
@@ -252,6 +260,10 @@ class DataStore
       console.log res.responseJSON
 
   delete_ware: (ware)->
+    if not ware.delete_url?
+      console.warn '没有传入 ware.delete_url 接口'
+      return
+
     jQuery.ajax
       type: 'DELETE'
       url: ware.delete_url
@@ -264,6 +276,10 @@ class DataStore
       console.log res.responseJSON
 
   move_ware_down: (ware)->
+    if not ware.move_down_url?
+      console.warn '没有传入 ware.move_down_url 接口'
+      return
+
     jQuery.ajax
       type: 'PUT'
       url: ware.move_down_url
@@ -276,6 +292,10 @@ class DataStore
       console.log res.responseJSON
 
   move_ware_up: (ware)->
+    if not ware.move_up_url?
+      console.warn '没有传入 ware.move_up_url 接口'
+      return
+
     jQuery.ajax
       type: 'PUT'
       url: ware.move_up_url
@@ -312,6 +332,10 @@ class DataStore
       console.log res.responseJSON
 
   move_chapter_down: (chapter)->
+    if not chapter.move_down_url?
+      console.warn '没有传入 chapter.move_down_url 接口'
+      return
+
     jQuery.ajax
       type: 'PUT'
       url: chapter.move_down_url
@@ -322,6 +346,10 @@ class DataStore
       console.log res.responseJSON
 
   move_chapter_up: (chapter)->
+    if not chapter.move_up_url?
+      console.warn '没有传入 chapter.move_up_url 接口'
+      return
+
     jQuery.ajax
       type: 'PUT'
       url: chapter.move_up_url
@@ -332,6 +360,10 @@ class DataStore
       console.log res.responseJSON
 
   create_ware: (chapter, data)->
+    if not chapter.create_ware_url?
+      console.warn '没有传入 chapter.create_ware_url 接口'
+      return
+
     jQuery.ajax
       type: 'POST'
       data:
@@ -342,8 +374,10 @@ class DataStore
         chapters.map (ch)->
           if ch.get('id') is chapter.id
             ch = ch.update 'wares', (wares)->
-              data.id = Math.random()
-              wares.push Immutable.fromJS data
+              if res.id?
+                wares.push Immutable.fromJS res
+              else
+                console.warn '创建课件请求没有返回正确数据'
           ch
     .fail (res)->
       console.log res.responseJSON
