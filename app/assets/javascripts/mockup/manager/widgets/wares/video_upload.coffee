@@ -149,10 +149,9 @@
 
   get_data: ->
     data = @refs.form.get_data?()
-    name = if jQuery.is_blank(data.name) then '未命名视频' else data.name
-
+    
     {
-      title: name
+      title: jQuery.blank_or data.title, '未命名视频'
       desc: data.desc
       file_entity_id: @state.file_entity_id
     }
