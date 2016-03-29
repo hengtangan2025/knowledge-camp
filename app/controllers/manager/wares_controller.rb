@@ -17,9 +17,36 @@ class Manager::WaresController < ApplicationController
     end
   end
 
+  def update
+    ware = KcCourses::Ware.find params[:id]
+    if ware.update_attributes ware_update_params
+      render json: manager_wares_update_response_data(ware)
+    else
+      render json: ware.errors.messages, status: 422
+    end
+  end
+
+  def move_up
+    ware = KcCourses::Ware.find params[:id]
+    ware.move_up
+    render :status => 200, :json => {:status => 'success'}
+  end
+
+  def move_down
+    ware = KcCourses::Ware.find params[:id]
+    ware.move_down
+    render :status => 200, :json => {:status => 'success'}
+  end
+
+  def destroy
+    ware = KcCourses::Ware.find params[:id]
+    ware.destroy
+    render :status => 200, :json => {:status => 'success'}
+  end
+
   def _new_file_entity_ware
     file_entity = FilePartUpload::FileEntity.find ware_params[:file_entity_id]
-    attrs = ware_params.merge(chapter_id: params[:id], creator_id: current_user.id)
+    attrs = ware_params.merge(chapter_id: params[:chapter_id], creator_id: current_user.id)
     ware = case file_entity.kind
     when 'video'
       KcCourses::SimpleVideoWare.new attrs
@@ -40,5 +67,9 @@ class Manager::WaresController < ApplicationController
   private
   def ware_params
     params.require(:ware).permit(:title, :desc, :file_entity_id)
+  end
+
+  def ware_update_params
+    params.require(:ware).permit(:title, :desc)
   end
 end

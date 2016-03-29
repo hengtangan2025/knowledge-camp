@@ -25,19 +25,19 @@ class Manager::ChaptersController < ApplicationController
   def move_up
     chapter = KcCourses::Chapter.find params[:id]
     chapter.move_up
-    render :status => 200
+    render :status => 200, :json => {:status => 'success'}
   end
 
   def move_down
     chapter = KcCourses::Chapter.find params[:id]
     chapter.move_down
-    render :status => 200
+    render :status => 200, :json => {:status => 'success'}
   end
 
   def destroy
     chapter = KcCourses::Chapter.find params[:id]
     chapter.destroy
-    render :status => 200
+    render :status => 200, :json => {:status => 'success'}
   end
 
   private

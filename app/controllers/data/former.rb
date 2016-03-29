@@ -62,7 +62,11 @@ module Data::Former
       id: chapter.id.to_s,
       name: chapter.title,
       desc: chapter.desc,
-      move_down_url: move_down_manager_chapter_path(chapter)
+      move_down_url: move_down_manager_chapter_path(chapter),
+      move_up_url: move_up_manager_chapter_path(chapter),
+      update_url: manager_chapter_path(chapter),
+      delete_url: manager_chapter_path(chapter),
+      create_ware_url: manager_chapter_wares_path(chapter)
     }
   end
 
@@ -74,36 +78,57 @@ module Data::Former
     }
   end
 
+  def manager_wares_create_response_data(ware)
+    _ware_data(ware)
+  end
+
+  def manager_wares_update_response_data(ware)
+    _ware_data(ware)
+  end
+
   def _chapter_data(chapter)
     {
       id: chapter.id.to_s,
       name: chapter.title,
+      update_url: manager_chapter_path(chapter),
+      move_down_url: move_down_manager_chapter_path(chapter),
+      move_up_url: move_up_manager_chapter_path(chapter),
+      delete_url: manager_chapter_path(chapter),
+      create_ware_url: manager_chapter_wares_path(chapter),
       wares: chapter.wares.map{|ware|  _ware_data(ware) }
     }
   end
 
   def _ware_data(ware)
-    percent = ware.read_percent_of_user(controller.current_user)
+    percent = ware.read_percent_of_user(current_user)
     learned = 'done' if percent == 100
     learned = 'half' if percent > 0 && percent < 100
     learned = 'no'   if percent == 0
 
+    # 开发环境 ware._type 如果不能引起加载子类，会报错
+    # 所以改为兼容性强一些的方法
+    ware_type = ware.class.to_s
+
     data = {
-      id: ware.id.to_s,
-      name: ware.title,
-      url: ware_path(ware.id.to_s),
-      kind: ware._type,
-      learned: learned,
+      id:            ware.id.to_s,
+      name:          ware.title,
+      url:           ware_path(ware.id.to_s),
+      kind:          ware_type,
+      learned:       learned,
+      move_up_url:   move_up_manager_ware_path(ware),
+      move_down_url: move_down_manager_ware_path(ware),
+      update_url:    manager_ware_path(ware),
+      delete_url:    manager_ware_path(ware)
     }
 
     data[:kind] = "document"
-    if ware._type == "KcCourses::SimpleAudioWare"
+    if ware_type == "KcCourses::SimpleAudioWare"
       data[:kind] = "audio"
       seconds = ware.file_entity.meta[:audio][:audio_duration].to_i
       data[:time] = "#{seconds/60}′#{seconds%60}″"
     end
 
-    if ware._type == "KcCourses::SimpleVideoWare"
+    if ware_type == "KcCourses::SimpleVideoWare"
       data[:kind] = "video"
       seconds = ware.file_entity.meta[:video][:total_duration].to_i
       data[:time] = "#{seconds/60}′#{seconds%60}″"
