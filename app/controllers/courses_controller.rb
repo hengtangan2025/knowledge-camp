@@ -4,7 +4,7 @@ class CoursesController < ApplicationController
   def show
     @page_name = 'course_show'
 
-    course = KcCourses::Course.find params[:id]
+    course = KcCourses::PublishedCourse.find params[:id]
     @component_data = course.to_detail_component_data self
     
     render :page

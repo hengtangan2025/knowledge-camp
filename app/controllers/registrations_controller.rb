@@ -4,9 +4,9 @@ class RegistrationsController < Devise::RegistrationsController
   def request_is_xhr
     request.xhr?
   end
-  
+
   def new
-    @page_name = 'sign_up'
+    @page_name = 'auth_sign_up'
     @component_data = {
       sign_in_url: sign_in_path,
       sign_up_url: sign_up_path,
@@ -14,5 +14,5 @@ class RegistrationsController < Devise::RegistrationsController
     }
     render :page
   end
-  
+
 end

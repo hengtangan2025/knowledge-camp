@@ -1,0 +1,39 @@
+development:
+  # 本地文件上传用到的配置，目前被用户头像使用（计划替换成 qiniu）
+  static_file_url_prefix: static_files/development
+  upload_file_base_path: <%= Rails.root.join("public/static_files/development") %>
+
+  # 七牛相关的配置
+  qiniu_bucket: xxx
+  qiniu_domain: http://xxx.xxx.xxx.xxx.clouddn.com
+  qiniu_base_path: kc
+  qiniu_app_access_key: xxx
+  qiniu_app_secret_key: xxx
+  qiniu_callback_host:  http://xxx.xxx.xxx
+  qiniu_pfop_pipeline default
+
+  # 课程默认封面地址
+  course_default_cover_url: 'http://xxxx.xxx/xxx.png'
+
+  # 当为false强制关闭es功能（即不引用回调等）,其余或者不设定，为开启状态
+  es_simple_enabled: false
+
+test:
+  static_file_url_prefix: static_files/test
+  upload_file_base_path: <%= Rails.root.join("public/static_files/test") %>
+  qiniu_bucket: xxx
+  qiniu_domain: http://xxx.xxx.xxx.xxx.clouddn.com
+  qiniu_base_path: kc
+  qiniu_app_access_key: xxx
+  qiniu_app_secret_key: xxx
+  qiniu_callback_host:  http://xxx.xxx.xxx
+
+production:
+  static_file_url_prefix: static_files/production
+  upload_file_base_path: <%= Rails.root.join("public/static_files/production") %>
+  qiniu_bucket: xxx
+  qiniu_domain: http://xxx.xxx.xxx.xxx.clouddn.com
+  qiniu_base_path: kc
+  qiniu_app_access_key: xxx
+  qiniu_app_secret_key: xxx
+  qiniu_callback_host:  http://xxx.xxx.xxx

@@ -49,29 +49,14 @@
         ],
         
         right: {
-          '登录' => mockup_url(page: 'sign_in'),
-          '注册' => mockup_url(page: 'sign_up'),
+          '登录' => mockup_auth_url(page: 'sign_in'),
+          '注册' => mockup_auth_url(page: 'sign_up'),
         },
 
-        sign_out_url: mockup_url(page: 'sign_out'),
+        sign_out_url: mockup_auth_delete_url(req: 'sign_out'),
       }
 
-      current_user_data = {
-        _id: {
-          "$oid" => "569316116675730f7d000000",
-        },
-        avatar: {
-          url: "/assets/default_avatars/avatar_200.png",
-          large:{ url: "/assets/default_avatars/large.png"},
-          normal:{ url: "/assets/default_avatars/normal.png"},
-          small:{ url: "/assets/default_avatars/small.png"}
-        },
-        created_at: "2016-01-11T10:40:17.647+08:00",
-        email: "root@root.com",
-        login: "root",
-        name: "root",
-        updated_at: "2016-03-11T13:07:32.765+08:00"
-      }
+      current_user_data = MockupController::SAMPLE_USER_DATA
 
     = react_component 'LayoutTopMenu', data: menu_data, current_user_data: current_user_data
 

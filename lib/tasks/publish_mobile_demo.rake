@@ -10,16 +10,13 @@ module PublishMobileDemoTaskMethods
     %w{
       app/cells
       app/decorators
-      app/helpers
       app/mailers
       app/models
       app/uploaders
 
-      app/assets/images
-
+      config/initializers/figaro.rb
       config/initializers/gem_integration.rb
       config/initializers/devise.rb
-      config/initializers/figaro.rb
       config/initializers/kaminari_config.rb
       config/initializers/simple_form_bootstrap.rb
       config/initializers/simple_form.rb
@@ -31,6 +28,7 @@ module PublishMobileDemoTaskMethods
   def copy_files
     dir = "publish_files/mobile_demo"
 
+    system "cp #{dir}/gem_integration.rb        config/initializers"   
     system "cp #{dir}/application.rb            config/"
     system "cp #{dir}/routes.rb                 config/"
     system "cp #{dir}/application_controller.rb app/controllers/"
@@ -40,6 +38,10 @@ module PublishMobileDemoTaskMethods
   end
 
   def reserve_files
+    _reserve "app/assets/images", %w{
+      default_avatars
+    }
+
     _reserve "app/assets/javascripts", %w{
       mockup
       mockup.js
@@ -56,9 +58,14 @@ module PublishMobileDemoTaskMethods
     }
 
     _reserve "app/controllers", %w{
+      mockup
       application_controller.rb
       mockup_controller.rb
       index_controller.rb
+    }
+
+    _reserve "app/helpers", %w{
+      application_helper.rb
     }
   end
 
@@ -86,8 +93,8 @@ namespace :demo do
   # 2016-03-07
   # 根据 mobile-mockup 分支清理代码，并发布到 mobile-demo 分支
 
-  desc "根据 mobile-mockup 分支清理代码，并发布到 mobile-demo 分支"
-  task :publish_mobile => [:environment] do
+  desc "根据 mobile-mockup 分支清理代码，并切换本地代码到 mobile-demo 分支，并不发布"
+  task :clean_for_publish_mobile => [:environment] do
     current_branch = get_current_branch_name
 
     if current_branch != 'mobile-mockup'
@@ -127,12 +134,16 @@ namespace :demo do
       message = "Site updated at #{Time.now.utc}"
       system "git add ."
       system "git commit -am #{message.shellescape}"
-      system "git push origin mobile-demo --force"
-      system "git push coding mobile-demo --force"
-      system "git checkout mobile-mockup"
-      system "git submodule update"
-
-      puts "发布完毕"
     end
+  end
+
+  desc "根据 mobile-mockup 分支清理代码，并发布到远程 mobile-demo 分支"
+  task :publish_mobile => [:clean_for_publish_mobile] do
+    system "git push origin mobile-demo --force"
+    system "git push coding mobile-demo --force"
+    system "git checkout mobile-mockup"
+    system "git submodule update"
+
+    puts "发布完毕"
   end
 end

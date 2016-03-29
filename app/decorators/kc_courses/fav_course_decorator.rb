@@ -1,4 +1,4 @@
-KcCourses::Course.class_eval do
+KcCourses::PublishedCourse.class_eval do
   include Bucketerize::Concerns::Resource
   act_as_bucket_resource mode: :standard
 end

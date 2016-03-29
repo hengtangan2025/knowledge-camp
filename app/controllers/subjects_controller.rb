@@ -3,11 +3,12 @@ class SubjectsController < ApplicationController
 
   def show
     @page_name = 'courses'
+
     if params[:id] == "all"
-      courses = KcCourses::Course.all.page(params[:page])
+      courses = KcCourses::PublishedCourse.enabled.page(params[:page])
     else
       cs = KcCourses::CourseSubject.find params[:id]
-      courses = cs.courses.page(params[:page])
+      courses = cs.courses.published.page(params[:page])
     end
 
     @component_data = {

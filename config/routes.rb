@@ -1,5 +1,10 @@
-Rails.application.routes.draw do
+def routes_draw(routes_name)
+  instance_eval(File.read(Rails.root.join('config', "routes_#{routes_name}.rb")))
+end
 
+routes_draw :mockup
+
+Rails.application.routes.draw do
   # api
   mount KnowledgeCampApi::Engine => '/e/o/api', :as => :e_old_api
   # 学生界面
@@ -79,7 +84,7 @@ Rails.application.routes.draw do
   # 题库组卷
   mount QuestionBank::Engine   => '/e/test_question', :as => :e_test_question
   # 文件上传
-  FilePartUpload::Routing.mount "/e/file_part_upload", :as => :e_file_part_upload
+  mount FilePartUpload::Engine => "/e/file_part_upload", :as => :e_file_part_upload
   # 收藏功能
   Bucketerize::Routing.mount '/e/bucketerize', as: :e_bucketerize
   # 课程功能
@@ -173,35 +178,46 @@ Rails.application.routes.draw do
     end
   end
 
-  # ------------------
-  # kc mobile 2016 mockup
-  get     '/mockup/:page' => 'mockup#page', as: 'mockup'
-  post    '/mockup/:req' => 'mockup#do_post', as: 'mockup_post'
-  delete  '/mockup/:req' => 'mockup#do_delete', as: 'mockup_delete'
   # --------------------
   # kc mobile 2016
   resources :subjects
   resources :courses
   resources :wares
-  
+
   scope :path => "/api", module: 'api', :as => :api do
     resources :courses do
       post   :add_fav,    on: :member
       delete :remove_fav, on: :member
       post   :comments,   on: :member
     end
-    
+
     resources :comments
-    
+
   end
-  
+
   devise_scope :user do
     get    "/sign_in"      => "sessions#new"
     post   "/api/sign_in"  => "sessions#create"
     delete "/api/sign_out" => "sessions#destroy"
-    
+
     get    "/sign_up"      => "registrations#new"
     post   "/api/sign_up"  => "registrations#create"
+  end
+
+  scope :path => "/manager", module: 'manager', as: :manager do
+    get "dashboard" => "dashboard#index"
+
+    resources :courses, shallow: true do
+      get :organize, on: :member
+      resources :chapters, shallow: true do
+        put :move_up,   on: :member
+        put :move_down, on: :member
+        resources :wares do
+          put :move_up,   on: :member
+          put :move_down, on: :member
+        end
+      end
+    end
   end
 
 

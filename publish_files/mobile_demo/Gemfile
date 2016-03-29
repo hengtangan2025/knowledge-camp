@@ -19,7 +19,27 @@ gem 'sprockets-coffee-react', '3.0.1'
 
 gem 'non-stupid-digest-assets'
 
+gem "mongoid", "~> 4.0.0"
+
+# 加载 application.yml 配置
+gem "figaro"
+
+# 支持分段上传的文件持久化
+gem 'file-part-upload',
+    :github => 'ben7th/file-part-upload',
+    :ref => '13bbe54'
+
+# file-part-upload 依赖这个，暂时去不掉
+# 不然 rake assets:precompile 会报错
+gem 'bootstrap-sass', '~> 3.3.5'
+
 # 通过 rails assets 服务加载前端包
 source 'https://rails-assets.org'
 gem 'rails-assets-semantic'
 gem 'rails-assets-URIjs'
+
+# http://facebook.github.io/immutable-js/
+gem 'rails-assets-immutable'
+
+# https://github.com/Olical/EventEmitter/blob/master/docs/guide.md
+gem 'rails-assets-eventEmitter'
