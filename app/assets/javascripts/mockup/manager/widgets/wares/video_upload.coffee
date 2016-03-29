@@ -99,7 +99,7 @@
           <div className='ui segment'>
             <h4 className='ui header'>视频信息</h4>
             <DataForm.Form ref='form'>
-              <TextInputField {...layout} label='视频标题：' name='title' />
+              <TextInputField {...layout} label='视频标题：' name='name' />
               <TextAreaField {...layout} label='视频简介：' name='desc' rows={10} />
             </DataForm.Form>
           </div>
@@ -151,7 +151,7 @@
     data = @refs.form.get_data?()
     
     {
-      title: jQuery.blank_or data.title, '未命名视频'
+      name: jQuery.blank_or data.name, '未命名视频'
       desc: data.desc
       file_entity_id: @state.file_entity_id
     }

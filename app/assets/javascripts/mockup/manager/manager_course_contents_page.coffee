@@ -50,18 +50,18 @@
             disabled: @props.idx is 0
             icon: 'arrow up'
             onclick: @move_up
-            title: '上移'
+            tip: '上移'
           },
           {
             disabled: @props.idx is @props.chapters_size - 1
             icon: 'arrow down'
             onclick: @move_down
-            title: '下移'
+            tip: '下移'
           },
           {
             icon: 'remove'
             onclick: @remove_confirm
-            title: '删除'
+            tip: '删除'
           }
         ]
 
@@ -84,21 +84,18 @@
           }
           </div>
           <div className='actions'>
-            <a href='javascript:;' ref='add_ware'><i className='icon plus' /> 添加小节</a>
-            <div className="ui popup basic hidden" ref='add_ware_popup'>
-              <a href='javascript:;' onClick={window.CreateWare.video(@)}><i className='icon video' /> 上传视频</a>
-            </div>
+            <a href='javascript:;' onClick={window.CreateWare.video(@)}><i className='icon upload' /> 上传视频</a>
           </div>
         </div>
 
       componentDidMount: ->
-        jQuery React.findDOMNode @refs.add_ware
-          .popup
-            popup: jQuery React.findDOMNode @refs.add_ware_popup
-            position: 'top right'
-            hoverable: true
-            # delay:
-            #   hide: 300
+        # jQuery React.findDOMNode @refs.add_ware
+        #   .popup
+        #     popup: jQuery React.findDOMNode @refs.add_ware_popup
+        #     position: 'top right'
+        #     hoverable: true
+        #     # delay:
+        #     #   hide: 300
 
       change_name: (name)->
         Actions.change_chapter_name(@props.data, name)
@@ -130,18 +127,18 @@
             disabled: @props.idx is 0
             icon: 'arrow up'
             onclick: @move_up
-            title: '上移'
+            tip: '上移'
           },
           {
             disabled: @props.idx is @props.wares_size - 1
             icon: 'arrow down'
             onclick: @move_down
-            title: '下移'
+            tip: '下移'
           },
           {
             icon: 'remove'
             onclick: @remove_confirm
-            title: '删除'
+            tip: '删除'
           }
         ]
 
@@ -396,11 +393,11 @@ Actions = class
 
   @change_chapter_name: (chapter, name)->
     @store.update_chapter chapter,
-      title: name
+      name: name
 
   @change_ware_name: (ware, name)->
     @store.update_ware ware,
-      title: name
+      name: name
 
   @remove_ware: (ware)->
     @store.delete_ware ware
@@ -413,7 +410,7 @@ Actions = class
 
   @add_chapter: (name)->
     @store.create_chapter
-      title: name
+      name: name
 
   @remove_chapter: (chapter)->
     @store.delete_chapter chapter
