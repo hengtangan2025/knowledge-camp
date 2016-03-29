@@ -61,6 +61,15 @@ module Data::Former
     {
       id: chapter.id.to_s,
       name: chapter.title,
+      desc: chapter.desc,
+      move_down_url: move_down_manager_chapter_path(chapter)
+    }
+  end
+
+  def manager_chapters_update_response_data(chapter)
+    {
+      id: chapter.id.to_s,
+      name: chapter.title,
       desc: chapter.desc
     }
   end

@@ -217,7 +217,12 @@ Rails.application.routes.draw do
     resources :courses, shallow: true do
       get :organize, on: :member
       resources :chapters, shallow: true do
-        resources :wares
+        put :move_up,   on: :member
+        put :move_down, on: :member
+        resources :wares do
+          put :move_up,   on: :member
+          put :move_down, on: :member
+        end
       end
     end
   end
