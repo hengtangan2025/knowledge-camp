@@ -10,7 +10,7 @@
           klass = 'ui button'
           onclick = sdata.onclick
 
-        <a key={idx} className={klass} href='javascript:;' data-content={sdata.title} data-variation='mini' onClick={onclick}>
+        <a key={idx} className={klass} href='javascript:;' data-content={sdata.tip} data-variation='mini' onClick={onclick}>
           <i className="icon #{sdata.icon}" />
         </a>
     }

@@ -30,16 +30,21 @@ module Mockup::ManagerNotGetMethods
   def post_create_chapter
     render json: SAMPLE_CHAPTER_DATA.merge(
       id: randstr,
-      move_up_url: mockup_manager_put_url(req: 'common'),
-      move_down_url: mockup_manager_put_url(req: 'common')
+      create_ware_url:  mockup_manager_post_url(req: 'create_ware'),
+      update_url:       mockup_manager_put_url(req: 'common'),
+      move_up_url:      mockup_manager_put_url(req: 'common'),
+      move_down_url:    mockup_manager_put_url(req: 'common'),
+      delete_url:       mockup_manager_delete_url(req: 'common')
     )
   end
 
   def post_create_ware
     render json: SAMPLE_WARES_DATA[0].merge(
       id: randstr,
-      move_up_url: mockup_manager_put_url(req: 'common'),
-      move_down_url: mockup_manager_put_url(req: 'common')
+      update_url:     mockup_manager_put_url(req: 'common'),
+      move_up_url:    mockup_manager_put_url(req: 'common'),
+      move_down_url:  mockup_manager_put_url(req: 'common'),
+      delete_url:     mockup_manager_delete_url(req: 'common')
     )
   end
 
