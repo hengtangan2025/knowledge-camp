@@ -12,8 +12,8 @@ GIT
 
 GIT
   remote: git://github.com/fushang318/kc_courses.git
-  revision: 6a88c45d31b02102081ceef8e0c8cca92cf2730c
-  ref: 6a88c45
+  revision: 64c7a48d18a520162ca44f513696bb1c7d5b3767
+  ref: 64c7a48
   specs:
     kc_courses (0.1.0)
       mongoid-tree
