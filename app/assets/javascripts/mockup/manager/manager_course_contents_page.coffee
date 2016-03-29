@@ -314,6 +314,7 @@ class DataStore
         chapter: data
     .done (res)=>
       @reload_page @course.update 'chapters', (chapters)->
+        res.wares = [] # bugfix
         chapters.push Immutable.fromJS res
     .always =>
       @page.setState creating_chapter: false
