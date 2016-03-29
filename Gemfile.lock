@@ -234,6 +234,8 @@ GEM
       babel-source (>= 4.0, < 6)
       execjs (~> 2.0)
     bcrypt (3.1.10)
+    binding_of_caller (0.7.2)
+      debug_inspector (>= 0.0.1)
     bootstrap-kaminari-views (0.0.5)
       kaminari (>= 0.13)
       rails (>= 3.1)
@@ -269,6 +271,7 @@ GEM
     coffee-script-source (1.10.0)
     connection_pool (2.2.0)
     database_cleaner (1.2.0)
+    debug_inspector (0.0.2)
     devise (3.5.2)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
@@ -485,6 +488,11 @@ GEM
     useragent (0.16.5)
     warden (1.2.6)
       rack (>= 1.0)
+    web-console (2.3.0)
+      activemodel (>= 4.0)
+      binding_of_caller (>= 0.7.2)
+      railties (>= 4.0)
+      sprockets-rails (>= 2.0, < 4.0)
 
 PLATFORMS
   ruby
@@ -556,3 +564,4 @@ DEPENDENCIES
   user-auth!
   useragent
   virtual_file_system!
+  web-console (~> 2.0)

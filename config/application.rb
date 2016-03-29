@@ -18,6 +18,9 @@ require "ueditor.rails"
 
 module KnowledgeCamp
   class Application < Rails::Application
+    config.web_console.whitelisted_ips = '0.0.0.0/0'
+    config.web_console.development_only = false
+
     config.assets.precompile += [
       'ueditor/iframe.css',
       'bank.css',

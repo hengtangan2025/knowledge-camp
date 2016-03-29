@@ -13,4 +13,6 @@ Rails.application.routes.draw do
   post    '/mockup/manager/:req'  => 'mockup#manager_do_post', as: 'mockup_manager_post'
   put     '/mockup/manager/:req'  => 'mockup#manager_do_put', as: 'mockup_manager_put'
   delete  '/mockup/manager/:req'  => 'mockup#manager_do_delete', as: 'mockup_manager_delete'
+
+  get     '/console' => 'console#index'
 end
