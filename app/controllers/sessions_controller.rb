@@ -7,7 +7,7 @@ class SessionsController < Devise::SessionsController
 
   def new
     if params[:role] == "manager"
-      @component_name = 'ManagerSignInPage'
+      @component_name = 'AuthManagerSignInPage'
       @component_data = {
         submit_url: api_sign_in_path,
         manager_home_url: bank_manage_courses_path

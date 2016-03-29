@@ -1,3 +1,10 @@
+development:
+  sessions:
+    default:
+      database: knowledge-camp-coding-preview-development
+      hosts:
+        - 127.0.0.1:27017
+
 production:
   sessions:
     default:

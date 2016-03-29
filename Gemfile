@@ -1,5 +1,7 @@
 # coding: utf-8
 
+ruby '2.1.3'
+
 source "https://ruby.taobao.org"
 
 gem "rails", "4.2.3"
@@ -176,12 +178,9 @@ gem 'sprockets-coffee-react', '3.0.1'
 
 # 通过 rails assets 服务加载前端包
 source 'https://rails-assets.org'
-
 gem 'rails-assets-semantic'
 gem 'rails-assets-URIjs'
-
 # http://facebook.github.io/immutable-js/
 gem 'rails-assets-immutable'
-
 # https://github.com/Olical/EventEmitter/blob/master/docs/guide.md
 gem 'rails-assets-eventEmitter'
