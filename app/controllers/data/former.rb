@@ -6,7 +6,7 @@ module Data::Former
       {
         id: course.id.to_s,
         img: course.cover,
-        name: course.title,
+        name: course.name,
         desc: course.desc,
         instructor: course.creator.name,
         manager_contents_url: organize_manager_course_path(course)
@@ -33,7 +33,7 @@ module Data::Former
     {
       id: course.id.to_s,
       img: course.cover,
-      name: course.title,
+      name: course.name,
       desc: course.desc,
       instructor: course.creator.name,
       jump_url: organize_manager_course_path(course)
@@ -47,7 +47,7 @@ module Data::Former
     {
       id: course.id.to_s,
       img: course.cover,
-      name: course.title,
+      name: course.name,
       desc: course.desc,
       instructor: course.creator.name,
       subjects: course.course_subjects.map{|subject| {name: subject.name, url: subject_path(subject.id.to_s)}},
@@ -60,7 +60,7 @@ module Data::Former
   def manager_chapters_create_response_data(chapter)
     {
       id: chapter.id.to_s,
-      name: chapter.title,
+      name: chapter.name,
       desc: chapter.desc,
       move_down_url: move_down_manager_chapter_path(chapter),
       move_up_url: move_up_manager_chapter_path(chapter),
@@ -73,7 +73,7 @@ module Data::Former
   def manager_chapters_update_response_data(chapter)
     {
       id: chapter.id.to_s,
-      name: chapter.title,
+      name: chapter.name,
       desc: chapter.desc
     }
   end
@@ -89,7 +89,7 @@ module Data::Former
   def _chapter_data(chapter)
     {
       id: chapter.id.to_s,
-      name: chapter.title,
+      name: chapter.name,
       update_url: manager_chapter_path(chapter),
       move_down_url: move_down_manager_chapter_path(chapter),
       move_up_url: move_up_manager_chapter_path(chapter),
@@ -111,7 +111,7 @@ module Data::Former
 
     data = {
       id:            ware.id.to_s,
-      name:          ware.title,
+      name:          ware.name,
       url:           ware_path(ware.id.to_s),
       kind:          ware_type,
       learned:       learned,

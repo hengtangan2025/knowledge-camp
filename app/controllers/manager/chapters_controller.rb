@@ -42,6 +42,6 @@ class Manager::ChaptersController < ApplicationController
 
   private
   def chapter_params
-    params.require(:chapter).permit(:title, :desc)
+    params.require(:chapter).permit(:name, :desc)
   end
 end

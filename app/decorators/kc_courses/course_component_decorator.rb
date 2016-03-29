@@ -4,7 +4,7 @@ KcCourses::Course.class_eval do
       id: self.id.to_s,
       url: controller.course_path(self.id.to_s),
       img: self.get_cover,
-      name: self.title,
+      name: self.name,
       desc: self.desc,
       instructor: self.user.name,
       published_at: self.published_at.strftime("%Y-%m-%d")
@@ -14,12 +14,12 @@ KcCourses::Course.class_eval do
   def to_detail_component_data(controller = nil)
     video_count = self.statistic_info[:video][:count]
     total_minute = self.statistic_info[:video][:total_minute]
-    
+
     {
       id: self.id.to_s,
       url: controller.course_path(self.id.to_s),
       img: self.get_cover,
-      name: self.title,
+      name: self.name,
       desc: self.desc,
       instructor: self.user.name,
       published_at: self.updated_at.strftime("%Y-%m-%d"),
@@ -35,7 +35,7 @@ end
 KcCourses::Chapter.class_eval do
   def to_brief_component_data(controller = nil)
     {
-      name: self.title,
+      name: self.name,
       wares: self.wares.map{|ware|ware.to_brief_component_data(controller)}
     }
   end
@@ -50,7 +50,7 @@ KcCourses::Ware.class_eval do
 
     data = {
       id: self.id.to_s,
-      name: self.title,
+      name: self.name,
       url: controller.ware_path(self.id.to_s),
       kind: self._type,
       learned: learned,
@@ -58,7 +58,7 @@ KcCourses::Ware.class_eval do
 
     data[:kind] = "document"
     if self._type == "KcCourses::SimpleAudioWare"
-      data[:kind] = "audio" 
+      data[:kind] = "audio"
       seconds = self.file_entity.meta[:audio][:audio_duration].to_i
       data[:time] = "#{seconds/60}′#{seconds%60}″"
     end
@@ -67,8 +67,8 @@ KcCourses::Ware.class_eval do
       data[:kind] = "video"
       seconds = self.file_entity.meta[:video][:total_duration].to_i
       data[:time] = "#{seconds/60}′#{seconds%60}″"
-      data[:video_url] = self.file_entity.transcode_url("超请") || 
-        self.file_entity.transcode_url("高请") || 
+      data[:video_url] = self.file_entity.transcode_url("超请") ||
+        self.file_entity.transcode_url("高请") ||
         self.file_entity.transcode_url("标清") ||
         self.file_entity.transcode_url("低清")
     end
@@ -99,7 +99,7 @@ KcCourses::PublishedCourse.class_eval do
       id: self.id.to_s,
       url: controller.course_path(self.id.to_s),
       img: self.data['file_entity_id'].blank? ? ENV['course_default_cover_url'] : FilePartUpload::FileEntity.find(self.data['file_entity_id']).url,
-      name: self.data['title'],
+      name: self.data['name'],
       desc: self.data['desc'],
       instructor: self.data['user_id'].blank? ? '' : User.find(self.data['user_id']).try(:name) ,
       published_at: self.created_at.strftime("%Y-%m-%d")
@@ -119,7 +119,7 @@ KcCourses::PublishedCourse.class_eval do
       id: self.id.to_s,
       url: controller.course_path(self.id.to_s),
       img: self.data['file_entity_id'].blank? ? ENV['course_default_cover_url'] : FilePartUpload::FileEntity.find(self.data['file_entity_id']).url,
-      name: self.data['title'],
+      name: self.data['name'],
       desc: self.data['desc'],
       instructor: self.data['user_id'].blank? ? '' : User.find(self.data['user_id']).try(:name) ,
       published_at: self.created_at.strftime("%Y-%m-%d"),

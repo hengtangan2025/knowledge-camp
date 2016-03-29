@@ -66,10 +66,10 @@ class Manager::WaresController < ApplicationController
 
   private
   def ware_params
-    params.require(:ware).permit(:title, :desc, :file_entity_id)
+    params.require(:ware).permit(:name, :desc, :file_entity_id)
   end
 
   def ware_update_params
-    params.require(:ware).permit(:title, :desc)
+    params.require(:ware).permit(:name, :desc)
   end
 end
