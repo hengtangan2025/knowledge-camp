@@ -1,4 +1,26 @@
 GIT
+  remote: git://github.com/ben7th/file-part-upload.git
+  revision: 13bbe5496ba7993247846b8931289ef20e58d601
+  ref: 13bbe54
+  specs:
+    file-part-upload (3.0.0)
+      enumerize
+      mime-types
+      mini_magick
+      qiniu (~> 6.4.1)
+      streamio-ffmpeg
+
+GIT
+  remote: git://github.com/fushang318/kc_courses.git
+  revision: 6a88c45d31b02102081ceef8e0c8cca92cf2730c
+  ref: 6a88c45
+  specs:
+    kc_courses (0.1.0)
+      mongoid-tree
+      ruby-pinyin
+      simple_form
+
+GIT
   remote: git://github.com/kc-train/model_label.git
   revision: ffbc999778b2179b898c2263d303c8c0749385ee
   ref: ffbc999
@@ -39,18 +61,6 @@ GIT
       ruby-pinyin
 
 GIT
-  remote: git://github.com/mindpin/file-part-upload.git
-  revision: f40b480336fe483a0dba1e49fbf83936623bc346
-  tag: 2.3.2
-  specs:
-    file-part-upload (2.3.2)
-      enumerize
-      mime-types
-      mini_magick
-      qiniu (~> 6.4.1)
-      streamio-ffmpeg
-
-GIT
   remote: git://github.com/mindpin/generic_controller.git
   revision: 061d6055695bc025401af5aeb97164eab0285371
   tag: v0.0.5
@@ -63,16 +73,6 @@ GIT
   ref: d3d64e6
   specs:
     kc_comments (0.1.0)
-
-GIT
-  remote: git://github.com/mindpin/kc_courses.git
-  revision: 702e3de55b95b5df5b48c1395ef724a48a3fd9c7
-  ref: 702e3de
-  specs:
-    kc_courses (0.1.0)
-      mongoid-tree
-      ruby-pinyin
-      simple_form
 
 GIT
   remote: git://github.com/mindpin/knowledge-graph-js.git
@@ -388,7 +388,9 @@ GEM
       railties (= 4.2.3)
       sprockets-rails
     rails-assets-URIjs (1.17.1)
-    rails-assets-jquery (2.2.1)
+    rails-assets-eventEmitter (4.3.0)
+    rails-assets-immutable (3.7.6)
+    rails-assets-jquery (2.2.2)
     rails-assets-semantic (2.1.8)
       rails-assets-jquery (>= 1.8)
     rails-deprecated_sanitizer (1.0.3)
@@ -405,7 +407,7 @@ GEM
       rake (>= 0.8.7)
       thor (>= 0.18.1, < 2.0)
     raindrops (0.16.0)
-    rake (10.5.0)
+    rake (11.1.1)
     rdoc (4.2.2)
       json (~> 1.4)
     react-rails (1.2.0)
@@ -425,7 +427,7 @@ GEM
       rspec-core (~> 3.4.0)
       rspec-expectations (~> 3.4.0)
       rspec-mocks (~> 3.4.0)
-    rspec-core (3.4.3)
+    rspec-core (3.4.4)
       rspec-support (~> 3.4.0)
     rspec-expectations (3.4.0)
       diff-lcs (>= 1.2.0, < 2.0)
@@ -490,10 +492,10 @@ PLATFORMS
 DEPENDENCIES
   acts-as-dag!
   bootstrap-kaminari-views!
-  bootstrap-sass (~> 3.3.5)
+  bootstrap-sass (~> 3.3.5)!
   bson_ext!
   bucketerize!
-  carrierwave-mongoid
+  carrierwave-mongoid!
   cells (~> 3.10.1)!
   coffee-rails (~> 4.1.0)!
   database_cleaner (~> 1.2.0)!
@@ -518,8 +520,8 @@ DEPENDENCIES
   knowledge-net-plan-store!
   knowledge-net-store!
   knowledge_camp_step!
-  mina (= 0.3.7)
-  mini_magick
+  mina (= 0.3.7)!
+  mini_magick!
   model_label!
   mongoid (~> 4.0.0)!
   mongoid-versioning!
@@ -530,8 +532,10 @@ DEPENDENCIES
   quiet_assets!
   rails (= 4.2.3)!
   rails-assets-URIjs
+  rails-assets-eventEmitter
+  rails-assets-immutable
   rails-assets-semantic
-  react-rails (= 1.2.0)
+  react-rails (= 1.2.0)!
   rspec!
   ruby-pinyin!
   sass-rails (~> 5.0)!
@@ -541,16 +545,16 @@ DEPENDENCIES
   simple_form (~> 3.2.0)!
   sort_char!
   spring!
-  sprockets (= 3.4.0)
-  sprockets-coffee-react (= 3.0.1)
-  sprockets-rails (= 2.3.3)
+  sprockets (= 3.4.0)!
+  sprockets-coffee-react (= 3.0.1)!
+  sprockets-rails (= 2.3.3)!
   streamio-ffmpeg!
   turbolinks!
   ueditor.rails!
   uglifier (>= 1.3.0)!
   unicorn!
   user-auth!
-  useragent
+  useragent!
   virtual_file_system!
 
 BUNDLED WITH

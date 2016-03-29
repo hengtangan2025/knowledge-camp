@@ -1,5 +1,5 @@
-@ManagerHomePage = React.createClass
+@ManagerDashboardPage = React.createClass
   render: ->
     <div>
-      <LayoutNoPage name='管理员页面' />
+      <LayoutNoPage name='管理员总控面板' />
     </div>

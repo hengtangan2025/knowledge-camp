@@ -1,4 +1,4 @@
-@SignInPage = React.createClass
+@AuthSignInPage = React.createClass
   render: ->
     <div className='sign-in-page'>
       <div className='ui container'>
@@ -11,7 +11,7 @@
       </div>
     </div>
 
-@SignUpPage = React.createClass
+@AuthSignUpPage = React.createClass
   render: ->
     <div className='sign-in-page'>
       <div className='ui container'>
@@ -25,7 +25,7 @@
     </div>
 
 
-@ManagerSignInPage = React.createClass
+@AuthManagerSignInPage = React.createClass
   render: ->
     <div className='sign-in-page'>
       <div className='ui container'>
