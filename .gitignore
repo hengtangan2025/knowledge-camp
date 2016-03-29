@@ -31,6 +31,6 @@ public/assets/
 ._*
 
 # Ignore application configuration
-# /config/application.yml
+/config/application.yml
 .floo
 .flooignore
