@@ -51,8 +51,8 @@ DataFormer.class_eval do
     end
 
     urls do
-      url :update, ->(instance, url_helpers){
-        url_helpers.course_path(instance)
+      url :update, ->(instance){
+        course_path(instance)
       }
     end
 

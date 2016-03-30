@@ -26,6 +26,7 @@ module DataFormerConfig
   end
 
   class Brief
+    include Rails.application.routes.url_helpers
     def initialize(&block)
       @info = {}
       self.instance_eval &block
@@ -41,6 +42,7 @@ module DataFormerConfig
   end
 
   class Logics
+    include Rails.application.routes.url_helpers
     def initialize(&block)
       @info = {}
       self.instance_eval &block
@@ -56,6 +58,7 @@ module DataFormerConfig
   end
 
   class Urls
+    include Rails.application.routes.url_helpers
     def initialize(&block)
       @info = {}
       self.instance_eval &block
@@ -126,7 +129,7 @@ module DataFormerConfig
       if _proc.blank?
         raise UndefinedLogicError.new "DataFormer 声明的 #{@model_instance.class.to_s} 的 former 中没有声明 #{url_name} url"
       end
-      @data[url_name] = _proc.call(@model_instance, self, *args)
+      @data[url_name] = _proc.call(@model_instance, *args)
       self
     end
 
