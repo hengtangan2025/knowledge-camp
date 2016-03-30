@@ -37,40 +37,30 @@ end
 DataFormer.class_eval do
 
   former 'DataFormerMock::Course' do
-    brief do
-      field :id, ->(instance) {instance.id.to_s}
-      field :name
-      field :desc
-    end
+    field :id, ->(instance) {instance.id.to_s}
+    field :name
+    field :desc
 
-    logics do
-      logic :learned, ->(instance, user){
-        percent = instance.read_percent_of_user(user)
-        "#{percent}_learned"
-      }
-    end
+    logic :learned, ->(instance, user){
+      percent = instance.read_percent_of_user(user)
+      "#{percent}_learned"
+    }
 
-    urls do
-      url :update, ->(instance){
-        course_path(instance)
-      }
-    end
+    url :update, ->(instance){
+      course_path(instance)
+    }
 
   end
 
   former 'DataFormerMock::Chapter' do
-    brief do
-      field :id, ->(instance) {instance.id.to_s}
-      field :name
-      field :desc
-    end
+    field :id, ->(instance) {instance.id.to_s}
+    field :name
+    field :desc
   end
 
   former 'DataFormerMock::User' do
-    brief do
-      field :id, ->(instance) {instance.id.to_s}
-      field :name
-    end
+    field :id, ->(instance) {instance.id.to_s}
+    field :name
   end
 
 end

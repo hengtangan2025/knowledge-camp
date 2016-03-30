@@ -3,69 +3,26 @@ module DataFormerConfig
   class UndefinedFormerError < StandardError;end
   class UndefinedLogicError < StandardError;end
   class Former
-    def initialize(&block)
-      @info = {}
-      self.instance_eval &block
-    end
-
-    def brief(&block)
-      @info[:brief] = Brief.new(&block).run
-    end
-
-    def logics(&block)
-      @info[:logics] = Logics.new(&block).run
-    end
-
-    def urls(&block)
-      @info[:urls] = Urls.new(&block).run
-    end
-
-    def run
-      @info
-    end
-  end
-
-  class Brief
     include Rails.application.routes.url_helpers
     def initialize(&block)
-      @info = {}
+      @info = {
+        fields: {},
+        logics: {},
+        urls: {}
+      }
       self.instance_eval &block
     end
 
     def field(name, name_block = nil)
-      @info[name] = name_block
-    end
-
-    def run
-      @info
-    end
-  end
-
-  class Logics
-    include Rails.application.routes.url_helpers
-    def initialize(&block)
-      @info = {}
-      self.instance_eval &block
+      @info[:fields][name] = name_block
     end
 
     def logic(name, name_block = nil)
-      @info[name] = name_block
-    end
-
-    def run
-      @info
-    end
-  end
-
-  class Urls
-    include Rails.application.routes.url_helpers
-    def initialize(&block)
-      @info = {}
-      self.instance_eval &block
+      @info[:logics][name] = name_block
     end
 
     def url(name, name_block = nil)
-      @info[name] = name_block
+      @info[:urls][name] = name_block
     end
 
     def run
@@ -90,7 +47,7 @@ module DataFormerConfig
     end
 
     def brief(override_brief = {})
-      _build_data_by_brief_info(@info[:brief])
+      _build_data_by_brief_info(@info[:fields])
       if !override_brief.blank?
         _build_data_by_brief_info(override_brief)
       end
