@@ -208,6 +208,55 @@ module Mockup::SampleData
     }
   ]
 
+  SAMPLE_CSUBJECTS_DATA = [
+    {
+      id: '1',
+      name: '个人电商',
+      slug: 'ge-ren-dian-shang',
+      courses_count: 3,
+      children: [
+        {
+          id: '11',
+          name: '农业电商',
+          slug: 'nong-ye-dian-shang',
+          courses_count: 1,
+          children: [
+            {
+              id: 'c1',
+              name: 'FENLEI1',
+              slug: 'fen-lei-1',
+              courses_count: 2,
+            },
+            {
+              id: 'c2',
+              name: 'FENLEI2',
+              slug: 'fen-lei-2',
+              courses_count: 2,
+            },
+            {
+              id: 'c3',
+              name: 'FENLEI3',
+              slug: 'fen-lei-3',
+              courses_count: 2,
+            },
+          ]
+        },
+        {
+          id: '12',
+          name: '淘宝规则',
+          slug: 'tao-bao-gui-ze',
+          courses_count: 2,
+        },
+      ]
+    },
+    {
+      id: '2',
+      name: '企业电商',
+      slug: 'qi-ye-dian-shang',
+      courses_count: 5,
+    }
+  ]
+
   SAMPLE_PAGINATE_DATA = {
     total_pages: 12,
     current_page: 5,

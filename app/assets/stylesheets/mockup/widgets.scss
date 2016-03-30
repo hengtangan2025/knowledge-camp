@@ -232,6 +232,18 @@
   }
 }
 
+.ui.table {
+  td .inline-input-edit {
+    height:30px;
+    line-height: 30px;
+    margin-top: -5px;
+    margin-bottom: -5px;
+    input.inline-edit-text-ipt {
+      width: 180px;
+    }
+  }
+}
+
 .ui.modal.confirm {
   width: 320px;
   margin-left: -160px;

@@ -144,6 +144,7 @@ body.manager {
             border-radius: 0;
             td {
               line-height: 20px;
+              position: relative;
 
               .ui.button.mini {
                 min-height: 0;
@@ -406,5 +407,80 @@ body.manager {
     padding-top: 0;
     text-align: right;
     a {margin-right: 1px;}
+  }
+}
+
+.manager-csubjects-page {
+  table td {
+    &.slug {
+      width:240px;
+      input.inline-edit-text-ipt {
+        width:240px - 20px !important;
+      }
+    }
+
+    .tree-item {
+      float: left;
+
+      .tree-pd {
+        float: left;
+        $lc: #aaa;
+
+        .line {
+          float: left;
+          height: 38px;
+          width: 12px;
+          margin-left: 12px;
+          margin-top: -9px;
+          margin-bottom: -9px;
+          position: relative;
+          &:before {
+            content: "";
+            left:0;top:0;bottom:0;
+            width:2px;
+            position: absolute;
+            background-color: $lc;
+          }
+
+          &:last-child {
+            margin-right: 6px;
+          }
+          &:last-child:before {
+            content: "";
+            left:0;top:0;bottom:0;
+            width:2px;
+            position: absolute;
+            background-color: $lc;
+          }
+          &:last-child:after {
+            content: "";
+            position: absolute;
+            left:0;top:50%;margin-top:-1px;
+            width:100%;
+            height:2px;
+            background-color: $lc;
+          }
+        }
+      }
+      .item-name {
+        float: left;
+      }
+
+      &.level-last {
+        .tree-pd {
+          .line:last-child:before {
+            bottom:50%;
+          }
+        }
+      }
+    }
+  }
+  table tfoot {
+    display: none;
+  }
+
+  .ui.segment.btns {
+    margin-top: -1rem;
+    padding-top: 0;
   }
 }
