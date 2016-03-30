@@ -23,7 +23,8 @@ source "https://ruby.taobao.org" do
   end
 
   group :test do
-    gem "rspec"
+    gem 'factory_girl_rails'
+    gem 'rspec-rails', '~> 3.0'
     gem "database_cleaner", "~> 1.2.0"
   end
 
