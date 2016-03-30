@@ -86,6 +86,7 @@ module DataFormerConfig
         raise UndefinedFormerError.new "DataFormer 没有声明 #{model_instance.class.to_s} 的 former"
       end
       @data = {}
+      brief
     end
 
     def brief(override_brief = {})

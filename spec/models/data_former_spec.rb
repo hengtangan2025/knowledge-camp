@@ -91,16 +91,8 @@ RSpec.describe DataFormer, type: :model do
   end
 
   describe "data method" do
-    it{
-      data = DataFormer.new(@course).data
-      expect(data).to match({})
-    }
-  end
-
-  describe "brief method" do
     it "不传参数" do
       data_former = DataFormer.new(@course)
-      data_former.brief
       data = data_former.data
       expect(data).to match({
         id: @course.id.to_s,
@@ -124,7 +116,12 @@ RSpec.describe DataFormer, type: :model do
   describe "logic method" do
     it{
       data = DataFormer.new(@course).logic(:learned, @user).data
-      expect(data).to match({:learned=>"user_1_percent_learned"})
+      expect(data).to match({
+        id: @course.id.to_s,
+        name: @course.name,
+        desc: @course.desc,
+        learned: "user_1_percent_learned"
+      })
     }
   end
 
@@ -132,6 +129,9 @@ RSpec.describe DataFormer, type: :model do
     it "没有自定义" do
       data = DataFormer.new(@course).relation(:chapters).relation(:user).data
       expect(data).to match({
+        id: @course.id.to_s,
+        name: @course.name,
+        desc: @course.desc,
         chapters: [
           {id: @chapter1.id.to_s, name: @chapter1.name, desc: @chapter1.desc},
           {id: @chapter2.id.to_s, name: @chapter2.name, desc: @chapter2.desc}
@@ -149,6 +149,9 @@ RSpec.describe DataFormer, type: :model do
         end
       }).data
       expect(data).to match({
+        id: @course.id.to_s,
+        name: @course.name,
+        desc: @course.desc,
         chapters: [
           {id: @chapter1.id.to_s + " gai", name: @chapter1.name, desc: @chapter1.desc},
           {id: @chapter2.id.to_s + " gai", name: @chapter2.name, desc: @chapter2.desc}
@@ -160,7 +163,12 @@ RSpec.describe DataFormer, type: :model do
   describe "url method" do
     it{
       data = DataFormer.new(@course).url(:update).data
-      expect(data).to match({:update=>"/courses/#{@course.id.to_s}"})
+      expect(data).to match({
+        id: @course.id.to_s,
+        name: @course.name,
+        desc: @course.desc,
+        update: "/courses/#{@course.id.to_s}"
+      })
     }
   end
 end

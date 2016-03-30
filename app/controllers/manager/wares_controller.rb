@@ -11,7 +11,6 @@ class Manager::WaresController < ApplicationController
 
     save_model(ware) do |w|
       DataFormer.new(w)
-        .brief
         .logic(:learned, current_user)
         .url(:url)
         .url(:update_url)
@@ -27,7 +26,6 @@ class Manager::WaresController < ApplicationController
 
     update_model(ware, ware_update_params) do |w|
       data = DataFormer.new(w)
-        .brief
         .logic(:learned, current_user)
         .url(:url)
         .url(:update_url)

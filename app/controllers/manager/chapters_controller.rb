@@ -8,7 +8,6 @@ class Manager::ChaptersController < ApplicationController
 
     save_model(chapter) do |c|
       DataFormer.new(c)
-        .brief
         .url(:move_down_url)
         .url(:move_up_url)
         .url(:update_url)
@@ -23,7 +22,6 @@ class Manager::ChaptersController < ApplicationController
 
     update_model(chapter, chapter_params) do |c|
       DataFormer.new(c)
-        .brief
         .data
     end
   end

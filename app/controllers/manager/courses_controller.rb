@@ -7,7 +7,6 @@ class Manager::CoursesController < ApplicationController
     courses = KcCourses::Course.all.page(params[:page])
     data    = courses.map do |course|
       DataFormer.new(course)
-        .brief
         .logic(:instructor)
         .url(:manager_contents_url).data
     end
@@ -44,7 +43,6 @@ class Manager::CoursesController < ApplicationController
 
     save_model(course) do |c|
       DataFormer.new(c)
-        .brief
         .logic(:instructor)
         .data
         .merge jump_url: organize_manager_course_path(c)
@@ -56,14 +54,12 @@ class Manager::CoursesController < ApplicationController
     @page_name = 'manager_course_contents'
 
     data = DataFormer.new(course)
-      .brief
       .logic(:instructor)
       .logic(:effort)
       .logic(:subjects)
       .relation(:chapters, ->(chapters){
         chapters.map do |chapter|
           DataFormer.new(chapter)
-            .brief
             .url(:update_url)
             .url(:move_down_url)
             .url(:move_up_url)
@@ -72,7 +68,6 @@ class Manager::CoursesController < ApplicationController
             .relation(:wares, ->(wares){
               wares.map do |ware|
                 DataFormer.new(ware)
-                  .brief
                   .logic(:learned, current_user)
                   .url(:url)
                   .url(:update_url)
