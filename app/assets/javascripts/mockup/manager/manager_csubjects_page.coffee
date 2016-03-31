@@ -1,6 +1,7 @@
 @ManagerCsubjectsPage = React.createClass
   getInitialState: ->
-    subjects: @props.data.subjects || []
+    subjects = @props.data.subjects || []
+    subjects: subjects
 
   render: ->
     <div className='manager-csubjects-page'>
@@ -13,91 +14,53 @@
         <ManagerFuncNotReady data={data} />
 
       else
+        tdp = new TreeDataParser @state.subjects
+        flatten_subjects = tdp.get_depth_first_array()
+
         <div>
-          <ManagerCsubjectsPage.Table subjects={@state.subjects} parent={@}/>
+          <ManagerCsubjectsPage.Table flatten_subjects={flatten_subjects} parent={@}/>
           <div className='ui segment btns'>
             <a className='ui button green mini' href='javascript:;' onClick={@create_root_subject}>
-              <i className='icon plus' />
-              增加新分类
+              <i className='icon plus' /> 增加新分类
             </a>
           </div>
         </div>
     }
     </div>
 
+  componentDidMount: ->
+    Actions.set_store new DataStore @, @state.subjects
+
   create_root_subject: ->
-    s = Immutable.fromJS @state.subjects
-    s = s.push
-      id: Math.random()
-      name: '新分类'
-      slug: 'xin-fen-lei'
-      courses_count: 0
-
-    @setState subjects: s.toJS()
-
-  create_subject_on: (subject)->
-    =>
-      s = Immutable.fromJS @state.subjects
-
-      _r = (x)->
-        if x.get('id') == subject.id
-          x.update 'children', (children)->
-            c = if children? then children else Immutable.fromJS([])
-            c = c.push 
-              id: Math.random()
-              name: '新分类'
-              slug: 'xin-fen-lei'
-              courses_count: 0
-            c
-        else
-          x.update 'children', (children)->
-            c = if children? then children else Immutable.fromJS([])
-            c.map (cx)->
-              _r(cx)
-
-      s = s.map (x)->
-        _r(x)
-
-      @setState subjects: s.toJS()
+    Actions.add_subject
+      name: "新分类 #{new Date().getTime()}"
 
   statics:
     Table: React.createClass
       render: ->
-        flatten_data = jQuery.flatten_tree @props.subjects, 'children'
-
         table_data = {
           fields:
             name: '分类名称'
-            add_child: ''
+            ops: ''
             slug: '链接名称'
             courses_count: '课程数目'
-          data_set: flatten_data.map (x)=> 
-            name_klass = new ClassName
-              'tree-item': true
-              'level-last': x._level_last
-
+          data_set: @props.flatten_subjects.map (x)=> 
             {
               id: x.id
               name:
-                <div className={name_klass}>
-                  <div className='tree-pd'>
-                  {
-                    for idx in [0...x._depth]
-                      <div key={idx} className='line'></div>
-                  }
-                  </div>
-                  <div className='item-name'>
-                    <InlineInputEdit value={x.name} on_submit={@update_subject(x)} />
-                  </div>
-                </div>
+                <ManagerCsubjectsPage.TreeItemTD data={x} />
               slug:
                 <InlineInputEdit value={x.slug} on_submit={@update_subject(x)} />
               courses_count: x.courses_count
-              add_child:
-                <a href='javascript:;' className='ui green basic button mini' onClick={@props.parent.create_subject_on(x)}>
-                  <i className='icon plus' />
-                  增加子分类
-                </a>
+              ops:
+                <div>
+                  <a href='javascript:;' className='ui green basic button mini' onClick={@create_subject_on(x)}>
+                    <i className='icon plus' /> 增加子分类
+                  </a>
+                  <a href='javascript:;' className='ui red basic button mini' onClick={@confirm_remove(x)}>
+                    <i className='icon remove' /> 删除
+                  </a>
+                </div>
             }
           th_classes: {
             courses_count: 'collapsing'
@@ -105,7 +68,7 @@
           td_classes: {
             slug: 'slug'
             actions: 'collapsing'
-            add_child: 'collapsing'
+            ops: 'collapsing'
           }
         }
 
@@ -116,3 +79,139 @@
       update_subject: (x)->
         ->
           console.log x
+
+      create_subject_on: (x)->
+        ->
+          Actions.add_subject_on x, {
+            name: "新分类 #{new Date().getTime()}"
+          }
+
+      confirm_remove: (x)->
+        ->
+          jQuery.modal_confirm
+            text: '确定要删除吗？'
+            yes: =>
+              Actions.remove_subject x
+
+
+    TreeItemTD: React.createClass
+      render: ->
+        x = @props.data
+
+        <div className='tree-item'>
+          <div className='tree-pds'>
+          {
+            for flag, idx in x._depth_array
+              klass = new ClassName
+                'pd': true
+                'flag': flag 
+
+              <div key={idx} className={klass}></div>
+          }
+          </div>
+          <div className='item-name'>
+            <InlineInputEdit value={x.name} on_submit={->} />
+          </div>
+        </div>
+
+
+
+# ----------------------
+
+class DataStore
+  constructor: (@page, subjects)->
+    @subjects = Immutable.fromJS subjects
+    @create_subject_url = @page.props.data.create_subject_url
+
+  create_subject: (data)->
+    if not @create_subject_url?
+      console.warn '没有传入 create_subject_url 接口'
+      return
+
+    jQuery.ajax
+      type: 'POST'
+      url: @create_subject_url
+      data: 
+        subject: data
+    .done (res)=>
+      if res.id?
+        @_push_data_into_tree res
+      else
+        console.warn '创建课程分类请求没有返回正确数据'
+
+    .fail (res)->
+      console.log res.responseJSON
+
+  _push_data_into_tree: (res)->
+    new_subject = Immutable.fromJS res
+
+    subjects = @subjects.update 'items', (items)->
+      items.push Immutable.fromJS res
+
+    if res.parent_id?
+      subjects = subjects.update 'relations', (relations)->
+        relations.push Immutable.fromJS([res.parent_id, res.id])
+
+    @reload_page subjects
+
+
+  delete_subject: (subject)->
+    if not subject.delete_url?
+      console.warn '没有传入 subject.delete_url 接口'
+      return
+
+    jQuery.ajax
+      type: 'DELETE'
+      url: subject.delete_url
+    .done (res)=>
+      subjects = @_delete_data_from_tree @subjects, subject
+      @reload_page subjects
+    .fail (res)->
+      console.log res.responseJSON
+
+  _delete_data_from_tree: (subjects, subject)->
+    children_ids = subjects.get('relations')
+      .filter (r)->
+        r.get(0) == subject.id
+      .map (r)->
+        r.get(1)
+
+    children = subjects.get('items').filter (x)->
+      children_ids.contains x.get('id')
+
+    children.forEach (c)=>
+      subjects = @_delete_data_from_tree subjects, c.toJS()
+
+    subjects
+      .update 'relations', (relations)->
+        relations.filter (r)->
+          r.get(1) != subject.id
+
+      .update 'items', (items)->
+        items.filter (x)->
+          x.get('id') != subject.id
+
+  reload_page: (subjects)->
+    # console.log subjects.toJS()
+    @subjects = subjects
+    @page.setState
+      subjects: subjects.toJS()
+
+
+Actions = class
+  @set_store: (store)->
+    @store = store
+
+  @add_subject: (data)->
+    @store.create_subject {
+      name: data.name
+    }
+
+  @add_subject_on: (subject, data)->
+    @store.create_subject {
+      name: data.name
+      parent_id: subject.id
+    }
+
+  @remove_subject: (subject)->
+    @store.delete_subject subject

@@ -84,9 +84,13 @@ module Mockup::ManagerMethods
       else SAMPLE_CSUBJECTS_DATA
       end
 
+    subjects[:items].each { |s|
+      s[:delete_url] = mockup_manager_delete_url(req: 'common')
+    }
+
     @component_data = {
-      new_course_url: mockup_manager_url(page: 'new_course'),
       subjects: subjects,
+      create_subject_url: mockup_manager_post_url(req: 'create_subject'),
     }
   end
 end
