@@ -1,6 +1,5 @@
 class Manager::WaresController < ApplicationController
   layout "new_version_manager"
-  include Data::Former
 
   def create
     file_entity_id = ware_params[:file_entity_id]
@@ -10,19 +9,30 @@ class Manager::WaresController < ApplicationController
       ware = _new_other_ware
     end
 
-    if ware.save
-      render json: manager_wares_create_response_data(ware)
-    else
-      render json: ware.errors.messages, status: 422
+    save_model(ware) do |w|
+      DataFormer.new(w)
+        .logic(:learned, current_user)
+        .url(:url)
+        .url(:update_url)
+        .url(:move_down_url)
+        .url(:move_up_url)
+        .url(:delete_url)
+        .data
     end
   end
 
   def update
     ware = KcCourses::Ware.find params[:id]
-    if ware.update_attributes ware_update_params
-      render json: manager_wares_update_response_data(ware)
-    else
-      render json: ware.errors.messages, status: 422
+
+    update_model(ware, ware_update_params) do |w|
+      data = DataFormer.new(w)
+        .logic(:learned, current_user)
+        .url(:url)
+        .url(:update_url)
+        .url(:move_down_url)
+        .url(:move_up_url)
+        .url(:delete_url)
+        .data
     end
   end
 
