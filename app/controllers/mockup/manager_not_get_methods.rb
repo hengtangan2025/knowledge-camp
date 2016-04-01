@@ -51,7 +51,7 @@ module Mockup::ManagerNotGetMethods
   end
 
   def post_create_subject
-    render json: SAMPLE_CSUBJECTS_DATA[:items][0].merge(
+    render json: SAMPLE_CSUBJECTS_DATA[0].merge(
       id: randstr,
       name: params[:subject][:name],
       slug: randstr,
