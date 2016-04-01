@@ -221,6 +221,7 @@
   .inline-edit-text {
     padding: 0 0.5rem;
     // min-width: 400px;
+    white-space: nowrap;
     &:hover {
       background-color: #ffffdc;
     }
@@ -229,6 +230,84 @@
     padding: 0 0.5rem;
     margin-left: -1px;
     width: 400px;
+  }
+}
+
+.ui.table {
+  td .inline-input-edit {
+    height:30px;
+    line-height: 30px;
+    margin-top: -5px;
+    margin-bottom: -5px;
+    input.inline-edit-text-ipt {
+      width: 180px;
+    }
+  }
+
+  td .tree-item {
+    float: left;
+
+    .tree-pds {
+      float: left;
+      // $lc: #aaa;
+      $lc: lighten(#2185D0, 25%);
+      $lw: 2px;
+
+      .pd {
+        float: left;
+        height: 38px;
+        width: 12px;
+        margin-top: -9px;
+        margin-left: 12px;
+        margin-bottom: -9px;
+        position: relative;
+      }
+      .pd {
+        &:before {
+          content: "";
+          left:0;top:0;bottom:0;
+          width:$lw;
+          position: absolute;
+          background-color: $lc;
+        }
+        &:last-child{
+          &:after {
+            content: "";
+            position: absolute;
+            left:0;top:50%;margin-top:-$lw/2;
+            width:100%;
+            height:$lw;
+            background-color: $lc;
+          }
+        }
+        &:first-child {
+          display: none;
+        }
+      }
+
+      .pd.flag {
+        &:not(:last-child):before {
+          display: none;
+        }
+
+        &:last-child{
+          &:before {
+            bottom:50%;
+          }
+        }
+      }
+    }
+    .item-name {
+      float: left;
+    }
+
+    &.level-last {
+      .tree-pd {
+        .line:last-child:before {
+          bottom:50%;
+        }
+      }
+    }
   }
 }
 

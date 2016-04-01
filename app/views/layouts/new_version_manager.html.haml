@@ -48,11 +48,25 @@
                 name: '开课管理',
                 url: manager_courses_path,
                 icon: 'grid layout'
-              }
+              },
+              {
+                name: '分类管理',
+                url: manager_course_subjects_path,
+                icon: 'grid layout'
+              },
             ]
           }
         ]
       }
+
+      top_menu_data = {
+        sign_out_url: api_sign_out_path,
+        sign_out_to_url: root_path
+      }
+      current_user_data = DataFormer.new(current_user).data
+
+    = react_component 'LayoutManagerTopMenu', data: top_menu_data, current_user_data: current_user_data
+
 
     = react_component 'LayoutManagerSidebar', data: manager_sidebar_data
 

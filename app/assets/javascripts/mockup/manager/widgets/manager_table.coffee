@@ -38,7 +38,9 @@
         <tbody>
         {
           for sdata, idx in @props.data.data_set || [{}, {}, {}]
-            <ManagerTable.TR key={idx} data={@props.data} sdata={sdata} />
+            if not sdata.id?
+              console.warn '请在 table_data.data_set 中为表格数据对象设置 id 属性'
+            <ManagerTable.TR key={sdata.id} data={@props.data} sdata={sdata} />
         }
         </tbody>
 
@@ -57,8 +59,11 @@
       render: ->
         <tfoot><tr>
           <th colSpan={Object.keys(@props.data.fields).length}>
-            <PaginationTextInfo data={@props.data.paginate} /> 
-            <Pagination data={@props.data.paginate} />
+          {
+            if @props.data.paginate?
+              <PaginationTextInfo data={@props.data.paginate} /> 
+              <Pagination data={@props.data.paginate} />
+          }
           </th>
         </tr></tfoot>
 

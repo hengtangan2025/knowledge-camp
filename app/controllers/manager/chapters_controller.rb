@@ -1,24 +1,28 @@
 class Manager::ChaptersController < ApplicationController
   layout "new_version_manager"
-  include Data::Former
 
   def create
     course = KcCourses::Course.find params[:course_id]
     chapter = course.chapters.new chapter_params
     chapter.creator = current_user
-    if chapter.save
-      render json: manager_chapters_create_response_data(chapter)
-    else
-      render json: chapter.errors.messages, status: 422
+
+    save_model(chapter) do |c|
+      DataFormer.new(c)
+        .url(:move_down_url)
+        .url(:move_up_url)
+        .url(:update_url)
+        .url(:delete_url)
+        .url(:create_ware_url)
+        .data
     end
   end
 
   def update
     chapter = KcCourses::Chapter.find params[:id]
-    if chapter.update_attributes chapter_params
-      render json: manager_chapters_update_response_data(chapter)
-    else
-      render json: chapter.errors.messages, status: 422
+
+    update_model(chapter, chapter_params) do |c|
+      DataFormer.new(c)
+        .data
     end
   end
 
