@@ -1,18 +1,23 @@
 @ManagerCsubjectsPage = React.createClass
   getInitialState: ->
-    subjects = @props.data.subjects || []
+    subjects = @props.data.subjects || {
+      items: []
+      relations: []
+    }
     subjects: subjects
 
   render: ->
     <div className='manager-csubjects-page'>
     {
-      if @state.subjects.length is 0
+      items = @state.subjects?.items || []
+
+      if items.length is 0
         data =
           header: '课程分类'
           desc: '还没有创建任何课程分类'
-          init_action: ''
+          init_action: 
+            <ManagerCsubjectsPage.CreateBtn />
         <ManagerFuncNotReady data={data} />
-
       else
         tdp = new TreeDataParser @state.subjects
         flatten_subjects = tdp.get_depth_first_array()
@@ -20,9 +25,7 @@
         <div>
           <ManagerCsubjectsPage.Table flatten_subjects={flatten_subjects} parent={@}/>
           <div className='ui segment btns'>
-            <a className='ui button green mini' href='javascript:;' onClick={@create_root_subject}>
-              <i className='icon plus' /> 增加新分类
-            </a>
+            <ManagerCsubjectsPage.CreateBtn />
           </div>
         </div>
     }
@@ -31,11 +34,17 @@
   componentDidMount: ->
     Actions.set_store new DataStore @, @state.subjects
 
-  create_root_subject: ->
-    Actions.add_subject
-      name: "新分类 #{new Date().getTime()}"
-
   statics:
+    CreateBtn: React.createClass
+      render: ->
+        <a className='ui button green mini' href='javascript:;' onClick={@create_root_subject}>
+          <i className='icon plus' /> 增加新分类
+        </a>
+
+      create_root_subject: ->
+        Actions.add_subject
+          name: "新分类 #{new Date().getTime()}"
+
     Table: React.createClass
       render: ->
         table_data = {
