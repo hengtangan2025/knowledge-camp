@@ -43,19 +43,19 @@
             name: '分类名称'
             ops: ''
             slug: '链接名称'
-            courses_count: '课程数目'
+            courses_count: '课程数'
           data_set: @props.flatten_subjects.map (x)=> 
             {
               id: x.id
               name:
                 <ManagerCsubjectsPage.TreeItemTD data={x} />
               slug:
-                <InlineInputEdit value={x.slug} on_submit={@update_subject(x)} />
+                <InlineInputEdit value={x.slug} on_submit={@update_slug(x)} />
               courses_count: x.courses_count
               ops:
                 <div>
                   <a href='javascript:;' className='ui green basic button mini' onClick={@create_subject_on(x)}>
-                    <i className='icon plus' /> 增加子分类
+                    <i className='icon plus' /> 增加子级
                   </a>
                   <a href='javascript:;' className='ui red basic button mini' onClick={@confirm_remove(x)}>
                     <i className='icon remove' /> 删除
@@ -76,22 +76,24 @@
           <ManagerTable data={table_data} title='课程分类' />
         </div>
 
-      update_subject: (x)->
-        ->
-          console.log x
+      update_slug: (subject)->
+        (slug)->
+          Actions.update_subject subject, {
+            slug: slug
+          }
 
-      create_subject_on: (x)->
+      create_subject_on: (subject)->
         ->
-          Actions.add_subject_on x, {
+          Actions.add_subject_on subject, {
             name: "新分类 #{new Date().getTime()}"
           }
 
-      confirm_remove: (x)->
+      confirm_remove: (subject)->
         ->
           jQuery.modal_confirm
             text: '确定要删除吗？'
             yes: =>
-              Actions.remove_subject x
+              Actions.remove_subject subject
 
 
     TreeItemTD: React.createClass
@@ -110,9 +112,15 @@
           }
           </div>
           <div className='item-name'>
-            <InlineInputEdit value={x.name} on_submit={->} />
+            <InlineInputEdit value={x.name} on_submit={@update_name(x)} />
           </div>
         </div>
+
+      update_name: (subject)->
+        (name)->
+          Actions.update_subject subject, {
+            name: name
+          }
 
 
 
@@ -191,6 +199,22 @@ class DataStore
         items.filter (x)->
           x.get('id') != subject.id
 
+  update_subject: (subject, data)->
+    if not subject.update_url?
+      console.warn '没有传入 subject.update_url 接口'
+      return
+
+    jQuery.ajax
+      type: 'PUT'
+      url: subject.update_url
+    .done (res)=>
+      @reload_page @subjects.update 'items', (items)->
+        items.map (x)->
+          x = x.merge data if x.get('id') is subject.id
+          x
+    .fail (res)->
+      console.log res.responseJSON
+
   reload_page: (subjects)->
     # console.log subjects.toJS()
     @subjects = subjects
@@ -215,3 +239,6 @@ Actions = class
 
   @remove_subject: (subject)->
     @store.delete_subject subject
+
+  @update_subject: (subject, data)->
+    @store.update_subject subject, data

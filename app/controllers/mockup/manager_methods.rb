@@ -86,6 +86,7 @@ module Mockup::ManagerMethods
 
     subjects[:items].each { |s|
       s[:delete_url] = mockup_manager_delete_url(req: 'common')
+      s[:update_url] = mockup_manager_post_url(req: 'common')
     }
 
     @component_data = {

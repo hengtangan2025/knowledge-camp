@@ -413,7 +413,7 @@ body.manager {
 .manager-csubjects-page {
   table td {
     &.slug {
-      $w: 180px;
+      $w: 210px;
       width: $w;
       input.inline-edit-text-ipt {
         width:$w - 20px !important;

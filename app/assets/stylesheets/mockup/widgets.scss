@@ -221,6 +221,7 @@
   .inline-edit-text {
     padding: 0 0.5rem;
     // min-width: 400px;
+    white-space: nowrap;
     &:hover {
       background-color: #ffffdc;
     }
@@ -248,7 +249,8 @@
 
     .tree-pds {
       float: left;
-      $lc: #aaa;
+      // $lc: #aaa;
+      $lc: lighten(#2185D0, 25%);
       $lw: 2px;
 
       .pd {
