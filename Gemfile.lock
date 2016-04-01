@@ -11,6 +11,16 @@ GIT
       streamio-ffmpeg
 
 GIT
+  remote: git://github.com/fushang318/kc_courses.git
+  revision: 435a19338222af6edc2626bb9ad2fd604c9ab449
+  ref: 435a193
+  specs:
+    kc_courses (0.1.0)
+      mongoid-tree
+      ruby-pinyin
+      simple_form
+
+GIT
   remote: git://github.com/kc-train/model_label.git
   revision: ffbc999778b2179b898c2263d303c8c0749385ee
   ref: ffbc999
@@ -63,16 +73,6 @@ GIT
   ref: d3d64e6
   specs:
     kc_comments (0.1.0)
-
-GIT
-  remote: git://github.com/mindpin/kc_courses.git
-  revision: 2788908756330bb11dbd2a628c7404e62d557afb
-  ref: 2788908
-  specs:
-    kc_courses (0.1.0)
-      mongoid-tree
-      ruby-pinyin
-      simple_form
 
 GIT
   remote: git://github.com/mindpin/knowledge-graph-js.git
