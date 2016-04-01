@@ -11,6 +11,8 @@ module Mockup::ManagerNotGetMethods
         post_create_chapter
       when 'create_ware'
         post_create_ware
+      when 'create_subject'
+        post_create_subject
       end
   end
 
@@ -45,6 +47,15 @@ module Mockup::ManagerNotGetMethods
       move_up_url:    mockup_manager_put_url(req: 'common'),
       move_down_url:  mockup_manager_put_url(req: 'common'),
       delete_url:     mockup_manager_delete_url(req: 'common')
+    )
+  end
+
+  def post_create_subject
+    render json: SAMPLE_CSUBJECTS_DATA[:items][0].merge(
+      id: randstr,
+      name: params[:subject][:name],
+      slug: randstr,
+      parent_id: params[:subject][:parent_id]
     )
   end
 

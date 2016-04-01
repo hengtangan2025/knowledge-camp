@@ -36,4 +36,6 @@
     @setState
       is_editing: false
 
-    @props.on_submit @state.value
+    if not @props.on_submit?
+      console.warn '请为 InlineInputEdit 定义 on_submit 回调'
+    @props.on_submit? @state.value

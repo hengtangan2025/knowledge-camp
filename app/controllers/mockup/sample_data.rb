@@ -208,6 +208,67 @@ module Mockup::SampleData
     }
   ]
 
+  SAMPLE_CSUBJECTS_DATA = {
+    items: [
+      { 
+        id: '1', 
+        name: '个人电商', slug: 'ge-ren-dian-shang', courses_count: 3,
+      },
+
+      {
+        id: '11',
+        name: '农业电商', slug: 'nong-ye-dian-shang', courses_count: 1,
+      },
+
+      {
+        id: 'c1',
+        name: 'FENLEI1', slug: 'fen-lei-1', courses_count: 2,
+      },
+
+      {
+        id: 'c111',
+        name: 'FENLEI111', slug: 'fen-lei-111', courses_count: 2,
+      },
+
+      {
+        id: 'c11',
+        name: 'FENLEI11', slug: 'fen-lei-11', courses_count: 3,
+      },
+
+      {
+        id: 'c2',
+        name: 'FENLEI2', slug: 'fen-lei-2', courses_count: 2,
+      },
+
+      {
+        id: 'c3',
+        name: 'FENLEI3', slug: 'fen-lei-3', courses_count: 2,
+      },
+
+      {
+        id: '12',
+        name: '淘宝规则', slug: 'tao-bao-gui-ze', courses_count: 2,
+      },
+
+      {
+        id: '2',
+        name: '企业电商', slug: 'qi-ye-dian-shang', courses_count: 5,
+      },
+
+      {
+        id: '3',
+        name: '虚拟服务电商', slug: 'xu-ni-fu-wu', courses_count: 5,
+      }
+    ],
+
+    relations: [
+      ['1', '11'], ['1', '12'],
+      ['11', 'c1'], ['11', 'c2'], ['11', 'c3'],
+      ['c1', 'c11'],
+      ['c11', 'c111']
+    ]
+  }
+
   SAMPLE_PAGINATE_DATA = {
     total_pages: 12,
     current_page: 5,

@@ -180,40 +180,6 @@
 
 
 # 章节与课件编辑页面
-
-Util =
-  exange: (immutable_arr, idx0, idx1)->
-    x0 = immutable_arr.get idx0
-    x1 = immutable_arr.get idx1
-    if x0? and x1?
-      immutable_arr.set(idx0, x1).set(idx1, x0)
-    else
-      immutable_arr
-
-  index_of: (immutable_arr, item)->
-    immutable_arr.toJS()
-      .map (x)-> x.id
-      .indexOf item.id
-
-  move_up: (immutable_arr, item)->
-    idx = Util.index_of immutable_arr, item
-    if idx > 0
-      Util.exange immutable_arr, idx, idx - 1
-    else
-      immutable_arr
-
-  move_down: (immutable_arr, item)->
-    idx = Util.index_of immutable_arr, item
-    if idx < immutable_arr.size - 1 and idx > -1
-      Util.exange immutable_arr, idx, idx + 1
-    else
-      immutable_arr
-
-  delete: (immutable_arr, item)->
-    immutable_arr.filter (x)->
-      x.get('id') != item.id
-
-
 class DataStore
   constructor: (@page, course)->
     @course = Immutable.fromJS course
@@ -268,7 +234,7 @@ class DataStore
       @reload_page @course.update 'chapters', (chapters)->
         chapters.map (c)->
           c.update 'wares', (wares)->
-            Util.delete wares, ware
+            ImmutableArrayUtils.delete wares, ware
     .fail (res)->
       console.log res.responseJSON
 
@@ -284,7 +250,7 @@ class DataStore
       @reload_page @course.update 'chapters', (chapters)->
         chapters.map (c)->
           c.update 'wares', (wares)->
-            Util.move_down wares, ware
+            ImmutableArrayUtils.move_down wares, ware
     .fail (res)->
       console.log res.responseJSON
 
@@ -300,7 +266,7 @@ class DataStore
       @reload_page @course.update 'chapters', (chapters)->
         chapters.map (c)->
           c.update 'wares', (wares)->
-            Util.move_up wares, ware
+            ImmutableArrayUtils.move_up wares, ware
     .fail (res)->
       console.log res.responseJSON
 
@@ -325,7 +291,7 @@ class DataStore
       url: chapter.delete_url
     .done (res)=>
       @reload_page @course.update 'chapters', (chapters)->
-        Util.delete chapters, chapter
+        ImmutableArrayUtils.delete chapters, chapter
     .fail (res)->
       console.log res.responseJSON
 
@@ -339,7 +305,7 @@ class DataStore
       url: chapter.move_down_url
     .done (res)=>
       @reload_page @course.update 'chapters', (chapters)->
-        Util.move_down chapters, chapter
+        ImmutableArrayUtils.move_down chapters, chapter
     .fail (res)->
       console.log res.responseJSON
 
@@ -353,7 +319,7 @@ class DataStore
       url: chapter.move_up_url
     .done (res)=>
       @reload_page @course.update 'chapters', (chapters)->
-        Util.move_up chapters, chapter
+        ImmutableArrayUtils.move_up chapters, chapter
     .fail (res)->
       console.log res.responseJSON
 
