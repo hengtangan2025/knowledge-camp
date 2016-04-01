@@ -181,6 +181,14 @@
         ]
       }
 
+      top_menu_data = {
+        sign_out_url: mockup_auth_delete_url(req: 'sign_out'),
+        sign_out_to_url: mockup_url(page: 'home')
+      }
+      current_user_data = MockupController::SAMPLE_USER_DATA
+
+    = react_component 'LayoutManagerTopMenu', data: top_menu_data, current_user_data: current_user_data
+
     = react_component 'LayoutManagerSidebar', data: manager_sidebar_data
 
     .manager-page-content

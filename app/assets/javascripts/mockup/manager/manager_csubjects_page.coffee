@@ -1,17 +1,12 @@
 @ManagerCsubjectsPage = React.createClass
   getInitialState: ->
-    subjects = @props.data.subjects || {
-      items: []
-      relations: []
-    }
+    subjects = @props.data.subjects || []
     subjects: subjects
 
   render: ->
     <div className='manager-csubjects-page'>
     {
-      items = @state.subjects?.items || []
-
-      if items.length is 0
+      if @state.subjects.length is 0
         data =
           header: '课程分类'
           desc: '还没有创建任何课程分类'
@@ -19,7 +14,7 @@
             <ManagerCsubjectsPage.CreateBtn />
         <ManagerFuncNotReady data={data} />
       else
-        tdp = new TreeDataParser @state.subjects
+        tdp = new TreeArrayParser @state.subjects
         flatten_subjects = tdp.get_depth_first_array()
 
         <div>
@@ -161,16 +156,8 @@ class DataStore
 
   _push_data_into_tree: (res)->
     new_subject = Immutable.fromJS res
-
-    subjects = @subjects.update 'items', (items)->
-      items.push Immutable.fromJS res
-
-    if res.parent_id?
-      subjects = subjects.update 'relations', (relations)->
-        relations.push Immutable.fromJS([res.parent_id, res.id])
-
+    subjects = @subjects.push new_subject
     @reload_page subjects
-
 
   delete_subject: (subject)->
     if not subject.delete_url?
@@ -187,26 +174,14 @@ class DataStore
       console.log res.responseJSON
 
   _delete_data_from_tree: (subjects, subject)->
-    children_ids = subjects.get('relations')
-      .filter (r)->
-        r.get(0) == subject.id
-      .map (r)->
-        r.get(1)
-
-    children = subjects.get('items').filter (x)->
-      children_ids.contains x.get('id')
+    children = subjects.filter (r)->
+      r.get('parent_id') == subject.id
 
     children.forEach (c)=>
       subjects = @_delete_data_from_tree subjects, c.toJS()
 
-    subjects
-      .update 'relations', (relations)->
-        relations.filter (r)->
-          r.get(1) != subject.id
-
-      .update 'items', (items)->
-        items.filter (x)->
-          x.get('id') != subject.id
+    subjects = subjects.filter (x)->
+      x.get('id') != subject.id
 
   update_subject: (subject, data)->
     if not subject.update_url?
@@ -219,10 +194,9 @@ class DataStore
       data:
         subject: data
     .done (res)=>
-      @reload_page @subjects.update 'items', (items)->
-        items.map (x)->
-          x = x.merge data if x.get('id') is subject.id
-          x
+      @reload_page @subjects.map (x)->
+        x = x.merge data if x.get('id') is subject.id
+        x
     .fail (res)->
       console.log res.responseJSON
 
