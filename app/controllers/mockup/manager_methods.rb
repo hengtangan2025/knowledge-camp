@@ -80,14 +80,16 @@ module Mockup::ManagerMethods
   def get_manager_csubjects_data
     subjects = 
       if params[:empty]
-      then []
+      then nil
       else SAMPLE_CSUBJECTS_DATA
       end
 
-    subjects[:items].each { |s|
-      s[:delete_url] = mockup_manager_delete_url(req: 'common')
-      s[:update_url] = mockup_manager_post_url(req: 'common')
-    }
+    if subjects
+      subjects[:items].each { |s|
+        s[:delete_url] = mockup_manager_delete_url(req: 'common')
+        s[:update_url] = mockup_manager_post_url(req: 'common')
+      }
+    end
 
     @component_data = {
       subjects: subjects,
