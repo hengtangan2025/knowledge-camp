@@ -14,6 +14,9 @@ module Mockup::AuthMethods
       when 'auth_manager_sign_in'
         layout = 'mockup_manager_auth'
         get_auth_manager_sign_in_data
+
+      when 'auth_bank_sign_in'
+        layout = 'mockup_bank_auth'
       end
 
     render layout: layout, template: 'mockup/page'

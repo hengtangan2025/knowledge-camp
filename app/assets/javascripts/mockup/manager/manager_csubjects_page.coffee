@@ -216,6 +216,8 @@ class DataStore
     jQuery.ajax
       type: 'PUT'
       url: subject.update_url
+      data:
+        subject: data
     .done (res)=>
       @reload_page @subjects.update 'items', (items)->
         items.map (x)->
