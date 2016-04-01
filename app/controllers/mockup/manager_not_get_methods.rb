@@ -55,7 +55,10 @@ module Mockup::ManagerNotGetMethods
       id: randstr,
       name: params[:subject][:name],
       slug: randstr,
-      parent_id: params[:subject][:parent_id]
+      parent_id: params[:subject][:parent_id], 
+
+      delete_url: mockup_manager_delete_url(req: 'common'),
+      update_url: mockup_manager_post_url(req: 'common')
     )
   end
 
