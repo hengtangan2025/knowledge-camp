@@ -35,11 +35,12 @@
             actions: '操作'
           data_set: @props.data.courses.map (x)->
             {
+              id: x.id
               name: x.name
               instructor: x.instructor
               updated_at: x.updated_at
               actions: 
-                <a className='ui button mini' href={x.manager_contents_url}>
+                <a className='ui button mini blue basic' href={x.manager_contents_url}>
                   <i className='icon pencil' />
                   内容编排
                 </a>

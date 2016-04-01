@@ -14,6 +14,9 @@ module Mockup::ManagerMethods
         get_manager_new_course_data
       when 'manager_course_contents'
         get_manager_course_contents_data
+
+      when 'manager_csubjects'
+        get_manager_csubjects_data
       end
 
     render layout: 'mockup_manager', template: 'mockup/page'
@@ -71,6 +74,26 @@ module Mockup::ManagerMethods
       course: data,
       manager_courses_url: mockup_manager_url(page: 'courses'),
       manager_create_chapter_url: mockup_manager_post_url(req: 'create_chapter')
+    }
+  end
+
+  def get_manager_csubjects_data
+    subjects = 
+      if params[:empty]
+      then nil
+      else SAMPLE_CSUBJECTS_DATA
+      end
+
+    if subjects
+      subjects[:items].each { |s|
+        s[:delete_url] = mockup_manager_delete_url(req: 'common')
+        s[:update_url] = mockup_manager_post_url(req: 'common')
+      }
+    end
+
+    @component_data = {
+      subjects: subjects,
+      create_subject_url: mockup_manager_post_url(req: 'create_subject'),
     }
   end
 end
