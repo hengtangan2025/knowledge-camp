@@ -10,14 +10,8 @@ class Manager::CourseSubjectsController < ApplicationController
         .url(:delete_url)
         .data
     end
-    relations = subjects.map do |_cs|
-      _cs.parent.blank? ? nil : [_cs.parent_id.to_s, _cs.id.to_s]
-    end.compact
     @component_data = {
-      subjects: {
-        items: items,
-        relations: relations
-      },
+      subjects: items,
       create_subject_url: manager_course_subjects_path,
     }
     render "/mockup/page"
