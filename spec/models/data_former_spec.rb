@@ -151,7 +151,7 @@ RSpec.describe DataFormer, type: :model do
   end
 
   describe "url method" do
-    it{
+    it "不带参数" do
       data = DataFormer.new(@course).url(:update).data
       expect(data).to match({
         id: @course.id.to_s,
@@ -159,6 +159,16 @@ RSpec.describe DataFormer, type: :model do
         desc: @course.desc,
         update: "/courses/#{@course.id.to_s}"
       })
-    }
+    end
+
+    it "带参数" do
+      data = DataFormer.new(@course).url(:update, :custom_url).data
+      expect(data).to match({
+        id: @course.id.to_s,
+        name: @course.name,
+        desc: @course.desc,
+        custom_url: "/courses/#{@course.id.to_s}"
+      })
+    end
   end
 end

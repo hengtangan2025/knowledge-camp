@@ -82,12 +82,13 @@ module DataFormerConfig
       self
     end
 
-    def url(url_name, *args)
-      _proc = @info[:urls][url_name]
+    def url(config_url_name, output_url_name = nil, *args)
+      output_url_name = config_url_name if output_url_name.blank?
+      _proc = @info[:urls][config_url_name]
       if _proc.blank?
-        raise UndefinedLogicError.new "DataFormer 声明的 #{@model_instance.class.to_s} 的 former 中没有声明 #{url_name} url"
+        raise UndefinedLogicError.new "DataFormer 声明的 #{@model_instance.class.to_s} 的 former 中没有声明 #{config_url_name} url"
       end
-      @data[url_name] = _proc.call(@model_instance, *args)
+      @data[output_url_name] = _proc.call(@model_instance, *args)
       self
     end
 
