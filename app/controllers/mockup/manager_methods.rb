@@ -17,6 +17,9 @@ module Mockup::ManagerMethods
 
       when 'manager_csubjects'
         get_manager_csubjects_data
+
+      when 'manager_questions'
+        get_manager_questions_data
       end
 
     render layout: 'mockup_manager', template: 'mockup/page'
@@ -92,6 +95,12 @@ module Mockup::ManagerMethods
     @component_data = {
       subjects: subjects,
       create_subject_url: mockup_manager_post_url(req: 'create_subject'),
+    }
+  end
+
+  def get_manager_questions_data
+    @component_data = {
+      questions: SAMPLE_QUESTIONS_DATA
     }
   end
 end

@@ -18,7 +18,7 @@
         flatten_subjects = tdp.get_depth_first_array()
 
         <div>
-          <ManagerCsubjectsPage.Table flatten_subjects={flatten_subjects} parent={@}/>
+          <ManagerCsubjectsPage.Table flatten_subjects={flatten_subjects} />
           <div className='ui segment btns'>
             <ManagerCsubjectsPage.CreateBtn />
           </div>
