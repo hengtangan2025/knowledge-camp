@@ -20,7 +20,7 @@
   statics:
     CreateBtn: React.createClass
       render: ->
-        <a className='ui button green' href={@props.data.new_course_url}>
+        <a className='ui button green mini' href={@props.data.new_course_url}>
           <i className='icon plus' />
           创建课程
         </a>

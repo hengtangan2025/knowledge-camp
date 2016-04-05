@@ -14,9 +14,14 @@ module Mockup::ManagerMethods
         get_manager_new_course_data
       when 'manager_course_contents'
         get_manager_course_contents_data
+      when 'manager_courses_publish'
+        get_manager_courses_publish_data
 
       when 'manager_csubjects'
         get_manager_csubjects_data
+
+      when 'manager_questions'
+        get_manager_questions_data
       end
 
     render layout: 'mockup_manager', template: 'mockup/page'
@@ -92,6 +97,31 @@ module Mockup::ManagerMethods
     @component_data = {
       subjects: subjects,
       create_subject_url: mockup_manager_post_url(req: 'create_subject'),
+    }
+  end
+
+  def get_manager_courses_publish_data
+    if params[:empty]
+      @component_data = {
+        prepared_courses: [],
+        paginate: nil
+      }
+    else
+      @component_data = {
+        prepared_courses: SAMPLE_COURSES_DATA.map { |x|
+          x.merge(
+            publish_url: mockup_manager_post_url(req: 'common'),
+            published: false
+          )
+        },
+        paginate: SAMPLE_PAGINATE_DATA
+      }
+    end
+  end
+
+  def get_manager_questions_data
+    @component_data = {
+      questions: SAMPLE_QUESTIONS_DATA
     }
   end
 end
