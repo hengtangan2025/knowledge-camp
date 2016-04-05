@@ -6,4 +6,5 @@ class DataFormer
   include WareFormer
   include CourseSubjectFormer
   include UserFormer
+  include PublishedCourseFormer
 end
