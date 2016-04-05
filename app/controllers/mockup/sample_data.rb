@@ -1,4 +1,6 @@
 module Mockup::SampleData
+  include Mockup::SampleBankData
+
   SAMPLE_COMMENTS_DATA = [
     {
       author: {

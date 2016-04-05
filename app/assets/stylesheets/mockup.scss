@@ -21,6 +21,7 @@ $mindpin-font-family: "Segoe UI", "Helvetica Neue", "Helvetica", "Arial", "sans-
 @import 'mockup/manager';
 
 @import 'mockup/bank/auth';
+@import 'mockup/bank/manager';
 
 body {
   background-color: #F8F8F8;
@@ -63,4 +64,8 @@ body,
 
 .ui.form input, .ui.input input{
   font-family: $mindpin-font-family;
+}
+
+.ui.button.pill {
+  border-radius: 100px;
 }

@@ -2,6 +2,8 @@ module Mockup::ManagerMethods
   include Mockup::SampleData
   include ManagerNotGetMethods
 
+  include ManagerBankMethods
+
   def manager_page
     @current_func = params[:page]
     @page_name = "manager_#{params[:page]}"
