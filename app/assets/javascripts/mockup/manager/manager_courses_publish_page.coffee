@@ -26,6 +26,14 @@
       x
     @setState prepared_courses: prepared_courses.toJS()
 
+  recall_response: (course)->
+    prepared_courses = Immutable.fromJS @state.prepared_courses
+    prepared_courses = prepared_courses.map (x)->
+      if x.get('id') == course.id
+        x = x.set('published', false)
+      x
+    @setState prepared_courses: prepared_courses.toJS()
+
   statics:
     Table: React.createClass
       render: ->
@@ -58,7 +66,7 @@
                       <i className='icon send' /> 发布
                     </a>
                   else
-                    <a className='ui button mini basic' href='javascript:;' onClick={->}>
+                    <a className='ui button mini basic' href='javascript:;' onClick={@confirm_recall(x)}>
                       <i className='icon arrow left' /> 撤回
                     </a>
                 }
@@ -96,3 +104,23 @@
                 type: 'POST'
               .done (res)=>
                 @props.parent.publish_response(course)
+
+      confirm_recall: (course)->
+        (evt)=>
+          unless course.recall_url?
+            console.warn "没有设置 course.recall_url"
+            return
+
+          jQuery.modal_confirm
+            text: """
+              <div>
+                <div>要撤回这个课程吗？</div>
+                <strong>#{course.name}</strong>
+              </div>
+            """
+            yes: =>
+              jQuery.ajax
+                url: course.recall_url
+                type: 'DELETE'
+              .done (res)=>
+                @props.parent.recall_response(course)

@@ -111,6 +111,7 @@ module Mockup::ManagerMethods
         prepared_courses: SAMPLE_COURSES_DATA.map { |x|
           x.merge(
             publish_url: mockup_manager_post_url(req: 'common'),
+            recall_url: mockup_manager_delete_url(req: 'common'),
             published: false
           )
         },
