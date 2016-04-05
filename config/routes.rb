@@ -220,6 +220,10 @@ Rails.application.routes.draw do
     end
 
     resources :course_subjects
+    resources :published_courses do
+      post   :publish, on: :collection
+      delete :recall,  on: :collection
+    end
   end
 
 
