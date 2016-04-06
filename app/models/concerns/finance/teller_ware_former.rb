@@ -13,6 +13,14 @@ module Finance::TellerWareFormer
       logic :actions, ->(instance) {
         instance.actions
       }
+
+      logic :business_kind_str, ->(instance) {
+        instance.business_kind_str
+      }
+
+      url :preview_url, ->(instance){
+        manager_finance_preview_path(number: instance.number)
+      }
     end
 
   end

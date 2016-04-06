@@ -223,6 +223,7 @@ Rails.application.routes.draw do
 
     scope :path => '/finance', module: 'finance', as: :finance do
       resources :teller_wares
+      get '/teller_wares/:number/preview' => "teller_wares#preview", as: :preview
     end
   end
 

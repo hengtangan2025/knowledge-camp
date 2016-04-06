@@ -3,17 +3,33 @@ class Manager::Finance::TellerWaresController < ApplicationController
 
   def index
     @page_name = "manager_finance_teller_wares"
-    wares = ::Finance::TellerWare.page params[:page]
+    wares = ::Finance::TellerWare.page(params[:page]).per(15)
     data = wares.map {|x|
-      DataFormer.new(x).data
+      DataFormer.new(x)
+        .logic(:business_kind_str)
+        .url(:preview_url)
+        .data
     }
 
     @component_data = {
       wares: data,
-      paginate: DataFormer.paginate_data(wares)
+      paginate: DataFormer.paginate_data(wares),
+      filters: {
+        kinds: ::Finance::TellerWare::KINDS
+      }
     }
 
     render "/mockup/page"
+  end
+
+  def preview
+    ware = ::Finance::TellerWare.where(number: params[:number]).first
+
+    @page_name = "manager_finance_teller_ware_preview"
+    @component_data = DataFormer.new(ware)
+      .logic(:actions)
+      .data
+    render "/mockup/page", layout: 'finance/preview'
   end
 
   # # 从 json 创建 ::Finance::TellerWare

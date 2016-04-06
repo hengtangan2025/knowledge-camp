@@ -15,13 +15,16 @@ $rem: 14px;
 
 $mindpin-font-family: "Segoe UI", "Helvetica Neue", "Helvetica", "Arial", "sans-serif", "微软雅黑" !important;
 
+$number-font-family: "Lato", "Helvetica Neue", "Arial", "Helvetica", "sans-serif" !important;
+
 @import 'mockup/layout';
 @import 'mockup/ui';
 @import 'mockup/widgets';
 @import 'mockup/manager';
 
-@import 'mockup/bank/auth';
-@import 'mockup/bank/manager';
+@import 'mockup/finance/auth';
+@import 'mockup/finance/manager';
+@import 'mockup/finance/teller-ware';
 
 body {
   background-color: #F8F8F8;
