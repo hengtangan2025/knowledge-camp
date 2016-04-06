@@ -39,7 +39,7 @@
             klass = new ClassName
               'item number': true
               'active': page == current + ''
-            href = URI(location.href).addSearch({page: page})
+            href = URI(location.href).removeSearch('page').addSearch({page: page})
             <a key={idx} className={klass} href={href}>{page}</a>
       }
 
