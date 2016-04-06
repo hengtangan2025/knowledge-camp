@@ -12,10 +12,14 @@ module Mockup::ManagerFinanceMethods
   end
 
   def get_manager_finance_teller_wares_data
-    SAMPLE_TELLER_WARES_DATA.map { |x|
-      x.merge(
-        manage_url: mockup_manager_finance_url(page: 'teller_ware_show')
-      )
+    {
+      wares: SAMPLE_TELLER_WARES_DATA.map { |x|
+        x.merge(
+          manage_url: mockup_manager_finance_url(page: 'teller_ware_show')
+        )
+      },
+      paginate: SAMPLE_PAGINATE_DATA
     }
+    
   end
 end
