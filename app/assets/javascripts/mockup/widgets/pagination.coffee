@@ -22,10 +22,10 @@
     prev = Math.max first, current - 1
     next = Math.min last, current + 1
 
-    first_href = URI(location.href).addSearch({page: first})
-    last_href = URI(location.href).addSearch({page: last})
-    prev_href = URI(location.href).addSearch({page: prev})
-    next_href = URI(location.href).addSearch({page: next})
+    first_href = URI(location.href).removeSearch('page').addSearch({page: first})
+    last_href = URI(location.href).removeSearch('page').addSearch({page: last})
+    prev_href = URI(location.href).removeSearch('page').addSearch({page: prev})
+    next_href = URI(location.href).removeSearch('page').addSearch({page: next})
 
     <div className="ui pagination menu small">
       <a className='item' href={first_href}><i className='icon step backward' /></a>

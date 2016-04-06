@@ -178,6 +178,8 @@ gem 'sprockets-coffee-react', '3.0.1'
 # 通过 rails assets 服务加载前端包
 source 'https://rails-assets.org'
 gem 'rails-assets-semantic'
+
+#http://medialize.github.io/URI.js/
 gem 'rails-assets-URIjs'
 # http://facebook.github.io/immutable-js/
 gem 'rails-assets-immutable'
