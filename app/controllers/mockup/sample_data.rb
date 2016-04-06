@@ -1,5 +1,5 @@
 module Mockup::SampleData
-  include Mockup::SampleBankData
+  include Mockup::SampleFinanceData
 
   SAMPLE_COMMENTS_DATA = [
     {

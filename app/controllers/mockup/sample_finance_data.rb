@@ -1,4 +1,4 @@
-module Mockup::SampleBankData
+module Mockup::SampleFinanceData
   SAMPLE_TELLER_WARES_DATA = [
     {
       id: 'w1',

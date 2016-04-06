@@ -1,5 +1,5 @@
-@ManagerBankTellerWaresPage = React.createClass
-  displayName: 'ManagerBankTellerWaresPage'
+@ManagerFinanceTellerWaresPage = React.createClass
+  displayName: 'ManagerFinanceTellerWaresPage'
   getInitialState: ->
     wares: @props.data
 
@@ -9,7 +9,7 @@
         <div className='ui cards'>
         {
           for ware in @state.wares
-            <ManagerBankTellerWaresPage.WareCard key={ware.id} data={ware} />
+            <ManagerFinanceTellerWaresPage.WareCard key={ware.id} data={ware} />
         }
         </div>
       </div>
