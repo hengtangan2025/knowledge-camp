@@ -1,7 +1,8 @@
 @ManagerFinanceTellerWaresPage = React.createClass
   displayName: 'ManagerFinanceTellerWaresPage'
   getInitialState: ->
-    wares: @props.data
+    wares: @props.data.wares
+    paginate: @props.data.paginate
 
   render: ->
     <div className='manager-bank-teller-wares'>
