@@ -168,6 +168,8 @@ end
 source 'https://rails-assets.org'
 
 gem 'rails-assets-semantic'
+
+#http://medialize.github.io/URI.js/
 gem 'rails-assets-URIjs'
 
 # http://facebook.github.io/immutable-js/
