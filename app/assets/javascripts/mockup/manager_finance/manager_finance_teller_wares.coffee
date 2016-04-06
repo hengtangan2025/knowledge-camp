@@ -6,6 +6,40 @@
 
   render: ->
     <div className='manager-bank-teller-wares'>
+      <ManagerFinanceTellerWaresPage.Table data={@state} />
+    </div>
+
+  statics:
+    Table: React.createClass
+      render: ->
+        table_data = {
+          fields:
+            name: '业务名称'
+            kind: '业务类型'
+            memo: '备注'
+          data_set: @props.data.wares
+          th_classes: {}
+          td_classes: {
+            actions: 'collapsing'
+          }
+
+          paginate: @props.data.paginate
+        }
+
+        <div className='ui segment'>
+          <ManagerTable data={table_data} title='前端柜员操作业务' />
+        </div>
+
+# 暂时没有启用
+
+ManagerFinanceTellerWaresCardsPage = React.createClass
+  displayName: 'ManagerFinanceTellerWaresPage'
+  getInitialState: ->
+    wares: @props.data.wares
+    paginate: @props.data.paginate
+
+  render: ->
+    <div className='manager-bank-teller-wares'>
       <div className='wares'>
         <div className='ui cards'>
         {

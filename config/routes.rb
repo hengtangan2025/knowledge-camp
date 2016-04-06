@@ -220,6 +220,10 @@ Rails.application.routes.draw do
     end
 
     resources :course_subjects
+
+    scope :path => '/finance', module: 'finance', as: :finance do
+      resources :teller_wares
+    end
   end
 
 
