@@ -8,6 +8,8 @@ class DataFormer
   include UserFormer
 
   include Finance::TellerWareFormer
+  include Finance::TellerWareScreenFormer
+  include Finance::TellerWareTradeFormer
 
   def self.paginate_data(models)
     {

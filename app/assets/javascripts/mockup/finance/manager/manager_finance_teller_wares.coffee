@@ -22,21 +22,18 @@
             ops: '操作'
           data_set: @props.data.wares.map (x)->
             jQuery.extend x, {
-              number:
-                <strong>#{x.number}</strong>
               kind: x.business_kind_str
               ops:
                 <div>
                   <a href={x.preview_url} target='_blank' className='ui basic button mini'>预览</a>
                 </div>
             }
-          th_classes: {}
-          td_classes: {
-            number: 'collapsing number'
+          th_classes:
+            number: 'collapsing '
+          td_classes:
+            number: 'number'
             kind: 'collapsing'
             ops: 'collapsing'
-          }
-
           paginate: @props.data.paginate
         }
 

@@ -222,7 +222,11 @@ Rails.application.routes.draw do
     resources :course_subjects
 
     scope :path => '/finance', module: 'finance', as: :finance do
-      resources :teller_wares
+      resources :teller_wares do
+        get :screens, on: :collection
+        get :trades, on: :collection
+        get :hmdm, on: :collection
+      end
       get '/teller_wares/:number/preview' => "teller_wares#preview", as: :preview
     end
   end
