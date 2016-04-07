@@ -69,9 +69,28 @@ class Manager::Finance::TellerWaresController < ApplicationController
 
   def hmdm
     screen = ::Finance::TellerWareScreen.where(hmdm: params[:hmdm]).first
-    data = DataFormer.new(screen).data
+    data = DataFormer.new(screen).data.merge({
+      xxdm_url: xxdm_manager_finance_teller_wares_path
+    })
     render json: data 
   end
+
+  def xxdm
+    xxmxs = ::Finance::TellerWareXxmx.where(xxdm: params[:xxdm])
+    render json: xxmxs.map {|x|
+      DataFormer.new(x).data
+    }
+  end
+
+  # # 从 json 创建 ::Finance::TellerWareXxmx
+  # def _read_xxmx_json_data
+  #   file = '/web/ben7th/bank-logic/xxmx.json'
+  #   arr = JSON.parse File.read file
+  #   arr.each do |x|
+  #     ::Finance::TellerWareXxmx.create(x)
+  #   end
+  #   render json: arr
+  # end
 
   # # 从 json 创建 ::Finance::TellerWareTrade
   # def _read_trades_json_data

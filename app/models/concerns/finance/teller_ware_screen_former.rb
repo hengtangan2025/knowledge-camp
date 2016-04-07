@@ -9,5 +9,13 @@ module Finance::TellerWareScreenFormer
       field :zds
     end
 
+    former 'Finance::TellerWareXxmx' do
+      field :id, ->(instance) {instance.id.to_s}
+      field :xxdm
+      field :xxqz
+      field :xxmc
+      field :xxzb
+    end
+
   end
 end

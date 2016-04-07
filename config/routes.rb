@@ -226,6 +226,7 @@ Rails.application.routes.draw do
         get :screens, on: :collection
         get :trades, on: :collection
         get :hmdm, on: :collection
+        get :xxdm, on: :collection
       end
       get '/teller_wares/:number/preview' => "teller_wares#preview", as: :preview
     end
