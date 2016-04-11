@@ -19,7 +19,7 @@
                 <i className='icon sign in' />
                 <span className='sign-in link'>用户登录</span>
               </div>
-              <SignInForm submit_url={''} jump={''} />
+              <SignInForm submit_url={'/mockup/auth/do_sign_in'} jump={'/mockup/bank_home'} />
             </div>
           </div>
         </div>

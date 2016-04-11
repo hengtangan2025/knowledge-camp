@@ -14,5 +14,7 @@ Rails.application.routes.draw do
   put     '/mockup/manager/:req'  => 'mockup#manager_do_put', as: 'mockup_manager_put'
   delete  '/mockup/manager/:req'  => 'mockup#manager_do_delete', as: 'mockup_manager_delete'
 
+  get     '/mockup/manager/finance/:page' => 'mockup#manager_finance_page', as: 'mockup_manager_finance'
+  
   get     '/console' => 'console#index'
 end

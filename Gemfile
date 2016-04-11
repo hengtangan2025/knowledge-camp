@@ -144,8 +144,8 @@ gem 'kc-course-editor',
     :require => 'course_editor'
 
 # -----金融学院相关
-gem 'kc_courses', :github => 'mindpin/kc_courses',
-                  :ref => "2b625b0"
+gem 'kc_courses', :github => 'fushang318/kc_courses',
+                  :ref => "5cb25c0"
                   # :tag => "v0.6.0"
                   #:path => "../kc_courses"
 
@@ -183,6 +183,8 @@ gem 'web-console', '~> 2.0'
 # 通过 rails assets 服务加载前端包
 source 'https://rails-assets.org'
 gem 'rails-assets-semantic'
+
+#http://medialize.github.io/URI.js/
 gem 'rails-assets-URIjs'
 # http://facebook.github.io/immutable-js/
 gem 'rails-assets-immutable'

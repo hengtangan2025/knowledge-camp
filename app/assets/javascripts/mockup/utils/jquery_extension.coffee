@@ -58,3 +58,25 @@ jQuery.flatten_tree = (tree_array, children_key)->
   _r tree_data, Immutable.fromJS([])
 
   return res.toJS()
+
+
+jQuery.open_modal = (component, config={})->
+  $dom = jQuery """
+    <div class="ui modal ware">
+      <div class="content">
+      </div>
+    </div>
+  """
+    .appendTo document.body
+
+  a = React.render component, $dom.find('.content')[0]
+  a.setState $modal_dom: $dom
+
+  config = jQuery.extend({
+    blurring: true
+    closable: true
+  }, config)
+
+  $dom
+    .modal config
+    .modal('show')

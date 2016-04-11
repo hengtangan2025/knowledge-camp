@@ -1,4 +1,6 @@
 module Mockup::SampleData
+  include Mockup::SampleFinanceData
+
   SAMPLE_COMMENTS_DATA = [
     {
       author: {
@@ -264,6 +266,24 @@ module Mockup::SampleData
     {
       id: '3',
       name: '虚拟服务电商', slug: 'xu-ni-fu-wu', courses_count: 5,
+    }
+  ]
+
+  SAMPLE_QUESTIONS_DATA = [
+    {
+      id: '1',
+      asker: '张三', position: '存款业务', created_at: '2016-03-01 11:11:11', answers_count: 5,
+      title: '业务办理过程中污损，残破的钞票应怎样处理？',
+    },
+    {
+      id: '2',
+      asker: '李四', position: '开户业务', created_at: '2016-03-01 11:11:11', answers_count: 5,
+      title: '外籍人士护照是否可以用于开户？',
+    },
+    {
+      id: '3',
+      asker: '王五', position: '综合业务', created_at: '2016-03-01 11:11:11', answers_count: 5,
+      title: '设备出现故障时如何报备、报修？',
     }
   ]
 
