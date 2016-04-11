@@ -9,3 +9,7 @@ end
 File.open 'sample-data-bank/json/teller_ware_trade.json', 'w' do |f|
   f.write ::Finance::TellerWareTrade.all.to_json
 end
+
+File.open 'sample-data-bank/json/teller_ware_xxmx.json', 'w' do |f|
+  f.write ::Finance::TellerWareXxmx.all.to_json
+end
