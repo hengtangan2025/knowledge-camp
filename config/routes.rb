@@ -227,6 +227,7 @@ Rails.application.routes.draw do
     end
 
     resources :business_categories
+    resources :enterprise_posts
   end
 
 

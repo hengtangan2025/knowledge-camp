@@ -8,4 +8,5 @@ class DataFormer
   include UserFormer
   include PublishedCourseFormer
   include BusinessCategoryFormer
+  include EnterprisePostFormer
 end

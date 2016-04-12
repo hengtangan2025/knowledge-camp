@@ -8,21 +8,27 @@ class ApplicationController < ActionController::Base
     stored_location_for(resource) || root_path
   end
 
-  def save_model(model, &block)
+  def save_model(model, wrap = nil, &block)
     if model.save
       data = block.call(model)
+      data = {wrap.to_sym => data} if !wrap.blank?
       render json: data
     else
-      render json: model.errors.messages, :status => 422
+      data = model.errors.messages
+      data = {wrap.to_sym => data} if !wrap.blank?
+      render json: data, :status => 422
     end
   end
 
-  def update_model(model, params_attrs, &block)
+  def update_model(model, params_attrs, wrap = nil, &block)
     if model.update_attributes params_attrs
       data = block.call(model)
+      data = {wrap.to_sym => data} if !wrap.blank?
       render json: data
     else
-      render json: model.errors.messages, :status => 422
+      data = model.errors.messages
+      data = {wrap.to_sym => data} if !wrap.blank?
+      render json: data, :status => 422
     end
   end
 
