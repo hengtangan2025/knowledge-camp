@@ -24,6 +24,9 @@ module Mockup::ManagerMethods
       when 'manager_business_categories'
         get_manager_business_categories_data
 
+      when 'manager_enterprise_posts'
+        get_manager_enterprise_posts_data
+
       when 'manager_questions'
         get_manager_questions_data
       end
@@ -119,6 +122,24 @@ module Mockup::ManagerMethods
     @component_data = {
       business_categories: business_categories,
       create_business_category_url: mockup_manager_post_url(req: 'create_business_category'),
+    }
+  end
+
+  def get_manager_enterprise_posts_data
+    posts = 
+      if params[:empty]
+      then []
+      else SAMPLE_ENTERPRISE_POSTS_DATA
+      end
+
+    posts.each { |s|
+      s[:delete_url] = mockup_manager_delete_url(req: 'common', model: 'post')
+      s[:update_url] = mockup_manager_post_url(req: 'common', model: 'post')
+    }
+
+    @component_data = {
+      posts: posts,
+      create_url: mockup_manager_post_url(req: 'common', model: 'post')
     }
   end
 

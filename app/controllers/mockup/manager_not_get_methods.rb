@@ -4,7 +4,7 @@ module Mockup::ManagerNotGetMethods
   def manager_do_post
     case params[:req]
       when 'common'
-        render json: {is_mockup: true}
+        _post_or_put_common
       when 'create_course'
         post_create_course
       when 'create_chapter'
@@ -80,8 +80,24 @@ module Mockup::ManagerNotGetMethods
   def manager_do_put
     case params[:req]
       when 'common'
-        render json: {is_mockup: true}
+        _post_or_put_common
       end
+  end
+
+  def _post_or_put_common
+    model = params[:model].to_sym
+    if model.present?
+      render json: {
+        is_mockup: true, 
+        model => {
+          id: randstr,
+          delete_url: mockup_manager_delete_url(req: 'common', model: model),
+          update_url: mockup_manager_put_url(req: 'common', model: model)  
+        }.merge(params[model])
+      }
+    else
+      render json: {is_mockup: true}
+    end
   end
 
   def manager_do_delete

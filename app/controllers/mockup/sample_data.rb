@@ -276,6 +276,11 @@ module Mockup::SampleData
     {id: '12', name: '存款业务', number: '120000', parent_id: '1'},
   ]
 
+  SAMPLE_ENTERPRISE_POSTS_DATA = [
+    {id: '1', name: '对公业务柜员', number: '1'},
+    {id: '2', name: '储蓄业务柜员', number: '3'},
+  ]
+
 
   SAMPLE_QUESTIONS_DATA = [
     {
