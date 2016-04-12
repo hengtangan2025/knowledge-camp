@@ -1,2 +1,0 @@
-module Mockup::FrontendMethods
-end

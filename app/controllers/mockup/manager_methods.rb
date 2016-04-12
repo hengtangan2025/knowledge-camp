@@ -1,6 +1,8 @@
 module Mockup::ManagerMethods
-  include Mockup::SampleData
-  include ManagerNotGetMethods
+  include ::Mockup::SampleData
+  include ::Mockup::ManagerNotGetMethods
+
+  include ::Mockup::ManagerFinanceMethods
 
   def manager_page
     @current_func = params[:page]
@@ -19,6 +21,8 @@ module Mockup::ManagerMethods
 
       when 'manager_csubjects'
         get_manager_csubjects_data
+      when 'manager_business_categories'
+        get_manager_business_categories_data
 
       when 'manager_questions'
         get_manager_questions_data
@@ -97,6 +101,24 @@ module Mockup::ManagerMethods
     @component_data = {
       subjects: subjects,
       create_subject_url: mockup_manager_post_url(req: 'create_subject'),
+    }
+  end
+
+  def get_manager_business_categories_data
+    business_categories = 
+      if params[:empty]
+      then []
+      else SAMPLE_BUSINESS_CATEGORIES_DATA
+      end
+
+    business_categories.each { |s|
+      s[:delete_url] = mockup_manager_delete_url(req: 'common')
+      s[:update_url] = mockup_manager_post_url(req: 'common')
+    }
+
+    @component_data = {
+      business_categories: business_categories,
+      create_business_category_url: mockup_manager_post_url(req: 'create_business_category'),
     }
   end
 
