@@ -21,6 +21,9 @@
     else if @props.update
       type = 'update'
       url = @props.update
+    else if @props.put
+      type = 'put'
+      url = @props.put
 
     @refs.form.set_submiting?(true)
 

@@ -1,5 +1,5 @@
 module Mockup::SampleData
-  include Mockup::SampleFinanceData
+  include ::Mockup::SampleFinanceData
 
   SAMPLE_COMMENTS_DATA = [
     {
@@ -268,6 +268,24 @@ module Mockup::SampleData
       name: '虚拟服务电商', slug: 'xu-ni-fu-wu', courses_count: 5,
     }
   ]
+
+  SAMPLE_BUSINESS_CATEGORIES_DATA = [
+    {id: '1', name: '客户业务', number: ''},
+    {id: '2', name: '内部运营', number: '320000'},
+    {id: '11', name: '客户信息', number: '110000', parent_id: '1'},
+    {id: '12', name: '存款业务', number: '120000', parent_id: '1'},
+  ]
+
+  SAMPLE_ENTERPRISE_POSTS_DATA = [
+    {id: '1', name: '对公业务柜员', number: '1'},
+    {id: '2', name: '储蓄业务柜员', number: '3'},
+  ]
+
+  SAMPLE_ENTERPRISE_LEVELS_DATA = [
+    {id: '1', name: '无授权权限操作员', number: '0'},
+    {id: '2', name: '有授权权限操作员', number: '1'},
+  ]
+
 
   SAMPLE_QUESTIONS_DATA = [
     {

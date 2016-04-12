@@ -37,7 +37,7 @@
       render: ->
         <tbody>
         {
-          for sdata, idx in @props.data.data_set || [{}, {}, {}]
+          for sdata, idx in @props.data.data_set || [{id: 1}, {id: 2}, {id: 3}]
             if not sdata.id?
               console.warn '请在 table_data.data_set 中为表格数据对象设置 id 属性'
             <ManagerTable.TR key={sdata.id} data={@props.data} sdata={sdata} />

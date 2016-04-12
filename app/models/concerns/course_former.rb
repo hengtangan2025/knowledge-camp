@@ -26,8 +26,20 @@ module CourseFormer
         "#{video_count} 个视频，合计 #{total_minute} 分钟"
       }
 
+      logic :published, ->(instance){
+        !instance.published_course.blank? && instance.published_course.enabled
+      }
+
       url :manager_contents_url, ->(instance){
         organize_manager_course_path(instance)
+      }
+
+      url :publish_url, ->(instance, options){
+        publish_manager_published_courses_path(options)
+      }
+
+      url :recall_url, ->(instance, options){
+        recall_manager_published_courses_path(options)
       }
 
     end

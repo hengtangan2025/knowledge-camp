@@ -1,5 +1,4 @@
-class Manager::WaresController < ApplicationController
-  layout "new_version_manager"
+class Manager::WaresController < Manager::ApplicationController
 
   def create
     file_entity_id = ware_params[:file_entity_id]

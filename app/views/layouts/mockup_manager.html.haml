@@ -109,75 +109,40 @@
             ]
           },
           {
-            name: '场景 xx',
+            name: '培训策略管理',
             funcs: [
               {
-                name: '功能 xx',
-                url: mockup_manager_url(page: 'manager_home'),
-                icon: 'github alternate'
+                name: '业务类别设置（空）',
+                url: mockup_manager_url(page: 'business_categories', empty: true),
+                icon: 'rmb'
               },
               {
-                name: '功能 xx',
-                url: mockup_manager_url(page: 'manager_home'),
-                icon: 'google'
+                name: '业务类别设置（非空）',
+                url: mockup_manager_url(page: 'business_categories'),
+                icon: 'rmb'
               },
               {
-                name: '功能 xx',
-                url: mockup_manager_url(page: 'manager_home'),
-                icon: 'weibo'
+                name: '岗位设置（空）',
+                url: mockup_manager_url(page: 'enterprise_posts', empty: true),
+                icon: 'rmb'
               },
               {
-                name: '功能 xx',
-                url: mockup_manager_url(page: 'manager_home'),
-                icon: 'weibo'
+                name: '岗位设置（非空）',
+                url: mockup_manager_url(page: 'enterprise_posts'),
+                icon: 'rmb'
               },
               {
-                name: '功能 xx',
-                url: mockup_manager_url(page: 'manager_home'),
-                icon: 'weibo'
+                name: '级别设置（空）',
+                url: mockup_manager_url(page: 'enterprise_levels', empty: true),
+                icon: 'rmb'
               },
               {
-                name: '功能 xx',
-                url: mockup_manager_url(page: 'manager_home'),
-                icon: 'weibo'
+                name: '级别设置（非空）',
+                url: mockup_manager_url(page: 'enterprise_levels'),
+                icon: 'rmb'
               },
-              {
-                name: '功能 xx',
-                url: mockup_manager_url(page: 'manager_home'),
-                icon: 'weibo'
-              },
-              {
-                name: '功能 xx',
-                url: mockup_manager_url(page: 'manager_home'),
-                icon: 'weibo'
-              },
-              {
-                name: '功能 xx',
-                url: mockup_manager_url(page: 'manager_home'),
-                icon: 'weibo'
-              },
-              {
-                name: '功能 xx',
-                url: mockup_manager_url(page: 'manager_home'),
-                icon: 'weibo'
-              },
-              {
-                name: '功能 xx',
-                url: mockup_manager_url(page: 'manager_home'),
-                icon: 'weibo'
-              },
-              {
-                name: '功能 xx',
-                url: mockup_manager_url(page: 'manager_home'),
-                icon: 'weibo'
-              },
-              {
-                name: '功能 xx',
-                url: mockup_manager_url(page: 'manager_home'),
-                icon: 'weibo'
-              }
             ]
-          }
+          },
         ]
       }
 
@@ -186,10 +151,11 @@
         sign_out_to_url: mockup_url(page: 'home')
       }
       current_user_data = MockupController::SAMPLE_USER_DATA
+      
+    = react_component 'LayoutManagerSidebar', data: manager_sidebar_data
 
     = react_component 'LayoutManagerTopMenu', data: top_menu_data, current_user_data: current_user_data
 
-    = react_component 'LayoutManagerSidebar', data: manager_sidebar_data
 
     .manager-page-content
       .func-content.ui.segment.basic

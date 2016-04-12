@@ -11,8 +11,12 @@ class SubjectsController < ApplicationController
       courses = cs.courses.published.page(params[:page])
     end
 
+    data = courses.map do |course|
+      DataFormer.new(course).url(:url).data
+    end
+
     @component_data = {
-      courses: courses.map{|course| course.to_brief_component_data self},
+      courses: data,
       paginate: {
         total_pages: courses.total_pages,
         current_page: courses.current_page,

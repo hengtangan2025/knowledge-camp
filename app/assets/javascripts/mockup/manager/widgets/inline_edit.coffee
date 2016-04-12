@@ -38,4 +38,4 @@
 
     if not @props.on_submit?
       console.warn '请为 InlineInputEdit 定义 on_submit 回调'
-    @props.on_submit? @state.value
+    @props.on_submit? jQuery.trim(@state.value)

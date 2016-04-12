@@ -1,5 +1,4 @@
-class Manager::CoursesController < ApplicationController
-  layout "new_version_manager"
+class Manager::CoursesController < Manager::ApplicationController
 
   def index
     @page_name = "manager_courses"
