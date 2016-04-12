@@ -225,6 +225,8 @@ Rails.application.routes.draw do
       post   :publish, on: :collection
       delete :recall,  on: :collection
     end
+
+    resources :business_categories
   end
 
 

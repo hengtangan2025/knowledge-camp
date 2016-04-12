@@ -7,4 +7,5 @@ class DataFormer
   include CourseSubjectFormer
   include UserFormer
   include PublishedCourseFormer
+  include BusinessCategoryFormer
 end

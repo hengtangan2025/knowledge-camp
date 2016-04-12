@@ -26,6 +26,14 @@ GIT
       mongoid (~> 4.0)
 
 GIT
+  remote: git://github.com/mindpin/bank.git
+  revision: e3de6cb1417749c3dfc938325e50446f69ba6c79
+  ref: e3de6cb
+  specs:
+    bank (0.1.0)
+      mongoid-tree (~> 2.0)
+
+GIT
   remote: git://github.com/mindpin/bucketerize.git
   revision: 3c336c7c4772e4a823721c1c317e8c2601cb30db
   tag: v0.1.0
@@ -49,6 +57,13 @@ GIT
       elasticsearch-model
       elasticsearch-rails
       ruby-pinyin
+
+GIT
+  remote: git://github.com/mindpin/enterprise_position_level.git
+  revision: 93b2eff7230f84a4885f327cb3a43bae22f8fffc
+  ref: 93b2eff
+  specs:
+    enterprise_position_level (0.1.0)
 
 GIT
   remote: git://github.com/mindpin/generic_controller.git
@@ -498,6 +513,7 @@ PLATFORMS
 
 DEPENDENCIES
   acts-as-dag!
+  bank!
   bootstrap-kaminari-views
   bootstrap-sass (~> 3.3.5)
   bson_ext
@@ -509,6 +525,7 @@ DEPENDENCIES
   devise (= 3.5.2)
   documents-store!
   elasticsearch-simple!
+  enterprise_position_level!
   factory_girl_rails
   figaro (~> 1.1.1)
   file-part-upload!
