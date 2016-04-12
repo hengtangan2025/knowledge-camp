@@ -46,7 +46,7 @@ class Manager::BusinessCategoriesController < Manager::ApplicationController
   private
 
   def business_category_params
-    params.require(:business_category).permit(:name, :parent_id)
+    params.require(:business_category).permit(:name, :number, :parent_id)
   end
 
 end
