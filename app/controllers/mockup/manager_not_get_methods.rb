@@ -1,5 +1,5 @@
 module Mockup::ManagerNotGetMethods
-  include Mockup::SampleData
+  include ::Mockup::SampleData
   
   def manager_do_post
     case params[:req]
@@ -13,6 +13,8 @@ module Mockup::ManagerNotGetMethods
         post_create_ware
       when 'create_subject'
         post_create_subject
+      when 'create_business_category'
+        post_create_business_category
       end
   end
 
@@ -61,6 +63,17 @@ module Mockup::ManagerNotGetMethods
       update_url: mockup_manager_post_url(req: 'common')
     )
   end
+
+  def post_create_business_category
+    render json: SAMPLE_BUSINESS_CATEGORIES_DATA[0].merge(
+      id: randstr,
+      name: params[:business_category][:name],
+      parent_id: params[:business_category][:parent_id],
+
+
+    )
+  end
+
 
   # -------------------
 
