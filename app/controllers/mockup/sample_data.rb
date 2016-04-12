@@ -281,6 +281,11 @@ module Mockup::SampleData
     {id: '2', name: '储蓄业务柜员', number: '3'},
   ]
 
+  SAMPLE_ENTERPRISE_LEVELS_DATA = [
+    {id: '1', name: '无授权权限操作员', number: '0'},
+    {id: '2', name: '有授权权限操作员', number: '1'},
+  ]
+
 
   SAMPLE_QUESTIONS_DATA = [
     {

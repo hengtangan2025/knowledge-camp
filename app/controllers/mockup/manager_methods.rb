@@ -26,6 +26,8 @@ module Mockup::ManagerMethods
 
       when 'manager_enterprise_posts'
         get_manager_enterprise_posts_data
+      when 'manager_enterprise_levels'
+        get_manager_enterprise_levels_data
 
       when 'manager_questions'
         get_manager_questions_data
@@ -140,6 +142,24 @@ module Mockup::ManagerMethods
     @component_data = {
       posts: posts,
       create_url: mockup_manager_post_url(req: 'common', model: 'post')
+    }
+  end
+
+  def get_manager_enterprise_levels_data
+    levels = 
+      if params[:empty]
+      then []
+      else SAMPLE_ENTERPRISE_LEVELS_DATA
+      end
+
+    levels.each { |s|
+      s[:delete_url] = mockup_manager_delete_url(req: 'common', model: 'level')
+      s[:update_url] = mockup_manager_post_url(req: 'common', model: 'level')
+    }
+
+    @component_data = {
+      levels: levels,
+      create_url: mockup_manager_post_url(req: 'common', model: 'level')
     }
   end
 
