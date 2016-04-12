@@ -1,58 +1,58 @@
-@ManagerEnterprisePostsPage = React.createClass
+@ManagerEnterpriseLevelsPage = React.createClass
   getInitialState: ->
-    posts: @props.data.posts
+    levels: @props.data.levels
 
   render: ->
     <div className='manager-courses-page'>
     {
-      if @state.posts.length is 0
+      if @state.levels.length is 0
         data =
-          header: '岗位设置'
-          desc: '还没有创建任何岗位'
-          init_action: <ManagerEnterprisePostsPage.CreateBtn data={@props.data} page={@} />
+          header: '级别设置'
+          desc: '还没有创建任何级别'
+          init_action: <ManagerEnterpriseLevelsPage.CreateBtn data={@props.data} page={@} />
         <ManagerFuncNotReady data={data} />
 
       else
         <div>
-          <ManagerEnterprisePostsPage.CreateBtn data={@props.data} page={@} />
-          <ManagerEnterprisePostsPage.Table data={@state.posts} page={@} />
+          <ManagerEnterpriseLevelsPage.CreateBtn data={@props.data} page={@} />
+          <ManagerEnterpriseLevelsPage.Table data={@state.levels} page={@} />
         </div>
     }
     </div>
 
-  add_post: (post)->
-    posts = Immutable.fromJS @state.posts
-    posts = posts.push post
-    @setState posts: posts.toJS()
+  add_level: (level)->
+    levels = Immutable.fromJS @state.levels
+    levels = levels.push level
+    @setState levels: levels.toJS()
 
-  update_post: (post)->
-    posts = Immutable.fromJS @state.posts
-    posts = posts.map (x)->
-      x = x.merge post if x.get('id') is post.id
+  update_level: (level)->
+    levels = Immutable.fromJS @state.levels
+    levels = levels.map (x)->
+      x = x.merge level if x.get('id') is level.id
       x
-    @setState posts: posts.toJS()
+    @setState levels: levels.toJS()
 
-  delete_post: (post)->
-    posts = Immutable.fromJS @state.posts
-    posts = posts.filter (x)->
-      x.get('id') != post.id
-    @setState posts: posts.toJS()
+  delete_level: (level)->
+    levels = Immutable.fromJS @state.levels
+    levels = levels.filter (x)->
+      x.get('id') != level.id
+    @setState levels: levels.toJS()
 
   statics:
     CreateBtn: React.createClass
       render: ->
         <a className='ui button green mini' href='javascript:;' onClick={@show_modal}>
           <i className='icon plus' />
-          创建岗位
+          创建级别
         </a>
 
       show_modal: ->
         params =
           url: @props.data.create_url
-          title: '创建岗位'
+          title: '创建级别'
           page: @props.page
 
-        jQuery.open_modal <ManagerEnterprisePostsPage.Form {...params} />
+        jQuery.open_modal <ManagerEnterpriseLevelsPage.Form {...params} />
 
     Form: React.createClass
       render: ->
@@ -67,18 +67,18 @@
         <div>
           <h3 className='ui header'>{@props.title}</h3>
           <SimpleDataForm
-            model='post'
+            model='level'
             post={@props.url}
             done={@done}  
           >
-            <TextInputField {...layout} label='岗位名称：' name='name' required />
-            <TextInputField {...layout} label='岗位编号：' name='number' required />
+            <TextInputField {...layout} label='级别名称：' name='name' required />
+            <TextInputField {...layout} label='级别代号：' name='number' required />
             <Submit {...layout} text='确定保存' />
           </SimpleDataForm>
         </div>
 
       done: (data)->
-        @props.page.add_post data.post
+        @props.page.add_level data.level
         @state.close()
 
     UpdateForm: React.createClass
@@ -94,27 +94,27 @@
         <div>
           <h3 className='ui header'>{@props.title}</h3>
           <SimpleDataForm
-            model='post'
+            model='level'
             put={@props.url}
             done={@done}
             data={@props.data}  
           >
-            <TextInputField {...layout} label='岗位名称：' name='name' required />
-            <TextInputField {...layout} label='岗位编号：' name='number' required />
+            <TextInputField {...layout} label='级别名称：' name='name' required />
+            <TextInputField {...layout} label='级别代号：' name='number' required />
             <Submit {...layout} text='确定保存' />
           </SimpleDataForm>
         </div>
 
       done: (data)->
-        @props.page.update_post data.post
+        @props.page.update_level data.level
         @state.close()
 
     Table: React.createClass
       render: ->
         table_data = {
           fields:
-            number: '编号'
-            name: '岗位名称'
+            number: '级别代号'
+            name: '级别名称'
             levels: '级别配置'
             ops: '操作'
           data_set: @props.data.map (x)=>
@@ -140,26 +140,26 @@
         }
 
         <div className='ui segment'>
-          <ManagerTable data={table_data} title='岗位设置' />
+          <ManagerTable data={table_data} title='级别设置' />
         </div>
 
-      edit: (post)->
+      edit: (level)->
         =>
           params =
-            url: post.update_url
-            title: '修改岗位信息'
+            url: level.update_url
+            title: '修改级别信息'
             page: @props.page
-            data: post
+            data: level
 
-          jQuery.open_modal <ManagerEnterprisePostsPage.UpdateForm {...params} />
+          jQuery.open_modal <ManagerEnterpriseLevelsPage.UpdateForm {...params} />
 
-      delete: (post)->
+      delete: (level)->
         =>
           jQuery.modal_confirm
             text: '确定要删除吗？'
             yes: =>
               jQuery.ajax
                 type: 'DELETE'
-                url: post.delete_url
+                url: level.delete_url
               .done =>
-                @props.page.delete_post post
+                @props.page.delete_level level
