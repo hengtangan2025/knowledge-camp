@@ -36,6 +36,14 @@ GIT
       mongoid (~> 4.0)
 
 GIT
+  remote: git://github.com/mindpin/bank.git
+  revision: e3de6cb1417749c3dfc938325e50446f69ba6c79
+  ref: e3de6cb
+  specs:
+    bank (0.1.0)
+      mongoid-tree (~> 2.0)
+
+GIT
   remote: git://github.com/mindpin/bucketerize.git
   revision: 3c336c7c4772e4a823721c1c317e8c2601cb30db
   tag: v0.1.0
@@ -59,6 +67,13 @@ GIT
       elasticsearch-model
       elasticsearch-rails
       ruby-pinyin
+
+GIT
+  remote: git://github.com/mindpin/enterprise_position_level.git
+  revision: 93b2eff7230f84a4885f327cb3a43bae22f8fffc
+  ref: 93b2eff
+  specs:
+    enterprise_position_level (0.1.0)
 
 GIT
   remote: git://github.com/mindpin/generic_controller.git
@@ -243,7 +258,7 @@ GEM
     bson (3.2.6)
     bson_ext (1.5.1)
     builder (3.2.2)
-    byebug (8.2.2)
+    byebug (8.2.4)
     carrierwave (0.10.0)
       activemodel (>= 3.2.0)
       activesupport (>= 3.2.0)
@@ -462,7 +477,7 @@ GEM
       actionpack (> 4, < 5.1)
       activemodel (> 4, < 5.1)
     slop (3.6.0)
-    spring (1.6.4)
+    spring (1.7.0)
     sprockets (3.4.0)
       rack (> 1, < 3)
     sprockets-coffee-react (3.0.1)
@@ -498,6 +513,7 @@ PLATFORMS
 
 DEPENDENCIES
   acts-as-dag!
+  bank!
   bootstrap-kaminari-views
   bootstrap-sass (~> 3.3.5)
   bson_ext
@@ -509,6 +525,7 @@ DEPENDENCIES
   devise (= 3.5.2)
   documents-store!
   elasticsearch-simple!
+  enterprise_position_level!
   factory_girl_rails
   figaro (~> 1.1.1)
   file-part-upload!

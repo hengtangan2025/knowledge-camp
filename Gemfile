@@ -156,6 +156,9 @@ gem 'bucketerize', :github => 'mindpin/bucketerize',
                   #:ref => "6e53e43"
                   :tag => "v0.1.0"
 
+gem 'bank', github: "mindpin/bank", ref: "e3de6cb"
+gem 'enterprise_position_level', github: "mindpin/enterprise_position_level", ref: "93b2eff"
+
 # 管理组件，2015-12-14改为直接搭建后台
 #gem 'engine_manager', github: 'mindpin/engine_manager',
                      #:tag => "v0.0.1"

@@ -1,5 +1,5 @@
 module Mockup::ManagerFinanceMethods
-  include Mockup::SampleData
+  include ::Mockup::SampleData
 
   def manager_finance_page
     @current_func = params[:page]

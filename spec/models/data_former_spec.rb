@@ -47,7 +47,11 @@ DataFormer.class_eval do
     }
 
     url :update, ->(instance){
-      course_path(instance)
+      "/courses/#{instance.id.to_s}"
+    }
+
+    url :filter, ->(instance, options){
+      "/courses?kind=#{options[:kind]}"
     }
 
   end
@@ -161,13 +165,23 @@ RSpec.describe DataFormer, type: :model do
       })
     end
 
-    it "带参数" do
+    it "不带参数,重命名" do
       data = DataFormer.new(@course).url(:update, :custom_url).data
       expect(data).to match({
         id: @course.id.to_s,
         name: @course.name,
         desc: @course.desc,
         custom_url: "/courses/#{@course.id.to_s}"
+      })
+    end
+
+    it "带参数" do
+      data = DataFormer.new(@course).url(:filter, :filter, :kind => "abc").data
+      expect(data).to match({
+        id: @course.id.to_s,
+        name: @course.name,
+        desc: @course.desc,
+        filter: "/courses?kind=abc"
       })
     end
   end

@@ -7,6 +7,11 @@ class DataFormer
   include CourseSubjectFormer
   include UserFormer
 
+  include PublishedCourseFormer
+  include BusinessCategoryFormer
+  include EnterprisePostFormer
+  include EnterpriseLevelFormer
+
   include Finance::TellerWareFormer
   include Finance::TellerWareScreenFormer
   include Finance::TellerWareTradeFormer

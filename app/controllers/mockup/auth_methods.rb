@@ -1,5 +1,5 @@
 module Mockup::AuthMethods
-  include SampleData
+  include ::Mockup::SampleData
 
   def auth_page
     layout = 'mockup'
