@@ -235,10 +235,16 @@
 
 .ui.table {
   td .inline-input-edit {
-    height:30px;
+    height: 30px;
     line-height: 30px;
     margin-top: -5px;
     margin-bottom: -5px;
+    .inline-edit-text {
+      min-width: 3rem;
+      height: 30px;
+      line-height: 30px;
+      cursor: text;
+    }
     input.inline-edit-text-ipt {
       width: 180px;
     }

@@ -1,7 +1,6 @@
 class MockupController < ApplicationController
   include Mockup::AuthMethods
   include Mockup::ManagerMethods
-  include Mockup::FrontendMethods
 
   def page
     layout = 'mockup'

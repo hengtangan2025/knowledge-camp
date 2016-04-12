@@ -1,5 +1,4 @@
-class Manager::ChaptersController < ApplicationController
-  layout "new_version_manager"
+class Manager::ChaptersController < Manager::ApplicationController
 
   def create
     course = KcCourses::Course.find params[:course_id]

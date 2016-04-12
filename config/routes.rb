@@ -181,8 +181,9 @@ Rails.application.routes.draw do
   # --------------------
   # kc mobile 2016
   resources :subjects
-  resources :courses
-  resources :wares
+  resources :courses do
+    get "/wares/:ware_id" => "courses#ware", as: :ware
+  end
 
   scope :path => "/api", module: 'api', :as => :api do
     resources :courses do
@@ -220,6 +221,14 @@ Rails.application.routes.draw do
     end
 
     resources :course_subjects
+    resources :published_courses do
+      post   :publish, on: :collection
+      delete :recall,  on: :collection
+    end
+
+    resources :business_categories
+    resources :enterprise_posts
+    resources :enterprise_levels
   end
 
 

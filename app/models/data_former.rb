@@ -6,4 +6,8 @@ class DataFormer
   include WareFormer
   include CourseSubjectFormer
   include UserFormer
+  include PublishedCourseFormer
+  include BusinessCategoryFormer
+  include EnterprisePostFormer
+  include EnterpriseLevelFormer
 end
