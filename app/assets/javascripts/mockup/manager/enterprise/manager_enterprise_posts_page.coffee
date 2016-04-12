@@ -159,6 +159,7 @@
             text: '确定要删除吗？'
             yes: =>
               jQuery.ajax
+                type: 'DELETE'
                 url: post.delete_url
               .done =>
                 @props.page.delete_post post
