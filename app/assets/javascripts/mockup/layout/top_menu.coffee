@@ -7,7 +7,7 @@
           user = @props.current_user_data
           [
             <a key='avatar' className='item avatar' href='javascript:;'>
-              <img src={user.avatar.url} />
+              <img src={user.avatar?.url} />
             </a>
             <a key='name' className='item' href='javascript:;'>{user.name}</a>
             <a key='sign-out' className='item' onClick={@do_sign_out}>登出</a>
@@ -51,7 +51,7 @@
               user = @props.current_user_data
               [
                 <a key='avatar' className='item' href='javascript:;'>
-                  <img src={user.avatar.url} />
+                  <img src={user.avatar?.url} />
                 </a>
                 <a key='name' className='item' href='javascript:;'>{user.name}</a>
                 <a key='sign-out' className='item' onClick={@do_sign_out}>登出</a>

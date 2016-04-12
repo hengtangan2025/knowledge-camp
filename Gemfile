@@ -59,23 +59,6 @@ gem "elasticsearch-simple",
 
 gem "mina", "0.3.7"
 
-# tag 管理
-gem "knowledge-graph-js",
-  :git => "git://github.com/mindpin/knowledge-graph-js.git",
-  :tag => "0.0.1"
-
-gem 'knowledge-net-store',
-  :git => 'git://github.com/mindpin/knowledge-net-store.git',
-  :tag => '1.0.0-beta2'
-
-gem "acts-as-dag",
-  :git => "git://github.com/mindpin/acts-as-dag.git",
-  :tag => "0.0.2"
-
-gem "knowledge-net-plan-store",
-    :github => "mindpin/knowledge-net-plan-store",
-    :tag => "v0.1.0.p3"
-
 gem "generic_controller",
     :github => "mindpin/generic_controller",
     :tag => "v0.0.5"
@@ -88,91 +71,21 @@ gem "sort_char",
     :git => "git://github.com/mindpin/sort_char.git",
     :tag => "0.0.1"
 
-gem "knowledge_camp_step",
-    # :path => "../knowledge_camp_step"
-    :github => "mindpin/knowledge_camp_step",
-    :tag => "0.1.7"
-
-# 文字文档持久化，以下两个 gem 是相关的
-gem "mongoid-versioning",
-    :github => "simi/mongoid-versioning"
-
-gem "documents-store",
-    :github => "mindpin/documents-store",
-    :tag => "v0.0.4"
-
-gem 'ueditor.rails',
-    # :path => '/web/songliang/kaid/ueditor.rails'
-    :github => 'mindpin/ueditor.rails',
-    # :tag => 'v0.0.5'
-    :ref => 'b832fde'
-
 # 解析 UserAgent
 # https://github.com/josh/useragent
 gem 'useragent'
-
-# 文件上传，用于用户头像逻辑
-gem 'carrierwave-mongoid', :require => 'carrierwave/mongoid'
-# carrierwave 用到的图片切割
-gem "mini_magick", :require => false
-
-# 虚拟文件夹
-gem 'virtual_file_system',
-    :github => "mindpin/virtual-file",
-    :tag => "v0.0.6"
 
 # 支持分段上传的文件持久化
 gem 'file-part-upload',
     :github => 'ben7th/file-part-upload',
     :ref => '13bbe54'
 
-# 图片加载的一个小工具
-gem 'simple-images',
-    :github => "mindpin/simple-images",
-    :ref => 'fc06f2b'
-    # :path => '/web/songliang/simple-images'
-
-gem 'knowledge-camp-api',
-    :path => 'vendor/api'
-
-gem 'kc-explore',
-    :path => 'vendor/explore',
-    :require => 'explore'
-
-gem 'kc-course-editor',
-    :path => 'vendor/course_editor',
-    :require => 'course_editor'
-
 # -----金融学院相关
 gem 'kc_courses', :github => 'fushang318/kc_courses',
                   :ref => "5cb25c0"
-                  # :tag => "v0.6.0"
-                  #:path => "../kc_courses"
-
-gem 'simple-navbar', :github => 'mindpin/simple-navbar',
-                     :tag => "0.0.6p1"
-
-gem 'bootstrap-sass', '~> 3.3.5'
-
-gem 'bucketerize', :github => 'mindpin/bucketerize',
-                  #:ref => "6e53e43"
-                  :tag => "v0.1.0"
 
 gem 'bank', github: "mindpin/bank", ref: "e3de6cb"
 gem 'enterprise_position_level', github: "mindpin/enterprise_position_level", ref: "93b2eff"
-
-# 管理组件，2015-12-14改为直接搭建后台
-#gem 'engine_manager', github: 'mindpin/engine_manager',
-                     #:tag => "v0.0.1"
-
-gem 'question_bank', github: 'mindpin/question_bank',
-                     :ref => "b051910"
-
-gem 'model_label', github: 'kc-train/model_label',
-                    :ref => "ffbc999"
-
-gem 'kc_comments', github: "mindpin/kc_comments",
-                   ref: "d3d64e6"
 
 gem 'sprockets', '3.4.0'
 gem 'sprockets-rails', '2.3.3'

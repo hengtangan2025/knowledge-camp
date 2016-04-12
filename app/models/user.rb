@@ -29,9 +29,6 @@ class User
   validates :name, length: {in: 2..20}, :if => Proc.new {|user|
     user.name.present?
   }
-  
-  # carrierwave
-  mount_uploader :avatar, AvatarUploader
 
   def id
     attributes["_id"].to_s
@@ -46,14 +43,6 @@ class User
       :avatar => self.avatar.url
     }
   end
-
-  include KnowledgeCamp::Step::NoteCreator
-  include KnowledgeCamp::Step::QuestionCreator
-  include KnowledgeCamp::Step::SelectionCreator
-  include KnowledgeCamp::HasManyLearnRecords
-  include TutorialLearnProgress::UserMethods
-  include TopicLearnProgress::UserMethods
-
 
   has_many :virtual_files,
            :class_name => "VirtualFileSystem::File",

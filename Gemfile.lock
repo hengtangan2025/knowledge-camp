@@ -21,42 +21,12 @@ GIT
       simple_form
 
 GIT
-  remote: git://github.com/kc-train/model_label.git
-  revision: ffbc999778b2179b898c2263d303c8c0749385ee
-  ref: ffbc999
-  specs:
-    model_label (0.0.1)
-
-GIT
-  remote: git://github.com/mindpin/acts-as-dag.git
-  revision: a94ff8ac1b946b8be5aa67792016eb26d5899282
-  tag: 0.0.2
-  specs:
-    acts-as-dag (0.0.2)
-      mongoid (~> 4.0)
-
-GIT
   remote: git://github.com/mindpin/bank.git
   revision: e3de6cb1417749c3dfc938325e50446f69ba6c79
   ref: e3de6cb
   specs:
     bank (0.1.0)
       mongoid-tree (~> 2.0)
-
-GIT
-  remote: git://github.com/mindpin/bucketerize.git
-  revision: 3c336c7c4772e4a823721c1c317e8c2601cb30db
-  tag: v0.1.0
-  specs:
-    bucketerize (0.1.0)
-
-GIT
-  remote: git://github.com/mindpin/documents-store.git
-  revision: 65c6847bfec20da0a3940cb6669f71ceb50e657e
-  tag: v0.0.4
-  specs:
-    documents-store (0.0.4)
-      mongoid (~> 4.0.0)
 
 GIT
   remote: git://github.com/mindpin/elasticsearch-simple.git
@@ -83,82 +53,11 @@ GIT
     generic_controller (0.0.4)
 
 GIT
-  remote: git://github.com/mindpin/kc_comments.git
-  revision: d3d64e6214aa22f98821b5cf0233896e3bdafe9f
-  ref: d3d64e6
-  specs:
-    kc_comments (0.1.0)
-
-GIT
-  remote: git://github.com/mindpin/knowledge-graph-js.git
-  revision: 01386378a0df05cf354ec62fad857aab52f085ad
-  tag: 0.0.1
-  specs:
-    knowledge-graph-js (0.0.1)
-      non-stupid-digest-assets
-
-GIT
-  remote: git://github.com/mindpin/knowledge-net-plan-store.git
-  revision: 3804b77a66abc0ef3cb88520ecc7165961d55be4
-  tag: v0.1.0.p3
-  specs:
-    knowledge-net-plan-store (0.0.2)
-      carrierwave-mongoid
-      mongoid
-
-GIT
-  remote: git://github.com/mindpin/knowledge-net-store.git
-  revision: 816df00aabbc1db6c3c4ca51229095af1842ed4c
-  tag: 1.0.0-beta2
-  specs:
-    knowledge-net-store (1.0.0.pre.beta2)
-
-GIT
-  remote: git://github.com/mindpin/knowledge_camp_step.git
-  revision: 468c4f243323e1938720f1f276b6afd0701066fb
-  tag: 0.1.7
-  specs:
-    knowledge_camp_step (0.0.1)
-      mongoid (~> 4.0.0)
-
-GIT
-  remote: git://github.com/mindpin/question_bank.git
-  revision: b0519106cf0e916e30fd50e6aeccda753284791d
-  ref: b051910
-  specs:
-    question_bank (0.0.1)
-      enumerize
-      kaminari
-      simple_form
-
-GIT
-  remote: git://github.com/mindpin/simple-images.git
-  revision: fc06f2bdbba5dbbbc506c6e22c09caf32909a2df
-  ref: fc06f2b
-  specs:
-    simple-images (0.0.2)
-
-GIT
-  remote: git://github.com/mindpin/simple-navbar.git
-  revision: f891c0e0b6c39846c1c424ad0379b83b181db105
-  tag: 0.0.6p1
-  specs:
-    simple-navbar (0.0.6p1)
-
-GIT
   remote: git://github.com/mindpin/sort_char.git
   revision: 7525285b9d03b8057df5aa760ceb4160ecf4e9f3
   tag: 0.0.1
   specs:
     sort_char (0.0.1)
-
-GIT
-  remote: git://github.com/mindpin/ueditor.rails.git
-  revision: b832fdefdca636c6c07bb6fa36d2d49b3596c772
-  ref: b832fde
-  specs:
-    ueditor.rails (0.0.5)
-      rails (~> 4.1)
 
 GIT
   remote: git://github.com/mindpin/user-auth.git
@@ -168,39 +67,6 @@ GIT
     user-auth (0.0.1)
       devise
       rest-client
-
-GIT
-  remote: git://github.com/mindpin/virtual-file.git
-  revision: 81fffa6789aba4f70683a8b4cf8f781470519fe5
-  tag: v0.0.6
-  specs:
-    virtual_file_system (0.0.6)
-      mongoid (~> 4.0.0)
-
-GIT
-  remote: git://github.com/simi/mongoid-versioning.git
-  revision: 1483514ff751cf0747898e12184d56e73cfe5fd4
-  specs:
-    mongoid-versioning (0.0.1)
-      mongoid (> 3)
-
-PATH
-  remote: vendor/api
-  specs:
-    knowledge-camp-api (0.0.1)
-      rails (>= 4.0.0)
-
-PATH
-  remote: vendor/course_editor
-  specs:
-    kc-course-editor (0.0.1)
-      rails (>= 4.0.0)
-
-PATH
-  remote: vendor/explore
-  specs:
-    kc-explore (0.0.1)
-      rails (>= 4.0.0)
 
 GEM
   remote: https://ruby.taobao.org/
@@ -242,8 +108,6 @@ GEM
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
     arel (6.0.3)
-    autoprefixer-rails (6.3.6)
-      execjs
     babel-source (5.8.35)
     babel-transpiler (0.7.0)
       babel-source (>= 4.0, < 6)
@@ -254,22 +118,10 @@ GEM
     bootstrap-kaminari-views (0.0.5)
       kaminari (>= 0.13)
       rails (>= 3.1)
-    bootstrap-sass (3.3.6)
-      autoprefixer-rails (>= 5.2.1)
-      sass (>= 3.3.4)
     bson (3.2.6)
     bson_ext (1.5.1)
     builder (3.2.2)
     byebug (8.2.4)
-    carrierwave (0.10.0)
-      activemodel (>= 3.2.0)
-      activesupport (>= 3.2.0)
-      json (>= 1.7)
-      mime-types (>= 1.16)
-    carrierwave-mongoid (0.8.1)
-      carrierwave (>= 0.8.0, < 0.11.0)
-      mongoid (>= 3.0, < 6.0)
-      mongoid-grid_fs (>= 1.3, < 3.0)
     cells (3.10.1)
       actionpack (>= 3.0)
       railties (>= 3.0)
@@ -360,9 +212,6 @@ GEM
       moped (~> 2.0.0)
       origin (~> 2.1)
       tzinfo (>= 0.3.37)
-    mongoid-grid_fs (2.2.1)
-      mime-types (>= 1.0, < 3.0)
-      mongoid (>= 3.0, < 6.0)
     mongoid-tree (2.0.1)
       mongoid (>= 4.0, < 6.0)
     moped (2.0.7)
@@ -374,8 +223,6 @@ GEM
     netrc (0.11.0)
     nokogiri (1.6.7.2)
       mini_portile2 (~> 2.0.0.rc2)
-    non-stupid-digest-assets (1.0.8)
-      sprockets (>= 2.0)
     open4 (1.3.4)
     optionable (0.2.0)
     origin (2.2.0)
@@ -520,18 +367,13 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  acts-as-dag!
   bank!
   bootstrap-kaminari-views
-  bootstrap-sass (~> 3.3.5)
   bson_ext
-  bucketerize!
-  carrierwave-mongoid
   cells (~> 3.10.1)
   coffee-rails (~> 4.1.0)
   database_cleaner (~> 1.2.0)
   devise (= 3.5.2)
-  documents-store!
   elasticsearch-simple!
   enterprise_position_level!
   factory_girl_rails
@@ -544,24 +386,12 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails
   kaminari (~> 0.15.1)
-  kc-course-editor!
-  kc-explore!
-  kc_comments!
   kc_courses!
-  knowledge-camp-api!
-  knowledge-graph-js!
-  knowledge-net-plan-store!
-  knowledge-net-store!
-  knowledge_camp_step!
   mina (= 0.3.7)
-  mini_magick
-  model_label!
   mongoid (~> 4.0.0)
-  mongoid-versioning!
   pry
   pry-byebug
   pry-rails
-  question_bank!
   quiet_assets
   rails (= 4.2.3)
   rails-assets-URIjs
@@ -573,8 +403,6 @@ DEPENDENCIES
   ruby-pinyin
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
-  simple-images!
-  simple-navbar!
   simple_form (~> 3.2.0)
   sort_char!
   spring
@@ -583,10 +411,8 @@ DEPENDENCIES
   sprockets-rails (= 2.3.3)
   streamio-ffmpeg
   turbolinks
-  ueditor.rails!
   uglifier (>= 1.3.0)
   unicorn
   user-auth!
   useragent
-  virtual_file_system!
   web-console (~> 2.0)

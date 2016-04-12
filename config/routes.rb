@@ -5,13 +5,6 @@ end
 routes_draw :mockup
 
 Rails.application.routes.draw do
-  # api
-  mount KnowledgeCampApi::Engine => '/e/o/api', :as => :e_old_api
-  # 学生界面
-  mount Explore::Engine          => '/e/o/explore', :as => :e_old_explore
-  # 课程编辑
-  mount CourseEditor::Engine     => '/e/o/course_editor', :as => :e_old_course_editor
-
   # -----------------------
 
   root 'index#index'
@@ -80,13 +73,8 @@ Rails.application.routes.draw do
   # --------------------
   # 金融学院暂时单独使用 bank 命名空间
 
-  # 新版功能的 engine
-  # 题库组卷
-  mount QuestionBank::Engine   => '/e/test_question', :as => :e_test_question
   # 文件上传
   mount FilePartUpload::Engine => "/e/file_part_upload", :as => :e_file_part_upload
-  # 收藏功能
-  Bucketerize::Routing.mount '/e/bucketerize', as: :e_bucketerize
   # 课程功能
   KcCourses::Routing.mount '/e/kc_courses', as: :e_courses
   #EngineManager::Routing.mount '/bank/manager', :as => 'engine_manager'
