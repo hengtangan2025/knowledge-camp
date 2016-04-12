@@ -9,4 +9,5 @@ class DataFormer
   include PublishedCourseFormer
   include BusinessCategoryFormer
   include EnterprisePostFormer
+  include EnterpriseLevelFormer
 end

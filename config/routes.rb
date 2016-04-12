@@ -228,6 +228,7 @@ Rails.application.routes.draw do
 
     resources :business_categories
     resources :enterprise_posts
+    resources :enterprise_levels
   end
 
 
