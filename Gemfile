@@ -121,8 +121,8 @@ gem 'virtual_file_system',
 
 # 支持分段上传的文件持久化
 gem 'file-part-upload',
-    :github => 'ben7th/file-part-upload',
-    :ref => '13bbe54'
+  :github => "mindpin/file-part-upload",
+  :ref    => "fd69106"
 
 # 图片加载的一个小工具
 gem 'simple-images',
