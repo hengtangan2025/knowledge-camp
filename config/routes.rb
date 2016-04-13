@@ -225,6 +225,9 @@ Rails.application.routes.draw do
         get :trades, on: :collection
         get :hmdm, on: :collection
         get :xxdm, on: :collection
+
+        get :design, on: :member
+        put :design_update, on: :member
       end
       get '/teller_wares/:number/preview' => "teller_wares#preview", as: :preview
     end

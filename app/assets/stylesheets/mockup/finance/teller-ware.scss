@@ -13,6 +13,216 @@ body.teller-ware {
   overflow:hidden;
 }
 
+@mixin teller-ware-paper {
+  position: absolute;
+  top:0;bottom:0;left:0;right:0;
+
+  .flow-course-ware {
+    position: absolute;
+    top:0;left:0;right:0;bottom:0;
+    $header-height: 60px;
+    .header {
+      border-bottom: solid 1px #ccc;
+      background-color: #f7f7f7;
+      @include clearfix;
+      .role {
+        height:$header-height;line-height:$header-height;
+        float: left;
+        width: 240px;
+        text-align: center;
+        border-left:solid 1px white;
+        border-right:solid 1px #ddd;
+      }
+    }
+
+    .nodes {
+      position: absolute;
+      top: $header-height + 1px;
+      left:0;right:0;bottom:0;
+      overflow-y:scroll;
+      overflow-x:hidden;
+
+      .nbox {
+        float: left;
+        canvas.ncanvas {
+          position: absolute;
+          top:0;left:0;
+        }
+      }
+
+      .role-actions {
+        position: relative;
+        float: left;
+        .action-node {
+          // -webkit-filter: blur(10px);
+          transition: transform .2s ease-out;
+          cursor: pointer;
+          &:hover {
+            transform: translate(-3px, -3px);
+            // transform: rotate(-5deg);
+          }
+
+          &.focus {
+            &:after {
+              // content: "\f063";
+              content: "\f061";
+              font-family: 'Icons';
+              position: absolute;
+              top:0;left:-20px;bottom:0;
+              font-size: 40px;
+              // color: #F18D05;
+              color:#FF4400;
+              height:40px;line-height:40px;
+              margin:auto;
+              animation: focusarrow 1s  infinite;
+            }
+          }
+
+          position: absolute;
+          background-color: #FFF;
+          box-shadow: 1px 1px 5px rgba(black, 0.2);
+          .box {
+            $pd: 5px;
+            position: absolute;
+            top:$pd;left:$pd;right:$pd;bottom:$pd;
+            padding: 10px;
+            overflow: hidden;
+            font-size: 13px;
+            line-height: 20px;
+          }
+          
+          &[data-role='客户'] .box{
+            background-color: lighten(#EDFDB5, 5%);
+          }
+          &[data-role='柜员'] .box{
+            background-color: lighten(#D7F1FD, 5%);
+          }
+
+          .box {
+            .name {
+              height: 40px;
+              line-height: 20px;
+              margin-right: 40px;
+              overflow:hidden;
+            }
+            .has-screen {
+              position: absolute;
+              top:0;right:0;bottom:0;width:50px;
+              text-align: center;
+              line-height: 60px;
+              font-size: 24px;
+              .count {display:none;}
+            }
+          }
+        }
+      }
+    }
+
+    .teaching-dialog {
+      position: fixed;
+      top:71px;right:30px;
+      width:480px;
+      height: 360px;
+      background-color: #FFF;
+      // background-color: #F7F7F7;
+      box-shadow:1px 1px 5px rgba(0, 0, 0, 0.2);
+      &.has-screen {
+        height: 360px + 91px;
+      }
+
+      .action-name {
+        font-size: 16px;
+        height:50px;line-height:50px;
+        padding:0 15px;
+        border-bottom:solid 1px #ddd;
+        background-color: #f7f7f7;
+      }
+
+      .nav {
+        background-color: #f7f7f7;
+        position: absolute;
+        left:0;right:0;bottom:0;
+        a {
+          width:50%;
+          float:left;
+          border-top:solid 1px #ddd;
+          height:50px;line-height:50px;
+          text-align: center;
+          font-size: 16px;
+          color: #333;
+          text-decoration: none;
+          i {
+            margin:0 10px;
+          }
+          &:first-child {
+            border-right:solid 1px #ddd;
+          }
+          &:last-child {
+            border-left:solid 1px #fff;
+          }
+          &:hover {
+            background-color: #ffffda;
+            text-decoration: none;
+          }
+        }
+      }
+
+      .has-screen {
+        padding: 15px;
+        // background-color: #ffffda;
+        border-bottom:dashed 1px #ddd;
+        .desc {margin-bottom: 10px;}
+        i {margin-right: 10px;}
+      }
+
+      .action-desc {
+        padding: 15px;
+        border:0 none;
+        background: none;
+        margin:0;
+        font-size: 14px;
+        height:260px;
+        overflow-y:auto;
+        overflow-x:hidden;
+        font-family: arial, '微软雅黑';
+      }
+    }
+
+    .screen-shower {
+      .screen-desc {
+        border:0 none;
+        background: none;
+        margin:0;
+        font-size: 14px;
+        float: left;
+        width: 220px;
+        padding:0;
+        padding-right: 15px;
+        font-family: arial, '微软雅黑';
+        max-height:480px;
+        overflow-y:auto;
+        overflow-x:hidden;
+      }
+      .ofc-teller-screen {
+        margin-left: 220px;
+      }
+
+      .modal-header {
+        display: none;
+      }
+      .modal-content {
+        border-radius: 0;
+      }
+      .modal-footer {
+        .btn.btn-primary{display:none;}
+      }
+      .modal-body {
+        @include clearfix;
+      }
+    }
+  }
+}
+
 .teller-course-ware {
   position: absolute;
   top:0;left:0;right:0;bottom:0;
@@ -178,215 +388,12 @@ body.teller-ware {
   }
 
   .paper {
-    position: absolute;
+    @include teller-ware-paper;
     top:0;bottom:0;left:$sidebar-width;right:0;
-
-    .flow-course-ware {
-      position: absolute;
-      top:0;left:0;right:0;bottom:0;
-      $header-height: 60px;
-      .header {
-        border-bottom: solid 1px #ccc;
-        background-color: #f7f7f7;
-        @include clearfix;
-        .role {
-          height:$header-height;line-height:$header-height;
-          float: left;
-          width: 240px;
-          text-align: center;
-          border-left:solid 1px white;
-          border-right:solid 1px #ddd;
-        }
-      }
-
-      .nodes {
-        position: absolute;
-        top: $header-height + 1px;
-        left:0;right:0;bottom:0;
-        overflow-y:scroll;
-        overflow-x:hidden;
-
-        .nbox {
-          float: left;
-          canvas.ncanvas {
-            position: absolute;
-            top:0;left:0;
-          }
-        }
-
-        .role-actions {
-          position: relative;
-          float: left;
-          .action-node {
-            // -webkit-filter: blur(10px);
-            transition: transform .2s ease-out;
-            cursor: pointer;
-            &:hover {
-              transform: translate(-3px, -3px);
-              // transform: rotate(-5deg);
-            }
-
-            &.focus {
-              &:after {
-                // content: "\f063";
-                content: "\f061";
-                font-family: 'Icons';
-                position: absolute;
-                top:0;left:-20px;bottom:0;
-                font-size: 40px;
-                // color: #F18D05;
-                color:#FF4400;
-                height:40px;line-height:40px;
-                margin:auto;
-                animation: focusarrow 1s  infinite;
-              }
-            }
-
-            position: absolute;
-            background-color: #FFF;
-            box-shadow: 1px 1px 5px rgba(black, 0.2);
-            .box {
-              $pd: 5px;
-              position: absolute;
-              top:$pd;left:$pd;right:$pd;bottom:$pd;
-              padding: 10px;
-              overflow: hidden;
-              font-size: 13px;
-              line-height: 20px;
-            }
-            
-            &[data-role='客户'] .box{
-              background-color: lighten(#EDFDB5, 5%);
-            }
-            &[data-role='柜员'] .box{
-              background-color: lighten(#D7F1FD, 5%);
-            }
-
-            .box {
-              .name {
-                height: 40px;
-                line-height: 20px;
-                margin-right: 40px;
-                overflow:hidden;
-              }
-              .has-screen {
-                position: absolute;
-                top:0;right:0;bottom:0;width:50px;
-                text-align: center;
-                line-height: 60px;
-                font-size: 24px;
-                .count {display:none;}
-              }
-            }
-          }
-        }
-      }
-
-      .teaching-dialog {
-        position: fixed;
-        top:71px;right:30px;
-        width:480px;
-        height: 360px;
-        background-color: #FFF;
-        // background-color: #F7F7F7;
-        box-shadow:1px 1px 5px rgba(0, 0, 0, 0.2);
-        &.has-screen {
-          height: 360px + 91px;
-        }
-
-        .action-name {
-          font-size: 16px;
-          height:50px;line-height:50px;
-          padding:0 15px;
-          border-bottom:solid 1px #ddd;
-          background-color: #f7f7f7;
-        }
-
-        .nav {
-          background-color: #f7f7f7;
-          position: absolute;
-          left:0;right:0;bottom:0;
-          a {
-            width:50%;
-            float:left;
-            border-top:solid 1px #ddd;
-            height:50px;line-height:50px;
-            text-align: center;
-            font-size: 16px;
-            color: #333;
-            text-decoration: none;
-            i {
-              margin:0 10px;
-            }
-            &:first-child {
-              border-right:solid 1px #ddd;
-            }
-            &:last-child {
-              border-left:solid 1px #fff;
-            }
-            &:hover {
-              background-color: #ffffda;
-              text-decoration: none;
-            }
-          }
-        }
-
-        .has-screen {
-          padding: 15px;
-          // background-color: #ffffda;
-          border-bottom:dashed 1px #ddd;
-          .desc {margin-bottom: 10px;}
-          i {margin-right: 10px;}
-        }
-
-        .action-desc {
-          padding: 15px;
-          border:0 none;
-          background: none;
-          margin:0;
-          font-size: 14px;
-          height:260px;
-          overflow-y:auto;
-          overflow-x:hidden;
-          font-family: arial, '微软雅黑';
-        }
-      }
-
-      .screen-shower {
-        .screen-desc {
-          border:0 none;
-          background: none;
-          margin:0;
-          font-size: 14px;
-          float: left;
-          width: 220px;
-          padding:0;
-          padding-right: 15px;
-          font-family: arial, '微软雅黑';
-          max-height:480px;
-          overflow-y:auto;
-          overflow-x:hidden;
-        }
-        .ofc-teller-screen {
-          margin-left: 220px;
-        }
-
-        .modal-header {
-          display: none;
-        }
-        .modal-content {
-          border-radius: 0;
-        }
-        .modal-footer {
-          .btn.btn-primary{display:none;}
-        }
-        .modal-body {
-          @include clearfix;
-        }
-      }
-    }
   }
 }
+
+
 
 
 // 模拟屏幕
