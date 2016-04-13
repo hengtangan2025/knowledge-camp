@@ -10,7 +10,6 @@
 
 // 自己写的
 //= require auth
-//= require file_part_upload/application
 //= require file
 //= require net
 //= require user
