@@ -52,10 +52,6 @@ gem "streamio-ffmpeg"
 gem 'ruby-pinyin'
 # 代码高亮
 gem 'haml-coderay'
-# 全文搜索
-gem "elasticsearch-simple",
-  :github => "mindpin/elasticsearch-simple",
-  :ref => 'c64b550'
 
 gem "mina", "0.3.7"
 
