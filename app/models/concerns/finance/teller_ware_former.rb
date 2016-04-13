@@ -18,8 +18,16 @@ module Finance::TellerWareFormer
         instance.business_kind_str
       }
 
-      url :preview_url, ->(instance){
+      url :preview_url, ->(instance) {
         manager_finance_preview_path(number: instance.number)
+      }
+
+      url :design_url, ->(instance) {
+        design_manager_finance_teller_ware_path instance
+      }
+
+      url :design_update_url, ->(instance) {
+        design_update_manager_finance_teller_ware_path instance
       }
     end
 

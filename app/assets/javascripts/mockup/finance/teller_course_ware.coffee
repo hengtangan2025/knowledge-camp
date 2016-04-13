@@ -82,15 +82,22 @@
 OEP = React.createClass
   displayName: 'OEPreviewer'
   getInitialState: ->
-    graph: new OEActionsGraph @props.data
+    # data: @props.data
+    # graph: new OEActionsGraph @props.data
+    {}
 
   render: ->
+    @state.graph = new OEActionsGraph @props.data
+
     <div className='flow-course-ware'>
       <OEP.Header data={@state.graph} />
       <OEP.Nodes oep={@} data={@state.graph} />
       <OEP.TeachingDialog oep={@} ref='dialog' data={@state.graph} />
       <OEP.ScreenShower oep={@} ref='screen_shower' />
     </div>
+
+  componentDidUpdate: ->
+    @change_arrows()
 
   componentDidMount: ->
     @change_arrows()
@@ -330,8 +337,9 @@ class OEActionsGraph
     for id, action of @actions
       for post_action_id in action.post_action_ids
         post_action = @actions[post_action_id]
-        action.post_actions[post_action.id] = post_action
-        post_action.pre_actions[action.id] = action
+        if post_action?
+          action.post_actions[post_action.id] = post_action
+          post_action.pre_actions[action.id] = action
 
     # 第三次遍历，划分子连通图
     @sub_graphs = []

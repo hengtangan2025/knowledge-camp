@@ -8,6 +8,7 @@ class Manager::Finance::TellerWaresController < ApplicationController
       DataFormer.new(x)
         .logic(:business_kind_str)
         .url(:preview_url)
+        .url(:design_url)
         .data
     }
 
@@ -80,6 +81,29 @@ class Manager::Finance::TellerWaresController < ApplicationController
     render json: xxmxs.map {|x|
       DataFormer.new(x).data
     }
+  end
+
+  def design
+    ware = ::Finance::TellerWare.find params[:id]
+    data = DataFormer.new(ware)
+      .logic(:actions)
+      .url(:design_update_url)
+      .data
+
+    @page_name = "manager_finance_teller_ware_design"
+    @component_data = {
+      ware: data,
+    }
+
+    render "/mockup/page", layout: 'finance/design'
+  end
+
+  def design_update
+    ware = ::Finance::TellerWare.find params[:id]
+    ware.actions = params[:actions]
+    ware.save
+
+    render json: {}
   end
 
   # # 从 json 创建 ::Finance::TellerWareXxmx

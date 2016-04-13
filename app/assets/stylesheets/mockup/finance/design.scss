@@ -1,0 +1,95 @@
+.manager-finance-teller-ware-designer-page {
+  position: absolute;
+  top:0;left:0;right:0;bottom:0;
+  $side-w: 400px;
+
+  .sidebar {
+    position: absolute;
+    top:0;left:0;bottom:0;
+    width: $side-w;
+    background-color: white;
+    border-right: solid 1px #aaa;
+
+
+    .bar-header {
+      padding: 7px;
+      background-color: #ffffda;
+      border-bottom: solid 1px #E9E9E9;
+      .name, .number {
+        line-height: 18px;
+      }
+
+      .ui.button {
+        margin-right: 0;
+        float: right;
+        height: 36px;line-height: 36px;
+        width: 40px;
+        padding:0;
+        text-align: center;
+        i {
+          font-size: 20px;
+          margin: 0 !important;
+        }
+      }
+    }
+
+    .table-scroller {
+      position: absolute;
+      top: 51px;
+      left:0;right:0;bottom:0;
+      overflow-y: scroll;
+      overflow-x: hidden;
+    }
+
+    .manager-table {
+      .ui.header {display: none;}
+      .ui.table {
+        margin-top: 0;
+        border:0 none;
+        border-radius: 0;
+        thead, tfoot {
+          display: none;
+        }
+        margin-bottom: 10rem;
+        border-bottom: solid 1px #E9E9E9;
+
+        td .ui.button.mini {
+          min-height: 0;
+          height: 24px;
+          line-height: 24px;
+          padding: 0 0.7rem;
+          margin-top: -2px;
+          margin-bottom: -2px;
+        }
+
+        td .ops .ui.button {
+          padding: 0;
+          width: 24px;
+          i {
+            margin: 0;
+          }
+          &:last-child {
+            margin-right: 0;
+          }
+          opacity: 0.8;
+          &:hover {
+            opacity: 1;
+          }
+        }
+      }
+    }
+  }
+  .previewer {
+    @include teller-ware-paper;
+    left: $side-w;
+    .teaching-dialog {
+      display: none;
+    }
+    .flow-course-ware .header .role {
+      height: 50px; line-height: 50px;
+    }
+    .flow-course-ware .nodes {
+      top: 51px;
+    }
+  }
+}

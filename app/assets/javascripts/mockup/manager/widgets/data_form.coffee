@@ -185,4 +185,43 @@
         </textarea>
       </DataForm.Form.Field>
 
+  SelectField: React.createClass
+    render: ->
+      <DataForm.Form.Field {...@props}>
+        <select className='ui dropdown' onChange={@props._change} value={@props._value} ref='select'>
+          {
+            for value, text of @props.values
+              <option key={value} value={value}>{text}</option>
+          }
+        </select>
+      </DataForm.Form.Field>
+
+    componentDidMount: ->
+      $dom = jQuery React.findDOMNode @refs.select
+      $dom.dropdown()
+      @props._set_value $dom.val()
+
+  MultipleSelectField: React.createClass
+    render: ->
+      <DataForm.Form.Field {...@props}>
+        <select className='ui dropdown' onChange={@change} ref='select' multiple>
+          {
+            for value, text of @props.values
+              <option key={value} value={value}>{text}</option>
+          }
+        </select>
+      </DataForm.Form.Field>
+
+    componentDidMount: ->
+      $dom = jQuery React.findDOMNode @refs.select
+      $dom.dropdown()
+      value = @props._value || []
+      $dom.dropdown('set selected', value)
+
+    change: ->
+      $dom = jQuery React.findDOMNode @refs.select
+      values = $dom.dropdown('get value')
+      values = values[values.length - 1]
+      @props._set_value(values || [])
+
   OneImageUploadField: null # 在 data_form/image_upload.coffee 中定义

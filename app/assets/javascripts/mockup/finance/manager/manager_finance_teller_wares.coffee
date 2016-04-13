@@ -26,6 +26,9 @@
               ops:
                 <div>
                   <a href={x.preview_url} target='_blank' className='ui basic button mini'>预览</a>
+                  <a href={x.design_url} target='_blank' className='ui basic button mini'>
+                    <i className='icon configure' /> 设计器
+                  </a>
                 </div>
             }
           th_classes:

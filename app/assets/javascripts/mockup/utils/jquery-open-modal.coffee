@@ -1,4 +1,6 @@
 jQuery.open_modal = (component, config={})->
+  jQuery('.ui.dimmer.modals').remove()
+
   $dom = jQuery """
     <div class="ui modal small jquery">
       <div class="content">
