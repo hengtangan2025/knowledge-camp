@@ -77,8 +77,8 @@ gem 'useragent'
 
 # 支持分段上传的文件持久化
 gem 'file-part-upload',
-    :github => 'ben7th/file-part-upload',
-    :ref => '13bbe54'
+    :github => "mindpin/file-part-upload",
+    :ref    => "fd69106"
 
 # -----金融学院相关
 gem 'kc_courses', :github => 'fushang318/kc_courses',

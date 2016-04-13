@@ -1,16 +1,4 @@
 GIT
-  remote: git://github.com/ben7th/file-part-upload.git
-  revision: 13bbe5496ba7993247846b8931289ef20e58d601
-  ref: 13bbe54
-  specs:
-    file-part-upload (3.0.0)
-      enumerize
-      mime-types
-      mini_magick
-      qiniu (~> 6.4.1)
-      streamio-ffmpeg
-
-GIT
   remote: git://github.com/fushang318/kc_courses.git
   revision: 5cb25c042f48a48900f5028f44d115165280d24f
   ref: 5cb25c0
@@ -44,6 +32,18 @@ GIT
   ref: 93b2eff
   specs:
     enterprise_position_level (0.1.0)
+
+GIT
+  remote: git://github.com/mindpin/file-part-upload.git
+  revision: fd69106961fe08fd7dcc5ff6105063ec0b5ab634
+  ref: fd69106
+  specs:
+    file-part-upload (3.0.0)
+      enumerize
+      mime-types
+      mini_magick
+      qiniu (~> 6.4.1)
+      streamio-ffmpeg
 
 GIT
   remote: git://github.com/mindpin/generic_controller.git
@@ -147,17 +147,17 @@ GEM
       thread_safe (~> 0.1)
       warden (~> 1.2.3)
     diff-lcs (1.2.5)
-    elasticsearch (1.0.16)
-      elasticsearch-api (= 1.0.16)
-      elasticsearch-transport (= 1.0.16)
-    elasticsearch-api (1.0.16)
+    elasticsearch (1.0.17)
+      elasticsearch-api (= 1.0.17)
+      elasticsearch-transport (= 1.0.17)
+    elasticsearch-api (1.0.17)
       multi_json
     elasticsearch-model (0.1.8)
       activesupport (> 3)
       elasticsearch (> 0.4)
       hashie
     elasticsearch-rails (0.1.8)
-    elasticsearch-transport (1.0.16)
+    elasticsearch-transport (1.0.17)
       faraday
       multi_json
     enumerize (1.1.1)
@@ -327,7 +327,7 @@ GEM
       actionpack (> 4, < 5.1)
       activemodel (> 4, < 5.1)
     slop (3.6.0)
-    spring (1.7.0)
+    spring (1.7.1)
     sprockets (3.4.0)
       rack (> 1, < 3)
     sprockets-coffee-react (3.0.1)
