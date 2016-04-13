@@ -1,16 +1,4 @@
 GIT
-  remote: git://github.com/ben7th/file-part-upload.git
-  revision: 13bbe5496ba7993247846b8931289ef20e58d601
-  ref: 13bbe54
-  specs:
-    file-part-upload (3.0.0)
-      enumerize
-      mime-types
-      mini_magick
-      qiniu (~> 6.4.1)
-      streamio-ffmpeg
-
-GIT
   remote: git://github.com/kc-train/model_label.git
   revision: ffbc999778b2179b898c2263d303c8c0749385ee
   ref: ffbc999
@@ -64,6 +52,18 @@ GIT
   ref: 93b2eff
   specs:
     enterprise_position_level (0.1.0)
+
+GIT
+  remote: git://github.com/mindpin/file-part-upload.git
+  revision: fd69106961fe08fd7dcc5ff6105063ec0b5ab634
+  ref: fd69106
+  specs:
+    file-part-upload (3.0.0)
+      enumerize
+      mime-types
+      mini_magick
+      qiniu (~> 6.4.1)
+      streamio-ffmpeg
 
 GIT
   remote: git://github.com/mindpin/generic_controller.git
