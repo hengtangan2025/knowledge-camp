@@ -68,7 +68,6 @@ class Manager::CoursesController < Manager::ApplicationController
               wares.map do |ware|
                 DataFormer.new(ware)
                   .logic(:learned, current_user)
-                  .url(:url)
                   .url(:update_url)
                   .url(:move_down_url)
                   .url(:move_up_url)
