@@ -15,14 +15,12 @@
           fields:
             hmdm: '画面代码'
             zds_count: '字段数目'
-            ops: '操作'
+            ops: '预览'
           data_set: @props.data.screens.map (x)=>
             jQuery.extend x, {
               zds_count: x.zds.length
               ops:
-                <div>
-                  <a href='javascript:;' target='_blank' className='ui basic button mini' onClick={@preview(x)}>预览</a>
-                </div>
+                <TellerScreenButton hmdm={x.hmdm} />
             }
           th_classes:
             hmdm: 'collapsing'
@@ -35,7 +33,3 @@
         <div className='ui segment'>
           <ManagerTable data={table_data} title='模拟屏幕清单' />
         </div>
-
-      preview: (screen)->
-        (evt)->
-          jQuery.open_modal <OFCTellerScreen key={screen.hmdm} data={screen} />

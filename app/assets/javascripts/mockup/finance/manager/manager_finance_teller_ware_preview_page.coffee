@@ -6,15 +6,12 @@
       baseinfo: 
         number: @state.ware.number
         name: @state.ware.name
+        desc: @state.ware.desc
+
         linked_flows: []
-        descs: {}
         gainian: {}
       actioninfo:
         actions: @state.ware.actions
-        action_desc: []
-        screens: []
-        screens_desc: []
-
 
     <div>
       <TellerCourseWare data={data} />

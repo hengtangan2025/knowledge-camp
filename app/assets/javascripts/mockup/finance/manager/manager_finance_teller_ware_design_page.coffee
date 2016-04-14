@@ -1,6 +1,7 @@
 @ManagerFinanceTellerWareDesignPage = React.createClass
   getInitialState: ->
     actions: @props.data.ware.actions || {}
+    ware: @props.data.ware
 
   render: ->
     {
@@ -8,7 +9,7 @@
     } = ManagerFinanceTellerWareDesignPage
 
     <div className='manager-finance-teller-ware-designer-page'>
-      <Sidebar actions={@state.actions} ware={@props.data.ware} />
+      <Sidebar actions={@state.actions} ware={@state.ware} />
       <Previewer actions={@state.actions} />
     </div>
 
@@ -36,9 +37,14 @@
                   <a href='javascript:;' className='ui button basic mini blue' onClick={@edit(x)}>
                     <i className='icon pencil' />
                   </a>
-                  <a href='javascript:;' className='ui button basic mini blue'>
-                    <i className='icon desktop' />
-                  </a>
+                  {
+                    klass = new ClassName
+                      'ui button mini blue': true
+                      'basic': not (x.linked_screen_ids? and x.linked_screen_ids.length > 0)
+                    <a href='javascript:;' className={klass} onClick={@link_screen(x)}>
+                      <i className='icon desktop' />
+                    </a>
+                  }
                   <a href='javascript:;' className='ui button basic mini red' onClick={@remove(x)}>
                     <i className='icon delete' />
                   </a>
@@ -53,9 +59,17 @@
 
         <div className='sidebar'>
           <div className='bar-header'>
-            <a href='javascript:;' className='ui button mini green' onClick={@show_add_modal}>
-              <i className='icon plus' />
-            </a>
+            <div className='btns'>
+              <a href='javascript:;' className='ui button mini green' onClick={@show_edit_info_modal}>
+                <i className='icon pencil' />
+              </a>
+              <a href={@props.ware.preview_url} className='ui button mini green' target='_blank'>
+                预
+              </a>
+              <a href='javascript:;' className='ui button mini green' onClick={@show_add_modal}>
+                <i className='icon plus' />
+              </a>
+            </div>
             <div className='name'>{@props.ware.name}</div>
             <div className='number'>{@props.ware.number}</div>
           </div>
@@ -83,9 +97,33 @@
             yes: ->
               Actions.remove(x)
 
+      link_screen: (x)->
+        =>
+          trade_url = window.trade_url
+          unless trade_url?
+            console.warn '未设置 window.trade_url'
+            return
+
+          jQuery.ajax
+            url: trade_url
+            data: number: @props.ware.number
+          .done (res)->
+            hmdms = res.all_hmdms
+
+            jQuery.open_modal(
+              <ManagerFinanceTellerWareDesignPage.ScreenModal action={x} hmdms={hmdms} />, {
+                closable: false
+              }
+            )
+
       show_add_modal: ->
         jQuery.open_modal(
           <ManagerFinanceTellerWareDesignPage.AddModal />
+        )
+
+      show_edit_info_modal: ->
+        jQuery.open_modal(
+          <ManagerFinanceTellerWareDesignPage.EditInfoModal ware={@props.ware} />
         )
 
 
@@ -100,6 +138,48 @@
         <div className='previewer'>
           <TellerCourseWare.Panel data={actioninfo} />
         </div>
+
+    EditInfoModal: React.createClass
+      render: ->
+        {
+          TextInputField
+          TextAreaField
+          SelectField
+          Submit
+        } = DataForm
+
+        layout =
+          label_width: '100px'
+
+        kinds =
+          none: '无'
+          day_begin_ops:                '日初处理',
+          day_end_ops:                  '日终处理',
+
+          saving_ops:                   '储蓄业务',
+          personal_loan_ops:            '个人贷款业务',
+          company_saving_and_loan_ops:  '对公存贷业务',
+          delegate_ops:                 '代理业务',
+          pay_and_settle_ops:           '支付结算',
+          public_ops:                   '公共业务',
+          stock_ops:                    '股金业务',
+
+        <div>
+          <h3 className='ui header'>修改课件信息</h3>
+          <DataForm.Form onSubmit={@submit} ref='form' data={@props.ware}>
+            <TextInputField {...layout} label='交易名称：' name='name' required />
+            <TextInputField {...layout} label='交易代码：' name='number' required />
+            <SelectField {...layout} label='业务类型：' name='business_kind' values={kinds}/>
+            <TextAreaField {...layout} label='交易概述：' name='desc' placeholder='根据操作手册填写' />
+            <TextInputField {...layout} label='编辑人备注：' name='editor_memo' />
+            <Submit {...layout} text='确定保存' />
+          </DataForm.Form>
+        </div>
+
+      submit: (data)->
+        @refs.form.set_submiting true
+        Actions.update_ware data, =>
+          @state.close()
 
 
     AddModal: React.createClass
@@ -137,6 +217,7 @@
           TextInputField
           SelectField
           MultipleSelectField
+          TextAreaField
           Submit
         } = DataForm
 
@@ -162,7 +243,8 @@
           <DataForm.Form onSubmit={@submit} ref='form' data={@props.action}>
             <TextInputField {...layout} label='操作名称：' name='name' required />
             <SelectField {...layout} label='操作角色：' name='role' values={roles} />
-            <MultipleSelectField {...layout} label='后续操作' name='post_action_ids' values={grid_values} />
+            <MultipleSelectField {...layout} label='后续操作：' name='post_action_ids' values={grid_values} />
+            <TextAreaField {...layout} label='操作概述' name='desc' placeholder='根据操作手册填写' />
             <Submit {...layout} text='确定保存' />
           </DataForm.Form>
         </div>
@@ -191,10 +273,79 @@
           @_r_ga _action, all_pres_actions
 
 
+    ScreenModal: React.createClass
+      getInitialState: ->
+        linked_screen_ids: @props.action.linked_screen_ids || []
+
+      render: ->
+        linked_screen_ids = @state.linked_screen_ids
+        hmdms = @props.hmdms
+
+        <div className='teller-ware-design-screens-modal'>
+          <h3 className='ui header'>关联模拟屏幕</h3>
+          <div className='screens'>
+          {
+            for hmdm in hmdms
+              selected = linked_screen_ids.indexOf(hmdm) >= 0
+
+              klass = new ClassName
+                'screen': true
+                'selected': selected
+
+              params = 
+                checked: selected
+                onChange: @change(hmdm)
+
+              <div key={hmdm} className={klass}>
+                <div className='ui checkbox'>
+                  <input type='checkbox' {...params} />
+                  <label>
+                    <TellerScreenButton hmdm={hmdm} />
+                  </label>
+                </div>
+              </div>
+          }
+          </div>
+          <div style={textAlign: 'right', marginTop: '2rem'}>
+            <a href='javascript:;' className='ui button green' onClick={@submit}>
+              <i className='icon checkmark' /> 确定
+            </a>
+            <a href='javascript:;' className='ui button' onClick={@close}>关闭</a>
+          </div>
+        </div>
+
+      close: ->
+        @state.close()
+
+      change: (hmdm)->
+        (evt)=>
+          linked_screen_ids = Immutable.fromJS @state.linked_screen_ids
+
+          if evt.target.checked
+            linked_screen_ids = linked_screen_ids.push hmdm
+          else
+            linked_screen_ids = linked_screen_ids.filter (x)->
+              x != hmdm
+
+          @setState linked_screen_ids: linked_screen_ids.toJS()
+
+      submit: ->
+        action = Immutable.fromJS @props.action
+        action = action.set 'linked_screen_ids', @state.linked_screen_ids || []
+        action = action.toJS()
+
+        Actions.update action, =>
+          @close()
+          
+
+
 class DataStore
   constructor: (@page)->
     @actions = Immutable.fromJS(@page.state.actions || {})
+    @ware = Immutable.fromJS(@page.state.ware)
+
     @update_url = @page.props.data.ware?.design_update_url
+    @ware_update_url = @page.props.data.ware?.update_url
 
   remove_action: (action)->
     actions = @actions.filter (x)->
@@ -218,6 +369,35 @@ class DataStore
   update_action: (action, callback)->
     actions = @actions.set action.id, Immutable.fromJS(action)
     @ajax_update actions, callback
+
+  update_ware: (data, callback)->
+    ware = @ware
+      .set 'name', data.name
+      .set 'number', data.number
+      .set 'desc', data.desc
+      .set 'business_kind', data.business_kind
+      .set 'editor_memo', data.editor_memo
+
+    ware = ware.toJS()
+
+    jQuery.ajax
+      type: 'PUT'
+      url: @ware_update_url
+      data:
+        ware:
+          name: ware.name           
+          number: ware.number
+          desc: ware.desc           
+          business_kind: ware.business_kind
+          editor_memo: ware.editor_memo
+
+    .done (res)=>
+      @page.setState
+        ware: ware
+      callback?()
+
+  update_action_ids: (action, screen_ids)->
+    console.log action, screen_ids
 
   ajax_update: (actions, callback)->
     jQuery.ajax
@@ -254,3 +434,6 @@ Actions = class
   @update: (data, callback)->
     action = data
     @store.update_action action, callback
+
+  @update_ware: (ware, callback)->
+    @store.update_ware ware, callback

@@ -2,7 +2,6 @@
   getInitialState: ->
     trades: @props.data.trades
     paginate: @props.data.paginate
-    hmdm_url: @props.data.hmdm_url
 
   render: ->
     <div className='manager-bank-teller-wares'>
@@ -28,19 +27,15 @@
                 <div>
                 {
                   for hmdm in x.input_screen_hmdms
-                    <ManagerFinanceTellerWareTradesPage.ScreenButton page={@props.page} key={hmdm} hmdm={hmdm} />
+                    <TellerScreenButton key={hmdm} hmdm={hmdm} />
                 }
                 </div>
               response_screen_hmdm:
                 if x.response_screen_hmdm?
-                  <ManagerFinanceTellerWareTradesPage.ScreenButton page={@props.page} hmdm={x.response_screen_hmdm} />
-                else
-                  ''
+                  <TellerScreenButton hmdm={x.response_screen_hmdm} />
               compound_screen_hmdm:
                 if x.compound_screen_hmdm?
-                  <ManagerFinanceTellerWareTradesPage.ScreenButton page={@props.page} hmdm={x.compound_screen_hmdm} />
-                else
-                  ''
+                  <TellerScreenButton hmdm={x.compound_screen_hmdm} />
             }
           th_classes:
             number: 'collapsing'
@@ -54,16 +49,3 @@
         <div className='ui segment'>
           <ManagerTable data={table_data} title='关联交易' />
         </div>
-
-    ScreenButton: React.createClass
-      render: ->
-        <a href='javascript:;' className='ui basic button mini' onClick={@show}>{@props.hmdm}</a>
-
-      show: ->
-        jQuery.ajax
-          url: @props.page.state.hmdm_url
-          data:
-            hmdm: @props.hmdm
-        .done (res)=>
-          screen = res
-          jQuery.open_modal <OFCTellerScreen key={screen.hmdm} data={screen} />

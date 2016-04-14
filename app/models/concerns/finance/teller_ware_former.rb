@@ -9,6 +9,8 @@ module Finance::TellerWareFormer
       field :number
       field :business_kind
       field :gtd_status
+      field :editor_memo
+      field :desc
 
       logic :actions, ->(instance) {
         instance.actions
@@ -24,6 +26,10 @@ module Finance::TellerWareFormer
 
       url :design_url, ->(instance) {
         design_manager_finance_teller_ware_path instance
+      }
+
+      url :update_url, ->(instance) {
+        manager_finance_teller_ware_path instance
       }
 
       url :design_update_url, ->(instance) {
