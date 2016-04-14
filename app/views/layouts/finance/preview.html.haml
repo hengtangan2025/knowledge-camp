@@ -11,5 +11,10 @@
     = stylesheet_link_tag :mockup, :'data-turbolinks-track' => true
     = javascript_include_tag :mockup, :'data-turbolinks-track' => true
 
+    :javascript
+      (function(){
+        window.hmdm_url = '#{hmdm_manager_finance_teller_wares_path}';
+      })();
+
   %body.teller-ware.preview
     = yield

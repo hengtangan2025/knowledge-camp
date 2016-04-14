@@ -3,7 +3,7 @@ class Manager::Finance::TellerWaresController < ApplicationController
 
   def index
     @page_name = "manager_finance_teller_wares"
-    wares = ::Finance::TellerWare.page(params[:page]).per(15)
+    wares = ::Finance::TellerWare.order_by(number: :asc).page(params[:page]).per(15)
     data = wares.map {|x|
       DataFormer.new(x)
         .logic(:business_kind_str)
@@ -62,7 +62,6 @@ class Manager::Finance::TellerWaresController < ApplicationController
     @component_data = {
       trades: data,
       paginate: DataFormer.paginate_data(trades),
-      hmdm_url: hmdm_manager_finance_teller_wares_path
     }
 
     render "/mockup/page"

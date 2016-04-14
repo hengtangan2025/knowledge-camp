@@ -254,10 +254,10 @@ OEP = React.createClass
               if @has_screen
                 <div className='has-screen ct'>
                   <div className='desc'>这个步骤需要通过柜员机屏幕进行操作</div>
-                  <a className='btn btn-success btn-sm' href='javascript:;' onClick={@open_screen}>
-                    <i className='fa fa-desktop' />
-                    <span>学习屏幕操作</span>
-                  </a>
+                  {
+                    for hmdm in action.screen_ids
+                      <TellerScreenButton key={hmdm} hmdm={hmdm} />
+                  }
                 </div>
             }
             <pre className='action-desc ct'>{action.desc}</pre>
@@ -285,10 +285,6 @@ OEP = React.createClass
       focus_next: ->
         if @has_next
           @props.oep.focus_action @state.action.post_actions[@next_keys[0]]
-
-      open_screen: ->
-        console.warn 'open screen'
-        # @props.oep.show_screen @state.action
 
 
     ScreenShower: React.createClass
