@@ -10,13 +10,19 @@ development:
   qiniu_app_access_key: xxx
   qiniu_app_secret_key: xxx
   qiniu_callback_host:  http://xxx.xxx.xxx
-  qiniu_pfop_pipeline default
+  qiniu_pfop_pipeline: default
 
   # 课程默认封面地址
   course_default_cover_url: 'http://xxxx.xxx/xxx.png'
 
   # 当为false强制关闭es功能（即不引用回调等）,其余或者不设定，为开启状态
   es_simple_enabled: false
+
+  # 如果是内网部署，需要使用七牛API兼容的自架服务
+  lan_qiniu_compatibility_mode_upload_url: http://xxx.xxx.xxx
+
+  # 如果不想使用七牛转码服务可以设置为 disable
+  qiniu_audio_and_video_transcode: disable
 
 test:
   static_file_url_prefix: static_files/test
