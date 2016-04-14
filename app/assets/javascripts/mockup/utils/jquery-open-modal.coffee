@@ -1,5 +1,5 @@
 jQuery.open_modal = (component, config={})->
-  jQuery('.ui.dimmer.modals').remove()
+  # jQuery('.ui.dimmer.modals').remove()
 
   $dom = jQuery """
     <div class="ui modal small jquery">
@@ -25,6 +25,8 @@ jQuery.open_modal = (component, config={})->
   $dom
     .modal config
     .modal('show')
+
+  return a
 
 
 jQuery.open_large_modal = (component, config={})->

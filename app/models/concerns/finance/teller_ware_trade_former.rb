@@ -12,6 +12,14 @@ module Finance::TellerWareTradeFormer
       field :input_screen_hmdms
       field :response_screen_hmdm
       field :compound_screen_hmdm
+
+      logic :all_hmdms, ->(instance) {
+        [
+          instance.input_screen_hmdms,
+          instance.response_screen_hmdm,
+          instance.compound_screen_hmdm
+        ].flatten.compact.uniq 
+      }
     end
 
   end

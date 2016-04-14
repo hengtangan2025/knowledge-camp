@@ -93,3 +93,21 @@
     }
   }
 }
+
+.teller-ware-design-screens-modal {
+  .screens {
+    overflow:hidden;
+  }
+  .screen {
+    float:left;
+    margin-right: 0.5rem;
+    margin-bottom: 0.5rem;
+    border: solid 1px #ddd;
+    padding: 0.5rem;
+    .button {margin-right: 0;}
+
+    &.selected {
+      background-color: #ffffda;
+    }
+  }
+}

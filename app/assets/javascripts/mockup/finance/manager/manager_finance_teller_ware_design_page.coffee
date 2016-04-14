@@ -36,9 +36,14 @@
                   <a href='javascript:;' className='ui button basic mini blue' onClick={@edit(x)}>
                     <i className='icon pencil' />
                   </a>
-                  <a href='javascript:;' className='ui button basic mini blue'>
-                    <i className='icon desktop' />
-                  </a>
+                  {
+                    klass = new ClassName
+                      'ui button mini blue': true
+                      'basic': not (x.linked_screen_ids? and x.linked_screen_ids.length > 0)
+                    <a href='javascript:;' className={klass} onClick={@link_screen(x)}>
+                      <i className='icon desktop' />
+                    </a>
+                  }
                   <a href='javascript:;' className='ui button basic mini red' onClick={@remove(x)}>
                     <i className='icon delete' />
                   </a>
@@ -82,6 +87,25 @@
             text: '确定要删除吗？<br/>关联关系将被自动解除。'
             yes: ->
               Actions.remove(x)
+
+      link_screen: (x)->
+        =>
+          trade_url = window.trade_url
+          unless trade_url?
+            console.warn '未设置 window.trade_url'
+            return
+
+          jQuery.ajax
+            url: trade_url
+            data: number: @props.ware.number
+          .done (res)->
+            hmdms = res.all_hmdms
+
+            jQuery.open_modal(
+              <ManagerFinanceTellerWareDesignPage.ScreenModal action={x} hmdms={hmdms} />, {
+                closable: false
+              }
+            )
 
       show_add_modal: ->
         jQuery.open_modal(
@@ -191,6 +215,72 @@
           @_r_ga _action, all_pres_actions
 
 
+    ScreenModal: React.createClass
+      getInitialState: ->
+        linked_screen_ids: @props.action.linked_screen_ids || []
+
+      render: ->
+        linked_screen_ids = @state.linked_screen_ids
+        hmdms = @props.hmdms
+
+        <div className='teller-ware-design-screens-modal'>
+          <h3 className='ui header'>关联模拟屏幕</h3>
+          <div className='screens'>
+          {
+            for hmdm in hmdms
+              selected = linked_screen_ids.indexOf(hmdm) >= 0
+
+              klass = new ClassName
+                'screen': true
+                'selected': selected
+
+              params = 
+                checked: selected
+                onChange: @change(hmdm)
+
+              <div key={hmdm} className={klass}>
+                <div className='ui checkbox'>
+                  <input type='checkbox' {...params} />
+                  <label>
+                    <TellerScreenButton hmdm={hmdm} />
+                  </label>
+                </div>
+              </div>
+          }
+          </div>
+          <div style={textAlign: 'right', marginTop: '2rem'}>
+            <a href='javascript:;' className='ui button green' onClick={@submit}>
+              <i className='icon checkmark' /> 确定
+            </a>
+            <a href='javascript:;' className='ui button' onClick={@close}>关闭</a>
+          </div>
+        </div>
+
+      close: ->
+        @state.close()
+
+      change: (hmdm)->
+        (evt)=>
+          linked_screen_ids = Immutable.fromJS @state.linked_screen_ids
+
+          if evt.target.checked
+            linked_screen_ids = linked_screen_ids.push hmdm
+          else
+            linked_screen_ids = linked_screen_ids.filter (x)->
+              x != hmdm
+
+          @setState linked_screen_ids: linked_screen_ids.toJS()
+
+      submit: ->
+        action = Immutable.fromJS @props.action
+        action = action.set 'linked_screen_ids', @state.linked_screen_ids || []
+        action = action.toJS()
+
+        Actions.update action, =>
+          @close()
+          
+
+
 class DataStore
   constructor: (@page)->
     @actions = Immutable.fromJS(@page.state.actions || {})
@@ -218,6 +308,9 @@ class DataStore
   update_action: (action, callback)->
     actions = @actions.set action.id, Immutable.fromJS(action)
     @ajax_update actions, callback
+
+  update_action_ids: (action, screen_ids)->
+    console.log action, screen_ids
 
   ajax_update: (actions, callback)->
     jQuery.ajax

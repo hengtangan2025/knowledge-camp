@@ -67,6 +67,11 @@ class Manager::Finance::TellerWaresController < ApplicationController
     render "/mockup/page"
   end
 
+  def trade
+    trade = ::Finance::TellerWareTrade.where(number: params[:number]).first
+    render json: DataFormer.new(trade).logic(:all_hmdms).data
+  end
+
   def hmdm
     screen = ::Finance::TellerWareScreen.where(hmdm: params[:hmdm]).first
     data = DataFormer.new(screen).data.merge({

@@ -235,6 +235,8 @@ Rails.application.routes.draw do
       resources :teller_wares do
         get :screens, on: :collection
         get :trades, on: :collection
+        
+        get :trade, on: :collection
         get :hmdm, on: :collection
         get :xxdm, on: :collection
 
