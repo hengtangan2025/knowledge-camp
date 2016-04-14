@@ -53,7 +53,7 @@ gem 'haml-coderay'
 # 全文搜索
 gem "elasticsearch-simple",
   :github => "mindpin/elasticsearch-simple",
-  :ref => 'c64b550'
+  :ref => '9697be2'
 
 gem "mina", "0.3.7"
 
@@ -143,7 +143,7 @@ gem 'kc-course-editor',
 
 # -----金融学院相关
 gem 'kc_courses', :github => 'mindpin/kc_courses',
-                  :ref => "2b625b0"
+                  :ref => "e97a0cf"
                   # :tag => "v0.6.0"
                   #:path => "../kc_courses"
 
@@ -153,24 +153,24 @@ gem 'simple-navbar', :github => 'mindpin/simple-navbar',
 gem 'bootstrap-sass', '~> 3.3.5'
 
 gem 'bucketerize', :github => 'mindpin/bucketerize',
-                  #:ref => "6e53e43"
-                  :tag => "v0.1.0"
+                  :ref => "fbcfee9"
+                  #:tag => "v0.1.0"
 
-gem 'bank', github: "mindpin/bank", ref: "e3de6cb"
-gem 'enterprise_position_level', github: "mindpin/enterprise_position_level", ref: "93b2eff"
+gem 'bank', github: "mindpin/bank", ref: "90d8f54"
+gem 'enterprise_position_level', github: "mindpin/enterprise_position_level", ref: "541bf8a"
 
 # 管理组件，2015-12-14改为直接搭建后台
 #gem 'engine_manager', github: 'mindpin/engine_manager',
                      #:tag => "v0.0.1"
 
 gem 'question_bank', github: 'mindpin/question_bank',
-                     :ref => "b051910"
+                     :ref => "455dcc1"
 
 gem 'model_label', github: 'kc-train/model_label',
-                    :ref => "ffbc999"
+                    :ref => "596525e"
 
 gem 'kc_comments', github: "mindpin/kc_comments",
-                   ref: "d3d64e6"
+                   ref: "5816fb8"
 
 gem 'sprockets', '3.4.0'
 gem 'sprockets-rails', '2.3.3'
