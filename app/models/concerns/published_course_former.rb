@@ -30,7 +30,8 @@ module PublishedCourseFormer
       data[:video_url] = file_entity.transcode_url("超请") ||
         file_entity.transcode_url("高请") ||
         file_entity.transcode_url("标清") ||
-        file_entity.transcode_url("低清")
+        file_entity.transcode_url("低清") ||
+        file_entity.url
     end
 
     data

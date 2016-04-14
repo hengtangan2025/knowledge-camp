@@ -15,7 +15,8 @@ module WareFormer
         instance.file_entity.transcode_url("超请") ||
           instance.file_entity.transcode_url("高请") ||
           instance.file_entity.transcode_url("标清") ||
-          instance.file_entity.transcode_url("低清")
+          instance.file_entity.transcode_url("低清") ||
+          instance.file_entity.url
       }
 
       logic :learned, ->(instance, user) {
@@ -27,7 +28,7 @@ module WareFormer
       }
 
       url :url, ->(instance){
-        ware_path(instance.id.to_s)
+        ""
       }
 
       url :update_url, ->(instance){
