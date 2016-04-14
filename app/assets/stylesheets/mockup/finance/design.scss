@@ -19,16 +19,18 @@
         line-height: 18px;
       }
 
-      .ui.button {
-        margin-right: 0;
+      .btns {
         float: right;
-        height: 36px;line-height: 36px;
-        width: 40px;
-        padding:0;
-        text-align: center;
-        i {
+        .ui.button {
+          &:last-child{margin-right: 0;}
+          height: 36px;line-height: 36px;
+          width: 40px;
+          padding:0;
+          text-align: center;
           font-size: 20px;
-          margin: 0 !important;
+          i {
+            margin: 0 !important;
+          }
         }
       }
     }

@@ -91,7 +91,9 @@ class Manager::Finance::TellerWaresController < ApplicationController
     ware = ::Finance::TellerWare.find params[:id]
     data = DataFormer.new(ware)
       .logic(:actions)
+      .url(:update_url)
       .url(:design_update_url)
+      .url(:preview_url)
       .data
 
     @page_name = "manager_finance_teller_ware_design"
@@ -100,6 +102,20 @@ class Manager::Finance::TellerWaresController < ApplicationController
     }
 
     render "/mockup/page", layout: 'finance/design'
+  end
+
+  def update
+    ware = ::Finance::TellerWare.find params[:id]
+
+    ware.name           = params[:ware][:name]
+    ware.number         = params[:ware][:number]
+    ware.desc           = params[:ware][:desc]
+    ware.business_kind  = params[:ware][:business_kind]
+    ware.editor_memo    = params[:ware][:editor_memo]
+
+    ware.save
+
+    render json: {}
   end
 
   def design_update

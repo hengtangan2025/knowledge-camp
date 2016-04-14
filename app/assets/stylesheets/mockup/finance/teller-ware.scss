@@ -121,14 +121,11 @@ body.teller-ware {
     .teaching-dialog {
       position: fixed;
       top:71px;right:30px;
-      width:480px;
-      height: 360px;
+      width:400px;
+      bottom: 10px;
       background-color: #FFF;
       // background-color: #F7F7F7;
       box-shadow:1px 1px 5px rgba(0, 0, 0, 0.2);
-      &.has-screen {
-        height: 360px + 91px;
-      }
 
       .action-name {
         font-size: 16px;
@@ -167,57 +164,31 @@ body.teller-ware {
         }
       }
 
-      .has-screen {
-        padding: 15px;
-        // background-color: #ffffda;
+      .scroller {
+        overflow-y: scroll;
+        overflow-x: hidden;
+        position: absolute;
+        top: 50px;
+        bottom: 50px;
+        left:0;right: 0;
+        padding: 1rem;
+      }
+
+      .screen-show {
         border-bottom:dashed 1px #ddd;
         .desc {margin-bottom: 10px;}
-        i {margin-right: 10px;}
+        padding-bottom: 1rem;
+        margin-bottom: 1rem;
       }
 
-      .action-desc {
-        padding: 15px;
-        border:0 none;
-        background: none;
-        margin:0;
-        font-size: 14px;
-        height:260px;
-        overflow-y:auto;
-        overflow-x:hidden;
-        font-family: arial, '微软雅黑';
-      }
-    }
-
-    .screen-shower {
-      .screen-desc {
-        border:0 none;
-        background: none;
-        margin:0;
-        font-size: 14px;
-        float: left;
-        width: 220px;
-        padding:0;
-        padding-right: 15px;
-        font-family: arial, '微软雅黑';
-        max-height:480px;
-        overflow-y:auto;
-        overflow-x:hidden;
-      }
-      .ofc-teller-screen {
-        margin-left: 220px;
-      }
-
-      .modal-header {
-        display: none;
-      }
-      .modal-content {
-        border-radius: 0;
-      }
-      .modal-footer {
-        .btn.btn-primary{display:none;}
-      }
-      .modal-body {
-        @include clearfix;
+      .desc-show {
+        pre {
+          font-family: $mindpin-font-family;
+          background-color: #ffffda;
+          padding: 0.5rem;
+          word-break: break-all;
+          word-wrap: break-word;
+        }
       }
     }
   }
@@ -246,67 +217,69 @@ body.teller-ware {
       line-height: 20px;
 
       &.base {
+        padding: 0 15px;
+        line-height: 30px;
+
         .number {
           font-family: $number-font-family;
-          font-size: 20px;
           font-weight: bold;
-          margin-bottom: 10px;
         }
       }
 
-      &.roles, &.complex {
-        @include clearfix;
-        label {float: left;margin:0;line-height:30px;}
-        .role {
-          position: relative;
-          height: 30px;line-height:30px;
-          margin-left: 20px;
-          float:left;
-          &:last-child {margin-bottom: 0;}
-          &.teller {
-            &:before {
-              content: "";
-              display: block;
-              width: 30px;height:30px;
-              border-radius:100px;
-              background: url(http://i.teamkn.com/i/DtEA0wEP.png);
-              background-size: cover;
-              float: left;
-              margin-right: 10px;
-              border: solid 1px #ddd;
-            }
-          }
-          &.customer {
-            &:before {
-              content: "";
-              display: block;
-              width: 30px;height:30px;
-              border-radius:100px;
-              background: url(http://i.teamkn.com/i/UuDexXFr.png);
-              background-size: cover;
-              float: left;
-              margin-right: 10px;
-              border: solid 1px #ddd;
-            }
-          }
-        }
-        .c {
-          margin-left: 80px;
-          width: 30px;height:30px;
-          color: white;
-          line-height: 30px;
-          text-align: center;
-          border-radius:100px;
-          &.low {
-            background-color: #44B2F5;
-          }
-        }
-      }
+      // &.roles, &.complex {
+      //   @include clearfix;
+      //   label {float: left;margin:0;line-height:30px;}
+      //   .role {
+      //     position: relative;
+      //     height: 30px;line-height:30px;
+      //     margin-left: 20px;
+      //     float:left;
+      //     &:last-child {margin-bottom: 0;}
+      //     &.teller {
+      //       &:before {
+      //         content: "";
+      //         display: block;
+      //         width: 30px;height:30px;
+      //         border-radius:100px;
+      //         background: url(http://i.teamkn.com/i/DtEA0wEP.png);
+      //         background-size: cover;
+      //         float: left;
+      //         margin-right: 10px;
+      //         border: solid 1px #ddd;
+      //       }
+      //     }
+      //     &.customer {
+      //       &:before {
+      //         content: "";
+      //         display: block;
+      //         width: 30px;height:30px;
+      //         border-radius:100px;
+      //         background: url(http://i.teamkn.com/i/UuDexXFr.png);
+      //         background-size: cover;
+      //         float: left;
+      //         margin-right: 10px;
+      //         border: solid 1px #ddd;
+      //       }
+      //     }
+      //   }
+      //   .c {
+      //     margin-left: 80px;
+      //     width: 30px;height:30px;
+      //     color: white;
+      //     line-height: 30px;
+      //     text-align: center;
+      //     border-radius:100px;
+      //     &.low {
+      //       background-color: #44B2F5;
+      //     }
+      //   }
+      // }
+
       &.desc {
         // max-height: 400px;
         overflow-y:auto;
         position: absolute;
-        left:0;right:0;top:81px + 62px + 62px;
+        left:0;right:0;top:61px;
         bottom:200px;
         label {display: block;margin-bottom:10px;}
         pre {
@@ -315,6 +288,8 @@ body.teller-ware {
           margin:0;
           font-family: arial, '微软雅黑';
           background:none;
+          word-break: break-all;
+          word-wrap: break-word;
         }
       }
 

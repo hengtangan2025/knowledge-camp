@@ -16,6 +16,8 @@ class Finance::TellerWare < KcCourses::Ware
   field :gtd_status
   field :number
   field :business_kind
+  field :editor_memo
+  field :desc
 
   validates :chapter, presence: false
 

@@ -1,7 +1,5 @@
 @TellerCourseWare = React.createClass
   render: ->
-    window.screens = @props.data.screens
-
     <div className='teller-course-ware'>
       <TellerCourseWare.Sidebar data={@baseinfo()} />
       <TellerCourseWare.Panel data={@actioninfo()} />
@@ -23,21 +21,15 @@
             <div className='number'>{data.number}</div>
             <div className='name'>{data.name}</div>
           </div>
-          <div className='item roles'>
-            <label>角色</label>
-            <div className='role teller'>柜员</div>
-            <div className='role customer'>客户</div>
-          </div>
-          <div className='item complex'>
-            <label>复杂度</label>
-            <div className='c low'>低</div>
-          </div>
+
           <div className='item desc'>
-            <label>交易概述</label>
-            <pre>{data.descs[data.number]}</pre>
-            <label>关键概念</label>
+            <label><b>交易概述</b></label>
+            <pre style={marginBottom: '1rem'}>{data.desc}</pre>
+
+            <label><b>关键概念</b></label>
             <pre>{data.gainian[data.number]}</pre>
           </div>
+
           <div className='item linked-flows'>
             <label>相关交易</label>
             {
@@ -93,7 +85,6 @@ OEP = React.createClass
       <OEP.Header data={@state.graph} />
       <OEP.Nodes oep={@} data={@state.graph} />
       <OEP.TeachingDialog oep={@} ref='dialog' data={@state.graph} />
-      <OEP.ScreenShower oep={@} ref='screen_shower' />
     </div>
 
   componentDidUpdate: ->
@@ -114,8 +105,6 @@ OEP = React.createClass
 
   _r: (action, idx)->
     action.idx = idx
-    # console.log @props.data
-    action.desc = @props.data.action_desc[idx]
 
     idx += 1
     for id, post_action of action.post_actions
@@ -245,27 +234,48 @@ OEP = React.createClass
         klass = ['teaching-dialog']
         klass.push 'has-screen' if @has_screen
 
+        action_name =
+          <div className='action-name'>
+            <span className='ct'>{action.name}</span>
+          </div>
+
+        nav = 
+          <div className='nav'>
+            <a href='javascript:;' onClick={@focus_prev}><i className='fa fa-chevron-left'/>上一步</a>
+            <a href='javascript:;' onClick={@focus_next}>下一步<i className='fa fa-chevron-right'/></a>
+          </div>
+
+        screen_show = 
+          if @has_screen
+            <div className='screen-show'>
+              <div className='desc'>
+                这个步骤需要通过前端系统屏幕进行操作 <br/>
+                请点击下面的按钮来观看示例：
+              </div>
+              {
+                for hmdm in action.screen_ids
+                  <TellerScreenButton key={hmdm} hmdm={hmdm} />
+              }
+            </div>
+          else
+            <div />
+
+        desc_show = 
+          <div className='desc-show'>
+            <h4>操作概述：</h4>
+            <pre>
+            {jQuery.blank_or action.desc, '没有概述'}
+            </pre>
+          </div>
+
         <div className={klass.join(' ')}>
           <div ref='box'>
-            <div className='action-name'>
-              <span className='ct'>{action.name}</span>
+            {action_name}
+            <div className='scroller'>
+              {screen_show}
+              {desc_show}
             </div>
-            {
-              if @has_screen
-                <div className='has-screen ct'>
-                  <div className='desc'>这个步骤需要通过柜员机屏幕进行操作</div>
-                  {
-                    for hmdm in action.screen_ids
-                      <TellerScreenButton key={hmdm} hmdm={hmdm} />
-                  }
-                </div>
-            }
-            <pre className='action-desc ct'>{action.desc}</pre>
-
-            <div className='nav'>
-              <a href='javascript:;' onClick={@focus_prev}><i className='fa fa-chevron-left'/>上一步</a>
-              <a href='javascript:;' onClick={@focus_next}>下一步<i className='fa fa-chevron-right'/></a>
-            </div>
+            {nav}
           </div>
         </div>
 
@@ -285,29 +295,6 @@ OEP = React.createClass
       focus_next: ->
         if @has_next
           @props.oep.focus_action @state.action.post_actions[@next_keys[0]]
-
-
-    ScreenShower: React.createClass
-      getInitialState: ->
-        screen_data: null
-      render: ->
-        <div className='screen-shower'>
-
-        </div>
-
-      show: (action)->
-        screen_id = action.screen_ids[0]
-        screen_data = (@props.oep.props.data.screens.filter (x)->
-          x.hmdm == screen_id)[0]
-
-        screen_desc = @props.oep.props.data.screens_desc[action.idx]
-
-        if screen_data?
-          @setState 
-            screen_data: screen_data
-            screen_desc: screen_desc
-
-        @refs.modal.show()
 
 # -------------------------------------
 # 以下是非 ReactJS 的类，用于数据解析
@@ -505,6 +492,7 @@ class OEAction
     @post_actions = {}
     @pre_actions = {}
     @screen_ids = _action.linked_screen_ids || []
+    @desc = _action.desc || ''
 
     @deep = null
     @offset = 0

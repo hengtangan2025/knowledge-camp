@@ -180,9 +180,7 @@
       rows = @props.rows || 5
 
       <DataForm.Form.Field {...@props}>
-        <textarea rows={rows} onChange={@props._change}>
-        {@props._value}
-        </textarea>
+        <textarea rows={rows} value={@props._value} onChange={@props._change} placeholder={@props.placeholder} />
       </DataForm.Form.Field>
 
   SelectField: React.createClass
