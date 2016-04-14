@@ -13,6 +13,8 @@ gem "turbolinks"
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
+gem 'therubyracer', platforms: :ruby
+
 group :development do
   # 去除测试环境 assets提示
   gem 'quiet_assets'
