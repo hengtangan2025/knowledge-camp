@@ -37,3 +37,59 @@
             allowMultiple: true
           }
         )
+
+
+@TellerClipList = React.createClass
+  getInitialState: ->
+    cids: @props.cids
+    infos: []
+
+  render: ->
+    <div className='ui divided list'>
+    {
+      for info in @state.infos
+        <div key={info.cid} className='item'>
+          <a href='javascript:;' onClick={@modal(info)}>{info.name}</a>
+        </div>
+    }
+    </div>
+
+  componentDidMount: ->
+    jQuery.ajax
+      url: '/manager/finance/teller_ware_media_clips/get_infos'
+      data: cids: @state.cids
+
+    .done (res)=>
+      @setState infos: res
+
+  modal: (info)->
+    =>
+      jQuery.open_modal(
+        <div>
+        {
+          switch info.file_info.kind
+            when 'image'
+              style =
+                width: 640
+                height: 360
+                backgroundImage: "url(#{info.file_info.url})"
+                backgroundRepeat: 'no-repeat'
+                backgroundSize: 'contain'
+                backgroundPosition: 'center center'
+              <div style={style} />
+            when 'video'
+              style =
+                width: 640
+                height: 360
+              <video src={info.file_info.url} style={style} controls />
+            else
+              <div>
+                <p>不支持该类型文件的直接展示，请点击按钮下载文件</p>
+                <a href={info.file_info.url} className='ui button'>
+                  <i className='icon download' download={info.name} />
+                  下载附件
+                </a>
+              </div>
+        }
+        </div>
+      )

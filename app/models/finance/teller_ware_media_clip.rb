@@ -9,4 +9,11 @@ class Finance::TellerWareMediaClip
 
   field :name
   field :desc
+  field :cid
+
+  before_save :save_cid
+  def save_cid
+    self.cid = randstr if self.cid.blank?
+    true
+  end
 end

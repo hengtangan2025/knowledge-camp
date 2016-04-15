@@ -107,11 +107,17 @@ body.teller-ware {
             }
             .has-screen {
               position: absolute;
-              top:0;right:0;bottom:0;width:50px;
+              top:0;right:0;bottom:30px;width:50px;
               text-align: center;
-              line-height: 60px;
+              line-height: 30px;
               font-size: 24px;
-              .count {display:none;}
+            }
+            .has-clip {
+              position: absolute;
+              top:30px;right:0;bottom:0;width:50px;
+              text-align: center;
+              line-height: 30px;
+              font-size: 24px;
             }
           }
         }
@@ -174,7 +180,7 @@ body.teller-ware {
         padding: 1rem;
       }
 
-      .screen-show {
+      .screen-show, .clip-show{
         border-bottom:dashed 1px #ddd;
         .desc {margin-bottom: 10px;}
         padding-bottom: 1rem;

@@ -28,6 +28,7 @@
       render: ->
         table_data = {
           fields:
+            cid: '资源标识'
             editable_name: '资源名称'
             kind: '类型'
             editable_desc: '描述'
@@ -52,6 +53,7 @@
             created_at: 'collapsing'
             actions: 'collapsing'
             kind: 'collapsing'
+            cid: 'collapsing'
           }
 
           paginate: @props.paginate

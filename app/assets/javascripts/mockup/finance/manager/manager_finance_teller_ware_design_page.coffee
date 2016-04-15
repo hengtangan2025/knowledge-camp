@@ -2,6 +2,7 @@
   getInitialState: ->
     actions: @props.data.ware.actions || {}
     ware: @props.data.ware
+    search_clip_url: @props.data.search_clip_url
 
   render: ->
     {
@@ -9,7 +10,7 @@
     } = ManagerFinanceTellerWareDesignPage
 
     <div className='manager-finance-teller-ware-designer-page'>
-      <Sidebar actions={@state.actions} ware={@state.ware} />
+      <Sidebar actions={@state.actions} ware={@state.ware} search_clip_url={@state.search_clip_url}/>
       <Previewer actions={@state.actions} />
     </div>
 
@@ -43,6 +44,14 @@
                       'basic': not (x.linked_screen_ids? and x.linked_screen_ids.length > 0)
                     <a href='javascript:;' className={klass} onClick={@link_screen(x)}>
                       <i className='icon desktop' />
+                    </a>
+                  }
+                  {
+                    klass = new ClassName
+                      'ui button mini blue': true
+                      'basic': not (x.linked_clip_ids? and x.linked_clip_ids.length > 0)
+                    <a href='javascript:;' className={klass} onClick={@link_clip(x)}>
+                      <i className='icon attach' />
                     </a>
                   }
                   <a href='javascript:;' className='ui button basic mini red' onClick={@remove(x)}>
@@ -117,6 +126,14 @@
                 closable: false
               }
             )
+
+      link_clip: (x)->
+        =>
+          jQuery.open_modal(
+            <ManagerFinanceTellerWareDesignPage.ClipModal action={x} search_clip_url={@props.search_clip_url} />, {
+              closable: false
+            }
+          )
 
       show_add_modal: ->
         jQuery.open_modal(
@@ -347,6 +364,88 @@
       submit: ->
         action = Immutable.fromJS @props.action
         action = action.set 'linked_screen_ids', @state.linked_screen_ids || []
+        action = action.toJS()
+
+        Actions.update action, =>
+          @close()
+
+    ClipModal: React.createClass
+      getInitialState: ->
+        linked_clip_ids: @props.action.linked_clip_ids || []
+        clips: []
+
+      render: ->
+        # console.log @state.linked_clip_ids
+
+        <div>
+          <h3>关联媒体资源</h3>
+          <div>
+            <div className='ui input'>
+              <input type='text' placeholder='查找...' onChange={@search} />
+            </div>
+            <div className='ui divided list'>
+            {
+              for clip in @state.clips
+                selected = @state.linked_clip_ids.indexOf(clip.cid) >= 0
+
+                params = 
+                  checked: selected
+                  onChange: @checkbox(clip.cid)
+
+                <div key={clip.cid} className='item'>
+                  <div className='ui checkbox'>
+                    <input type='checkbox' {...params} />
+                    <label>
+                    {clip.name}
+                    <a style={marginLeft: '0.5rem'} href={clip.file_info.url} target='_blank'><i className='icon external' /></a>
+                    </label>
+                  </div>
+                </div>
+            }
+            </div>
+          </div>
+
+          <div style={textAlign: 'right', marginTop: '2rem'}>
+            <a href='javascript:;' className='ui button green' onClick={@submit}>
+              <i className='icon checkmark' /> 确定
+            </a>
+            <a href='javascript:;' className='ui button' onClick={@close}>关闭</a>
+          </div>
+        </div>
+
+      checkbox: (cid)->
+        (evt)=>
+          linked_clip_ids = Immutable.fromJS @state.linked_clip_ids
+
+          if evt.target.checked
+            linked_clip_ids = linked_clip_ids.push cid
+          else
+            linked_clip_ids = linked_clip_ids.filter (x)->
+              x != cid
+
+          @setState linked_clip_ids: linked_clip_ids.toJS()
+
+      close: ->
+        @state.close()
+
+      search: (evt)->
+        value = jQuery.trim evt.target.value
+
+        clearTimeout @timer if @timer
+
+        @timer = setTimeout =>
+          if value != ''
+            jQuery.ajax
+              url: @props.search_clip_url
+              data: key: value
+            .done (res)=>
+              @setState clips: res
+
+        , 500
+
+      submit: ->
+        action = Immutable.fromJS @props.action
+        action = action.set 'linked_clip_ids', @state.linked_clip_ids || []
         action = action.toJS()
 
         Actions.update action, =>

@@ -21,9 +21,10 @@ module Finance::TellerWareScreenFormer
       field :id, ->(instance) {instance.id.to_s}
       field :name
       field :desc
-      field :file_entity_id
+      field :file_entity_id, ->(instance) {instance.file_entity_id.to_s}
       field :created_at
       field :updated_at
+      field :cid
 
       logic :file_info, ->(instance) {
         # kind: [:image, :video, :other],

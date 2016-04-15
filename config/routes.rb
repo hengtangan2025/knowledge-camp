@@ -245,7 +245,10 @@ Rails.application.routes.draw do
       end
       get '/teller_wares/:number/preview' => "teller_wares#preview", as: :preview
 
-      resources :teller_ware_media_clips
+      resources :teller_ware_media_clips do
+        get :search, on: :collection
+        get :get_infos, on: :collection
+      end
     end
 
   end

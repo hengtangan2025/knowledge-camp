@@ -41,6 +41,30 @@ class Manager::Finance::TellerWareMediaClipsController < ApplicationController
     end
   end
 
+  def search
+    clips = ::Finance::TellerWareMediaClip.where(name: /#{params[:key]}/).limit(5)
+    data = clips.map do |mc|
+      DataFormer.new(mc)
+        .logic(:file_info)
+        .url(:update_url)
+        .data
+    end
+
+    render json: data
+  end
+
+  def get_infos
+    clips = ::Finance::TellerWareMediaClip.where(:cid.in => params[:cids])
+    data = clips.map do |mc|
+      DataFormer.new(mc)
+        .logic(:file_info)
+        .url(:update_url)
+        .data
+    end
+
+    render json: data
+  end
+
   private
   def clip_params
     params.require(:clip).permit(:name, :desc, :file_entity_id)
