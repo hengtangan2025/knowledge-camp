@@ -264,7 +264,7 @@ OEP = React.createClass
           <div className='desc-show'>
             <h4>操作概述：</h4>
             <pre>
-            {jQuery.blank_or action.desc, '没有概述'}
+            {jQuery.blank_or action.desc, '需要熟悉业务的人员填写'}
             </pre>
           </div>
 

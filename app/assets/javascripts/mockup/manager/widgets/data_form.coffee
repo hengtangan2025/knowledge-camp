@@ -57,6 +57,9 @@
     submit: ->
       @props.onSubmit @get_data()
 
+    cancel: ->
+      @props.onCancel()
+
     is_all_required_filled: ->
       re = true
       for name in @required_names
@@ -151,14 +154,23 @@
         then @props.form.submit 
         else null
 
+      on_cancel_click =
+        @props.form.cancel
+
       button = 
         <a className={klass} href='javascript:;' onClick={on_click}>
           <i className='icon check' />
           {text}
         </a>
 
+      cancel =
+        if @props.with_cancel
+          <a className='ui button' href='javascript:;' onClick={on_cancel_click}>
+            {@props.with_cancel}
+          </a>
+
       <DataForm.Form.Field>
-      {button}
+      {button} {cancel}
       </DataForm.Form.Field>
 
     componentWillMount: ->

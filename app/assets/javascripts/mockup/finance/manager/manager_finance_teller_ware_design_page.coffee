@@ -87,7 +87,9 @@
       edit: (x)->
         =>
           jQuery.open_modal(
-            <ManagerFinanceTellerWareDesignPage.UpdateModal action={x} actions={@props.actions}/>
+            <ManagerFinanceTellerWareDesignPage.UpdateModal action={x} actions={@props.actions}/>, {
+              closable: false
+            }
           )
 
       remove: (x)->
@@ -118,12 +120,16 @@
 
       show_add_modal: ->
         jQuery.open_modal(
-          <ManagerFinanceTellerWareDesignPage.AddModal />
+          <ManagerFinanceTellerWareDesignPage.AddModal />, {
+            closable: false
+          }
         )
 
       show_edit_info_modal: ->
         jQuery.open_modal(
-          <ManagerFinanceTellerWareDesignPage.EditInfoModal ware={@props.ware} />
+          <ManagerFinanceTellerWareDesignPage.EditInfoModal ware={@props.ware} />, {
+            closable: false
+          }
         )
 
 
@@ -166,13 +172,13 @@
 
         <div>
           <h3 className='ui header'>修改课件信息</h3>
-          <DataForm.Form onSubmit={@submit} ref='form' data={@props.ware}>
+          <DataForm.Form onSubmit={@submit} onCancel={@cancel} ref='form' data={@props.ware}>
             <TextInputField {...layout} label='交易名称：' name='name' required />
             <TextInputField {...layout} label='交易代码：' name='number' required />
             <SelectField {...layout} label='业务类型：' name='business_kind' values={kinds}/>
             <TextAreaField {...layout} label='交易概述：' name='desc' placeholder='根据操作手册填写' />
             <TextInputField {...layout} label='编辑人备注：' name='editor_memo' />
-            <Submit {...layout} text='确定保存' />
+            <Submit {...layout} text='确定保存' with_cancel='关闭' />
           </DataForm.Form>
         </div>
 
@@ -180,6 +186,9 @@
         @refs.form.set_submiting true
         Actions.update_ware data, =>
           @state.close()
+
+      cancel: ->
+        @state.close()
 
 
     AddModal: React.createClass
@@ -199,10 +208,10 @@
 
         <div>
           <h3 className='ui header'>新增操作节点</h3>
-          <DataForm.Form onSubmit={@submit} ref='form'>
+          <DataForm.Form onSubmit={@submit} ref='form' onCancel={@cancel}>
             <TextInputField {...layout} label='操作名称：' name='name' required />
             <SelectField {...layout} label='操作角色：' name='role' values={roles}/>
-            <Submit {...layout} text='确定保存' />
+            <Submit {...layout} text='确定保存' with_cancel='关闭' />
           </DataForm.Form>
         </div>
 
@@ -210,6 +219,9 @@
         @refs.form.set_submiting true
         Actions.add data, =>
           @state.close()
+
+      cancel: ->
+        @state.close()
 
     UpdateModal: React.createClass
       render: ->
@@ -240,12 +252,12 @@
 
         <div>
           <h3 className='ui header'>修改操作节点</h3>
-          <DataForm.Form onSubmit={@submit} ref='form' data={@props.action}>
+          <DataForm.Form onSubmit={@submit} onCancel={@cancel} ref='form' data={@props.action}>
             <TextInputField {...layout} label='操作名称：' name='name' required />
             <SelectField {...layout} label='操作角色：' name='role' values={roles} />
             <MultipleSelectField {...layout} label='后续操作：' name='post_action_ids' values={grid_values} />
             <TextAreaField {...layout} label='操作概述' name='desc' placeholder='根据操作手册填写' />
-            <Submit {...layout} text='确定保存' />
+            <Submit {...layout} text='确定保存' with_cancel='关闭' />
           </DataForm.Form>
         </div>
 
@@ -253,6 +265,9 @@
         @refs.form.set_submiting true
         Actions.update data, =>
           @state.close()
+
+      cancel: ->
+        @state.close()
 
       # 获取所有直接前置节点
       get_pre_actions: (action)->
