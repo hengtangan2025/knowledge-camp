@@ -41,7 +41,6 @@
 
 @TellerClipList = React.createClass
   getInitialState: ->
-    cids: @props.cids
     infos: []
 
   render: ->
@@ -55,12 +54,27 @@
     </div>
 
   componentDidMount: ->
+    @cids = @props.cids
+
     jQuery.ajax
       url: '/manager/finance/teller_ware_media_clips/get_infos'
-      data: cids: @state.cids
+      data: cids: @props.cids
 
     .done (res)=>
       @setState infos: res
+
+  componentDidUpdate: ->
+    if @cids != @props.cids
+      @cids = @props.cids
+      
+      @setState infos: []
+
+      jQuery.ajax
+        url: '/manager/finance/teller_ware_media_clips/get_infos'
+        data: cids: @props.cids
+
+      .done (res)=>
+        @setState infos: res
 
   modal: (info)->
     =>
