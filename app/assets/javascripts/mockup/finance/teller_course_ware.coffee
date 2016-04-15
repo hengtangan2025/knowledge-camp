@@ -205,7 +205,12 @@ OEP = React.createClass
               if action.screen_ids.length
                 <div className='has-screen'>
                   <i className='icon desktop' />
-                  <span className='count'>{action.screen_ids.length}</span>
+                </div>
+            }
+            {
+              if action.clip_ids.length
+                <div className='has-clip'>
+                  <i className='icon attach' />
                 </div>
             }
           </div>
@@ -230,6 +235,7 @@ OEP = React.createClass
           @has_next = @next_keys.length
 
           @has_screen = action.screen_ids?.length
+          @has_clip = action.clip_ids?.length
 
         klass = ['teaching-dialog']
         klass.push 'has-screen' if @has_screen
@@ -257,6 +263,20 @@ OEP = React.createClass
                   <TellerScreenButton key={hmdm} hmdm={hmdm} />
               }
             </div>
+
+          else
+            <div />
+
+        clip_show =
+          if @has_clip
+            <div className='clip-show'>
+              <div className='desc'>
+                这个步骤包含一些示例附件 <br/>
+                请点击下面的条目来观看：
+              </div>
+              <TellerClipList cids={action.clip_ids} />
+            </div>
+
           else
             <div />
 
@@ -264,7 +284,7 @@ OEP = React.createClass
           <div className='desc-show'>
             <h4>操作概述：</h4>
             <pre>
-            {jQuery.blank_or action.desc, '没有概述'}
+            {jQuery.blank_or action.desc, '需要熟悉业务的人员填写'}
             </pre>
           </div>
 
@@ -273,6 +293,7 @@ OEP = React.createClass
             {action_name}
             <div className='scroller'>
               {screen_show}
+              {clip_show}
               {desc_show}
             </div>
             {nav}
@@ -492,6 +513,7 @@ class OEAction
     @post_actions = {}
     @pre_actions = {}
     @screen_ids = _action.linked_screen_ids || []
+    @clip_ids = _action.linked_clip_ids || []
     @desc = _action.desc || ''
 
     @deep = null

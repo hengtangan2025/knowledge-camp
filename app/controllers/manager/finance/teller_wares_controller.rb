@@ -99,6 +99,7 @@ class Manager::Finance::TellerWaresController < ApplicationController
     @page_name = "manager_finance_teller_ware_design"
     @component_data = {
       ware: data,
+      search_clip_url: search_manager_finance_teller_ware_media_clips_path
     }
 
     render "/mockup/page", layout: 'finance/design'

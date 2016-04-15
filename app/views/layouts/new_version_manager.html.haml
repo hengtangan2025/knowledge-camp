@@ -108,6 +108,11 @@
                 name: '关联交易数据',
                 url: trades_manager_finance_teller_wares_path,
                 icon: 'rmb'
+              },
+              {
+                name: '前端课件媒体资源',
+                url: manager_finance_teller_ware_media_clips_path,
+                icon: 'video'
               }
             ]
           },
@@ -121,10 +126,9 @@
       }
       current_user_data = DataFormer.new(current_user).data
 
-    = react_component 'LayoutManagerTopMenu', data: top_menu_data, current_user_data: current_user_data
-
-
     = react_component 'LayoutManagerSidebar', data: manager_sidebar_data
+
+    = react_component 'LayoutManagerTopMenu', data: top_menu_data, current_user_data: current_user_data
 
     .manager-page-content
       .func-content.ui.segment.basic
