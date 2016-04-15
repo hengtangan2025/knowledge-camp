@@ -7,7 +7,7 @@ module WareFormer
       field :name
       field :kind, ->(instance) { "video" }
       field :time, ->(instance) {
-        seconds = instance.file_entity.meta[:video][:total_duration].to_i
+        seconds = instance.file_entity.meta.try(:[], :video).try(:[], :total_duration).to_i
         "#{seconds/60}′#{seconds%60}″"
       }
 

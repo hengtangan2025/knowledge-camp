@@ -19,13 +19,14 @@ module PublishedCourseFormer
 
     if ware_info["_type"] == "KcCourses::SimpleAudioWare"
       data[:kind] = "audio"
-      seconds = file_entity.meta[:audio][:audio_duration].to_i
+
+      seconds = file_entity.meta.try(:[], :audio).try(:[], :audio_duration).to_i
       data[:time] = "#{seconds/60}′#{seconds%60}″"
     end
 
     if ware_info["_type"] == "KcCourses::SimpleVideoWare"
       data[:kind] = "video"
-      seconds = file_entity.meta[:video][:total_duration].to_i
+      seconds = file_entity.meta.try(:[], :video).try(:[], :total_duration).to_i
       data[:time] = "#{seconds/60}′#{seconds%60}″"
       data[:video_url] = file_entity.transcode_url("超请") ||
         file_entity.transcode_url("高请") ||

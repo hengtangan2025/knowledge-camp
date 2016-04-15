@@ -122,7 +122,7 @@ gem 'virtual_file_system',
 # 支持分段上传的文件持久化
 gem 'file-part-upload',
   :github => "mindpin/file-part-upload",
-  :ref    => "fd69106"
+  :ref    => "6164fd3"
 
 # 图片加载的一个小工具
 gem 'simple-images',
