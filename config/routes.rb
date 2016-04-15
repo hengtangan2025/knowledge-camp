@@ -244,6 +244,8 @@ Rails.application.routes.draw do
         put :design_update, on: :member
       end
       get '/teller_wares/:number/preview' => "teller_wares#preview", as: :preview
+
+      resources :teller_ware_media_clips
     end
 
   end

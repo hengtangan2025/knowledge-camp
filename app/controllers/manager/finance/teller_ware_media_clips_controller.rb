@@ -1,0 +1,48 @@
+class Manager::Finance::TellerWareMediaClipsController < ApplicationController
+  layout "new_version_manager"
+
+  def index
+    @page_name = "manager_finance_teller_ware_media_clips"
+    clips = ::Finance::TellerWareMediaClip.order_by(id: :desc).page(params[:page]).per(15)
+
+    data = clips.map {|x|
+      DataFormer.new(x)
+        .logic(:file_info)
+        .url(:update_url)
+        .data
+    }
+
+    @component_data = {
+      media_clips: data,
+      paginate: DataFormer.paginate_data(clips),
+      create_url: manager_finance_teller_ware_media_clips_path
+    }
+
+    render "/mockup/page"
+  end
+
+  def create
+    mc = ::Finance::TellerWareMediaClip.new clip_params
+    save_model mc, 'clip' do |_clip|
+      DataFormer.new(mc)
+        .logic(:file_info)
+        .url(:update_url)
+        .data
+    end
+  end
+
+  def update
+    mc = ::Finance::TellerWareMediaClip.find params[:id]
+    update_model mc, clip_params, 'clip' do |_clip|
+      DataFormer.new(mc)
+        .logic(:file_info)
+        .url(:update_url)
+        .data
+    end
+  end
+
+  private
+  def clip_params
+    params.require(:clip).permit(:name, :desc, :file_entity_id)
+  end
+end
