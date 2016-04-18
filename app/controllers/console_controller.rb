@@ -4,6 +4,8 @@ class ConsoleController < ApplicationController
   end
 
   def export
+    FileUtils.mkdir_p File.join(Rails.root, 'backup')
+
     case params[:backup]
       when 'ware'
         export_ware
