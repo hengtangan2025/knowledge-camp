@@ -11,7 +11,6 @@ class Manager::WaresController < Manager::ApplicationController
     save_model(ware) do |w|
       DataFormer.new(w)
         .logic(:learned, current_user)
-        .url(:url)
         .url(:update_url)
         .url(:move_down_url)
         .url(:move_up_url)
@@ -26,7 +25,6 @@ class Manager::WaresController < Manager::ApplicationController
     update_model(ware, ware_update_params) do |w|
       data = DataFormer.new(w)
         .logic(:learned, current_user)
-        .url(:url)
         .url(:update_url)
         .url(:move_down_url)
         .url(:move_up_url)

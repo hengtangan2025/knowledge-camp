@@ -8,6 +8,11 @@
 
     = csrf_meta_tags
 
+    - if !ENV["lan_qiniu_compatibility_mode_upload_url"].blank?
+      :javascript
+        window.use_lan_qiniu_compatibility_mode = true
+        window.lan_qiniu_compatibility_mode_upload_url = "#{ENV['lan_qiniu_compatibility_mode_upload_url']}"
+
     = stylesheet_link_tag :mockup, :'data-turbolinks-track' => true
     = javascript_include_tag :mockup, :'data-turbolinks-track' => true
 

@@ -7,7 +7,7 @@ module WareFormer
       field :name
       field :kind, ->(instance) { "video" }
       field :time, ->(instance) {
-        seconds = instance.file_entity.meta[:video][:total_duration].to_i
+        seconds = instance.file_entity.meta.try(:[], :video).try(:[], :total_duration).to_i
         "#{seconds/60}′#{seconds%60}″"
       }
 
@@ -15,7 +15,8 @@ module WareFormer
         instance.file_entity.transcode_url("超请") ||
           instance.file_entity.transcode_url("高请") ||
           instance.file_entity.transcode_url("标清") ||
-          instance.file_entity.transcode_url("低清")
+          instance.file_entity.transcode_url("低清") ||
+          instance.file_entity.url
       }
 
       logic :learned, ->(instance, user) {
@@ -27,7 +28,7 @@ module WareFormer
       }
 
       url :url, ->(instance){
-        ware_path(instance.id.to_s)
+        ""
       }
 
       url :update_url, ->(instance){

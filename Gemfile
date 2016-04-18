@@ -57,33 +57,49 @@ gem 'haml-coderay'
 
 gem "mina", "0.3.7"
 
-gem "generic_controller",
-    :github => "mindpin/generic_controller",
-    :tag => "v0.0.5"
-
-gem "user-auth",
-    :github => "mindpin/user-auth",
-    :tag => "0.0.8"
-
-gem "sort_char",
-    :git => "git://github.com/mindpin/sort_char.git",
-    :tag => "0.0.1"
-
 # 解析 UserAgent
 # https://github.com/josh/useragent
 gem 'useragent'
 
+# --------------------------------------
+
+# 全文搜索
+gem "elasticsearch-simple",
+    github: "mindpin/elasticsearch-simple",
+    ref: '9697be2'
+
+gem "generic_controller",
+    github: "mindpin/generic_controller",
+    tag: "v0.0.5"
+
+gem "user-auth",
+    github: "mindpin/user-auth",
+    tag: "0.0.8"
+
+gem "sort_char",
+    github: "mindpin/sort_char",
+    tag: "0.0.1"
+
+
 # 支持分段上传的文件持久化
 gem 'file-part-upload',
-    :github => "mindpin/file-part-upload",
-    :ref    => "fd69106"
+    github: "mindpin/file-part-upload",
+    ref: "6164fd3"
 
 # -----金融学院相关
-gem 'kc_courses', :github => 'fushang318/kc_courses',
-                  :ref => "5cb25c0"
+gem 'kc_courses', 
+    github: 'mindpin/kc_courses',
+    ref: "1d957d5"
 
-gem 'bank', github: "mindpin/bank", ref: "e3de6cb"
-gem 'enterprise_position_level', github: "mindpin/enterprise_position_level", ref: "93b2eff"
+gem 'bank', 
+    github: "mindpin/bank", 
+    ref: "90d8f54"
+
+gem 'enterprise_position_level', 
+    github: "mindpin/enterprise_position_level", 
+    ref: "541bf8a"
+
+# ----------------------------------
 
 gem 'sprockets', '3.4.0'
 gem 'sprockets-rails', '2.3.3'
