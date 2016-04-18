@@ -27,7 +27,7 @@ zdxh  字段序号  排序用
     zds:      @props.data.zds
     xxdm_url: @props.data.xxdm_url
     selects:  @props.data.selects
-    sample_data: @props.data.sample_data
+    sample_data: @props.data.sample_data || {}
 
   render: ->
     <div className='ofc-teller-screen'>
