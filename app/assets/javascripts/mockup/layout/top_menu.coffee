@@ -6,7 +6,7 @@
         if @props.current_user_data
           user = @props.current_user_data
           [
-            <a key='avatar' className='item avatar' href='javascript:;'>
+            <a style={display: 'none'} key='avatar' className='item avatar' href='javascript:;'>
               <img src={user.avatar?.url} />
             </a>
             <a key='name' className='item' href='javascript:;'>{user.name}</a>
