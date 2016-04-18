@@ -17,6 +17,13 @@ class ConsoleController < ApplicationController
         export_trade
       when 'xxmx'
         export_xxmx
+
+      when 'subject'
+        export_subject
+      when 'post'
+        export_post
+      when 'level'
+        export_level
       else
         render layout: nil
       end
@@ -86,6 +93,42 @@ class ConsoleController < ApplicationController
     File.open path, 'w' do |f|
       f.write ::Finance::TellerWareXxmx.all.as_json.map { |x|
         x.delete '_id'
+        x
+      }.to_json
+    end
+
+    send_file path, filename: fname
+  end
+
+  def export_subject
+    fname = 'ci-finance_subject.json'
+    path = File.join Rails.root, 'backup', fname
+    File.open path, 'w' do |f|
+      f.write ::KcCourses::CourseSubject.all.as_json.map { |x|
+        x
+      }.to_json
+    end
+
+    send_file path, filename: fname
+  end
+
+  def export_post
+    fname = 'ci-finance_post.json'
+    path = File.join Rails.root, 'backup', fname
+    File.open path, 'w' do |f|
+      f.write ::EnterprisePositionLevel::Post.all.as_json.map { |x|
+        x
+      }.to_json
+    end
+
+    send_file path, filename: fname
+  end
+
+  def export_level
+    fname = 'ci-finance_level.json'
+    path = File.join Rails.root, 'backup', fname
+    File.open path, 'w' do |f|
+      f.write ::EnterprisePositionLevel::Level.all.as_json.map { |x|
         x
       }.to_json
     end

@@ -1,0 +1,2 @@
+::Finance::TellerWareScreen.destroy_all
+JSON.parse(File.read File.join(Rails.root, 'sample-data-bank', 'json', 'teller_ware_screen-0418.json')).each { |x| ::Finance::TellerWareScreen.create(x) }
