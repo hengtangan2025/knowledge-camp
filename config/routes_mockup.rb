@@ -17,4 +17,5 @@ Rails.application.routes.draw do
   get     '/mockup/manager/finance/:page' => 'mockup#manager_finance_page', as: 'mockup_manager_finance'
   
   get     '/console' => 'console#index'
+  get     '/console/export' => 'console#export'
 end
