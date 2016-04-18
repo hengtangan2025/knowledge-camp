@@ -110,6 +110,9 @@ gem 'sprockets-coffee-react', '3.0.1'
 # 控制台
 gem 'web-console', '~> 2.0'
 
+# 去除静态资源指纹
+gem 'non-stupid-digest-assets'
+
 # 通过 rails assets 服务加载前端包
 source 'https://rails-assets.org'
 gem 'rails-assets-semantic'
