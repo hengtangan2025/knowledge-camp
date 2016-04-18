@@ -16,17 +16,23 @@
             hmdm: '画面代码'
             zds_count: '字段数目'
             ops: '预览'
+            edit: '编辑数据'
           data_set: @props.data.screens.map (x)=>
             jQuery.extend x, {
               zds_count: x.zds.length
               ops:
                 <TellerScreenButton hmdm={x.hmdm} />
+              edit:
+                <a href={x.edit_sample_data_url} className='ui basic button mini'>
+                  <i className='icon configure' /> 编辑数据
+                </a>
             }
           th_classes:
             hmdm: 'collapsing'
             zds: 'zds'
           td_classes:
             ops: 'collapsing'
+            edit: 'collapsing'
           paginate: @props.data.paginate
         }
 

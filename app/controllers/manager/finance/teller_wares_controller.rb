@@ -39,6 +39,7 @@ class Manager::Finance::TellerWaresController < ApplicationController
     screens = ::Finance::TellerWareScreen.page(params[:page]).per(15)
     data = screens.map {|x|
       DataFormer.new(x)
+        .url(:edit_sample_data_url)
         .data
     }
 
@@ -74,17 +75,32 @@ class Manager::Finance::TellerWaresController < ApplicationController
 
   def hmdm
     screen = ::Finance::TellerWareScreen.where(hmdm: params[:hmdm]).first
-    data = DataFormer.new(screen).data.merge({
-      xxdm_url: xxdm_manager_finance_teller_wares_path
-    })
+    data = DataFormer.new(screen)
+      .logic(:selects)
+      .data
     render json: data 
   end
 
-  def xxdm
-    xxmxs = ::Finance::TellerWareXxmx.where(xxdm: params[:xxdm])
-    render json: xxmxs.map {|x|
-      DataFormer.new(x).data
+  def edit_screen_sample
+    screen = ::Finance::TellerWareScreen.where(hmdm: params[:hmdm]).first
+    data = DataFormer.new(screen)
+      .logic(:selects)
+      .url(:update_sample_data_url)
+      .data
+
+    @page_name = "manager_finance_teller_ware_screen_edit"
+    @component_data = {
+      screen: data
     }
+
+    render "/mockup/page"
+  end
+
+  def update_screen_sample
+    screen = ::Finance::TellerWareScreen.where(hmdm: params[:hmdm]).first
+    screen.sample_data = params[:sample_data]
+    screen.save
+    render json: params[:sample_data]
   end
 
   def design

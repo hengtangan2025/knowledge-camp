@@ -7,6 +7,30 @@ module Finance::TellerWareScreenFormer
       field :id, ->(instance) {instance.id.to_s}
       field :hmdm
       field :zds
+      field :sample_data
+
+      logic :selects, ->(instance) {
+        re = {}
+        instance.zds.select {|x|
+          "#{x['zdlx']}" == '2'
+        }.map {|x|
+          x['xxdm']
+        }.uniq.compact.each {|xxdm|
+          data = ::Finance::TellerWareXxmx.where(xxdm: xxdm).map {|x|
+            DataFormer.new(x).data
+          }
+          re[xxdm] = data
+        }
+
+        re
+      }
+
+      url :edit_sample_data_url, ->(instance) {
+        edit_screen_sample_manager_finance_teller_wares_path(hmdm: instance.hmdm)
+      }
+      url :update_sample_data_url, ->(instance) {
+        update_screen_sample_manager_finance_teller_wares_path(hmdm: instance.hmdm)
+      }
     end
 
     former 'Finance::TellerWareXxmx' do

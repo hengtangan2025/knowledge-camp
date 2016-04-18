@@ -390,7 +390,7 @@ body.teller-ware {
     top:5px;right:5px;
     font-size: 12px;
     background-color: #444;
-    border-radius: 3px;
+    // border-radius: 3px;
     top: 3px; right: 3px;
     color: white;
     padding:0 5px;
@@ -408,17 +408,24 @@ body.teller-ware {
       font-weight: normal;
       margin-right: 8px;
     }
-    input[type=text] {
+    input[type='text'],
+    input[type='password']
+    {
       background-color: #fff;
       border:solid 1px #aaa;
-      border-radius:3px;
+      // border-radius:3px;
+      border-radius: 0;
       height:18px;line-height:18px;
       box-sizing:content-box;
+      &:focus {
+        background-color: #FFF548;
+      }
     }
     select {
       background-color: #fff;
       border:solid 1px #aaa;
-      border-radius:3px;
+      // border-radius:3px;
+      border-radius: 0;
       height:20px;line-height:20px;
       box-sizing:content-box;
     }

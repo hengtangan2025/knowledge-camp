@@ -85,9 +85,11 @@ Rails.application.routes.draw do
         get :trades, on: :collection
         
         get :trade, on: :collection
+        
         get :hmdm, on: :collection
-        get :xxdm, on: :collection
-
+        get :edit_screen_sample, on: :collection
+        put :update_screen_sample, on: :collection
+        
         get :design, on: :member
         put :design_update, on: :member
       end

@@ -23,75 +23,114 @@ zdxh  字段序号  排序用
 @OFCTellerScreen = React.createClass
   displayName: 'OFCTellerScreen'
   getInitialState: ->
-    hmdm: @props.data.hmdm
-    zds: @props.data.zds
+    hmdm:     @props.data.hmdm
+    zds:      @props.data.zds
     xxdm_url: @props.data.xxdm_url
+    selects:  @props.data.selects
+    sample_data: @props.data.sample_data
 
   render: ->
     <div className='ofc-teller-screen'>
       <span className='hmdm'>画面代码: {@state.hmdm}</span>
       <div className='zds'>
         {
-          for zd in @state.zds
-            <OFCTellerScreen.ZD key={zd.zdxh} data={zd} screen={@} />
+          @zds = for zd in @state.zds
+            sjbm = zd.sjbm
+            init_value = @state.sample_data[zd.sjbm]
+
+            params = 
+              key: zd.zdxh
+              data: zd
+              screen: @
+              editable: @props.editable
+              init_value: init_value
+
+            <OFCTellerScreen.ZD ref={zd.sjbm} {...params} />
         }
       </div>
     </div>
 
+  get_sample_data: ->
+    re = {}
+    for zd in @state.zds
+      if not jQuery.is_blank(zd.sjbm)
+        x = @refs[zd.sjbm]
+        re[zd.sjbm] = x.state.value
+    re
+
   statics:
     ZD: React.createClass
+      getInitialState: ->
+        value: @props.init_value
+
       render: ->
         data = @props.data
-        lh = 480 / 20
+        line_height = 480 / 20
+        col_width = line_height * 0.3 
 
-        top = (data.qsh - 0) * lh
-        left = (data.qsl - 0) * lh * 0.3
-        width = data.zdcd * lh * 0.3
+        top   = data.qsh * line_height
+        left  = data.qsl * col_width
+        width = data.zdcd * col_width
 
-        klass = ['zd']
-        czfs = ['edit', 'output', 'show', 'hide'][data.czfs]
-        klass.push "czfs-#{czfs}"
+        klass = new ClassName
+          'zd': true
+          'czfs-edit':    "#{data.czfs}" == '0'
+          'czfs-output':  "#{data.czfs}" == '1'
+          'czfs-show':    "#{data.czfs}" == '2'
+          'czfs-hide':    "#{data.czfs}" == '3'
+
+        ipt_style = 
+          display: if width == 0 then 'none' else ''
+          width: if "#{data.zdlx}" == '2' then width + 30 else width
+
+        params = 
+          style: ipt_style
+          readOnly: not @props.editable
+          data: data
+          onChange: @change
+          value: @state.value
+          screen: @props.screen
+
+        ipt = 
+          switch "#{data.zdlx}"
+            when '2'
+              <OFCTellerScreen.SelectZD {...params} />
+            else
+              if "#{data.sjlx}" == '6'
+                <input type='password' {...params} />
+              else
+                <input type='text' {...params} />
 
         style =
           top: top
-          left: left
+          left: left            
 
-        ipt = switch data.zdlx
-          when '2'
-            <OFCTellerScreen.Select style={width: width + 30} data={data} screen={@props.screen} />
-          else
-            <input type='text' style={width: width} readOnly />
-            
-
-        <div {...data} className={klass.join(' ')} style={style}>
+        <div {...data} className={klass} style={style}>
           <label>{data.zdbt}</label>
           {ipt}
         </div>
 
-    Select: React.createClass
+      change: (evt)->
+        value = evt.target.value
+        @setState value: value
+
+    SelectZD: React.createClass
       getInitialState: ->
-        loaded: false
-        xxmxs: []
+        selects = @props.screen.state.selects
+        xxdm = @props.data.xxdm
+
+        xxmxs: selects[xxdm]
 
       render: ->
-        style = @props.style
+        params = 
+          style: @props.style
+          value: @props.value
+          onChange: @props.onChange
 
-        <select readOnly style={style} onMouseOver={@show_select}>
+        <select {...params} >
           <option>请选择：</option>
           {
             for xxmx, idx in @state.xxmxs
-              <option key={idx}>{xxmx.xxqz}- {xxmx.xxmc}</option>
+              <option key={idx}>{xxmx.xxmc}</option>
           }
         </select>
-
-      show_select: (evt)->
-        return if @state.loaded
-
-        jQuery.ajax
-          url: @props.screen.state.xxdm_url
-          data:
-            xxdm: @props.data.xxdm
-        .done (res)=>
-          @setState
-            loaded: true 
-            xxmxs: res
