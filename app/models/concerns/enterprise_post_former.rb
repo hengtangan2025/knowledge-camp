@@ -8,6 +8,12 @@ module EnterprisePostFormer
       field :name
       field :number
 
+      logic :linked_levels, ->(instance) {
+        EnterprisePositionLevel::Level.all.map {|l|
+          DataFormer.new(l).data
+        }
+      }
+
       url :delete_url, ->(instance){
         manager_enterprise_post_path(instance)
       }

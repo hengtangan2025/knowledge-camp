@@ -20,6 +20,10 @@ module Finance::TellerWareFormer
         instance.business_kind_str
       }
 
+      url :show_url, ->(instance) {
+        manager_finance_preview_path(number: instance.number)
+      }
+
       url :preview_url, ->(instance) {
         manager_finance_preview_path(number: instance.number)
       }
