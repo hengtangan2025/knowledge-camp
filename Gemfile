@@ -38,28 +38,14 @@ end
 gem "figaro", "~> 1.1.1"
 gem "devise", "3.5.2"
 gem "kaminari", "~> 0.15.1"
-gem 'bootstrap-kaminari-views'
 gem "haml"
 gem "mongoid", "~> 4.0.0"
 gem "bson_ext"
-gem 'cells', '~> 3.10.1' # 用于复用一些前端组件
-gem "simple_form", "~> 3.2.0"
 gem "unicorn"
-gem "htmldiff"
 gem "streamio-ffmpeg"
 
 # -------------
-
-# 中文转拼音
-gem 'ruby-pinyin'
-# 代码高亮
-gem 'haml-coderay'
-
 gem "mina", "0.3.7"
-
-# 解析 UserAgent
-# https://github.com/josh/useragent
-gem 'useragent'
 
 # --------------------------------------
 
@@ -68,35 +54,22 @@ gem "elasticsearch-simple",
     github: "mindpin/elasticsearch-simple",
     ref: '9697be2'
 
-gem "generic_controller",
-    github: "mindpin/generic_controller",
-    tag: "v0.0.5"
-
-gem "user-auth",
-    github: "mindpin/user-auth",
-    tag: "0.0.8"
-
-gem "sort_char",
-    github: "mindpin/sort_char",
-    tag: "0.0.1"
-
-
 # 支持分段上传的文件持久化
 gem 'file-part-upload',
     github: "mindpin/file-part-upload",
     ref: "6164fd3"
 
 # -----金融学院相关
-gem 'kc_courses', 
+gem 'kc_courses',
     github: 'mindpin/kc_courses',
     ref: "1d957d5"
 
-gem 'bank', 
-    github: "mindpin/bank", 
+gem 'bank',
+    github: "mindpin/bank",
     ref: "90d8f54"
 
-gem 'enterprise_position_level', 
-    github: "mindpin/enterprise_position_level", 
+gem 'enterprise_position_level',
+    github: "mindpin/enterprise_position_level",
     ref: "541bf8a"
 
 # ----------------------------------
