@@ -45,15 +45,6 @@ GIT
       ruby-pinyin
       simple_form
 
-GIT
-  remote: git://github.com/mindpin/user-auth.git
-  revision: 8ac54325dfe1410bbc9ad6d63f9171763ed0e9ce
-  tag: 0.0.8
-  specs:
-    user-auth (0.0.1)
-      devise
-      rest-client
-
 GEM
   remote: https://ruby.taobao.org/
   remote: https://rails-assets.org/
@@ -387,7 +378,6 @@ DEPENDENCIES
   turbolinks
   uglifier (>= 1.3.0)
   unicorn
-  user-auth!
   web-console (~> 2.0)
 
 BUNDLED WITH

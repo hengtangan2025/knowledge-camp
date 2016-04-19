@@ -54,10 +54,6 @@ gem "elasticsearch-simple",
     github: "mindpin/elasticsearch-simple",
     ref: '9697be2'
 
-gem "user-auth",
-    github: "mindpin/user-auth",
-    tag: "0.0.8"
-
 # 支持分段上传的文件持久化
 gem 'file-part-upload',
     github: "mindpin/file-part-upload",
