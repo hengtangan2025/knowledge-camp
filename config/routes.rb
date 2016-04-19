@@ -9,13 +9,7 @@ Rails.application.routes.draw do
 
   root 'index#index'
 
-  # 老版功能中的集成代码
   devise_for :users, :skip => :all
-  as :user do
-    get    "/account/sign_in"  => "old/sessions#new"
-    post   "/account/sign_in"  => "old/sessions#create"
-    delete "/account/sign_out" => "old/sessions#destroy"
-  end
 
   # --------------------
   # 金融学院暂时单独使用 bank 命名空间
@@ -83,13 +77,13 @@ Rails.application.routes.draw do
       resources :teller_wares do
         get :screens, on: :collection
         get :trades, on: :collection
-        
+
         get :trade, on: :collection
-        
+
         get :hmdm, on: :collection
         get :edit_screen_sample, on: :collection
         put :update_screen_sample, on: :collection
-        
+
         get :design, on: :member
         put :design_update, on: :member
       end
