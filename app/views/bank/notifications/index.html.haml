@@ -1,7 +1,0 @@
-.page-notifications
-  = render_cell :notification, :nav
-  %ul.notifications
-    - @notifications.each do |noti|
-      %li.notification
-        .content= noti.content
-        .created_at= noti.created_at
