@@ -27,14 +27,31 @@
 
 @AuthManagerSignInPage = React.createClass
   render: ->
-    <div className='sign-in-page'>
+    common_button_style =
+      position: 'absolute'
+      top: '1rem'
+      left: '1rem'
+
+    common_sign_in_url = @props.data.common_sign_in_url
+
+    common_button = 
+      <a className='ui basic button' style={common_button_style} href={common_sign_in_url}>普通登录</a>
+
+    <div className='auth-bank-sign-in-page'>
+      {common_button}
+
       <div className='ui container'>
-        <div className='ui segment nomtop basic centered grid'>
-          <div className='five wide column'>
-            <div className='head'>
-              <span className='sign-in link'>管理员登录</span>
+        <div className='ui grid'>
+          <div className='four wide column'>
+          </div>
+          <div className='eight wide column'>
+            <div className='ui segment'>
+              <div className='head'>
+                <i className='icon sign in' />
+                <span className='sign-in link'>后台登录</span>
+              </div>
+              <SignInForm submit_url={@props.data.submit_url} jump={@props.data.manager_home_url} />
             </div>
-            <SignInForm submit_url={@props.data.submit_url} jump={@props.data.manager_home_url} />
           </div>
         </div>
       </div>

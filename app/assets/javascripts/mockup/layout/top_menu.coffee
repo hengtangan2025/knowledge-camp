@@ -26,11 +26,20 @@
 
 @LayoutTopMenu = React.createClass
   render: ->
+    logo = 
+      <a className='item logo' href={@props.data.logo.url} style={display: 'none'}>
+        <div className='logo-i' style={'backgroundImage': "url(#{@props.data.logo.image})"} />
+      </a>
+
+    home =
+      <a className='item' href='/'>
+        <i className='icon home' /> 首页
+      </a>
+
     <div className='layout-top-menu ui menu top fixed'>
       <div className='ui container'>
-        <a className='item logo' href={@props.data.logo.url}>
-          <div className='logo-i' style={'backgroundImage': "url(#{@props.data.logo.image})"} />
-        </a>
+        {logo}
+        {home}
 
         <LayoutTopMenu.NestedItems klass='left menu' data={@props.data.nav_items} />
         
@@ -50,7 +59,7 @@
             if @props.current_user_data
               user = @props.current_user_data
               [
-                <a key='avatar' className='item' href='javascript:;'>
+                <a style={display: 'none'} key='avatar' className='item' href='javascript:;'>
                   <img src={user.avatar?.url} />
                 </a>
                 <a key='name' className='item' href='javascript:;'>{user.name}</a>

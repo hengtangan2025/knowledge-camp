@@ -2,6 +2,15 @@ class IndexController < ApplicationController
   layout "new_version_base"
 
   def index
+    if current_user.present?
+      look_index
+    else
+      redirect_to sign_in_path
+    end
+  end
+
+  private
+  def look_index
     @page_name = "home"
 
     user_data = 
@@ -15,6 +24,6 @@ class IndexController < ApplicationController
       manager_sign_in_url: sign_in_path(role: "manager"),
       current_user: user_data
     }
-    render :page
+    render "/mockup/page"
   end
 end

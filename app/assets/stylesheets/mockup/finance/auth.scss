@@ -27,7 +27,8 @@ body.bank-auth {
       height: 190px;
       margin-top: 2rem;
 
-      background-image: url(http://i.teamkn.com/i/SZ1qDe5u.png);
+      // background-image: url(http://i.teamkn.com/i/SZ1qDe5u.png);
+      background-image: url(http://i.teamkn.com/i/vKOjyhgb.png);
       background-repeat: no-repeat;
       background-position: center center;
       background-size: contain;
@@ -43,4 +44,10 @@ body.bank-auth {
       margin-bottom: 2rem;
     }
   }
+}
+
+body.bank-auth.manager-auth {
+  background-color: #CCF1E3;
+  // background-image: url(http://i.teamkn.com/i/NmwQFctm.jpg);
+  background-image: none;
 }

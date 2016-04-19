@@ -417,7 +417,7 @@ body.teller-ware {
       border-radius: 0;
       height:18px;line-height:18px;
       box-sizing:content-box;
-      &:focus {
+      &:focus:not(readonly) {
         background-color: #FFF548;
       }
     }

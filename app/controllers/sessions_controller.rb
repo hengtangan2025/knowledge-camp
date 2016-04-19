@@ -6,15 +6,16 @@ class SessionsController < Devise::SessionsController
   end
 
   def new
-    if params[:role] == "manager"
-      @page_name = 'auth_manager_sign_in'
-      @component_data = {
-        submit_url: api_sign_in_path,
-        manager_home_url: manager_dashboard_path
-      }
-      return render :page, layout: "mockup_manager_auth"
+    case params[:role]
+    when 'manager'
+      manager_sign_in
+    else
+      common_user_bank_sign_in
     end
+  end
 
+  private 
+  def common_user_sign_in
     @page_name = 'auth_sign_in'
     @component_data = {
       sign_in_url: sign_in_path,
@@ -22,5 +23,28 @@ class SessionsController < Devise::SessionsController
       submit_url: api_sign_in_path
     }
     render "/mockup/page"
+  end
+
+  def manager_sign_in
+    @page_name = 'auth_manager_sign_in'
+    @component_data = {
+      common_sign_in_url: sign_in_path,
+
+      submit_url: api_sign_in_path,
+      manager_home_url: manager_dashboard_path
+    }
+    render "/mockup/page", layout: "mockup_manager_auth"
+  end
+
+  def common_user_bank_sign_in
+    @page_name = 'auth_bank_sign_in'
+    @component_data = {
+      sign_in_url: sign_in_path,
+      manager_sign_in_url: sign_in_path(role: 'manager'),
+
+      sign_up_url: sign_up_path,
+      submit_url: api_sign_in_path,
+    }
+    render "/mockup/page", layout: 'mockup_bank_auth'
   end
 end

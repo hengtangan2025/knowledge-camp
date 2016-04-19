@@ -127,7 +127,7 @@
 
       top_menu_data = {
         sign_out_url: api_sign_out_path,
-        sign_out_to_url: root_path
+        sign_out_to_url: sign_in_path(role: 'manager')
       }
       current_user_data = DataFormer.new(current_user).data
 
