@@ -20,12 +20,6 @@ module KnowledgeCamp
     config.web_console.development_only = false
 
     config.assets.precompile += [
-      'ueditor/iframe.css',
-      'bank.css',
-      'bank.js', 
-      'bank_manage.css', 
-      'bank_manage.js',
-
       'mockup.css',
       'mockup.js',
     ]
@@ -36,8 +30,6 @@ module KnowledgeCamp
     config.encoding = 'utf-8'
     config.autoload_paths += %W(#{config.root}/lib)
 
-    config.assets.precompile += %w( explore/web.css )
-    
     # 允许 ajax 注册登录
     config.to_prepare do
       DeviseController.respond_to :html, :json

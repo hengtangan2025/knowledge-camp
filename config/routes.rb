@@ -5,37 +5,20 @@ end
 routes_draw :mockup
 
 Rails.application.routes.draw do
-  # -----------------------
-
   root 'index#index'
 
   devise_for :users, :skip => :all
-
-  # --------------------
-  # 金融学院暂时单独使用 bank 命名空间
 
   # 文件上传
   mount FilePartUpload::Engine => "/e/file_part_upload", :as => :e_file_part_upload
   # 课程功能
   KcCourses::Routing.mount '/e/kc_courses', as: :e_courses
-  #EngineManager::Routing.mount '/bank/manager', :as => 'engine_manager'
 
   # --------------------
   # kc mobile 2016
   resources :subjects
   resources :courses do
     get "/wares/:ware_id" => "courses#ware", as: :ware
-  end
-
-  scope :path => "/api", module: 'api', :as => :api do
-    resources :courses do
-      post   :add_fav,    on: :member
-      delete :remove_fav, on: :member
-      post   :comments,   on: :member
-    end
-
-    resources :comments
-
   end
 
   devise_scope :user do
