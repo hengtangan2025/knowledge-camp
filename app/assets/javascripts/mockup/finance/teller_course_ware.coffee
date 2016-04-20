@@ -341,7 +341,9 @@ OEP = React.createClass
 
       show_note_modal: ->
         jQuery.open_modal(
-          <WareNoteModal ware={@props.ware} />
+          <WareNoteModal ware={@props.ware} />, {
+            closable: false
+          }
         )
 
 # -------------------------------------

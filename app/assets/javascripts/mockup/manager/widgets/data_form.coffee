@@ -51,6 +51,13 @@
       {@props.children}
       </DataForm.Form.DataKeeper>
 
+    clear: ->
+      try
+        state = @refs.data_keeper.state
+        for k, v of state
+          @refs.data_keeper.setState
+            "#{k}": ''
+
     get_data: ->
       @refs.data_keeper?.state
 

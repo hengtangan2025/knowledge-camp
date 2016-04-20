@@ -379,3 +379,19 @@
     }
   }
 }
+
+.ware-note-modal, .ware-question-modal {
+  .data-form-c {
+    border-top: dashed 1px #ddd;
+    margin-top: 1rem;
+    padding-top: 1rem;
+  }
+}
+
+.ware-note-modal{
+  .note {
+    background-color: #ffffdc;
+    padding: 1rem;
+    margin-bottom: 1rem;
+  }
+}
