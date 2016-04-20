@@ -237,14 +237,33 @@ OEP = React.createClass
         klass.push 'has-screen' if @has_screen
 
         action_name =
-          <div className='action-name'>
+          <div className="action-name #{action.role}">
             <span className='ct'>{action.name}</span>
           </div>
 
-        nav = 
+        nav =
           <div className='nav'>
-            <a href='javascript:;' onClick={@focus_prev}><i className='fa fa-chevron-left'/>上一步</a>
-            <a href='javascript:;' onClick={@focus_next}>下一步<i className='fa fa-chevron-right'/></a>
+            <div>
+              <a href='javascript:;' onClick={@show_question_modal}>
+                <i className='icon question'/>
+                提问讨论
+              </a>
+              <a href='javascript:;' onClick={@show_note_modal}>
+                <i className='icon pencil'/>
+                记录笔记
+              </a>
+            </div>
+
+            <div>
+              <a href='javascript:;' onClick={@focus_prev}>
+                <i className='icon chevron left'/>
+                上一步　
+              </a>
+              <a href='javascript:;' onClick={@focus_next}>
+                <i className='icon chevron right'/>
+                下一步　
+              </a>
+            </div>
           </div>
 
         screen_show = 
@@ -312,6 +331,13 @@ OEP = React.createClass
       focus_next: ->
         if @has_next
           @props.oep.focus_action @state.action.post_actions[@next_keys[0]]
+
+      show_question_modal: ->
+        jQuery.open_modal(
+          <div>aaaaaa</div>, {
+            closable: false
+          }
+        )
 
 # -------------------------------------
 # 以下是非 ReactJS 的类，用于数据解析

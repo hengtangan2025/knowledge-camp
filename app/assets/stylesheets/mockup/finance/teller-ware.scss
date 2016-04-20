@@ -144,7 +144,7 @@ body.teller-ware {
     .teaching-dialog {
       position: fixed;
       top:71px;right:30px;
-      width:400px;
+      width:320px;
       bottom: 10px;
       background-color: #FFF;
       // background-color: #F7F7F7;
@@ -154,8 +154,28 @@ body.teller-ware {
         font-size: 16px;
         height:50px;line-height:50px;
         padding:0 15px;
+        padding-left: 0;
         border-bottom:solid 1px #ddd;
         background-color: #f7f7f7;
+        overflow: hidden;
+        &.客户:before {
+          content: "";
+          float: left;
+          background-image: url(http://i.teamkn.com/i/xBOHyOS3.png);
+          width: 32px; height: 32px;
+          background-size: cover;
+          background-repeat: no-repeat;
+          margin-top: 9px;margin-right: 9px;margin-left: 9px;
+        }
+        &.柜员:before {
+          content: "";
+          float: left;
+          background-image: url(http://i.teamkn.com/i/eIQ2nSSb.png);
+          width: 32px; height: 32px;
+          background-size: cover;
+          background-repeat: no-repeat;
+          margin-top: 9px;margin-right: 9px;margin-left: 9px;
+        }
       }
 
       .nav {
@@ -192,7 +212,7 @@ body.teller-ware {
         overflow-x: hidden;
         position: absolute;
         top: 50px;
-        bottom: 50px;
+        bottom: 100px;
         left:0;right: 0;
         padding: 1rem;
       }
