@@ -13,11 +13,11 @@ class IndexController < ApplicationController
   def look_index
     @page_name = "home"
 
-    user_data = 
+    user_data =
       if current_user.present?
       then DataFormer.new(current_user).data
       else nil
-      end 
+      end
 
     wares = ::Finance::TellerWare.where(:number.in => %w(117100 117200 121100 121200 121300 122100 122200 123010 123020 123030 330035 330040 330045 340005 341001 560003 650001 650002 650003 670001 670002)).map {|ware|
       DataFormer.new(ware)
@@ -38,6 +38,5 @@ class IndexController < ApplicationController
 
       result_wares: wares
     }
-    render "/mockup/page"
   end
 end

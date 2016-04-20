@@ -10,8 +10,6 @@ class CoursesController < ApplicationController
       .logic(:effort)
       .logic(:chapters, current_user)
       .data
-
-    render :page
   end
 
   def ware
