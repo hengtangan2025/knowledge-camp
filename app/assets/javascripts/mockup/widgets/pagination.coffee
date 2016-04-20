@@ -3,6 +3,9 @@
     total = @props.data.total_pages
     current = @props.data.current_page
 
+    if total == 0
+      return <div></div>
+
     pages = [1..total]
       .map (page)->
         if page <= 2

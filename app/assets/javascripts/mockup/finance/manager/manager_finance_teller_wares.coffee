@@ -18,7 +18,7 @@
             number: '业务代码'
             kind: '业务类型'
             name: '业务名称'
-            memo: '备注'
+            editor_memo: '编辑人备注'
             ops: '操作'
           data_set: @props.data.wares.map (x)->
             jQuery.extend x, {
@@ -37,6 +37,7 @@
             number: 'number'
             kind: 'collapsing'
             ops: 'collapsing'
+            editor_memo: 'collapsing'
           paginate: @props.data.paginate
         }
 

@@ -14,12 +14,14 @@ class Finance::TellerWare < KcCourses::Ware
 
   field :actions
   field :gtd_status
-  field :number
+  field :number, type: String
   field :business_kind
   field :editor_memo
   field :desc
 
   validates :chapter, presence: false
+
+  default_scope -> { asc(:number) }
 
   def business_kind_str
     kind = self.business_kind || ''

@@ -16,46 +16,42 @@
       render: ->
         data = @props.data
 
+        gaishu =
+          <div style={marginBottom: '2rem'}>
+            <label><b>交易概述</b></label>
+            <div className='gaishu'>
+              <SimpleFormatText text={data.desc} placeholder='需要熟悉业务的人员填写' />
+            </div>
+          </div>
+
+        gainian =
+          <div style={marginBottom: '2rem'}>
+            <label><b>关键概念</b></label>
+            <pre>{data.gainian?[data.number]}</pre>
+          </div>
+
         <div className='sidebar'>
-          <div className='item base'>
-            <div className='number'>{data.number}</div>
+          <div className='sibitem base'>
+            <div className='number'>{data.number} - {data.business_kind_str}</div>
             <div className='name'>{data.name}</div>
           </div>
 
-          <div className='item desc'>
-            <label><b>交易概述</b></label>
-            <pre style={marginBottom: '1rem'}>{data.desc}</pre>
+          <div className='sibitem desc'>
+            {gaishu}
 
-            <label><b>关键概念</b></label>
-            <pre>{data.gainian[data.number]}</pre>
-          </div>
-
-          <div className='item linked-flows'>
-            <label>相关交易</label>
             {
-              for flow in data.linked_flows
-                <a key={flow?.id} className='flow' href="/cw/#{flow?.id}" target='_blank'>
-                  <span className='number'>{flow?.id}</span>
-                  <span>{flow?.name}</span>
-                </a>
+              if data.relative_wares.length > 0
+                <div style={marginBottom: '2rem'}>
+                  <label><b>相关交易</b></label>
+                  {
+                    for ware in data.relative_wares
+                      <a key={ware.id} className='relative-ware' href={ware.show_url} target='_blank'>
+                        <div className='number'><b>{ware.number} - {ware.business_kind_str}</b></div>
+                        <div>{ware.name}</div>
+                      </a>
+                  }
+                </div>
             }
-          </div>
-
-          <div className='item qn'>
-            <a className='ibtn question-btn' href='javascript:;'>
-              <i className='fa fa-question-circle' />
-            </a>
-            <a className='ibtn note-btn' href='javascript:;'>
-              <i className='fa fa-pencil-square' />
-            </a>
-          </div>
-          <div className='item play'>
-            <a className='ibtn play-btn' href='javascript:;'>
-              <i className='fa fa-play' />
-            </a>
-            <a className='ibtn pause-btn' href='javascript:;'>
-              <i className='fa fa-pause' />
-            </a>
           </div>
         </div>
 
@@ -136,7 +132,7 @@ OEP = React.createClass
           {
             for role in ['客户', '柜员']
               if @props.data.roles[role]?
-                <div key={role} className='role'>角色：{role}</div>
+                <div key={role} className="role #{role}">角色：{role}</div>
                 
           }
         </div>
@@ -283,9 +279,9 @@ OEP = React.createClass
         desc_show = 
           <div className='desc-show'>
             <h4>操作概述：</h4>
-            <pre>
-            {jQuery.blank_or action.desc, '需要熟悉业务的人员填写'}
-            </pre>
+            <div>
+            <SimpleFormatText text={action.desc} placeholder='需要熟悉业务的人员填写' />
+            </div>
           </div>
 
         <div className={klass.join(' ')}>
@@ -515,6 +511,7 @@ class OEAction
     @screen_ids = _action.linked_screen_ids || []
     @clip_ids = _action.linked_clip_ids || []
     @desc = _action.desc || ''
+    @business_kind_str = _action.business_kind_str
 
     @deep = null
     @offset = 0

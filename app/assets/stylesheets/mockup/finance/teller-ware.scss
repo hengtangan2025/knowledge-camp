@@ -26,9 +26,29 @@ body.teller-ware {
         height:$header-height;line-height:$header-height;
         float: left;
         width: 240px;
-        text-align: center;
+        // text-align: center;
         border-left:solid 1px white;
         border-right:solid 1px #ddd;
+        font-size: 16px;
+        font-weight: bold;
+        &.客户:before {
+          content: "";
+          float: left;
+          background-image: url(http://i.teamkn.com/i/xBOHyOS3.png);
+          width: 40px; height: 40px;
+          background-size: cover;
+          background-repeat: no-repeat;
+          margin-top: 10px;margin-right: 10px;margin-left: 10px;
+        }
+        &.柜员:before {
+          content: "";
+          float: left;
+          background-image: url(http://i.teamkn.com/i/eIQ2nSSb.png);
+          width: 40px; height: 40px;
+          background-size: cover;
+          background-repeat: no-repeat;
+          margin-top: 10px;margin-right: 10px;margin-left: 10px;
+        }
       }
     }
 
@@ -211,7 +231,7 @@ body.teller-ware {
     border-left:solid 1px #ddd;
     border-right:solid 1px #ccc;
 
-    .item {
+    .sibitem {
       min-height: 51px;
       border-top: solid 1px #fff;
       border-bottom: solid 1px #ddd;
@@ -220,147 +240,37 @@ body.teller-ware {
       line-height: 20px;
 
       &.base {
-        padding: 0 15px;
-        line-height: 30px;
+        padding: 5px 15px;
+        line-height: 25px;
 
         .number {
-          font-family: $number-font-family;
           font-weight: bold;
         }
       }
 
-      // &.roles, &.complex {
-      //   @include clearfix;
-      //   label {float: left;margin:0;line-height:30px;}
-      //   .role {
-      //     position: relative;
-      //     height: 30px;line-height:30px;
-      //     margin-left: 20px;
-      //     float:left;
-      //     &:last-child {margin-bottom: 0;}
-      //     &.teller {
-      //       &:before {
-      //         content: "";
-      //         display: block;
-      //         width: 30px;height:30px;
-      //         border-radius:100px;
-      //         background: url(http://i.teamkn.com/i/DtEA0wEP.png);
-      //         background-size: cover;
-      //         float: left;
-      //         margin-right: 10px;
-      //         border: solid 1px #ddd;
-      //       }
-      //     }
-      //     &.customer {
-      //       &:before {
-      //         content: "";
-      //         display: block;
-      //         width: 30px;height:30px;
-      //         border-radius:100px;
-      //         background: url(http://i.teamkn.com/i/UuDexXFr.png);
-      //         background-size: cover;
-      //         float: left;
-      //         margin-right: 10px;
-      //         border: solid 1px #ddd;
-      //       }
-      //     }
-      //   }
-      //   .c {
-      //     margin-left: 80px;
-      //     width: 30px;height:30px;
-      //     color: white;
-      //     line-height: 30px;
-      //     text-align: center;
-      //     border-radius:100px;
-      //     &.low {
-      //       background-color: #44B2F5;
-      //     }
-      //   }
-      // }
-
       &.desc {
-        // max-height: 400px;
-        overflow-y:auto;
+        overflow-y:scroll;
         position: absolute;
-        left:0;right:0;top:61px;
-        bottom:200px;
+        left:0;right:0;top:61px;bottom:0;
         label {display: block;margin-bottom:10px;}
-        pre {
-          border:0 none;
-          padding:0;
-          margin:0;
-          font-family: arial, '微软雅黑';
-          background:none;
-          word-break: break-all;
-          word-wrap: break-word;
-        }
-      }
 
-      &.linked-flows {
-        position: absolute;
-        left:0;right:0;bottom:0;height:200px;
-        overflow-y:auto;
-
-        .flow {
-          // background-color: #FFF;
-          height:24px;line-height:24px;
-          padding: 0 15px;
+        .relative-ware {
+          border: solid 1px #ddd;
           display: block;
-          margin:0 -15px;
-          .number {
-            margin-right: 10px;
-            font-family: 'times new roman';
-            font-weight: bold;
-          }
-        }
-      }
-
-      &.qn {
-        display: none;
-        padding: 0;
-        position: absolute;
-        bottom: 100px;
-        left:0;right:0;
-        height:50px;
-        background-color: #f7f7f7;
-        .ibtn {
-          float:left;
-          width:50%;
-          height:50px;
-          border-right: solid 1px #ddd;
-          &:last-child {border-right: 0 none;}
-          text-align: center;
-          line-height: 50px;
-          font-size: 25px;
+          padding: 0.5rem;
+          background-color: white;
+          margin-left: -0.5rem;
+          margin-right: -0.5rem;
+          margin-bottom: 0.5rem;
           color: #333;
+          // border-radius: 4px;
+          border-left: solid 4px #45BCD8;
+          color: #666;
+          .number {color: #333;margin-bottom: 0.2rem;}
           &:hover {
-            background-color: #44B2F5;
-            color: white;
+            background-color: lighten(#EFFAFE, 1%);
           }
         }
-      }
-      &.play {
-        display: none;
-        position: absolute;
-        bottom: 0;left:0;right:0;
-        height: 100px;
-        padding: 0;
-        background-color: #f7f7f7;
-
-        a.play-btn, a.pause-btn {
-          position: absolute;
-          top:0;left:0;right:0;bottom:0;
-          line-height: 100px;
-          text-align: center;
-          font-size: 50px;
-          color: #333;
-          &:hover {
-            background-color: #44B2F5;
-            color: white;
-          }
-        }
-
-        a.pause-btn {display:none;}
       }
     }
   }

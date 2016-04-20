@@ -3,7 +3,7 @@ class Manager::Finance::TellerWaresController < ApplicationController
 
   def index
     @page_name = "manager_finance_teller_wares"
-    wares = ::Finance::TellerWare.order_by(number: :asc).page(params[:page]).per(15)
+    wares = ::Finance::TellerWare.asc(:number).page(params[:page]).per(15)
     data = wares.map {|x|
       DataFormer.new(x)
         .logic(:business_kind_str)
@@ -29,6 +29,8 @@ class Manager::Finance::TellerWaresController < ApplicationController
     @page_name = "manager_finance_teller_ware_preview"
     @component_data = DataFormer.new(ware)
       .logic(:actions)
+      .logic(:relative_wares)
+      .logic(:business_kind_str)
       .data
     render "/mockup/page", layout: 'finance/preview'
   end
@@ -69,8 +71,16 @@ class Manager::Finance::TellerWaresController < ApplicationController
   end
 
   def trade
-    trade = ::Finance::TellerWareTrade.where(number: params[:number]).first
-    render json: DataFormer.new(trade).logic(:all_hmdms).data
+    trades = ::Finance::TellerWareTrade.where(number: params[:number])
+    data = trades.map {|trade|
+      DataFormer.new(trade).logic(:all_hmdms).data
+    }.map { |x|
+      x[:all_hmdms]
+    }.flatten.uniq
+
+    render json: {
+      all_hmdms: data
+    }
   end
 
   def hmdm

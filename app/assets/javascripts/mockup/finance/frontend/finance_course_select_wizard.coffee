@@ -77,7 +77,7 @@
             <div className='wares ui cards'>
             {
               for ware in @state.result_wares
-                <FinanceTellerWareCard data={ware} />
+                <FinanceTellerWareCard key={ware.id} data={ware} />
             }
             </div>
           </div>

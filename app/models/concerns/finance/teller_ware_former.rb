@@ -20,6 +20,21 @@ module Finance::TellerWareFormer
         instance.business_kind_str
       }
 
+      logic :relative_wares, ->(instance) {
+        num = instance.number[0...3]
+        Finance::TellerWare.where(number: /^#{num}/)
+          .order(number: :asc)
+          .select {|x|
+            x.id != instance.id
+          }
+          .map {|x|
+            DataFormer.new(x)
+              .url(:show_url)
+              .logic(:business_kind_str)
+              .data
+          }
+      }
+
       url :show_url, ->(instance) {
         manager_finance_preview_path(number: instance.number)
       }
