@@ -7,6 +7,8 @@ routes_draw :mockup
 Rails.application.routes.draw do
   root 'index#index'
 
+  get '/search/:query' => 'search#search', as: :search
+
   devise_for :users, :skip => :all
 
   # 文件上传

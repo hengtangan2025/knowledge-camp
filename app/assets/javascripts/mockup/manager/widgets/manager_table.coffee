@@ -8,6 +8,12 @@
       </h4>
 
       {
+        console.log @props.data
+        if @props.data.search?
+          <ManagerTable.Search search={@props.data.search} />
+      }
+
+      {
         if @props.data.filters?
           <ManagerTable.Filter data={@props.data.filters} />
       }
@@ -66,6 +72,30 @@
           }
           </th>
         </tr></tfoot>
+
+    Search: React.createClass
+      getInitialState: ->
+        query: @props.search || ''
+
+      render: ->
+        <div className='ui icon input'>
+          <input type='text' placeholder='查找…' value={@state.query} onChange={@change} onKeyPress={@enter_submit} />
+          <i className='search link icon' onClick={@search}></i>
+        </div>
+
+      change: (evt)->
+        @setState query: evt.target.value
+
+      search: ->
+        url = URI(location.href)
+          .removeSearch('search')
+          .removeSearch('page')
+          .addSearch({search: @state.query})
+        window.location.href = url
+
+      enter_submit: (evt)->
+        if evt.which is 13
+          @search()
 
 
     Filter: React.createClass

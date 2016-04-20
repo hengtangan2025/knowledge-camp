@@ -2,6 +2,7 @@
   getInitialState: ->
     screens: @props.data.screens
     paginate: @props.data.paginate
+    search: @props.data.search || ''
 
   render: ->
     <div className='manager-bank-teller-wares'>
@@ -34,6 +35,7 @@
             ops: 'collapsing'
             edit: 'collapsing'
           paginate: @props.data.paginate
+          search: @props.data.search
         }
 
         <div className='ui segment'>

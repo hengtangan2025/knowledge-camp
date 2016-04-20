@@ -15,7 +15,7 @@
       else
         <div>
           <ManagerFinanceTellerWareMediaClipsPage.CreateBtn />
-          <ManagerFinanceTellerWareMediaClipsPage.Table media_clips={@state.media_clips} paginate={@props.data.paginate} />
+          <ManagerFinanceTellerWareMediaClipsPage.Table media_clips={@state.media_clips} paginate={@props.data.paginate} search={@props.data.search} />
         </div>
     }
     </div>
@@ -57,6 +57,7 @@
           }
 
           paginate: @props.paginate
+          search: @props.search
         }
 
         <div className='ui segment'>

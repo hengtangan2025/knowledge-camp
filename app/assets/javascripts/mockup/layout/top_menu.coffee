@@ -45,10 +45,7 @@
         
         <div className='right menu'>
           <div className='item'>
-            <div className='ui icon input'>
-              <input type='text' placeholder='搜索课程…' />
-              <i className='search link icon'></i>
-            </div>
+            <SiteSearch />
           </div>
           {
             for name, url of @props.data.right

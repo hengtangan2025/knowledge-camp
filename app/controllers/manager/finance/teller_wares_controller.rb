@@ -3,7 +3,14 @@ class Manager::Finance::TellerWaresController < ApplicationController
 
   def index
     @page_name = "manager_finance_teller_wares"
+
     wares = ::Finance::TellerWare.asc(:number).page(params[:page]).per(15)
+
+    if params[:search].present?
+      query = params[:search]
+      wares = wares.or({name: /#{query}/}, {number: /#{query}/})
+    end
+
     data = wares.map {|x|
       DataFormer.new(x)
         .logic(:business_kind_str)
@@ -17,7 +24,8 @@ class Manager::Finance::TellerWaresController < ApplicationController
       paginate: DataFormer.paginate_data(wares),
       filters: {
         kinds: ::Finance::TellerWare::KINDS
-      }
+      },
+      search: params[:search] || ''
     }
 
     render "/mockup/page"
@@ -39,6 +47,12 @@ class Manager::Finance::TellerWaresController < ApplicationController
     @page_name = "manager_finance_teller_ware_screens"
 
     screens = ::Finance::TellerWareScreen.page(params[:page]).per(15)
+
+    if params[:search].present?
+      query = params[:search]
+      screens = screens.where(hmdm: /#{query}/)
+    end
+
     data = screens.map {|x|
       DataFormer.new(x)
         .url(:edit_sample_data_url)
@@ -47,7 +61,8 @@ class Manager::Finance::TellerWaresController < ApplicationController
 
     @component_data = {
       screens: data,
-      paginate: DataFormer.paginate_data(screens)
+      paginate: DataFormer.paginate_data(screens),
+      search: params[:search] || ''
     }
 
     render "/mockup/page"
@@ -57,6 +72,12 @@ class Manager::Finance::TellerWaresController < ApplicationController
     @page_name = "manager_finance_teller_ware_trades"
 
     trades = ::Finance::TellerWareTrade.page(params[:page]).per(15)
+
+    if params[:search].present?
+      query = params[:search]
+      trades = trades.or({number: /#{query}/}, {jymc: /#{query}/})
+    end
+
     data = trades.map {|x|
       DataFormer.new(x)
         .data
@@ -65,6 +86,7 @@ class Manager::Finance::TellerWaresController < ApplicationController
     @component_data = {
       trades: data,
       paginate: DataFormer.paginate_data(trades),
+      search: params[:search] || ''
     }
 
     render "/mockup/page"

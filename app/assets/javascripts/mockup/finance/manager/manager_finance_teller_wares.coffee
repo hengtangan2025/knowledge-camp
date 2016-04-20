@@ -4,6 +4,7 @@
     wares: @props.data.wares
     paginate: @props.data.paginate
     filters: @props.data.filters
+    search: @props.data.search
 
   render: ->
     <div className='manager-bank-teller-wares'>
@@ -39,6 +40,7 @@
             ops: 'collapsing'
             editor_memo: 'collapsing'
           paginate: @props.data.paginate
+          search: @props.data.search || ''
         }
 
         <div className='ui segment'>

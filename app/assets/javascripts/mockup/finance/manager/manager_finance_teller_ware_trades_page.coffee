@@ -2,6 +2,7 @@
   getInitialState: ->
     trades: @props.data.trades
     paginate: @props.data.paginate
+    search: @props.data.search || ''
 
   render: ->
     <div className='manager-bank-teller-wares'>
@@ -44,6 +45,7 @@
           td_classes:
             jymc: 'collapsing'
           paginate: @props.data.paginate
+          search: @props.data.search
         }
 
         <div className='ui segment'>

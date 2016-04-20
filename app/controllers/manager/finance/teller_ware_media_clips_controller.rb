@@ -5,6 +5,11 @@ class Manager::Finance::TellerWareMediaClipsController < ApplicationController
     @page_name = "manager_finance_teller_ware_media_clips"
     clips = ::Finance::TellerWareMediaClip.order_by(id: :desc).page(params[:page]).per(15)
 
+    if params[:search].present?
+      query = params[:search]
+      clips = clips.or({name: /#{query}/}, {desc: /#{query}/})
+    end
+
     data = clips.map {|x|
       DataFormer.new(x)
         .logic(:file_info)
@@ -15,7 +20,8 @@ class Manager::Finance::TellerWareMediaClipsController < ApplicationController
     @component_data = {
       media_clips: data,
       paginate: DataFormer.paginate_data(clips),
-      create_url: manager_finance_teller_ware_media_clips_path
+      create_url: manager_finance_teller_ware_media_clips_path,
+      search: params[:search] || ''
     }
 
     render "/mockup/page"

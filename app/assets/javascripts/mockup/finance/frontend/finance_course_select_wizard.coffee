@@ -36,6 +36,10 @@
               <span><i>3</i> 获取内容</span>
           }
         </div>
+
+        <div className='search'>
+          <SiteSearch />
+        </div>
       </div>
 
     {
