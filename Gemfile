@@ -72,6 +72,10 @@ gem 'enterprise_position_level',
     github: "mindpin/enterprise_position_level",
     ref: "541bf8a"
 
+gem 'question_mod',
+    github: "fushang318/question_mod",
+    ref: "dc5c9ea"
+
 # ----------------------------------
 
 gem 'sprockets', '3.4.0'
