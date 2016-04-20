@@ -21,3 +21,12 @@ FilePartUpload.config do
   qiniu_audio_and_video_transcode(ENV["qiniu_audio_and_video_transcode"] || :enable)
   qiniu_pfop_pipeline  ENV["qiniu_pfop_pipeline"]
 end
+
+
+KcCourses::Ware.class_eval do
+  has_many :questions, class_name: "QuestionMod::Question", :as => :targetable
+end
+
+QuestionMod::Question.class_eval do
+  belongs_to :targetable, :polymorphic => true
+end

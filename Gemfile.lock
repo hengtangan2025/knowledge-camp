@@ -1,4 +1,11 @@
 GIT
+  remote: git://github.com/fushang318/question_mod.git
+  revision: dc5c9ea2d4e15abed83cd68eef379611bfc6bae4
+  ref: dc5c9ea
+  specs:
+    question_mod (0.0.1)
+
+GIT
   remote: git://github.com/mindpin/bank.git
   revision: 90d8f5493644fc9458643c4fd2c6344940bd4883
   ref: 90d8f54
@@ -355,6 +362,7 @@ DEPENDENCIES
   pry
   pry-byebug
   pry-rails
+  question_mod!
   quiet_assets
   rails (= 4.2.3)
   rails-assets-URIjs
