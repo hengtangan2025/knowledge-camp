@@ -20,8 +20,9 @@ class NotesController < ApplicationController
   end
 
   def create
-    note = NoteMod::Note.new note_create_params
+    note = NoteMod::Note.new note_params
     note.creator = current_user
+    _process_targetable note
 
     save_model(note) do |_note|
       DataFormer.new(_note).data
@@ -29,10 +30,13 @@ class NotesController < ApplicationController
   end
 
   private
-  def note_create_params
-    hash = params.require(:note).permit(:title, :content, :ware_id)
-    ware_id = hash.delete :ware_id
-    hash[:targetable] = KcCourses::Ware.find(ware_id) if ware_id.present?
-    hash
+  def _process_targetable(note)
+    if params[:ware_id].present?
+      note.targetable = KcCourses::Ware.find params[:ware_id]
+    end
+  end
+
+  def note_params
+    params.require(:note).permit(:title, :content)
   end
 end

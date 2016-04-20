@@ -20,8 +20,9 @@ class QuestionsController < ApplicationController
   end
 
   def create
-    question = QuestionMod::Question.new question_create_params
+    question = QuestionMod::Question.new question_params
     question.creator = current_user
+    _process_targetable(question)
 
     save_model(question) do |q|
       DataFormer.new(q).data
@@ -29,10 +30,13 @@ class QuestionsController < ApplicationController
   end
 
   private
-  def question_create_params
-    hash = params.require(:question).permit(:title, :content, :ware_id)
-    ware_id = hash.delete :ware_id
-    hash[:targetable] = KcCourses::Ware.find(ware_id) if ware_id.present?
-    hash
+  def _process_targetable(question)
+    if params[:ware_id].present?
+      question.targetable = KcCourses::Ware.find params[:ware_id]
+    end
+  end
+
+  def question_params
+    params.require(:question).permit(:title, :content)
   end
 end
