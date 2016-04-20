@@ -12,7 +12,7 @@ class RegistrationsController < Devise::RegistrationsController
       sign_up_url: sign_up_path,
       submit_url: api_sign_up_path
     }
-    render :page
+    render "/mockup/page"
   end
 
 end

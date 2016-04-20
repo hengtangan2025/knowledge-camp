@@ -23,7 +23,5 @@ class SubjectsController < ApplicationController
         per_page: courses.limit_value
       }
     }
-
-    render :page
   end
 end
