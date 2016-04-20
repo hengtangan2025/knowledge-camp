@@ -22,11 +22,27 @@ FilePartUpload.config do
   qiniu_pfop_pipeline  ENV["qiniu_pfop_pipeline"]
 end
 
+module NoteMod
+  class Note
+    include Mongoid::Document
+    include Mongoid::Timestamps
+     # title content 不能为空
+    field :title,   :type => String
+    field :content, :type => String
+    validates :title, presence: true
+    validates :content, presence: true
+    # creator 不能为空
+    belongs_to :creator, class_name: 'User'
+
+    belongs_to :targetable, polymorphic: true
+  end
+end
 
 KcCourses::Ware.class_eval do
-  has_many :questions, class_name: "QuestionMod::Question", :as => :targetable
+  has_many :questions, class_name: "QuestionMod::Question", as: :targetable
+  has_many :notes,     class_name: "NoteMod::Note",         as: :targetable
 end
 
 QuestionMod::Question.class_eval do
-  belongs_to :targetable, :polymorphic => true
+  belongs_to :targetable, polymorphic: true
 end

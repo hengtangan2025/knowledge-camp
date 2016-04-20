@@ -25,6 +25,10 @@ Rails.application.routes.draw do
     get :ware, on: :collection
   end
 
+  resources :notes do
+    get :ware, on: :collection
+  end
+
   devise_scope :user do
     get    "/sign_in"      => "sessions#new"
     post   "/api/sign_in"  => "sessions#create"
