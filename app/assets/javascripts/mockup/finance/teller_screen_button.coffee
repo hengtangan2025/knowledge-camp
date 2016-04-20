@@ -13,14 +13,29 @@
         screen = @props.screen
 
         <div>
-          <OFCTellerScreen key={screen.hmdm} data={screen} />
+          <OFCTellerScreen key={screen.hmdm} data={screen} ref='screen'/>
           <div style={textAlign: 'right', marginTop: '2rem'}>
+            <a href='javascript:;' className='ui button green' onClick={@play}>
+              <i className='icon play' /> 演示
+            </a>
+            <a href='javascript:;' className='ui button green' onClick={@stop}>
+              <i className='icon stop' /> 停止
+            </a>
             <a href='javascript:;' className='ui button' onClick={@close}>关闭</a>
           </div>
         </div>
 
       close: ->
         @state.close()
+
+      play: ->
+        @refs.screen.play()
+
+      pause: ->
+        @refs.screen.pause()
+
+      stop: ->
+        @refs.screen.stop()
 
     load_modal: (hmdm)->
       hmdm_url = window.hmdm_url

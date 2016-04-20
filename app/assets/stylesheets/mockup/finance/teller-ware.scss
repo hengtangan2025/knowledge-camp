@@ -344,7 +344,10 @@ body.teller-ware {
       border-radius: 0;
       height:18px;line-height:18px;
       box-sizing:content-box;
-      &:focus:not(readonly) {
+      &:focus:not([readonly]) {
+        background-color: #FFF548;
+      }
+      &.play_active {
         background-color: #FFF548;
       }
     }
@@ -355,6 +358,9 @@ body.teller-ware {
       border-radius: 0;
       height:20px;line-height:20px;
       box-sizing:content-box;
+      &.play_active {
+        background-color: #F3FECE;
+      }
     }
   }
 }

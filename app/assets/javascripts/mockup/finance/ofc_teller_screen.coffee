@@ -24,10 +24,13 @@ zdxh  字段序号  排序用
   displayName: 'OFCTellerScreen'
   getInitialState: ->
     hmdm:     @props.data.hmdm
-    zds:      @props.data.zds
+    zds:      @props.data.zds.sort (a, b)->
+      a.zdxh - b.zdxh
     xxdm_url: @props.data.xxdm_url
     selects:  @props.data.selects
     sample_data: @props.data.sample_data || {}
+
+    play_status: 'stop' # playing, pause
 
   render: ->
     <div className='ofc-teller-screen'>
@@ -45,7 +48,12 @@ zdxh  字段序号  排序用
               editable: @props.editable
               init_value: init_value
 
-            <OFCTellerScreen.ZD ref={zd.sjbm} {...params} />
+            if @state.play_status != 'stop'
+              play_params = 
+                playing: true
+                play_value: @play_data[zd.sjbm]
+
+            <OFCTellerScreen.ZD ref={zd.sjbm} {...params} {...play_params} />
         }
       </div>
     </div>
@@ -57,6 +65,57 @@ zdxh  字段序号  排序用
         x = @refs[zd.sjbm]
         re[zd.sjbm] = x.state.value
     re
+
+  play: ->
+    @timer = setInterval =>
+      @_play()
+      @setState
+        play_status: 'playing'
+    , 150
+    
+  pause: ->
+    clearInterval @timer
+    @setState
+      play_status: 'pause'
+
+  stop: ->
+    clearInterval @timer
+    @current_zd = null
+    @setState
+      play_status: 'stop'
+
+  _play: ->
+    if not @current_zd
+      @queue_zds = []
+      @play_data = {}
+      for zd in @state.zds
+        if @state.sample_data[zd.sjbm]?
+          @queue_zds.push zd
+          @play_data[zd.sjbm] = ''
+
+      @current_zd = @queue_zds.shift()
+      return
+
+    play_value = @play_data[@current_zd.sjbm]
+    target_value = @state.sample_data[@current_zd.sjbm]
+
+    if play_value == target_value
+      @current_zd = @queue_zds.shift()
+      return
+
+    if @current_zd.zdlx == '2'
+      new_value = target_value
+    else
+      l0 = play_value.length
+      new_value = target_value[0...(l0 + 1)]
+
+    @play_data[@current_zd.sjbm] = new_value
+    console.log @current_zd.sjbm, new_value
+
+
+        
+
+
 
   statics:
     ZD: React.createClass
@@ -83,23 +142,35 @@ zdxh  字段序号  排序用
           display: if width == 0 then 'none' else ''
           width: if "#{data.zdlx}" == '2' then width + 30 else width
 
+        value =
+          if @props.playing
+          then @props.play_value
+          else @state.value
+
+        play_active =
+          if @props.playing and value?.length > 0
+          then true
+          else false
+
         params = 
           style: ipt_style
           readOnly: not @props.editable
-          data: data
           onChange: @change
-          value: @state.value
+          value: value
           screen: @props.screen
 
         ipt = 
           switch "#{data.zdlx}"
             when '2'
-              <OFCTellerScreen.SelectZD {...params} />
+              <OFCTellerScreen.SelectZD {...params} data={data}  play_active={play_active}/>
             else
+              klass1 = new ClassName
+                'play_active': play_active
+
               if "#{data.sjlx}" == '6'
-                <input type='password' {...params} />
+                <input type='password' {...params} className={klass1} />
               else
-                <input type='text' {...params} />
+                <input type='text' {...params} className={klass1}/>
 
         style =
           top: top
@@ -127,7 +198,10 @@ zdxh  字段序号  排序用
           value: @props.value
           onChange: @props.onChange
 
-        <select {...params} >
+        klass1 = new ClassName
+          'play_active': @props.play_active
+
+        <select {...params} className={klass1}>
           <option>请选择：</option>
           {
             for xxmx, idx in @state.xxmxs
