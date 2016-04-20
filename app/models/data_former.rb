@@ -16,6 +16,9 @@ class DataFormer
   include Finance::TellerWareScreenFormer
   include Finance::TellerWareTradeFormer
 
+  include QuestionFormer
+  include NoteFormer
+
   def self.paginate_data(models)
     {
       total_pages: models.total_pages,
