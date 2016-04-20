@@ -334,57 +334,15 @@ OEP = React.createClass
 
       show_question_modal: ->
         jQuery.open_modal(
-          <WareQuestionModal ware={@props.ware} />
+          <WareQuestionModal ware={@props.ware} />, {
+            closable: false
+          }
         )
 
       show_note_modal: ->
         jQuery.open_modal(
           <WareNoteModal ware={@props.ware} />
         )
-
-WareQuestionModal = React.createClass
-  getInitialState: ->
-    questions: []
-
-  render: ->
-    ware = @props.ware
-    <div>
-      <h4>提问题</h4>
-    </div>
-
-  componentDidMount: ->
-    jQuery.ajax
-      url: '/questions/ware'
-      data:
-        ware_id: @props.ware.id
-    .done (res)->
-      console.log res
-
-WareNoteModal = React.createClass
-  getInitialState: ->
-    questions: []
-
-  render: ->
-    ware = @props.ware
-    <div>
-      <h4>记录笔记</h4>
-      <div className='questions'>
-      {
-        for question in @state.questions
-          <div key={question.id} className='question'>
-            
-          </div> 
-      }
-      </div>
-    </div>
-
-  componentDidMount: ->
-    jQuery.ajax
-      url: '/questions/ware'
-      data:
-        ware_id: @props.ware.id
-    .done (res)->
-      console.log res
 
 # -------------------------------------
 # 以下是非 ReactJS 的类，用于数据解析

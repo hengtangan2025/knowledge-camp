@@ -169,7 +169,7 @@
             {@props.with_cancel}
           </a>
 
-      <DataForm.Form.Field>
+      <DataForm.Form.Field {...@props}>
       {button} {cancel}
       </DataForm.Form.Field>
 

@@ -16,6 +16,8 @@ class DataFormer
   include Finance::TellerWareScreenFormer
   include Finance::TellerWareTradeFormer
 
+  include QuestionFormer
+
   def self.paginate_data(models)
     begin
       {

@@ -16,6 +16,8 @@ jQuery.open_modal = (component, config={})->
       $dom.modal 'hide', ->
         $dom.remove()
         func?()
+    refresh: ->
+      $dom.modal('refresh')
 
   config = jQuery.extend({
     blurring: false
