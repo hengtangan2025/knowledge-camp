@@ -2,7 +2,7 @@
   render: ->
     <div className='teller-course-ware'>
       <TellerCourseWare.Sidebar data={@baseinfo()} />
-      <TellerCourseWare.Panel data={@actioninfo()} />
+      <TellerCourseWare.Panel ware={@baseinfo()} data={@actioninfo()} />
     </div>
 
   baseinfo: ->
@@ -58,7 +58,7 @@
     Panel: React.createClass
       render: ->
         <div className='paper'>
-          <OEP data={@props.data} />
+          <OEP ware={@props.ware} data={@props.data} />
         </div>
 
 
@@ -80,7 +80,7 @@ OEP = React.createClass
     <div className='flow-course-ware'>
       <OEP.Header data={@state.graph} />
       <OEP.Nodes oep={@} data={@state.graph} />
-      <OEP.TeachingDialog oep={@} ref='dialog' data={@state.graph} />
+      <OEP.TeachingDialog oep={@} ref='dialog' data={@state.graph} ware={@props.ware} />
     </div>
 
   componentDidUpdate: ->
@@ -334,15 +334,61 @@ OEP = React.createClass
 
       show_question_modal: ->
         jQuery.open_modal(
-          <div>aaaaaa</div>, {
-            closable: false
-          }
+          <WareQuestionModal ware={@props.ware} />
         )
+
+      show_note_modal: ->
+        jQuery.open_modal(
+          <WareNoteModal ware={@props.ware} />
+        )
+
+WareQuestionModal = React.createClass
+  getInitialState: ->
+    questions: []
+
+  render: ->
+    ware = @props.ware
+    <div>
+      <h4>提问题</h4>
+    </div>
+
+  componentDidMount: ->
+    jQuery.ajax
+      url: '/questions/ware'
+      data:
+        ware_id: @props.ware.id
+    .done (res)->
+      console.log res
+
+WareNoteModal = React.createClass
+  getInitialState: ->
+    questions: []
+
+  render: ->
+    ware = @props.ware
+    <div>
+      <h4>记录笔记</h4>
+      <div className='questions'>
+      {
+        for question in @state.questions
+          <div key={question.id} className='question'>
+            
+          </div> 
+      }
+      </div>
+    </div>
+
+  componentDidMount: ->
+    jQuery.ajax
+      url: '/questions/ware'
+      data:
+        ware_id: @props.ware.id
+    .done (res)->
+      console.log res
 
 # -------------------------------------
 # 以下是非 ReactJS 的类，用于数据解析
 # 和课程编辑器中的类应该复用，将来重构
-
 
 
 class OEActionsGraph
