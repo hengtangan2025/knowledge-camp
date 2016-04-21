@@ -66,7 +66,7 @@ gem 'kc_courses',
 
 gem 'bank',
     github: "mindpin/bank",
-    ref: "90d8f54"
+    ref: "ed317b0"
 
 gem 'enterprise_position_level',
     github: "mindpin/enterprise_position_level",

@@ -7,8 +7,8 @@ GIT
 
 GIT
   remote: git://github.com/mindpin/bank.git
-  revision: 90d8f5493644fc9458643c4fd2c6344940bd4883
-  ref: 90d8f54
+  revision: ed317b0ccf57c437a9c14d83c0ad8fe32a041b34
+  ref: ed317b0
   specs:
     bank (0.1.0)
       mongoid-tree (~> 2.0)
