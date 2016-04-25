@@ -36,8 +36,7 @@ gem "devise", "3.5.2"
 gem "kaminari", "~> 0.15.1"
 gem 'bootstrap-kaminari-views'
 gem "haml"
-gem "mongoid", "~> 4.0.0"
-gem "bson_ext"
+gem "mongoid", "~> 5.1.3"
 gem 'cells', '~> 3.10.1' # 用于复用一些前端组件
 gem "simple_form", "~> 3.2.0"
 gem "unicorn"
@@ -68,7 +67,7 @@ gem 'knowledge-net-store',
 
 gem "acts-as-dag",
   :git => "git://github.com/mindpin/acts-as-dag.git",
-  :tag => "0.0.2"
+  :tag => "0.0.3"
 
 gem "knowledge-net-plan-store",
     :github => "mindpin/knowledge-net-plan-store",
@@ -89,7 +88,7 @@ gem "sort_char",
 gem "knowledge_camp_step",
     # :path => "../knowledge_camp_step"
     :github => "mindpin/knowledge_camp_step",
-    :tag => "0.1.7"
+    :tag => "0.1.8"
 
 # 文字文档持久化，以下两个 gem 是相关的
 gem "mongoid-versioning",
@@ -97,7 +96,7 @@ gem "mongoid-versioning",
 
 gem "documents-store",
     :github => "mindpin/documents-store",
-    :tag => "v0.0.4"
+    :tag => "0.0.5"
 
 gem 'ueditor.rails',
     # :path => '/web/songliang/kaid/ueditor.rails'
@@ -117,7 +116,7 @@ gem "mini_magick", :require => false
 # 虚拟文件夹
 gem 'virtual_file_system',
     :github => "mindpin/virtual-file",
-    :tag => "v0.0.6"
+    :tag => "0.0.7"
 
 # 支持分段上传的文件持久化
 gem 'file-part-upload',

@@ -1,12 +1,12 @@
 development:
-  sessions:
+  clients:
     default:
       database: knowledge-camp-development
       hosts:
         - 127.0.0.1:27017
 test:
   sessions:
-    default:
+    clients:
       database: knowledge-camp-test
       hosts:
         - 127.0.0.1:27017
