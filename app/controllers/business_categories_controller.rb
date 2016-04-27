@@ -6,7 +6,8 @@ class BusinessCategoriesController < ApplicationController
 
     if params[:pid].blank?
       parents_data = []
-      data = Bank::BusinessCategory.where(depth: 1).map {|x|
+      root = Bank::BusinessCategory.where(parent_id: nil).first
+      data = root.children.map {|x|
         DataFormer.new(x).logic(:is_leaf).data
       }
     else
