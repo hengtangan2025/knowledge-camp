@@ -18,6 +18,8 @@ $mindpin-font-family: "Segoe UI", "Helvetica Neue", "Helvetica", "Arial", "sans-
 // $number-font-family: "Lato", "Helvetica Neue", "Arial", "Helvetica", "sans-serif" !important;
 $number-font-family: "Helvetica Neue", "Arial", "Helvetica", "sans-serif" !important;
 
+@import 'mockup/respond';
+
 @import 'mockup/layout';
 @import 'mockup/ui';
 @import 'mockup/widgets';

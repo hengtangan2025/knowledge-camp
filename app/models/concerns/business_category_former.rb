@@ -20,6 +20,10 @@ module BusinessCategoryFormer
         manager_business_category_path(instance)
       }
 
+      logic :is_leaf, ->(instance) {
+        instance.children.count == 0
+      }
+
     end
 
   end

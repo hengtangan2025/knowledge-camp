@@ -28,6 +28,11 @@
         url: subject_path("all")
       })
 
+      nav_items.push({
+        name: '业务查找',
+        url: business_categories_path
+      })
+
       if current_user.blank?
         right_data = {
           '登录' => sign_in_path,
