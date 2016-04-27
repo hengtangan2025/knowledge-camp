@@ -39,13 +39,25 @@ class BusinessCategoriesController < ApplicationController
     parent_ids = bc.parent_ids
     parent_ids.shift
 
+    videos = FilePartUpload::FileEntity.or({original: /#{bc.name}/}, {original: /#{bc.number}/}).map {|x|
+      DataFormer.new(x).data
+    }
+
+    wares = Finance::TellerWare.or({number: /#{bc.number}/}, {name: /#{bc.name}/}).map {|x|
+      DataFormer.new(x)
+        .url(:show_url)
+        .data
+    }
+
     @page_name = "front_business_category_show"
     @component_data = {
       parents_data: parent_ids.map {|id|
         c = Bank::BusinessCategory.find id
         DataFormer.new(c).data
       },
-      category: DataFormer.new(bc).data
+      category: DataFormer.new(bc).data,
+      videos: videos,
+      teller_wares: wares
     }
   end
 end
