@@ -43,11 +43,34 @@ class UserDashboardController < ApplicationController
     }
   end
 
+  def my_questions
+    questions = QuestionMod::Question.where(creator_id: current_user.id).page(params[:page])
+    data = questions.map do |question|
+      DataFormer.new(question).logic(:targetable).data
+    end
+
+    @page_name = 'user_dashboard_my_questions'
+    @component_data = {
+      menu: _menu_data,
+      current_url: user_dashboard_my_questions_path,
+      questions: data,
+      paginate: {
+        total_pages: questions.total_pages,
+        current_page: questions.current_page,
+        per_page: questions.limit_value
+      }
+    }
+  end
+
   def _menu_data
     [
       {
         name: "我的课程",
         url: user_dashboard_my_courses_path
+      },
+      {
+        name: "我的提问",
+        url: user_dashboard_my_questions_path
       },
       {
         name: "我的笔记",
