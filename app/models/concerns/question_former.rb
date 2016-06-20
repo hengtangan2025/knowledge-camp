@@ -13,6 +13,18 @@ module QuestionFormer
       }
       field :created_at
       field :updated_at
+
+      logic :targetable, ->(instance) {
+        case instance.targetable
+        when Finance::TellerWare
+          return {
+            name: instance.targetable.name,
+            url: manager_finance_preview_path(number: instance.targetable.number)
+          }
+        else
+          return nil
+        end
+      }
     end
 
   end
