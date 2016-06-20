@@ -18,6 +18,9 @@ Rails.application.routes.draw do
 
   # --------------------
   # kc mobile 2016
+  get "/user_dashboard"            => "user_dashboard#index",      as: :user_dashboard
+  get "/user_dashboard/my_courses" => "user_dashboard#my_courses", as: :user_dashboard_my_courses
+  get "/user_dashboard/my_notes"   => "user_dashboard#my_notes",   as: :user_dashboard_my_notes
   resources :subjects
   resources :courses do
     get "/wares/:ware_id" => "courses#ware", as: :ware
