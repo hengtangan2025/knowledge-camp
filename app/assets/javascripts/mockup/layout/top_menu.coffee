@@ -26,7 +26,7 @@
 
 @LayoutTopMenu = React.createClass
   render: ->
-    logo = 
+    logo =
       <a className='item logo' href={@props.data.logo.url} style={display: 'none'}>
         <div className='logo-i' style={'backgroundImage': "url(#{@props.data.logo.image})"} />
       </a>
@@ -42,7 +42,7 @@
         {home}
 
         <LayoutTopMenu.NestedItems klass='left menu' data={@props.data.nav_items} />
-        
+
         <div className='right menu'>
           <div className='item'>
             <SiteSearch />
@@ -59,7 +59,7 @@
                 <a style={display: 'none'} key='avatar' className='item' href='javascript:;'>
                   <img src={user.avatar?.url} />
                 </a>
-                <a key='name' className='item' href='javascript:;'>{user.name}</a>
+                <a key='name' className='item' href={user.user_dashboard_url}>{user.name}</a>
                 <a key='sign-out' className='item' onClick={@do_sign_out}>登出</a>
               ]
           }
