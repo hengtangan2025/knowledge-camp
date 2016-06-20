@@ -7,7 +7,6 @@ module UserFormer
       field :id, ->(instance) {instance.id.to_s}
       field :name
       field :email
-      field :name
       field :created_at
       field :updated_at
       field :avatar, ->(instance){
@@ -17,6 +16,10 @@ module UserFormer
           normal:{ url: "/assets/default_avatars/normal.png"},
           small:{ url: "/assets/default_avatars/small.png"}
         }
+      }
+
+      url :user_dashboard_url, ->(instance) {
+        user_dashboard_path
       }
 
     end

@@ -22,7 +22,7 @@
         cs = KcCourses::CourseSubject.find(cms_config.value)
         {name: cs.name, url: subject_path(cs.id)}
       end
-      
+
       nav_items.push({
         name: '全部课程',
         url: subject_path("all")
@@ -36,7 +36,7 @@
         current_user_data = nil
       else
         right_data = {}
-        current_user_data = current_user
+        current_user_data = DataFormer.new(current_user).url(:user_dashboard_url).data
       end
 
 
