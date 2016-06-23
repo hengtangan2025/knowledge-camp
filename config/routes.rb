@@ -44,6 +44,8 @@ Rails.application.routes.draw do
     post   "/api/sign_up"  => "registrations#create"
   end
 
+  resources :business_categories
+
   scope :path => "/manager", module: 'manager', as: :manager do
     get "dashboard" => "dashboard#index"
 

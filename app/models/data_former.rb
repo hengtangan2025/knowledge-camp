@@ -19,6 +19,8 @@ class DataFormer
   include QuestionFormer
   include NoteFormer
 
+  include FileEntityFormer
+
   def self.paginate_data(models)
     begin
       {

@@ -28,11 +28,13 @@ module PublishedCourseFormer
       data[:kind] = "video"
       seconds = file_entity.meta.try(:[], :video).try(:[], :total_duration).to_i
       data[:time] = "#{seconds/60}′#{seconds%60}″"
-      data[:video_url] = file_entity.transcode_url("超请") ||
-        file_entity.transcode_url("高请") ||
-        file_entity.transcode_url("标清") ||
-        file_entity.transcode_url("低清") ||
-        file_entity.url
+      # data[:video_url] = 
+      #   # file_entity.transcode_url("超请") ||
+      #   # file_entity.transcode_url("高请") ||
+      #   # file_entity.transcode_url("标清") ||
+      #   # file_entity.transcode_url("低清") ||
+      #   # file_entity.url
+      data[:video_url] = file_entity.url
     end
 
     data

@@ -352,3 +352,43 @@
     }
   }
 }
+
+.front-business-categories-page {
+  .ui.segment {
+    box-shadow: none !important;
+    @include clearfix;
+    padding: 0;
+  }
+
+  .categories {
+    float: left;
+    border-right: solid 1px #ddd;
+    width: 100px;
+    padding: 1rem;
+    overflow:hidden;
+    background-color: #fafafa;
+
+    .category {
+      a {
+        padding: 0.5rem;
+        display: block;
+        font-size: 16px;
+        width:300px;
+        color: #333;
+        &:hover {
+          background-color: lighten(#008DD4, 50%);
+        }
+      }
+      &.active a {
+        background-color: #008DD4;
+        color: white;
+      }
+    }
+
+    &.current {
+      width: 300px;
+      background-color: #FFF;
+      .category a {color: #008DD4;}
+    }
+  }
+}
