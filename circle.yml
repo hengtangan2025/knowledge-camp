@@ -3,7 +3,7 @@ general:
   #   only:
   #     - finance
   artifacts:
-    - "log/"
+    - "selenium/"
 
 machine:
   timezone: Asia/Shanghai
@@ -30,4 +30,4 @@ dependencies:
 
 test:
   override:
-    - bundle exec rspec
+    - bundle exec cucumber
