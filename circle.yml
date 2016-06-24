@@ -23,6 +23,7 @@ dependencies:
     - sudo apt-get update -o dir::cache::archives=/home/ubuntu/.apt-cache
     - sudo apt-get install -o dir::cache::archives=/home/ubuntu/.apt-cache -y mongodb-org=2.6.9 mongodb-org-server=2.6.9 mongodb-org-shell=2.6.9 mongodb-org-mongos=2.6.9 mongodb-org-tools=2.6.9
     - sudo apt-get install -o dir::cache::archives=/home/ubuntu/.apt-cache -y qt5-default libqt5webkit5-dev qtdeclarative5-dev g++  xvfb ffmpeg
+    - sudo apt-get install -o dir::cache::archives=/home/ubuntu/.apt-cache -y xfonts-intl-chinese
 
   override:
     - sed -i 's/https:\/\/ruby.taobao.org/https:\/\/rubygems.org/g' Gemfile
