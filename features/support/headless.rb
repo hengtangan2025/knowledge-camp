@@ -3,7 +3,7 @@ require 'fileutils'
 
 Capybara.default_max_wait_time = 10
 Capybara.default_driver = :selenium
-headless = Headless.new(video: { frame_rate: 12, codec: 'libx264' })
+headless = Headless.new(display: 98, video: { frame_rate: 12, codec: 'libx264' })
 headless.start
 
 Before do
