@@ -1,8 +1,15 @@
 require 'headless'
 require 'fileutils'
 
+Capybara.register_driver :selenium_new do |app|
+  profile = Selenium::WebDriver::Firefox::Profile.new
+  client = Selenium::WebDriver::Remote::Http::Default.new
+  client.timeout = 240 # instead of the default 60
+  Capybara::Selenium::Driver.new(app, browser: :firefox, profile: profile, http_client: client)
+end
+
 Capybara.default_max_wait_time = 10
-Capybara.default_driver = :selenium
+Capybara.default_driver = :selenium_new
 headless = Headless.new(display: 98, video: { frame_rate: 12, codec: 'libx264' })
 headless.start
 
