@@ -31,6 +31,10 @@ group :test do
   gem 'factory_girl_rails'
   gem 'rspec-rails', '~> 3.0'
   gem "database_cleaner", "~> 1.2.0"
+  gem 'cucumber-rails', :require => false
+  gem 'capybara'
+  gem 'headless'
+  gem 'selenium-webdriver'
 end
 
 # -------------

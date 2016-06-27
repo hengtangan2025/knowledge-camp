@@ -36,3 +36,5 @@ public/assets/
 .flooignore
 
 backup
+
+selenium/
