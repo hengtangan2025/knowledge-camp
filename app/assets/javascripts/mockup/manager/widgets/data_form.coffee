@@ -113,7 +113,7 @@
 
       Field: React.createClass
         render: ->
-          label_style = 
+          label_style =
             width: @props.label_width || '100px'
 
           wrapper_style =
@@ -156,15 +156,15 @@
         'loading': @state.is_submiting
         'disabled': not @is_valid()
 
-      on_click = 
+      on_click =
         if @is_valid() and not @state.is_submiting
-        then @props.form.submit 
+        then @props.form.submit
         else null
 
       on_cancel_click =
         @props.form.cancel
 
-      button = 
+      button =
         <a className={klass} href='javascript:;' onClick={on_click}>
           <i className='icon check' />
           {text}
@@ -242,3 +242,4 @@
       @props._set_value(values || [])
 
   OneImageUploadField: null # 在 data_form/image_upload.coffee 中定义
+  OneVideoUploadField: null

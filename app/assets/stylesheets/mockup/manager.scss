@@ -1,10 +1,10 @@
 body.manager {
   $manager-bgc: #EAEDF1;
   $sidebar-bgc: #293038;
-  
+
   $item-hover-bgc: #37424f;
   $item-icon-color: #aeb9c2;
-  
+
   $scene-open-bgc: #22282e;
   $scene-close-bgc: #37424f;
   $scene-hover-bgc: #414d5c;
@@ -311,7 +311,7 @@ body.manager {
     }
   }
 
-  .field .image-upload {
+  .field .image-upload, .field .video-upload{
     .browse {
       border: solid 5px #eee;
       text-align: center;
