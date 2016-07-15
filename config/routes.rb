@@ -71,7 +71,7 @@ Rails.application.routes.draw do
     # 视频课件管理
     resources :simple_video_wares do
       get  :edit_business_categories,   on: :member
-      post :update_business_categories, on: :member
+      put :update_business_categories, on: :member
     end
 
     resources :business_categories

@@ -36,7 +36,14 @@
             {
               id: x.id
               name: x.name
-              business_categories: x.business_categories
+              business_categories:
+                <div>
+                {
+                  for bc in x.business_categories
+                    <div>{bc.name}</div>
+                }
+                </div>
+
               actions:
                 <div>
                   <a className='ui button mini blue basic' href={x.manager_edit_base_info_url}>

@@ -7,7 +7,10 @@ module WareFormer
       field :name
       field :business_categories, ->(instance){
         instance.business_categories.map do |bc|
-          bc.name
+          {
+            id: bc.id.to_s,
+            name: bc.name
+          }
         end
       }
       field :kind, ->(instance) { "video" }

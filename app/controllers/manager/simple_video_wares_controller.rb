@@ -66,14 +66,28 @@ class Manager::SimpleVideoWaresController < Manager::ApplicationController
   def edit_business_categories
     ware = KcCourses::SimpleVideoWare.find params[:id]
 
+    business_categories = Bank::BusinessCategory.all.map do |bc|
+      DataFormer.new(bc).data
+    end
+
     @page_name = "manager_edit_business_categories_simple_video_ware"
     @component_data = {
-      simple_video_ware: ware,
+      simple_video_ware: DataFormer.new(ware).data,
+      business_categories: business_categories,
       update_business_categories_url: update_business_categories_manager_simple_video_ware_path(ware)
     }
   end
 
   def update_business_categories
+    ware = KcCourses::SimpleVideoWare.find params[:id]
+
+    update_model(ware, update_business_categories_simple_video_ware_params) do |c|
+      DataFormer.new(c)
+        .url(:manager_edit_base_info_url)
+        .url(:manager_edit_business_categories_url)
+        .data
+        .merge jump_url: manager_simple_video_wares_path
+    end
   end
 
   private
@@ -83,5 +97,9 @@ class Manager::SimpleVideoWaresController < Manager::ApplicationController
 
   def update_simple_video_ware_params
     params.require(:simple_video_wares).permit(:name, :desc)
+  end
+
+  def update_business_categories_simple_video_ware_params
+    params.require(:simple_video_wares).permit(business_category_ids: [])
   end
 end
