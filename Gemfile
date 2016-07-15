@@ -1,6 +1,6 @@
 # coding: utf-8
 
-ruby '2.1.3'
+ruby '2.2.5'
 
 source "https://ruby.taobao.org"
 

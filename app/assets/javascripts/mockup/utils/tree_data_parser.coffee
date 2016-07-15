@@ -53,7 +53,7 @@
 
         _r c, child_depth_array
 
-    
+
     root_items = @items.filter (x)->
       id = x.get('id')
       parents = child_parents_set.get id
@@ -71,8 +71,6 @@
       _r x, child_depth_array
 
     return res.toJS()
-
-
 
 # 实现对于 array & parent_id 数据结构的解析
 # [
@@ -95,14 +93,14 @@
     @items.forEach (x)->
       parent_id = x.get('parent_id')
       if parent_id?
-        parent_children_set = 
+        parent_children_set =
           parent_children_set.update parent_id, (parent)->
             parent.update 'children', (children)->
               children.push x
       else
         root_items = root_items.push x
 
-    parent_children_set = 
+    parent_children_set =
       parent_children_set.set '_root', Immutable.fromJS({
         children: root_items
       })
@@ -125,3 +123,40 @@
     }), Immutable.fromJS([])
 
     return res.toJS()
+
+
+# 实现对于 array & parent_id 数据结构的解析
+# 解析成 dept tree 的形式
+# input [
+#   {id: 1}
+#   {id: 2, parent_id: 1}
+#   {id: 3, parent_id: 2}
+# ]
+# output [
+#   {
+#     id: 1,
+#     children: [
+#       {id: 2}
+#     ]
+#   }
+# ]
+
+@Array2TreeParser = class
+  constructor: (tree_array)->
+    @items = Immutable.fromJS(tree_array).toJS()
+    @root_items = []
+
+    @items_set = {}
+    for item in @items
+      item.children = []
+      @items_set[item.id] = item
+
+  get_root_array: ->
+    for item in @items
+      parent_id = item.parent_id
+      if parent_id?
+        @items_set[parent_id].children.push item
+      else
+        @root_items.push item
+
+    return @root_items

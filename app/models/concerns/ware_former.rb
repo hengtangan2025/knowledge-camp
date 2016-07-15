@@ -5,6 +5,14 @@ module WareFormer
     former "KcCourses::SimpleVideoWare" do
       field :id, ->(instance) {instance.id.to_s}
       field :name
+      field :business_categories, ->(instance){
+        instance.business_categories.map do |bc|
+          {
+            id: bc.id.to_s,
+            name: bc.name
+          }
+        end
+      }
       field :kind, ->(instance) { "video" }
       field :time, ->(instance) {
         seconds = instance.file_entity.meta.try(:[], :video).try(:[], :total_duration).to_i
@@ -45,6 +53,14 @@ module WareFormer
 
       url :delete_url, ->(instance){
         manager_ware_path(instance)
+      }
+
+      url :manager_edit_base_info_url, ->(instance){
+        edit_manager_simple_video_ware_path(instance)
+      }
+
+      url :manager_edit_business_categories_url, ->(instance){
+        edit_business_categories_manager_simple_video_ware_path(instance)
       }
 
     end

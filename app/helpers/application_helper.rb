@@ -2,6 +2,16 @@ module ApplicationHelper
   def manager_sidebar_scenes
     [
       {
+        name: '课件管理',
+        funcs: [
+          {
+            name: '视频课件',
+            url: manager_simple_video_wares_path,
+            icon: 'video'
+          }
+        ]
+      },
+      {
         name: '课程编排',
         funcs: [
           {

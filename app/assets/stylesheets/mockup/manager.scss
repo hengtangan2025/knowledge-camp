@@ -1,10 +1,10 @@
 body.manager {
   $manager-bgc: #EAEDF1;
   $sidebar-bgc: #293038;
-  
+
   $item-hover-bgc: #37424f;
   $item-icon-color: #aeb9c2;
-  
+
   $scene-open-bgc: #22282e;
   $scene-close-bgc: #37424f;
   $scene-hover-bgc: #414d5c;
@@ -311,7 +311,7 @@ body.manager {
     }
   }
 
-  .field .image-upload {
+  .field .image-upload, .field .video-upload{
     .browse {
       border: solid 5px #eee;
       text-align: center;
@@ -499,5 +499,109 @@ body.manager {
   .ui.segment.btns {
     margin-top: -1rem;
     padding-top: 0;
+  }
+}
+
+.business-categories-select-tree{
+  $size: 30px;
+  line-height: $size;
+  min-height: 100px;
+  padding: 0.5rem;
+  .item{
+    .line{
+      height: $size;
+      overflow: hidden;
+
+      .taggle-icon{
+        float: left;
+        i{
+          width: $size;
+          height: $size;
+          line-height: $size;
+          text-align: center;
+          margin-right: 0;
+        }
+        &.place-holder{
+          width: $size;
+          height: $size;
+          line-height: $size;
+          text-align: center;
+          margin-right: 0;
+        }
+      }
+
+      .checkbox{
+        float: left;
+        width:  $size;
+        height: $size;
+        .inner{
+          font-size: $size - 10px;
+          font-family: Icons;
+          font-style: normal;
+          font-weight: 400;
+          text-align: center;
+        }
+
+        &.checked{
+          .inner{
+            &:before{
+              content: "\f046";
+              color: #999;
+            }
+          }
+        }
+        &.unchecked{
+          .inner{
+            &:before{
+              content: "\f096";
+              color: #999;
+            }
+          }
+        }
+        &.partchecked{
+          .inner{
+            &:before{
+              content: "\f146";
+              color: #999;
+            }
+          }
+        }
+      }
+
+      .name{
+        float:left;
+        height: $size;
+        line-height: $size;
+      }
+    }
+
+
+    > .children{
+      padding: 0 0 0 $size;
+    }
+
+    &.close{
+      > .line > .taggle-icon .angle.down.icon{
+        display: none;
+      }
+
+      .children{
+        display: none;
+      }
+    }
+
+    &.open{
+      > .line > .taggle-icon .angle.right.icon{
+        display: none;
+      }
+    }
+
+  }
+}
+
+
+.manager-edit-business-categories-simple-video-ware-page{
+  .tree{
+    padding: 1rem 0;
   }
 }
