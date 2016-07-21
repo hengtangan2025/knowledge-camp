@@ -10,6 +10,18 @@ class Manager::CoursesController < Manager::ApplicationController
         .url(:manager_contents_url).data
     end
 
+    subjects = KcCourses::CourseSubject.all
+    subjects_hash = {}
+    subjects_data = []
+    subjects.each do |subject|
+      subjects_hash = {
+        name: subject.name, 
+        id: subject.id, 
+        search_courses_url: select_courses_from_subject_manager_course_path(subject.id)
+      }
+      subjects_data.push(subjects_hash)
+    end
+
     @component_data = {
       new_course_url: new_manager_course_path,
       courses: data,
@@ -19,11 +31,20 @@ class Manager::CoursesController < Manager::ApplicationController
         per_page: courses.limit_value
       },
       # 用于生成顶部过滤
-      filter_subjects: [
-        {name: '电子商务', id: '1'},
-        {name: '农产品销售', id: '2'},
-      ],
+      filter_subjects: subjects_data, 
     }
+
+    render "/mockup/page"
+  end
+
+  def select_courses_from_subject
+    course_subject_id = params[:subject_id]
+    p "<<<<<<<<<<<<<>>>>>>><<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>><<<<<<<<<>>>>>>>>>>"
+    p course_subject_id
+    @page_name = "manager_courses"
+    courses = KcCourses::Course.where(:course_subject_ids.in => [course_subject_id])
+    # p "<<<<<<<<<<<<<>>>>>>><<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>><<<<<<<<<>>>>>>>>>>"
+    # p courses.to_a
 
     render "/mockup/page"
   end
