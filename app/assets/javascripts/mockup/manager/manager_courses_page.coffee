@@ -40,10 +40,16 @@
               instructor: x.instructor
               updated_at: x.updated_at
               actions: 
-                <a className='ui button mini blue basic' href={x.manager_contents_url}>
-                  <i className='icon pencil' />
-                  内容编排
-                </a>
+                <div>
+                  <a className='ui button mini blue basic' href={x.manager_contents_url}>
+                    <i className='icon pencil' />
+                    内容编排
+                  </a>
+                  <a className='ui button mini blue basic' href="/manager/courses/#{x.id}/edit_subject">
+                    <i className='icon pencil' />
+                    编辑课程
+                  </a>
+                </div>
             }
 
           filters: 
