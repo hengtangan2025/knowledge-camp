@@ -28,6 +28,25 @@ class Manager::CoursesController < Manager::ApplicationController
     render "/mockup/page"
   end
 
+  def edit_subject
+    @page_name = "manager_edit_subject"
+    @component_data = {
+      subjects: KcCourses::CourseSubject.all,
+      course_id: params[:id],
+      self_subjects_ids: KcCourses::Course.find(params[:id]).course_subject_ids
+    }
+    render "/mockup/page"
+  end
+   
+  def update_subject
+    course = KcCourses::Course.find(params[:id])
+    course.course_subject_ids = params[:subjects_ids]
+    if course.save
+      render :text => "保存成功"
+    end
+  end
+
+
   def new
     @page_name = "manager_new_course"
     @component_data = {
