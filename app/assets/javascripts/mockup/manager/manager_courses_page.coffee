@@ -67,7 +67,7 @@
                   </a>
                   <a className='ui button mini blue basic' href="/manager/courses/#{x.id}/edit_subject">
                     <i className='icon pencil' />
-                    编辑课程
+                    编辑课程类型
                   </a>
                 </div>
             }
