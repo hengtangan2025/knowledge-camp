@@ -210,6 +210,8 @@ Rails.application.routes.draw do
 
     resources :courses, shallow: true do
       get :organize, on: :member
+      get :select_courses_from_subject, on: :member
+
       get :edit_subject, on: :member
       post :update_subject, on: :member
       

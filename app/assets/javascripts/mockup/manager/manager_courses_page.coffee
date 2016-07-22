@@ -1,7 +1,14 @@
 @ManagerCoursesPage = React.createClass
+  getInitialState: ->
+    courses_data_refresh: @props.data
+
   render: ->
     <div className='manager-courses-page'>
     {
+      courses_data = 
+        all_course_data: @state.courses_data_refresh
+        filter_ajax_function: @filter_courses_from_subjec
+
       if @props.data.courses.length is 0
         data =
           header: '开课管理'
@@ -12,10 +19,23 @@
       else
         <div>
           <ManagerCoursesPage.CreateBtn data={@props.data} />
-          <ManagerCoursesPage.Table data={@props.data} />
+          <ManagerCoursesPage.Table data={courses_data} />
         </div>
     }
     </div>
+
+  filter_courses_from_subjec: (url_to_filter, subject_id)->
+    s_id = subject_id.$oid
+    jQuery.ajax
+      url: url_to_filter,
+      method: "GET",
+      data: 
+        subject_id: s_id
+    .success (msg)=>
+      @setState
+        courses_data_refresh: msg
+    .error ()->
+      console.log "failure"
 
   statics:
     CreateBtn: React.createClass
@@ -33,7 +53,7 @@
             instructor: '讲师'
             updated_at: '更新时间'
             actions: '操作'
-          data_set: @props.data.courses.map (x)->
+          data_set: @props.data.all_course_data.courses.map (x)->
             {
               id: x.id
               name: x.name
@@ -55,16 +75,23 @@
           filters: 
             subjects:
               text: '课程分类' 
-              values: @props.data.filter_subjects.map (x)-> x.name
+              values: @props.data.all_course_data.filter_subjects.map (x)=> 
+                <a className='courses-subject' onClick={@filter_course(x.search_courses_url, x.id)}>
+                  {x.name}
+                </a>
 
           th_classes: {}
           td_classes: {
             actions: 'collapsing'
           }
 
-          paginate: @props.data.paginate
+          paginate: @props.data.all_course_data.paginate
         }
 
         <div className='ui segment'>
           <ManagerTable data={table_data} title='开课管理' />
         </div>
+
+      filter_course: (filter_url, subject_id)->
+        =>
+          @props.data.filter_ajax_function(filter_url, subject_id)
