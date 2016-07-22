@@ -1,9 +1,12 @@
 @ManagerCoursesPage = React.createClass
+  getInitialState: ->
+    courses_data_refresh: @props.data
+
   render: ->
     <div className='manager-courses-page'>
     {
       courses_data = 
-        all_course_data: @props.data
+        all_course_data: @state.courses_data_refresh
         filter_ajax_function: @filter_courses_from_subjec
 
       if @props.data.courses.length is 0
@@ -22,13 +25,15 @@
     </div>
 
   filter_courses_from_subjec: (url_to_filter, subject_id)->
+    s_id = subject_id.$oid
     jQuery.ajax
       url: url_to_filter,
       method: "GET",
       data: 
-        subject_id: subject_id
-    .success (msg)->
-      console.log "success"
+        subject_id: s_id
+    .success (msg)=>
+      @setState
+        courses_data_refresh: msg
     .error ()->
       console.log "failure"
 
