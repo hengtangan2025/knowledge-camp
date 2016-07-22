@@ -7,7 +7,7 @@ class SubjectsController < ApplicationController
     if params[:id] == "all"
       courses = KcCourses::PublishedCourse.enabled.page(params[:page])
     else
-      courses = KcCourses::PublishedCourse.where(:"data.course_subject_ids".in => [params[:id]])
+      courses = KcCourses::PublishedCourse.where(:"data.course_subject_ids".in => [params[:id]]).page(params[:page])
     end
 
     data = courses.map do |course|
@@ -26,9 +26,9 @@ class SubjectsController < ApplicationController
       courses: data,
       course_subjects: cs_name_and_id,
       paginate: {
-        # total_pages: courses.total_pages,
-        # current_page: courses.current_page,
-        # per_page: courses.limit_value
+        total_pages: courses.total_pages,
+        current_page: courses.current_page,
+        per_page: courses.limit_value
       }
     }
 
