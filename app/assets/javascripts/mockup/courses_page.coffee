@@ -1,9 +1,13 @@
 @CoursesPage = React.createClass
+  getInitialState: ->
+    courses: @props.data
+    
   render: ->
     <div className='courses-page'>
       <CoursesPage.TopCover />
       <div className='ui container'>
         <div className='cards-bg ui segment basic'>
+        <CoursesPage.Subjects data={@props.data.course_subjects} />
         <CoursesPage.Cards data={@props.data.courses} />
         <CoursesPage.Pagination data={@props.data.paginate} />
         </div>
@@ -20,6 +24,15 @@
               <p className='description'>随时参与学习，分享知识，传播文化</p>
             </div>
           </div>
+        </div>
+
+    Subjects: React.createClass
+      render: ->
+        <div className='ui inverted menu course_subjects' data={@props.data}>
+          {
+            for subject in @props.data
+              <a className='item course_subject_name' href="/subjects/#{subject.id.$oid}">{subject.name}</a>
+          }
         </div>
 
     Cards: React.createClass

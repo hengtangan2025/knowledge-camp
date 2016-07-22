@@ -7,16 +7,24 @@ class SubjectsController < ApplicationController
     if params[:id] == "all"
       courses = KcCourses::PublishedCourse.enabled.page(params[:page])
     else
-      cs = KcCourses::CourseSubject.find params[:id]
-      courses = cs.courses.published.page(params[:page])
+      courses = KcCourses::PublishedCourse.where(:"data.course_subject_ids".in => [params[:id]])
     end
 
     data = courses.map do |course|
       DataFormer.new(course).url(:url).data
     end
 
+    cs_name_and_id = KcCourses::CourseSubject.all.map do |course_subject|
+      {
+        id: course_subject.id,
+        name: course_subject.name
+      }
+    end
+
+
     @component_data = {
       courses: data,
+      course_subjects: cs_name_and_id,
       paginate: {
         total_pages: courses.total_pages,
         current_page: courses.current_page,
