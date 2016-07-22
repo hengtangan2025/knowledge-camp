@@ -12,6 +12,16 @@ class Manager::CoursesController < Manager::ApplicationController
     render "/mockup/page"
   end
 
+  # 查询根据课程分类下拉菜单中的 "全部课程" 查询所有的课程
+  def select_all_of_corse
+    courses = KcCourses::Course.all.page(params[:page])
+    data    = combine_course_data(courses)
+    subjects_data = combine_course_subject_data()
+    all_of_course_data = extract_data(courses, data, subjects_data)
+    
+    render json: all_of_course_data
+  end
+
 
   # 进行分类查询
   def select_courses_from_subject
@@ -141,6 +151,14 @@ class Manager::CoursesController < Manager::ApplicationController
         }
         subjects_data.push(subjects_hash)
       end
+      last_subject = {
+        name: "全部课程",
+        id: nil,
+        search_courses_url: select_all_of_corse_manager_courses_path
+      }
+      # b.index(b.last)
+      index_ary_last = subjects_data.index(subjects_data.last)
+      subjects_data[index_ary_last + 1] = last_subject
       subjects_data
     end
    

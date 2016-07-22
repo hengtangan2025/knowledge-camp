@@ -25,7 +25,7 @@
     </div>
 
   filter_courses_from_subjec: (url_to_filter, subject_id)->
-    s_id = subject_id.$oid
+    s_id = subject_id.$oid if subject_id != null
     jQuery.ajax
       url: url_to_filter,
       method: "GET",
