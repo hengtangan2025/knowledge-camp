@@ -26,7 +26,7 @@
             }
           </div>
           <div>
-            <a className='ui button green' href={@props.data.manager_courses_url}>
+            <a className='ui button green save—course' href={@props.data.manager_courses_url}>
               <i className='icon check' /> 保存课程
             </a>
           </div>
@@ -36,6 +36,19 @@
 
   componentDidMount: ->
     Actions.set_store new DataStore @, @props.data.course
+    jQuery(".manager-course-contents-page").on "click", ".button.green.save—course",=>
+      if @props.data.course.published
+        jQuery.ajax
+          url: @props.data.course.recall_url
+          type: 'DELETE'
+        .done (res)=>  
+          @publish()
+
+  publish:()->
+    jQuery.ajax
+      url: @props.data.course.publish_url
+      type: 'POST'
+    .done (res)=>
 
   add_chapter: ->
     Actions.add_chapter '未命名章节'

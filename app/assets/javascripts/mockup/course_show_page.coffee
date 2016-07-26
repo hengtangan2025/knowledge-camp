@@ -80,7 +80,7 @@
     Subjects: React.createClass
       render: ->
         <div className='subjects'>
-        {
+        { 
           for subject, idx in @props.data
             <div key={idx} className='subject'>
               <a href={subject.url}>{subject.name}</a>
