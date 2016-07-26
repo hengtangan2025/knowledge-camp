@@ -37,7 +37,6 @@
   componentDidMount: ->
     Actions.set_store new DataStore @, @props.data.course
     jQuery(".manager-course-contents-page").on "click", ".button.green.save—course",=>
-      console.log @props.data.course.published
       if @props.data.course.published
         jQuery.ajax
           url: @props.data.course.recall_url

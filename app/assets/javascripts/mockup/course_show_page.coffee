@@ -64,7 +64,6 @@
               <div className='eleven wide column'>
                 <div className='ui segment noshadow contents'>
                   <h3 className='ui header'>课程目录</h3>
-                  {console.log @props.data}
                   <CourseWaresList data={@props.data} />
                 </div>
               </div>
