@@ -8,6 +8,7 @@
     <div className="course-wares-list style-#{style}">
     {
       for chapter, idx in @props.data.chapters
+        console.log "新建章节"
         <CourseWaresList.Chapter key={idx} data={chapter} root={@} style={style} />
     }
     </div>

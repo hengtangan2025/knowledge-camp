@@ -28,7 +28,7 @@
 
     Subjects: React.createClass
       render: ->
-        <div className='ui inverted menu course_subjects' data={@props.data}>
+        <div className='ui inverted menu course_subjects'>
           {
             for subject in @props.data
               <a className='item course_subject_name' href="/subjects/#{subject.id.$oid}">{subject.name}</a>

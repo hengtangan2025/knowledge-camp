@@ -2,7 +2,6 @@ class Manager::CoursesController < Manager::ApplicationController
 
   def index
     @page_name = "manager_courses"
-#
     courses = KcCourses::Course.all.page(params[:page])
     data    = combine_course_data(courses)
     subjects_data = combine_course_subject_data()
@@ -28,10 +27,21 @@ class Manager::CoursesController < Manager::ApplicationController
 
   def edit_subject
     @page_name = "manager_edit_subject"
+
+    course = KcCourses::Course.find(params[:id])
+    data =  DataFormer.new(course)
+        .logic(:published)
+        .url(:publish_url, :publish_url, course_id: course.id.to_s)
+        .url(:recall_url,  :recall_url,  course_id: course.id.to_s)
+        .data 
+
     @component_data = {
       subjects: KcCourses::CourseSubject.all,
       course_id: params[:id],
-      self_subjects_ids: KcCourses::Course.find(params[:id]).course_subject_ids
+      self_subjects_ids: KcCourses::Course.find(params[:id]).course_subject_ids,
+      published: data[:published],
+      publish_url: data[:publish_url],
+      recall_url: data[:recall_url]
     }
     render "/mockup/page"
   end
@@ -71,6 +81,9 @@ class Manager::CoursesController < Manager::ApplicationController
 
     data = DataFormer.new(course)
       .logic(:instructor)
+      .logic(:published)
+      .url(:publish_url, :publish_url, course_id: course.id.to_s)
+      .url(:recall_url,  :recall_url,  course_id: course.id.to_s)
       .logic(:effort)
       .logic(:subjects)
       .relation(:chapters, ->(chapters){
