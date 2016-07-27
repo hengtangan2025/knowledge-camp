@@ -7,7 +7,7 @@ class SubjectsController < ApplicationController
     if params[:id] == "all"
       courses = KcCourses::PublishedCourse.enabled.page(params[:page])
     else
-      courses = KcCourses::PublishedCourse.where(:"data.course_subject_ids".in => [params[:id]],:enabled => true).page(params[:page])
+      courses = KcCourses::PublishedCourse.where(:"data.course_subject_ids".in => [params[:id]]).enabled.page(params[:page])
     end
 
     data = courses.map do |course|
