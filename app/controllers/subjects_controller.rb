@@ -11,7 +11,7 @@ class SubjectsController < ApplicationController
     end
 
     data = courses.map do |course|
-      DataFormer.new(course).url(:url).data
+      DataFormer.new(course).url(:url).logic(:progress,current_user).data
     end
 
     cs_name_and_id = KcCourses::CourseSubject.all.map do |course_subject|
@@ -20,7 +20,6 @@ class SubjectsController < ApplicationController
         name: course_subject.name
       }
     end
-
 
     @component_data = {
       courses: data,

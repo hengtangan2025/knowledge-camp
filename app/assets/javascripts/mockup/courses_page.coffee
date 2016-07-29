@@ -3,6 +3,7 @@
     courses: @props.data
     
   render: ->
+    console.log @props.data
     <div className='courses-page'>
       <CoursesPage.TopCover />
       <div className='ui container'>
@@ -51,6 +52,11 @@
                 <div className='content'>
                   <div className='header'>{course.name}</div>
                   <div className='description'>{course.desc}</div>
+                  <div>
+                    学习进度
+                    <progress max="100" value={course.progress}></progress>
+                      {course.progress}% 
+                  </div>
                 </div>
                 <div className="extra content">
                   <span className="right floated">{course.published_at}</span>
