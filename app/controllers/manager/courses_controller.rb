@@ -158,15 +158,17 @@ class Manager::CoursesController < Manager::ApplicationController
       subjects_data = []
       subjects.each do |subject|
         subjects_hash = {
-          name: subject.name, 
-          id: subject.id, 
+          subject: subject, 
           search_courses_url: select_courses_from_subject_manager_course_path(subject.id)
         }
         subjects_data.push(subjects_hash)
       end
       last_subject = {
-        name: "全部课程",
-        id: nil,
+        subject: {
+          name: "全部课程",
+          _id: nil,
+          parent_id: nil
+        },
         search_courses_url: select_all_of_corse_manager_courses_path
       }
       # b.index(b.last)

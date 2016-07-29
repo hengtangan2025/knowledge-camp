@@ -5,6 +5,8 @@
   render: ->
     <div className='manager-courses-page'>
     {
+      tree_data = @get_children(null, @state.courses_data_refresh)
+      console.log tree_data
       courses_data = 
         all_course_data: @state.courses_data_refresh
         filter_ajax_function: @filter_courses_from_subjec
@@ -23,7 +25,8 @@
         </div>
     }
     </div>
-
+  
+  # 发起 ajax 查询指定课程类型下的课程
   filter_courses_from_subjec: (url_to_filter, subject_id)->
     s_id = subject_id.$oid if subject_id != null
     jQuery.ajax
@@ -36,6 +39,14 @@
         courses_data_refresh: msg
     .error ()->
       console.log "failure"
+
+  get_children: (parent, categories)->
+    children = []
+    parent_id = if parent == null then "" else parent.id
+    for cate in categories.filter_subjects
+      if cate.subject.parent_id != null
+        children.push cate
+    children
 
   statics:
     CreateBtn: React.createClass
@@ -76,8 +87,8 @@
             subjects:
               text: '课程分类' 
               values: @props.data.all_course_data.filter_subjects.map (x)=> 
-                <a className='courses-subject' onClick={@filter_course(x.search_courses_url, x.id)}>
-                  {x.name}
+                <a className='courses-subject' onClick={@filter_course(x.search_courses_url, x.subject._id)}>
+                  {x.subject.name}
                 </a>
 
           th_classes: {}

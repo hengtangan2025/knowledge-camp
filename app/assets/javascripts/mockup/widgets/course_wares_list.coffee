@@ -7,6 +7,7 @@
 
     <div className="course-wares-list style-#{style}">
     {
+      console.log @props
       for chapter, idx in @props.data.chapters
         <CourseWaresList.Chapter key={idx} data={chapter} root={@} style={style} />
     }
