@@ -10,6 +10,12 @@ class CoursesController < ApplicationController
       .logic(:effort)
       .logic(:chapters, current_user)
       .data
+   
+    _str = current_user.favorite_courses.include?(course.course)? "取消收藏" : "收藏"
+    @component_data["favorite_bar_data"] ={}
+    @component_data["favorite_bar_data"]["num"] = course.course.favorited_count
+    @component_data["favorite_bar_data"]["str"] = _str
+    @component_data["favorite_bar_data"]["course_id"] = params[:id]
 
     render :page
   end
@@ -50,4 +56,17 @@ class CoursesController < ApplicationController
     ware.set_read_percent_by_user(current_user,100)
     render json:{id: ware.id}
   end
+
+  def exchange_favorite_course
+    p "-->"
+    course = KcCourses::PublishedCourse.find(params["course_id"]).course
+    if current_user.favorite_courses.include?(course)
+      current_user.cancel_favorite_course(course)
+      render json:{count:course.favorited_count, str:"收藏"}
+    else
+      current_user.set_favorite_course(course)
+      render json:{count:course.favorited_count, str:"取消收藏"}
+    end
+  end
+
 end

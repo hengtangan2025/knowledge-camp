@@ -1,7 +1,17 @@
 @CourseShowPage = React.createClass
+  getInitialState: ->
+    favorite_bar_data: @props.data
+
+  update_favorite_bar_data:(num,str)->
+    data = @state.favorite_bar_data
+    data.favorite_bar_data.num = num
+    data.favorite_bar_data.str = str
+    @setState
+      favorite_bar_data: data
+
   render: ->
     <div className='course-show-page'>
-      <CourseShowPage.Head data={@props.data} />
+      <CourseShowPage.Head data={@state.favorite_bar_data} function={@update_favorite_bar_data}/>
       <CourseShowPage.Body data={@props.data} />
     </div>
 
@@ -17,13 +27,7 @@
 
                 <div className='ops'>
                   <a className='ui button blue large start'>开始学习</a>
-                  <div className='ui left labeled button fav'>
-                    <span className='ui basic right pointing label'>128</span>
-                    <div className='ui button large olive'>
-                      <i className='heart icon' />
-                      <span>收藏</span>
-                    </div>
-                  </div>
+                  <CourseShowPage.FavoriteBar data={@props.data.favorite_bar_data} function={@props.function}/>                  
                 </div>
 
                 <div className='detail'>
@@ -88,3 +92,39 @@
             
         }
         </div>
+
+    FavoriteBar: React.createClass
+      render: ->
+        <div className='ui left labeled button fav'>
+          <span className='ui basic right pointing label data-num'>
+            <p className='plus'>+1</p>
+            <p>{@props.data.num}</p>
+          </span>
+          <div className='ui button large olive favorite-btn'>
+            <i className='heart icon' />
+            <span>{@props.data.str}</span>
+          </div>
+        </div>
+
+      componentDidMount: ->
+        jQuery(".plus").css("display", "none")
+        if @props.data.str == "取消收藏"
+          jQuery(".heart.icon").css("color", "red")
+
+        jQuery(".course-show-page .favorite-btn").on "click", ()=>
+          jQuery.ajax
+            url:"/courses/exchange_favorite_course",
+            method: "POST",
+            data: 
+             course_id: @props.data.course_id
+          .success (msg)=>
+            @props.function(msg.count,msg.str)
+            if msg.str == "取消收藏"
+              jQuery(".heart.icon").css("color", "red")
+            else
+              jQuery(".heart.icon").css("color", "#F0F5D1")
+          .error ()->
+            console.log "failure"
+          
+          
+

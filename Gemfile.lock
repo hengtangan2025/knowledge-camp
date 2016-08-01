@@ -78,16 +78,6 @@ GIT
     kc_comments (0.1.0)
 
 GIT
-  remote: git://github.com/mindpin/kc_courses.git
-  revision: e97a0cfdb5d23b7e83ec65fda09344918a74ad32
-  ref: e97a0cf
-  specs:
-    kc_courses (0.1.0)
-      mongoid-tree
-      ruby-pinyin
-      simple_form
-
-GIT
   remote: git://github.com/mindpin/knowledge-graph-js.git
   revision: 01386378a0df05cf354ec62fad857aab52f085ad
   tag: 0.0.1
@@ -179,6 +169,14 @@ GIT
   specs:
     mongoid-versioning (0.0.1)
       mongoid (> 3)
+
+PATH
+  remote: ../kc_courses
+  specs:
+    kc_courses (0.1.0)
+      mongoid-tree
+      ruby-pinyin
+      simple_form
 
 PATH
   remote: vendor/api
