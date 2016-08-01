@@ -154,27 +154,36 @@ class Manager::CoursesController < Manager::ApplicationController
     # 找出所有课程分类并重新组织数据
     def combine_course_subject_data
       subjects = KcCourses::CourseSubject.all
-      subjects_hash = {}
-      subjects_data = []
-      subjects.each do |subject|
-        subjects_hash = {
-          subject: subject, 
-          search_courses_url: select_courses_from_subject_manager_course_path(subject.id)
-        }
-        subjects_data.push(subjects_hash)
+      # subjects_hash = {}
+      # subjects_data = []
+      items = subjects.map do |_cs|
+        DataFormer.new(_cs)
+          .url(:update_url)
+          .url(:delete_url)
+          .url(:search_courses_url)
+          .data
       end
-      last_subject = {
-        subject: {
-          name: "全部课程",
-          _id: nil,
-          parent_id: nil
-        },
-        search_courses_url: select_all_of_corse_manager_courses_path
-      }
+
+      # subjects.each do |subject|
+      #   subjects_hash = {
+      #     subject: subject, 
+      #     search_courses_url: select_courses_from_subject_manager_course_path(subject.id)
+      #   }
+      #   subjects_data.push(subjects_hash)
+      # end
+      # last_subject = {
+      #   subject: {
+      #     name: "全部课程",
+      #     _id: nil,
+      #     parent_id: nil
+      #   },
+      #   search_courses_url: select_all_of_corse_manager_courses_path
+      # }
       # b.index(b.last)
-      index_ary_last = subjects_data.index(subjects_data.last)
-      subjects_data[index_ary_last + 1] = last_subject
-      subjects_data
+      # index_ary_last = subjects_data.index(subjects_data.last)
+      # subjects_data[index_ary_last + 1] = last_subject
+      # subjects_data
+      items
     end
    
     def combine_course_data(courses)
