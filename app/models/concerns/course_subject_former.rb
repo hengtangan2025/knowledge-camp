@@ -20,6 +20,9 @@ module CourseSubjectFormer
       url :update_url, ->(instance){
         manager_course_subject_path(instance)
       }
+      url :search_courses_url, ->(instance){
+        select_courses_from_subject_manager_course_path(instance)
+      }
 
     end
 

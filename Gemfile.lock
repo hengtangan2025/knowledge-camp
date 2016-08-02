@@ -7,11 +7,10 @@ GIT
 
 GIT
   remote: git://github.com/mindpin/acts-as-dag.git
-  revision: a94ff8ac1b946b8be5aa67792016eb26d5899282
-  tag: 0.0.2
+  revision: 4dea2ac1fab79ec5536b16253c1186f08eaec4e2
+  tag: 0.0.3
   specs:
     acts-as-dag (0.0.2)
-      mongoid (~> 4.0)
 
 GIT
   remote: git://github.com/mindpin/bank.git
@@ -30,11 +29,10 @@ GIT
 
 GIT
   remote: git://github.com/mindpin/documents-store.git
-  revision: 65c6847bfec20da0a3940cb6669f71ceb50e657e
-  tag: v0.0.4
+  revision: fc06a4f5fb0190911ef1ffc50417d04f31e3a35f
+  tag: 0.0.5
   specs:
-    documents-store (0.0.4)
-      mongoid (~> 4.0.0)
+    documents-store (0.0.5)
 
 GIT
   remote: git://github.com/mindpin/elasticsearch-simple.git
@@ -115,11 +113,10 @@ GIT
 
 GIT
   remote: git://github.com/mindpin/knowledge_camp_step.git
-  revision: 468c4f243323e1938720f1f276b6afd0701066fb
-  tag: 0.1.7
+  revision: 643ab083e6a70e7ffdcead6fe5fc2f0da5906336
+  tag: 0.1.8
   specs:
-    knowledge_camp_step (0.0.1)
-      mongoid (~> 4.0.0)
+    knowledge_camp_step (0.1.8)
 
 GIT
   remote: git://github.com/mindpin/question_bank.git
@@ -171,11 +168,10 @@ GIT
 
 GIT
   remote: git://github.com/mindpin/virtual-file.git
-  revision: 81fffa6789aba4f70683a8b4cf8f781470519fe5
-  tag: v0.0.6
+  revision: 6ed3695bd78fe3ee1f018bf5754595b861e1e4a7
+  tag: 0.0.7
   specs:
-    virtual_file_system (0.0.6)
-      mongoid (~> 4.0.0)
+    virtual_file_system (0.0.7)
 
 GIT
   remote: git://github.com/simi/mongoid-versioning.git
@@ -255,8 +251,7 @@ GEM
     bootstrap-sass (3.3.6)
       autoprefixer-rails (>= 5.2.1)
       sass (>= 3.3.4)
-    bson (3.2.6)
-    bson_ext (1.5.1)
+    bson (4.1.0)
     builder (3.2.2)
     byebug (8.2.4)
     carrierwave (0.10.0)
@@ -352,20 +347,18 @@ GEM
     mini_magick (4.4.0)
     mini_portile2 (2.0.0)
     minitest (5.8.4)
-    mongoid (4.0.2)
+    mongo (2.2.4)
+      bson (~> 4.0)
+    mongoid (5.1.3)
       activemodel (~> 4.0)
-      moped (~> 2.0.0)
-      origin (~> 2.1)
+      mongo (~> 2.1)
+      origin (~> 2.2)
       tzinfo (>= 0.3.37)
     mongoid-grid_fs (2.2.1)
       mime-types (>= 1.0, < 3.0)
       mongoid (>= 3.0, < 6.0)
     mongoid-tree (2.0.1)
       mongoid (>= 4.0, < 6.0)
-    moped (2.0.7)
-      bson (~> 3.0)
-      connection_pool (~> 2.0)
-      optionable (~> 0.2.0)
     multi_json (1.11.2)
     multipart-post (2.0.0)
     netrc (0.11.0)
@@ -374,7 +367,6 @@ GEM
     non-stupid-digest-assets (1.0.8)
       sprockets (>= 2.0)
     open4 (1.3.4)
-    optionable (0.2.0)
     origin (2.2.0)
     orm_adapter (0.5.0)
     pry (0.10.3)
@@ -516,7 +508,6 @@ DEPENDENCIES
   bank!
   bootstrap-kaminari-views
   bootstrap-sass (~> 3.3.5)
-  bson_ext
   bucketerize!
   carrierwave-mongoid
   cells (~> 3.10.1)
@@ -548,7 +539,7 @@ DEPENDENCIES
   mina (= 0.3.7)
   mini_magick
   model_label!
-  mongoid (~> 4.0.0)
+  mongoid (~> 5.1.3)
   mongoid-versioning!
   pry
   pry-byebug
@@ -581,6 +572,3 @@ DEPENDENCIES
   user-auth!
   useragent
   virtual_file_system!
-
-BUNDLED WITH
-   1.11.2

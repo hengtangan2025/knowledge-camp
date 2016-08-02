@@ -183,6 +183,7 @@ Rails.application.routes.draw do
   resources :subjects
   resources :courses do
     get "/wares/:ware_id" => "courses#ware", as: :ware
+    post "set_percent", on: :collection
   end
 
   scope :path => "/api", module: 'api', :as => :api do
@@ -210,6 +211,12 @@ Rails.application.routes.draw do
 
     resources :courses, shallow: true do
       get :organize, on: :member
+      get :select_courses_from_subject, on: :member
+      get :select_all_of_corse, on: :collection
+
+      get :edit_subject, on: :member
+      post :update_subject, on: :member
+      
       resources :chapters, shallow: true do
         put :move_up,   on: :member
         put :move_down, on: :member

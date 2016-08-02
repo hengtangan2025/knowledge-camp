@@ -2,31 +2,76 @@ class Manager::CoursesController < Manager::ApplicationController
 
   def index
     @page_name = "manager_courses"
-#
     courses = KcCourses::Course.all.page(params[:page])
-    data    = courses.map do |course|
-      DataFormer.new(course)
-        .logic(:instructor)
-        .url(:manager_contents_url).data
-    end
+    data    = combine_course_data(courses)
+    subjects_data = combine_course_subject_data()
 
-    @component_data = {
-      new_course_url: new_manager_course_path,
-      courses: data,
-      paginate: {
-        total_pages: courses.total_pages,
-        current_page: courses.current_page,
-        per_page: courses.limit_value
-      },
-      # 用于生成顶部过滤
-      filter_subjects: [
-        {name: '电子商务', id: '1'},
-        {name: '农产品销售', id: '2'},
-      ],
-    }
+    @component_data = extract_data(courses, data, subjects_data)
 
     render "/mockup/page"
   end
+
+  # 查询根据课程分类下拉菜单中的 "全部课程" 查询所有的课程
+  def select_all_of_corse
+    courses = KcCourses::Course.all.page(params[:page])
+    data    = combine_course_data(courses)
+    subjects_data = combine_course_subject_data()
+    all_of_course_data = extract_data(courses, data, subjects_data)
+    
+    render json: all_of_course_data
+  end
+
+
+  # 进行分类查询
+  def select_courses_from_subject
+    course_subject_id = params[:subject_id]
+    # 查出 course_subject_id 类型下的子集
+    id_object = BSON::ObjectId(course_subject_id)
+    subjects_from_subject_id = KcCourses::CourseSubject.where(:parent_ids.in => [id_object]).page(params[:page])
+    course_subject_id_ary = []
+    subjects_from_subject_id.each do |subject|
+      course_subject_id_ary.push(subject.id.to_s)
+    end
+    course_subject_id_ary.push(course_subject_id)
+
+    courses = KcCourses::Course.where(:course_subject_ids.in => course_subject_id_ary).page(params[:page])
+    data = combine_course_data(courses)
+    subjects_data = combine_course_subject_data()
+
+    data = extract_data(courses, data, subjects_data)
+
+    render json: data
+  end
+
+  def edit_subject
+    @page_name = "manager_edit_subject"
+
+    course = KcCourses::Course.find(params[:id])
+    data =  DataFormer.new(course)
+        .logic(:published)
+        .url(:publish_url, :publish_url, course_id: course.id.to_s)
+        .url(:recall_url,  :recall_url,  course_id: course.id.to_s)
+        .data 
+
+    @component_data = {
+      subjects: KcCourses::CourseSubject.all,
+      course_id: params[:id],
+      self_subjects_ids: KcCourses::Course.find(params[:id]).course_subject_ids,
+      published: data[:published],
+      publish_url: data[:publish_url],
+      recall_url: data[:recall_url]
+    }
+    render "/mockup/page"
+  end
+   
+  def update_subject
+    course = KcCourses::Course.find(params[:id])
+    course.course_subject_ids = params[:subjects_ids]
+    if course.save
+      render :text => "保存成功"
+    end
+  end
+
 
   def new
     @page_name = "manager_new_course"
@@ -54,6 +99,9 @@ class Manager::CoursesController < Manager::ApplicationController
 
     data = DataFormer.new(course)
       .logic(:instructor)
+      .logic(:published)
+      .url(:publish_url, :publish_url, course_id: course.id.to_s)
+      .url(:recall_url,  :recall_url,  course_id: course.id.to_s)
       .logic(:effort)
       .logic(:subjects)
       .relation(:chapters, ->(chapters){
@@ -91,7 +139,52 @@ class Manager::CoursesController < Manager::ApplicationController
   end
 
   private
-  def course_params
-    params.require(:course).permit(:name, :desc, :cover_file_entity_id)
-  end
+    def course_params
+      params.require(:course).permit(:name, :desc, :cover_file_entity_id)
+    end
+
+    # 组织课程、课程分类数据
+    def extract_data(courses, data, subjects_data)
+      need_data = {
+        new_course_url: new_manager_course_path,
+        courses: data,
+        paginate: {
+          total_pages: courses.total_pages,
+          current_page: courses.current_page,
+          per_page: courses.limit_value
+        },
+        # 用于生成顶部过滤
+        filter_subjects: subjects_data, 
+      }
+      need_data
+    end
+
+    # 找出所有课程分类并重新组织数据
+    def combine_course_subject_data
+      subjects = KcCourses::CourseSubject.all
+      items = subjects.map do |_cs|
+        DataFormer.new(_cs)
+          .url(:search_courses_url)
+          .data
+      end
+      items[items.length] = {
+        id: nil,
+        name: "全部课程",
+        slug: "quan-bu-ke-cheng",
+        courses_count: 1,
+        parent_id: nil, 
+        search_courses_url: select_all_of_corse_manager_courses_path
+      }
+
+      items
+    end
+   
+    def combine_course_data(courses)
+      data = courses.map do |course|
+        DataFormer.new(course)
+          .logic(:instructor)
+          .url(:manager_contents_url).data
+      end
+      data
+    end
 end

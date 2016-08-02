@@ -34,6 +34,7 @@ class CoursesController < ApplicationController
         end
       end
     end
+    ware[:current_user] = current_user.id.to_s
 
     @component_data = {
       comments: [],
@@ -41,5 +42,12 @@ class CoursesController < ApplicationController
       ware: ware
     }
     render "mockup/page", layout: "new_version_ware"
+  end
+
+  def set_percent
+    current_user = User.find(params[:current_user_id])
+    ware = KcCourses::Ware.find(params[:ware_id])
+    ware.set_read_percent_by_user(current_user,100)
+    render json:{id: ware.id}
   end
 end

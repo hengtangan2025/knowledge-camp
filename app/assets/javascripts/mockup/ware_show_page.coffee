@@ -2,9 +2,13 @@
   getInitialState: ->
     contents_close: false
     comments_close: false
+    ware_data: {
+      course_data: @props.data
+      function: @UpdateWare
+    }
   render: ->
     <div className='ware-show-page'>
-      <WareShowPage.Shower data={@props.data} contents_close={@state.contents_close} comments_close={@state.comments_close} />
+      <WareShowPage.Shower data={@state.ware_data} contents_close={@state.contents_close} comments_close={@state.comments_close} />
       <WareShowPage.Contents data={@props.data} close={@state.contents_close} parent={@} />
       <WareShowPage.Comments data={@props.data} close={@state.comments_close} parent={@} />
     </div>
@@ -21,6 +25,15 @@
     if @toggle_changed
       @toggle_changed = false
       jQuery(document).trigger 'ware:toggle-changed'
+
+  UpdateWare: (ware_id)->
+    for chapter in @state.ware_data.course_data.course.chapters
+      for ware in chapter["wares"]
+        if ware["id"] == ware_id
+          ware["learned"] = "done"
+    update_data = @state.ware_data
+    @setState ware_data: update_data
+
 
   statics:
     Contents: React.createClass
@@ -40,7 +53,7 @@
               <i className='icon caret left' />
               {@props.data.course.name}
             </a>
-            <CourseWaresList data={@props.data.course} style='narrow' active_ware_id={@props.data.ware.id} />
+            <CourseWaresList data={@props.data.course} function={@props.data.function} style='narrow' active_ware_id={@props.data.ware.id} />
           </div>
           <a href='javascript:;' className='contents-toggle' onClick={@props.parent.toggle_contents}>
             <i className={toggle_icon_klass} />
@@ -70,7 +83,7 @@
 
     Shower: React.createClass
       render: ->
-        ware = @props.data.ware
+        ware = @props.data.course_data.ware
         klass = new ClassName
           'ware-show-shower': true
           'contents-close': @props.contents_close
@@ -83,7 +96,7 @@
             switch ware.kind
               when 'video'
                 <div className='video-box'>
-                  <Ware.Video data={ware} />
+                  <Ware.Video data={ware} function={@props.data.function} />
                 </div>
           }
           </div>

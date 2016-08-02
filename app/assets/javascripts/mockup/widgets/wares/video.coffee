@@ -23,7 +23,6 @@
 @Ware.Video = React.createClass
   render: ->
     data = @props.data
-
     # test
     # data.video_url = 'http://7xie1v.com1.z0.glb.clouddn.com/static_filesACU_Trailer_480.mp4'
     # data.video_url = 'http://7xie1v.com1.z0.glb.clouddn.com/static_fileACG_flv_big.flv'
@@ -33,7 +32,7 @@
     {#<Ware.Video.CKPlayerM3U8 data={@props.data} />}
     {#<Ware.Video.CKPlayerH5MP4 data={@props.data} />}
     {#<Ware.Video.CKPlayer data={@props.data} />}
-    <Ware.Video.MediaElementMP4 data={@props.data} />
+    <Ware.Video.MediaElementMP4 data={@props.data} function={@props.function}/>
 
   statics:
     # 只能播放 MP4
@@ -56,6 +55,22 @@
         </div>
 
       componentDidMount: ->
+        $video = jQuery("video")
+        $video.on "ended", (evt)=>
+          course_show = @props.data
+          current_user_id = @props.data.current_user
+          ware_id =  @props.data.id
+          jQuery.ajax
+            url: "/courses/set_percent"
+            type: "Post"
+            data: {
+              current_user_id: current_user_id,
+              ware_id: ware_id
+            }
+          .done (res)=>
+            @props.function(res.id.$oid)
+
+
         window.player = @player = new MediaElementPlayer "##{@widget_id}", {
           # defaultVideoWidth: '100%'
           # defaultVideoHeight: '100%'
