@@ -80,7 +80,9 @@
             subjects:
               text: '课程分类' 
               values: @props.data.flatten_subjects.map (x)=> 
-                <ManagerCoursesPage.TreeItemTD data={x} root={@props.data.filter_ajax_function}/>
+                <div className='selection-tree'>
+                  <ManagerCoursesPage.TreeItemTD data={x} root={@props.data.filter_ajax_function}/>
+                </div>
 
           th_classes: {}
           td_classes: {
@@ -108,8 +110,8 @@
               <div key={idx} className={klass}></div>
           }
           </div>
-          <div className='courses-subject item-name' onClick={@filter_course(x.search_courses_url, x.id)}>
-            {x.name}
+          <div className='item-name' onClick={@filter_course(x.search_courses_url, x.id)}>
+            <a href='javascript:void(0)'>{x.name}</a>
           </div>
         </div>
 

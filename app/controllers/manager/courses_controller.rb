@@ -161,6 +161,7 @@ class Manager::CoursesController < Manager::ApplicationController
           .url(:search_courses_url)
           .data
       end
+
       items
     end
    
