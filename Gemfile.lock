@@ -1,4 +1,14 @@
 GIT
+  remote: git://github.com/blackdust/kc_courses.git
+  revision: a412e5f95d4cca747c19d8f7fc63bd83581a911d
+  ref: a412e5f
+  specs:
+    kc_courses (0.1.0)
+      mongoid-tree
+      ruby-pinyin
+      simple_form
+
+GIT
   remote: git://github.com/kc-train/model_label.git
   revision: 596525e0c9e84865a0cc5d0247126e606f7c0cef
   ref: 596525e
@@ -169,14 +179,6 @@ GIT
   specs:
     mongoid-versioning (0.0.1)
       mongoid (> 3)
-
-PATH
-  remote: ../kc_courses
-  specs:
-    kc_courses (0.1.0)
-      mongoid-tree
-      ruby-pinyin
-      simple_form
 
 PATH
   remote: vendor/api
