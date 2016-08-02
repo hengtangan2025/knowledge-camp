@@ -184,6 +184,8 @@ Rails.application.routes.draw do
   resources :courses do
     get "/wares/:ware_id" => "courses#ware", as: :ware
     post "set_percent", on: :collection
+    get "studing_courses", on: :collection
+    get "studied_courses", on: :collection
   end
 
   scope :path => "/api", module: 'api', :as => :api do

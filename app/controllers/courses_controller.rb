@@ -44,6 +44,50 @@ class CoursesController < ApplicationController
     render "mockup/page", layout: "new_version_ware"
   end
 
+  def studing_courses
+    @page_name = 'studing_courses'
+
+    studing_courses = KcCourses::Course.studing_of_user(current_user).page(params[:page])
+
+    data = studing_courses.map do |course|
+      DataFormer.new(course).url(:url).logic(:instructor).logic(:progress,current_user).data
+      # DataFormer.new(course).url(:url).logic(:progress,current_user).data
+    end
+
+    @component_data = {
+      courses: data,
+      paginate: {
+        total_pages: studing_courses.total_pages,
+        current_page: studing_courses.current_page,
+        per_page: studing_courses.limit_value
+      }
+    }
+
+    render :page
+  end
+
+  def studied_courses
+    @page_name = 'studied_courses'
+
+    studied_courses = KcCourses::Course.studied_of_user(current_user).page(params[:page])
+
+    data = studied_courses.map do |course|
+      DataFormer.new(course).url(:url).logic(:instructor).logic(:progress,current_user).data
+      # DataFormer.new(course).url(:url).logic(:progress,current_user).data
+    end
+
+    @component_data = {
+      courses: data,
+      paginate: {
+        total_pages: studied_courses.total_pages,
+        current_page: studied_courses.current_page,
+        per_page: studied_courses.limit_value
+      }
+    }
+
+    render :page
+  end
+
   def set_percent
     current_user = User.find(params[:current_user_id])
     ware = KcCourses::Ware.find(params[:ware_id])

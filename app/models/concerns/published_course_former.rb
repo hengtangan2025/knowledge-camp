@@ -49,6 +49,7 @@ module PublishedCourseFormer
 
       field :name, ->(instance) {instance.data["name"]}
       field :desc, ->(instance) {instance.data["desc"]}
+      
       logic :progress,->(instance, user){
         instance.course.read_percent_of_user(user)
       }

@@ -1,4 +1,14 @@
 GIT
+  remote: git://github.com/blackdust/kc_courses.git
+  revision: b68e5fcecb07aba547467525c787697e5ea2b297
+  ref: b68e5fc
+  specs:
+    kc_courses (0.1.0)
+      mongoid-tree
+      ruby-pinyin
+      simple_form
+
+GIT
   remote: git://github.com/kc-train/model_label.git
   revision: 596525e0c9e84865a0cc5d0247126e606f7c0cef
   ref: 596525e
@@ -76,16 +86,6 @@ GIT
   ref: 5816fb8
   specs:
     kc_comments (0.1.0)
-
-GIT
-  remote: git://github.com/mindpin/kc_courses.git
-  revision: e97a0cfdb5d23b7e83ec65fda09344918a74ad32
-  ref: e97a0cf
-  specs:
-    kc_courses (0.1.0)
-      mongoid-tree
-      ruby-pinyin
-      simple_form
 
 GIT
   remote: git://github.com/mindpin/knowledge-graph-js.git
@@ -572,3 +572,6 @@ DEPENDENCIES
   user-auth!
   useragent
   virtual_file_system!
+
+BUNDLED WITH
+   1.10.6

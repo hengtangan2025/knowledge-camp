@@ -20,6 +20,10 @@ module CourseFormer
         end
       }
 
+      logic :progress,->(instance, user){
+        instance.read_percent_of_user(user)
+      }
+
       logic :effort, ->(instance){
         video_count = instance.statistic_info[:video][:count]
         total_minute = instance.statistic_info[:video][:total_minute]
@@ -42,6 +46,9 @@ module CourseFormer
         recall_manager_published_courses_path(options)
       }
 
+      url :url, ->(instance){
+        course_path(instance.published_course)
+      }
     end
 
   end
