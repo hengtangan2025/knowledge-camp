@@ -25,8 +25,16 @@ class Manager::CoursesController < Manager::ApplicationController
   # 进行分类查询
   def select_courses_from_subject
     course_subject_id = params[:subject_id]
+    # 查出 course_subject_id 类型下的子集
+    id_object = BSON::ObjectId(course_subject_id)
+    subjects_from_subject_id = KcCourses::CourseSubject.where(:parent_ids.in => [id_object]).page(params[:page])
+    course_subject_id_ary = []
+    subjects_from_subject_id.each do |subject|
+      course_subject_id_ary.push(subject.id.to_s)
+    end
+    course_subject_id_ary.push(course_subject_id)
 
-    courses = KcCourses::Course.where(:course_subject_ids.in => [course_subject_id]).page(params[:page])
+    courses = KcCourses::Course.where(:course_subject_ids.in => course_subject_id_ary).page(params[:page])
     data = combine_course_data(courses)
     subjects_data = combine_course_subject_data()
 
@@ -156,11 +164,17 @@ class Manager::CoursesController < Manager::ApplicationController
       subjects = KcCourses::CourseSubject.all
       items = subjects.map do |_cs|
         DataFormer.new(_cs)
-          .url(:update_url)
-          .url(:delete_url)
           .url(:search_courses_url)
           .data
       end
+      items[items.length] = {
+        id: nil,
+        name: "全部课程",
+        slug: "quan-bu-ke-cheng",
+        courses_count: 1,
+        parent_id: nil, 
+        search_courses_url: select_all_of_corse_manager_courses_path
+      }
 
       items
     end
