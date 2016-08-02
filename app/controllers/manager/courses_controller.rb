@@ -25,8 +25,16 @@ class Manager::CoursesController < Manager::ApplicationController
   # 进行分类查询
   def select_courses_from_subject
     course_subject_id = params[:subject_id]
+    # 查出 course_subject_id 类型下的子集
+    id_object = BSON::ObjectId(course_subject_id)
+    subjects_from_subject_id = KcCourses::CourseSubject.where(:parent_ids.in => [id_object]).page(params[:page])
+    course_subject_id_ary = []
+    subjects_from_subject_id.each do |subject|
+      course_subject_id_ary.push(subject.id.to_s)
+    end
+    course_subject_id_ary.push(course_subject_id)
 
-    courses = KcCourses::Course.where(:course_subject_ids.in => [course_subject_id]).page(params[:page])
+    courses = KcCourses::Course.where(:course_subject_ids.in => course_subject_id_ary).page(params[:page])
     data = combine_course_data(courses)
     subjects_data = combine_course_subject_data()
 
@@ -154,25 +162,21 @@ class Manager::CoursesController < Manager::ApplicationController
     # 找出所有课程分类并重新组织数据
     def combine_course_subject_data
       subjects = KcCourses::CourseSubject.all
-      subjects_hash = {}
-      subjects_data = []
-      subjects.each do |subject|
-        subjects_hash = {
-          name: subject.name, 
-          id: subject.id, 
-          search_courses_url: select_courses_from_subject_manager_course_path(subject.id)
-        }
-        subjects_data.push(subjects_hash)
+      items = subjects.map do |_cs|
+        DataFormer.new(_cs)
+          .url(:search_courses_url)
+          .data
       end
-      last_subject = {
-        name: "全部课程",
+      items[items.length] = {
         id: nil,
+        name: "全部课程",
+        slug: "quan-bu-ke-cheng",
+        courses_count: 1,
+        parent_id: nil, 
         search_courses_url: select_all_of_corse_manager_courses_path
       }
-      # b.index(b.last)
-      index_ary_last = subjects_data.index(subjects_data.last)
-      subjects_data[index_ary_last + 1] = last_subject
-      subjects_data
+
+      items
     end
    
     def combine_course_data(courses)
