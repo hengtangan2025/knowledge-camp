@@ -1,7 +1,7 @@
 GIT
   remote: git://github.com/blackdust/kc_courses.git
-  revision: b68e5fcecb07aba547467525c787697e5ea2b297
-  ref: b68e5fc
+  revision: a412e5f95d4cca747c19d8f7fc63bd83581a911d
+  ref: a412e5f
   specs:
     kc_courses (0.1.0)
       mongoid-tree

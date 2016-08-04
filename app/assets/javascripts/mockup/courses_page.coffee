@@ -1,7 +1,7 @@
 @CoursesPage = React.createClass
   getInitialState: ->
     courses: @props.data
-    
+
   render: ->
     console.log @props.data
     <div className='courses-page'>
@@ -42,6 +42,17 @@
         <div className='ui four link cards'>
           {
             for course, idx in @props.data
+              # progress = course.progress + '%'
+              # css = {
+              #   background: 'red', 
+              #   width: progress
+              # }
+              # <div class="ui progress">
+              #   <div class="bar">
+              #     <div class="progress" style={css}>123</div>
+              #   </div>
+              #   <div class="label">Uploading Files</div>
+              # </div>
               <a key={idx} className='card' href={course.url}>
                 <div className='image'>
                   <div className='ig' style={'backgroundImage': "url(#{course.img})"} />

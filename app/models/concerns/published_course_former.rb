@@ -54,6 +54,10 @@ module PublishedCourseFormer
         instance.course.read_percent_of_user(user)
       }
 
+      logic :progress,->(instance, user){
+        instance.course.read_percent_of_user(user)
+      }
+
       field :instructor, ->(instance) {
         User.find(instance.data["creator_id"]).name
       }

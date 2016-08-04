@@ -186,6 +186,7 @@ Rails.application.routes.draw do
     post "set_percent", on: :collection
     get "studing_courses", on: :collection
     get "studied_courses", on: :collection
+    post "exchange_favorite_course", on: :collection
   end
 
   scope :path => "/api", module: 'api', :as => :api do
